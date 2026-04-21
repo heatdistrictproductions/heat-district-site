@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Heat District Productions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --neon-blue: #00f0ff;
+      --neon-pink: #ff2d78;
+      --neon-purple: #bf00ff;
+      --dark-bg: #05050f;
+      --card-bg: #0a0a1a;
+      --text-light: #e8e8f0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+      font-family: 'Raleway', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 48px;
+      background: rgba(5,5,15,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,240,255,0.15);
+    }
+
+    .nav-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-logo img {
+      height: 52px;
+      width: auto;
+      filter:
+        drop-shadow(0 0 6px rgba(0,240,255,0.8))
+        drop-shadow(0 0 14px rgba(0,240,255,0.5))
+        drop-shadow(0 0 4px rgba(255,45,120,0.4));
+      animation: neonSlowPulse 4s ease-in-out infinite alternate;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--neon-blue);
+      text-shadow: 0 0 8px var(--neon-blue);
+    }
+
+    .nav-cta {
+      background: transparent;
+      border: 1.5px solid var(--neon-pink);
+      color: var(--neon-pink) !important;
+      padding: 8px 22px;
+      border-radius: 4px;
+      transition: background 0.3s, box-shadow 0.3s !important;
+    }
+
+    .nav-cta:hover {
+      background: rgba(255,45,120,0.15) !important;
+      box-shadow: 0 0 18px rgba(255,45,120,0.4) !important;
+      color: var(--neon-pink) !important;
+      text-shadow: none !important;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(0,240,255,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 50%, rgba(255,45,120,0.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Raleway', sans-serif;
+      font-size: clamp(0.65rem, 1.2vw, 0.78rem);
+      font-weight: 400;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: rgba(0,240,255,0.65);
+      margin-bottom: 28px;
+      animation: fadeInUp 1s ease forwards;
+      opacity: 0;
+      animation-delay: 0.1s;
+    }
+
+    .hero-logo-img {
+      width: clamp(280px, 55vw, 700px);
+      height: auto;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 8px;
+      animation: neonIntroFlicker 3.5s ease-out forwards;
+    }
+
+    .hero-logo-img.settled {
+      animation: neonSlowPulse 4s ease-in-out infinite alternate;
+    }
+
+    .hero-productions {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(0.55rem, 1.5vw, 0.85rem);
+      font-weight: 400;
+      letter-spacing: 10px;
+      text-transform: uppercase;
+      color: rgba(232,232,240,0.35);
+      animation: fadeInUp 1.2s ease forwards;
+      opacity: 0;
+      animation-delay: 0.3s;
+      margin-top: 4px;
+    }
+
+    .hero-tagline {
+      margin-top: 24px;
+      font-family: 'Raleway', sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(232,232,240,0.75);
+      animation: fadeInUp 1.2s ease forwards;
+      opacity: 0;
+      animation-delay: 0.6s;
+      letter-spacing: 1px;
+    }
+
+    .hero-sub {
+      margin-top: 14px;
+      font-family: 'Raleway', sans-serif;
+      font-size: clamp(0.78rem, 1.5vw, 0.92rem);
+      font-weight: 300;
+      color: rgba(232,232,240,0.45);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: fadeInUp 1.2s ease forwards;
+      opacity: 0;
+      animation-delay: 0.8s;
+    }
+
+    .hero-buttons {
+      margin-top: 48px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeInUp 1.2s ease forwards;
+      opacity: 0;
+      animation-delay: 1s;
+    }
+
+    /* ── BUTTONS ── */
+    .btn-outline-blue {
+      background: transparent;
+      color: var(--neon-blue);
+      border: 1.5px solid var(--neon-blue);
+      padding: 16px 40px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
+    }
+
+    .btn-outline-blue:hover {
+      background: rgba(0,240,255,0.08);
+      box-shadow: 0 0 30px rgba(0,240,255,0.35);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-pink {
+      background: transparent;
+      color: var(--neon-pink);
+      border: 1.5px solid var(--neon-pink);
+      padding: 16px 40px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
+    }
+
+    .btn-outline-pink:hover {
+      background: rgba(255,45,120,0.08);
+      box-shadow: 0 0 30px rgba(255,45,120,0.35);
+      transform: translateY(-2px);
+    }
+
+    /* kept for quote buttons inside cards */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+      color: #fff;
+      border: none;
+      padding: 16px 40px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: box-shadow 0.3s, transform 0.2s;
+      box-shadow: 0 0 20px rgba(0,240,255,0.25);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 40px rgba(0,240,255,0.5);
+      transform: translateY(-2px);
+    }
+
+    /* ── SCROLL INDICATOR ── */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.3;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-indicator span {
+      font-size: 0.6rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    .scroll-arrow {
+      width: 18px;
+      height: 18px;
+      border-right: 1.5px solid var(--neon-blue);
+      border-bottom: 1.5px solid var(--neon-blue);
+      transform: rotate(45deg);
+    }
+
+    /* ── SECTION BASE ── */
+    section {
+      padding: 100px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--neon-blue);
+      margin-bottom: 14px;
+      font-weight: 400;
+    }
+
+    .section-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 300;
+      color: #fff;
+      margin-bottom: 16px;
+      line-height: 1.2;
+      font-style: italic;
+    }
+
+    .section-title strong {
+      font-weight: 600;
+      font-style: normal;
+      color: var(--neon-pink);
+    }
+
+    .section-sub {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(232,232,240,0.55);
+      max-width: 520px;
+      line-height: 1.9;
+      margin-bottom: 60px;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── SERVICES GRID ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(0,240,255,0.08);
+      border-radius: 8px;
+      padding: 36px 28px;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-card:hover {
+      border-color: rgba(0,240,255,0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 20px rgba(0,240,255,0.06);
+    }
+
+    .service-icon-wrap {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 20px;
+    }
+
+    .service-icon-wrap svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .service-card h3 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(232,232,240,0.9);
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      font-size: 0.85rem;
+      color: rgba(232,232,240,0.4);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* ── PACKAGES ── */
+    .packages-section {
+      padding: 100px 0;
+    }
+
+    .packages-header {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px 52px;
+    }
+
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    .package-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(0,240,255,0.1);
+      border-radius: 10px;
+      padding: 40px 28px;
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .package-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(0,240,255,0.07);
+    }
+
+    .package-card.featured {
+      border-color: rgba(255,45,120,0.35);
+      box-shadow: 0 0 40px rgba(255,45,120,0.08);
+    }
+
+    .package-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+      color: #fff;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 5px 18px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .package-name {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--neon-blue);
+      margin-bottom: 12px;
+    }
+
+    .package-price {
+      font-family: 'Raleway', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: #fff;
+      margin-bottom: 2px;
+      letter-spacing: -1px;
+    }
+
+    .package-price span {
+      font-size: 0.85rem;
+      color: rgba(232,232,240,0.4);
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+
+    .package-duration {
+      font-size: 0.7rem;
+      color: rgba(232,232,240,0.35);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    .package-includes {
+      list-style: none;
+      margin-bottom: 32px;
+    }
+
+    .package-includes li {
+      font-size: 0.83rem;
+      color: rgba(232,232,240,0.6);
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 300;
+    }
+
+    .package-includes li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--neon-blue);
+      flex-shrink: 0;
+    }
+
+    .package-savings {
+      font-size: 0.7rem;
+      color: rgba(77,255,145,0.8);
+      letter-spacing: 1.5px;
+      margin-bottom: 24px;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    /* ── BUILD YOUR CART ── */
+    .cart-section {
+      text-align: center;
+      padding: 100px 48px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .cart-highlight {
+      border: 1px solid rgba(0,240,255,0.12);
+      border-radius: 16px;
+      padding: 72px 56px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cart-highlight::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at center, rgba(0,240,255,0.03) 0%, transparent 55%);
+      animation: rotateBg 16s linear infinite;
+    }
+
+    .cart-highlight h2 {
+      font-family: 'Raleway', sans-serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: #fff;
+      margin-bottom: 18px;
+      position: relative;
+      line-height: 1.3;
+    }
+
+    .cart-highlight h2 strong {
+      font-weight: 600;
+      font-style: normal;
+      color: var(--neon-pink);
+    }
+
+    .cart-highlight p {
+      font-size: 0.95rem;
+      color: rgba(232,232,240,0.5);
+      line-height: 1.9;
+      max-width: 480px;
+      margin: 0 auto 40px;
+      position: relative;
+      font-weight: 300;
+    }
+
+    /* ── DIVIDER ── */
+    .neon-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,240,255,0.25), rgba(255,45,120,0.25), transparent);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 60px 48px;
+      border-top: 1px solid rgba(0,240,255,0.08);
+    }
+
+    .footer-logo img {
+      height: 64px;
+      width: auto;
+      margin-bottom: 6px;
+      filter:
+        drop-shadow(0 0 5px rgba(0,240,255,0.6))
+        drop-shadow(0 0 12px rgba(255,45,120,0.3));
+    }
+
+    .footer-productions-text {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.55rem;
+      letter-spacing: 6px;
+      color: rgba(232,232,240,0.2);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .footer-contact {
+      margin: 28px 0;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .footer-contact a {
+      color: rgba(232,232,240,0.4);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+      font-weight: 300;
+    }
+
+    .footer-contact a:hover { color: var(--neon-blue); }
+
+    .footer-copy {
+      font-size: 0.68rem;
+      color: rgba(232,232,240,0.18);
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-top: 32px;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes neonIntroFlicker {
+      0% {
+        opacity: 0;
+        filter: drop-shadow(0 0 2px rgba(0,240,255,0.2));
+      }
+      5% {
+        opacity: 1;
+        filter:
+          drop-shadow(0 0 20px rgba(0,240,255,1))
+          drop-shadow(0 0 50px rgba(0,240,255,0.8))
+          drop-shadow(0 0 80px rgba(0,240,255,0.5))
+          drop-shadow(0 0 12px rgba(255,45,120,0.9))
+          drop-shadow(0 0 40px rgba(255,45,120,0.6));
+      }
+      8%  { opacity: 0.3; filter: drop-shadow(0 0 2px rgba(0,240,255,0.1)); }
+      10% {
+        opacity: 1;
+        filter:
+          drop-shadow(0 0 20px rgba(0,240,255,1))
+          drop-shadow(0 0 50px rgba(0,240,255,0.8))
+          drop-shadow(0 0 12px rgba(255,45,120,0.9));
+      }
+      13% { opacity: 0.5; filter: drop-shadow(0 0 4px rgba(0,240,255,0.2)); }
+      15% {
+        opacity: 1;
+        filter:
+          drop-shadow(0 0 20px rgba(0,240,255,1))
+          drop-shadow(0 0 50px rgba(0,240,255,0.8))
+          drop-shadow(0 0 12px rgba(255,45,120,0.9));
+      }
+      20% { opacity: 0.7; filter: drop-shadow(0 0 6px rgba(0,240,255,0.3)); }
+      25% {
+        opacity: 1;
+        filter:
+          drop-shadow(0 0 18px rgba(0,240,255,1))
+          drop-shadow(0 0 40px rgba(0,240,255,0.7))
+          drop-shadow(0 0 10px rgba(255,45,120,0.8));
+      }
+      30% { opacity: 0.6; filter: drop-shadow(0 0 4px rgba(0,240,255,0.2)); }
+      35% {
+        opacity: 1;
+        filter:
+          drop-shadow(0 0 16px rgba(0,240,255,0.9))
+          drop-shadow(0 0 36px rgba(0,240,255,0.6))
+          drop-shadow(0 0 8px rgba(255,45,120,0.7));
+      }
+      100% {
+        opacity: 1;
+        filter:
+          drop-shadow(0 0 12px rgba(0,240,255,0.9))
+          drop-shadow(0 0 28px rgba(0,240,255,0.55))
+          drop-shadow(0 0 55px rgba(0,240,255,0.28))
+          drop-shadow(0 0 7px rgba(255,45,120,0.55))
+          drop-shadow(0 0 22px rgba(255,45,120,0.28));
+      }
+    }
+
+    @keyframes neonSlowPulse {
+      0% {
+        filter:
+          drop-shadow(0 0 10px rgba(0,240,255,0.7))
+          drop-shadow(0 0 22px rgba(0,240,255,0.45))
+          drop-shadow(0 0 5px rgba(255,45,120,0.45));
+      }
+      100% {
+        filter:
+          drop-shadow(0 0 16px rgba(0,240,255,1))
+          drop-shadow(0 0 36px rgba(0,240,255,0.65))
+          drop-shadow(0 0 10px rgba(255,45,120,0.65));
+      }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+
+    @keyframes rotateBg {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 10px 24px; }
+      .nav-links { display: none; }
+      section { padding: 80px 24px; }
+      .packages-grid { padding: 0 24px; }
+      .packages-header { padding: 0 24px 40px; }
+      .cart-highlight { padding: 48px 28px; }
+      .cart-section { padding: 80px 24px; }
+      .hero-logo-img { width: clamp(220px, 80vw, 400px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="logo.png" alt="Heat District Productions" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="team.html">Our Team</a></li>
+      <li><a href="contact.html" class="nav-cta">Book Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Private Events &nbsp;·&nbsp; Weddings &nbsp;·&nbsp; Quinceañeras &nbsp;·&nbsp; Miami &amp; Broward</div>
+    <img src="logo.png" alt="Heat District Productions" class="hero-logo-img" id="heroLogo" />
+    <div class="hero-productions">— Productions —</div>
+    <p class="hero-tagline">Where Every Event Becomes an Experience</p>
+    <p class="hero-sub">Sound &nbsp;·&nbsp; Lighting &nbsp;·&nbsp; Talent &nbsp;·&nbsp; Production</p>
+    <div class="hero-buttons">
+      <a href="packages.html" class="btn-outline-blue">View Packages</a>
+      <a href="services.html" class="btn-outline-pink">Build Your Event</a>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </div>
+
+  <div class="neon-divider"></div>
+
+  <!-- WHAT WE OFFER -->
+  <section>
+    <p class="section-label">What We Offer</p>
+    <h2 class="section-title">Every Detail.<br><strong>Handled.</strong></h2>
+    <p class="section-sub">From the first beat to the last dance — we provide everything your event needs to feel extraordinary.</p>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="11" stroke="#00f0ff" stroke-width="1.4"/>
+            <circle cx="20" cy="20" r="4" fill="rgba(0,240,255,0.25)" stroke="#00f0ff" stroke-width="1"/>
+            <path d="M20 9 Q26 14 26 20 Q26 26 20 31" stroke="#00f0ff" stroke-width="0.9" fill="none" opacity="0.6"/>
+            <path d="M20 9 Q14 14 14 20 Q14 26 20 31" stroke="#00f0ff" stroke-width="0.9" fill="none" opacity="0.6"/>
+            <path d="M20 5 Q30 12 30 20 Q30 28 20 35" stroke="#00f0ff" stroke-width="0.7" fill="none" opacity="0.3"/>
+            <path d="M20 5 Q10 12 10 20 Q10 28 20 35" stroke="#00f0ff" stroke-width="0.7" fill="none" opacity="0.3"/>
+          </svg>
+        </div>
+        <h3>Sound</h3>
+        <p>Professional subs, tops & DJ equipment scaled to any venue</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="20,4 24,15 36,15 27,23 30,34 20,27 10,34 13,23 4,15 16,15" stroke="#00f0ff" stroke-width="1.3" fill="rgba(0,240,255,0.06)"/>
+            <line x1="20" y1="4" x2="20" y2="0" stroke="#00f0ff" stroke-width="1" opacity="0.5"/>
+          </svg>
+        </div>
+        <h3>Lighting</h3>
+        <p>Moving heads, uplights, wash lights, light bars & atmospheric effects</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="14" width="24" height="15" rx="3" stroke="#00f0ff" stroke-width="1.4"/>
+            <circle cx="20" cy="21" r="4.5" stroke="#00f0ff" stroke-width="1.1"/>
+            <path d="M13 14 L13 10 M20 14 L20 9 M27 14 L27 10" stroke="#00f0ff" stroke-width="1.1" stroke-linecap="round"/>
+            <circle cx="20" cy="21" r="1.5" fill="#00f0ff" opacity="0.5"/>
+          </svg>
+        </div>
+        <h3>DJ</h3>
+        <p>Open format, Afro House & Latin Tech House for every crowd</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="10" width="26" height="20" rx="3" stroke="#ff2d78" stroke-width="1.4"/>
+            <circle cx="20" cy="20" r="6" stroke="#ff2d78" stroke-width="1.1"/>
+            <circle cx="20" cy="20" r="2" fill="rgba(255,45,120,0.4)"/>
+            <circle cx="28" cy="13" r="2" fill="#ff2d78" opacity="0.8"/>
+          </svg>
+        </div>
+        <h3>Photography</h3>
+        <p>Event & nightlife photography capturing every unforgettable moment</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="12" width="22" height="17" rx="3" stroke="#ff2d78" stroke-width="1.4"/>
+            <polygon points="26,16 36,11 36,29 26,24" stroke="#ff2d78" stroke-width="1.4" fill="rgba(255,45,120,0.06)"/>
+            <line x1="10" y1="20" x2="18" y2="20" stroke="#ff2d78" stroke-width="1" opacity="0.5"/>
+          </svg>
+        </div>
+        <h3>Videography</h3>
+        <p>Cinematic coverage from setup to the final song</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="10" width="24" height="20" rx="3" stroke="#00f0ff" stroke-width="1.4"/>
+            <rect x="14" y="6" width="12" height="4" rx="2" stroke="#00f0ff" stroke-width="1.1"/>
+            <line x1="8" y1="18" x2="32" y2="18" stroke="#00f0ff" stroke-width="0.9" opacity="0.5"/>
+            <line x1="16" y1="18" x2="16" y2="30" stroke="#00f0ff" stroke-width="0.9" opacity="0.5"/>
+            <line x1="24" y1="18" x2="24" y2="30" stroke="#00f0ff" stroke-width="0.9" opacity="0.5"/>
+          </svg>
+        </div>
+        <h3>Photo Booth</h3>
+        <p>Premium booths your guests will remember long after the night ends</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="10" width="32" height="22" rx="2" stroke="#00f0ff" stroke-width="1.4"/>
+            <line x1="4" y1="18" x2="36" y2="18" stroke="#00f0ff" stroke-width="0.8" opacity="0.4"/>
+            <line x1="4" y1="24" x2="36" y2="24" stroke="#00f0ff" stroke-width="0.8" opacity="0.4"/>
+            <line x1="14" y1="10" x2="14" y2="32" stroke="#00f0ff" stroke-width="0.8" opacity="0.4"/>
+            <line x1="26" y1="10" x2="26" y2="32" stroke="#00f0ff" stroke-width="0.8" opacity="0.4"/>
+            <rect x="8" y="34" width="24" height="3" rx="1" stroke="#00f0ff" stroke-width="1" opacity="0.6"/>
+          </svg>
+        </div>
+        <h3>LED Walls</h3>
+        <p>Modular LED screens & wall panels for maximum visual impact</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="10" y1="32" x2="10" y2="12" stroke="#00f0ff" stroke-width="1.6" stroke-linecap="round"/>
+            <line x1="30" y1="32" x2="30" y2="12" stroke="#00f0ff" stroke-width="1.6" stroke-linecap="round"/>
+            <line x1="7" y1="12" x2="33" y2="12" stroke="#00f0ff" stroke-width="1.4" stroke-linecap="round"/>
+            <line x1="7" y1="8" x2="33" y2="8" stroke="#00f0ff" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+            <line x1="10" y1="20" x2="30" y2="20" stroke="#00f0ff" stroke-width="0.9" stroke-dasharray="3,3" opacity="0.5"/>
+            <line x1="10" y1="26" x2="30" y2="26" stroke="#00f0ff" stroke-width="0.9" stroke-dasharray="3,3" opacity="0.5"/>
+          </svg>
+        </div>
+        <h3>Staging</h3>
+        <p>Trussing, totems & goal post rigs engineered for your vision</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="neon-divider"></div>
+
+  <!-- PACKAGES -->
+  <div class="packages-section">
+    <div class="packages-header">
+      <p class="section-label">Packages</p>
+      <h2 class="section-title">Built for Your<br><strong>Budget & Vision</strong></h2>
+      <p class="section-sub">Our curated bundles give you a complete production at a better value than booking piece by piece. The more you need, the more you save.</p>
+    </div>
+
+    <div class="packages-grid">
+
+      <div class="package-card">
+        <p class="package-name">The Spark</p>
+        <div class="package-price">$1,000 <span>/ 5hrs</span></div>
+        <p class="package-duration">Base Package</p>
+        <ul class="package-includes">
+          <li>Sound System (2 Subs, 2 Tops)</li>
+          <li>DJ + Decks</li>
+          <li>Setup & Breakdown</li>
+        </ul>
+        <p class="package-savings">Perfect for intimate gatherings</p>
+        <a href="contact.html" class="btn-outline-blue" style="width:100%;text-align:center;font-size:0.68rem;padding:12px 0;">Get a Quote</a>
+      </div>
+
+      <div class="package-card">
+        <p class="package-name">The Ignite</p>
+        <div class="package-price">$1,250 <span>/ 5hrs</span></div>
+        <p class="package-duration">Level One</p>
+        <ul class="package-includes">
+          <li>Sound System</li>
+          <li>DJ + Decks</li>
+          <li>5 Uplights</li>
+          <li>LED Light Bar</li>
+        </ul>
+        <p class="package-savings">Elevated atmosphere, great value</p>
+        <a href="contact.html" class="btn-outline-blue" style="width:100%;text-align:center;font-size:0.68rem;padding:12px 0;">Get a Quote</a>
+      </div>
+
+      <div class="package-card featured">
+        <div class="package-badge">Most Popular</div>
+        <p class="package-name">The Blaze</p>
+        <div class="package-price">$2,000 <span>/ 5hrs</span></div>
+        <p class="package-duration">Level Two</p>
+        <ul class="package-includes">
+          <li>Sound System</li>
+          <li>DJ + Decks</li>
+          <li>10 Uplights + Light Bar</li>
+          <li>2 Moving Heads</li>
+          <li>Photo Booth</li>
+          <li>2x Fog Machines</li>
+        </ul>
+        <p class="package-savings">More production, better rate</p>
+        <a href="contact.html" class="btn-outline-pink" style="width:100%;text-align:center;font-size:0.68rem;padding:12px 0;">Get a Quote</a>
+      </div>
+
+      <div class="package-card">
+        <p class="package-name">The Inferno</p>
+        <div class="package-price">$2,500 <span>/ 5hrs</span></div>
+        <p class="package-duration">Level Three</p>
+        <ul class="package-includes">
+          <li>Sound System</li>
+          <li>DJ + Decks</li>
+          <li>15 Uplights + Light Bar</li>
+          <li>4 Moving Heads</li>
+          <li>Photo Booth</li>
+          <li>2x Cold Spark Machines</li>
+          <li>2x Fog Machines</li>
+        </ul>
+        <p class="package-savings">Full production energy</p>
+        <a href="contact.html" class="btn-outline-blue" style="width:100%;text-align:center;font-size:0.68rem;padding:12px 0;">Get a Quote</a>
+      </div>
+
+      <div class="package-card">
+        <p class="package-name">The District</p>
+        <div class="package-price">$3,500 <span>/ 5hrs</span></div>
+        <p class="package-duration">Full Production</p>
+        <ul class="package-includes">
+          <li>Sound System</li>
+          <li>DJ + Decks</li>
+          <li>15 Uplights + Light Bar</li>
+          <li>4 Moving Heads</li>
+          <li>LED Screen / Wall Panel</li>
+          <li>Photo Booth</li>
+          <li>4x Cold Spark Machines</li>
+          <li>2x Fog Machines</li>
+        </ul>
+        <p class="package-savings">The ultimate Heat District experience</p>
+        <a href="contact.html" class="btn-outline-blue" style="width:100%;text-align:center;font-size:0.68rem;padding:12px 0;">Get a Quote</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="neon-divider"></div>
+
+  <!-- BUILD YOUR EVENT -->
+  <div class="cart-section">
+    <div class="cart-highlight">
+      <p class="section-label" style="margin-bottom:18px;">Your Event, Your Way</p>
+      <h2>Don't need a full package?<br><strong>Make It Yours.</strong></h2>
+      <p>Choose exactly what your event needs — sound, lighting, talent, or equipment — and we'll build a custom quote from the ground up. No extras. No guesswork. Just your vision, executed flawlessly.</p>
+      <a href="services.html" class="btn-outline-blue">Browse All Services &amp; Rentals</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <img src="logo.png" alt="Heat District Productions" />
+      <span class="footer-productions-text">Productions</span>
+    </div>
+    <div class="footer-contact">
+      <a href="tel:9545472990">(954) 547-2990</a>
+      <a href="mailto:HeatDistrictProd@gmail.com">HeatDistrictProd@gmail.com</a>
+      <a href="https://instagram.com/heatdistrictproductions" target="_blank">@HeatDistrictProductions</a>
+      <a href="https://www.heatdistrictproductions.com">heatdistrictproductions.com</a>
+    </div>
+    <p class="footer-copy">© 2025 Heat District Productions &nbsp;·&nbsp; Miami & Broward County &nbsp;·&nbsp; All Rights Reserved</p>
+  </footer>
+
+  <script>
+    const heroLogo = document.getElementById('heroLogo');
+    setTimeout(() => {
+      heroLogo.style.animation = 'neonSlowPulse 4s ease-in-out infinite alternate';
+    }, 3500);
+  </script>
+
+</body>
+</html>

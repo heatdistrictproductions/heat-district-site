@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Packages — Heat District Productions</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
   <style>
     :root {
       --neon-blue: #00f0ff;
@@ -12,12 +12,14 @@
       --neon-purple: #bf00ff;
       --dark-bg: #05050f;
       --card-bg: #0a0a1a;
-      --card-bg2: #0d0d20;
       --text-light: #e8e8f0;
+      --muted-white: rgba(232,232,240,0.48);
+      --success: rgba(77,255,145,0.9);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       background-color: var(--dark-bg);
       color: var(--text-light);
@@ -25,7 +27,6 @@
       overflow-x: hidden;
     }
 
-    /* ── NAVBAR ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -102,9 +103,8 @@
       box-shadow: 0 0 18px rgba(255,45,120,0.4) !important;
     }
 
-    /* ── HERO ── */
     .page-hero {
-      padding: 160px 48px 80px;
+      padding: 160px 48px 82px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -127,16 +127,19 @@
       color: rgba(0,240,255,0.6);
       margin-bottom: 16px;
       font-weight: 400;
+      position: relative;
+      z-index: 1;
     }
 
     .page-hero h1 {
-      font-family: 'Raleway', sans-serif;
       font-size: clamp(2.2rem, 5vw, 3.8rem);
       font-weight: 300;
       font-style: italic;
       color: #fff;
       line-height: 1.15;
       margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
     }
 
     .page-hero h1 strong {
@@ -148,11 +151,13 @@
     .page-hero p {
       font-size: 0.95rem;
       font-weight: 300;
-      color: rgba(232,232,240,0.5);
-      max-width: 540px;
+      color: rgba(232,232,240,0.52);
+      max-width: 680px;
       margin: 0 auto;
       line-height: 1.9;
       letter-spacing: 0.3px;
+      position: relative;
+      z-index: 1;
     }
 
     .neon-divider {
@@ -161,277 +166,17 @@
       background: linear-gradient(90deg, transparent, rgba(0,240,255,0.25), rgba(255,45,120,0.25), transparent);
     }
 
-    /* ── BUTTONS ── */
-    .btn-outline-blue {
-      background: transparent;
-      color: var(--neon-blue);
-      border: 1.5px solid var(--neon-blue);
-      padding: 14px 32px;
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      border-radius: 4px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
-    }
-
-    .btn-outline-blue:hover {
-      background: rgba(0,240,255,0.08);
-      box-shadow: 0 0 30px rgba(0,240,255,0.3);
-      transform: translateY(-2px);
-    }
-
-    .btn-outline-pink {
-      background: transparent;
-      color: var(--neon-pink);
-      border: 1.5px solid var(--neon-pink);
-      padding: 14px 32px;
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      border-radius: 4px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
-    }
-
-    .btn-outline-pink:hover {
-      background: rgba(255,45,120,0.08);
-      box-shadow: 0 0 30px rgba(255,45,120,0.3);
-      transform: translateY(-2px);
-    }
-
-    .btn-full-blue {
-      background: linear-gradient(135deg, rgba(0,240,255,0.15), rgba(191,0,255,0.15));
-      color: var(--neon-blue);
-      border: 1.5px solid var(--neon-blue);
-      padding: 16px 32px;
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      border-radius: 4px;
-      cursor: pointer;
-      width: 100%;
-      text-align: center;
-      transition: box-shadow 0.3s, transform 0.2s;
-      display: block;
-    }
-
-    .btn-full-blue:hover {
-      box-shadow: 0 0 30px rgba(0,240,255,0.3);
-      transform: translateY(-2px);
-    }
-
-    .btn-full-pink {
-      background: linear-gradient(135deg, rgba(255,45,120,0.15), rgba(191,0,255,0.15));
-      color: var(--neon-pink);
-      border: 1.5px solid var(--neon-pink);
-      padding: 16px 32px;
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      border-radius: 4px;
-      cursor: pointer;
-      width: 100%;
-      text-align: center;
-      transition: box-shadow 0.3s, transform 0.2s;
-      display: block;
-    }
-
-    .btn-full-pink:hover {
-      box-shadow: 0 0 30px rgba(255,45,120,0.3);
-      transform: translateY(-2px);
-    }
-
-    /* ── PACKAGES GRID ── */
     .packages-wrap {
-      max-width: 1300px;
+      max-width: 1560px;
       margin: 0 auto;
       padding: 80px 48px;
     }
 
-    .packages-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 24px;
-      margin-bottom: 80px;
+    .section-block + .section-block {
+      margin-top: 86px;
     }
 
-    .pkg-card {
-      background: var(--card-bg);
-      border: 1px solid rgba(0,240,255,0.1);
-      border-radius: 12px;
-      padding: 40px 28px 32px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-      cursor: pointer;
-    }
-
-    .pkg-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 24px rgba(0,240,255,0.07);
-    }
-
-    .pkg-card.featured {
-      border-color: rgba(255,45,120,0.4);
-      box-shadow: 0 0 40px rgba(255,45,120,0.08);
-    }
-
-    .pkg-card.selected {
-      border-color: var(--neon-blue);
-      box-shadow: 0 0 40px rgba(0,240,255,0.15);
-    }
-
-    .pkg-badge {
-      position: absolute;
-      top: -13px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
-      color: #fff;
-      font-size: 0.58rem;
-      font-weight: 600;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      padding: 5px 18px;
-      border-radius: 20px;
-      white-space: nowrap;
-    }
-
-    .pkg-tier {
-      font-size: 0.62rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: rgba(0,240,255,0.55);
-      margin-bottom: 6px;
-      font-weight: 400;
-    }
-
-    .pkg-name {
-      font-family: 'Raleway', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 6px;
-      letter-spacing: 1px;
-    }
-
-    .pkg-tagline {
-      font-size: 0.8rem;
-      color: rgba(232,232,240,0.4);
-      font-weight: 300;
-      font-style: italic;
-      margin-bottom: 24px;
-      line-height: 1.6;
-    }
-
-    .pkg-price-wrap {
-      margin-bottom: 6px;
-    }
-
-    .pkg-price {
-      font-family: 'Raleway', sans-serif;
-      font-size: 2.6rem;
-      font-weight: 300;
-      color: #fff;
-      letter-spacing: -1px;
-      line-height: 1;
-    }
-
-    .pkg-price sup {
-      font-size: 1.1rem;
-      vertical-align: super;
-      font-weight: 400;
-      color: rgba(232,232,240,0.6);
-    }
-
-    .pkg-price sub {
-      font-size: 0.78rem;
-      color: rgba(232,232,240,0.4);
-      font-weight: 300;
-      letter-spacing: 1px;
-    }
-
-    .pkg-savings {
-      font-size: 0.7rem;
-      color: rgba(77,255,145,0.85);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 28px;
-      font-weight: 400;
-    }
-
-    .pkg-divider {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, rgba(0,240,255,0.2), transparent);
-      margin-bottom: 24px;
-    }
-
-    .pkg-includes-label {
-      font-size: 0.62rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: rgba(232,232,240,0.3);
-      margin-bottom: 14px;
-      font-weight: 400;
-    }
-
-    .pkg-includes {
-      list-style: none;
-      margin-bottom: 28px;
-      flex: 1;
-    }
-
-    .pkg-includes li {
-      font-size: 0.83rem;
-      color: rgba(232,232,240,0.65);
-      padding: 6px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 300;
-    }
-
-    .pkg-includes li::before {
-      content: '';
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--neon-blue);
-      flex-shrink: 0;
-      opacity: 0.7;
-    }
-
-    .pkg-includes li.highlight {
-      color: rgba(232,232,240,0.9);
-    }
-
-    .pkg-includes li.highlight::before {
-      background: var(--neon-pink);
-      opacity: 1;
-    }
-
-    /* ── COMPARISON TABLE ── */
-    .comparison-wrap {
-      margin-bottom: 80px;
-    }
-
-    .comparison-label {
+    .section-label {
       font-size: 0.68rem;
       letter-spacing: 5px;
       text-transform: uppercase;
@@ -440,64 +185,123 @@
       font-weight: 400;
     }
 
-    .comparison-title {
-      font-family: 'Raleway', sans-serif;
+    .section-title {
       font-size: clamp(1.5rem, 3vw, 2.2rem);
       font-weight: 300;
       font-style: italic;
       color: #fff;
-      margin-bottom: 40px;
+      margin-bottom: 14px;
+      line-height: 1.2;
     }
 
-    .comparison-title strong {
+    .section-title strong {
       font-weight: 700;
       font-style: normal;
       color: var(--neon-pink);
     }
 
+    .section-sub {
+      font-size: 0.9rem;
+      color: var(--muted-white);
+      font-weight: 300;
+      line-height: 1.85;
+      max-width: 760px;
+    }
+
+    .btn-plan {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.3s, background 0.3s, border-color 0.3s;
+      letter-spacing: 2.4px;
+      border-radius: 4px;
+      text-decoration: none;
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 14px 16px;
+      font-size: 0.66rem;
+      background: transparent;
+      color: var(--neon-blue);
+      border: 1.5px solid var(--neon-blue);
+    }
+
+    .btn-plan:hover {
+      background: rgba(0,240,255,0.08);
+      box-shadow: 0 0 24px rgba(0,240,255,0.22);
+      transform: translateY(-2px);
+    }
+
+    .btn-plan.is-accent {
+      color: var(--neon-pink);
+      border-color: var(--neon-pink);
+    }
+
+    .btn-plan.is-accent:hover {
+      background: rgba(255,45,120,0.08);
+      box-shadow: 0 0 24px rgba(255,45,120,0.24);
+    }
+
+    .comparison-shell {
+      margin-top: 34px;
+      border: 1px solid rgba(0,240,255,0.08);
+      border-radius: 14px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(10,10,26,0.96), rgba(8,8,22,0.98));
+      box-shadow: 0 16px 48px rgba(0,0,0,0.28);
+    }
+
+    .comparison-scroll {
+      width: 100%;
+      overflow-x: auto;
+    }
+
     .comparison-table {
       width: 100%;
+      min-width: 980px;
       border-collapse: collapse;
-      font-size: 0.83rem;
+      font-size: 0.82rem;
     }
 
     .comparison-table th {
-      padding: 16px 20px;
+      padding: 18px 18px;
       text-align: center;
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       font-weight: 600;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--neon-blue);
-      border-bottom: 1px solid rgba(0,240,255,0.15);
+      border-bottom: 1px solid rgba(0,240,255,0.14);
       background: rgba(0,240,255,0.03);
     }
 
     .comparison-table th:first-child {
       text-align: left;
-      color: rgba(232,232,240,0.4);
+      color: rgba(232,232,240,0.42);
+      min-width: 220px;
     }
 
     .comparison-table th.featured-col {
       color: var(--neon-pink);
       background: rgba(255,45,120,0.05);
-      border-bottom-color: rgba(255,45,120,0.2);
+      border-bottom-color: rgba(255,45,120,0.22);
     }
 
     .comparison-table td {
-      padding: 14px 20px;
+      padding: 14px 18px;
       text-align: center;
       border-bottom: 1px solid rgba(255,255,255,0.04);
-      color: rgba(232,232,240,0.55);
+      color: rgba(232,232,240,0.58);
       font-weight: 300;
       transition: background 0.2s;
     }
 
     .comparison-table td:first-child {
       text-align: left;
-      color: rgba(232,232,240,0.7);
+      color: rgba(232,232,240,0.78);
       font-weight: 400;
+      white-space: nowrap;
     }
 
     .comparison-table td.featured-col {
@@ -512,6 +316,18 @@
       background: rgba(255,45,120,0.05);
     }
 
+    .group-row td {
+      text-align: left !important;
+      padding: 13px 18px !important;
+      font-size: 0.62rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(0,240,255,0.62) !important;
+      background: rgba(0,240,255,0.035) !important;
+      border-bottom: 1px solid rgba(0,240,255,0.1) !important;
+      font-weight: 600 !important;
+    }
+
     .check {
       color: var(--neon-blue);
       font-size: 1rem;
@@ -523,273 +339,277 @@
     }
 
     .dash {
-      color: rgba(232,232,240,0.15);
+      color: rgba(232,232,240,0.16);
       font-size: 0.9rem;
     }
 
     .qty {
-      color: rgba(232,232,240,0.7);
-      font-size: 0.82rem;
+      color: rgba(232,232,240,0.74);
+      font-size: 0.79rem;
+      font-weight: 400;
+      line-height: 1.45;
+      display: inline-block;
+    }
+
+    .visual-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin: 34px 0 28px;
+    }
+
+    .visual-card {
+      position: relative;
+      min-height: 220px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(0,240,255,0.08);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(0,240,255,0.16), transparent 42%),
+        radial-gradient(circle at 80% 80%, rgba(255,45,120,0.16), transparent 36%),
+        linear-gradient(180deg, rgba(12,12,28,0.98), rgba(7,7,18,1));
+      box-shadow: 0 14px 40px rgba(0,0,0,0.32);
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+    }
+
+    .visual-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(5,5,15,0.08) 0%, rgba(5,5,15,0.68) 100%);
+      pointer-events: none;
+    }
+
+    .visual-card-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .visual-kicker {
+      font-size: 0.58rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(0,240,255,0.72);
+      margin-bottom: 8px;
+    }
+
+    .visual-title {
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 6px;
+      line-height: 1.25;
+    }
+
+    .visual-copy {
+      font-size: 0.78rem;
+      line-height: 1.6;
+      color: rgba(232,232,240,0.52);
+      max-width: 300px;
+    }
+
+    .packages-header {
+      margin-bottom: 10px;
+    }
+
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .pkg-card {
+      background: linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.98));
+      border: 1px solid rgba(0,240,255,0.1);
+      border-radius: 12px;
+      padding: 34px 20px 22px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      cursor: pointer;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .pkg-card::after {
+      content: '';
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,240,255,0.15), transparent);
+      pointer-events: none;
+    }
+
+    .pkg-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.42), 0 0 22px rgba(0,240,255,0.06);
+    }
+
+    .pkg-card.featured {
+      border-color: rgba(255,45,120,0.36);
+      box-shadow: 0 0 34px rgba(255,45,120,0.08);
+    }
+
+    .pkg-card.best-value {
+      border-color: rgba(0,240,255,0.28);
+      box-shadow: 0 0 34px rgba(0,240,255,0.08);
+    }
+
+    .pkg-badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #fff;
+      font-size: 0.56rem;
+      font-weight: 600;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 20px;
+      white-space: nowrap;
+      z-index: 2;
+    }
+
+    .pkg-badge.popular {
+      background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+    }
+
+    .pkg-badge.value {
+      background: linear-gradient(135deg, rgba(0,240,255,0.96), rgba(0,165,255,0.92));
+      color: #051017;
+    }
+
+    .pkg-tier {
+      font-size: 0.58rem;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: rgba(0,240,255,0.55);
+      margin-bottom: 7px;
       font-weight: 400;
     }
 
-    /* ── ADD-ONS ── */
-    .addons-wrap {
-      margin-bottom: 80px;
+    .pkg-name {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      letter-spacing: 0.8px;
+      line-height: 1.15;
     }
 
-    .addons-label {
-      font-size: 0.68rem;
-      letter-spacing: 5px;
+    .pkg-tagline {
+      font-size: 0.77rem;
+      color: rgba(232,232,240,0.44);
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 18px;
+      line-height: 1.58;
+      min-height: 64px;
+    }
+
+    .pkg-price-wrap {
+      margin-bottom: 6px;
+    }
+
+    .pkg-price {
+      font-size: 2rem;
+      font-weight: 300;
+      color: #fff;
+      letter-spacing: -1px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .pkg-price sup {
+      font-size: 0.92rem;
+      vertical-align: super;
+      font-weight: 400;
+      color: rgba(232,232,240,0.6);
+    }
+
+    .pkg-price sub {
+      font-size: 0.7rem;
+      color: rgba(232,232,240,0.42);
+      font-weight: 300;
+      letter-spacing: 1px;
+      vertical-align: baseline;
+    }
+
+    .pkg-price-note {
+      font-size: 0.64rem;
+      letter-spacing: 1.4px;
       text-transform: uppercase;
-      color: var(--neon-blue);
+      margin-bottom: 20px;
+      font-weight: 500;
+      line-height: 1.45;
+      min-height: 34px;
+      color: var(--success);
+    }
+
+    .pkg-price-note.is-muted {
+      color: rgba(232,232,240,0.46);
+    }
+
+    .pkg-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(0,240,255,0.16), transparent);
+      margin-bottom: 18px;
+    }
+
+    .pkg-includes-label {
+      font-size: 0.58rem;
+      letter-spacing: 2.8px;
+      text-transform: uppercase;
+      color: rgba(232,232,240,0.3);
       margin-bottom: 12px;
       font-weight: 400;
     }
 
-    .addons-title {
-      font-family: 'Raleway', sans-serif;
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
+    .pkg-includes {
+      list-style: none;
+      margin-bottom: 22px;
+      flex: 1;
+    }
+
+    .pkg-includes li {
+      font-size: 0.76rem;
+      color: rgba(232,232,240,0.68);
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
       font-weight: 300;
-      font-style: italic;
-      color: #fff;
-      margin-bottom: 10px;
+      line-height: 1.48;
     }
 
-    .addons-title strong {
-      font-weight: 700;
-      font-style: normal;
-      color: var(--neon-pink);
-    }
-
-    .addons-sub {
-      font-size: 0.88rem;
-      color: rgba(232,232,240,0.45);
-      margin-bottom: 36px;
-      font-weight: 300;
-      line-height: 1.8;
-    }
-
-    .addons-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 16px;
-    }
-
-    .addon-card {
-      background: var(--card-bg);
-      border: 1px solid rgba(0,240,255,0.08);
-      border-radius: 8px;
-      padding: 22px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      cursor: pointer;
-      transition: border-color 0.3s, box-shadow 0.3s, transform 0.2s;
-      position: relative;
-    }
-
-    .addon-card:hover {
-      border-color: rgba(0,240,255,0.25);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-    }
-
-    .addon-card.selected {
-      border-color: var(--neon-blue);
-      box-shadow: 0 0 20px rgba(0,240,255,0.15);
-    }
-
-    .addon-card.selected::after {
-      content: '✓';
-      position: absolute;
-      top: 10px;
-      right: 12px;
-      color: var(--neon-blue);
-      font-size: 0.85rem;
-      font-weight: 700;
-    }
-
-    .addon-name {
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      color: rgba(232,232,240,0.9);
-    }
-
-    .addon-desc {
-      font-size: 0.75rem;
-      color: rgba(232,232,240,0.4);
-      font-weight: 300;
-      line-height: 1.5;
-    }
-
-    .addon-price-wrap {
-      margin-top: 4px;
-      display: flex;
-      align-items: baseline;
-      gap: 6px;
-    }
-
-    .addon-price {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--neon-blue);
-    }
-
-    .addon-price-unit {
-      font-size: 0.7rem;
-      color: rgba(232,232,240,0.35);
-      letter-spacing: 1px;
-    }
-
-    .addon-add-btn {
-      margin-top: 6px;
-      background: transparent;
-      border: 1px solid rgba(0,240,255,0.25);
-      color: var(--neon-blue);
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 7px 12px;
-      border-radius: 3px;
-      cursor: pointer;
-      transition: background 0.2s, box-shadow 0.2s;
-      width: 100%;
-    }
-
-    .addon-add-btn:hover {
-      background: rgba(0,240,255,0.08);
-      box-shadow: 0 0 12px rgba(0,240,255,0.2);
-    }
-
-    .addon-add-btn.added {
-      border-color: var(--neon-blue);
-      background: rgba(0,240,255,0.1);
-      color: var(--neon-blue);
-    }
-
-    /* ── CART SIDEBAR ── */
-    .cart-bar {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      z-index: 999;
-      background: rgba(5,5,15,0.97);
-      border-top: 1px solid rgba(0,240,255,0.2);
-      backdrop-filter: blur(16px);
-      padding: 18px 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      transform: translateY(100%);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .cart-bar.visible {
-      transform: translateY(0);
-    }
-
-    .cart-bar-left {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .cart-bar-label {
-      font-size: 0.62rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: rgba(232,232,240,0.35);
-      font-weight: 400;
-    }
-
-    .cart-bar-summary {
-      font-size: 0.85rem;
-      color: rgba(232,232,240,0.8);
-      font-weight: 300;
-      max-width: 500px;
-      line-height: 1.5;
-    }
-
-    .cart-bar-summary span {
-      color: var(--neon-blue);
-      font-weight: 600;
-    }
-
-    .cart-bar-right {
-      display: flex;
-      align-items: center;
-      gap: 20px;
+    .pkg-includes li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      margin-top: 7px;
+      border-radius: 50%;
+      background: var(--neon-blue);
       flex-shrink: 0;
+      opacity: 0.78;
     }
 
-    .cart-total {
-      text-align: right;
+    .pkg-includes li.new {
+      color: rgba(232,232,240,0.92);
     }
 
-    .cart-total-label {
-      font-size: 0.62rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: rgba(232,232,240,0.35);
+    .pkg-includes li.new::before {
+      background: var(--neon-pink);
+      opacity: 1;
+      box-shadow: 0 0 10px rgba(255,45,120,0.45);
     }
 
-    .cart-total-amount {
-      font-family: 'Raleway', sans-serif;
-      font-size: 1.8rem;
-      font-weight: 300;
-      color: #fff;
-      letter-spacing: -1px;
-    }
-
-    .cart-total-deposit {
-      font-size: 0.7rem;
-      color: rgba(77,255,145,0.8);
-      letter-spacing: 1px;
-    }
-
-    .btn-checkout {
-      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
-      color: #fff;
-      border: none;
-      padding: 16px 40px;
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: box-shadow 0.3s, transform 0.2s;
-      box-shadow: 0 0 24px rgba(0,240,255,0.3);
-      white-space: nowrap;
-    }
-
-    .btn-checkout:hover {
-      box-shadow: 0 0 40px rgba(0,240,255,0.55);
-      transform: translateY(-2px);
-    }
-
-    .cart-clear {
-      font-size: 0.65rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(232,232,240,0.25);
-      cursor: pointer;
-      transition: color 0.2s;
-      background: none;
-      border: none;
-      font-family: 'Raleway', sans-serif;
-    }
-
-    .cart-clear:hover {
-      color: var(--neon-pink);
-    }
-
-    /* ── FOOTER ── */
     footer {
       text-align: center;
       padding: 60px 48px 100px;
@@ -841,26 +661,32 @@
       margin-top: 32px;
     }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
+    @media (max-width: 1280px) {
+      .packages-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
-    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .visual-strip {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 768px) {
       nav { padding: 10px 24px; }
       .nav-links { display: none; }
+      .page-hero { padding: 145px 24px 70px; }
       .packages-wrap { padding: 60px 24px; }
-      .cart-bar { padding: 16px 24px; flex-wrap: wrap; }
-      .comparison-table { font-size: 0.72rem; }
+      .packages-grid { grid-template-columns: 1fr; }
       .comparison-table th, .comparison-table td { padding: 10px 10px; }
+      .comparison-table { font-size: 0.72rem; }
+      footer { padding: 60px 24px 100px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
   <nav>
     <a href="index.html" class="nav-logo">
       <img src="logo.png" alt="Heat District Productions" />
@@ -874,363 +700,292 @@
     <a href="contact.html" class="nav-cta">Book Now</a>
   </nav>
 
-  <!-- HERO -->
   <div class="page-hero">
-    <p class="page-hero-eyebrow">Transparent Pricing · No Hidden Fees</p>
+    <p class="page-hero-eyebrow">Transparent Pricing · Pre-Built Packages · Optional Upgrades</p>
     <h1>Choose Your<br><strong>Production Package</strong></h1>
-    <p>Every package is built to deliver a complete, professional event experience. Select the level that fits your vision — then customize it exactly how you want.</p>
+    <p>
+      Start with a package built to save you money versus piecing everything together individually.
+      Once you choose your package, you’ll continue to the next step to add any eligible upgrades.
+    </p>
   </div>
 
   <div class="neon-divider"></div>
 
   <div class="packages-wrap">
 
-    <!-- PACKAGES -->
-    <div class="packages-grid">
+    <div class="section-block">
+      <p class="section-label">Compare First</p>
+      <h2 class="section-title">See the Difference <strong>Before You Decide</strong></h2>
+      <p class="section-sub">
+        The fastest way to choose is to compare the full lineup side by side. Each level builds clearly on the last, so the upgrade path feels easier to understand and easier to buy.
+      </p>
 
-      <!-- THE SPARK -->
-      <div class="pkg-card" onclick="selectPackage(this, 'The Spark', 1000)">
-        <p class="pkg-tier">Level Zero</p>
-        <h2 class="pkg-name">The Spark</h2>
-        <p class="pkg-tagline">Clean sound, professional DJ — everything you need for an intimate celebration.</p>
-        <div class="pkg-price-wrap">
-          <div class="pkg-price"><sup>$</sup>1,000<sub>/ 5hrs</sub></div>
+      <div class="comparison-shell">
+        <div class="comparison-scroll">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>The Spark<br><span style="color:rgba(232,232,240,0.4);font-size:0.7rem;font-weight:300;">$1,295</span></th>
+                <th class="featured-col">The Blaze<br><span style="color:rgba(255,45,120,0.7);font-size:0.7rem;font-weight:300;">$2,195</span></th>
+                <th>The Inferno<br><span style="color:rgba(232,232,240,0.4);font-size:0.7rem;font-weight:300;">$2,995</span></th>
+                <th>The District<br><span style="color:rgba(232,232,240,0.4);font-size:0.7rem;font-weight:300;">$4,995</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="group-row">
+                <td colspan="5">Core Production</td>
+              </tr>
+              <tr>
+                <td>Sound System</td>
+                <td><span class="check">✓</span></td>
+                <td class="featured-col"><span class="check-pink">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td>Professional DJ</td>
+                <td><span class="check">✓</span></td>
+                <td class="featured-col"><span class="check-pink">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td>Microphone</td>
+                <td><span class="check">✓</span></td>
+                <td class="featured-col"><span class="check-pink">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td>Setup & Breakdown</td>
+                <td><span class="check">✓</span></td>
+                <td class="featured-col"><span class="check-pink">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td>Coverage Time</td>
+                <td><span class="qty">5 Hours</span></td>
+                <td class="featured-col"><span class="qty">5 Hours</span></td>
+                <td><span class="qty">5 Hours</span></td>
+                <td><span class="qty">5 Hours</span></td>
+              </tr>
+
+              <tr class="group-row">
+                <td colspan="5">Lighting & Atmosphere</td>
+              </tr>
+              <tr>
+                <td>Uplights</td>
+                <td><span class="dash">—</span></td>
+                <td class="featured-col"><span class="qty">10 Units</span></td>
+                <td><span class="qty">15 Units</span></td>
+                <td><span class="qty">15 Units</span></td>
+              </tr>
+              <tr>
+                <td>LED Light Bar</td>
+                <td><span class="dash">—</span></td>
+                <td class="featured-col"><span class="check-pink">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td>Moving Head Lights</td>
+                <td><span class="dash">—</span></td>
+                <td class="featured-col"><span class="qty">2 Units</span></td>
+                <td><span class="qty">4 Units</span></td>
+                <td><span class="qty">4 Units</span></td>
+              </tr>
+              <tr>
+                <td>Fog Machines</td>
+                <td><span class="dash">—</span></td>
+                <td class="featured-col"><span class="qty">2 Units</span></td>
+                <td><span class="qty">2 Units</span></td>
+                <td><span class="qty">2 Units</span></td>
+              </tr>
+              <tr>
+                <td>Cold Spark Machines</td>
+                <td><span class="dash">—</span></td>
+                <td class="featured-col"><span class="dash">—</span></td>
+                <td><span class="qty">2 Units</span></td>
+                <td><span class="qty">4 Units</span></td>
+              </tr>
+
+              <tr class="group-row">
+                <td colspan="5">Visual / Premium Additions</td>
+              </tr>
+              <tr>
+                <td>Photo Booth</td>
+                <td><span class="dash">—</span></td>
+                <td class="featured-col"><span class="check-pink">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td>Photography</td>
+                <td><span class="dash">—</span></td>
+                <td class="featured-col"><span class="dash">—</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td>LED Screen / Wall</td>
+                <td><span class="dash">—</span></td>
+                <td class="featured-col"><span class="dash">—</span></td>
+                <td><span class="dash">—</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td>Staging / Totems</td>
+                <td><span class="dash">—</span></td>
+                <td class="featured-col"><span class="qty">2 Totems</span></td>
+                <td><span class="qty">Goal Post + 2 Totems<br>or 4 Totems</span></td>
+                <td><span class="qty">Goal Post + 2 Totems<br>or 4 Totems</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <p class="pkg-savings">Deposit: $200 to reserve your date</p>
-        <div class="pkg-divider"></div>
-        <p class="pkg-includes-label">What's Included</p>
-        <ul class="pkg-includes">
-          <li>Sound System — 2 Subs, 2 Tops</li>
-          <li>Professional DJ + Full Deck Setup</li>
-          <li>Microphone</li>
-          <li>Professional Setup & Breakdown</li>
-          <li>5-Hour Coverage</li>
-        </ul>
-        <button class="btn-full-blue" onclick="selectPackage(this.closest('.pkg-card'), 'The Spark', 1000)">Select This Package</button>
       </div>
-
-      <!-- THE IGNITE -->
-      <div class="pkg-card" onclick="selectPackage(this, 'The Ignite', 1250)">
-        <p class="pkg-tier">Level One</p>
-        <h2 class="pkg-name">The Ignite</h2>
-        <p class="pkg-tagline">Add atmosphere to your sound — uplights and a light bar transform any space.</p>
-        <div class="pkg-price-wrap">
-          <div class="pkg-price"><sup>$</sup>1,250<sub>/ 5hrs</sub></div>
-        </div>
-        <p class="pkg-savings">Deposit: $250 to reserve your date</p>
-        <div class="pkg-divider"></div>
-        <p class="pkg-includes-label">What's Included</p>
-        <ul class="pkg-includes">
-          <li>Sound System — 2 Subs, 2 Tops</li>
-          <li>Professional DJ + Full Deck Setup</li>
-          <li>Microphone</li>
-          <li>5 Uplights</li>
-          <li>LED Light Bar</li>
-          <li>Professional Setup & Breakdown</li>
-          <li>5-Hour Coverage</li>
-        </ul>
-        <button class="btn-full-blue" onclick="selectPackage(this.closest('.pkg-card'), 'The Ignite', 1250)">Select This Package</button>
-      </div>
-
-      <!-- THE BLAZE -->
-      <div class="pkg-card featured" onclick="selectPackage(this, 'The Blaze', 2000)">
-        <div class="pkg-badge">Most Popular</div>
-        <p class="pkg-tier">Level Two</p>
-        <h2 class="pkg-name">The Blaze</h2>
-        <p class="pkg-tagline">Full production energy with photo booth, moving heads, and fog — the complete experience.</p>
-        <div class="pkg-price-wrap">
-          <div class="pkg-price"><sup>$</sup>2,000<sub>/ 5hrs</sub></div>
-        </div>
-        <p class="pkg-savings">Deposit: $400 to reserve your date</p>
-        <div class="pkg-divider"></div>
-        <p class="pkg-includes-label">What's Included</p>
-        <ul class="pkg-includes">
-          <li>Sound System — 2 Subs, 2 Tops</li>
-          <li>Professional DJ + Full Deck Setup</li>
-          <li>Microphone</li>
-          <li>10 Uplights</li>
-          <li>LED Light Bar</li>
-          <li class="highlight">2 Moving Head Lights</li>
-          <li class="highlight">Premium Photo Booth</li>
-          <li class="highlight">2x Fog Machines</li>
-          <li>Professional Setup & Breakdown</li>
-          <li>5-Hour Coverage</li>
-        </ul>
-        <button class="btn-full-pink" onclick="selectPackage(this.closest('.pkg-card'), 'The Blaze', 2000)">Select This Package</button>
-      </div>
-
-      <!-- THE INFERNO -->
-      <div class="pkg-card" onclick="selectPackage(this, 'The Inferno', 2500)">
-        <p class="pkg-tier">Level Three</p>
-        <h2 class="pkg-name">The Inferno</h2>
-        <p class="pkg-tagline">Elevate the moment — cold spark pyro machines make your event truly unforgettable.</p>
-        <div class="pkg-price-wrap">
-          <div class="pkg-price"><sup>$</sup>2,500<sub>/ 5hrs</sub></div>
-        </div>
-        <p class="pkg-savings">Deposit: $500 to reserve your date</p>
-        <div class="pkg-divider"></div>
-        <p class="pkg-includes-label">What's Included</p>
-        <ul class="pkg-includes">
-          <li>Sound System — 2 Subs, 2 Tops</li>
-          <li>Professional DJ + Full Deck Setup</li>
-          <li>Microphone</li>
-          <li>15 Uplights</li>
-          <li>LED Light Bar</li>
-          <li>4 Moving Head Lights</li>
-          <li>Premium Photo Booth</li>
-          <li class="highlight">2x Cold Spark Machines</li>
-          <li>2x Fog Machines</li>
-          <li>Professional Setup & Breakdown</li>
-          <li>5-Hour Coverage</li>
-        </ul>
-        <button class="btn-full-blue" onclick="selectPackage(this.closest('.pkg-card'), 'The Inferno', 2500)">Select This Package</button>
-      </div>
-
-      <!-- THE DISTRICT -->
-      <div class="pkg-card" onclick="selectPackage(this, 'The District', 3500)">
-        <p class="pkg-tier">Level Four</p>
-        <h2 class="pkg-name">The District</h2>
-        <p class="pkg-tagline">The full Heat District experience — LED wall, maximum pyro, maximum production.</p>
-        <div class="pkg-price-wrap">
-          <div class="pkg-price"><sup>$</sup>3,500<sub>/ 5hrs</sub></div>
-        </div>
-        <p class="pkg-savings">Deposit: $700 to reserve your date</p>
-        <div class="pkg-divider"></div>
-        <p class="pkg-includes-label">What's Included</p>
-        <ul class="pkg-includes">
-          <li>Sound System — 2 Subs, 2 Tops</li>
-          <li>Professional DJ + Full Deck Setup</li>
-          <li>Microphone</li>
-          <li>15 Uplights</li>
-          <li>LED Light Bar</li>
-          <li>4 Moving Head Lights</li>
-          <li class="highlight">LED Screen / Wall Panel</li>
-          <li>Premium Photo Booth</li>
-          <li class="highlight">4x Cold Spark Machines</li>
-          <li>2x Fog Machines</li>
-          <li>Professional Setup & Breakdown</li>
-          <li>5-Hour Coverage</li>
-        </ul>
-        <button class="btn-full-blue" onclick="selectPackage(this.closest('.pkg-card'), 'The District', 3500)">Select This Package</button>
-      </div>
-
     </div>
 
-    <!-- COMPARISON TABLE -->
-    <div class="comparison-wrap">
-      <p class="comparison-label">Compare</p>
-      <h2 class="comparison-title">Side by Side — <strong>What's in Each Package</strong></h2>
+    <div class="section-block">
+      <div class="packages-header">
+        <p class="section-label">Packages</p>
+        <h2 class="section-title">The Strongest <strong>4-Package Ladder</strong></h2>
+        <p class="section-sub">
+          Red bullets show what is new at that level compared to the package right before it. This keeps the lineup cleaner, easier to compare, and stronger from a sales standpoint.
+        </p>
+      </div>
 
-      <table class="comparison-table">
-        <thead>
-          <tr>
-            <th>Feature</th>
-            <th>The Spark<br><span style="color:rgba(232,232,240,0.4);font-size:0.7rem;font-weight:300;">$1,000</span></th>
-            <th>The Ignite<br><span style="color:rgba(232,232,240,0.4);font-size:0.7rem;font-weight:300;">$1,250</span></th>
-            <th class="featured-col">The Blaze<br><span style="color:rgba(255,45,120,0.7);font-size:0.7rem;font-weight:300;">$2,000</span></th>
-            <th>The Inferno<br><span style="color:rgba(232,232,240,0.4);font-size:0.7rem;font-weight:300;">$2,500</span></th>
-            <th>The District<br><span style="color:rgba(232,232,240,0.4);font-size:0.7rem;font-weight:300;">$3,500</span></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Sound System</td>
-            <td><span class="check">✓</span></td>
-            <td><span class="check">✓</span></td>
-            <td class="featured-col"><span class="check-pink">✓</span></td>
-            <td><span class="check">✓</span></td>
-            <td><span class="check">✓</span></td>
-          </tr>
-          <tr>
-            <td>Professional DJ</td>
-            <td><span class="check">✓</span></td>
-            <td><span class="check">✓</span></td>
-            <td class="featured-col"><span class="check-pink">✓</span></td>
-            <td><span class="check">✓</span></td>
-            <td><span class="check">✓</span></td>
-          </tr>
-          <tr>
-            <td>Microphone</td>
-            <td><span class="check">✓</span></td>
-            <td><span class="check">✓</span></td>
-            <td class="featured-col"><span class="check-pink">✓</span></td>
-            <td><span class="check">✓</span></td>
-            <td><span class="check">✓</span></td>
-          </tr>
-          <tr>
-            <td>Uplights</td>
-            <td><span class="dash">—</span></td>
-            <td><span class="qty">5 units</span></td>
-            <td class="featured-col"><span class="qty">10 units</span></td>
-            <td><span class="qty">15 units</span></td>
-            <td><span class="qty">15 units</span></td>
-          </tr>
-          <tr>
-            <td>LED Light Bar</td>
-            <td><span class="dash">—</span></td>
-            <td><span class="check">✓</span></td>
-            <td class="featured-col"><span class="check-pink">✓</span></td>
-            <td><span class="check">✓</span></td>
-            <td><span class="check">✓</span></td>
-          </tr>
-          <tr>
-            <td>Moving Head Lights</td>
-            <td><span class="dash">—</span></td>
-            <td><span class="dash">—</span></td>
-            <td class="featured-col"><span class="qty">2 units</span></td>
-            <td><span class="qty">4 units</span></td>
-            <td><span class="qty">4 units</span></td>
-          </tr>
-          <tr>
-            <td>Photo Booth</td>
-            <td><span class="dash">—</span></td>
-            <td><span class="dash">—</span></td>
-            <td class="featured-col"><span class="check-pink">✓</span></td>
-            <td><span class="check">✓</span></td>
-            <td><span class="check">✓</span></td>
-          </tr>
-          <tr>
-            <td>Fog Machines</td>
-            <td><span class="dash">—</span></td>
-            <td><span class="dash">—</span></td>
-            <td class="featured-col"><span class="qty">2 units</span></td>
-            <td><span class="qty">2 units</span></td>
-            <td><span class="qty">2 units</span></td>
-          </tr>
-          <tr>
-            <td>Cold Spark Machines</td>
-            <td><span class="dash">—</span></td>
-            <td><span class="dash">—</span></td>
-            <td class="featured-col"><span class="dash">—</span></td>
-            <td><span class="qty">2 units</span></td>
-            <td><span class="qty">4 units</span></td>
-          </tr>
-          <tr>
-            <td>LED Screen / Wall</td>
-            <td><span class="dash">—</span></td>
-            <td><span class="dash">—</span></td>
-            <td class="featured-col"><span class="dash">—</span></td>
-            <td><span class="dash">—</span></td>
-            <td><span class="check">✓</span></td>
-          </tr>
-          <tr>
-            <td>5-Hour Coverage</td>
-            <td><span class="check">✓</span></td>
-            <td><span class="check">✓</span></td>
-            <td class="featured-col"><span class="check-pink">✓</span></td>
-            <td><span class="check">✓</span></td>
-            <td><span class="check">✓</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- ADD-ONS -->
-    <div class="addons-wrap">
-      <p class="addons-label">Customize Your Order</p>
-      <h2 class="addons-title">Want Something Extra? <strong>Add It On.</strong></h2>
-      <p class="addons-sub">Select a package above, then add individual items to build exactly what your event needs. All prices are per 5-hour event unless noted.</p>
-
-      <div class="addons-grid">
-
-        <div class="addon-card" id="addon-photography">
-          <div class="addon-name">Photography</div>
-          <div class="addon-desc">Professional event & nightlife photographer</div>
-          <div class="addon-price-wrap">
-            <span class="addon-price">$625</span>
-            <span class="addon-price-unit">/ 5hrs</span>
+      <div class="visual-strip">
+        <div class="visual-card">
+          <div class="visual-card-content">
+            <div class="visual-kicker">Placeholder Photo</div>
+            <div class="visual-title">Packed Dance Floor Crowd</div>
+            <div class="visual-copy">Swap this later with a real wide crowd shot showing energy, movement, and lighting.</div>
           </div>
-          <button class="addon-add-btn" onclick="toggleAddon(this, 'Photography', 625)">+ Add to Order</button>
+        </div>
+        <div class="visual-card">
+          <div class="visual-card-content">
+            <div class="visual-kicker">Placeholder Photo</div>
+            <div class="visual-title">Lighting + Production Setup</div>
+            <div class="visual-copy">Best used for moving heads, uplighting, truss, and a strong front-facing setup image.</div>
+          </div>
+        </div>
+        <div class="visual-card">
+          <div class="visual-card-content">
+            <div class="visual-kicker">Placeholder Photo</div>
+            <div class="visual-title">Crowd Reaction / Signature Moment</div>
+            <div class="visual-copy">Ideal for a photo booth line, cold sparks reveal, or a high-energy client moment.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="packages-grid">
+
+        <div class="pkg-card" onclick="choosePackage('The Spark', 1295)">
+          <p class="pkg-tier">Essential Entry</p>
+          <h2 class="pkg-name">The Spark</h2>
+          <p class="pkg-tagline">A clean, professional foundation for smaller celebrations that still need real sound and a polished DJ setup.</p>
+          <div class="pkg-price-wrap">
+            <div class="pkg-price"><sup>$</sup>1,295<sub> / 5hrs</sub></div>
+          </div>
+          <p class="pkg-price-note is-muted">Reserve with 20% deposit</p>
+          <div class="pkg-divider"></div>
+          <p class="pkg-includes-label">Included</p>
+          <ul class="pkg-includes">
+            <li>Sound System — 2 Subs, 2 Tops</li>
+            <li>Professional DJ + Full Deck Setup</li>
+            <li>Microphone</li>
+            <li>Professional Setup & Breakdown</li>
+            <li>5-Hour Coverage</li>
+          </ul>
+          <button class="btn-plan" onclick="event.stopPropagation(); choosePackage('The Spark', 1295)">Choose Package</button>
         </div>
 
-        <div class="addon-card" id="addon-videography">
-          <div class="addon-name">Videography</div>
-          <div class="addon-desc">Cinematic event video coverage</div>
-          <div class="addon-price-wrap">
-            <span class="addon-price">$750</span>
-            <span class="addon-price-unit">/ 5hrs</span>
+        <div class="pkg-card featured" onclick="choosePackage('The Blaze', 2195)">
+          <div class="pkg-badge popular">Most Popular</div>
+          <p class="pkg-tier">Full Event Experience</p>
+          <h2 class="pkg-name">The Blaze</h2>
+          <p class="pkg-tagline">The clearest next step from the entry package. This is where the event starts feeling like a real production instead of a basic setup.</p>
+          <div class="pkg-price-wrap">
+            <div class="pkg-price"><sup>$</sup>2,195<sub> / 5hrs</sub></div>
           </div>
-          <button class="addon-add-btn" onclick="toggleAddon(this, 'Videography', 750)">+ Add to Order</button>
+          <p class="pkg-price-note">Most requested package</p>
+          <div class="pkg-divider"></div>
+          <p class="pkg-includes-label">Included</p>
+          <ul class="pkg-includes">
+            <li>Sound System — 2 Subs, 2 Tops</li>
+            <li>Professional DJ + Full Deck Setup</li>
+            <li>Microphone</li>
+            <li class="new">10 Uplights</li>
+            <li class="new">LED Light Bar</li>
+            <li class="new">2 Moving Head Lights</li>
+            <li class="new">Premium Photo Booth</li>
+            <li class="new">2x Fog Machines</li>
+            <li class="new">2 Totems</li>
+            <li>Professional Setup & Breakdown</li>
+            <li>5-Hour Coverage</li>
+          </ul>
+          <button class="btn-plan is-accent" onclick="event.stopPropagation(); choosePackage('The Blaze', 2195)">Choose Package</button>
         </div>
 
-        <div class="addon-card" id="addon-coldspark">
-          <div class="addon-name">Cold Spark Machines</div>
-          <div class="addon-desc">2 units — pyro effect for grand entrances</div>
-          <div class="addon-price-wrap">
-            <span class="addon-price">$250</span>
-            <span class="addon-price-unit">/ 5hrs</span>
+        <div class="pkg-card best-value" onclick="choosePackage('The Inferno', 2995)">
+          <div class="pkg-badge value">Best Value</div>
+          <p class="pkg-tier">Premium Production</p>
+          <h2 class="pkg-name">The Inferno</h2>
+          <p class="pkg-tagline">This is the strongest value jump in the lineup. It adds premium visual effects, included photography, and a bigger stage presence.</p>
+          <div class="pkg-price-wrap">
+            <div class="pkg-price"><sup>$</sup>2,995<sub> / 5hrs</sub></div>
           </div>
-          <button class="addon-add-btn" onclick="toggleAddon(this, 'Cold Spark Machines (2x)', 250)">+ Add to Order</button>
+          <p class="pkg-price-note">Biggest production jump</p>
+          <div class="pkg-divider"></div>
+          <p class="pkg-includes-label">Included</p>
+          <ul class="pkg-includes">
+            <li>Sound System — 2 Subs, 2 Tops</li>
+            <li>Professional DJ + Full Deck Setup</li>
+            <li>Microphone</li>
+            <li class="new">15 Uplights</li>
+            <li>LED Light Bar</li>
+            <li class="new">4 Moving Head Lights</li>
+            <li>Premium Photo Booth</li>
+            <li class="new">Photography</li>
+            <li class="new">2x Cold Spark Machines</li>
+            <li>2x Fog Machines</li>
+            <li class="new">Choice of Staging: Goal Post + 2 Totems or 4 Totems</li>
+            <li>Professional Setup & Breakdown</li>
+            <li>5-Hour Coverage</li>
+          </ul>
+          <button class="btn-plan" onclick="event.stopPropagation(); choosePackage('The Inferno', 2995)">Choose Package</button>
         </div>
 
-        <div class="addon-card" id="addon-extrauplights">
-          <div class="addon-name">Extra Uplights</div>
-          <div class="addon-desc">5 additional uplight units</div>
-          <div class="addon-price-wrap">
-            <span class="addon-price">$75</span>
-            <span class="addon-price-unit">/ 5hrs</span>
+        <div class="pkg-card" onclick="choosePackage('The District', 4995)">
+          <p class="pkg-tier">Luxury Tier</p>
+          <h2 class="pkg-name">The District</h2>
+          <p class="pkg-tagline">Built for clients who want the biggest visual statement in the lineup and need the event to feel unmistakably high-end.</p>
+          <div class="pkg-price-wrap">
+            <div class="pkg-price"><sup>$</sup>4,995<sub> / 5hrs</sub></div>
           </div>
-          <button class="addon-add-btn" onclick="toggleAddon(this, 'Extra Uplights (5x)', 75)">+ Add to Order</button>
-        </div>
-
-        <div class="addon-card" id="addon-movingheads">
-          <div class="addon-name">Extra Moving Heads</div>
-          <div class="addon-desc">2 additional moving head lights</div>
-          <div class="addon-price-wrap">
-            <span class="addon-price">$250</span>
-            <span class="addon-price-unit">/ 5hrs</span>
-          </div>
-          <button class="addon-add-btn" onclick="toggleAddon(this, 'Extra Moving Heads (2x)', 250)">+ Add to Order</button>
-        </div>
-
-        <div class="addon-card" id="addon-washlights">
-          <div class="addon-name">Wash Lights</div>
-          <div class="addon-desc">2 wash light units for stage coverage</div>
-          <div class="addon-price-wrap">
-            <span class="addon-price">$100</span>
-            <span class="addon-price-unit">/ 5hrs</span>
-          </div>
-          <button class="addon-add-btn" onclick="toggleAddon(this, 'Wash Lights (2x)', 100)">+ Add to Order</button>
-        </div>
-
-        <div class="addon-card" id="addon-trussing-totems">
-          <div class="addon-name">Trussing — Totems</div>
-          <div class="addon-desc">2 x 6ft totems for vertical staging</div>
-          <div class="addon-price-wrap">
-            <span class="addon-price">$125</span>
-            <span class="addon-price-unit">/ event</span>
-          </div>
-          <button class="addon-add-btn" onclick="toggleAddon(this, 'Trussing — Totems (2x 6ft)', 125)">+ Add to Order</button>
-        </div>
-
-        <div class="addon-card" id="addon-trussing-goalpost">
-          <div class="addon-name">Trussing — Goal Post</div>
-          <div class="addon-desc">8x10 goal post rig for overhead lighting</div>
-          <div class="addon-price-wrap">
-            <span class="addon-price">$375</span>
-            <span class="addon-price-unit">/ event</span>
-          </div>
-          <button class="addon-add-btn" onclick="toggleAddon(this, 'Trussing — Goal Post (8x10)', 375)">+ Add to Order</button>
-        </div>
-
-        <div class="addon-card" id="addon-ledwall">
-          <div class="addon-name">LED Screen / Wall</div>
-          <div class="addon-desc">Modular LED wall panel display</div>
-          <div class="addon-price-wrap">
-            <span class="addon-price">$200</span>
-            <span class="addon-price-unit">/ day</span>
-          </div>
-          <button class="addon-add-btn" onclick="toggleAddon(this, 'LED Screen / Wall Panel', 200)">+ Add to Order</button>
-        </div>
-
-        <div class="addon-card" id="addon-fog">
-          <div class="addon-name">Extra Fog Machines</div>
-          <div class="addon-desc">2 additional fog/haze machine units</div>
-          <div class="addon-price-wrap">
-            <span class="addon-price">$200</span>
-            <span class="addon-price-unit">/ 5hrs</span>
-          </div>
-          <button class="addon-add-btn" onclick="toggleAddon(this, 'Extra Fog Machines (2x)', 200)">+ Add to Order</button>
+          <p class="pkg-price-note">Premium LED visual tier</p>
+          <div class="pkg-divider"></div>
+          <p class="pkg-includes-label">Included</p>
+          <ul class="pkg-includes">
+            <li>Sound System — 2 Subs, 2 Tops</li>
+            <li>Professional DJ + Full Deck Setup</li>
+            <li>Microphone</li>
+            <li>15 Uplights</li>
+            <li>LED Light Bar</li>
+            <li>4 Moving Head Lights</li>
+            <li class="new">LED Screen / Wall Panel</li>
+            <li>Premium Photo Booth</li>
+            <li class="new">Photography</li>
+            <li class="new">4x Cold Spark Machines</li>
+            <li>2x Fog Machines</li>
+            <li class="new">Choice of Staging: Goal Post + 2 Totems or 4 Totems</li>
+            <li>Professional Setup & Breakdown</li>
+            <li>5-Hour Coverage</li>
+          </ul>
+          <button class="btn-plan" onclick="event.stopPropagation(); choosePackage('The District', 4995)">Choose Package</button>
         </div>
 
       </div>
@@ -1238,24 +993,6 @@
 
   </div>
 
-  <!-- CART BAR -->
-  <div class="cart-bar" id="cartBar">
-    <div class="cart-bar-left">
-      <div class="cart-bar-label">Your Order</div>
-      <div class="cart-bar-summary" id="cartSummary">Nothing selected yet</div>
-    </div>
-    <div class="cart-bar-right">
-      <div class="cart-total">
-        <div class="cart-total-label">Total</div>
-        <div class="cart-total-amount" id="cartTotal">$0</div>
-        <div class="cart-total-deposit" id="cartDeposit"></div>
-      </div>
-      <button class="btn-checkout" onclick="proceedToCheckout()">Reserve Your Date →</button>
-      <button class="cart-clear" onclick="clearCart()">Clear</button>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
   <footer>
     <div class="footer-logo">
       <img src="logo.png" alt="Heat District Productions" />
@@ -1271,80 +1008,22 @@
   </footer>
 
   <script>
-    let cart = {
-      package: null,
-      packagePrice: 0,
-      addons: []
-    };
+    function choosePackage(name, price) {
+      const packageSelection = {
+        package: name,
+        packagePrice: price,
+        addons: [],
+        addonsTotal: 0,
+        total: price
+      };
 
-    function selectPackage(card, name, price) {
-      // deselect all cards
-      document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('selected'));
-      card.classList.add('selected');
-      cart.package = name;
-      cart.packagePrice = price;
-      updateCart();
-    }
-
-    function toggleAddon(btn, name, price) {
-      const idx = cart.addons.findIndex(a => a.name === name);
-      if (idx > -1) {
-        cart.addons.splice(idx, 1);
-        btn.textContent = '+ Add to Order';
-        btn.classList.remove('added');
-        btn.closest('.addon-card').classList.remove('selected');
-      } else {
-        cart.addons.push({ name, price });
-        btn.textContent = '✓ Added';
-        btn.classList.add('added');
-        btn.closest('.addon-card').classList.add('selected');
-      }
-      updateCart();
-    }
-
-    function updateCart() {
-      const bar = document.getElementById('cartBar');
-      const summaryEl = document.getElementById('cartSummary');
-      const totalEl = document.getElementById('cartTotal');
-      const depositEl = document.getElementById('cartDeposit');
-
-      const total = cart.packagePrice + cart.addons.reduce((s, a) => s + a.price, 0);
-      const deposit = Math.round(total * 0.2);
-
-      if (!cart.package && cart.addons.length === 0) {
-        bar.classList.remove('visible');
-        return;
+      try {
+        sessionStorage.setItem('heatDistrictEstimate', JSON.stringify(packageSelection));
+      } catch (error) {
+        console.warn('Could not save package selection.', error);
       }
 
-      bar.classList.add('visible');
-
-      let summaryParts = [];
-      if (cart.package) summaryParts.push(`<span>${cart.package}</span>`);
-      cart.addons.forEach(a => summaryParts.push(a.name));
-      summaryEl.innerHTML = summaryParts.join(' &nbsp;+&nbsp; ');
-
-      totalEl.textContent = '$' + total.toLocaleString();
-      depositEl.textContent = `20% deposit: $${deposit.toLocaleString()} today`;
-    }
-
-    function clearCart() {
-      cart = { package: null, packagePrice: 0, addons: [] };
-      document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('selected'));
-      document.querySelectorAll('.addon-card').forEach(c => c.classList.remove('selected'));
-      document.querySelectorAll('.addon-add-btn').forEach(b => {
-        b.textContent = '+ Add to Order';
-        b.classList.remove('added');
-      });
-      document.getElementById('cartBar').classList.remove('visible');
-    }
-
-    function proceedToCheckout() {
-      if (!cart.package) {
-        alert('Please select a package first.');
-        return;
-      }
-      // Stripe checkout will plug in here
-      alert('Booking system coming soon! Call us at (954) 547-2990 or email HeatDistrictProd@gmail.com to reserve your date.');
+      window.location.href = 'addons.html';
     }
   </script>
 

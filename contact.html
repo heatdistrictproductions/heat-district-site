@@ -15,6 +15,12 @@
       --card-bg-2: #0d0d20;
       --text-light: #e8e8f0;
       --muted-white: rgba(232,232,240,0.5);
+      --success-bg: rgba(77,255,145,0.08);
+      --success-border: rgba(77,255,145,0.35);
+      --success-text: rgba(210,255,225,0.92);
+      --error-bg: rgba(255,45,120,0.08);
+      --error-border: rgba(255,45,120,0.28);
+      --error-text: rgba(255,190,212,0.92);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -381,6 +387,43 @@
       color: rgba(232,232,240,0.28);
     }
 
+    [aria-invalid="true"] {
+      border-color: rgba(255,45,120,0.45) !important;
+      box-shadow: 0 0 0 3px rgba(255,45,120,0.08) !important;
+    }
+
+    .field-error {
+      font-size: 0.76rem;
+      color: var(--error-text);
+      min-height: 16px;
+      line-height: 1.4;
+    }
+
+    .form-status {
+      display: none;
+      margin-bottom: 18px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    .form-status:not(:empty) {
+      display: block;
+    }
+
+    .form-status.success {
+      background: var(--success-bg);
+      border: 1px solid var(--success-border);
+      color: var(--success-text);
+    }
+
+    .form-status.error {
+      background: var(--error-bg);
+      border: 1px solid var(--error-border);
+      color: var(--error-text);
+    }
+
     .submit-btn {
       margin-top: 18px;
       width: 100%;
@@ -395,13 +438,19 @@
       text-transform: uppercase;
       border-radius: 4px;
       cursor: pointer;
-      transition: box-shadow 0.3s, transform 0.2s;
+      transition: box-shadow 0.3s, transform 0.2s, opacity 0.2s;
       box-shadow: 0 0 24px rgba(0,240,255,0.28);
     }
 
     .submit-btn:hover {
       box-shadow: 0 0 40px rgba(0,240,255,0.48);
       transform: translateY(-2px);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.65;
+      cursor: wait;
+      transform: none;
     }
 
     .form-note {
@@ -560,36 +609,43 @@
         <div class="panel-kicker">Quote Request</div>
         <h2 class="panel-title">Request a <strong>Custom Quote</strong></h2>
         <p class="panel-copy">
-          Fill this out with as much detail as you can and we’ll receive it directly through your live contact form.
+          Fill this out with as much detail as you can and we’ll receive it directly without leaving your website.
         </p>
 
-        <form action="https://formspree.io/f/mkokqpnz" method="POST" accept-charset="UTF-8">
+        <div data-fs-success class="form-status success"></div>
+        <div data-fs-error class="form-status error"></div>
+
+        <form id="quote-form" action="https://formspree.io/f/mkokqpnz" method="POST" accept-charset="UTF-8">
           <input type="hidden" name="_subject" value="New Heat District Quote Request" />
 
           <div class="form-grid">
             <div class="form-group">
               <label for="name">Full Name</label>
-              <input id="name" name="name" type="text" placeholder="Your name" required />
+              <input id="name" name="name" type="text" placeholder="Your name" required data-fs-field />
+              <span class="field-error" data-fs-error="name"></span>
             </div>
 
             <div class="form-group">
               <label for="phone">Phone</label>
-              <input id="phone" name="phone" type="text" placeholder="Your phone number" />
+              <input id="phone" name="phone" type="text" placeholder="Your phone number" data-fs-field />
+              <span class="field-error" data-fs-error="phone"></span>
             </div>
 
             <div class="form-group">
               <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="Your email address" required />
+              <input id="email" name="email" type="email" placeholder="Your email address" required data-fs-field />
+              <span class="field-error" data-fs-error="email"></span>
             </div>
 
             <div class="form-group">
               <label for="event-date">Event Date</label>
-              <input id="event-date" name="event_date" type="date" />
+              <input id="event-date" name="event_date" type="date" data-fs-field />
+              <span class="field-error" data-fs-error="event_date"></span>
             </div>
 
             <div class="form-group">
               <label for="event-type">Event Type</label>
-              <select id="event-type" name="event_type">
+              <select id="event-type" name="event_type" data-fs-field>
                 <option value="">Select event type</option>
                 <option>Wedding</option>
                 <option>Quinceañera</option>
@@ -599,32 +655,37 @@
                 <option>Club / Nightlife</option>
                 <option>Other</option>
               </select>
+              <span class="field-error" data-fs-error="event_type"></span>
             </div>
 
             <div class="form-group">
               <label for="guest-count">Guest Count</label>
-              <input id="guest-count" name="guest_count" type="text" placeholder="Approximate guest count" />
+              <input id="guest-count" name="guest_count" type="text" placeholder="Approximate guest count" data-fs-field />
+              <span class="field-error" data-fs-error="guest_count"></span>
             </div>
 
             <div class="form-group full">
               <label for="location">Venue / Location</label>
-              <input id="location" name="location" type="text" placeholder="Venue name or city" />
+              <input id="location" name="location" type="text" placeholder="Venue name or city" data-fs-field />
+              <span class="field-error" data-fs-error="location"></span>
             </div>
 
             <div class="form-group full">
               <label for="services">Services Needed</label>
-              <input id="services" name="services_needed" type="text" placeholder="DJ, lighting, photo booth, photography, videography, LED wall, truss, etc." />
+              <input id="services" name="services_needed" type="text" placeholder="DJ, lighting, photo booth, photography, videography, LED wall, truss, etc." data-fs-field />
+              <span class="field-error" data-fs-error="services_needed"></span>
             </div>
 
             <div class="form-group full">
               <label for="message">Event Details</label>
-              <textarea id="message" name="message" placeholder="Tell us what kind of setup you want, your vibe, timing, and anything important for the quote." required></textarea>
+              <textarea id="message" name="message" placeholder="Tell us what kind of setup you want, your vibe, timing, and anything important for the quote." required data-fs-field></textarea>
+              <span class="field-error" data-fs-error="message"></span>
             </div>
           </div>
 
-          <button type="submit" class="submit-btn">Send Quote Request</button>
+          <button type="submit" class="submit-btn" data-fs-submit-btn>Send Quote Request</button>
           <p class="form-note">
-            Once this page is pushed live to GitHub Pages, this form will submit to your Formspree inbox and email notifications.
+            Once submitted, your confirmation message will appear here on the page instead of redirecting away.
           </p>
         </form>
       </div>
@@ -645,6 +706,34 @@
     </div>
     <p class="footer-copy">© 2025 Heat District Productions · Miami & Broward County · All Rights Reserved</p>
   </footer>
+
+  <script>
+    window.formspree = window.formspree || function () {
+      (formspree.q = formspree.q || []).push(arguments);
+    };
+
+    formspree('initForm', {
+      formElement: '#quote-form',
+      formId: 'mkokqpnz',
+      onSuccess: function () {
+        const successBox = document.querySelector('[data-fs-success]');
+        if (successBox) {
+          successBox.textContent = 'Quote request submitted successfully. We’ll be in touch soon.';
+        }
+        const form = document.getElementById('quote-form');
+        if (form) {
+          form.reset();
+        }
+      },
+      onError: function () {
+        const errorBox = document.querySelector('[data-fs-error]');
+        if (errorBox && !errorBox.textContent.trim()) {
+          errorBox.textContent = 'Something went wrong. Please try again or contact us directly.';
+        }
+      }
+    });
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
 </body>
 </html>

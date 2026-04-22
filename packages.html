@@ -160,6 +160,66 @@
       z-index: 1;
     }
 
+    .hero-contact-box {
+      max-width: 760px;
+      margin: 30px auto 0;
+      padding: 22px 24px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,45,120,0.18);
+      background:
+        linear-gradient(180deg, rgba(255,45,120,0.06), rgba(10,10,26,0.9)),
+        linear-gradient(90deg, rgba(0,240,255,0.03), rgba(255,45,120,0.03));
+      box-shadow: 0 14px 40px rgba(0,0,0,0.24);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-contact-kicker {
+      font-size: 0.62rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(0,240,255,0.72);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .hero-contact-title {
+      font-size: clamp(1.15rem, 2vw, 1.7rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .hero-contact-copy {
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: rgba(232,232,240,0.72);
+      max-width: 620px;
+      margin: 0 auto 18px;
+    }
+
+    .hero-contact-btn {
+      display: inline-block;
+      background: transparent;
+      color: var(--neon-pink);
+      border: 1.5px solid var(--neon-pink);
+      padding: 12px 26px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 2.6px;
+      text-transform: uppercase;
+      transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+    }
+
+    .hero-contact-btn:hover {
+      background: rgba(255,45,120,0.12);
+      box-shadow: 0 0 22px rgba(255,45,120,0.28);
+      transform: translateY(-2px);
+    }
+
     .neon-divider {
       width: 100%;
       height: 1px;
@@ -279,13 +339,22 @@
     .comparison-table th:first-child {
       text-align: left;
       color: rgba(232,232,240,0.42);
-      min-width: 220px;
+      width: 150px;
+      min-width: 150px;
+      padding-right: 10px;
     }
 
     .comparison-table th.featured-col {
       color: var(--neon-pink);
       background: rgba(255,45,120,0.05);
       border-bottom-color: rgba(255,45,120,0.22);
+    }
+
+    .chart-price {
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 300;
+      opacity: 0.92;
     }
 
     .comparison-table td {
@@ -301,7 +370,12 @@
       text-align: left;
       color: rgba(232,232,240,0.78);
       font-weight: 400;
-      white-space: nowrap;
+      width: 150px;
+      min-width: 150px;
+      max-width: 150px;
+      white-space: normal;
+      line-height: 1.4;
+      padding-right: 10px;
     }
 
     .comparison-table td.featured-col {
@@ -419,6 +493,8 @@
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 18px;
       align-items: stretch;
+      padding-top: 18px;
+      overflow: visible;
     }
 
     .pkg-card {
@@ -432,7 +508,7 @@
       transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
       cursor: pointer;
       min-width: 0;
-      overflow: hidden;
+      overflow: visible;
     }
 
     .pkg-card::after {
@@ -472,7 +548,7 @@
       padding: 5px 16px;
       border-radius: 20px;
       white-space: nowrap;
-      z-index: 2;
+      z-index: 5;
     }
 
     .pkg-badge.popular {
@@ -681,6 +757,7 @@
       .packages-grid { grid-template-columns: 1fr; }
       .comparison-table th, .comparison-table td { padding: 10px 10px; }
       .comparison-table { font-size: 0.72rem; }
+      .quote-banner-wrap { padding: 0 24px 22px; }
       footer { padding: 60px 24px 100px; }
     }
   </style>
@@ -696,6 +773,7 @@
       <li><a href="packages.html" class="active">Packages</a></li>
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="team.html">Our Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
     <a href="contact.html" class="nav-cta">Book Now</a>
   </nav>
@@ -707,6 +785,15 @@
       Start with a package built to save you money versus piecing everything together individually.
       Once you choose your package, you’ll continue to the next step to add any eligible upgrades.
     </p>
+
+    <div class="hero-contact-box">
+      <div class="hero-contact-kicker">Need Something Custom?</div>
+      <div class="hero-contact-title">Contact Us for a Quote</div>
+      <div class="hero-contact-copy">
+        Need a custom build, standalone services, or a larger event setup? Reach out directly and we’ll help you put together the right package, add-ons, and production plan.
+      </div>
+      <a href="contact.html" class="hero-contact-btn">Contact Us</a>
+    </div>
   </div>
 
   <div class="neon-divider"></div>
@@ -726,10 +813,10 @@
             <thead>
               <tr>
                 <th>Feature</th>
-                <th>The Spark<br><span style="color:rgba(232,232,240,0.4);font-size:0.7rem;font-weight:300;">$1,295</span></th>
-                <th class="featured-col">The Blaze<br><span style="color:rgba(255,45,120,0.7);font-size:0.7rem;font-weight:300;">$2,195</span></th>
-                <th>The Inferno<br><span style="color:rgba(232,232,240,0.4);font-size:0.7rem;font-weight:300;">$2,995</span></th>
-                <th>The District<br><span style="color:rgba(232,232,240,0.4);font-size:0.7rem;font-weight:300;">$4,995</span></th>
+                <th>The Spark<br><span class="chart-price">$1,295</span></th>
+                <th class="featured-col">The Blaze<br><span class="chart-price">$2,195</span></th>
+                <th>The Inferno<br><span class="chart-price">$2,995</span></th>
+                <th>The District<br><span class="chart-price">$4,995</span></th>
               </tr>
             </thead>
             <tbody>

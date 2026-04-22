@@ -104,6 +104,112 @@
       text-shadow: none !important;
     }
 
+    .mobile-menu-btn {
+      display: none;
+      width: 46px;
+      height: 46px;
+      background: transparent;
+      border: 1px solid rgba(0,240,255,0.18);
+      border-radius: 8px;
+      cursor: pointer;
+      padding: 10px 9px;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      flex-shrink: 0;
+    }
+
+    .mobile-menu-btn span {
+      display: block;
+      width: 100%;
+      height: 1.5px;
+      background: var(--text-light);
+      border-radius: 999px;
+      transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+    }
+
+    .mobile-menu-btn:hover {
+      border-color: rgba(0,240,255,0.35);
+      box-shadow: 0 0 16px rgba(0,240,255,0.12);
+    }
+
+    .mobile-menu-btn.active span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+      background: var(--neon-blue);
+    }
+
+    .mobile-menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mobile-menu-btn.active span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+      background: var(--neon-blue);
+    }
+
+    .mobile-nav {
+      position: fixed;
+      top: 73px;
+      left: 16px;
+      right: 16px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 14px;
+      background: rgba(8,8,20,0.98);
+      border: 1px solid rgba(0,240,255,0.14);
+      border-radius: 14px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-10px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .mobile-nav.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .mobile-nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 14px 12px;
+      border-radius: 8px;
+      transition: background 0.25s ease, color 0.25s ease, text-shadow 0.25s ease;
+    }
+
+    .mobile-nav a:hover {
+      background: rgba(0,240,255,0.06);
+      color: var(--neon-blue);
+      text-shadow: 0 0 8px var(--neon-blue);
+    }
+
+    .mobile-nav-book {
+      margin-top: 8px;
+      border: 1.5px solid var(--neon-pink);
+      color: var(--neon-pink) !important;
+      text-align: center;
+    }
+
+    .mobile-nav-book:hover {
+      background: rgba(255,45,120,0.12) !important;
+      box-shadow: 0 0 18px rgba(255,45,120,0.18);
+      color: var(--neon-pink) !important;
+      text-shadow: none !important;
+    }
+
+    body.mobile-menu-open {
+      overflow: hidden;
+    }
+
     .hero {
       min-height: 100vh;
       display: flex;
@@ -195,7 +301,7 @@
       animation-delay: 1s;
     }
 
-    .btn-outline-blue {
+    .btn-outline-blue-large {
       background: transparent;
       color: var(--neon-blue);
       border: 1.5px solid var(--neon-blue);
@@ -211,13 +317,13 @@
       transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
     }
 
-    .btn-outline-blue:hover {
+    .btn-outline-blue-large:hover {
       background: rgba(0,240,255,0.08);
       box-shadow: 0 0 30px rgba(0,240,255,0.35);
       transform: translateY(-2px);
     }
 
-    .btn-outline-pink {
+    .btn-outline-pink-large {
       background: transparent;
       color: var(--neon-pink);
       border: 1.5px solid var(--neon-pink);
@@ -233,7 +339,7 @@
       transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
     }
 
-    .btn-outline-pink:hover {
+    .btn-outline-pink-large:hover {
       background: rgba(255,45,120,0.08);
       box-shadow: 0 0 30px rgba(255,45,120,0.35);
       transform: translateY(-2px);
@@ -799,9 +905,22 @@
     }
 
     @media (max-width: 768px) {
-      nav { padding: 10px 24px; }
-      .nav-links { display: none; }
-      section { padding: 80px 24px; }
+      nav {
+        padding: 10px 18px;
+      }
+
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: flex;
+      }
+
+      section {
+        padding: 80px 24px;
+      }
 
       .packages-grid-scroll {
         overflow: visible;
@@ -813,10 +932,21 @@
         min-width: 0;
       }
 
-      .packages-header { padding: 0 24px 40px; }
-      .cart-highlight { padding: 48px 28px; }
-      .cart-section { padding: 80px 24px; }
-      .hero-logo-img { width: clamp(220px, 80vw, 400px); }
+      .packages-header {
+        padding: 0 24px 40px;
+      }
+
+      .cart-highlight {
+        padding: 48px 28px;
+      }
+
+      .cart-section {
+        padding: 80px 24px;
+      }
+
+      .hero-logo-img {
+        width: clamp(220px, 80vw, 400px);
+      }
 
       .hero {
         padding: 120px 24px 100px;
@@ -836,6 +966,10 @@
         width: 12px;
         height: 12px;
       }
+
+      footer {
+        padding: 60px 24px;
+      }
     }
   </style>
 </head>
@@ -845,15 +979,32 @@
     <a href="index.html" class="nav-logo">
       <img src="logo.png" alt="Heat District Productions" />
     </a>
+
     <ul class="nav-links">
-      <li><a href="products.html">Products</a></li>
+      <li><a href="services.html">Products</a></li>
       <li><a href="packages.html">Packages</a></li>
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="team.html">Our Team</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
+
     <a href="contact.html" class="nav-cta">Book Now</a>
+
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="services.html">Products</a>
+    <a href="packages.html">Packages</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="team.html">Our Team</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="mobile-nav-book">Book Now</a>
+  </div>
 
   <div class="hero">
     <div class="hero-eyebrow">Private Events &nbsp;·&nbsp; Weddings &nbsp;·&nbsp; Quinceañeras &nbsp;·&nbsp; Miami &amp; Broward</div>
@@ -862,8 +1013,8 @@
     <p class="hero-tagline">Where Every Event Becomes an Experience</p>
     <p class="hero-sub">Sound &nbsp;·&nbsp; Lighting &nbsp;·&nbsp; Talent &nbsp;·&nbsp; Production</p>
     <div class="hero-buttons">
-      <a href="packages.html" class="btn-outline-blue">View Packages</a>
-      <a href="products.html" class="btn-outline-pink">Build Your Own</a>
+      <a href="packages.html" class="btn-outline-blue-large">View Packages</a>
+      <a href="services.html" class="btn-outline-pink-large">Build Your Own</a>
     </div>
     <div class="scroll-indicator">
       <span>Scroll</span>
@@ -1148,7 +1299,7 @@
       <p class="section-label" style="margin-bottom:18px;">Build It Your Way</p>
       <h2>Need individual items instead?<br><strong>Build Your Own Cart.</strong></h2>
       <p>Choose standalone products, custom service combinations, rentals, media coverage, lighting, and production elements one by one on the Products page.</p>
-      <a href="products.html" class="btn-outline-blue">Browse Individual Products</a>
+      <a href="services.html" class="btn-outline-blue-large">Browse Individual Products</a>
     </div>
   </div>
 
@@ -1235,6 +1386,52 @@
         'drop-shadow(0 0 22px rgba(255,45,120,0.32))';
       heroLogo.style.animation = 'neonSlowPulse 4s ease-in-out infinite alternate';
     }, 3500);
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+
+    function closeMobileMenu() {
+      mobileNav.classList.remove('open');
+      mobileMenuBtn.classList.remove('active');
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('mobile-menu-open');
+    }
+
+    function toggleMobileMenu() {
+      const isOpen = mobileNav.classList.contains('open');
+
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        mobileNav.classList.add('open');
+        mobileMenuBtn.classList.add('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('mobile-menu-open');
+      }
+    }
+
+    if (mobileMenuBtn && mobileNav) {
+      mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+      mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+          closeMobileMenu();
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        const clickedInsideNav = mobileNav.contains(e.target);
+        const clickedButton = mobileMenuBtn.contains(e.target);
+
+        if (!clickedInsideNav && !clickedButton && mobileNav.classList.contains('open')) {
+          closeMobileMenu();
+        }
+      });
+    }
 
     initPackageCards();
   </script>

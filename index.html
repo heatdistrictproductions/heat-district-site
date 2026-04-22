@@ -88,6 +88,11 @@
       border-radius: 4px;
       transition: background 0.3s, box-shadow 0.3s !important;
       white-space: nowrap;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
     .nav-cta:hover {
@@ -446,12 +451,16 @@
       box-shadow: 0 0 40px rgba(255,45,120,0.08);
     }
 
+    .package-card.best-value {
+      border-color: rgba(0,240,255,0.28);
+      box-shadow: 0 0 34px rgba(0,240,255,0.08);
+    }
+
     .package-badge {
       position: absolute;
       top: -12px;
       left: 50%;
       transform: translateX(-50%);
-      background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
       color: #fff;
       font-family: 'Raleway', sans-serif;
       font-size: 0.58rem;
@@ -462,6 +471,15 @@
       border-radius: 20px;
       white-space: nowrap;
       z-index: 3;
+    }
+
+    .package-badge.popular {
+      background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+    }
+
+    .package-badge.value {
+      background: linear-gradient(135deg, rgba(0,240,255,0.96), rgba(0,165,255,0.92));
+      color: #051017;
     }
 
     .package-name {
@@ -978,7 +996,7 @@
         </div>
 
         <div class="package-card featured">
-          <div class="package-badge">Most Popular</div>
+          <div class="package-badge popular">Most Popular</div>
           <p class="package-name">The Blaze</p>
           <div class="package-price">$2,195 <span>/ 5hrs</span></div>
           <p class="package-duration">Full Experience</p>
@@ -995,7 +1013,8 @@
           <a href="packages.html" class="btn-outline-pink" style="width:100%;text-align:center;font-size:0.68rem;padding:12px 0;">Choose Package</a>
         </div>
 
-        <div class="package-card">
+        <div class="package-card best-value">
+          <div class="package-badge value">Best Value</div>
           <p class="package-name">The Inferno</p>
           <div class="package-price">$2,995 <span>/ 5hrs</span></div>
           <p class="package-duration">Premium Production</p>

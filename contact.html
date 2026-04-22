@@ -12,7 +12,6 @@
       --neon-purple: #bf00ff;
       --dark-bg: #05050f;
       --card-bg: #0a0a1a;
-      --card-bg-2: #0d0d20;
       --text-light: #e8e8f0;
       --muted-white: rgba(232,232,240,0.5);
       --success-bg: rgba(77,255,145,0.08);
@@ -35,7 +34,9 @@
 
     nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 1000;
       display: flex;
       justify-content: space-between;
@@ -612,10 +613,10 @@
           Fill this out with as much detail as you can and we’ll receive it directly without leaving your website.
         </p>
 
-        <div data-fs-success class="form-status success"></div>
-        <div data-fs-error class="form-status error"></div>
+        <div id="form-success" data-fs-success class="form-status success"></div>
+        <div id="form-error" data-fs-error class="form-status error"></div>
 
-        <form id="quote-form" action="https://formspree.io/f/mkokqpnz" method="POST" accept-charset="UTF-8">
+        <form id="quote-form" accept-charset="UTF-8">
           <input type="hidden" name="_subject" value="New Heat District Quote Request" />
 
           <div class="form-grid">
@@ -685,7 +686,7 @@
 
           <button type="submit" class="submit-btn" data-fs-submit-btn>Send Quote Request</button>
           <p class="form-note">
-            Once submitted, your confirmation message will appear here on the page instead of redirecting away.
+            Once submitted, the confirmation message will stay here on your website.
           </p>
         </form>
       </div>
@@ -715,20 +716,32 @@
     formspree('initForm', {
       formElement: '#quote-form',
       formId: 'mkokqpnz',
-      onSuccess: function () {
-        const successBox = document.querySelector('[data-fs-success]');
+      renderSuccess: function (context) {
+        const successBox = document.getElementById('form-success');
+        const errorBox = document.getElementById('form-error');
+
+        if (errorBox) {
+          errorBox.textContent = '';
+        }
+
         if (successBox) {
           successBox.textContent = 'Quote request submitted successfully. We’ll be in touch soon.';
         }
-        const form = document.getElementById('quote-form');
-        if (form) {
-          form.reset();
+
+        if (context && context.form) {
+          context.form.reset();
         }
       },
-      onError: function () {
-        const errorBox = document.querySelector('[data-fs-error]');
-        if (errorBox && !errorBox.textContent.trim()) {
-          errorBox.textContent = 'Something went wrong. Please try again or contact us directly.';
+      renderFormError: function (context, message) {
+        const errorBox = document.getElementById('form-error');
+        const successBox = document.getElementById('form-success');
+
+        if (successBox) {
+          successBox.textContent = '';
+        }
+
+        if (errorBox) {
+          errorBox.textContent = message || 'Something went wrong. Please try again or contact us directly.';
         }
       }
     });

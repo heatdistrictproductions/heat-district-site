@@ -13,6 +13,8 @@
       --dark-bg: #05050f;
       --card-bg: #0a0a1a;
       --text-light: #e8e8f0;
+      --soft-text: rgba(232,232,240,0.55);
+      --success: rgba(77,255,145,0.88);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -125,7 +127,6 @@
     }
 
     .hero-eyebrow {
-      font-family: 'Raleway', sans-serif;
       font-size: clamp(0.65rem, 1.2vw, 0.78rem);
       font-weight: 400;
       letter-spacing: 5px;
@@ -161,7 +162,6 @@
 
     .hero-tagline {
       margin-top: 24px;
-      font-family: 'Raleway', sans-serif;
       font-size: clamp(1rem, 2.5vw, 1.4rem);
       font-weight: 300;
       font-style: italic;
@@ -174,7 +174,6 @@
 
     .hero-sub {
       margin-top: 14px;
-      font-family: 'Raleway', sans-serif;
       font-size: clamp(0.78rem, 1.5vw, 0.92rem);
       font-weight: 300;
       color: rgba(232,232,240,0.45);
@@ -201,7 +200,6 @@
       color: var(--neon-blue);
       border: 1.5px solid var(--neon-blue);
       padding: 16px 40px;
-      font-family: 'Raleway', sans-serif;
       font-size: 0.78rem;
       font-weight: 600;
       letter-spacing: 3px;
@@ -224,7 +222,6 @@
       color: var(--neon-pink);
       border: 1.5px solid var(--neon-pink);
       padding: 16px 40px;
-      font-family: 'Raleway', sans-serif;
       font-size: 0.78rem;
       font-weight: 600;
       letter-spacing: 3px;
@@ -239,29 +236,6 @@
     .btn-outline-pink:hover {
       background: rgba(255,45,120,0.08);
       box-shadow: 0 0 30px rgba(255,45,120,0.35);
-      transform: translateY(-2px);
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
-      color: #fff;
-      border: none;
-      padding: 16px 40px;
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      border-radius: 4px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: box-shadow 0.3s, transform 0.2s;
-      box-shadow: 0 0 20px rgba(0,240,255,0.25);
-    }
-
-    .btn-primary:hover {
-      box-shadow: 0 0 40px rgba(0,240,255,0.5);
       transform: translateY(-2px);
     }
 
@@ -288,7 +262,6 @@
       font-size: 0.52rem;
       letter-spacing: 3px;
       text-transform: uppercase;
-      font-family: 'Raleway', sans-serif;
       line-height: 1;
     }
 
@@ -307,7 +280,6 @@
     }
 
     .section-label {
-      font-family: 'Raleway', sans-serif;
       font-size: 0.68rem;
       letter-spacing: 5px;
       text-transform: uppercase;
@@ -317,7 +289,6 @@
     }
 
     .section-title {
-      font-family: 'Raleway', sans-serif;
       font-size: clamp(1.8rem, 4vw, 3rem);
       font-weight: 300;
       color: #fff;
@@ -336,7 +307,7 @@
       font-size: 0.95rem;
       font-weight: 300;
       color: rgba(232,232,240,0.55);
-      max-width: 520px;
+      max-width: 620px;
       line-height: 1.9;
       margin-bottom: 60px;
       letter-spacing: 0.3px;
@@ -374,7 +345,6 @@
     }
 
     .service-card h3 {
-      font-family: 'Raleway', sans-serif;
       font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 3px;
@@ -403,7 +373,7 @@
     .packages-grid-scroll {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 18px 48px 0;
+      padding: 24px 48px 0;
       overflow-x: auto;
       overflow-y: visible;
       scrollbar-width: thin;
@@ -428,7 +398,7 @@
       display: grid;
       grid-template-columns: repeat(4, minmax(220px, 1fr));
       gap: 18px;
-      min-width: 930px;
+      min-width: 980px;
       align-items: stretch;
     }
 
@@ -436,9 +406,10 @@
       background: var(--card-bg);
       border: 1px solid rgba(0,240,255,0.1);
       border-radius: 10px;
-      padding: 36px 22px;
+      padding: 36px 22px 24px;
       position: relative;
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      overflow: visible;
     }
 
     .package-card:hover {
@@ -462,7 +433,6 @@
       left: 50%;
       transform: translateX(-50%);
       color: #fff;
-      font-family: 'Raleway', sans-serif;
       font-size: 0.58rem;
       font-weight: 600;
       letter-spacing: 2.5px;
@@ -470,7 +440,7 @@
       padding: 5px 18px;
       border-radius: 20px;
       white-space: nowrap;
-      z-index: 3;
+      z-index: 5;
     }
 
     .package-badge.popular {
@@ -483,7 +453,6 @@
     }
 
     .package-name {
-      font-family: 'Raleway', sans-serif;
       font-size: 0.68rem;
       font-weight: 600;
       letter-spacing: 4px;
@@ -493,19 +462,39 @@
     }
 
     .package-price {
-      font-family: 'Raleway', sans-serif;
-      font-size: 2.2rem;
-      font-weight: 300;
-      color: #fff;
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
       margin-bottom: 2px;
-      letter-spacing: -1px;
+      color: #fff;
+      line-height: 1;
+      flex-wrap: nowrap;
     }
 
-    .package-price span {
+    .package-price-symbol {
+      font-size: 1.45rem;
+      font-weight: 300;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .package-price-value {
+      font-size: 2.35rem;
+      font-weight: 300;
+      color: #fff;
+      letter-spacing: -1px;
+      line-height: 0.95;
+    }
+
+    .package-price-unit {
       font-size: 0.8rem;
-      color: rgba(232,232,240,0.4);
+      color: rgba(232,232,240,0.52);
       font-weight: 300;
       letter-spacing: 1px;
+      margin-left: 4px;
+      margin-bottom: 4px;
+      white-space: nowrap;
     }
 
     .package-duration {
@@ -513,8 +502,48 @@
       color: rgba(232,232,240,0.35);
       letter-spacing: 2px;
       text-transform: uppercase;
-      margin-bottom: 24px;
+      margin-bottom: 18px;
+    }
+
+    .package-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 18px;
+      padding: 10px 12px;
+      border: 1px solid rgba(0,240,255,0.08);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .package-controls label {
+      font-size: 0.6rem;
+      letter-spacing: 2.8px;
+      text-transform: uppercase;
+      color: rgba(232,232,240,0.42);
+      font-weight: 600;
+    }
+
+    .package-hours-select {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(0,240,255,0.14);
+      color: #fff;
+      border-radius: 6px;
+      padding: 8px 10px;
       font-family: 'Raleway', sans-serif;
+      font-size: 0.78rem;
+      outline: none;
+    }
+
+    .package-hours-note {
+      font-size: 0.62rem;
+      color: var(--success);
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      line-height: 1.45;
+      min-height: 16px;
     }
 
     .package-includes {
@@ -579,7 +608,6 @@
     }
 
     .cart-highlight h2 {
-      font-family: 'Raleway', sans-serif;
       font-size: clamp(1.5rem, 3.5vw, 2.4rem);
       font-weight: 300;
       font-style: italic;
@@ -599,16 +627,10 @@
       font-size: 0.95rem;
       color: rgba(232,232,240,0.5);
       line-height: 1.9;
-      max-width: 480px;
+      max-width: 540px;
       margin: 0 auto 40px;
       position: relative;
       font-weight: 300;
-    }
-
-    .neon-divider {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(0,240,255,0.25), rgba(255,45,120,0.25), transparent);
     }
 
     footer {
@@ -627,7 +649,6 @@
     }
 
     .footer-productions-text {
-      font-family: 'Raleway', sans-serif;
       font-size: 0.55rem;
       letter-spacing: 6px;
       color: rgba(232,232,240,0.2);
@@ -693,7 +714,7 @@
           drop-shadow(0 0 14px rgba(255,45,120,1))
           drop-shadow(0 0 45px rgba(255,45,120,0.65));
       }
-      9%  {
+      9% {
         opacity: 0.25;
         filter: drop-shadow(0 0 2px rgba(0,240,255,0.1))
                 drop-shadow(0 0 2px rgba(255,45,120,0.1));
@@ -784,7 +805,7 @@
 
       .packages-grid-scroll {
         overflow: visible;
-        padding: 18px 24px 0;
+        padding: 24px 24px 0;
       }
 
       .packages-grid {
@@ -821,11 +842,11 @@
 <body>
 
   <nav>
-    <a href="#" class="nav-logo">
+    <a href="index.html" class="nav-logo">
       <img src="logo.png" alt="Heat District Productions" />
     </a>
     <ul class="nav-links">
-      <li><a href="services.html">Services</a></li>
+      <li><a href="products.html">Products</a></li>
       <li><a href="packages.html">Packages</a></li>
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="team.html">Our Team</a></li>
@@ -842,7 +863,7 @@
     <p class="hero-sub">Sound &nbsp;·&nbsp; Lighting &nbsp;·&nbsp; Talent &nbsp;·&nbsp; Production</p>
     <div class="hero-buttons">
       <a href="packages.html" class="btn-outline-blue">View Packages</a>
-      <a href="services.html" class="btn-outline-pink">Build Your Event</a>
+      <a href="products.html" class="btn-outline-pink">Build Your Own</a>
     </div>
     <div class="scroll-indicator">
       <span>Scroll</span>
@@ -975,16 +996,33 @@
     <div class="packages-header">
       <p class="section-label">Packages</p>
       <h2 class="section-title">Built for Your<br><strong>Budget & Vision</strong></h2>
-      <p class="section-sub">Our strongest 4-package lineup keeps the choices cleaner while still giving clients a clear path from entry level to luxury production.</p>
+      <p class="section-sub">Our strongest 4-package lineup keeps the choices cleaner while still giving clients a clear path from entry level to luxury production. Package cards below let people preview 2–8 hour pricing before going to the full packages page.</p>
     </div>
 
     <div class="packages-grid-scroll">
       <div class="packages-grid">
 
-        <div class="package-card">
+        <div class="package-card" data-package-name="The Spark" data-base-price="1295">
           <p class="package-name">The Spark</p>
-          <div class="package-price">$1,295 <span>/ 5hrs</span></div>
+          <div class="package-price">
+            <span class="package-price-symbol">$</span>
+            <span class="package-price-value">1,295</span>
+            <span class="package-price-unit">/ 5hrs</span>
+          </div>
           <p class="package-duration">Essential Entry</p>
+          <div class="package-controls">
+            <label>Hours</label>
+            <select class="package-hours-select">
+              <option value="2">2 hrs</option>
+              <option value="3">3 hrs</option>
+              <option value="4">4 hrs</option>
+              <option value="5" selected>5 hrs</option>
+              <option value="6">6 hrs</option>
+              <option value="7">7 hrs</option>
+              <option value="8">8 hrs</option>
+            </select>
+          </div>
+          <p class="package-hours-note">Flexible 2–8hr pricing</p>
           <ul class="package-includes">
             <li>Sound System (2 Subs, 2 Tops)</li>
             <li>Professional DJ + Full Deck Setup</li>
@@ -992,14 +1030,31 @@
             <li>Setup & Breakdown</li>
           </ul>
           <p class="package-savings">Perfect entry package</p>
-          <a href="packages.html" class="btn-outline-blue" style="width:100%;text-align:center;font-size:0.68rem;padding:12px 0;">Choose Package</a>
+          <button class="btn-outline-blue" style="width:100%;text-align:center;font-size:0.68rem;padding:12px 0;" onclick="goToPackagesWithPreview(this)">View Package</button>
         </div>
 
-        <div class="package-card featured">
+        <div class="package-card featured" data-package-name="The Blaze" data-base-price="2195">
           <div class="package-badge popular">Most Popular</div>
           <p class="package-name">The Blaze</p>
-          <div class="package-price">$2,195 <span>/ 5hrs</span></div>
+          <div class="package-price">
+            <span class="package-price-symbol">$</span>
+            <span class="package-price-value">2,195</span>
+            <span class="package-price-unit">/ 5hrs</span>
+          </div>
           <p class="package-duration">Full Experience</p>
+          <div class="package-controls">
+            <label>Hours</label>
+            <select class="package-hours-select">
+              <option value="2">2 hrs</option>
+              <option value="3">3 hrs</option>
+              <option value="4">4 hrs</option>
+              <option value="5" selected>5 hrs</option>
+              <option value="6">6 hrs</option>
+              <option value="7">7 hrs</option>
+              <option value="8">8 hrs</option>
+            </select>
+          </div>
+          <p class="package-hours-note">Flexible 2–8hr pricing</p>
           <ul class="package-includes">
             <li>Sound System</li>
             <li>Professional DJ + Full Deck Setup</li>
@@ -1010,14 +1065,31 @@
             <li>2 Totems</li>
           </ul>
           <p class="package-savings">Best all-around package</p>
-          <a href="packages.html" class="btn-outline-pink" style="width:100%;text-align:center;font-size:0.68rem;padding:12px 0;">Choose Package</a>
+          <button class="btn-outline-pink" style="width:100%;text-align:center;font-size:0.68rem;padding:12px 0;" onclick="goToPackagesWithPreview(this)">View Package</button>
         </div>
 
-        <div class="package-card best-value">
+        <div class="package-card best-value" data-package-name="The Inferno" data-base-price="2995">
           <div class="package-badge value">Best Value</div>
           <p class="package-name">The Inferno</p>
-          <div class="package-price">$2,995 <span>/ 5hrs</span></div>
+          <div class="package-price">
+            <span class="package-price-symbol">$</span>
+            <span class="package-price-value">2,995</span>
+            <span class="package-price-unit">/ 5hrs</span>
+          </div>
           <p class="package-duration">Premium Production</p>
+          <div class="package-controls">
+            <label>Hours</label>
+            <select class="package-hours-select">
+              <option value="2">2 hrs</option>
+              <option value="3">3 hrs</option>
+              <option value="4">4 hrs</option>
+              <option value="5" selected>5 hrs</option>
+              <option value="6">6 hrs</option>
+              <option value="7">7 hrs</option>
+              <option value="8">8 hrs</option>
+            </select>
+          </div>
+          <p class="package-hours-note">Flexible 2–8hr pricing</p>
           <ul class="package-includes">
             <li>15 Uplights + LED Light Bar</li>
             <li>4 Moving Heads</li>
@@ -1028,13 +1100,30 @@
             <li>Goal Post + 2 Totems or 4 Totems</li>
           </ul>
           <p class="package-savings">Strongest value jump</p>
-          <a href="packages.html" class="btn-outline-blue" style="width:100%;text-align:center;font-size:0.68rem;padding:12px 0;">Choose Package</a>
+          <button class="btn-outline-blue" style="width:100%;text-align:center;font-size:0.68rem;padding:12px 0;" onclick="goToPackagesWithPreview(this)">View Package</button>
         </div>
 
-        <div class="package-card">
+        <div class="package-card" data-package-name="The District" data-base-price="4995">
           <p class="package-name">The District</p>
-          <div class="package-price">$4,995 <span>/ 5hrs</span></div>
+          <div class="package-price">
+            <span class="package-price-symbol">$</span>
+            <span class="package-price-value">4,995</span>
+            <span class="package-price-unit">/ 5hrs</span>
+          </div>
           <p class="package-duration">Luxury Tier</p>
+          <div class="package-controls">
+            <label>Hours</label>
+            <select class="package-hours-select">
+              <option value="2">2 hrs</option>
+              <option value="3">3 hrs</option>
+              <option value="4">4 hrs</option>
+              <option value="5" selected>5 hrs</option>
+              <option value="6">6 hrs</option>
+              <option value="7">7 hrs</option>
+              <option value="8">8 hrs</option>
+            </select>
+          </div>
+          <p class="package-hours-note">Flexible 2–8hr pricing</p>
           <ul class="package-includes">
             <li>15 Uplights + LED Light Bar</li>
             <li>4 Moving Heads</li>
@@ -1045,7 +1134,7 @@
             <li>Goal Post + 2 Totems or 4 Totems</li>
           </ul>
           <p class="package-savings">Luxury statement package</p>
-          <a href="packages.html" class="btn-outline-blue" style="width:100%;text-align:center;font-size:0.68rem;padding:12px 0;">Choose Package</a>
+          <button class="btn-outline-blue" style="width:100%;text-align:center;font-size:0.68rem;padding:12px 0;" onclick="goToPackagesWithPreview(this)">View Package</button>
         </div>
 
       </div>
@@ -1056,10 +1145,10 @@
 
   <div class="cart-section">
     <div class="cart-highlight">
-      <p class="section-label" style="margin-bottom:18px;">Your Event, Your Way</p>
-      <h2>Don't need a full package?<br><strong>Make It Yours.</strong></h2>
-      <p>Choose exactly what your event needs — sound, lighting, talent, or equipment — and we'll build a custom quote from the ground up. No extras. No guesswork. Just your vision, executed flawlessly.</p>
-      <a href="services.html" class="btn-outline-blue">Browse All Services &amp; Rentals</a>
+      <p class="section-label" style="margin-bottom:18px;">Build It Your Way</p>
+      <h2>Need individual items instead?<br><strong>Build Your Own Cart.</strong></h2>
+      <p>Choose standalone products, custom service combinations, rentals, media coverage, lighting, and production elements one by one on the Products page.</p>
+      <a href="products.html" class="btn-outline-blue">Browse Individual Products</a>
     </div>
   </div>
 
@@ -1074,10 +1163,66 @@
       <a href="https://instagram.com/heatdistrictproductions" target="_blank">@HeatDistrictProductions</a>
       <a href="https://www.heatdistrictproductions.com">heatdistrictproductions.com</a>
     </div>
-    <p class="footer-copy">© 2025 Heat District Productions &nbsp;·&nbsp; Miami & Broward County &nbsp;·&nbsp; All Rights Reserved</p>
+    <p class="footer-copy">© 2025 Heat District Productions · Miami & Broward County · All Rights Reserved</p>
   </footer>
 
   <script>
+    const PACKAGE_REDUCTION_MULTIPLIERS = {
+      2: 0.85,
+      3: 0.90,
+      4: 0.95,
+      5: 1.00
+    };
+
+    function roundToFive(value) {
+      return Math.round(value / 5) * 5;
+    }
+
+    function calculatePackagePrice(basePrice, hours) {
+      if (hours <= 5) {
+        const multiplier = PACKAGE_REDUCTION_MULTIPLIERS[hours] || 1;
+        return roundToFive(basePrice * multiplier);
+      }
+
+      return basePrice + ((hours - 5) * 150);
+    }
+
+    function formatCurrency(value) {
+      return value.toLocaleString();
+    }
+
+    function updatePackageCard(card) {
+      const basePrice = Number(card.dataset.basePrice);
+      const hours = Number(card.querySelector('.package-hours-select').value);
+      const price = calculatePackagePrice(basePrice, hours);
+
+      card.querySelector('.package-price-value').textContent = formatCurrency(price);
+      card.querySelector('.package-price-unit').textContent = `/ ${hours}hrs`;
+    }
+
+    function initPackageCards() {
+      document.querySelectorAll('.package-card').forEach((card) => {
+        const select = card.querySelector('.package-hours-select');
+        if (!select) return;
+
+        select.addEventListener('change', () => updatePackageCard(card));
+        updatePackageCard(card);
+      });
+    }
+
+    function goToPackagesWithPreview(button) {
+      const card = button.closest('.package-card');
+      const name = card.dataset.packageName;
+      const hours = Number(card.querySelector('.package-hours-select').value);
+
+      sessionStorage.setItem('heatDistrictPackagePreview', JSON.stringify({
+        name,
+        hours
+      }));
+
+      window.location.href = 'packages.html';
+    }
+
     const heroLogo = document.getElementById('heroLogo');
     setTimeout(() => {
       heroLogo.style.animation = 'none';
@@ -1090,6 +1235,8 @@
         'drop-shadow(0 0 22px rgba(255,45,120,0.32))';
       heroLogo.style.animation = 'neonSlowPulse 4s ease-in-out infinite alternate';
     }, 3500);
+
+    initPackageCards();
   </script>
 
 </body>

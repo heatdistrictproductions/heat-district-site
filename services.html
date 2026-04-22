@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services — Heat District Productions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --neon-blue: #00f0ff;
+      --neon-pink: #ff2d78;
+      --neon-purple: #bf00ff;
+      --dark-bg: #05050f;
+      --card-bg: #0a0a1a;
+      --text-light: #e8e8f0;
+      --muted-white: rgba(232,232,240,0.5);
+      --soft-border: rgba(0,240,255,0.09);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark-bg);
+      color: var(--text-light);
+      font-family: 'Raleway', sans-serif;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 48px;
+      background: rgba(5,5,15,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,240,255,0.15);
+    }
+
+    .nav-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .nav-logo img {
+      height: 52px;
+      width: auto;
+      filter:
+        drop-shadow(0 0 6px rgba(0,240,255,0.8))
+        drop-shadow(0 0 14px rgba(0,240,255,0.5))
+        drop-shadow(0 0 4px rgba(255,45,120,0.4));
+    }
+
+    .nav-links {
+      display: flex;
+      flex: 1;
+      justify-content: space-evenly;
+      align-items: center;
+      list-style: none;
+      padding: 0 40px;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color 0.3s, text-shadow 0.3s;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--neon-blue);
+      text-shadow: 0 0 8px var(--neon-blue);
+    }
+
+    .nav-cta {
+      flex-shrink: 0;
+      background: transparent;
+      border: 1.5px solid var(--neon-pink);
+      color: var(--neon-pink) !important;
+      padding: 8px 22px;
+      border-radius: 4px;
+      transition: background 0.3s, box-shadow 0.3s !important;
+      white-space: nowrap;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .nav-cta:hover {
+      background: rgba(255,45,120,0.15) !important;
+      box-shadow: 0 0 18px rgba(255,45,120,0.4) !important;
+    }
+
+    .page-hero {
+      padding: 160px 48px 82px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(0,240,255,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 20% 100%, rgba(255,45,120,0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .page-hero-eyebrow {
+      position: relative;
+      z-index: 1;
+      font-size: 0.68rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: rgba(0,240,255,0.6);
+      margin-bottom: 16px;
+      font-weight: 400;
+    }
+
+    .page-hero h1 {
+      position: relative;
+      z-index: 1;
+      font-size: clamp(2.3rem, 5vw, 4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: #fff;
+      line-height: 1.12;
+      margin-bottom: 16px;
+    }
+
+    .page-hero h1 strong {
+      font-weight: 700;
+      font-style: normal;
+      color: var(--neon-pink);
+    }
+
+    .page-hero p {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      line-height: 1.9;
+      color: var(--muted-white);
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      position: relative;
+      z-index: 1;
+      margin-top: 28px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-outline-blue {
+      background: transparent;
+      color: var(--neon-blue);
+      border: 1.5px solid var(--neon-blue);
+      padding: 14px 30px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 2.8px;
+      text-transform: uppercase;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
+    }
+
+    .btn-outline-blue:hover {
+      background: rgba(0,240,255,0.08);
+      box-shadow: 0 0 26px rgba(0,240,255,0.3);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-pink {
+      background: transparent;
+      color: var(--neon-pink);
+      border: 1.5px solid var(--neon-pink);
+      padding: 14px 30px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 2.8px;
+      text-transform: uppercase;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
+    }
+
+    .btn-outline-pink:hover {
+      background: rgba(255,45,120,0.08);
+      box-shadow: 0 0 26px rgba(255,45,120,0.3);
+      transform: translateY(-2px);
+    }
+
+    .hero-contact-box {
+      max-width: 880px;
+      margin: 32px auto 0;
+      padding: 24px 26px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,45,120,0.18);
+      background:
+        linear-gradient(180deg, rgba(255,45,120,0.06), rgba(10,10,26,0.9)),
+        linear-gradient(90deg, rgba(0,240,255,0.03), rgba(255,45,120,0.03));
+      box-shadow: 0 14px 40px rgba(0,0,0,0.24);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-contact-kicker {
+      font-size: 0.62rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(0,240,255,0.72);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .hero-contact-title {
+      font-size: clamp(1.15rem, 2vw, 1.7rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .hero-contact-copy {
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: rgba(232,232,240,0.72);
+      max-width: 700px;
+      margin: 0 auto 18px;
+    }
+
+    .hero-contact-btn {
+      display: inline-block;
+      background: transparent;
+      color: var(--neon-pink);
+      border: 1.5px solid var(--neon-pink);
+      padding: 12px 26px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 2.6px;
+      text-transform: uppercase;
+      transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+    }
+
+    .hero-contact-btn:hover {
+      background: rgba(255,45,120,0.12);
+      box-shadow: 0 0 22px rgba(255,45,120,0.28);
+      transform: translateY(-2px);
+    }
+
+    .neon-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,240,255,0.25), rgba(255,45,120,0.25), transparent);
+    }
+
+    .page-wrap {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 80px 48px 100px;
+    }
+
+    .section-block + .section-block {
+      margin-top: 88px;
+    }
+
+    .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--neon-blue);
+      margin-bottom: 12px;
+      font-weight: 400;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 300;
+      font-style: italic;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .section-title strong {
+      font-weight: 700;
+      font-style: normal;
+      color: var(--neon-pink);
+    }
+
+    .section-sub {
+      font-size: 0.9rem;
+      color: var(--muted-white);
+      font-weight: 300;
+      line-height: 1.85;
+      max-width: 780px;
+    }
+
+    .info-bar {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .info-chip {
+      border: 1px solid var(--soft-border);
+      border-radius: 12px;
+      padding: 18px 18px;
+      background: linear-gradient(180deg, rgba(10,10,26,0.95), rgba(8,8,22,0.98));
+    }
+
+    .info-chip-label {
+      font-size: 0.58rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(0,240,255,0.68);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .info-chip-copy {
+      font-size: 0.82rem;
+      line-height: 1.65;
+      color: rgba(232,232,240,0.62);
+    }
+
+    .visual-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .visual-card {
+      position: relative;
+      min-height: 220px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(0,240,255,0.08);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(0,240,255,0.16), transparent 42%),
+        radial-gradient(circle at 80% 80%, rgba(255,45,120,0.16), transparent 36%),
+        linear-gradient(180deg, rgba(12,12,28,0.98), rgba(7,7,18,1));
+      box-shadow: 0 14px 40px rgba(0,0,0,0.32);
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+    }
+
+    .visual-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(5,5,15,0.08) 0%, rgba(5,5,15,0.68) 100%);
+      pointer-events: none;
+    }
+
+    .visual-card-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .visual-kicker {
+      font-size: 0.58rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(0,240,255,0.72);
+      margin-bottom: 8px;
+    }
+
+    .visual-title {
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 6px;
+      line-height: 1.25;
+    }
+
+    .visual-copy {
+      font-size: 0.78rem;
+      line-height: 1.6;
+      color: rgba(232,232,240,0.52);
+      max-width: 300px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .service-card {
+      background: linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.98));
+      border: 1px solid rgba(0,240,255,0.1);
+      border-radius: 14px;
+      padding: 26px 22px 22px;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.42), 0 0 22px rgba(0,240,255,0.06);
+      border-color: rgba(0,240,255,0.22);
+    }
+
+    .service-kicker {
+      font-size: 0.58rem;
+      letter-spacing: 3.2px;
+      text-transform: uppercase;
+      color: rgba(0,240,255,0.58);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .service-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .service-copy {
+      font-size: 0.84rem;
+      color: rgba(232,232,240,0.56);
+      line-height: 1.75;
+      margin-bottom: 18px;
+      min-height: 78px;
+    }
+
+    .service-meta {
+      font-size: 0.62rem;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      color: rgba(255,45,120,0.75);
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+
+    .service-list {
+      list-style: none;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    .service-list li {
+      font-size: 0.78rem;
+      color: rgba(232,232,240,0.72);
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      line-height: 1.48;
+      font-weight: 300;
+    }
+
+    .service-list li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      margin-top: 7px;
+      border-radius: 50%;
+      background: var(--neon-blue);
+      flex-shrink: 0;
+      opacity: 0.82;
+    }
+
+    .service-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: transparent;
+      color: var(--neon-blue);
+      border: 1.5px solid var(--neon-blue);
+      padding: 13px 14px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+      transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
+    }
+
+    .service-btn:hover {
+      background: rgba(0,240,255,0.08);
+      box-shadow: 0 0 24px rgba(0,240,255,0.22);
+      transform: translateY(-2px);
+    }
+
+    .service-btn.pink {
+      color: var(--neon-pink);
+      border-color: var(--neon-pink);
+    }
+
+    .service-btn.pink:hover {
+      background: rgba(255,45,120,0.08);
+      box-shadow: 0 0 24px rgba(255,45,120,0.22);
+    }
+
+    .cta-panel {
+      margin-top: 34px;
+      border: 1px solid rgba(0,240,255,0.12);
+      border-radius: 16px;
+      padding: 56px 42px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(10,10,26,0.96), rgba(8,8,22,0.99));
+    }
+
+    .cta-panel::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at center, rgba(0,240,255,0.03) 0%, transparent 55%);
+      animation: rotateBg 16s linear infinite;
+      pointer-events: none;
+    }
+
+    .cta-panel-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-panel h3 {
+      font-size: clamp(1.45rem, 3vw, 2.2rem);
+      font-weight: 300;
+      font-style: italic;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.25;
+    }
+
+    .cta-panel h3 strong {
+      font-weight: 700;
+      font-style: normal;
+      color: var(--neon-pink);
+    }
+
+    .cta-panel p {
+      max-width: 760px;
+      margin: 0 auto 28px;
+      font-size: 0.92rem;
+      line-height: 1.85;
+      color: rgba(232,232,240,0.56);
+      font-weight: 300;
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      text-align: center;
+      padding: 60px 48px 100px;
+      border-top: 1px solid rgba(0,240,255,0.08);
+    }
+
+    .footer-logo img {
+      height: 64px;
+      width: auto;
+      margin-bottom: 6px;
+      filter:
+        drop-shadow(0 0 5px rgba(0,240,255,0.6))
+        drop-shadow(0 0 12px rgba(255,45,120,0.3));
+    }
+
+    .footer-productions-text {
+      font-size: 0.55rem;
+      letter-spacing: 6px;
+      color: rgba(232,232,240,0.2);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .footer-contact {
+      margin: 28px 0;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .footer-contact a {
+      color: rgba(232,232,240,0.4);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+      font-weight: 300;
+    }
+
+    .footer-contact a:hover { color: var(--neon-blue); }
+
+    .footer-copy {
+      font-size: 0.68rem;
+      color: rgba(232,232,240,0.18);
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-top: 32px;
+    }
+
+    @keyframes rotateBg {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 1100px) {
+      .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .visual-strip,
+      .info-bar {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 10px 24px; }
+      .nav-links { display: none; }
+      .page-hero { padding: 145px 24px 68px; }
+      .page-wrap { padding: 60px 24px 100px; }
+      .services-grid { grid-template-columns: 1fr; }
+      footer { padding: 60px 24px 100px; }
+      .cta-panel { padding: 42px 26px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="Heat District Productions" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="team.html">Our Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Book Now</a>
+  </nav>
+
+  <div class="page-hero">
+    <p class="page-hero-eyebrow">Standalone Services · Custom Builds · Rentals & Production</p>
+    <h1>Custom Services for<br><strong>Your Exact Vision</strong></h1>
+    <p>
+      This page is for standalone services, custom builds, larger production requests, and individual rentals.
+      Packages still give the best overall value. Services here are quoted separately based on scope, gear, staffing, and event needs.
+    </p>
+
+    <div class="hero-actions">
+      <a href="packages.html" class="btn-outline-blue">View Packages</a>
+      <a href="contact.html" class="btn-outline-pink">Request a Quote</a>
+    </div>
+
+    <div class="hero-contact-box">
+      <div class="hero-contact-kicker">Need Something Custom?</div>
+      <div class="hero-contact-title">Contact Us for a Quote</div>
+      <div class="hero-contact-copy">
+        Need a custom production build, a larger room setup, standalone rentals, or a custom media package?
+        Reach out directly and we’ll put together the right service mix for your event.
+      </div>
+      <a href="contact.html" class="hero-contact-btn">Contact Us</a>
+    </div>
+  </div>
+
+  <div class="neon-divider"></div>
+
+  <div class="page-wrap">
+
+    <div class="section-block">
+      <p class="section-label">How This Page Works</p>
+      <h2 class="section-title">Packages Save More. <strong>Services Give Flexibility.</strong></h2>
+      <p class="section-sub">
+        Use the Packages page if you want the cleanest bundled option. Use this Services page if you want to build something custom, rent individual elements, or request a larger production setup outside the standard package ladder.
+      </p>
+
+      <div class="info-bar">
+        <div class="info-chip">
+          <div class="info-chip-label">Best Value</div>
+          <div class="info-chip-copy">Packages combine multiple services at a stronger overall rate than booking everything separately.</div>
+        </div>
+        <div class="info-chip">
+          <div class="info-chip-label">Custom Scope</div>
+          <div class="info-chip-copy">Standalone services, larger builds, and specialty requests are quoted here based on actual event needs.</div>
+        </div>
+        <div class="info-chip">
+          <div class="info-chip-label">Fastest Next Step</div>
+          <div class="info-chip-copy">See something you need? Request a quote and include your event date, location, guest count, and services wanted.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <p class="section-label">Event Atmosphere</p>
+      <h2 class="section-title">What the Room <strong>Feels Like</strong></h2>
+      <p class="section-sub">
+        This page is built for custom service selection, but the goal is still the same: sound better, look bigger, and make the event feel unforgettable.
+      </p>
+
+      <div class="visual-strip">
+        <div class="visual-card">
+          <div class="visual-card-content">
+            <div class="visual-kicker">Placeholder Photo</div>
+            <div class="visual-title">Crowd Energy</div>
+            <div class="visual-copy">Swap later with a packed dance floor or event crowd photo that shows motion, lighting, and energy.</div>
+          </div>
+        </div>
+        <div class="visual-card">
+          <div class="visual-card-content">
+            <div class="visual-kicker">Placeholder Photo</div>
+            <div class="visual-title">Lighting & Setup</div>
+            <div class="visual-copy">Best replaced with a clean production photo showing moving heads, uplights, truss, and speakers.</div>
+          </div>
+        </div>
+        <div class="visual-card">
+          <div class="visual-card-content">
+            <div class="visual-kicker">Placeholder Photo</div>
+            <div class="visual-title">Signature Moment</div>
+            <div class="visual-copy">Ideal for a cold sparks reveal, photo booth crowd, grand entrance, or a strong client reaction moment.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <p class="section-label">Core Services</p>
+      <h2 class="section-title">The Main Pieces of <strong>Your Event Build</strong></h2>
+      <p class="section-sub">
+        These are the most requested standalone services and production foundations. Each one can be quoted on its own or combined into a custom build.
+      </p>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-kicker">Performance</div>
+          <div class="service-title">DJ Services</div>
+          <div class="service-copy">Professional DJ coverage tailored to the energy, format, and flow of your event.</div>
+          <div class="service-meta">Standalone Quote</div>
+          <ul class="service-list">
+            <li>Private events, weddings, quinceañeras, birthdays, nightlife</li>
+            <li>Open format, Latin, house, club, and crowd-focused sets</li>
+            <li>Can be booked with or without additional production</li>
+          </ul>
+          <a href="contact.html" class="service-btn">Request Quote</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-kicker">Audio</div>
+          <div class="service-title">Sound Systems</div>
+          <div class="service-copy">Scalable sound setups for everything from intimate celebrations to higher-energy event spaces.</div>
+          <div class="service-meta">Custom Sizing</div>
+          <ul class="service-list">
+            <li>Sub and top combinations sized to room and guest count</li>
+            <li>Speech, dance floor, cocktail, and mixed-use setups</li>
+            <li>Setup and breakdown built into custom event planning</li>
+          </ul>
+          <a href="contact.html" class="service-btn">Request Quote</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-kicker">Lighting</div>
+          <div class="service-title">Lighting Design</div>
+          <div class="service-copy">The fastest way to make the room feel larger, more premium, and more intentional.</div>
+          <div class="service-meta">Standalone or Add-On</div>
+          <ul class="service-list">
+            <li>Uplighting, wash lighting, effect lighting, and feature looks</li>
+            <li>Clean room enhancement or full nightlife-style atmosphere</li>
+            <li>Built around venue tone, event type, and visual goals</li>
+          </ul>
+          <a href="contact.html" class="service-btn">Request Quote</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-kicker">Guest Experience</div>
+          <div class="service-title">Photo Booth</div>
+          <div class="service-copy">A high-conversion guest experience piece that adds energy, keeps people engaged, and creates take-home value.</div>
+          <div class="service-meta">Popular Standalone Service</div>
+          <ul class="service-list">
+            <li>Great for weddings, birthdays, quinceañeras, and private parties</li>
+            <li>Works well as a feature activation even without full production</li>
+            <li>Can be combined with media coverage and branding elements</li>
+          </ul>
+          <a href="contact.html" class="service-btn pink">Request Quote</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-kicker">Media</div>
+          <div class="service-title">Photography</div>
+          <div class="service-copy">Professional event coverage focused on crowd moments, details, reactions, and polished recap imagery.</div>
+          <div class="service-meta">Quoted Separately</div>
+          <ul class="service-list">
+            <li>Event, nightlife, guest, and branded coverage</li>
+            <li>Great standalone option for clients who already have entertainment booked</li>
+            <li>Can be paired with booth, DJ, or full production</li>
+          </ul>
+          <a href="contact.html" class="service-btn">Request Quote</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-kicker">Media</div>
+          <div class="service-title">Videography</div>
+          <div class="service-copy">Cinematic event coverage for clients who want movement, atmosphere, and a polished visual recap of the night.</div>
+          <div class="service-meta">Quoted Separately</div>
+          <ul class="service-list">
+            <li>Highlight coverage, event recap, and branded content direction</li>
+            <li>Great for venues, artists, nightlife, and premium private events</li>
+            <li>Ideal when the event itself is part of the marketing</li>
+          </ul>
+          <a href="contact.html" class="service-btn">Request Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <p class="section-label">Production & Rentals</p>
+      <h2 class="section-title">Standalone Pieces That Build <strong>The Full Look</strong></h2>
+      <p class="section-sub">
+        These are the production upgrades and rental-focused elements most often used in custom quotes and larger builds.
+      </p>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-kicker">Effects</div>
+          <div class="service-title">Cold Spark Machines</div>
+          <div class="service-copy">A premium visual effect that instantly raises the perceived level of the event.</div>
+          <div class="service-meta">Signature Upgrade</div>
+          <ul class="service-list">
+            <li>Best for entrances, first dances, reveals, and key moments</li>
+            <li>Often used in wedding and luxury private event builds</li>
+            <li>Can be quoted as a standalone visual add-on</li>
+          </ul>
+          <a href="contact.html" class="service-btn pink">Request Quote</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-kicker">Atmosphere</div>
+          <div class="service-title">Fog / Haze</div>
+          <div class="service-copy">Enhances lighting presence and gives the room more depth, movement, and visual impact.</div>
+          <div class="service-meta">Lighting Support</div>
+          <ul class="service-list">
+            <li>Best used with moving heads and stronger dance floor lighting</li>
+            <li>Helps beams read better in person and on camera</li>
+            <li>Useful for parties, performances, and club-style looks</li>
+          </ul>
+          <a href="contact.html" class="service-btn">Request Quote</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-kicker">Lighting</div>
+          <div class="service-title">Moving Head Lights</div>
+          <div class="service-copy">For clients who want the room to feel more live, more premium, and more performance-driven.</div>
+          <div class="service-meta">Standalone Rental / Build Element</div>
+          <ul class="service-list">
+            <li>Best paired with haze, truss, or stronger dance floor focus</li>
+            <li>Quoted based on fixture count and event size</li>
+            <li>Can be subtle or fully performance-forward</li>
+          </ul>
+          <a href="contact.html" class="service-btn">Request Quote</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-kicker">Visuals</div>
+          <div class="service-title">LED Walls / Screens</div>
+          <div class="service-copy">For the biggest visual statement on this page — ideal when the client wants scale and presence.</div>
+          <div class="service-meta">Custom Visual Build</div>
+          <ul class="service-list">
+            <li>Quoted based on size, sourcing, and event use case</li>
+            <li>Great for premium parties, performances, and branded moments</li>
+            <li>Best for clients who want a true head-turning focal point</li>
+          </ul>
+          <a href="contact.html" class="service-btn pink">Request Quote</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-kicker">Staging</div>
+          <div class="service-title">Totems & Goal Post Truss</div>
+          <div class="service-copy">Adds height, structure, and a more complete production look around lighting and DJ placement.</div>
+          <div class="service-meta">Visual Framing</div>
+          <ul class="service-list">
+            <li>2 totems, 4 totems, or goal post style builds</li>
+            <li>Useful for weddings, nightlife, and elevated event layouts</li>
+            <li>Can be simple and clean or more production-heavy</li>
+          </ul>
+          <a href="contact.html" class="service-btn">Request Quote</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-kicker">Custom</div>
+          <div class="service-title">Custom Event Builds</div>
+          <div class="service-copy">When the event does not fit neatly into a package, this is the route to build exactly what you need.</div>
+          <div class="service-meta">Most Flexible Option</div>
+          <ul class="service-list">
+            <li>Mix any services, staffing, rentals, and production elements</li>
+            <li>Ideal for clients with a specific vision or non-standard venue needs</li>
+            <li>Best option for larger or more custom event requests</li>
+          </ul>
+          <a href="contact.html" class="service-btn pink">Request Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <p class="section-label">Next Step</p>
+      <h2 class="section-title">Ready to Price It Out? <strong>Let’s Build It.</strong></h2>
+      <p class="section-sub">
+        Tell us the date, location, guest count, and the services you want. We’ll quote the right setup based on scope instead of forcing you into the wrong bundle.
+      </p>
+
+      <div class="cta-panel">
+        <div class="cta-panel-content">
+          <h3>Need a standalone service?<br><strong>Need a custom build?</strong></h3>
+          <p>
+            Use the contact page for custom requests, standalone rentals, and larger service mixes.
+            If you want the strongest bundled value instead, go to Packages and start there.
+          </p>
+          <div class="cta-actions">
+            <a href="contact.html" class="btn-outline-pink">Contact Us</a>
+            <a href="packages.html" class="btn-outline-blue">View Packages</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-logo">
+      <img src="logo.png" alt="Heat District Productions" />
+      <span class="footer-productions-text">Productions</span>
+    </div>
+    <div class="footer-contact">
+      <a href="tel:9545472990">(954) 547-2990</a>
+      <a href="mailto:HeatDistrictProd@gmail.com">HeatDistrictProd@gmail.com</a>
+      <a href="https://instagram.com/heatdistrictproductions" target="_blank">@HeatDistrictProductions</a>
+      <a href="https://www.heatdistrictproductions.com">heatdistrictproductions.com</a>
+    </div>
+    <p class="footer-copy">© 2025 Heat District Productions · Miami & Broward County · All Rights Reserved</p>
+  </footer>
+
+</body>
+</html>

@@ -12,9 +12,11 @@
       --neon-purple: #bf00ff;
       --dark-bg: #05050f;
       --card-bg: #0a0a1a;
+      --card-bg-2: #0d0d20;
       --text-light: #e8e8f0;
-      --muted-white: rgba(232,232,240,0.48);
-      --success: rgba(77,255,145,0.9);
+      --soft-text: rgba(232,232,240,0.55);
+      --soft-border: rgba(0,240,255,0.1);
+      --success: rgba(77,255,145,0.88);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -103,8 +105,114 @@
       box-shadow: 0 0 18px rgba(255,45,120,0.4) !important;
     }
 
+    .mobile-menu-btn {
+      display: none;
+      width: 46px;
+      height: 46px;
+      background: transparent;
+      border: 1px solid rgba(0,240,255,0.18);
+      border-radius: 8px;
+      cursor: pointer;
+      padding: 10px 9px;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      flex-shrink: 0;
+    }
+
+    .mobile-menu-btn span {
+      display: block;
+      width: 100%;
+      height: 1.5px;
+      background: var(--text-light);
+      border-radius: 999px;
+      transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+    }
+
+    .mobile-menu-btn:hover {
+      border-color: rgba(0,240,255,0.35);
+      box-shadow: 0 0 16px rgba(0,240,255,0.12);
+    }
+
+    .mobile-menu-btn.active span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+      background: var(--neon-blue);
+    }
+
+    .mobile-menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mobile-menu-btn.active span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+      background: var(--neon-blue);
+    }
+
+    .mobile-nav {
+      position: fixed;
+      top: 73px;
+      left: 16px;
+      right: 16px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 14px;
+      background: rgba(8,8,20,0.98);
+      border: 1px solid rgba(0,240,255,0.14);
+      border-radius: 14px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-10px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .mobile-nav.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .mobile-nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 14px 12px;
+      border-radius: 8px;
+      transition: background 0.25s ease, color 0.25s ease, text-shadow 0.25s ease;
+    }
+
+    .mobile-nav a:hover {
+      background: rgba(0,240,255,0.06);
+      color: var(--neon-blue);
+      text-shadow: 0 0 8px var(--neon-blue);
+    }
+
+    .mobile-nav-book {
+      margin-top: 8px;
+      border: 1.5px solid var(--neon-pink);
+      color: var(--neon-pink) !important;
+      text-align: center;
+    }
+
+    .mobile-nav-book:hover {
+      background: rgba(255,45,120,0.12) !important;
+      box-shadow: 0 0 18px rgba(255,45,120,0.18);
+      color: var(--neon-pink) !important;
+      text-shadow: none !important;
+    }
+
+    body.mobile-menu-open {
+      overflow: hidden;
+    }
+
     .page-hero {
-      padding: 160px 48px 82px;
+      padding: 160px 48px 54px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -121,25 +229,25 @@
     }
 
     .page-hero-eyebrow {
+      position: relative;
+      z-index: 1;
       font-size: 0.68rem;
       letter-spacing: 5px;
       text-transform: uppercase;
       color: rgba(0,240,255,0.6);
       margin-bottom: 16px;
       font-weight: 400;
-      position: relative;
-      z-index: 1;
     }
 
     .page-hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      position: relative;
+      z-index: 1;
+      font-size: clamp(2.2rem, 5vw, 3.9rem);
       font-weight: 300;
       font-style: italic;
       color: #fff;
-      line-height: 1.15;
+      line-height: 1.14;
       margin-bottom: 18px;
-      position: relative;
-      z-index: 1;
     }
 
     .page-hero h1 strong {
@@ -149,21 +257,21 @@
     }
 
     .page-hero p {
+      position: relative;
+      z-index: 1;
       font-size: 0.95rem;
       font-weight: 300;
       color: rgba(232,232,240,0.52);
-      max-width: 680px;
+      max-width: 760px;
       margin: 0 auto;
       line-height: 1.9;
       letter-spacing: 0.3px;
-      position: relative;
-      z-index: 1;
     }
 
     .hero-contact-box {
-      max-width: 760px;
-      margin: 30px auto 0;
-      padding: 22px 24px;
+      max-width: 860px;
+      margin: 34px auto 0;
+      padding: 24px 26px;
       border-radius: 14px;
       border: 1px solid rgba(255,45,120,0.18);
       background:
@@ -184,7 +292,7 @@
     }
 
     .hero-contact-title {
-      font-size: clamp(1.15rem, 2vw, 1.7rem);
+      font-size: clamp(1.15rem, 2vw, 1.65rem);
       font-weight: 700;
       color: #fff;
       margin-bottom: 8px;
@@ -195,7 +303,7 @@
       font-size: 0.88rem;
       line-height: 1.8;
       color: rgba(232,232,240,0.72);
-      max-width: 620px;
+      max-width: 690px;
       margin: 0 auto 18px;
     }
 
@@ -227,16 +335,18 @@
     }
 
     .packages-wrap {
-      max-width: 1560px;
+      max-width: 1400px;
       margin: 0 auto;
-      padding: 80px 48px;
+      padding: 80px 48px 100px;
     }
 
-    .section-block + .section-block {
-      margin-top: 86px;
+    .comparison-wrap {
+      margin-bottom: 90px;
     }
 
-    .section-label {
+    .comparison-label,
+    .packages-label,
+    .funnel-label {
       font-size: 0.68rem;
       letter-spacing: 5px;
       text-transform: uppercase;
@@ -245,7 +355,9 @@
       font-weight: 400;
     }
 
-    .section-title {
+    .comparison-title,
+    .packages-title,
+    .funnel-title {
       font-size: clamp(1.5rem, 3vw, 2.2rem);
       font-weight: 300;
       font-style: italic;
@@ -254,128 +366,95 @@
       line-height: 1.2;
     }
 
-    .section-title strong {
+    .comparison-title strong,
+    .packages-title strong,
+    .funnel-title strong {
       font-weight: 700;
       font-style: normal;
       color: var(--neon-pink);
     }
 
-    .section-sub {
+    .comparison-sub,
+    .packages-sub,
+    .funnel-sub {
       font-size: 0.9rem;
-      color: var(--muted-white);
+      color: rgba(232,232,240,0.5);
       font-weight: 300;
       line-height: 1.85;
-      max-width: 760px;
+      max-width: 780px;
     }
 
-    .btn-plan {
-      font-family: 'Raleway', sans-serif;
-      font-weight: 600;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.3s, background 0.3s, border-color 0.3s;
-      letter-spacing: 2.4px;
-      border-radius: 4px;
-      text-decoration: none;
-      display: block;
-      width: 100%;
-      text-align: center;
-      padding: 14px 16px;
-      font-size: 0.66rem;
-      background: transparent;
-      color: var(--neon-blue);
-      border: 1.5px solid var(--neon-blue);
-    }
-
-    .btn-plan:hover {
-      background: rgba(0,240,255,0.08);
-      box-shadow: 0 0 24px rgba(0,240,255,0.22);
-      transform: translateY(-2px);
-    }
-
-    .btn-plan.is-accent {
-      color: var(--neon-pink);
-      border-color: var(--neon-pink);
-    }
-
-    .btn-plan.is-accent:hover {
-      background: rgba(255,45,120,0.08);
-      box-shadow: 0 0 24px rgba(255,45,120,0.24);
-    }
-
-    .comparison-shell {
-      margin-top: 34px;
+    .comparison-table-wrap {
+      margin-top: 32px;
       border: 1px solid rgba(0,240,255,0.08);
       border-radius: 14px;
-      overflow: hidden;
-      background: linear-gradient(180deg, rgba(10,10,26,0.96), rgba(8,8,22,0.98));
-      box-shadow: 0 16px 48px rgba(0,0,0,0.28);
-    }
-
-    .comparison-scroll {
-      width: 100%;
       overflow-x: auto;
+      overflow-y: hidden;
+      background: linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.98));
+      box-shadow: 0 14px 38px rgba(0,0,0,0.18);
     }
 
     .comparison-table {
       width: 100%;
       min-width: 980px;
       border-collapse: collapse;
-      font-size: 0.82rem;
+      font-size: 0.84rem;
     }
 
     .comparison-table th {
-      padding: 18px 18px;
+      padding: 16px 16px;
       text-align: center;
-      font-size: 0.65rem;
+      font-size: 0.68rem;
       font-weight: 600;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--neon-blue);
-      border-bottom: 1px solid rgba(0,240,255,0.14);
+      border-bottom: 1px solid rgba(0,240,255,0.15);
       background: rgba(0,240,255,0.03);
+      vertical-align: bottom;
     }
 
     .comparison-table th:first-child {
       text-align: left;
-      color: rgba(232,232,240,0.42);
-      width: 150px;
-      min-width: 150px;
-      padding-right: 10px;
+      color: rgba(232,232,240,0.4);
+      width: 220px;
+      padding-left: 14px;
     }
 
     .comparison-table th.featured-col {
       color: var(--neon-pink);
       background: rgba(255,45,120,0.05);
-      border-bottom-color: rgba(255,45,120,0.22);
+      border-bottom-color: rgba(255,45,120,0.2);
     }
 
-    .chart-price {
+    .comparison-table .th-name {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .comparison-table .th-price {
+      display: block;
       color: #fff;
-      font-size: 0.7rem;
-      font-weight: 300;
-      opacity: 0.92;
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 1px;
     }
 
     .comparison-table td {
-      padding: 14px 18px;
+      padding: 14px 16px;
       text-align: center;
       border-bottom: 1px solid rgba(255,255,255,0.04);
-      color: rgba(232,232,240,0.58);
+      color: rgba(232,232,240,0.55);
       font-weight: 300;
       transition: background 0.2s;
     }
 
     .comparison-table td:first-child {
       text-align: left;
-      color: rgba(232,232,240,0.78);
-      font-weight: 400;
-      width: 150px;
-      min-width: 150px;
-      max-width: 150px;
-      white-space: normal;
-      line-height: 1.4;
-      padding-right: 10px;
+      color: rgba(232,232,240,0.76);
+      font-weight: 500;
+      padding-left: 14px;
+      white-space: nowrap;
     }
 
     .comparison-table td.featured-col {
@@ -390,149 +469,89 @@
       background: rgba(255,45,120,0.05);
     }
 
-    .group-row td {
-      text-align: left !important;
-      padding: 13px 18px !important;
-      font-size: 0.62rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: rgba(0,240,255,0.62) !important;
-      background: rgba(0,240,255,0.035) !important;
-      border-bottom: 1px solid rgba(0,240,255,0.1) !important;
-      font-weight: 600 !important;
-    }
-
     .check {
       color: var(--neon-blue);
       font-size: 1rem;
+      font-weight: 700;
     }
 
     .check-pink {
       color: var(--neon-pink);
       font-size: 1rem;
+      font-weight: 700;
     }
 
     .dash {
-      color: rgba(232,232,240,0.16);
-      font-size: 0.9rem;
+      color: rgba(232,232,240,0.15);
+      font-size: 0.95rem;
     }
 
     .qty {
-      color: rgba(232,232,240,0.74);
-      font-size: 0.79rem;
-      font-weight: 400;
-      line-height: 1.45;
-      display: inline-block;
+      color: rgba(232,232,240,0.76);
+      font-size: 0.82rem;
+      font-weight: 500;
     }
 
-    .visual-strip {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      margin: 34px 0 28px;
+    .packages-section {
+      margin-bottom: 86px;
     }
 
-    .visual-card {
-      position: relative;
-      min-height: 220px;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid rgba(0,240,255,0.08);
-      background:
-        radial-gradient(circle at 20% 20%, rgba(0,240,255,0.16), transparent 42%),
-        radial-gradient(circle at 80% 80%, rgba(255,45,120,0.16), transparent 36%),
-        linear-gradient(180deg, rgba(12,12,28,0.98), rgba(7,7,18,1));
-      box-shadow: 0 14px 40px rgba(0,0,0,0.32);
-      display: flex;
-      align-items: flex-end;
-      padding: 20px;
+    .packages-grid-scroll {
+      margin-top: 30px;
+      overflow-x: auto;
+      overflow-y: visible;
+      padding: 18px 0 0;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(0,240,255,0.35) rgba(255,255,255,0.05);
     }
 
-    .visual-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(5,5,15,0.08) 0%, rgba(5,5,15,0.68) 100%);
-      pointer-events: none;
+    .packages-grid-scroll::-webkit-scrollbar {
+      height: 8px;
     }
 
-    .visual-card-content {
-      position: relative;
-      z-index: 1;
+    .packages-grid-scroll::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.05);
+      border-radius: 999px;
     }
 
-    .visual-kicker {
-      font-size: 0.58rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: rgba(0,240,255,0.72);
-      margin-bottom: 8px;
-    }
-
-    .visual-title {
-      font-size: 1.02rem;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 6px;
-      line-height: 1.25;
-    }
-
-    .visual-copy {
-      font-size: 0.78rem;
-      line-height: 1.6;
-      color: rgba(232,232,240,0.52);
-      max-width: 300px;
-    }
-
-    .packages-header {
-      margin-bottom: 10px;
+    .packages-grid-scroll::-webkit-scrollbar-thumb {
+      background: rgba(0,240,255,0.35);
+      border-radius: 999px;
     }
 
     .packages-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(250px, 1fr));
       gap: 18px;
+      min-width: 1080px;
       align-items: stretch;
-      padding-top: 18px;
-      overflow: visible;
     }
 
     .pkg-card {
       background: linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.98));
       border: 1px solid rgba(0,240,255,0.1);
-      border-radius: 12px;
-      padding: 34px 20px 22px;
+      border-radius: 14px;
+      padding: 40px 24px 24px;
       position: relative;
       display: flex;
       flex-direction: column;
       transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-      cursor: pointer;
-      min-width: 0;
       overflow: visible;
-    }
-
-    .pkg-card::after {
-      content: '';
-      position: absolute;
-      inset: auto 0 0 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(0,240,255,0.15), transparent);
-      pointer-events: none;
     }
 
     .pkg-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 18px 48px rgba(0,0,0,0.42), 0 0 22px rgba(0,240,255,0.06);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.45), 0 0 24px rgba(0,240,255,0.07);
     }
 
     .pkg-card.featured {
       border-color: rgba(255,45,120,0.36);
-      box-shadow: 0 0 34px rgba(255,45,120,0.08);
+      box-shadow: 0 0 40px rgba(255,45,120,0.08);
     }
 
-    .pkg-card.best-value {
-      border-color: rgba(0,240,255,0.28);
-      box-shadow: 0 0 34px rgba(0,240,255,0.08);
+    .pkg-card.value {
+      border-color: rgba(0,240,255,0.3);
+      box-shadow: 0 0 34px rgba(0,240,255,0.06);
     }
 
     .pkg-badge {
@@ -541,11 +560,11 @@
       left: 50%;
       transform: translateX(-50%);
       color: #fff;
-      font-size: 0.56rem;
+      font-size: 0.58rem;
       font-weight: 600;
-      letter-spacing: 2.4px;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
-      padding: 5px 16px;
+      padding: 5px 18px;
       border-radius: 20px;
       white-space: nowrap;
       z-index: 5;
@@ -555,92 +574,126 @@
       background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
     }
 
-    .pkg-badge.value {
-      background: linear-gradient(135deg, rgba(0,240,255,0.96), rgba(0,165,255,0.92));
-      color: #051017;
+    .pkg-badge.best {
+      background: linear-gradient(135deg, rgba(0,240,255,0.98), rgba(0,165,255,0.92));
+      color: #041015;
     }
 
     .pkg-tier {
-      font-size: 0.58rem;
-      letter-spacing: 3.5px;
+      font-size: 0.62rem;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      color: rgba(0,240,255,0.55);
-      margin-bottom: 7px;
+      color: rgba(0,240,255,0.6);
+      margin-bottom: 8px;
       font-weight: 400;
     }
 
     .pkg-name {
-      font-size: 1.12rem;
+      font-size: 1.32rem;
       font-weight: 700;
       color: #fff;
-      margin-bottom: 8px;
-      letter-spacing: 0.8px;
-      line-height: 1.15;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
     }
 
     .pkg-tagline {
-      font-size: 0.77rem;
-      color: rgba(232,232,240,0.44);
+      font-size: 0.8rem;
+      color: rgba(232,232,240,0.42);
       font-weight: 300;
       font-style: italic;
-      margin-bottom: 18px;
-      line-height: 1.58;
-      min-height: 64px;
+      margin-bottom: 20px;
+      line-height: 1.65;
+      min-height: 60px;
     }
 
     .pkg-price-wrap {
-      margin-bottom: 6px;
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      margin-bottom: 2px;
+      color: #fff;
+      line-height: 1;
+      flex-wrap: nowrap;
     }
 
-    .pkg-price {
-      font-size: 2rem;
+    .pkg-price-symbol {
+      font-size: 1.35rem;
+      font-weight: 300;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+
+    .pkg-price-value {
+      font-size: 2.45rem;
       font-weight: 300;
       color: #fff;
       letter-spacing: -1px;
-      line-height: 1;
+      line-height: 0.95;
+    }
+
+    .pkg-price-unit {
+      font-size: 0.8rem;
+      color: rgba(232,232,240,0.5);
+      font-weight: 300;
+      letter-spacing: 1px;
+      margin-left: 4px;
+      margin-bottom: 5px;
       white-space: nowrap;
     }
 
-    .pkg-price sup {
-      font-size: 0.92rem;
-      vertical-align: super;
-      font-weight: 400;
-      color: rgba(232,232,240,0.6);
-    }
-
-    .pkg-price sub {
-      font-size: 0.7rem;
-      color: rgba(232,232,240,0.42);
-      font-weight: 300;
-      letter-spacing: 1px;
-      vertical-align: baseline;
-    }
-
-    .pkg-price-note {
-      font-size: 0.64rem;
-      letter-spacing: 1.4px;
+    .pkg-duration {
+      font-size: 0.68rem;
+      color: rgba(232,232,240,0.35);
+      letter-spacing: 2px;
       text-transform: uppercase;
-      margin-bottom: 20px;
-      font-weight: 500;
-      line-height: 1.45;
-      min-height: 34px;
-      color: var(--success);
-    }
-
-    .pkg-price-note.is-muted {
-      color: rgba(232,232,240,0.46);
-    }
-
-    .pkg-divider {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, rgba(0,240,255,0.16), transparent);
       margin-bottom: 18px;
     }
 
-    .pkg-includes-label {
+    .pkg-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding: 10px 12px;
+      border: 1px solid rgba(0,240,255,0.08);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .pkg-controls label {
       font-size: 0.58rem;
       letter-spacing: 2.8px;
+      text-transform: uppercase;
+      color: rgba(232,232,240,0.42);
+      font-weight: 600;
+    }
+
+    .pkg-hours-select {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(0,240,255,0.14);
+      color: #fff;
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.78rem;
+      outline: none;
+    }
+
+    .pkg-note {
+      font-size: 0.62rem;
+      color: var(--success);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      line-height: 1.45;
+      min-height: 16px;
+    }
+
+    .pkg-includes-label {
+      font-size: 0.62rem;
+      letter-spacing: 3px;
       text-transform: uppercase;
       color: rgba(232,232,240,0.3);
       margin-bottom: 12px;
@@ -649,47 +702,217 @@
 
     .pkg-includes {
       list-style: none;
-      margin-bottom: 22px;
+      margin-bottom: 24px;
       flex: 1;
     }
 
     .pkg-includes li {
-      font-size: 0.76rem;
-      color: rgba(232,232,240,0.68);
+      font-size: 0.82rem;
+      color: rgba(232,232,240,0.65);
       padding: 7px 0;
       border-bottom: 1px solid rgba(255,255,255,0.04);
       display: flex;
       align-items: flex-start;
-      gap: 9px;
+      gap: 10px;
       font-weight: 300;
-      line-height: 1.48;
+      line-height: 1.5;
     }
 
     .pkg-includes li::before {
       content: '';
       width: 5px;
       height: 5px;
-      margin-top: 7px;
       border-radius: 50%;
       background: var(--neon-blue);
       flex-shrink: 0;
       opacity: 0.78;
+      margin-top: 7px;
     }
 
-    .pkg-includes li.new {
+    .pkg-includes li.highlight {
       color: rgba(232,232,240,0.92);
     }
 
-    .pkg-includes li.new::before {
+    .pkg-includes li.highlight::before {
       background: var(--neon-pink);
       opacity: 1;
-      box-shadow: 0 0 10px rgba(255,45,120,0.45);
+    }
+
+    .pkg-footer-note {
+      font-size: 0.66rem;
+      color: rgba(77,255,145,0.8);
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+      font-weight: 400;
+      text-transform: uppercase;
+      line-height: 1.45;
+      min-height: 30px;
+    }
+
+    .btn-full-blue,
+    .btn-full-pink {
+      width: 100%;
+      text-align: center;
+      padding: 14px 16px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 2.8px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
+    }
+
+    .btn-full-blue {
+      background: transparent;
+      color: var(--neon-blue);
+      border: 1.5px solid var(--neon-blue);
+    }
+
+    .btn-full-blue:hover {
+      background: rgba(0,240,255,0.08);
+      box-shadow: 0 0 26px rgba(0,240,255,0.22);
+      transform: translateY(-2px);
+    }
+
+    .btn-full-pink {
+      background: transparent;
+      color: var(--neon-pink);
+      border: 1.5px solid var(--neon-pink);
+    }
+
+    .btn-full-pink:hover {
+      background: rgba(255,45,120,0.08);
+      box-shadow: 0 0 26px rgba(255,45,120,0.22);
+      transform: translateY(-2px);
+    }
+
+    .funnel-section {
+      border: 1px solid rgba(0,240,255,0.08);
+      border-radius: 16px;
+      padding: 42px 34px;
+      background: linear-gradient(180deg, rgba(10,10,26,0.96), rgba(8,8,22,0.98));
+      box-shadow: 0 14px 38px rgba(0,0,0,0.18);
+      margin-bottom: 80px;
+    }
+
+    .funnel-steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .funnel-step {
+      border: 1px solid rgba(255,45,120,0.1);
+      border-radius: 12px;
+      padding: 18px 18px;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .funnel-step-number {
+      font-size: 0.58rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(0,240,255,0.72);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .funnel-step-title {
+      font-size: 0.98rem;
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .funnel-step-copy {
+      font-size: 0.82rem;
+      color: rgba(232,232,240,0.52);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .custom-build-section {
+      text-align: center;
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 0 20px;
+    }
+
+    .custom-build-card {
+      border: 1px solid rgba(0,240,255,0.12);
+      border-radius: 16px;
+      padding: 68px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .custom-build-card::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at center, rgba(0,240,255,0.03) 0%, transparent 55%);
+      animation: rotateBg 16s linear infinite;
+    }
+
+    .custom-build-card h2 {
+      font-size: clamp(1.5rem, 3.5vw, 2.35rem);
+      font-weight: 300;
+      font-style: italic;
+      color: #fff;
+      margin-bottom: 18px;
+      position: relative;
+      line-height: 1.3;
+    }
+
+    .custom-build-card h2 strong {
+      font-weight: 700;
+      font-style: normal;
+      color: var(--neon-pink);
+    }
+
+    .custom-build-card p {
+      font-size: 0.95rem;
+      color: rgba(232,232,240,0.52);
+      line-height: 1.9;
+      max-width: 560px;
+      margin: 0 auto 34px;
+      position: relative;
+      font-weight: 300;
+    }
+
+    .btn-outline-blue-large {
+      background: transparent;
+      color: var(--neon-blue);
+      border: 1.5px solid var(--neon-blue);
+      padding: 16px 40px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-outline-blue-large:hover {
+      background: rgba(0,240,255,0.08);
+      box-shadow: 0 0 30px rgba(0,240,255,0.35);
+      transform: translateY(-2px);
     }
 
     footer {
       text-align: center;
       padding: 60px 48px 100px;
       border-top: 1px solid rgba(0,240,255,0.08);
+      margin-top: 40px;
     }
 
     .footer-logo img {
@@ -737,28 +960,55 @@
       margin-top: 32px;
     }
 
-    @media (max-width: 1280px) {
-      .packages-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+    @keyframes rotateBg {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
     }
 
-    @media (max-width: 1024px) {
-      .visual-strip {
+    @media (max-width: 1100px) {
+      .funnel-steps {
         grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 768px) {
-      nav { padding: 10px 24px; }
-      .nav-links { display: none; }
-      .page-hero { padding: 145px 24px 70px; }
-      .packages-wrap { padding: 60px 24px; }
-      .packages-grid { grid-template-columns: 1fr; }
-      .comparison-table th, .comparison-table td { padding: 10px 10px; }
-      .comparison-table { font-size: 0.72rem; }
-      .quote-banner-wrap { padding: 0 24px 22px; }
-      footer { padding: 60px 24px 100px; }
+      nav {
+        padding: 10px 18px;
+      }
+
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: flex;
+      }
+
+      .page-hero {
+        padding: 145px 24px 54px;
+      }
+
+      .packages-wrap {
+        padding: 60px 24px 90px;
+      }
+
+      .packages-grid {
+        grid-template-columns: 1fr;
+        min-width: 0;
+      }
+
+      .comparison-table {
+        min-width: 900px;
+      }
+
+      .custom-build-card {
+        padding: 46px 28px;
+      }
+
+      footer {
+        padding: 60px 24px 100px;
+      }
     }
   </style>
 </head>
@@ -768,29 +1018,47 @@
     <a href="index.html" class="nav-logo">
       <img src="logo.png" alt="Heat District Productions" />
     </a>
+
     <ul class="nav-links">
-      <li><a href="services.html">Services</a></li>
+      <li><a href="services.html">Products</a></li>
       <li><a href="packages.html" class="active">Packages</a></li>
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="team.html">Our Team</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
+
     <a href="contact.html" class="nav-cta">Book Now</a>
+
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
 
+  <div class="mobile-nav" id="mobileNav">
+    <a href="services.html">Products</a>
+    <a href="packages.html">Packages</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="team.html">Our Team</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="mobile-nav-book">Book Now</a>
+  </div>
+
   <div class="page-hero">
-    <p class="page-hero-eyebrow">Transparent Pricing · Pre-Built Packages · Optional Upgrades</p>
+    <p class="page-hero-eyebrow">Transparent Pricing · Built for Miami Events · Customizable Next Step</p>
     <h1>Choose Your<br><strong>Production Package</strong></h1>
     <p>
-      Start with a package built to save you money versus piecing everything together individually.
-      Once you choose your package, you’ll continue to the next step to add any eligible upgrades.
+      Start with the package that fits your event best, then continue to the next step to add upgrades.
+      This page is meant to keep the decision clean: compare first, choose second, customize after.
     </p>
 
     <div class="hero-contact-box">
-      <div class="hero-contact-kicker">Need Something Custom?</div>
-      <div class="hero-contact-title">Contact Us for a Quote</div>
+      <div class="hero-contact-kicker">Questions Before You Book?</div>
+      <div class="hero-contact-title">Contact Us for a Quote or Custom Direction</div>
       <div class="hero-contact-copy">
-        Need a custom build, standalone services, or a larger event setup? Reach out directly and we’ll help you put together the right package, add-ons, and production plan.
+        If you are between packages, need a custom setup, or want help choosing the right production level for your event,
+        reach out and we’ll point you in the right direction.
       </div>
       <a href="contact.html" class="hero-contact-btn">Contact Us</a>
     </div>
@@ -800,281 +1068,363 @@
 
   <div class="packages-wrap">
 
-    <div class="section-block">
-      <p class="section-label">Compare First</p>
-      <h2 class="section-title">See the Difference <strong>Before You Decide</strong></h2>
-      <p class="section-sub">
-        The fastest way to choose is to compare the full lineup side by side. Each level builds clearly on the last, so the upgrade path feels easier to understand and easier to buy.
+    <div class="comparison-wrap">
+      <p class="comparison-label">Compare</p>
+      <h2 class="comparison-title">Side by Side — <strong>What's in Each Package</strong></h2>
+      <p class="comparison-sub">
+        Compare the 4 strongest package options first, then choose the one that fits your event and continue to add-ons.
       </p>
 
-      <div class="comparison-shell">
-        <div class="comparison-scroll">
-          <table class="comparison-table">
-            <thead>
-              <tr>
-                <th>Feature</th>
-                <th>The Spark<br><span class="chart-price">$1,295</span></th>
-                <th class="featured-col">The Blaze<br><span class="chart-price">$2,195</span></th>
-                <th>The Inferno<br><span class="chart-price">$2,995</span></th>
-                <th>The District<br><span class="chart-price">$4,995</span></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="group-row">
-                <td colspan="5">Core Production</td>
-              </tr>
-              <tr>
-                <td>Sound System</td>
-                <td><span class="check">✓</span></td>
-                <td class="featured-col"><span class="check-pink">✓</span></td>
-                <td><span class="check">✓</span></td>
-                <td><span class="check">✓</span></td>
-              </tr>
-              <tr>
-                <td>Professional DJ</td>
-                <td><span class="check">✓</span></td>
-                <td class="featured-col"><span class="check-pink">✓</span></td>
-                <td><span class="check">✓</span></td>
-                <td><span class="check">✓</span></td>
-              </tr>
-              <tr>
-                <td>Microphone</td>
-                <td><span class="check">✓</span></td>
-                <td class="featured-col"><span class="check-pink">✓</span></td>
-                <td><span class="check">✓</span></td>
-                <td><span class="check">✓</span></td>
-              </tr>
-              <tr>
-                <td>Setup & Breakdown</td>
-                <td><span class="check">✓</span></td>
-                <td class="featured-col"><span class="check-pink">✓</span></td>
-                <td><span class="check">✓</span></td>
-                <td><span class="check">✓</span></td>
-              </tr>
-              <tr>
-                <td>Coverage Time</td>
-                <td><span class="qty">5 Hours</span></td>
-                <td class="featured-col"><span class="qty">5 Hours</span></td>
-                <td><span class="qty">5 Hours</span></td>
-                <td><span class="qty">5 Hours</span></td>
-              </tr>
+      <div class="comparison-table-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>
+                <span class="th-name">The Spark</span>
+                <span class="th-price">$1,295</span>
+              </th>
+              <th class="featured-col">
+                <span class="th-name">The Blaze</span>
+                <span class="th-price">$2,195</span>
+              </th>
+              <th>
+                <span class="th-name">The Inferno</span>
+                <span class="th-price">$2,995</span>
+              </th>
+              <th>
+                <span class="th-name">The District</span>
+                <span class="th-price">$4,995</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Sound System</td>
+              <td><span class="check">✓</span></td>
+              <td class="featured-col"><span class="check-pink">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Professional DJ</td>
+              <td><span class="check">✓</span></td>
+              <td class="featured-col"><span class="check-pink">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Microphone</td>
+              <td><span class="check">✓</span></td>
+              <td class="featured-col"><span class="check-pink">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Uplights</td>
+              <td><span class="dash">—</span></td>
+              <td class="featured-col"><span class="qty">10 units</span></td>
+              <td><span class="qty">15 units</span></td>
+              <td><span class="qty">15 units</span></td>
+            </tr>
+            <tr>
+              <td>LED Light Bar</td>
+              <td><span class="dash">—</span></td>
+              <td class="featured-col"><span class="check-pink">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Moving Head Lights</td>
+              <td><span class="dash">—</span></td>
+              <td class="featured-col"><span class="qty">2 units</span></td>
+              <td><span class="qty">4 units</span></td>
+              <td><span class="qty">4 units</span></td>
+            </tr>
+            <tr>
+              <td>Photo Booth</td>
+              <td><span class="dash">—</span></td>
+              <td class="featured-col"><span class="check-pink">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Photography</td>
+              <td><span class="dash">—</span></td>
+              <td class="featured-col"><span class="dash">—</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Fog Machines</td>
+              <td><span class="dash">—</span></td>
+              <td class="featured-col"><span class="qty">2 units</span></td>
+              <td><span class="qty">2 units</span></td>
+              <td><span class="qty">2 units</span></td>
+            </tr>
+            <tr>
+              <td>Cold Spark Machines</td>
+              <td><span class="dash">—</span></td>
+              <td class="featured-col"><span class="dash">—</span></td>
+              <td><span class="qty">2 units</span></td>
+              <td><span class="qty">4 units</span></td>
+            </tr>
+            <tr>
+              <td>Trussing</td>
+              <td><span class="dash">—</span></td>
+              <td class="featured-col"><span class="qty">2 Totems</span></td>
+              <td><span class="qty">Goal Post + 2 Totems or 4 Totems</span></td>
+              <td><span class="qty">Goal Post + 2 Totems or 4 Totems</span></td>
+            </tr>
+            <tr>
+              <td>LED Screen / Wall</td>
+              <td><span class="dash">—</span></td>
+              <td class="featured-col"><span class="dash">—</span></td>
+              <td><span class="dash">—</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Base Coverage</td>
+              <td><span class="qty">5 hours</span></td>
+              <td class="featured-col"><span class="qty">5 hours</span></td>
+              <td><span class="qty">5 hours</span></td>
+              <td><span class="qty">5 hours</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-              <tr class="group-row">
-                <td colspan="5">Lighting & Atmosphere</td>
-              </tr>
-              <tr>
-                <td>Uplights</td>
-                <td><span class="dash">—</span></td>
-                <td class="featured-col"><span class="qty">10 Units</span></td>
-                <td><span class="qty">15 Units</span></td>
-                <td><span class="qty">15 Units</span></td>
-              </tr>
-              <tr>
-                <td>LED Light Bar</td>
-                <td><span class="dash">—</span></td>
-                <td class="featured-col"><span class="check-pink">✓</span></td>
-                <td><span class="check">✓</span></td>
-                <td><span class="check">✓</span></td>
-              </tr>
-              <tr>
-                <td>Moving Head Lights</td>
-                <td><span class="dash">—</span></td>
-                <td class="featured-col"><span class="qty">2 Units</span></td>
-                <td><span class="qty">4 Units</span></td>
-                <td><span class="qty">4 Units</span></td>
-              </tr>
-              <tr>
-                <td>Fog Machines</td>
-                <td><span class="dash">—</span></td>
-                <td class="featured-col"><span class="qty">2 Units</span></td>
-                <td><span class="qty">2 Units</span></td>
-                <td><span class="qty">2 Units</span></td>
-              </tr>
-              <tr>
-                <td>Cold Spark Machines</td>
-                <td><span class="dash">—</span></td>
-                <td class="featured-col"><span class="dash">—</span></td>
-                <td><span class="qty">2 Units</span></td>
-                <td><span class="qty">4 Units</span></td>
-              </tr>
+    <div class="packages-section">
+      <p class="packages-label">Choose Your Tier</p>
+      <h2 class="packages-title">Pick the Package, Then <strong>Customize the Rest</strong></h2>
+      <p class="packages-sub">
+        Choose a package below. The next step takes the client to add-ons so the package stays the foundation and upgrades happen after.
+      </p>
 
-              <tr class="group-row">
-                <td colspan="5">Visual / Premium Additions</td>
-              </tr>
-              <tr>
-                <td>Photo Booth</td>
-                <td><span class="dash">—</span></td>
-                <td class="featured-col"><span class="check-pink">✓</span></td>
-                <td><span class="check">✓</span></td>
-                <td><span class="check">✓</span></td>
-              </tr>
-              <tr>
-                <td>Photography</td>
-                <td><span class="dash">—</span></td>
-                <td class="featured-col"><span class="dash">—</span></td>
-                <td><span class="check">✓</span></td>
-                <td><span class="check">✓</span></td>
-              </tr>
-              <tr>
-                <td>LED Screen / Wall</td>
-                <td><span class="dash">—</span></td>
-                <td class="featured-col"><span class="dash">—</span></td>
-                <td><span class="dash">—</span></td>
-                <td><span class="check">✓</span></td>
-              </tr>
-              <tr>
-                <td>Staging / Totems</td>
-                <td><span class="dash">—</span></td>
-                <td class="featured-col"><span class="qty">2 Totems</span></td>
-                <td><span class="qty">Goal Post + 2 Totems<br>or 4 Totems</span></td>
-                <td><span class="qty">Goal Post + 2 Totems<br>or 4 Totems</span></td>
-              </tr>
-            </tbody>
-          </table>
+      <div class="packages-grid-scroll">
+        <div class="packages-grid">
+
+          <div class="pkg-card" data-package-name="The Spark" data-base-price="1295">
+            <p class="pkg-tier">Level One</p>
+            <h3 class="pkg-name">The Spark</h3>
+            <p class="pkg-tagline">Clean sound, professional DJ, and the essentials for a polished smaller-scale event.</p>
+
+            <div class="pkg-price-wrap">
+              <span class="pkg-price-symbol">$</span>
+              <span class="pkg-price-value">1,295</span>
+              <span class="pkg-price-unit">/ 5hrs</span>
+            </div>
+
+            <p class="pkg-duration">Essential Entry</p>
+
+            <div class="pkg-controls">
+              <label>Hours</label>
+              <select class="pkg-hours-select">
+                <option value="2">2 hrs</option>
+                <option value="3">3 hrs</option>
+                <option value="4">4 hrs</option>
+                <option value="5" selected>5 hrs</option>
+                <option value="6">6 hrs</option>
+                <option value="7">7 hrs</option>
+                <option value="8">8 hrs</option>
+              </select>
+            </div>
+
+            <p class="pkg-note">Flexible 2–8hr pricing</p>
+
+            <p class="pkg-includes-label">What's Included</p>
+            <ul class="pkg-includes">
+              <li>Sound System — 2 Subs, 2 Tops</li>
+              <li>Professional DJ + Full Deck Setup</li>
+              <li>Microphone</li>
+              <li>Professional Setup & Breakdown</li>
+            </ul>
+
+            <p class="pkg-footer-note">Great first step into a polished event setup</p>
+            <button class="btn-full-blue" onclick="choosePackage(this)">Continue to Add-Ons</button>
+          </div>
+
+          <div class="pkg-card featured" data-package-name="The Blaze" data-base-price="2195">
+            <div class="pkg-badge popular">Most Popular</div>
+            <p class="pkg-tier">Level Two</p>
+            <h3 class="pkg-name">The Blaze</h3>
+            <p class="pkg-tagline">The strongest all-around package for clients who want energy, lighting, and guest interaction.</p>
+
+            <div class="pkg-price-wrap">
+              <span class="pkg-price-symbol">$</span>
+              <span class="pkg-price-value">2,195</span>
+              <span class="pkg-price-unit">/ 5hrs</span>
+            </div>
+
+            <p class="pkg-duration">Full Experience</p>
+
+            <div class="pkg-controls">
+              <label>Hours</label>
+              <select class="pkg-hours-select">
+                <option value="2">2 hrs</option>
+                <option value="3">3 hrs</option>
+                <option value="4">4 hrs</option>
+                <option value="5" selected>5 hrs</option>
+                <option value="6">6 hrs</option>
+                <option value="7">7 hrs</option>
+                <option value="8">8 hrs</option>
+              </select>
+            </div>
+
+            <p class="pkg-note">Flexible 2–8hr pricing</p>
+
+            <p class="pkg-includes-label">What's Included</p>
+            <ul class="pkg-includes">
+              <li>Sound System</li>
+              <li>Professional DJ + Full Deck Setup</li>
+              <li>10 Uplights</li>
+              <li>LED Light Bar</li>
+              <li class="highlight">2 Moving Head Lights</li>
+              <li class="highlight">Premium Photo Booth</li>
+              <li class="highlight">2x Fog Machines</li>
+              <li class="highlight">2 Totems</li>
+            </ul>
+
+            <p class="pkg-footer-note">The best all-around choice for most events</p>
+            <button class="btn-full-pink" onclick="choosePackage(this)">Continue to Add-Ons</button>
+          </div>
+
+          <div class="pkg-card value" data-package-name="The Inferno" data-base-price="2995">
+            <div class="pkg-badge best">Best Value</div>
+            <p class="pkg-tier">Level Three</p>
+            <h3 class="pkg-name">The Inferno</h3>
+            <p class="pkg-tagline">Premium production with photography, sparks, stronger lighting, and larger staging presence.</p>
+
+            <div class="pkg-price-wrap">
+              <span class="pkg-price-symbol">$</span>
+              <span class="pkg-price-value">2,995</span>
+              <span class="pkg-price-unit">/ 5hrs</span>
+            </div>
+
+            <p class="pkg-duration">Premium Production</p>
+
+            <div class="pkg-controls">
+              <label>Hours</label>
+              <select class="pkg-hours-select">
+                <option value="2">2 hrs</option>
+                <option value="3">3 hrs</option>
+                <option value="4">4 hrs</option>
+                <option value="5" selected>5 hrs</option>
+                <option value="6">6 hrs</option>
+                <option value="7">7 hrs</option>
+                <option value="8">8 hrs</option>
+              </select>
+            </div>
+
+            <p class="pkg-note">Flexible 2–8hr pricing</p>
+
+            <p class="pkg-includes-label">What's Included</p>
+            <ul class="pkg-includes">
+              <li>Sound System</li>
+              <li>Professional DJ + Full Deck Setup</li>
+              <li>15 Uplights</li>
+              <li>LED Light Bar</li>
+              <li class="highlight">4 Moving Head Lights</li>
+              <li class="highlight">Premium Photo Booth</li>
+              <li class="highlight">Photography</li>
+              <li class="highlight">2x Cold Spark Machines</li>
+              <li>2x Fog Machines</li>
+              <li class="highlight">Choice of Goal Post + 2 Totems or 4 Totems</li>
+            </ul>
+
+            <p class="pkg-footer-note">The smartest step-up before luxury pricing</p>
+            <button class="btn-full-blue" onclick="choosePackage(this)">Continue to Add-Ons</button>
+          </div>
+
+          <div class="pkg-card" data-package-name="The District" data-base-price="4995">
+            <p class="pkg-tier">Level Four</p>
+            <h3 class="pkg-name">The District</h3>
+            <p class="pkg-tagline">The luxury statement package with LED wall presence, maximum staging, and high-impact visual production.</p>
+
+            <div class="pkg-price-wrap">
+              <span class="pkg-price-symbol">$</span>
+              <span class="pkg-price-value">4,995</span>
+              <span class="pkg-price-unit">/ 5hrs</span>
+            </div>
+
+            <p class="pkg-duration">Luxury Tier</p>
+
+            <div class="pkg-controls">
+              <label>Hours</label>
+              <select class="pkg-hours-select">
+                <option value="2">2 hrs</option>
+                <option value="3">3 hrs</option>
+                <option value="4">4 hrs</option>
+                <option value="5" selected>5 hrs</option>
+                <option value="6">6 hrs</option>
+                <option value="7">7 hrs</option>
+                <option value="8">8 hrs</option>
+              </select>
+            </div>
+
+            <p class="pkg-note">Flexible 2–8hr pricing</p>
+
+            <p class="pkg-includes-label">What's Included</p>
+            <ul class="pkg-includes">
+              <li>Sound System</li>
+              <li>Professional DJ + Full Deck Setup</li>
+              <li>15 Uplights</li>
+              <li>LED Light Bar</li>
+              <li class="highlight">4 Moving Head Lights</li>
+              <li class="highlight">LED Screen / Wall Panel</li>
+              <li class="highlight">Premium Photo Booth</li>
+              <li class="highlight">Photography</li>
+              <li class="highlight">4x Cold Spark Machines</li>
+              <li>2x Fog Machines</li>
+              <li class="highlight">Choice of Goal Post + 2 Totems or 4 Totems</li>
+            </ul>
+
+            <p class="pkg-footer-note">For clients who want the biggest visual statement</p>
+            <button class="btn-full-blue" onclick="choosePackage(this)">Continue to Add-Ons</button>
+          </div>
+
         </div>
       </div>
     </div>
 
-    <div class="section-block">
-      <div class="packages-header">
-        <p class="section-label">Packages</p>
-        <h2 class="section-title">The Strongest <strong>4-Package Ladder</strong></h2>
-        <p class="section-sub">
-          Red bullets show what is new at that level compared to the package right before it. This keeps the lineup cleaner, easier to compare, and stronger from a sales standpoint.
+    <div class="funnel-section">
+      <p class="funnel-label">Simple Booking Flow</p>
+      <h2 class="funnel-title">Keep the Decision Clean — <strong>Package First, Upgrades Second</strong></h2>
+      <p class="funnel-sub">
+        This page is designed to avoid confusion. Packages stay the main offer, then the next page handles the upgrade options.
+      </p>
+
+      <div class="funnel-steps">
+        <div class="funnel-step">
+          <div class="funnel-step-number">Step 01</div>
+          <div class="funnel-step-title">Choose a Package</div>
+          <div class="funnel-step-copy">Start with the level that fits the scale and look of the event.</div>
+        </div>
+
+        <div class="funnel-step">
+          <div class="funnel-step-number">Step 02</div>
+          <div class="funnel-step-title">Add Upgrades</div>
+          <div class="funnel-step-copy">Continue to the add-ons page only after a package has been selected.</div>
+        </div>
+
+        <div class="funnel-step">
+          <div class="funnel-step-number">Step 03</div>
+          <div class="funnel-step-title">Continue to Checkout</div>
+          <div class="funnel-step-copy">The next steps later can handle contracts, waivers, and deposit collection.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="custom-build-section">
+      <div class="custom-build-card">
+        <p class="comparison-label" style="position:relative; z-index:1; margin-bottom:18px;">Need Something Different?</p>
+        <h2>Don't need a full package?<br><strong>Build It Your Own Way.</strong></h2>
+        <p>
+          If your event needs standalone products, custom rentals, or a mix of individual services instead of a package,
+          use the Products page to build your own setup.
         </p>
-      </div>
-
-      <div class="visual-strip">
-        <div class="visual-card">
-          <div class="visual-card-content">
-            <div class="visual-kicker">Placeholder Photo</div>
-            <div class="visual-title">Packed Dance Floor Crowd</div>
-            <div class="visual-copy">Swap this later with a real wide crowd shot showing energy, movement, and lighting.</div>
-          </div>
-        </div>
-        <div class="visual-card">
-          <div class="visual-card-content">
-            <div class="visual-kicker">Placeholder Photo</div>
-            <div class="visual-title">Lighting + Production Setup</div>
-            <div class="visual-copy">Best used for moving heads, uplighting, truss, and a strong front-facing setup image.</div>
-          </div>
-        </div>
-        <div class="visual-card">
-          <div class="visual-card-content">
-            <div class="visual-kicker">Placeholder Photo</div>
-            <div class="visual-title">Crowd Reaction / Signature Moment</div>
-            <div class="visual-copy">Ideal for a photo booth line, cold sparks reveal, or a high-energy client moment.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="packages-grid">
-
-        <div class="pkg-card" onclick="choosePackage('The Spark', 1295)">
-          <p class="pkg-tier">Essential Entry</p>
-          <h2 class="pkg-name">The Spark</h2>
-          <p class="pkg-tagline">A clean, professional foundation for smaller celebrations that still need real sound and a polished DJ setup.</p>
-          <div class="pkg-price-wrap">
-            <div class="pkg-price"><sup>$</sup>1,295<sub> / 5hrs</sub></div>
-          </div>
-          <p class="pkg-price-note is-muted">Reserve with 20% deposit</p>
-          <div class="pkg-divider"></div>
-          <p class="pkg-includes-label">Included</p>
-          <ul class="pkg-includes">
-            <li>Sound System — 2 Subs, 2 Tops</li>
-            <li>Professional DJ + Full Deck Setup</li>
-            <li>Microphone</li>
-            <li>Professional Setup & Breakdown</li>
-            <li>5-Hour Coverage</li>
-          </ul>
-          <button class="btn-plan" onclick="event.stopPropagation(); choosePackage('The Spark', 1295)">Choose Package</button>
-        </div>
-
-        <div class="pkg-card featured" onclick="choosePackage('The Blaze', 2195)">
-          <div class="pkg-badge popular">Most Popular</div>
-          <p class="pkg-tier">Full Event Experience</p>
-          <h2 class="pkg-name">The Blaze</h2>
-          <p class="pkg-tagline">The clearest next step from the entry package. This is where the event starts feeling like a real production instead of a basic setup.</p>
-          <div class="pkg-price-wrap">
-            <div class="pkg-price"><sup>$</sup>2,195<sub> / 5hrs</sub></div>
-          </div>
-          <p class="pkg-price-note">Most requested package</p>
-          <div class="pkg-divider"></div>
-          <p class="pkg-includes-label">Included</p>
-          <ul class="pkg-includes">
-            <li>Sound System — 2 Subs, 2 Tops</li>
-            <li>Professional DJ + Full Deck Setup</li>
-            <li>Microphone</li>
-            <li class="new">10 Uplights</li>
-            <li class="new">LED Light Bar</li>
-            <li class="new">2 Moving Head Lights</li>
-            <li class="new">Premium Photo Booth</li>
-            <li class="new">2x Fog Machines</li>
-            <li class="new">2 Totems</li>
-            <li>Professional Setup & Breakdown</li>
-            <li>5-Hour Coverage</li>
-          </ul>
-          <button class="btn-plan is-accent" onclick="event.stopPropagation(); choosePackage('The Blaze', 2195)">Choose Package</button>
-        </div>
-
-        <div class="pkg-card best-value" onclick="choosePackage('The Inferno', 2995)">
-          <div class="pkg-badge value">Best Value</div>
-          <p class="pkg-tier">Premium Production</p>
-          <h2 class="pkg-name">The Inferno</h2>
-          <p class="pkg-tagline">This is the strongest value jump in the lineup. It adds premium visual effects, included photography, and a bigger stage presence.</p>
-          <div class="pkg-price-wrap">
-            <div class="pkg-price"><sup>$</sup>2,995<sub> / 5hrs</sub></div>
-          </div>
-          <p class="pkg-price-note">Biggest production jump</p>
-          <div class="pkg-divider"></div>
-          <p class="pkg-includes-label">Included</p>
-          <ul class="pkg-includes">
-            <li>Sound System — 2 Subs, 2 Tops</li>
-            <li>Professional DJ + Full Deck Setup</li>
-            <li>Microphone</li>
-            <li class="new">15 Uplights</li>
-            <li>LED Light Bar</li>
-            <li class="new">4 Moving Head Lights</li>
-            <li>Premium Photo Booth</li>
-            <li class="new">Photography</li>
-            <li class="new">2x Cold Spark Machines</li>
-            <li>2x Fog Machines</li>
-            <li class="new">Choice of Staging: Goal Post + 2 Totems or 4 Totems</li>
-            <li>Professional Setup & Breakdown</li>
-            <li>5-Hour Coverage</li>
-          </ul>
-          <button class="btn-plan" onclick="event.stopPropagation(); choosePackage('The Inferno', 2995)">Choose Package</button>
-        </div>
-
-        <div class="pkg-card" onclick="choosePackage('The District', 4995)">
-          <p class="pkg-tier">Luxury Tier</p>
-          <h2 class="pkg-name">The District</h2>
-          <p class="pkg-tagline">Built for clients who want the biggest visual statement in the lineup and need the event to feel unmistakably high-end.</p>
-          <div class="pkg-price-wrap">
-            <div class="pkg-price"><sup>$</sup>4,995<sub> / 5hrs</sub></div>
-          </div>
-          <p class="pkg-price-note">Premium LED visual tier</p>
-          <div class="pkg-divider"></div>
-          <p class="pkg-includes-label">Included</p>
-          <ul class="pkg-includes">
-            <li>Sound System — 2 Subs, 2 Tops</li>
-            <li>Professional DJ + Full Deck Setup</li>
-            <li>Microphone</li>
-            <li>15 Uplights</li>
-            <li>LED Light Bar</li>
-            <li>4 Moving Head Lights</li>
-            <li class="new">LED Screen / Wall Panel</li>
-            <li>Premium Photo Booth</li>
-            <li class="new">Photography</li>
-            <li class="new">4x Cold Spark Machines</li>
-            <li>2x Fog Machines</li>
-            <li class="new">Choice of Staging: Goal Post + 2 Totems or 4 Totems</li>
-            <li>Professional Setup & Breakdown</li>
-            <li>5-Hour Coverage</li>
-          </ul>
-          <button class="btn-plan" onclick="event.stopPropagation(); choosePackage('The District', 4995)">Choose Package</button>
-        </div>
-
+        <a href="services.html" class="btn-outline-blue-large">Browse Individual Products</a>
       </div>
     </div>
 
@@ -1091,27 +1441,147 @@
       <a href="https://instagram.com/heatdistrictproductions" target="_blank">@HeatDistrictProductions</a>
       <a href="https://www.heatdistrictproductions.com">heatdistrictproductions.com</a>
     </div>
-    <p class="footer-copy">© 2025 Heat District Productions &nbsp;·&nbsp; Miami & Broward County &nbsp;·&nbsp; All Rights Reserved</p>
+    <p class="footer-copy">© 2025 Heat District Productions · Miami & Broward County · All Rights Reserved</p>
   </footer>
 
   <script>
-    function choosePackage(name, price) {
-      const packageSelection = {
-        package: name,
-        packagePrice: price,
-        addons: [],
-        addonsTotal: 0,
-        total: price
-      };
+    const PACKAGE_REDUCTION_MULTIPLIERS = {
+      2: 0.85,
+      3: 0.90,
+      4: 0.95,
+      5: 1.00
+    };
 
-      try {
-        sessionStorage.setItem('heatDistrictEstimate', JSON.stringify(packageSelection));
-      } catch (error) {
-        console.warn('Could not save package selection.', error);
+    function roundToFive(value) {
+      return Math.round(value / 5) * 5;
+    }
+
+    function calculatePackagePrice(basePrice, hours) {
+      if (hours <= 5) {
+        const multiplier = PACKAGE_REDUCTION_MULTIPLIERS[hours] || 1;
+        return roundToFive(basePrice * multiplier);
       }
+
+      return basePrice + ((hours - 5) * 150);
+    }
+
+    function formatCurrency(value) {
+      return value.toLocaleString();
+    }
+
+    function updatePackageCard(card) {
+      const basePrice = Number(card.dataset.basePrice);
+      const hours = Number(card.querySelector('.pkg-hours-select').value);
+      const price = calculatePackagePrice(basePrice, hours);
+
+      card.querySelector('.pkg-price-value').textContent = formatCurrency(price);
+      card.querySelector('.pkg-price-unit').textContent = `/ ${hours}hrs`;
+    }
+
+    function initPackageCards() {
+      document.querySelectorAll('.pkg-card').forEach((card) => {
+        const select = card.querySelector('.pkg-hours-select');
+        if (!select) return;
+
+        select.addEventListener('change', () => updatePackageCard(card));
+        updatePackageCard(card);
+      });
+    }
+
+    function choosePackage(button) {
+      const card = button.closest('.pkg-card');
+      const packageName = card.dataset.packageName;
+      const basePrice = Number(card.dataset.basePrice);
+      const hours = Number(card.querySelector('.pkg-hours-select').value);
+      const packagePrice = calculatePackagePrice(basePrice, hours);
+
+      sessionStorage.setItem('heatDistrictSelectedPackage', JSON.stringify({
+        name: packageName,
+        basePrice: basePrice,
+        hours: hours,
+        total: packagePrice
+      }));
 
       window.location.href = 'addons.html';
     }
+
+    function applyIndexPreviewIfPresent() {
+      const previewRaw = sessionStorage.getItem('heatDistrictPackagePreview');
+      if (!previewRaw) return;
+
+      try {
+        const preview = JSON.parse(previewRaw);
+        if (!preview || !preview.name || !preview.hours) return;
+
+        const targetCard = Array.from(document.querySelectorAll('.pkg-card')).find(card => {
+          return card.dataset.packageName === preview.name;
+        });
+
+        if (!targetCard) return;
+
+        const select = targetCard.querySelector('.pkg-hours-select');
+        if (select) {
+          select.value = String(preview.hours);
+          updatePackageCard(targetCard);
+        }
+
+        setTimeout(() => {
+          targetCard.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+        }, 150);
+
+      } catch (e) {}
+
+      sessionStorage.removeItem('heatDistrictPackagePreview');
+    }
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+
+    function closeMobileMenu() {
+      mobileNav.classList.remove('open');
+      mobileMenuBtn.classList.remove('active');
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('mobile-menu-open');
+    }
+
+    function toggleMobileMenu() {
+      const isOpen = mobileNav.classList.contains('open');
+
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        mobileNav.classList.add('open');
+        mobileMenuBtn.classList.add('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('mobile-menu-open');
+      }
+    }
+
+    if (mobileMenuBtn && mobileNav) {
+      mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+      mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+          closeMobileMenu();
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        const clickedInsideNav = mobileNav.contains(e.target);
+        const clickedButton = mobileMenuBtn.contains(e.target);
+
+        if (!clickedInsideNav && !clickedButton && mobileNav.classList.contains('open')) {
+          closeMobileMenu();
+        }
+      });
+    }
+
+    initPackageCards();
+    applyIndexPreviewIfPresent();
   </script>
 
 </body>

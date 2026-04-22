@@ -14,12 +14,6 @@
       --card-bg: #0a0a1a;
       --text-light: #e8e8f0;
       --muted-white: rgba(232,232,240,0.5);
-      --success-bg: rgba(77,255,145,0.08);
-      --success-border: rgba(77,255,145,0.35);
-      --success-text: rgba(210,255,225,0.92);
-      --error-bg: rgba(255,45,120,0.08);
-      --error-border: rgba(255,45,120,0.28);
-      --error-text: rgba(255,190,212,0.92);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,9 +28,7 @@
 
     nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 1000;
       display: flex;
       justify-content: space-between;
@@ -166,50 +158,6 @@
       font-weight: 300;
     }
 
-    .quote-banner-wrap {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 48px 26px;
-    }
-
-    .quote-banner {
-      border: 1px solid rgba(255,45,120,0.2);
-      background:
-        linear-gradient(180deg, rgba(255,45,120,0.08), rgba(10,10,26,0.9)),
-        linear-gradient(90deg, rgba(0,240,255,0.03), rgba(255,45,120,0.03));
-      border-radius: 14px;
-      padding: 22px 26px;
-      box-shadow: 0 14px 40px rgba(0,0,0,0.25);
-    }
-
-    .quote-banner-kicker {
-      font-size: 0.62rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: rgba(0,240,255,0.72);
-      margin-bottom: 10px;
-      font-weight: 600;
-    }
-
-    .quote-banner h2 {
-      font-size: clamp(1.4rem, 3vw, 2.3rem);
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 10px;
-      line-height: 1.15;
-    }
-
-    .quote-banner h2 span {
-      color: var(--neon-pink);
-    }
-
-    .quote-banner p {
-      font-size: 0.9rem;
-      line-height: 1.8;
-      color: rgba(232,232,240,0.7);
-      max-width: 760px;
-    }
-
     .neon-divider {
       width: 100%;
       height: 1px;
@@ -300,9 +248,7 @@
       font-weight: 400;
     }
 
-    .contact-item a:hover {
-      color: var(--neon-blue);
-    }
+    .contact-item a:hover { color: var(--neon-blue); }
 
     .quick-points {
       margin-top: 24px;
@@ -332,6 +278,7 @@
       box-shadow: 0 0 10px rgba(255,45,120,0.4);
     }
 
+    /* ── FORM ── */
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -344,9 +291,7 @@
       gap: 8px;
     }
 
-    .form-group.full {
-      grid-column: 1 / -1;
-    }
+    .form-group.full { grid-column: 1 / -1; }
 
     label {
       font-size: 0.66rem;
@@ -356,14 +301,12 @@
       font-weight: 600;
     }
 
-    input,
-    textarea,
-    select {
+    input, textarea, select {
       width: 100%;
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(0,240,255,0.12);
       border-radius: 10px;
-      padding: 14px 14px;
+      padding: 14px;
       color: #fff;
       font-family: 'Raleway', sans-serif;
       font-size: 0.95rem;
@@ -371,60 +314,125 @@
       transition: border-color 0.25s, box-shadow 0.25s;
     }
 
-    input:focus,
-    textarea:focus,
-    select:focus {
+    input:focus, textarea:focus, select:focus {
       border-color: rgba(0,240,255,0.45);
       box-shadow: 0 0 0 3px rgba(0,240,255,0.08);
     }
 
-    textarea {
-      min-height: 150px;
-      resize: vertical;
-    }
+    textarea { min-height: 150px; resize: vertical; }
 
-    input::placeholder,
-    textarea::placeholder {
+    input::placeholder, textarea::placeholder {
       color: rgba(232,232,240,0.28);
     }
 
-    [aria-invalid="true"] {
-      border-color: rgba(255,45,120,0.45) !important;
-      box-shadow: 0 0 0 3px rgba(255,45,120,0.08) !important;
-    }
+    select option { background: #0a0a1a; color: #e8e8f0; }
 
     .field-error {
       font-size: 0.76rem;
-      color: var(--error-text);
+      color: rgba(255,190,212,0.92);
       min-height: 16px;
       line-height: 1.4;
     }
 
-    .form-status {
+    /* ── SUCCESS OVERLAY ── */
+    .success-overlay {
       display: none;
-      margin-bottom: 18px;
-      padding: 14px 16px;
-      border-radius: 12px;
-      font-size: 0.88rem;
-      line-height: 1.6;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(5,5,15,0.92);
+      backdrop-filter: blur(16px);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 24px;
+      animation: overlayFadeIn 0.5s ease forwards;
     }
 
-    .form-status:not(:empty) {
-      display: block;
+    .success-overlay.show {
+      display: flex;
     }
 
-    .form-status.success {
-      background: var(--success-bg);
-      border: 1px solid var(--success-border);
-      color: var(--success-text);
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid var(--neon-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+      box-shadow:
+        0 0 20px rgba(0,240,255,0.4),
+        0 0 60px rgba(0,240,255,0.15);
+      animation: iconPulse 2s ease-in-out infinite alternate;
     }
 
-    .form-status.error {
-      background: var(--error-bg);
-      border: 1px solid var(--error-border);
-      color: var(--error-text);
+    .success-icon svg {
+      width: 36px;
+      height: 36px;
     }
 
+    .success-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 300;
+      font-style: italic;
+      color: #fff;
+      margin-bottom: 12px;
+      line-height: 1.2;
+      animation: fadeInUp 0.6s ease 0.2s both;
+    }
+
+    .success-title strong {
+      font-weight: 700;
+      font-style: normal;
+      color: var(--neon-blue);
+    }
+
+    .success-sub {
+      font-size: 0.92rem;
+      color: rgba(232,232,240,0.55);
+      font-weight: 300;
+      line-height: 1.8;
+      max-width: 440px;
+      margin-bottom: 36px;
+      animation: fadeInUp 0.6s ease 0.35s both;
+    }
+
+    .success-close {
+      background: transparent;
+      border: 1.5px solid var(--neon-blue);
+      color: var(--neon-blue);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 14px 36px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+      animation: fadeInUp 0.6s ease 0.5s both;
+    }
+
+    .success-close:hover {
+      background: rgba(0,240,255,0.08);
+      box-shadow: 0 0 30px rgba(0,240,255,0.3);
+      transform: translateY(-2px);
+    }
+
+    /* neon divider line under icon */
+    .success-divider {
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--neon-blue), var(--neon-pink), transparent);
+      margin: 0 auto 28px;
+      animation: fadeInUp 0.6s ease 0.15s both;
+    }
+
+    /* ── SUBMIT BUTTON ── */
     .submit-btn {
       margin-top: 18px;
       width: 100%;
@@ -461,6 +469,7 @@
       line-height: 1.7;
     }
 
+    /* ── FOOTER ── */
     footer {
       text-align: center;
       padding: 60px 48px 100px;
@@ -512,17 +521,45 @@
       margin-top: 32px;
     }
 
-    @media (max-width: 980px) {
-      .contact-grid {
-        grid-template-columns: 1fr;
+    /* ── ANIMATIONS ── */
+    @keyframes overlayFadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes iconPulse {
+      0% {
+        box-shadow:
+          0 0 20px rgba(0,240,255,0.4),
+          0 0 60px rgba(0,240,255,0.15);
       }
+      100% {
+        box-shadow:
+          0 0 30px rgba(0,240,255,0.7),
+          0 0 80px rgba(0,240,255,0.3),
+          0 0 120px rgba(0,240,255,0.1);
+      }
+    }
+
+    @keyframes drawCheck {
+      from { stroke-dashoffset: 60; }
+      to   { stroke-dashoffset: 0; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 980px) {
+      .contact-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 768px) {
       nav { padding: 10px 24px; }
       .nav-links { display: none; }
       .hero { padding: 145px 24px 60px; }
-      .quote-banner-wrap { padding: 0 24px 22px; }
       .page-wrap { padding: 56px 24px 100px; }
       .form-grid { grid-template-columns: 1fr; }
       footer { padding: 60px 24px 100px; }
@@ -531,6 +568,29 @@
 </head>
 <body>
 
+  <!-- SUCCESS OVERLAY -->
+  <div class="success-overlay" id="successOverlay">
+    <div class="success-icon">
+      <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polyline
+          points="6,18 14,26 30,10"
+          stroke="#00f0ff"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-dasharray="60"
+          stroke-dashoffset="60"
+          style="animation: drawCheck 0.6s ease 0.3s forwards;"
+        />
+      </svg>
+    </div>
+    <div class="success-divider"></div>
+    <h2 class="success-title">We Got Your <strong>Request</strong></h2>
+    <p class="success-sub">Your quote request has been sent to Heat District Productions. We'll be in touch within 24 hours to discuss your event.</p>
+    <button class="success-close" onclick="closeSuccess()">Back to the Site</button>
+  </div>
+
+  <!-- NAVBAR -->
   <nav>
     <a href="index.html" class="nav-logo">
       <img src="logo.png" alt="Heat District Productions" />
@@ -545,24 +605,11 @@
     <a href="contact.html" class="nav-cta">Book Now</a>
   </nav>
 
+  <!-- HERO -->
   <div class="hero">
     <p class="hero-eyebrow">Book Your Event · Miami & Broward</p>
     <h1>Let's Build Your<br><strong>Event Experience</strong></h1>
-    <p>
-      Tell us what you’re planning and we’ll help you put together the right package,
-      upgrades, and production setup for your event.
-    </p>
-  </div>
-
-  <div class="quote-banner-wrap">
-    <div class="quote-banner">
-      <div class="quote-banner-kicker">Get Started</div>
-      <h2><span>Contact Us for a Quote</span></h2>
-      <p>
-        Reach out with your event date, location, guest count, and the services you’re interested in.
-        We’ll put together a quote that fits your vision and your production needs.
-      </p>
-    </div>
+    <p>Tell us what you're planning and we'll help you put together the right package, upgrades, and production setup for your event.</p>
   </div>
 
   <div class="neon-divider"></div>
@@ -570,29 +617,25 @@
   <div class="page-wrap">
     <div class="contact-grid">
 
+      <!-- LEFT PANEL -->
       <div class="contact-panel">
         <div class="panel-kicker">Direct Contact</div>
         <h2 class="panel-title">Talk to <strong>Heat District</strong></h2>
-        <p class="panel-copy">
-          For pricing, availability, and custom event production quotes, use the form or contact us directly below.
-        </p>
+        <p class="panel-copy">For pricing, availability, and custom event production quotes, use the form or contact us directly below.</p>
 
         <div class="contact-list">
           <div class="contact-item">
             <div class="contact-item-label">Phone</div>
             <a href="tel:9545472990">(954) 547-2990</a>
           </div>
-
           <div class="contact-item">
             <div class="contact-item-label">Email</div>
             <a href="mailto:HeatDistrictProd@gmail.com">HeatDistrictProd@gmail.com</a>
           </div>
-
           <div class="contact-item">
             <div class="contact-item-label">Instagram</div>
             <a href="https://instagram.com/heatdistrictproductions" target="_blank">@HeatDistrictProductions</a>
           </div>
-
           <div class="contact-item">
             <div class="contact-item-label">Service Area</div>
             <div>Miami-Dade, Broward, and surrounding South Florida events</div>
@@ -606,47 +649,41 @@
         </div>
       </div>
 
+      <!-- RIGHT PANEL — FORM -->
       <div class="form-panel">
         <div class="panel-kicker">Quote Request</div>
         <h2 class="panel-title">Request a <strong>Custom Quote</strong></h2>
-        <p class="panel-copy">
-          Fill this out with as much detail as you can and we’ll receive it directly without leaving your website.
-        </p>
+        <p class="panel-copy">Fill this out with as much detail as you can and we'll get back to you within 24 hours.</p>
 
-        <div id="form-success" data-fs-success class="form-status success"></div>
-        <div id="form-error" data-fs-error class="form-status error"></div>
-
-        <form id="quote-form" accept-charset="UTF-8">
-          <input type="hidden" name="_subject" value="New Heat District Quote Request" />
-
+        <form id="quote-form">
           <div class="form-grid">
+
             <div class="form-group">
               <label for="name">Full Name</label>
-              <input id="name" name="name" type="text" placeholder="Your name" required data-fs-field />
-              <span class="field-error" data-fs-error="name"></span>
+              <input id="name" name="name" type="text" placeholder="Your name" required />
+              <span class="field-error" id="err-name"></span>
             </div>
 
             <div class="form-group">
               <label for="phone">Phone</label>
-              <input id="phone" name="phone" type="text" placeholder="Your phone number" data-fs-field />
-              <span class="field-error" data-fs-error="phone"></span>
+              <input id="phone" name="phone" type="text" placeholder="Your phone number" />
+              <span class="field-error" id="err-phone"></span>
             </div>
 
             <div class="form-group">
               <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="Your email address" required data-fs-field />
-              <span class="field-error" data-fs-error="email"></span>
+              <input id="email" name="email" type="email" placeholder="Your email address" required />
+              <span class="field-error" id="err-email"></span>
             </div>
 
             <div class="form-group">
               <label for="event-date">Event Date</label>
-              <input id="event-date" name="event_date" type="date" data-fs-field />
-              <span class="field-error" data-fs-error="event_date"></span>
+              <input id="event-date" name="event_date" type="date" />
             </div>
 
             <div class="form-group">
               <label for="event-type">Event Type</label>
-              <select id="event-type" name="event_type" data-fs-field>
+              <select id="event-type" name="event_type">
                 <option value="">Select event type</option>
                 <option>Wedding</option>
                 <option>Quinceañera</option>
@@ -656,44 +693,40 @@
                 <option>Club / Nightlife</option>
                 <option>Other</option>
               </select>
-              <span class="field-error" data-fs-error="event_type"></span>
             </div>
 
             <div class="form-group">
               <label for="guest-count">Guest Count</label>
-              <input id="guest-count" name="guest_count" type="text" placeholder="Approximate guest count" data-fs-field />
-              <span class="field-error" data-fs-error="guest_count"></span>
+              <input id="guest-count" name="guest_count" type="text" placeholder="Approximate guest count" />
             </div>
 
             <div class="form-group full">
               <label for="location">Venue / Location</label>
-              <input id="location" name="location" type="text" placeholder="Venue name or city" data-fs-field />
-              <span class="field-error" data-fs-error="location"></span>
+              <input id="location" name="location" type="text" placeholder="Venue name or city" />
             </div>
 
             <div class="form-group full">
               <label for="services">Services Needed</label>
-              <input id="services" name="services_needed" type="text" placeholder="DJ, lighting, photo booth, photography, videography, LED wall, truss, etc." data-fs-field />
-              <span class="field-error" data-fs-error="services_needed"></span>
+              <input id="services" name="services_needed" type="text" placeholder="DJ, lighting, photo booth, photography, videography, LED wall, truss, etc." />
             </div>
 
             <div class="form-group full">
               <label for="message">Event Details</label>
-              <textarea id="message" name="message" placeholder="Tell us what kind of setup you want, your vibe, timing, and anything important for the quote." required data-fs-field></textarea>
-              <span class="field-error" data-fs-error="message"></span>
+              <textarea id="message" name="message" placeholder="Tell us what kind of setup you want, your vibe, timing, and anything important for the quote." required></textarea>
+              <span class="field-error" id="err-message"></span>
             </div>
+
           </div>
 
-          <button type="submit" class="submit-btn" data-fs-submit-btn>Send Quote Request</button>
-          <p class="form-note">
-            Once submitted, the confirmation message will stay here on your website.
-          </p>
+          <button type="submit" class="submit-btn" id="submitBtn">Send Quote Request</button>
+          <p class="form-note">We typically respond within 24 hours. You can also reach us directly at (954) 547-2990.</p>
         </form>
       </div>
 
     </div>
   </div>
 
+  <!-- FOOTER -->
   <footer>
     <div class="footer-logo">
       <img src="logo.png" alt="Heat District Productions" />
@@ -709,44 +742,64 @@
   </footer>
 
   <script>
-    window.formspree = window.formspree || function () {
-      (formspree.q = formspree.q || []).push(arguments);
-    };
+    const form = document.getElementById('quote-form');
+    const submitBtn = document.getElementById('submitBtn');
+    const overlay = document.getElementById('successOverlay');
 
-    formspree('initForm', {
-      formElement: '#quote-form',
-      formId: 'mkokqpnz',
-      renderSuccess: function (context) {
-        const successBox = document.getElementById('form-success');
-        const errorBox = document.getElementById('form-error');
+    function validateField(id, errorId, message) {
+      const el = document.getElementById(id);
+      const err = document.getElementById(errorId);
+      if (!el || !err) return true;
+      if (!el.value.trim()) {
+        err.textContent = message;
+        el.style.borderColor = 'rgba(255,45,120,0.45)';
+        return false;
+      }
+      err.textContent = '';
+      el.style.borderColor = '';
+      return true;
+    }
 
-        if (errorBox) {
-          errorBox.textContent = '';
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault(); // stops page redirect completely
+
+      // basic validation
+      const validName    = validateField('name',    'err-name',    'Please enter your name.');
+      const validEmail   = validateField('email',   'err-email',   'Please enter your email.');
+      const validMessage = validateField('message', 'err-message', 'Please add some event details.');
+      if (!validName || !validEmail || !validMessage) return;
+
+      // disable button while sending
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      try {
+        const data = new FormData(form);
+        const response = await fetch('https://formspree.io/f/mkokqpnz', {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          form.reset();
+          overlay.classList.add('show'); // show success animation
+        } else {
+          submitBtn.textContent = 'Something went wrong — try again';
+          submitBtn.disabled = false;
         }
-
-        if (successBox) {
-          successBox.textContent = 'Quote request submitted successfully. We’ll be in touch soon.';
-        }
-
-        if (context && context.form) {
-          context.form.reset();
-        }
-      },
-      renderFormError: function (context, message) {
-        const errorBox = document.getElementById('form-error');
-        const successBox = document.getElementById('form-success');
-
-        if (successBox) {
-          successBox.textContent = '';
-        }
-
-        if (errorBox) {
-          errorBox.textContent = message || 'Something went wrong. Please try again or contact us directly.';
-        }
+      } catch (err) {
+        submitBtn.textContent = 'Network error — try again';
+        submitBtn.disabled = false;
       }
     });
+
+    function closeSuccess() {
+      overlay.classList.remove('show');
+      submitBtn.textContent = 'Send Quote Request';
+      submitBtn.disabled = false;
+    }
   </script>
-  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
 </body>
 </html>

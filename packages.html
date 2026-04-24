@@ -1029,7 +1029,7 @@
 
     <a href="contact.html" class="nav-cta">Book Now</a>
 
-    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav" type="button">
       <span></span>
       <span></span>
       <span></span>
@@ -1242,7 +1242,7 @@
             </ul>
 
             <p class="pkg-footer-note">Great first step into a polished event setup</p>
-            <button class="btn-full-blue" onclick="choosePackage(this)">Continue to Add-Ons</button>
+            <button class="btn-full-blue" type="button" onclick="choosePackage(event, this)">Continue to Book</button>
           </div>
 
           <div class="pkg-card featured" data-package-name="The Blaze" data-base-price="2195">
@@ -1287,7 +1287,7 @@
             </ul>
 
             <p class="pkg-footer-note">The best all-around choice for most events</p>
-            <button class="btn-full-pink" onclick="choosePackage(this)">Continue to Add-Ons</button>
+            <button class="btn-full-pink" type="button" onclick="choosePackage(event, this)">Continue to Book</button>
           </div>
 
           <div class="pkg-card value" data-package-name="The Inferno" data-base-price="2995">
@@ -1334,7 +1334,7 @@
             </ul>
 
             <p class="pkg-footer-note">The smartest step-up before luxury pricing</p>
-            <button class="btn-full-blue" onclick="choosePackage(this)">Continue to Add-Ons</button>
+            <button class="btn-full-blue" type="button" onclick="choosePackage(event, this)">Continue to Book</button>
           </div>
 
           <div class="pkg-card" data-package-name="The District" data-base-price="4995">
@@ -1381,7 +1381,7 @@
             </ul>
 
             <p class="pkg-footer-note">For clients who want the biggest visual statement</p>
-            <button class="btn-full-blue" onclick="choosePackage(this)">Continue to Add-Ons</button>
+            <button class="btn-full-blue" type="button" onclick="choosePackage(event, this)">Continue to Book</button>
           </div>
 
         </div>
@@ -1444,145 +1444,145 @@
     <p class="footer-copy">© 2025 Heat District Productions · Miami & Broward County · All Rights Reserved</p>
   </footer>
 
-  <script>
-    const PACKAGE_REDUCTION_MULTIPLIERS = {
-      2: 0.85,
-      3: 0.90,
-      4: 0.95,
-      5: 1.00
-    };
+ <script>
+  const PACKAGE_REDUCTION_MULTIPLIERS = {
+    2: 0.85,
+    3: 0.90,
+    4: 0.95,
+    5: 1.00
+  };
 
-    function roundToFive(value) {
-      return Math.round(value / 5) * 5;
+  function roundToFive(value) {
+    return Math.round(value / 5) * 5;
+  }
+
+  function calculatePackagePrice(basePrice, hours) {
+    if (hours <= 5) {
+      const multiplier = PACKAGE_REDUCTION_MULTIPLIERS[hours] || 1;
+      return roundToFive(basePrice * multiplier);
     }
 
-    function calculatePackagePrice(basePrice, hours) {
-      if (hours <= 5) {
-        const multiplier = PACKAGE_REDUCTION_MULTIPLIERS[hours] || 1;
-        return roundToFive(basePrice * multiplier);
+    return basePrice + ((hours - 5) * 150);
+  }
+
+  function formatCurrency(value) {
+    return value.toLocaleString();
+  }
+
+  function updatePackageCard(card) {
+    const basePrice = Number(card.dataset.basePrice);
+    const hours = Number(card.querySelector('.pkg-hours-select').value);
+    const price = calculatePackagePrice(basePrice, hours);
+
+    card.querySelector('.pkg-price-value').textContent = formatCurrency(price);
+    card.querySelector('.pkg-price-unit').textContent = `/ ${hours}hrs`;
+  }
+
+  function initPackageCards() {
+    document.querySelectorAll('.pkg-card').forEach((card) => {
+      const select = card.querySelector('.pkg-hours-select');
+      if (!select) return;
+
+      select.addEventListener('change', () => updatePackageCard(card));
+      updatePackageCard(card);
+    });
+  }
+
+  function choosePackage(event, button) {
+    if (event) event.preventDefault();
+
+    const card = button.closest('.pkg-card');
+    const packageName = card.dataset.packageName;
+    const basePrice = Number(card.dataset.basePrice);
+    const hours = Number(card.querySelector('.pkg-hours-select').value);
+    const packagePrice = calculatePackagePrice(basePrice, hours);
+
+    sessionStorage.setItem('heatDistrictSelectedPackage', JSON.stringify({
+      name: packageName,
+      basePrice: basePrice,
+      hours: hours,
+      total: packagePrice
+    }));
+
+    window.location.href = 'addons.html';
+  }
+
+  function applyIndexPreviewIfPresent() {
+    const previewRaw = sessionStorage.getItem('heatDistrictPackagePreview');
+    if (!previewRaw) return;
+
+    try {
+      const preview = JSON.parse(previewRaw);
+      if (!preview || !preview.name || !preview.hours) return;
+
+      const targetCard = Array.from(document.querySelectorAll('.pkg-card')).find(card => {
+        return card.dataset.packageName === preview.name;
+      });
+
+      if (!targetCard) return;
+
+      const select = targetCard.querySelector('.pkg-hours-select');
+      if (select) {
+        select.value = String(preview.hours);
+        updatePackageCard(targetCard);
       }
 
-      return basePrice + ((hours - 5) * 150);
+      setTimeout(() => {
+        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+      }, 150);
+    } catch (e) {}
+
+    sessionStorage.removeItem('heatDistrictPackagePreview');
+  }
+
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileNav = document.getElementById('mobileNav');
+
+  function closeMobileMenu() {
+    mobileNav.classList.remove('open');
+    mobileMenuBtn.classList.remove('active');
+    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('mobile-menu-open');
+  }
+
+  function toggleMobileMenu() {
+    const isOpen = mobileNav.classList.contains('open');
+
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      mobileNav.classList.add('open');
+      mobileMenuBtn.classList.add('active');
+      mobileMenuBtn.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('mobile-menu-open');
     }
+  }
 
-    function formatCurrency(value) {
-      return value.toLocaleString();
-    }
+  if (mobileMenuBtn && mobileNav) {
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
 
-    function updatePackageCard(card) {
-      const basePrice = Number(card.dataset.basePrice);
-      const hours = Number(card.querySelector('.pkg-hours-select').value);
-      const price = calculatePackagePrice(basePrice, hours);
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
 
-      card.querySelector('.pkg-price-value').textContent = formatCurrency(price);
-      card.querySelector('.pkg-price-unit').textContent = `/ ${hours}hrs`;
-    }
-
-    function initPackageCards() {
-      document.querySelectorAll('.pkg-card').forEach((card) => {
-        const select = card.querySelector('.pkg-hours-select');
-        if (!select) return;
-
-        select.addEventListener('change', () => updatePackageCard(card));
-        updatePackageCard(card);
-      });
-    }
-
-    function choosePackage(button) {
-      const card = button.closest('.pkg-card');
-      const packageName = card.dataset.packageName;
-      const basePrice = Number(card.dataset.basePrice);
-      const hours = Number(card.querySelector('.pkg-hours-select').value);
-      const packagePrice = calculatePackagePrice(basePrice, hours);
-
-      sessionStorage.setItem('heatDistrictSelectedPackage', JSON.stringify({
-        name: packageName,
-        basePrice: basePrice,
-        hours: hours,
-        total: packagePrice
-      }));
-
-      window.location.href = 'addons.html';
-    }
-
-    function applyIndexPreviewIfPresent() {
-      const previewRaw = sessionStorage.getItem('heatDistrictPackagePreview');
-      if (!previewRaw) return;
-
-      try {
-        const preview = JSON.parse(previewRaw);
-        if (!preview || !preview.name || !preview.hours) return;
-
-        const targetCard = Array.from(document.querySelectorAll('.pkg-card')).find(card => {
-          return card.dataset.packageName === preview.name;
-        });
-
-        if (!targetCard) return;
-
-        const select = targetCard.querySelector('.pkg-hours-select');
-        if (select) {
-          select.value = String(preview.hours);
-          updatePackageCard(targetCard);
-        }
-
-        setTimeout(() => {
-          targetCard.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
-        }, 150);
-
-      } catch (e) {}
-
-      sessionStorage.removeItem('heatDistrictPackagePreview');
-    }
-
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileNav = document.getElementById('mobileNav');
-
-    function closeMobileMenu() {
-      mobileNav.classList.remove('open');
-      mobileMenuBtn.classList.remove('active');
-      mobileMenuBtn.setAttribute('aria-expanded', 'false');
-      document.body.classList.remove('mobile-menu-open');
-    }
-
-    function toggleMobileMenu() {
-      const isOpen = mobileNav.classList.contains('open');
-
-      if (isOpen) {
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
         closeMobileMenu();
-      } else {
-        mobileNav.classList.add('open');
-        mobileMenuBtn.classList.add('active');
-        mobileMenuBtn.setAttribute('aria-expanded', 'true');
-        document.body.classList.add('mobile-menu-open');
       }
-    }
+    });
 
-    if (mobileMenuBtn && mobileNav) {
-      mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    document.addEventListener('click', (e) => {
+      const clickedInsideNav = mobileNav.contains(e.target);
+      const clickedButton = mobileMenuBtn.contains(e.target);
 
-      mobileNav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', closeMobileMenu);
-      });
+      if (!clickedInsideNav && !clickedButton && mobileNav.classList.contains('open')) {
+        closeMobileMenu();
+      }
+    });
+  }
 
-      window.addEventListener('resize', () => {
-        if (window.innerWidth > 768) {
-          closeMobileMenu();
-        }
-      });
-
-      document.addEventListener('click', (e) => {
-        const clickedInsideNav = mobileNav.contains(e.target);
-        const clickedButton = mobileMenuBtn.contains(e.target);
-
-        if (!clickedInsideNav && !clickedButton && mobileNav.classList.contains('open')) {
-          closeMobileMenu();
-        }
-      });
-    }
-
-    initPackageCards();
-    applyIndexPreviewIfPresent();
-  </script>
-
+  initPackageCards();
+  applyIndexPreviewIfPresent();
+</script>
 </body>
 </html>

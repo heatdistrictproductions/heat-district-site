@@ -829,33 +829,52 @@
 
     .footer-contact a:hover { color: var(--neon-blue); }
 
-    .footer-copy {
-      font-size: 0.68rem;
-      color: rgba(232,232,240,0.18);
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      margin-top: 32px;
-    }
+  .footer-copy {
+  font-size: 0.68rem;
+  color: rgba(232,232,240,0.18);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-top: 32px;
+}
 
-    @media (max-width: 1200px) {
-      .builder-layout {
-        grid-template-columns: 1fr;
-      }
+/* FIX: Keep product cart in one visible area and scroll only the items */
+.cart-panel {
+  max-height: calc(100vh - 118px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
 
-      .cart-panel {
-        position: static;
-      }
+.cart-items {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 6px;
+  margin-bottom: 14px;
+}
 
-      .products-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+.cart-items::-webkit-scrollbar {
+  width: 6px;
+}
 
-      .info-bar {
-        grid-template-columns: 1fr;
-      }
-    }
+.cart-items::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.04);
+  border-radius: 999px;
+}
 
-    @media (max-width: 768px) {
+.cart-items::-webkit-scrollbar-thumb {
+  background: rgba(0,240,255,0.35);
+  border-radius: 999px;
+}
+
+.cart-summary {
+  flex: 0 0 auto;
+  background: linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.99));
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 18px;
+}
+
+@media (max-width: 1200px) {
       nav { padding: 10px 24px; }
       .nav-links { display: none; }
       .page-hero { padding: 145px 24px 68px; }
@@ -1579,28 +1598,41 @@
         </div>
 
         <aside class="cart-panel">
-          <div class="cart-kicker">Your Build</div>
-          <div class="cart-title">Custom Cart</div>
-          <div class="cart-copy">Add products from the left. If you want multiples, add the same product again.</div>
+  <div class="cart-kicker">Current Estimate</div>
+  <div class="cart-title">Your Build</div>
+  <div class="cart-copy">
+    Add products from the left. Your total, 50% deposit, and remaining balance update automatically.
+  </div>
 
-          <div class="cart-items" id="cartItems"></div>
+  <div class="cart-items" id="cartItems"></div>
 
-          <div class="cart-summary">
-            <div class="cart-row">
-              <span>Items</span>
-              <span id="cartCount">0</span>
-            </div>
-            <div class="cart-total-row">
-              <span>Total</span>
-              <span id="cartTotal">$0</span>
-            </div>
+  <div class="cart-summary">
+    <div class="cart-row">
+      <span>Items</span>
+      <span id="cartCount">0</span>
+    </div>
 
-            <div class="cart-actions">
-              <button class="cart-btn primary" onclick="proceedToCheckout()">Continue to Checkout</button>
-              <button class="cart-btn secondary" onclick="clearCart()">Clear Cart</button>
-            </div>
-          </div>
-        </aside>
+    <div class="cart-row">
+      <span>Estimated Total</span>
+      <span id="cartTotal">$0</span>
+    </div>
+
+    <div class="cart-total-row">
+      <span>50% Deposit Due</span>
+      <span id="cartDeposit">$0</span>
+    </div>
+
+    <div class="cart-row">
+      <span>Remaining Balance</span>
+      <span id="cartRemaining">$0</span>
+    </div>
+
+    <div class="cart-actions">
+      <button class="cart-btn primary" type="button" onclick="proceedToCheckout()">Continue to Checkout</button>
+      <button class="cart-btn secondary" type="button" onclick="clearCart()">Clear Cart</button>
+    </div>
+  </div>
+</aside>
 
       </div>
     </div>
@@ -1621,148 +1653,260 @@
     <p class="footer-copy">© 2025 Heat District Productions · Miami & Broward County · All Rights Reserved</p>
   </footer>
 
-  <script>
-    let buildCart = [];
+<script>
+  let buildCart = [];
 
-    function formatMoney(value) {
-      return '$' + Number(value).toLocaleString();
+  const PRODUCT_CART_KEY = 'heatDistrictBuildCart';
+  const PRODUCT_ORDER_KEY = 'heatDistrictProductOrder';
+
+  function formatMoney(value) {
+    return '$' + Number(value || 0).toLocaleString();
+  }
+
+  function safeJsonParse(value) {
+    try {
+      return value ? JSON.parse(value) : null;
+    } catch (error) {
+      return null;
     }
+  }
 
-    function calculateCardTotal(card) {
-      const rate = Number(card.dataset.rate);
-      const duration = Number(card.querySelector('.duration-select').value);
-      return rate * duration;
+  function calculateCardTotal(card) {
+    const rate = Number(card.dataset.rate || 0);
+    const durationSelect = card.querySelector('.duration-select');
+    const duration = durationSelect ? Number(durationSelect.value || 1) : 1;
+
+    return rate * duration;
+  }
+
+  function updateCardTotal(card) {
+    const total = calculateCardTotal(card);
+    const totalEl = card.querySelector('.product-total');
+
+    if (totalEl) {
+      totalEl.textContent = formatMoney(total) + ' total';
     }
+  }
 
-    function updateCardTotal(card) {
-      const total = calculateCardTotal(card);
-      const totalEl = card.querySelector('.product-total');
-      totalEl.textContent = `${formatMoney(total)} total`;
-    }
+  function initCards() {
+    document.querySelectorAll('.product-card').forEach(function(card) {
+      const select = card.querySelector('.duration-select');
 
-    function initCards() {
-      document.querySelectorAll('.product-card').forEach((card) => {
-        const select = card.querySelector('.duration-select');
-        if (!select) return;
-
-        select.addEventListener('change', () => updateCardTotal(card));
-        updateCardTotal(card);
-      });
-    }
-
-    function getCartKey(name, type, duration) {
-      return `${name}__${type}__${duration}`;
-    }
-
-    function addProductFromCard(button) {
-      const card = button.closest('.product-card');
-      const name = card.dataset.name;
-      const type = card.dataset.type;
-      const rate = Number(card.dataset.rate);
-      const duration = Number(card.querySelector('.duration-select').value);
-      const unitPrice = rate * duration;
-      const key = getCartKey(name, type, duration);
-
-      const existing = buildCart.find(item => item.key === key);
-
-      if (existing) {
-        existing.quantity += 1;
-      } else {
-        buildCart.push({
-          key,
-          name,
-          type,
-          duration,
-          unitPrice,
-          quantity: 1
+      if (select) {
+        select.addEventListener('change', function() {
+          updateCardTotal(card);
         });
       }
 
-      saveCart();
-      renderCart();
+      updateCardTotal(card);
+    });
+  }
+
+  function getDurationLabel(type, duration) {
+    const cleanDuration = Number(duration || 1);
+
+    if (type === 'daily') {
+      return cleanDuration + ' ' + (cleanDuration === 1 ? 'day' : 'days');
     }
 
-    function removeCartItem(key) {
-      buildCart = buildCart.filter(item => item.key !== key);
-      saveCart();
-      renderCart();
+    return cleanDuration + ' hrs';
+  }
+
+  function getCartKey(name, type, duration) {
+    return name + '__' + type + '__' + duration;
+  }
+
+  function addProductFromCard(button) {
+    const card = button.closest('.product-card');
+
+    if (!card) return;
+
+    const name = card.dataset.name || 'Selected Product';
+    const type = card.dataset.type || 'hourly';
+    const rate = Number(card.dataset.rate || 0);
+    const durationSelect = card.querySelector('.duration-select');
+    const duration = durationSelect ? Number(durationSelect.value || 1) : 1;
+    const unitPrice = rate * duration;
+    const key = getCartKey(name, type, duration);
+
+    const existing = buildCart.find(function(item) {
+      return item.key === key;
+    });
+
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      buildCart.push({
+        key: key,
+        name: name,
+        type: type,
+        rate: rate,
+        duration: duration,
+        durationLabel: getDurationLabel(type, duration),
+        unitPrice: unitPrice,
+        quantity: 1
+      });
     }
 
-    function clearCart() {
-      buildCart = [];
-      saveCart();
-      renderCart();
-    }
-
-    function saveCart() {
-      sessionStorage.setItem('heatDistrictBuildCart', JSON.stringify(buildCart));
-    }
-
-    function loadCart() {
-      const raw = sessionStorage.getItem('heatDistrictBuildCart');
-      if (!raw) {
-        buildCart = [];
-        return;
-      }
-
-      try {
-        buildCart = JSON.parse(raw);
-      } catch (error) {
-        buildCart = [];
-      }
-    }
-
-    function renderCart() {
-      const cartItems = document.getElementById('cartItems');
-      const cartCount = document.getElementById('cartCount');
-      const cartTotal = document.getElementById('cartTotal');
-
-      if (!buildCart.length) {
-        cartItems.innerHTML = '<div class="cart-empty">No products selected yet. Add products from the left to start building your event cart.</div>';
-        cartCount.textContent = '0';
-        cartTotal.textContent = '$0';
-        return;
-      }
-
-      let totalItems = 0;
-      let totalPrice = 0;
-
-      cartItems.innerHTML = buildCart.map(item => {
-        const lineTotal = item.unitPrice * item.quantity;
-        totalItems += item.quantity;
-        totalPrice += lineTotal;
-
-        const durationLabel = item.type === 'daily'
-          ? `${item.duration} ${item.duration === 1 ? 'day' : 'days'}`
-          : `${item.duration} hrs`;
-
-        return `
-          <div class="cart-item">
-            <div class="cart-item-top">
-              <div class="cart-item-name">${item.name}</div>
-              <button class="cart-item-remove" onclick="removeCartItem('${item.key}')">Remove</button>
-            </div>
-            <div class="cart-item-meta">
-              ${durationLabel} · ${formatMoney(item.unitPrice)} each · Qty ${item.quantity}
-            </div>
-            <div class="cart-item-total">${formatMoney(lineTotal)}</div>
-          </div>
-        `;
-      }).join('');
-
-      cartCount.textContent = totalItems;
-      cartTotal.textContent = formatMoney(totalPrice);
-    }
-
-    function proceedToCheckout() {
-      saveCart();
-      window.location.href = 'checkout.html';
-    }
-
-    loadCart();
-    initCards();
+    saveCart();
     renderCart();
-  </script>
+  }
+
+  function removeCartItem(key) {
+    buildCart = buildCart.filter(function(item) {
+      return item.key !== key;
+    });
+
+    saveCart();
+    renderCart();
+  }
+
+  function clearCart() {
+    buildCart = [];
+    sessionStorage.removeItem(PRODUCT_CART_KEY);
+    sessionStorage.removeItem(PRODUCT_ORDER_KEY);
+    sessionStorage.removeItem('heatDistrictEstimate');
+    renderCart();
+  }
+
+  function saveCart() {
+    sessionStorage.setItem(PRODUCT_CART_KEY, JSON.stringify(buildCart));
+  }
+
+  function loadCart() {
+    const storedCart = safeJsonParse(sessionStorage.getItem(PRODUCT_CART_KEY));
+
+    if (Array.isArray(storedCart)) {
+      buildCart = storedCart;
+    } else {
+      buildCart = [];
+    }
+  }
+
+  function getCartTotals() {
+    let totalItems = 0;
+    let estimatedTotal = 0;
+
+    buildCart.forEach(function(item) {
+      const quantity = Number(item.quantity || 0);
+      const unitPrice = Number(item.unitPrice || 0);
+
+      totalItems += quantity;
+      estimatedTotal += unitPrice * quantity;
+    });
+
+    const depositDue = estimatedTotal * 0.5;
+    const remainingBalance = estimatedTotal - depositDue;
+
+    return {
+      totalItems: totalItems,
+      estimatedTotal: estimatedTotal,
+      depositDue: depositDue,
+      remainingBalance: remainingBalance
+    };
+  }
+
+  function renderCart() {
+    const cartItems = document.getElementById('cartItems');
+    const cartCount = document.getElementById('cartCount');
+    const cartTotal = document.getElementById('cartTotal');
+    const cartDeposit = document.getElementById('cartDeposit');
+    const cartRemaining = document.getElementById('cartRemaining');
+
+    if (!cartItems || !cartCount || !cartTotal || !cartDeposit || !cartRemaining) {
+      return;
+    }
+
+    const totals = getCartTotals();
+
+    cartCount.textContent = totals.totalItems;
+    cartTotal.textContent = formatMoney(totals.estimatedTotal);
+    cartDeposit.textContent = formatMoney(totals.depositDue);
+    cartRemaining.textContent = formatMoney(totals.remainingBalance);
+
+    if (!buildCart.length) {
+      cartItems.innerHTML = '<div class="cart-empty">No products selected yet. Add products from the left to start building your event cart.</div>';
+      return;
+    }
+
+    cartItems.innerHTML = buildCart.map(function(item) {
+      const quantity = Number(item.quantity || 0);
+      const unitPrice = Number(item.unitPrice || 0);
+      const lineTotal = unitPrice * quantity;
+      const durationLabel = item.durationLabel || getDurationLabel(item.type, item.duration);
+
+      return '' +
+        '<div class="cart-item">' +
+          '<div class="cart-item-top">' +
+            '<div class="cart-item-name">' + item.name + '</div>' +
+            '<button class="cart-item-remove" type="button" onclick="removeCartItem(\'' + item.key + '\')">Remove</button>' +
+          '</div>' +
+          '<div class="cart-item-meta">' +
+            durationLabel + ' · ' + formatMoney(unitPrice) + ' each · Qty ' + quantity +
+          '</div>' +
+          '<div class="cart-item-total">' + formatMoney(lineTotal) + '</div>' +
+        '</div>';
+    }).join('');
+  }
+
+  function buildProductOrder() {
+    const totals = getCartTotals();
+
+    return {
+      type: 'products',
+      cart: buildCart,
+      totalItems: totals.totalItems,
+      estimatedTotal: totals.estimatedTotal,
+      depositDue: totals.depositDue,
+      remainingBalance: totals.remainingBalance
+    };
+  }
+
+  function proceedToCheckout() {
+    if (!buildCart.length) {
+      alert('Please add at least one product before continuing to checkout.');
+      return;
+    }
+
+    const totals = getCartTotals();
+
+    const productAddons = buildCart.map(function(item) {
+      return {
+        id: item.key,
+        name: item.name,
+        category: item.type === 'daily' ? 'Daily Rental' : 'Product / Service',
+        price: Number(item.unitPrice || 0),
+        unit: item.durationLabel || getDurationLabel(item.type, item.duration),
+        qty: Number(item.quantity || 1)
+      };
+    });
+
+    const estimate = {
+      type: 'products',
+      package: 'Custom Product Build',
+      packagePrice: 0,
+      packageHours: 0,
+      addons: productAddons,
+      addonsTotal: totals.estimatedTotal,
+      total: totals.estimatedTotal,
+      depositDue: totals.depositDue,
+      remainingBalance: totals.remainingBalance
+    };
+
+    const productOrder = buildProductOrder();
+
+    saveCart();
+
+    sessionStorage.setItem('heatDistrictEstimate', JSON.stringify(estimate));
+    sessionStorage.setItem(PRODUCT_ORDER_KEY, JSON.stringify(productOrder));
+
+    window.location.href = 'checkout.html';
+  }
+
+  loadCart();
+  initCards();
+  renderCart();
+</script>
 
 </body>
 </html>

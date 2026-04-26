@@ -1466,53 +1466,91 @@
   }
 
   function formatCurrency(value) {
-    return value.toLocaleString();
+    return Number(value || 0).toLocaleString();
   }
 
   function updatePackageCard(card) {
-    const basePrice = Number(card.dataset.basePrice);
-    const hours = Number(card.querySelector('.pkg-hours-select').value);
+    if (!card) return;
+
+    const basePrice = Number(card.dataset.basePrice || 0);
+    const hoursSelect = card.querySelector('.pkg-hours-select');
+    const priceValue = card.querySelector('.pkg-price-value');
+    const priceUnit = card.querySelector('.pkg-price-unit');
+
+    if (!hoursSelect || !priceValue || !priceUnit) return;
+
+    const hours = Number(hoursSelect.value || 5);
     const price = calculatePackagePrice(basePrice, hours);
 
-    card.querySelector('.pkg-price-value').textContent = formatCurrency(price);
-    card.querySelector('.pkg-price-unit').textContent = `/ ${hours}hrs`;
+    priceValue.textContent = formatCurrency(price);
+    priceUnit.textContent = `/ ${hours}hrs`;
   }
 
   function initPackageCards() {
-    document.querySelectorAll('.pkg-card').forEach((card) => {
-      const select = card.querySelector('.pkg-hours-select');
-      if (!select) return;
+    const cards = document.querySelectorAll('.pkg-card');
 
-      select.addEventListener('change', () => updatePackageCard(card));
+    cards.forEach((card) => {
+      const select = card.querySelector('.pkg-hours-select');
+
+      if (select) {
+        select.addEventListener('change', () => {
+          updatePackageCard(card);
+        });
+      }
+
       updatePackageCard(card);
     });
   }
 
   function choosePackage(event, button) {
-    if (event) event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
 
     const card = button.closest('.pkg-card');
-    const packageName = card.dataset.packageName;
-    const basePrice = Number(card.dataset.basePrice);
-    const hours = Number(card.querySelector('.pkg-hours-select').value);
+
+    if (!card) {
+      console.error('Package card not found.');
+      return;
+    }
+
+    const packageName = card.dataset.packageName || 'Selected Package';
+    const basePrice = Number(card.dataset.basePrice || 0);
+    const hoursSelect = card.querySelector('.pkg-hours-select');
+    const hours = hoursSelect ? Number(hoursSelect.value || 5) : 5;
     const packagePrice = calculatePackagePrice(basePrice, hours);
 
-    sessionStorage.setItem('heatDistrictSelectedPackage', JSON.stringify({
+    const selectedPackage = {
       name: packageName,
       basePrice: basePrice,
       hours: hours,
       total: packagePrice
-    }));
+    };
+
+    const estimate = {
+      package: packageName,
+      packagePrice: packagePrice,
+      packageHours: hours,
+      basePrice: basePrice,
+      addons: [],
+      addonsTotal: 0,
+      total: packagePrice
+    };
+
+    sessionStorage.setItem('heatDistrictSelectedPackage', JSON.stringify(selectedPackage));
+    sessionStorage.setItem('heatDistrictEstimate', JSON.stringify(estimate));
 
     window.location.href = 'addons.html';
   }
 
   function applyIndexPreviewIfPresent() {
     const previewRaw = sessionStorage.getItem('heatDistrictPackagePreview');
+
     if (!previewRaw) return;
 
     try {
       const preview = JSON.parse(previewRaw);
+
       if (!preview || !preview.name || !preview.hours) return;
 
       const targetCard = Array.from(document.querySelectorAll('.pkg-card')).find(card => {
@@ -1522,15 +1560,23 @@
       if (!targetCard) return;
 
       const select = targetCard.querySelector('.pkg-hours-select');
+
       if (select) {
         select.value = String(preview.hours);
         updatePackageCard(targetCard);
       }
 
       setTimeout(() => {
-        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+        targetCard.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+          inline: 'center'
+        });
       }, 150);
-    } catch (e) {}
+
+    } catch (error) {
+      console.warn('Could not apply package preview.', error);
+    }
 
     sessionStorage.removeItem('heatDistrictPackagePreview');
   }
@@ -1539,6 +1585,8 @@
   const mobileNav = document.getElementById('mobileNav');
 
   function closeMobileMenu() {
+    if (!mobileMenuBtn || !mobileNav) return;
+
     mobileNav.classList.remove('open');
     mobileMenuBtn.classList.remove('active');
     mobileMenuBtn.setAttribute('aria-expanded', 'false');
@@ -1546,6 +1594,8 @@
   }
 
   function toggleMobileMenu() {
+    if (!mobileMenuBtn || !mobileNav) return;
+
     const isOpen = mobileNav.classList.contains('open');
 
     if (isOpen) {

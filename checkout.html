@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout — Heat District Productions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --neon-blue: #00f0ff;
+      --neon-pink: #ff2d78;
+      --neon-purple: #bf00ff;
+      --dark-bg: #05050f;
+      --card-bg: #0a0a1a;
+      --card-bg-2: #0d0d20;
+      --text-light: #e8e8f0;
+      --soft-text: rgba(232,232,240,0.55);
+      --soft-border: rgba(0,240,255,0.1);
+      --success: rgba(77,255,145,0.88);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+      font-family: 'Raleway', sans-serif;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 48px;
+      background: rgba(5,5,15,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,240,255,0.15);
+    }
+
+    .nav-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .nav-logo img {
+      height: 52px;
+      width: auto;
+      filter:
+        drop-shadow(0 0 6px rgba(0,240,255,0.8))
+        drop-shadow(0 0 14px rgba(0,240,255,0.5))
+        drop-shadow(0 0 4px rgba(255,45,120,0.4));
+    }
+
+    .nav-links {
+      display: flex;
+      flex: 1;
+      justify-content: space-evenly;
+      align-items: center;
+      list-style: none;
+      padding: 0 40px;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color 0.3s, text-shadow 0.3s;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--neon-blue);
+      text-shadow: 0 0 8px var(--neon-blue);
+    }
+
+    .nav-cta {
+      flex-shrink: 0;
+      background: transparent;
+      border: 1.5px solid var(--neon-pink);
+      color: var(--neon-pink) !important;
+      padding: 8px 22px;
+      border-radius: 4px;
+      transition: background 0.3s, box-shadow 0.3s !important;
+      white-space: nowrap;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .nav-cta:hover {
+      background: rgba(255,45,120,0.15) !important;
+      box-shadow: 0 0 18px rgba(255,45,120,0.4) !important;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      width: 46px;
+      height: 46px;
+      background: transparent;
+      border: 1px solid rgba(0,240,255,0.18);
+      border-radius: 8px;
+      cursor: pointer;
+      padding: 10px 9px;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      flex-shrink: 0;
+    }
+
+    .mobile-menu-btn span {
+      display: block;
+      width: 100%;
+      height: 1.5px;
+      background: var(--text-light);
+      border-radius: 999px;
+      transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+    }
+
+    .mobile-menu-btn.active span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+      background: var(--neon-blue);
+    }
+
+    .mobile-menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mobile-menu-btn.active span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+      background: var(--neon-blue);
+    }
+
+    .mobile-nav {
+      position: fixed;
+      top: 73px;
+      left: 16px;
+      right: 16px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 14px;
+      background: rgba(8,8,20,0.98);
+      border: 1px solid rgba(0,240,255,0.14);
+      border-radius: 14px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-10px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .mobile-nav.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .mobile-nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 14px 12px;
+      border-radius: 8px;
+      transition: background 0.25s ease, color 0.25s ease, text-shadow 0.25s ease;
+    }
+
+    .mobile-nav a:hover {
+      background: rgba(0,240,255,0.06);
+      color: var(--neon-blue);
+      text-shadow: 0 0 8px var(--neon-blue);
+    }
+
+    .mobile-nav-book {
+      margin-top: 8px;
+      border: 1.5px solid var(--neon-pink);
+      color: var(--neon-pink) !important;
+      text-align: center;
+    }
+
+    body.mobile-menu-open {
+      overflow: hidden;
+    }
+
+    .page-hero {
+      padding: 160px 48px 58px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(0,240,255,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 20% 100%, rgba(255,45,120,0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .page-hero-eyebrow {
+      position: relative;
+      z-index: 1;
+      font-size: 0.68rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: rgba(0,240,255,0.6);
+      margin-bottom: 16px;
+      font-weight: 400;
+    }
+
+    .page-hero h1 {
+      position: relative;
+      z-index: 1;
+      font-size: clamp(2.2rem, 5vw, 3.9rem);
+      font-weight: 300;
+      font-style: italic;
+      color: #fff;
+      line-height: 1.14;
+      margin-bottom: 18px;
+    }
+
+    .page-hero h1 strong {
+      font-weight: 700;
+      font-style: normal;
+      color: var(--neon-pink);
+    }
+
+    .page-hero p {
+      position: relative;
+      z-index: 1;
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(232,232,240,0.52);
+      max-width: 760px;
+      margin: 0 auto;
+      line-height: 1.9;
+      letter-spacing: 0.3px;
+    }
+
+    .neon-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,240,255,0.25), rgba(255,45,120,0.25), transparent);
+    }
+
+    .checkout-wrap {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 76px 48px 100px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 390px;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .checkout-card,
+    .summary-panel {
+      background: linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.98));
+      border: 1px solid rgba(0,240,255,0.1);
+      border-radius: 16px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.3);
+    }
+
+    .checkout-card {
+      padding: 34px;
+    }
+
+    .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--neon-blue);
+      margin-bottom: 12px;
+      font-weight: 400;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 300;
+      font-style: italic;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .section-title strong {
+      font-weight: 700;
+      font-style: normal;
+      color: var(--neon-pink);
+    }
+
+    .section-sub {
+      font-size: 0.9rem;
+      color: rgba(232,232,240,0.5);
+      font-weight: 300;
+      line-height: 1.85;
+      max-width: 780px;
+      margin-bottom: 30px;
+    }
+
+    .form-section {
+      margin-top: 30px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .form-section:first-of-type {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .form-section-title {
+      font-size: 1.05rem;
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 0.66rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(0,240,255,0.68);
+      font-weight: 600;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(0,240,255,0.13);
+      color: #fff;
+      border-radius: 8px;
+      padding: 13px 14px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: rgba(255,45,120,0.45);
+      box-shadow: 0 0 18px rgba(255,45,120,0.08);
+      background: rgba(255,255,255,0.055);
+    }
+
+    .agreement-box {
+      margin-top: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .checkbox-line {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      gap: 12px;
+      align-items: start;
+      color: rgba(232,232,240,0.62);
+      font-size: 0.82rem;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .checkbox-line input {
+      width: 18px;
+      height: 18px;
+      margin-top: 3px;
+      accent-color: var(--neon-pink);
+    }
+
+    .summary-panel {
+      position: sticky;
+      top: 104px;
+      padding: 26px;
+      border-color: rgba(255,45,120,0.18);
+    }
+
+    .summary-kicker {
+      font-size: 0.62rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(0,240,255,0.7);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .summary-title {
+      font-size: 1.4rem;
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .summary-note {
+      color: rgba(232,232,240,0.45);
+      font-size: 0.78rem;
+      line-height: 1.6;
+      margin-bottom: 22px;
+    }
+
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      color: rgba(232,232,240,0.68);
+      font-size: 0.82rem;
+      line-height: 1.45;
+    }
+
+    .summary-line strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .summary-line span:last-child {
+      white-space: nowrap;
+      color: #fff;
+    }
+
+    .summary-items {
+      margin: 8px 0 6px;
+    }
+
+    .summary-empty {
+      color: rgba(232,232,240,0.32);
+      font-size: 0.78rem;
+      line-height: 1.6;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .summary-addon {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .summary-addon-name {
+      color: rgba(232,232,240,0.72);
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+
+    .summary-addon-name small {
+      color: rgba(0,240,255,0.55);
+      display: block;
+      margin-top: 2px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.58rem;
+    }
+
+    .summary-addon-price {
+      color: #fff;
+      font-size: 0.82rem;
+      white-space: nowrap;
+    }
+
+    .payment-breakdown {
+      margin-top: 20px;
+      border: 1px solid rgba(255,45,120,0.12);
+      background: rgba(255,45,120,0.04);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .deposit-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 12px;
+      font-size: 0.84rem;
+      color: rgba(232,232,240,0.62);
+    }
+
+    .deposit-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .deposit-row strong {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .deposit-row.deposit-due strong {
+      color: var(--neon-pink);
+      font-size: 1.25rem;
+      font-weight: 300;
+      text-shadow: 0 0 16px rgba(255,45,120,0.18);
+    }
+
+    .checkout-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      width: 100%;
+      text-align: center;
+      padding: 14px 16px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 2.8px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: box-shadow 0.3s, transform 0.2s, background 0.3s, opacity 0.3s;
+    }
+
+    .btn-primary {
+      background: transparent;
+      color: var(--neon-pink);
+      border: 1.5px solid var(--neon-pink);
+    }
+
+    .btn-primary:hover {
+      background: rgba(255,45,120,0.08);
+      box-shadow: 0 0 26px rgba(255,45,120,0.22);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--neon-blue);
+      border: 1.5px solid var(--neon-blue);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(0,240,255,0.08);
+      box-shadow: 0 0 26px rgba(0,240,255,0.22);
+      transform: translateY(-2px);
+    }
+
+    .status-box {
+      margin-top: 18px;
+      border: 1px solid rgba(0,240,255,0.12);
+      background: rgba(0,240,255,0.04);
+      border-radius: 12px;
+      padding: 15px;
+      color: rgba(232,232,240,0.56);
+      font-size: 0.76rem;
+      line-height: 1.7;
+    }
+
+    .missing-cart {
+      display: none;
+      border: 1px solid rgba(255,45,120,0.18);
+      background: rgba(255,45,120,0.04);
+      border-radius: 14px;
+      padding: 22px;
+      margin-bottom: 28px;
+      color: rgba(232,232,240,0.68);
+      line-height: 1.8;
+      font-size: 0.88rem;
+    }
+
+    .missing-cart strong {
+      color: #fff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 60px 48px 100px;
+      border-top: 1px solid rgba(0,240,255,0.08);
+      margin-top: 20px;
+    }
+
+    .footer-logo img {
+      height: 64px;
+      width: auto;
+      margin-bottom: 6px;
+      filter:
+        drop-shadow(0 0 5px rgba(0,240,255,0.6))
+        drop-shadow(0 0 12px rgba(255,45,120,0.3));
+    }
+
+    .footer-productions-text {
+      font-size: 0.55rem;
+      letter-spacing: 6px;
+      color: rgba(232,232,240,0.2);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .footer-contact {
+      margin: 28px 0;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .footer-contact a {
+      color: rgba(232,232,240,0.4);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+      font-weight: 300;
+    }
+
+    .footer-contact a:hover {
+      color: var(--neon-blue);
+    }
+
+    .footer-copy {
+      font-size: 0.68rem;
+      color: rgba(232,232,240,0.18);
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-top: 32px;
+    }
+
+    @media (max-width: 1100px) {
+      .checkout-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .summary-panel {
+        position: relative;
+        top: auto;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 10px 18px;
+      }
+
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: flex;
+      }
+
+      .page-hero {
+        padding: 145px 24px 54px;
+      }
+
+      .checkout-wrap {
+        padding: 60px 24px 90px;
+      }
+
+      .checkout-card,
+      .summary-panel {
+        padding: 24px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        padding: 60px 24px 100px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="Heat District Productions" />
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="services.html">Products</a></li>
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="team.html">Our Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <a href="packages.html" class="nav-cta">Book Now</a>
+
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav" type="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="services.html">Products</a>
+    <a href="packages.html">Packages</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="team.html">Our Team</a>
+    <a href="contact.html">Contact</a>
+    <a href="packages.html" class="mobile-nav-book">Book Now</a>
+  </div>
+
+  <section class="page-hero">
+    <p class="page-hero-eyebrow">Step 03 · Checkout · Deposit & Event Details</p>
+    <h1>Review Your Build<br><strong>Secure Your Date</strong></h1>
+    <p>
+      Confirm your event details, review your selected package and add-ons, then continue to the deposit and agreement step.
+    </p>
+  </section>
+
+  <div class="neon-divider"></div>
+
+  <main class="checkout-wrap">
+
+    <section class="checkout-card">
+      <div class="missing-cart" id="missingCart">
+        <strong>No package was found.</strong><br>
+        Go back to the Packages page and choose a package before checking out.
+      </div>
+
+      <p class="section-label">Checkout Details</p>
+      <h2 class="section-title">Tell Us About <strong>Your Event</strong></h2>
+      <p class="section-sub">
+        This checkout page is ready for the next phase: payment processor integration and document signing.
+        For now, it saves the client’s event details and calculates the required 50% deposit.
+      </p>
+
+      <form id="checkoutForm">
+
+        <div class="form-section">
+          <h3 class="form-section-title">Client Information</h3>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="clientName">Full Name</label>
+              <input type="text" id="clientName" name="clientName" placeholder="Full name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="clientPhone">Phone Number</label>
+              <input type="tel" id="clientPhone" name="clientPhone" placeholder="(954) 000-0000" required>
+            </div>
+
+            <div class="form-group full">
+              <label for="clientEmail">Email Address</label>
+              <input type="email" id="clientEmail" name="clientEmail" placeholder="name@email.com" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3 class="form-section-title">Event Information</h3>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="eventDate">Event Date</label>
+              <input type="date" id="eventDate" name="eventDate" required>
+            </div>
+
+            <div class="form-group">
+              <label for="eventType">Event Type</label>
+              <select id="eventType" name="eventType" required>
+                <option value="">Select event type</option>
+                <option value="Wedding">Wedding</option>
+                <option value="Quinceañera">Quinceañera</option>
+                <option value="Corporate Event">Corporate Event</option>
+                <option value="Private Party">Private Party</option>
+                <option value="Club / DJ Event">Club / DJ Event</option>
+                <option value="School Event">School Event</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="startTime">Start Time</label>
+              <input type="time" id="startTime" name="startTime">
+            </div>
+
+            <div class="form-group">
+              <label for="guestCount">Estimated Guest Count</label>
+              <input type="number" id="guestCount" name="guestCount" placeholder="Example: 150" min="1">
+            </div>
+
+            <div class="form-group full">
+              <label for="venueName">Venue Name</label>
+              <input type="text" id="venueName" name="venueName" placeholder="Venue name">
+            </div>
+
+            <div class="form-group full">
+              <label for="venueAddress">Venue Address</label>
+              <input type="text" id="venueAddress" name="venueAddress" placeholder="Venue address">
+            </div>
+
+            <div class="form-group full">
+              <label for="eventNotes">Notes / Special Requests</label>
+              <textarea id="eventNotes" name="eventNotes" placeholder="Tell us anything important about access, setup location, load-in, power, indoor/outdoor setup, or custom requests."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3 class="form-section-title">Agreement Acknowledgment</h3>
+
+          <div class="agreement-box">
+            <label class="checkbox-line">
+              <input type="checkbox" id="ackEstimate" required>
+              <span>I understand this is an estimated total and final pricing may change based on venue access, event details, staffing, power requirements, date, and custom production needs.</span>
+            </label>
+
+            <label class="checkbox-line">
+              <input type="checkbox" id="ackDeposit" required>
+              <span>I understand a 50% deposit is required to secure the booking date.</span>
+            </label>
+
+            <label class="checkbox-line">
+              <input type="checkbox" id="ackDocuments" required>
+              <span>I understand Heat District Productions may require signed documents, terms, waivers, or rental agreements before the event is confirmed.</span>
+            </label>
+          </div>
+        </div>
+
+      </form>
+    </section>
+
+    <aside class="summary-panel">
+      <p class="summary-kicker">Order Summary</p>
+      <h2 class="summary-title">Your Event Build</h2>
+      <p class="summary-note">
+        Review the selected package, upgrades, estimated total, and required 50% deposit.
+      </p>
+
+      <div class="summary-line">
+        <strong id="summaryPackageName">No Package Selected</strong>
+        <span id="summaryPackagePrice">$0</span>
+      </div>
+
+      <div class="summary-line">
+        <span>Package Coverage</span>
+        <span id="summaryPackageHours">0 hrs</span>
+      </div>
+
+      <div class="summary-items" id="summaryItems">
+        <div class="summary-empty">No add-ons selected.</div>
+      </div>
+
+      <div class="payment-breakdown">
+        <div class="deposit-row">
+          <span>Estimated Total</span>
+          <strong id="summaryTotal">$0</strong>
+        </div>
+
+        <div class="deposit-row deposit-due">
+          <span>50% Deposit Due</span>
+          <strong id="summaryDeposit">$0</strong>
+        </div>
+
+        <div class="deposit-row">
+          <span>Remaining Balance</span>
+          <strong id="summaryRemaining">$0</strong>
+        </div>
+      </div>
+
+      <div class="checkout-actions">
+        <button class="btn-primary" id="checkoutButton" type="button" onclick="saveCheckoutAndContinue()">
+          Continue to Deposit
+        </button>
+
+        <a href="addons.html" class="btn-secondary">Back to Add-Ons</a>
+      </div>
+
+      <div class="status-box">
+        Payment processor and document signing will be connected here later. This page already prepares the total, deposit amount, and client/event details.
+      </div>
+    </aside>
+
+  </main>
+
+  <footer>
+    <div class="footer-logo">
+      <img src="logo.png" alt="Heat District Productions" />
+      <span class="footer-productions-text">Productions</span>
+    </div>
+
+    <div class="footer-contact">
+      <a href="tel:9545472990">(954) 547-2990</a>
+      <a href="mailto:HeatDistrictProd@gmail.com">HeatDistrictProd@gmail.com</a>
+      <a href="https://instagram.com/heatdistrictproductions" target="_blank">@HeatDistrictProductions</a>
+      <a href="https://www.heatdistrictproductions.com">heatdistrictproductions.com</a>
+    </div>
+
+    <p class="footer-copy">© 2025 Heat District Productions · Miami & Broward County · All Rights Reserved</p>
+  </footer>
+
+  <script>
+    let estimate = null;
+
+    function safeJsonParse(value) {
+      try {
+        return value ? JSON.parse(value) : null;
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function formatCurrency(value) {
+      return '$' + Number(value || 0).toLocaleString();
+    }
+
+    function loadEstimate() {
+      const storedEstimate = safeJsonParse(sessionStorage.getItem('heatDistrictEstimate'));
+
+      if (!storedEstimate) {
+        return {
+          package: 'No Package Selected',
+          packagePrice: 0,
+          packageHours: 0,
+          addons: [],
+          addonsTotal: 0,
+          total: 0
+        };
+      }
+
+      if (!Array.isArray(storedEstimate.addons)) {
+        storedEstimate.addons = [];
+      }
+
+      const addonsTotal = storedEstimate.addons.reduce((sum, item) => {
+        return sum + (Number(item.price) * Number(item.qty));
+      }, 0);
+
+      storedEstimate.packagePrice = Number(storedEstimate.packagePrice || 0);
+      storedEstimate.packageHours = Number(storedEstimate.packageHours || 0);
+      storedEstimate.addonsTotal = addonsTotal;
+      storedEstimate.total = storedEstimate.packagePrice + addonsTotal;
+
+      sessionStorage.setItem('heatDistrictEstimate', JSON.stringify(storedEstimate));
+
+      return storedEstimate;
+    }
+
+    function renderCheckoutSummary() {
+      const packageNameEl = document.getElementById('summaryPackageName');
+      const packagePriceEl = document.getElementById('summaryPackagePrice');
+      const packageHoursEl = document.getElementById('summaryPackageHours');
+      const summaryItemsEl = document.getElementById('summaryItems');
+      const summaryTotalEl = document.getElementById('summaryTotal');
+      const summaryDepositEl = document.getElementById('summaryDeposit');
+      const summaryRemainingEl = document.getElementById('summaryRemaining');
+      const missingCartEl = document.getElementById('missingCart');
+      const checkoutButton = document.getElementById('checkoutButton');
+
+      const packagePrice = Number(estimate.packagePrice || 0);
+      const packageHours = Number(estimate.packageHours || 0);
+      const addons = Array.isArray(estimate.addons) ? estimate.addons : [];
+
+      const addonsTotal = addons.reduce((sum, item) => {
+        return sum + (Number(item.price) * Number(item.qty));
+      }, 0);
+
+      const total = packagePrice + addonsTotal;
+      const deposit = total * 0.5;
+      const remaining = total - deposit;
+
+      packageNameEl.textContent = estimate.package || 'No Package Selected';
+      packagePriceEl.textContent = formatCurrency(packagePrice);
+      packageHoursEl.textContent = packageHours ? `${packageHours} hrs` : '0 hrs';
+      summaryTotalEl.textContent = formatCurrency(total);
+      summaryDepositEl.textContent = formatCurrency(deposit);
+      summaryRemainingEl.textContent = formatCurrency(remaining);
+
+      if (!addons.length) {
+        summaryItemsEl.innerHTML = '<div class="summary-empty">No add-ons selected.</div>';
+      } else {
+        summaryItemsEl.innerHTML = addons.map(item => {
+          const lineTotal = Number(item.price) * Number(item.qty);
+
+          return `
+            <div class="summary-addon">
+              <div class="summary-addon-name">
+                ${item.name}
+                <small>Qty ${item.qty} · ${item.unit}</small>
+              </div>
+              <div class="summary-addon-price">${formatCurrency(lineTotal)}</div>
+            </div>
+          `;
+        }).join('');
+      }
+
+     const isProductBuild = estimate.type === 'products';
+const hasValidPackage = estimate.package && estimate.package !== 'No Package Selected' && packagePrice > 0;
+const hasValidProductBuild = isProductBuild && total > 0;
+
+if (!hasValidPackage && !hasValidProductBuild) {
+  missingCartEl.style.display = 'block';
+  checkoutButton.disabled = true;
+} else {
+  missingCartEl.style.display = 'none';
+  checkoutButton.disabled = false;
+}
+
+      estimate.addonsTotal = addonsTotal;
+      estimate.total = total;
+      estimate.depositDue = deposit;
+      estimate.remainingBalance = remaining;
+
+      sessionStorage.setItem('heatDistrictEstimate', JSON.stringify(estimate));
+    }
+
+    function collectFormData() {
+      return {
+        clientName: document.getElementById('clientName').value.trim(),
+        clientPhone: document.getElementById('clientPhone').value.trim(),
+        clientEmail: document.getElementById('clientEmail').value.trim(),
+        eventDate: document.getElementById('eventDate').value,
+        eventType: document.getElementById('eventType').value,
+        startTime: document.getElementById('startTime').value,
+        guestCount: document.getElementById('guestCount').value,
+        venueName: document.getElementById('venueName').value.trim(),
+        venueAddress: document.getElementById('venueAddress').value.trim(),
+        eventNotes: document.getElementById('eventNotes').value.trim(),
+        acknowledgments: {
+          estimate: document.getElementById('ackEstimate').checked,
+          deposit: document.getElementById('ackDeposit').checked,
+          documents: document.getElementById('ackDocuments').checked
+        }
+      };
+    }
+
+    function saveCheckoutAndContinue() {
+      const form = document.getElementById('checkoutForm');
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const checkoutDetails = collectFormData();
+
+      sessionStorage.setItem('heatDistrictCheckoutDetails', JSON.stringify(checkoutDetails));
+      sessionStorage.setItem('heatDistrictEstimate', JSON.stringify(estimate));
+
+      alert('Checkout details saved. Next step will be connecting payment processor and document signing.');
+    }
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+
+    function closeMobileMenu() {
+      if (!mobileMenuBtn || !mobileNav) return;
+
+      mobileNav.classList.remove('open');
+      mobileMenuBtn.classList.remove('active');
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('mobile-menu-open');
+    }
+
+    function toggleMobileMenu() {
+      if (!mobileMenuBtn || !mobileNav) return;
+
+      const isOpen = mobileNav.classList.contains('open');
+
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        mobileNav.classList.add('open');
+        mobileMenuBtn.classList.add('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('mobile-menu-open');
+      }
+    }
+
+    if (mobileMenuBtn && mobileNav) {
+      mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+      mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+          closeMobileMenu();
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        const clickedInsideNav = mobileNav.contains(e.target);
+        const clickedButton = mobileMenuBtn.contains(e.target);
+
+        if (!clickedInsideNav && !clickedButton && mobileNav.classList.contains('open')) {
+          closeMobileMenu();
+        }
+      });
+    }
+
+    estimate = loadEstimate();
+    renderCheckoutSummary();
+  </script>
+
+</body>
+</html>

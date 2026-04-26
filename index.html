@@ -322,7 +322,47 @@
       box-shadow: 0 0 30px rgba(0,240,255,0.35);
       transform: translateY(-2px);
     }
+.btn-outline-blue,
+.btn-outline-pink {
+  width: 100%;
+  text-align: center;
+  background: transparent;
+  padding: 12px 0;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Raleway', sans-serif;
+  transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
+  appearance: none;
+  -webkit-appearance: none;
+}
 
+.btn-outline-blue {
+  color: var(--neon-blue);
+  border: 1.5px solid var(--neon-blue);
+}
+
+.btn-outline-blue:hover {
+  background: rgba(0,240,255,0.08);
+  box-shadow: 0 0 26px rgba(0,240,255,0.3);
+  transform: translateY(-2px);
+}
+
+.btn-outline-pink {
+  color: var(--neon-pink);
+  border: 1.5px solid var(--neon-pink);
+}
+
+.btn-outline-pink:hover {
+  background: rgba(255,45,120,0.08);
+  box-shadow: 0 0 26px rgba(255,45,120,0.3);
+  transform: translateY(-2px);
+}
     .btn-outline-pink-large {
       background: transparent;
       color: var(--neon-pink);

@@ -944,73 +944,71 @@
       to   { transform: rotate(360deg); }
     }
 
-    @media (max-width: 768px) {
-      nav {
-        padding: 10px 18px;
-      }
+  @media (max-width: 1200px) {
+  .builder-layout {
+    grid-template-columns: 1fr;
+  }
 
-      .nav-links,
-      .nav-cta {
-        display: none;
-      }
+  .cart-panel {
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
 
-      .mobile-menu-btn {
-        display: flex;
-      }
+  .cart-items {
+    overflow: visible;
+    max-height: none;
+    padding-right: 0;
+  }
 
-      section {
-        padding: 80px 24px;
-      }
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 
-      .packages-grid-scroll {
-        overflow: visible;
-        padding: 24px 24px 0;
-      }
+  .info-bar {
+    grid-template-columns: 1fr;
+  }
+}
 
-      .packages-grid {
-        grid-template-columns: 1fr;
-        min-width: 0;
-      }
+@media (max-width: 900px) {
+  nav {
+    padding: 10px 18px;
+  }
 
-      .packages-header {
-        padding: 0 24px 40px;
-      }
+  .nav-links,
+  .nav-cta {
+    display: none;
+  }
 
-      .cart-highlight {
-        padding: 48px 28px;
-      }
+  .mobile-menu-btn {
+    display: flex;
+  }
 
-      .cart-section {
-        padding: 80px 24px;
-      }
+  .page-hero {
+    padding: 145px 24px 68px;
+  }
 
-      .hero-logo-img {
-        width: clamp(220px, 80vw, 400px);
-      }
+  .page-wrap {
+    padding: 60px 24px 100px;
+  }
 
-      .hero {
-        padding: 120px 24px 100px;
-      }
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
 
-      .scroll-indicator {
-        bottom: 18px;
-        width: 62px;
-      }
+  .category-jump {
+    gap: 10px;
+  }
 
-      .scroll-indicator span {
-        font-size: 0.48rem;
-        letter-spacing: 2.5px;
-      }
+  .category-jump a {
+    width: 100%;
+    text-align: center;
+  }
 
-      .scroll-arrow {
-        width: 12px;
-        height: 12px;
-      }
-
-      footer {
-        padding: 60px 24px;
-      }
-    }
+  footer {
+    padding: 60px 24px 100px;
+  }
+}
   </style>
 </head>
 <body>

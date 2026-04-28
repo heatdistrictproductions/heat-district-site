@@ -926,15 +926,15 @@
       </div>
 
       <div class="checkout-actions">
-        <button class="btn-primary" id="checkoutButton" type="button" onclick="saveCheckoutAndContinue()">
-          Continue to Deposit
+        <<button class="btn-primary" id="checkoutButton" type="button" onclick="saveCheckoutAndContinue()">
+        Create Deposit Invoice
         </button>
 
         <a href="addons.html" class="btn-secondary">Back to Add-Ons</a>
       </div>
 
-      <div class="status-box">
-        Payment processor and document signing will be connected here later. This page already prepares the total, deposit amount, and client/event details.
+      <div class="status-box" id="quickbooksStatus">
+      When you submit, we’ll create a 50% deposit invoice through QuickBooks. For local testing, this creates the invoice in the QuickBooks sandbox.
       </div>
     </aside>
 
@@ -1091,21 +1091,140 @@ if (!hasValidPackage && !hasValidProductBuild) {
       };
     }
 
-    function saveCheckoutAndContinue() {
-      const form = document.getElementById('checkoutForm');
+    async function saveCheckoutAndContinue() {
+  const form = document.getElementById('checkoutForm');
+  const checkoutButton = document.getElementById('checkoutButton');
+  const statusBox = document.getElementById('quickbooksStatus');
 
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-      }
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
 
-      const checkoutDetails = collectFormData();
+  const checkoutDetails = collectFormData();
 
-      sessionStorage.setItem('heatDistrictCheckoutDetails', JSON.stringify(checkoutDetails));
-      sessionStorage.setItem('heatDistrictEstimate', JSON.stringify(estimate));
+  const total = Number(estimate.total || 0);
+  const depositDue = Number(estimate.depositDue || 0);
+  const remainingBalance = Number(estimate.remainingBalance || 0);
 
-      alert('Checkout details saved. Next step will be connecting payment processor and document signing.');
+  if (!total || total <= 0) {
+    alert('Your cart total is $0. Please go back and select a package or product before checking out.');
+    return;
+  }
+
+  const selectedItems = [];
+
+  if (Number(estimate.packagePrice || 0) > 0) {
+    selectedItems.push({
+      name: estimate.package || 'Selected Package',
+      qty: 1,
+      lineTotal: Number(estimate.packagePrice || 0)
+    });
+  }
+
+  if (Array.isArray(estimate.addons)) {
+    estimate.addons.forEach(function(item) {
+      selectedItems.push({
+        name: item.name || 'Selected Add-On',
+        qty: Number(item.qty || 1),
+        lineTotal: Number(item.price || 0) * Number(item.qty || 1)
+      });
+    });
+  }
+
+  const venueParts = [
+    checkoutDetails.venueName,
+    checkoutDetails.venueAddress
+  ].filter(Boolean);
+
+  const notesParts = [
+    'Start Time: ' + (checkoutDetails.startTime || 'Not provided'),
+    '',
+    'Venue Name: ' + (checkoutDetails.venueName || 'Not provided'),
+    'Venue Address: ' + (checkoutDetails.venueAddress || 'Not provided'),
+    '',
+    'Customer Notes:',
+    checkoutDetails.eventNotes || 'No notes provided'
+  ];
+
+  const quickBooksOrder = {
+    customerName: checkoutDetails.clientName,
+    customerEmail: checkoutDetails.clientEmail,
+    customerPhone: checkoutDetails.clientPhone,
+    eventDate: checkoutDetails.eventDate,
+    eventType: checkoutDetails.eventType,
+    guestCount: checkoutDetails.guestCount || 'Not provided',
+    location: venueParts.length ? venueParts.join(' — ') : 'Not provided',
+    packageName: estimate.package || 'Custom Product Build',
+    total: total,
+    depositDue: depositDue,
+    remainingBalance: remainingBalance,
+    items: selectedItems,
+    notes: notesParts.join('\n')
+  };
+
+  sessionStorage.setItem('heatDistrictCheckoutDetails', JSON.stringify(checkoutDetails));
+  sessionStorage.setItem('heatDistrictEstimate', JSON.stringify(estimate));
+
+  checkoutButton.disabled = true;
+  checkoutButton.textContent = 'Creating Invoice...';
+
+  if (statusBox) {
+    statusBox.textContent = 'Creating your 50% deposit invoice in QuickBooks. Please wait...';
+  }
+
+  try {
+    const response = await fetch('http://localhost:3000/api/create-quickbooks-invoice', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(quickBooksOrder)
+    });
+
+    const data = await response.json();
+
+    if (!response.ok || !data.ok) {
+      throw new Error(data.error || 'QuickBooks invoice creation failed.');
     }
+
+    sessionStorage.setItem('heatDistrictQuickBooksInvoice', JSON.stringify(data));
+
+    checkoutButton.textContent = data.emailSent ? 'Invoice Sent' : 'Invoice Created';
+
+if (statusBox) {
+  if (data.emailSent) {
+    statusBox.innerHTML =
+      'Success. Your 50% deposit invoice was created and emailed through QuickBooks.<br><br>' +
+      'Invoice ID: ' + data.invoiceId + '<br>' +
+      'Customer Email: ' + data.customerEmail;
+  } else {
+    statusBox.innerHTML =
+      'Invoice created in QuickBooks, but the automatic email did not send.<br><br>' +
+      'Invoice ID: ' + data.invoiceId + '<br>' +
+      'Customer Email: ' + data.customerEmail + '<br><br>' +
+      'Open QuickBooks and send the invoice manually.';
+  }
+}
+
+alert(
+  data.emailSent
+    ? 'Success. The 50% deposit invoice was created and emailed through QuickBooks.'
+    : 'Invoice created, but QuickBooks email sending failed. Send it manually from QuickBooks.'
+);
+  } catch (error) {
+    console.error(error);
+
+    checkoutButton.disabled = false;
+    checkoutButton.textContent = 'Create Deposit Invoice';
+
+    if (statusBox) {
+      statusBox.textContent = 'Something went wrong creating the QuickBooks invoice: ' + error.message;
+    }
+
+    alert('QuickBooks invoice error: ' + error.message);
+  }
+}
 
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileNav = document.getElementById('mobileNav');

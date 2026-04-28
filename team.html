@@ -656,55 +656,53 @@
       }
     }
 
-    @media (max-width: 900px) {
-      .team-grid {
-        grid-template-columns: 1fr;
-      }
-    }
+ @media (max-width: 900px) {
+  nav {
+    padding: 10px 18px;
+  }
 
-    @media (max-width: 768px) {
-      nav {
-        padding: 10px 18px;
-      }
+  .nav-links,
+  .nav-cta {
+    display: none;
+  }
 
-      .nav-links,
-      .nav-cta {
-        display: none;
-      }
+  .mobile-menu-btn {
+    display: flex;
+  }
 
-      .mobile-menu-btn {
-        display: flex;
-      }
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
 
-      .page-hero {
-        padding: 145px 24px 64px;
-      }
+  .page-hero {
+    padding: 145px 24px 64px;
+  }
 
-      .team-wrap {
-        padding: 60px 24px 90px;
-      }
+  .team-wrap {
+    padding: 60px 24px 90px;
+  }
 
-      .values-grid,
-      .process-grid {
-        grid-template-columns: 1fr;
-      }
+  .values-grid,
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
 
-      .team-photo {
-        height: 235px;
-      }
+  .team-photo {
+    height: 235px;
+  }
 
-      .process-card {
-        padding: 24px;
-      }
+  .process-card {
+    padding: 24px;
+  }
 
-      .cta-section {
-        padding: 46px 26px;
-      }
+  .cta-section {
+    padding: 46px 26px;
+  }
 
-      footer {
-        padding: 60px 24px 100px;
-      }
-    }
+  footer {
+    padding: 60px 24px 100px;
+  }
+}
   </style>
 </head>
 
@@ -777,9 +775,9 @@
             <p class="team-role">Lighting / Photography / Production</p>
             <h3 class="team-name">Ozzy Melendez</h3>
             <p class="team-copy">
-              Ozzy handles the visual side of Heat District Productions, including lighting direction, photography,
-              production planning, event setup details, and the overall look of the experience. His focus is making sure
-              every setup feels clean, intentional, and ready to impress.
+            Ozzy handles the visual side of Heat District Productions, including lighting direction, photography,
+            production planning, event setup details, and the overall look of the experience. He has 2 years of experience
+            as a photographer and focuses on making every setup feel clean, intentional, and ready to impress.
             </p>
             <div class="team-tags">
               <span class="team-tag">Lighting</span>
@@ -795,19 +793,20 @@
             <div class="team-initials">JM</div>
           </div>
           <div class="team-content">
-            <p class="team-role">DJ / Design / Client Experience</p>
-            <h3 class="team-name">Julian Mendez</h3>
-            <p class="team-copy">
-              Julian brings the music and energy to the event as the DJ while also helping with design direction and the client
-              experience. He helps shape how the event feels from the guest perspective, making sure the sound, flow,
-              and presentation match the moment.
-            </p>
-            <div class="team-tags">
-              <span class="team-tag">DJ</span>
-              <span class="team-tag">Music Flow</span>
-              <span class="team-tag">Design</span>
-              <span class="team-tag">Client Experience</span>
-            </div>
+            <p class="team-role">DJ / Sound Engineer / Design / Client Experience</p>
+<h3 class="team-name">Julian Mendez</h3>
+<p class="team-copy">
+  Julian brings the music and energy to the event as the DJ while also serving as the sound engineer.
+  With over 10 years of DJ and AV equipment experience, he helps shape the sound, flow, design direction,
+  and client experience so the event feels polished from both the guest and production side.
+</p>
+<div class="team-tags">
+  <span class="team-tag">DJ</span>
+  <span class="team-tag">Sound Engineer</span>
+  <span class="team-tag">AV Experience</span>
+  <span class="team-tag">Design</span>
+  <span class="team-tag">Client Experience</span>
+</div>
           </div>
         </article>
 
@@ -966,7 +965,7 @@
       });
 
       window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
+        if (window.innerWidth > 900) {
           closeMobileMenu();
         }
       });

@@ -762,17 +762,18 @@
       transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
     }
 
-    .cart-btn.primary {
-      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
-      color: #fff;
-      border: none;
-      box-shadow: 0 0 22px rgba(0,240,255,0.22);
-    }
+   .cart-btn.primary {
+  background: transparent;
+  color: var(--neon-pink);
+  border: 1.5px solid var(--neon-pink);
+  box-shadow: none;
+}
 
-    .cart-btn.primary:hover {
-      box-shadow: 0 0 34px rgba(0,240,255,0.42);
-      transform: translateY(-2px);
-    }
+.cart-btn.primary:hover {
+  background: rgba(255,45,120,0.08);
+  box-shadow: 0 0 26px rgba(255,45,120,0.28);
+  transform: translateY(-2px);
+}
 
     .cart-btn.secondary {
       background: transparent;

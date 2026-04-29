@@ -629,6 +629,242 @@
       color: #fff;
     }
 
+    /* ── INVOICE PROCESSING OVERLAY ── */
+    .invoice-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(0,240,255,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 20% 100%, rgba(255,45,120,0.08) 0%, transparent 45%),
+        rgba(5,5,15,0.94);
+      backdrop-filter: blur(16px);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      animation: overlayFadeIn 0.35s ease forwards;
+    }
+
+    .invoice-overlay.show {
+      display: flex;
+    }
+
+    .invoice-modal {
+      width: min(560px, 100%);
+      background: linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.98));
+      border: 1px solid rgba(0,240,255,0.14);
+      border-radius: 18px;
+      box-shadow:
+        0 24px 70px rgba(0,0,0,0.55),
+        0 0 44px rgba(0,240,255,0.08),
+        0 0 60px rgba(255,45,120,0.06);
+      padding: 38px 34px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .invoice-modal::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 18%;
+      right: 18%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--neon-blue), var(--neon-pink), transparent);
+      opacity: 0.85;
+    }
+
+    .invoice-icon {
+      width: 82px;
+      height: 82px;
+      margin: 0 auto 24px;
+      border-radius: 50%;
+      border: 2px solid var(--neon-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 0 22px rgba(0,240,255,0.35),
+        0 0 60px rgba(0,240,255,0.13);
+    }
+
+    .invoice-icon.loading {
+      animation: iconPulse 1.4s ease-in-out infinite alternate;
+    }
+
+    .invoice-icon.success {
+      border-color: var(--success);
+      box-shadow:
+        0 0 22px rgba(77,255,145,0.38),
+        0 0 60px rgba(77,255,145,0.12);
+    }
+
+    .invoice-spinner {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 2px solid rgba(0,240,255,0.2);
+      border-top-color: var(--neon-blue);
+      border-right-color: var(--neon-pink);
+      animation: spin 0.8s linear infinite;
+    }
+
+    .invoice-check {
+      display: none;
+      width: 38px;
+      height: 38px;
+    }
+
+    .invoice-icon.success .invoice-spinner {
+      display: none;
+    }
+
+    .invoice-icon.success .invoice-check {
+      display: block;
+    }
+
+    .invoice-check polyline {
+      stroke-dasharray: 60;
+      stroke-dashoffset: 60;
+      animation: drawCheck 0.6s ease forwards;
+    }
+
+    .invoice-modal-kicker {
+      font-size: 0.62rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(0,240,255,0.65);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .invoice-modal-title {
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      font-weight: 300;
+      font-style: italic;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .invoice-modal-title strong {
+      font-weight: 700;
+      font-style: normal;
+      color: var(--neon-pink);
+    }
+
+    .invoice-modal.success .invoice-modal-title strong {
+      color: var(--success);
+    }
+
+    .invoice-modal-copy {
+      max-width: 440px;
+      margin: 0 auto;
+      font-size: 0.92rem;
+      line-height: 1.8;
+      color: rgba(232,232,240,0.56);
+      font-weight: 300;
+    }
+
+    .invoice-progress-wrap {
+      margin: 28px auto 0;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .invoice-progress-track {
+      width: 100%;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      overflow: hidden;
+      border: 1px solid rgba(0,240,255,0.09);
+    }
+
+    .invoice-progress-bar {
+      width: 12%;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink), var(--neon-purple));
+      box-shadow: 0 0 18px rgba(0,240,255,0.35);
+      transition: width 0.55s ease;
+    }
+
+    .invoice-progress-text {
+      margin-top: 14px;
+      font-size: 0.68rem;
+      letter-spacing: 2.8px;
+      text-transform: uppercase;
+      color: rgba(232,232,240,0.42);
+      line-height: 1.7;
+    }
+
+    .invoice-slow-note {
+      display: none;
+      margin-top: 18px;
+      padding: 13px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,45,120,0.12);
+      background: rgba(255,45,120,0.04);
+      color: rgba(232,232,240,0.58);
+      font-size: 0.76rem;
+      line-height: 1.7;
+    }
+
+    .invoice-slow-note.show {
+      display: block;
+    }
+
+    .invoice-result-details {
+      display: none;
+      margin-top: 24px;
+      padding: 15px;
+      border-radius: 12px;
+      border: 1px solid rgba(0,240,255,0.12);
+      background: rgba(0,240,255,0.04);
+      color: rgba(232,232,240,0.56);
+      font-size: 0.78rem;
+      line-height: 1.7;
+      text-align: left;
+    }
+
+    .invoice-result-details.show {
+      display: block;
+    }
+
+    .invoice-close-btn {
+      display: none;
+      margin: 28px auto 0;
+      background: transparent;
+      border: 1.5px solid var(--neon-blue);
+      color: var(--neon-blue);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+    }
+
+    .invoice-close-btn.show {
+      display: inline-block;
+    }
+
+    .invoice-close-btn:hover {
+      background: rgba(0,240,255,0.08);
+      box-shadow: 0 0 30px rgba(0,240,255,0.28);
+      transform: translateY(-2px);
+    }
+
+    body.invoice-overlay-open {
+      overflow: hidden;
+    }
+
     footer {
       text-align: center;
       padding: 60px 48px 100px;
@@ -683,6 +919,34 @@
       margin-top: 32px;
     }
 
+    @keyframes overlayFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes iconPulse {
+      0% {
+        box-shadow:
+          0 0 20px rgba(0,240,255,0.35),
+          0 0 60px rgba(0,240,255,0.13);
+      }
+      100% {
+        box-shadow:
+          0 0 32px rgba(0,240,255,0.65),
+          0 0 82px rgba(0,240,255,0.28),
+          0 0 120px rgba(255,45,120,0.08);
+      }
+    }
+
+    @keyframes drawCheck {
+      from { stroke-dashoffset: 60; }
+      to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
     @media (max-width: 1100px) {
       .checkout-wrap {
         grid-template-columns: 1fr;
@@ -725,6 +989,10 @@
         grid-template-columns: 1fr;
       }
 
+      .invoice-modal {
+        padding: 34px 24px;
+      }
+
       footer {
         padding: 60px 24px 100px;
       }
@@ -733,6 +1001,48 @@
 </head>
 
 <body>
+
+  <div class="invoice-overlay" id="invoiceOverlay" aria-hidden="true">
+    <div class="invoice-modal" id="invoiceModal">
+      <div class="invoice-icon loading" id="invoiceIcon">
+        <div class="invoice-spinner"></div>
+        <svg class="invoice-check" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polyline
+            points="6,18 14,26 30,10"
+            stroke="#4dff91"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+
+      <p class="invoice-modal-kicker" id="invoiceOverlayKicker">QuickBooks Invoice</p>
+      <h2 class="invoice-modal-title" id="invoiceOverlayTitle">
+        Creating Your<br><strong>Deposit Invoice</strong>
+      </h2>
+      <p class="invoice-modal-copy" id="invoiceOverlayCopy">
+        Please keep this page open while we prepare your 50% deposit invoice and send the payment link to your email.
+      </p>
+
+      <div class="invoice-progress-wrap" id="invoiceProgressWrap">
+        <div class="invoice-progress-track">
+          <div class="invoice-progress-bar" id="invoiceProgressBar"></div>
+        </div>
+        <div class="invoice-progress-text" id="invoiceProgressText">Starting secure invoice request...</div>
+      </div>
+
+      <div class="invoice-slow-note" id="invoiceSlowNote">
+        This is taking a little longer than usual. Your request is still processing. Please do not refresh or click the button again.
+      </div>
+
+      <div class="invoice-result-details" id="invoiceResultDetails"></div>
+
+      <button class="invoice-close-btn" id="invoiceCloseBtn" type="button" onclick="closeInvoiceOverlay()">
+        Back to Checkout
+      </button>
+    </div>
+  </div>
 
   <nav>
     <a href="index.html" class="nav-logo">
@@ -769,7 +1079,7 @@
     <p class="page-hero-eyebrow">Step 03 · Checkout · Deposit & Event Details</p>
     <h1>Review Your Build<br><strong>Secure Your Date</strong></h1>
     <p>
-      Confirm your event details, review your selected package and add-ons, then continue to the deposit and agreement step.
+      Confirm your event details, review your selected package and add-ons, then create your 50% deposit invoice.
     </p>
   </section>
 
@@ -786,8 +1096,7 @@
       <p class="section-label">Checkout Details</p>
       <h2 class="section-title">Tell Us About <strong>Your Event</strong></h2>
       <p class="section-sub">
-        This checkout page is ready for the next phase: payment processor integration and document signing.
-        For now, it saves the client’s event details and calculates the required 50% deposit.
+        Fill out your event information below. Once submitted, Heat District Productions will create and email your 50% deposit invoice through QuickBooks.
       </p>
 
       <form id="checkoutForm">
@@ -926,15 +1235,15 @@
       </div>
 
       <div class="checkout-actions">
-        <<button class="btn-primary" id="checkoutButton" type="button" onclick="saveCheckoutAndContinue()">
-        Create Deposit Invoice
+        <button class="btn-primary" id="checkoutButton" type="button" onclick="saveCheckoutAndContinue()">
+          Create Deposit Invoice
         </button>
 
         <a href="addons.html" class="btn-secondary">Back to Add-Ons</a>
       </div>
 
       <div class="status-box" id="quickbooksStatus">
-      When you submit, we’ll create a 50% deposit invoice through QuickBooks. For local testing, this creates the invoice in the QuickBooks sandbox.
+        When you submit, we’ll create a 50% deposit invoice through QuickBooks and send the payment link to your email.
       </div>
     </aside>
 
@@ -958,6 +1267,9 @@
 
   <script>
     let estimate = null;
+    let invoiceProgressTimer = null;
+    let invoiceSlowTimer = null;
+    let invoiceInProgress = false;
 
     function safeJsonParse(value) {
       try {
@@ -1051,17 +1363,17 @@
         }).join('');
       }
 
-     const isProductBuild = estimate.type === 'products';
-const hasValidPackage = estimate.package && estimate.package !== 'No Package Selected' && packagePrice > 0;
-const hasValidProductBuild = isProductBuild && total > 0;
+      const isProductBuild = estimate.type === 'products';
+      const hasValidPackage = estimate.package && estimate.package !== 'No Package Selected' && packagePrice > 0;
+      const hasValidProductBuild = isProductBuild && total > 0;
 
-if (!hasValidPackage && !hasValidProductBuild) {
-  missingCartEl.style.display = 'block';
-  checkoutButton.disabled = true;
-} else {
-  missingCartEl.style.display = 'none';
-  checkoutButton.disabled = false;
-}
+      if (!hasValidPackage && !hasValidProductBuild) {
+        missingCartEl.style.display = 'block';
+        checkoutButton.disabled = true;
+      } else {
+        missingCartEl.style.display = 'none';
+        checkoutButton.disabled = false;
+      }
 
       estimate.addonsTotal = addonsTotal;
       estimate.total = total;
@@ -1091,140 +1403,292 @@ if (!hasValidPackage && !hasValidProductBuild) {
       };
     }
 
+    function setInvoiceProgress(percent, text) {
+      const bar = document.getElementById('invoiceProgressBar');
+      const progressText = document.getElementById('invoiceProgressText');
+
+      if (bar) {
+        bar.style.width = percent + '%';
+      }
+
+      if (progressText) {
+        progressText.textContent = text;
+      }
+    }
+
+    function showInvoiceOverlay() {
+      const overlay = document.getElementById('invoiceOverlay');
+      const modal = document.getElementById('invoiceModal');
+      const icon = document.getElementById('invoiceIcon');
+      const slowNote = document.getElementById('invoiceSlowNote');
+      const details = document.getElementById('invoiceResultDetails');
+      const closeBtn = document.getElementById('invoiceCloseBtn');
+      const title = document.getElementById('invoiceOverlayTitle');
+      const copy = document.getElementById('invoiceOverlayCopy');
+      const kicker = document.getElementById('invoiceOverlayKicker');
+      const progressWrap = document.getElementById('invoiceProgressWrap');
+
+      overlay.classList.add('show');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('invoice-overlay-open');
+
+      modal.classList.remove('success');
+      icon.classList.remove('success');
+      icon.classList.add('loading');
+      slowNote.classList.remove('show');
+      details.classList.remove('show');
+      details.innerHTML = '';
+      closeBtn.classList.remove('show');
+      progressWrap.style.display = 'block';
+
+      kicker.textContent = 'QuickBooks Invoice';
+      title.innerHTML = 'Creating Your<br><strong>Deposit Invoice</strong>';
+      copy.textContent = 'Please keep this page open while we prepare your 50% deposit invoice and send the payment link to your email.';
+
+      setInvoiceProgress(12, 'Starting secure invoice request...');
+
+      const progressSteps = [
+        { percent: 28, text: 'Reviewing your selected package and add-ons...' },
+        { percent: 46, text: 'Connecting to QuickBooks...' },
+        { percent: 64, text: 'Creating your 50% deposit invoice...' },
+        { percent: 78, text: 'Sending the payment link to your email...' },
+        { percent: 88, text: 'Finalizing your invoice confirmation...' }
+      ];
+
+      let stepIndex = 0;
+
+      clearInterval(invoiceProgressTimer);
+      clearTimeout(invoiceSlowTimer);
+
+      invoiceProgressTimer = setInterval(function() {
+        if (stepIndex < progressSteps.length) {
+          const step = progressSteps[stepIndex];
+          setInvoiceProgress(step.percent, step.text);
+          stepIndex++;
+        }
+      }, 1700);
+
+      invoiceSlowTimer = setTimeout(function() {
+        slowNote.classList.add('show');
+      }, 10000);
+    }
+
+    function showInvoiceSuccess(data) {
+      const modal = document.getElementById('invoiceModal');
+      const icon = document.getElementById('invoiceIcon');
+      const slowNote = document.getElementById('invoiceSlowNote');
+      const details = document.getElementById('invoiceResultDetails');
+      const closeBtn = document.getElementById('invoiceCloseBtn');
+      const title = document.getElementById('invoiceOverlayTitle');
+      const copy = document.getElementById('invoiceOverlayCopy');
+      const kicker = document.getElementById('invoiceOverlayKicker');
+      const progressWrap = document.getElementById('invoiceProgressWrap');
+
+      clearInterval(invoiceProgressTimer);
+      clearTimeout(invoiceSlowTimer);
+
+      setInvoiceProgress(100, 'Invoice complete.');
+
+      setTimeout(function() {
+        modal.classList.add('success');
+        icon.classList.remove('loading');
+        icon.classList.add('success');
+        slowNote.classList.remove('show');
+        progressWrap.style.display = 'none';
+
+        kicker.textContent = data.emailSent ? 'Invoice Sent' : 'Invoice Created';
+        title.innerHTML = data.emailSent
+          ? 'Invoice Sent To<br><strong>Your Email</strong>'
+          : 'Invoice Created<br><strong>Action Needed</strong>';
+
+        copy.textContent = data.emailSent
+          ? 'Your 50% deposit invoice has been emailed through QuickBooks. You can complete your payment using the secure link in that email.'
+          : 'Your invoice was created in QuickBooks, but the automatic email did not send. Heat District Productions will send it manually.';
+
+        details.classList.add('show');
+        details.innerHTML =
+          '<strong>Invoice ID:</strong> ' + (data.invoiceId || 'Created') + '<br>' +
+          '<strong>Customer Email:</strong> ' + (data.customerEmail || 'Provided email') + '<br>' +
+          '<strong>Status:</strong> ' + (data.emailSent ? 'Invoice emailed successfully.' : 'Invoice created, email needs manual send.');
+
+        closeBtn.classList.add('show');
+      }, 450);
+    }
+
+    function showInvoiceError(errorMessage) {
+      const modal = document.getElementById('invoiceModal');
+      const icon = document.getElementById('invoiceIcon');
+      const slowNote = document.getElementById('invoiceSlowNote');
+      const details = document.getElementById('invoiceResultDetails');
+      const closeBtn = document.getElementById('invoiceCloseBtn');
+      const title = document.getElementById('invoiceOverlayTitle');
+      const copy = document.getElementById('invoiceOverlayCopy');
+      const kicker = document.getElementById('invoiceOverlayKicker');
+      const progressWrap = document.getElementById('invoiceProgressWrap');
+
+      clearInterval(invoiceProgressTimer);
+      clearTimeout(invoiceSlowTimer);
+
+      modal.classList.remove('success');
+      icon.classList.remove('loading', 'success');
+      slowNote.classList.remove('show');
+      progressWrap.style.display = 'none';
+
+      kicker.textContent = 'Invoice Error';
+      title.innerHTML = 'Something Went<br><strong>Wrong</strong>';
+      copy.textContent = 'We could not complete the invoice request. Please try again or contact Heat District Productions directly.';
+
+      details.classList.add('show');
+      details.innerHTML = '<strong>Error:</strong> ' + errorMessage;
+
+      closeBtn.classList.add('show');
+    }
+
+    function closeInvoiceOverlay() {
+      const overlay = document.getElementById('invoiceOverlay');
+      overlay.classList.remove('show');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('invoice-overlay-open');
+    }
+
     async function saveCheckoutAndContinue() {
-  const form = document.getElementById('checkoutForm');
-  const checkoutButton = document.getElementById('checkoutButton');
-  const statusBox = document.getElementById('quickbooksStatus');
+      const form = document.getElementById('checkoutForm');
+      const checkoutButton = document.getElementById('checkoutButton');
+      const statusBox = document.getElementById('quickbooksStatus');
 
-  if (!form.checkValidity()) {
-    form.reportValidity();
-    return;
-  }
+      if (invoiceInProgress) {
+        return;
+      }
 
-  const checkoutDetails = collectFormData();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
 
-  const total = Number(estimate.total || 0);
-  const depositDue = Number(estimate.depositDue || 0);
-  const remainingBalance = Number(estimate.remainingBalance || 0);
+      const checkoutDetails = collectFormData();
 
-  if (!total || total <= 0) {
-    alert('Your cart total is $0. Please go back and select a package or product before checking out.');
-    return;
-  }
+      const total = Number(estimate.total || 0);
+      const depositDue = Number(estimate.depositDue || 0);
+      const remainingBalance = Number(estimate.remainingBalance || 0);
 
-  const selectedItems = [];
+      if (!total || total <= 0) {
+        alert('Your cart total is $0. Please go back and select a package or product before checking out.');
+        return;
+      }
 
-  if (Number(estimate.packagePrice || 0) > 0) {
-    selectedItems.push({
-      name: estimate.package || 'Selected Package',
-      qty: 1,
-      lineTotal: Number(estimate.packagePrice || 0)
-    });
-  }
+      const selectedItems = [];
 
-  if (Array.isArray(estimate.addons)) {
-    estimate.addons.forEach(function(item) {
-      selectedItems.push({
-        name: item.name || 'Selected Add-On',
-        qty: Number(item.qty || 1),
-        lineTotal: Number(item.price || 0) * Number(item.qty || 1)
-      });
-    });
-  }
+      if (Number(estimate.packagePrice || 0) > 0) {
+        selectedItems.push({
+          name: estimate.package || 'Selected Package',
+          qty: 1,
+          lineTotal: Number(estimate.packagePrice || 0)
+        });
+      }
 
-  const venueParts = [
-    checkoutDetails.venueName,
-    checkoutDetails.venueAddress
-  ].filter(Boolean);
+      if (Array.isArray(estimate.addons)) {
+        estimate.addons.forEach(function(item) {
+          selectedItems.push({
+            name: item.name || 'Selected Add-On',
+            qty: Number(item.qty || 1),
+            lineTotal: Number(item.price || 0) * Number(item.qty || 1)
+          });
+        });
+      }
 
-  const notesParts = [
-    'Start Time: ' + (checkoutDetails.startTime || 'Not provided'),
-    '',
-    'Venue Name: ' + (checkoutDetails.venueName || 'Not provided'),
-    'Venue Address: ' + (checkoutDetails.venueAddress || 'Not provided'),
-    '',
-    'Customer Notes:',
-    checkoutDetails.eventNotes || 'No notes provided'
-  ];
+      const venueParts = [
+        checkoutDetails.venueName,
+        checkoutDetails.venueAddress
+      ].filter(Boolean);
 
-  const quickBooksOrder = {
-    customerName: checkoutDetails.clientName,
-    customerEmail: checkoutDetails.clientEmail,
-    customerPhone: checkoutDetails.clientPhone,
-    eventDate: checkoutDetails.eventDate,
-    eventType: checkoutDetails.eventType,
-    guestCount: checkoutDetails.guestCount || 'Not provided',
-    location: venueParts.length ? venueParts.join(' — ') : 'Not provided',
-    packageName: estimate.package || 'Custom Product Build',
-    total: total,
-    depositDue: depositDue,
-    remainingBalance: remainingBalance,
-    items: selectedItems,
-    notes: notesParts.join('\n')
-  };
+      const notesParts = [
+        'Start Time: ' + (checkoutDetails.startTime || 'Not provided'),
+        '',
+        'Venue Name: ' + (checkoutDetails.venueName || 'Not provided'),
+        'Venue Address: ' + (checkoutDetails.venueAddress || 'Not provided'),
+        '',
+        'Customer Notes:',
+        checkoutDetails.eventNotes || 'No notes provided'
+      ];
 
-  sessionStorage.setItem('heatDistrictCheckoutDetails', JSON.stringify(checkoutDetails));
-  sessionStorage.setItem('heatDistrictEstimate', JSON.stringify(estimate));
+      const quickBooksOrder = {
+        customerName: checkoutDetails.clientName,
+        customerEmail: checkoutDetails.clientEmail,
+        customerPhone: checkoutDetails.clientPhone,
+        eventDate: checkoutDetails.eventDate,
+        eventType: checkoutDetails.eventType,
+        guestCount: checkoutDetails.guestCount || 'Not provided',
+        location: venueParts.length ? venueParts.join(' — ') : 'Not provided',
+        packageName: estimate.package || 'Custom Product Build',
+        total: total,
+        depositDue: depositDue,
+        remainingBalance: remainingBalance,
+        items: selectedItems,
+        notes: notesParts.join('\n')
+      };
 
-  checkoutButton.disabled = true;
-  checkoutButton.textContent = 'Creating Invoice...';
+      sessionStorage.setItem('heatDistrictCheckoutDetails', JSON.stringify(checkoutDetails));
+      sessionStorage.setItem('heatDistrictEstimate', JSON.stringify(estimate));
 
-  if (statusBox) {
-    statusBox.textContent = 'Creating your 50% deposit invoice in QuickBooks. Please wait...';
-  }
+      invoiceInProgress = true;
+      checkoutButton.disabled = true;
+      checkoutButton.textContent = 'Creating Invoice...';
 
-  try {
-   const response = await fetch('https://heat-district-qb-backend.onrender.com/api/create-quickbooks-invoice', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(quickBooksOrder)
-    });
+      if (statusBox) {
+        statusBox.textContent = 'Creating your 50% deposit invoice in QuickBooks. Please keep this page open.';
+      }
 
-    const data = await response.json();
+      showInvoiceOverlay();
 
-    if (!response.ok || !data.ok) {
-      throw new Error(data.error || 'QuickBooks invoice creation failed.');
+      try {
+        const response = await fetch('https://heat-district-qb-backend.onrender.com/api/create-quickbooks-invoice', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(quickBooksOrder)
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.ok) {
+          throw new Error(data.error || 'QuickBooks invoice creation failed.');
+        }
+
+        sessionStorage.setItem('heatDistrictQuickBooksInvoice', JSON.stringify(data));
+
+        checkoutButton.textContent = data.emailSent ? 'Invoice Sent' : 'Invoice Created';
+
+        if (statusBox) {
+          if (data.emailSent) {
+            statusBox.innerHTML =
+              'Success. Your 50% deposit invoice was created and emailed through QuickBooks.<br><br>' +
+              'Invoice ID: ' + data.invoiceId + '<br>' +
+              'Customer Email: ' + data.customerEmail;
+          } else {
+            statusBox.innerHTML =
+              'Invoice created in QuickBooks, but the automatic email did not send.<br><br>' +
+              'Invoice ID: ' + data.invoiceId + '<br>' +
+              'Customer Email: ' + data.customerEmail + '<br><br>' +
+              'Open QuickBooks and send the invoice manually.';
+          }
+        }
+
+        showInvoiceSuccess(data);
+      } catch (error) {
+        console.error(error);
+
+        invoiceInProgress = false;
+        checkoutButton.disabled = false;
+        checkoutButton.textContent = 'Create Deposit Invoice';
+
+        if (statusBox) {
+          statusBox.textContent = 'Something went wrong creating the QuickBooks invoice: ' + error.message;
+        }
+
+        showInvoiceError(error.message);
+      }
     }
-
-    sessionStorage.setItem('heatDistrictQuickBooksInvoice', JSON.stringify(data));
-
-    checkoutButton.textContent = data.emailSent ? 'Invoice Sent' : 'Invoice Created';
-
-if (statusBox) {
-  if (data.emailSent) {
-    statusBox.innerHTML =
-      'Success. Your 50% deposit invoice was created and emailed through QuickBooks.<br><br>' +
-      'Invoice ID: ' + data.invoiceId + '<br>' +
-      'Customer Email: ' + data.customerEmail;
-  } else {
-    statusBox.innerHTML =
-      'Invoice created in QuickBooks, but the automatic email did not send.<br><br>' +
-      'Invoice ID: ' + data.invoiceId + '<br>' +
-      'Customer Email: ' + data.customerEmail + '<br><br>' +
-      'Open QuickBooks and send the invoice manually.';
-  }
-}
-
-alert(
-  data.emailSent
-    ? 'Success. The 50% deposit invoice was created and emailed through QuickBooks.'
-    : 'Invoice created, but QuickBooks email sending failed. Send it manually from QuickBooks.'
-);
-  } catch (error) {
-    console.error(error);
-
-    checkoutButton.disabled = false;
-    checkoutButton.textContent = 'Create Deposit Invoice';
-
-    if (statusBox) {
-      statusBox.textContent = 'Something went wrong creating the QuickBooks invoice: ' + error.message;
-    }
-
-    alert('QuickBooks invoice error: ' + error.message);
-  }
-}
 
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileNav = document.getElementById('mobileNav');

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Products — Heat District Productions</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+
   <style>
     :root {
       --neon-blue: #00f0ff;
@@ -104,114 +105,116 @@
       background: rgba(255,45,120,0.15) !important;
       box-shadow: 0 0 18px rgba(255,45,120,0.4) !important;
     }
-.mobile-menu-btn {
-  display: none;
-  width: 46px;
-  height: 46px;
-  background: transparent;
-  border: 1px solid rgba(0,240,255,0.18);
-  border-radius: 8px;
-  cursor: pointer;
-  padding: 10px 9px;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  flex-shrink: 0;
-}
 
-.mobile-menu-btn span {
-  display: block;
-  width: 100%;
-  height: 1.5px;
-  background: var(--text-light);
-  border-radius: 999px;
-  transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
-}
+    .mobile-menu-btn {
+      display: none;
+      width: 46px;
+      height: 46px;
+      background: transparent;
+      border: 1px solid rgba(0,240,255,0.18);
+      border-radius: 8px;
+      cursor: pointer;
+      padding: 10px 9px;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      flex-shrink: 0;
+    }
 
-.mobile-menu-btn:hover {
-  border-color: rgba(0,240,255,0.35);
-  box-shadow: 0 0 16px rgba(0,240,255,0.12);
-}
+    .mobile-menu-btn span {
+      display: block;
+      width: 100%;
+      height: 1.5px;
+      background: var(--text-light);
+      border-radius: 999px;
+      transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+    }
 
-.mobile-menu-btn.active span:nth-child(1) {
-  transform: translateY(6.5px) rotate(45deg);
-  background: var(--neon-blue);
-}
+    .mobile-menu-btn:hover {
+      border-color: rgba(0,240,255,0.35);
+      box-shadow: 0 0 16px rgba(0,240,255,0.12);
+    }
 
-.mobile-menu-btn.active span:nth-child(2) {
-  opacity: 0;
-}
+    .mobile-menu-btn.active span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+      background: var(--neon-blue);
+    }
 
-.mobile-menu-btn.active span:nth-child(3) {
-  transform: translateY(-6.5px) rotate(-45deg);
-  background: var(--neon-blue);
-}
+    .mobile-menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
 
-.mobile-nav {
-  position: fixed;
-  top: 73px;
-  left: 16px;
-  right: 16px;
-  z-index: 999;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 14px;
-  background: rgba(8,8,20,0.98);
-  border: 1px solid rgba(0,240,255,0.14);
-  border-radius: 14px;
-  backdrop-filter: blur(14px);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.45);
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(-10px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
+    .mobile-menu-btn.active span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+      background: var(--neon-blue);
+    }
 
-.mobile-nav.open {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
+    .mobile-nav {
+      position: fixed;
+      top: 73px;
+      left: 16px;
+      right: 16px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 14px;
+      background: rgba(8,8,20,0.98);
+      border: 1px solid rgba(0,240,255,0.14);
+      border-radius: 14px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-10px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
 
-.mobile-nav a {
-  color: var(--text-light);
-  text-decoration: none;
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 14px 12px;
-  border-radius: 8px;
-  transition: background 0.25s ease, color 0.25s ease, text-shadow 0.25s ease;
-}
+    .mobile-nav.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
 
-.mobile-nav a:hover,
-.mobile-nav a.active {
-  background: rgba(0,240,255,0.06);
-  color: var(--neon-blue);
-  text-shadow: 0 0 8px var(--neon-blue);
-}
+    .mobile-nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 14px 12px;
+      border-radius: 8px;
+      transition: background 0.25s ease, color 0.25s ease, text-shadow 0.25s ease;
+    }
 
-.mobile-nav-book {
-  margin-top: 8px;
-  border: 1.5px solid var(--neon-pink);
-  color: var(--neon-pink) !important;
-  text-align: center;
-}
+    .mobile-nav a:hover,
+    .mobile-nav a.active {
+      background: rgba(0,240,255,0.06);
+      color: var(--neon-blue);
+      text-shadow: 0 0 8px var(--neon-blue);
+    }
 
-.mobile-nav-book:hover {
-  background: rgba(255,45,120,0.12) !important;
-  box-shadow: 0 0 18px rgba(255,45,120,0.18);
-  color: var(--neon-pink) !important;
-  text-shadow: none !important;
-}
+    .mobile-nav-book {
+      margin-top: 8px;
+      border: 1.5px solid var(--neon-pink);
+      color: var(--neon-pink) !important;
+      text-align: center;
+    }
 
-body.mobile-menu-open {
-  overflow: hidden;
-}
+    .mobile-nav-book:hover {
+      background: rgba(255,45,120,0.12) !important;
+      box-shadow: 0 0 18px rgba(255,45,120,0.18);
+      color: var(--neon-pink) !important;
+      text-shadow: none !important;
+    }
+
+    body.mobile-menu-open {
+      overflow: hidden;
+    }
+
     .page-hero {
-      padding: 160px 48px 82px;
+      padding: 160px 48px 74px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -258,7 +261,7 @@ body.mobile-menu-open {
     .page-hero p {
       position: relative;
       z-index: 1;
-      max-width: 820px;
+      max-width: 840px;
       margin: 0 auto;
       font-size: 0.95rem;
       line-height: 1.9;
@@ -269,7 +272,7 @@ body.mobile-menu-open {
     .hero-actions {
       position: relative;
       z-index: 1;
-      margin-top: 28px;
+      margin-top: 30px;
       display: flex;
       justify-content: center;
       gap: 16px;
@@ -320,66 +323,6 @@ body.mobile-menu-open {
       transform: translateY(-2px);
     }
 
-    .hero-contact-box {
-      max-width: 880px;
-      margin: 32px auto 0;
-      padding: 24px 26px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,45,120,0.18);
-      background:
-        linear-gradient(180deg, rgba(255,45,120,0.06), rgba(10,10,26,0.9)),
-        linear-gradient(90deg, rgba(0,240,255,0.03), rgba(255,45,120,0.03));
-      box-shadow: 0 14px 40px rgba(0,0,0,0.24);
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-contact-kicker {
-      font-size: 0.62rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: rgba(0,240,255,0.72);
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-
-    .hero-contact-title {
-      font-size: clamp(1.15rem, 2vw, 1.7rem);
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 8px;
-      line-height: 1.2;
-    }
-
-    .hero-contact-copy {
-      font-size: 0.88rem;
-      line-height: 1.8;
-      color: rgba(232,232,240,0.72);
-      max-width: 700px;
-      margin: 0 auto 18px;
-    }
-
-    .hero-contact-btn {
-      display: inline-block;
-      background: transparent;
-      color: var(--neon-pink);
-      border: 1.5px solid var(--neon-pink);
-      padding: 12px 26px;
-      border-radius: 4px;
-      text-decoration: none;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 2.6px;
-      text-transform: uppercase;
-      transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
-    }
-
-    .hero-contact-btn:hover {
-      background: rgba(255,45,120,0.12);
-      box-shadow: 0 0 22px rgba(255,45,120,0.28);
-      transform: translateY(-2px);
-    }
-
     .neon-divider {
       width: 100%;
       height: 1px;
@@ -389,11 +332,11 @@ body.mobile-menu-open {
     .page-wrap {
       max-width: 1520px;
       margin: 0 auto;
-      padding: 80px 48px 100px;
+      padding: 70px 48px 100px;
     }
 
     .section-block + .section-block {
-      margin-top: 88px;
+      margin-top: 70px;
     }
 
     .section-label {
@@ -457,30 +400,79 @@ body.mobile-menu-open {
       color: rgba(232,232,240,0.62);
     }
 
-    .category-jump {
+    .filter-shell {
       margin-top: 34px;
+      border: 1px solid rgba(0,240,255,0.1);
+      border-radius: 16px;
+      background:
+        linear-gradient(180deg, rgba(10,10,26,0.94), rgba(8,8,22,0.98)),
+        linear-gradient(90deg, rgba(0,240,255,0.04), rgba(255,45,120,0.04));
+      padding: 22px;
+      box-shadow: 0 14px 38px rgba(0,0,0,0.18);
+    }
+
+    .filter-head {
       display: flex;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: flex-end;
+      margin-bottom: 18px;
+    }
+
+    .filter-kicker {
+      font-size: 0.58rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,45,120,0.84);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .filter-title {
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .filter-note {
+      color: rgba(232,232,240,0.45);
+      font-size: 0.78rem;
+      line-height: 1.65;
+      max-width: 520px;
+    }
+
+    .category-filter {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
     }
 
-    .category-jump a {
-      text-decoration: none;
-      color: rgba(232,232,240,0.75);
-      border: 1px solid rgba(0,240,255,0.12);
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-size: 0.65rem;
+    .filter-btn {
+      border: 1px solid rgba(0,240,255,0.13);
+      background: rgba(255,255,255,0.02);
+      color: rgba(232,232,240,0.76);
+      padding: 13px 14px;
+      border-radius: 10px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.66rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      transition: all 0.3s ease;
-      background: rgba(255,255,255,0.02);
+      cursor: pointer;
+      transition: all 0.28s ease;
     }
 
-    .category-jump a:hover {
+    .filter-btn:hover {
       color: var(--neon-blue);
       border-color: rgba(0,240,255,0.28);
       box-shadow: 0 0 18px rgba(0,240,255,0.12);
+      transform: translateY(-2px);
+    }
+
+    .filter-btn.active {
+      color: var(--neon-pink);
+      border-color: rgba(255,45,120,0.45);
+      background: rgba(255,45,120,0.08);
+      box-shadow: 0 0 24px rgba(255,45,120,0.16);
     }
 
     .builder-layout {
@@ -497,6 +489,10 @@ body.mobile-menu-open {
 
     .group-block + .group-block {
       margin-top: 38px;
+    }
+
+    .group-block.is-hidden {
+      display: none;
     }
 
     .group-shell {
@@ -648,6 +644,13 @@ body.mobile-menu-open {
       margin-bottom: 14px;
     }
 
+    .product-controls.stack {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      align-items: stretch;
+    }
+
     .product-controls label {
       font-size: 0.58rem;
       letter-spacing: 2.8px;
@@ -656,16 +659,26 @@ body.mobile-menu-open {
       font-weight: 600;
     }
 
-    .duration-select {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(0,240,255,0.14);
-      color: #fff;
-      border-radius: 6px;
-      padding: 8px 10px;
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.78rem;
-      outline: none;
-    }
+    .duration-select,
+.setup-select,
+.quantity-select {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(0,240,255,0.14);
+  color: #fff;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.78rem;
+  outline: none;
+  width: 100%;
+}
+
+.duration-select option,
+.setup-select option,
+.quantity-select option {
+  background: #0a0a1a;
+  color: #e8e8f0;
+}
 
     .product-total {
       font-size: 0.86rem;
@@ -701,6 +714,7 @@ body.mobile-menu-open {
       text-transform: uppercase;
       transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
       cursor: pointer;
+      margin-top: auto;
     }
 
     .product-btn:hover {
@@ -717,6 +731,10 @@ body.mobile-menu-open {
       background: linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.99));
       box-shadow: 0 16px 48px rgba(0,0,0,0.28);
       padding: 22px 20px 20px;
+      max-height: calc(100vh - 118px);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
     }
 
     .cart-kicker {
@@ -745,7 +763,25 @@ body.mobile-menu-open {
     .cart-items {
       display: grid;
       gap: 10px;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow-y: auto;
+      padding-right: 6px;
+    }
+
+    .cart-items::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .cart-items::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.04);
+      border-radius: 999px;
+    }
+
+    .cart-items::-webkit-scrollbar-thumb {
+      background: rgba(0,240,255,0.35);
+      border-radius: 999px;
     }
 
     .cart-empty {
@@ -806,6 +842,8 @@ body.mobile-menu-open {
     }
 
     .cart-summary {
+      flex: 0 0 auto;
+      background: linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.99));
       border-top: 1px solid rgba(255,255,255,0.06);
       padding-top: 18px;
     }
@@ -867,18 +905,18 @@ body.mobile-menu-open {
       transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
     }
 
-   .cart-btn.primary {
-  background: transparent;
-  color: var(--neon-pink);
-  border: 1.5px solid var(--neon-pink);
-  box-shadow: none;
-}
+    .cart-btn.primary {
+      background: transparent;
+      color: var(--neon-pink);
+      border: 1.5px solid var(--neon-pink);
+      box-shadow: none;
+    }
 
-.cart-btn.primary:hover {
-  background: rgba(255,45,120,0.08);
-  box-shadow: 0 0 26px rgba(255,45,120,0.28);
-  transform: translateY(-2px);
-}
+    .cart-btn.primary:hover {
+      background: rgba(255,45,120,0.08);
+      box-shadow: 0 0 26px rgba(255,45,120,0.28);
+      transform: translateY(-2px);
+    }
 
     .cart-btn.secondary {
       background: transparent;
@@ -935,172 +973,129 @@ body.mobile-menu-open {
 
     .footer-contact a:hover { color: var(--neon-blue); }
 
-  .footer-copy {
-  font-size: 0.68rem;
-  color: rgba(232,232,240,0.18);
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  margin-top: 32px;
-}
+    .footer-copy {
+      font-size: 0.68rem;
+      color: rgba(232,232,240,0.18);
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-top: 32px;
+    }
 
-/* FIX: Keep product cart in one visible area and scroll only the items */
-.cart-panel {
-  max-height: calc(100vh - 118px);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
+    @media (max-width: 1200px) {
+      .builder-layout {
+        grid-template-columns: 1fr;
+      }
 
-.cart-items {
-  flex: 1 1 auto;
-  min-height: 0;
-  overflow-y: auto;
-  padding-right: 6px;
-  margin-bottom: 14px;
-}
+      .cart-panel {
+        position: static;
+        max-height: none;
+        overflow: visible;
+      }
 
-.cart-items::-webkit-scrollbar {
-  width: 6px;
-}
+      .cart-items {
+        overflow: visible;
+        max-height: none;
+        padding-right: 0;
+      }
 
-.cart-items::-webkit-scrollbar-track {
-  background: rgba(255,255,255,0.04);
-  border-radius: 999px;
-}
+      .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
 
-.cart-items::-webkit-scrollbar-thumb {
-  background: rgba(0,240,255,0.35);
-  border-radius: 999px;
-}
+      .info-bar {
+        grid-template-columns: 1fr;
+      }
 
-.cart-summary {
-  flex: 0 0 auto;
-  background: linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.99));
-  border-top: 1px solid rgba(255,255,255,0.06);
-  padding-top: 18px;
-}
+      .category-filter {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
 
-@media (max-width: 1200px) {
-  .builder-layout {
-    grid-template-columns: 1fr;
-  }
+      .filter-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
 
-  .cart-panel {
-    position: static;
-    max-height: none;
-    overflow: visible;
-  }
+    @media (max-width: 900px) {
+      nav {
+        padding: 10px 18px;
+      }
 
-  .cart-items {
-    overflow: visible;
-    max-height: none;
-    padding-right: 0;
-  }
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
 
-  .products-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+      .mobile-menu-btn {
+        display: flex;
+      }
 
-  .info-bar {
-    grid-template-columns: 1fr;
-  }
-}
+      .page-hero {
+        padding: 145px 24px 62px;
+      }
 
-@media (max-width: 900px) {
-  nav {
-    padding: 10px 18px;
-  }
+      .page-wrap {
+        padding: 56px 24px 100px;
+      }
 
-  .nav-links,
-  .nav-cta {
-    display: none;
-  }
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
 
-  .mobile-menu-btn {
-    display: flex;
-  }
+      .category-filter {
+        grid-template-columns: 1fr;
+      }
 
-  .page-hero {
-    padding: 145px 24px 68px;
-  }
-
-  .page-wrap {
-    padding: 60px 24px 100px;
-  }
-
-  .products-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .category-jump {
-    gap: 10px;
-  }
-
-  .category-jump a {
-    width: 100%;
-    text-align: center;
-  }
-
-  footer {
-    padding: 60px 24px 100px;
-  }
-}
+      footer {
+        padding: 60px 24px 100px;
+      }
+    }
   </style>
 </head>
+
 <body>
 
   <nav>
-  <a href="index.html" class="nav-logo">
-    <img src="logo.png" alt="Heat District Productions" />
-  </a>
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="Heat District Productions" />
+    </a>
 
-  <ul class="nav-links">
-    <li><a href="services.html" class="active">Products</a></li>
-    <li><a href="packages.html">Packages</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="team.html">Our Team</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
+    <ul class="nav-links">
+      <li><a href="services.html" class="active">Products</a></li>
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="team.html">Our Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
 
-  <a href="contact.html" class="nav-cta">Book Now</a>
+    <a href="packages.html" class="nav-cta">Book Now</a>
 
-  <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav" type="button">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-</nav>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav" type="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
 
-<div class="mobile-nav" id="mobileNav">
-  <a href="services.html" class="active">Products</a>
-  <a href="packages.html">Packages</a>
-  <a href="gallery.html">Gallery</a>
-  <a href="team.html">Our Team</a>
-  <a href="contact.html">Contact</a>
-  <a href="contact.html" class="mobile-nav-book">Book Now</a>
-</div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="services.html" class="active">Products</a>
+    <a href="packages.html">Packages</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="team.html">Our Team</a>
+    <a href="contact.html">Contact</a>
+    <a href="packages.html" class="mobile-nav-book">Book Now</a>
+  </div>
 
   <div class="page-hero">
-    <p class="page-hero-eyebrow">Standalone Products · Build Your Own Cart · Custom Event Quotes</p>
+    <p class="page-hero-eyebrow">Standalone Products · Custom Event Builds · Miami & Broward</p>
     <h1>Build Your Own<br><strong>Event Setup</strong></h1>
     <p>
-      Choose individual products, standalone services, lighting packages, rentals, and media coverage one by one.
-      Add them to your cart, build your own event setup, and continue to contact us with the exact combination you want.
+      Choose individual services, media coverage, lighting packages, effects, DJ rentals, and trussing to build a custom event setup. Add what you need to your cart, review the estimated total, then continue to checkout to create your 50% deposit invoice.
     </p>
 
     <div class="hero-actions">
-      <a href="packages.html" class="btn-outline-blue">View Packages</a>
-      <a href="contact.html" class="btn-outline-pink">Request a Quote</a>
-    </div>
-
-    <div class="hero-contact-box">
-      <div class="hero-contact-kicker">Custom Builds Welcome</div>
-      <div class="hero-contact-title">Use This Page for Individual Products</div>
-      <div class="hero-contact-copy">
-        Packages are still the best bundled value. This page is for clients who want standalone products,
-        rentals, media, lighting packages, or a completely custom event build.
-      </div>
-      <a href="contact.html" class="hero-contact-btn">Contact Us</a>
+      <a href="#product-builder" class="btn-outline-blue">Start Building</a>
+      <a href="packages.html" class="btn-outline-pink">View Packages</a>
     </div>
   </div>
 
@@ -1108,36 +1103,49 @@ body.mobile-menu-open {
 
   <div class="page-wrap">
 
-    <div class="section-block">
-      <p class="section-label">How It Works</p>
-      <h2 class="section-title">Pick Products. <strong>Build Your Cart.</strong></h2>
+    <div class="section-block" id="product-builder">
+      <p class="section-label">Quick Product Finder</p>
+      <h2 class="section-title">Pick a Category. <strong>Build Faster.</strong></h2>
       <p class="section-sub">
-        Add products individually and build the exact setup you want. Hourly products let you switch from 2 to 8 hours.
-        Daily rentals use day pricing. If you need multiples, just add the same item more than once.
+        Use the buttons below to filter the page down to what you need. Choose a category, add items to your cart, then continue to checkout when your build is ready.
       </p>
 
       <div class="info-bar">
         <div class="info-chip">
-          <div class="info-chip-label">Hourly Products</div>
-          <div class="info-chip-copy">Most services and products use the 2–8 hour selector so the client sees a live total before adding to cart.</div>
+          <div class="info-chip-label">Most Popular</div>
+          <div class="info-chip-copy">DJ, photography, videography, and the 2L Lighting Package are grouped together so clients can find the main high-demand items fast.</div>
         </div>
         <div class="info-chip">
-          <div class="info-chip-label">Daily Rentals</div>
-          <div class="info-chip-copy">Items like the XDJ-XZ and CDJ 3000 use daily pricing instead of hourly pricing.</div>
+          <div class="info-chip-label">Filtered Browsing</div>
+          <div class="info-chip-copy">Click one category and the page only shows that group, so the client does not have to scroll through everything.</div>
         </div>
         <div class="info-chip">
-          <div class="info-chip-label">Expandable Layout</div>
-          <div class="info-chip-copy">This page is structured by category so you can keep adding more products later without it turning messy.</div>
+          <div class="info-chip-label">Custom Builds</div>
+          <div class="info-chip-copy">The cart updates automatically with the estimated total, 50% deposit, and remaining balance.</div>
         </div>
       </div>
 
-      <div class="category-jump">
-        <a href="#core-services">Core Services</a>
-        <a href="#guest-media">Guest Experience</a>
-        <a href="#lighting-packages">Lighting Packages</a>
-        <a href="#lighting-effects">Lighting & Effects</a>
-        <a href="#dj-rentals">DJ Rentals</a>
-        <a href="#staging-trussing">Staging & Trussing</a>
+      <div class="filter-shell">
+        <div class="filter-head">
+          <div>
+            <div class="filter-kicker">Tap to Filter</div>
+            <div class="filter-title">Choose what you are looking for</div>
+          </div>
+          <div class="filter-note">
+            Start with “Most Popular” or jump directly to lighting, effects, DJ rentals, or trussing. This keeps the page from feeling like endless scrolling.
+          </div>
+        </div>
+
+        <div class="category-filter">
+          <button class="filter-btn active" type="button" data-filter="all" onclick="filterGroups('all', this)">Show All</button>
+          <button class="filter-btn" type="button" data-filter="popular" onclick="filterGroups('popular', this)">Most Popular</button>
+          <button class="filter-btn" type="button" data-filter="foundation" onclick="filterGroups('foundation', this)">Sound & Mics</button>
+          <button class="filter-btn" type="button" data-filter="lighting-packages" onclick="filterGroups('lighting-packages', this)">Lighting Packages</button>
+          <button class="filter-btn" type="button" data-filter="lighting-effects" onclick="filterGroups('lighting-effects', this)">Lighting & Effects</button>
+          <button class="filter-btn" type="button" data-filter="dj-rentals" onclick="filterGroups('dj-rentals', this)">DJ Rentals</button>
+          <button class="filter-btn" type="button" data-filter="staging-trussing" onclick="filterGroups('staging-trussing', this)">Trussing</button>
+          <button class="filter-btn" type="button" data-filter="guest-media" onclick="filterGroups('guest-media', this)">Photo Booth</button>
+        </div>
       </div>
     </div>
 
@@ -1145,24 +1153,24 @@ body.mobile-menu-open {
       <p class="section-label">Products</p>
       <h2 class="section-title">Individual Products & <strong>Build-Your-Own Cart</strong></h2>
       <p class="section-sub">
-        Everything below can be added individually. The grouped layout is designed to make browsing easier now and keep the page organized as more products get added later.
+        Everything below can be added individually. The grouped layout keeps the page organized while the filter buttons keep browsing simple.
       </p>
 
       <div class="builder-layout">
 
         <div class="builder-main">
 
-          <div class="group-block" id="core-services">
+          <div class="group-block" id="popular-products" data-group="popular">
             <div class="group-shell">
               <div class="group-header">
-                <div class="group-title">Core Event Services</div>
+                <div class="group-title">Most Popular Items</div>
                 <div class="group-line"></div>
               </div>
-              <p class="group-copy">These are the main foundation items for an event build — sound, DJ coverage, and basic support pieces.</p>
+              <p class="group-copy">These are the most requested add-ons and standalone services: DJ, photography, videography, and the 2L Lighting Package.</p>
               <div class="group-meta">
-                <div class="group-pill">Event Foundation</div>
                 <div class="group-pill">Most Requested</div>
-                <div class="group-pill">Hourly Pricing</div>
+                <div class="group-pill">Fast Booking Items</div>
+                <div class="group-pill">Event Essentials</div>
               </div>
 
               <div class="products-grid">
@@ -1172,7 +1180,7 @@ body.mobile-menu-open {
                     <div class="product-type">Hourly</div>
                   </div>
                   <div class="product-name">DJ</div>
-                  <div class="product-desc">Deck and DJ coverage for your event.</div>
+                  <div class="product-desc">Deck and DJ coverage for weddings, private parties, club-style events, and custom event builds.</div>
                   <div class="product-rate">$150 / hr</div>
                   <div class="product-controls">
                     <label>Hours</label>
@@ -1187,10 +1195,102 @@ body.mobile-menu-open {
                     </select>
                   </div>
                   <div class="product-total">$750 total</div>
-                  <div class="product-note">Standard event service</div>
+                  <div class="product-note">Most popular service</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
                 </div>
 
+                <div class="product-card" data-name="Photography" data-type="hourly" data-rate="125">
+                  <div class="product-top">
+                    <div class="product-icon">PH</div>
+                    <div class="product-type">Hourly</div>
+                  </div>
+                  <div class="product-name">Photography</div>
+                  <div class="product-desc">Professional event photography coverage for guests, details, candids, setup shots, and key moments.</div>
+                  <div class="product-rate">$125 / hr</div>
+                  <div class="product-controls">
+                    <label>Hours</label>
+                    <select class="duration-select">
+                      <option value="2">2 hrs</option>
+                      <option value="3">3 hrs</option>
+                      <option value="4">4 hrs</option>
+                      <option value="5" selected>5 hrs</option>
+                      <option value="6">6 hrs</option>
+                      <option value="7">7 hrs</option>
+                      <option value="8">8 hrs</option>
+                    </select>
+                  </div>
+                  <div class="product-total">$625 total</div>
+                  <div class="product-note">Media coverage</div>
+                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-name="Videography" data-type="hourly" data-rate="150">
+                  <div class="product-top">
+                    <div class="product-icon">VID</div>
+                    <div class="product-type">Hourly</div>
+                  </div>
+                  <div class="product-name">Videography</div>
+                  <div class="product-desc">Cinematic event video coverage for reels, recap videos, nightlife events, and commercial-style content.</div>
+                  <div class="product-rate">$150 / hr</div>
+                  <div class="product-controls">
+                    <label>Hours</label>
+                    <select class="duration-select">
+                      <option value="2">2 hrs</option>
+                      <option value="3">3 hrs</option>
+                      <option value="4">4 hrs</option>
+                      <option value="5" selected>5 hrs</option>
+                      <option value="6">6 hrs</option>
+                      <option value="7">7 hrs</option>
+                      <option value="8">8 hrs</option>
+                    </select>
+                  </div>
+                  <div class="product-total">$750 total</div>
+                  <div class="product-note">Media coverage</div>
+                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-name="2L Lighting Package" data-type="hourly" data-rate="125">
+                  <div class="product-top">
+                    <div class="product-icon">2L</div>
+                    <div class="product-type">Hourly</div>
+                  </div>
+                  <div class="product-name">2L Lighting Package</div>
+                  <div class="product-desc">Popular lighting upgrade with a clean two-light production look for parties, DJ setups, and smaller events.</div>
+                  <div class="product-rate">$125 / hr</div>
+                  <div class="product-controls">
+                    <label>Hours</label>
+                    <select class="duration-select">
+                      <option value="2">2 hrs</option>
+                      <option value="3">3 hrs</option>
+                      <option value="4">4 hrs</option>
+                      <option value="5" selected>5 hrs</option>
+                      <option value="6">6 hrs</option>
+                      <option value="7">7 hrs</option>
+                      <option value="8">8 hrs</option>
+                    </select>
+                  </div>
+                  <div class="product-total">$625 total</div>
+                  <div class="product-note">Popular lighting option</div>
+                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="group-block" id="foundation-services" data-group="foundation">
+            <div class="group-shell">
+              <div class="group-header">
+                <div class="group-title">Sound & Mic Support</div>
+                <div class="group-line"></div>
+              </div>
+              <p class="group-copy">These support items are for clients who already have a DJ or production plan but need sound reinforcement or microphones.</p>
+              <div class="group-meta">
+                <div class="group-pill">Sound Support</div>
+                <div class="group-pill">Event Foundation</div>
+                <div class="group-pill">Hourly Pricing</div>
+              </div>
+
+              <div class="products-grid">
                 <div class="product-card" data-name="Sound" data-type="hourly" data-rate="125">
                   <div class="product-top">
                     <div class="product-icon">QSC</div>
@@ -1222,7 +1322,7 @@ body.mobile-menu-open {
                     <div class="product-type">Hourly</div>
                   </div>
                   <div class="product-name">Mic</div>
-                  <div class="product-desc">1 unit microphone rental for speeches, announcements, and event hosting.</div>
+                  <div class="product-desc">1 unit microphone rental for speeches, announcements, event hosting, and basic ceremony needs.</div>
                   <div class="product-rate">$20 / hr</div>
                   <div class="product-controls">
                     <label>Hours</label>
@@ -1244,16 +1344,16 @@ body.mobile-menu-open {
             </div>
           </div>
 
-          <div class="group-block" id="guest-media">
+          <div class="group-block" id="guest-media" data-group="guest-media">
             <div class="group-shell">
               <div class="group-header">
-                <div class="group-title">Guest Experience & Media</div>
+                <div class="group-title">Guest Experience</div>
                 <div class="group-line"></div>
               </div>
-              <p class="group-copy">Use this section for guest-facing experiences and content coverage. Great for clients who want memories, engagement, and content from the event.</p>
+              <p class="group-copy">Guest-facing experience add-ons for engagement, memories, and party interaction.</p>
               <div class="group-meta">
                 <div class="group-pill">Guest Facing</div>
-                <div class="group-pill">Content Coverage</div>
+                <div class="group-pill">Interactive</div>
                 <div class="group-pill">Upgrade Friendly</div>
               </div>
 
@@ -1282,61 +1382,11 @@ body.mobile-menu-open {
                   <div class="product-note">3 backdrops included · custom backdrop contact us</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
                 </div>
-
-                <div class="product-card" data-name="Photography" data-type="hourly" data-rate="125">
-                  <div class="product-top">
-                    <div class="product-icon">PH</div>
-                    <div class="product-type">Hourly</div>
-                  </div>
-                  <div class="product-name">Photography</div>
-                  <div class="product-desc">Professional event photography coverage.</div>
-                  <div class="product-rate">$125 / hr</div>
-                  <div class="product-controls">
-                    <label>Hours</label>
-                    <select class="duration-select">
-                      <option value="2">2 hrs</option>
-                      <option value="3">3 hrs</option>
-                      <option value="4">4 hrs</option>
-                      <option value="5" selected>5 hrs</option>
-                      <option value="6">6 hrs</option>
-                      <option value="7">7 hrs</option>
-                      <option value="8">8 hrs</option>
-                    </select>
-                  </div>
-                  <div class="product-total">$625 total</div>
-                  <div class="product-note">Media coverage</div>
-                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
-                </div>
-
-                <div class="product-card" data-name="Videography" data-type="hourly" data-rate="150">
-                  <div class="product-top">
-                    <div class="product-icon">VID</div>
-                    <div class="product-type">Hourly</div>
-                  </div>
-                  <div class="product-name">Videography</div>
-                  <div class="product-desc">Cinematic event video coverage.</div>
-                  <div class="product-rate">$150 / hr</div>
-                  <div class="product-controls">
-                    <label>Hours</label>
-                    <select class="duration-select">
-                      <option value="2">2 hrs</option>
-                      <option value="3">3 hrs</option>
-                      <option value="4">4 hrs</option>
-                      <option value="5" selected>5 hrs</option>
-                      <option value="6">6 hrs</option>
-                      <option value="7">7 hrs</option>
-                      <option value="8">8 hrs</option>
-                    </select>
-                  </div>
-                  <div class="product-total">$750 total</div>
-                  <div class="product-note">Media coverage</div>
-                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
-                </div>
               </div>
             </div>
           </div>
 
-          <div class="group-block" id="lighting-packages">
+          <div class="group-block" id="lighting-packages" data-group="lighting-packages">
             <div class="group-shell">
               <div class="group-header">
                 <div class="group-title">Lighting Packages</div>
@@ -1428,7 +1478,7 @@ body.mobile-menu-open {
             </div>
           </div>
 
-          <div class="group-block" id="lighting-effects">
+          <div class="group-block" id="lighting-effects" data-group="lighting-effects">
             <div class="group-shell">
               <div class="group-header">
                 <div class="group-title">Individual Lighting & Effects</div>
@@ -1542,14 +1592,44 @@ body.mobile-menu-open {
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
                 </div>
 
-                <div class="product-card" data-name="Moving Heads" data-type="hourly" data-rate="50">
+                <div
+                  class="product-card"
+                  data-name="Moving Heads — 2 Units with Totems"
+                  data-type="hourly"
+                  data-rate="75"
+                  data-has-options="true"
+                >
                   <div class="product-top">
                     <div class="product-icon">MH</div>
                     <div class="product-type">Hourly</div>
                   </div>
                   <div class="product-name">Moving Heads</div>
-                  <div class="product-desc">2 units moving head lights.</div>
-                  <div class="product-rate">$50 / hr</div>
+                  <div class="product-desc">2 moving head lights with your choice of totems or goal post setup.</div>
+                  <div class="product-rate">$75 / hr</div>
+
+                  <div class="product-controls stack">
+                    <label>Setup Option</label>
+                    <select class="setup-select" onchange="updateOptionProduct(this)">
+                      <option
+                        value="totems"
+                        data-name="Moving Heads — 2 Units with Totems"
+                        data-rate="75"
+                        data-note="2 moving heads with totems"
+                        selected
+                      >
+                        2 Moving Heads + Totems
+                      </option>
+                      <option
+                        value="goal-post"
+                        data-name="Moving Heads — 2 Units with Goal Post"
+                        data-rate="110"
+                        data-note="2 moving heads with goal post"
+                      >
+                        2 Moving Heads + Goal Post
+                      </option>
+                    </select>
+                  </div>
+
                   <div class="product-controls">
                     <label>Hours</label>
                     <select class="duration-select">
@@ -1562,8 +1642,9 @@ body.mobile-menu-open {
                       <option value="8">8 hrs</option>
                     </select>
                   </div>
-                  <div class="product-total">$250 total</div>
-                  <div class="product-note">Lighting add-on</div>
+
+                  <div class="product-total">$375 total</div>
+                  <div class="product-note">2 moving heads with totems</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
                 </div>
 
@@ -1595,7 +1676,7 @@ body.mobile-menu-open {
             </div>
           </div>
 
-          <div class="group-block" id="dj-rentals">
+          <div class="group-block" id="dj-rentals" data-group="dj-rentals">
             <div class="group-shell">
               <div class="group-header">
                 <div class="group-title">DJ Rentals</div>
@@ -1656,7 +1737,7 @@ body.mobile-menu-open {
             </div>
           </div>
 
-          <div class="group-block" id="staging-trussing">
+          <div class="group-block" id="staging-trussing" data-group="staging-trussing">
             <div class="group-shell">
               <div class="group-header">
                 <div class="group-title">Staging & Trussing</div>
@@ -1776,41 +1857,41 @@ body.mobile-menu-open {
         </div>
 
         <aside class="cart-panel">
-  <div class="cart-kicker">Current Estimate</div>
-  <div class="cart-title">Your Build</div>
-  <div class="cart-copy">
-    Add products from the left. Your total, 50% deposit, and remaining balance update automatically.
-  </div>
+          <div class="cart-kicker">Current Estimate</div>
+          <div class="cart-title">Your Build</div>
+          <div class="cart-copy">
+            Add products from the left. Your total, 50% deposit, and remaining balance update automatically.
+          </div>
 
-  <div class="cart-items" id="cartItems"></div>
+          <div class="cart-items" id="cartItems"></div>
 
-  <div class="cart-summary">
-    <div class="cart-row">
-      <span>Items</span>
-      <span id="cartCount">0</span>
-    </div>
+          <div class="cart-summary">
+            <div class="cart-row">
+              <span>Items</span>
+              <span id="cartCount">0</span>
+            </div>
 
-    <div class="cart-row">
-      <span>Estimated Total</span>
-      <span id="cartTotal">$0</span>
-    </div>
+            <div class="cart-row">
+              <span>Estimated Total</span>
+              <span id="cartTotal">$0</span>
+            </div>
 
-    <div class="cart-total-row">
-      <span>50% Deposit Due</span>
-      <span id="cartDeposit">$0</span>
-    </div>
+            <div class="cart-total-row">
+              <span>50% Deposit Due</span>
+              <span id="cartDeposit">$0</span>
+            </div>
 
-    <div class="cart-row">
-      <span>Remaining Balance</span>
-      <span id="cartRemaining">$0</span>
-    </div>
+            <div class="cart-row">
+              <span>Remaining Balance</span>
+              <span id="cartRemaining">$0</span>
+            </div>
 
-    <div class="cart-actions">
-      <button class="cart-btn primary" type="button" onclick="proceedToCheckout()">Continue to Checkout</button>
-      <button class="cart-btn secondary" type="button" onclick="clearCart()">Clear Cart</button>
-    </div>
-  </div>
-</aside>
+            <div class="cart-actions">
+              <button class="cart-btn primary" type="button" onclick="proceedToCheckout()">Continue to Checkout</button>
+              <button class="cart-btn secondary" type="button" onclick="clearCart()">Clear Cart</button>
+            </div>
+          </div>
+        </aside>
 
       </div>
     </div>
@@ -1860,25 +1941,122 @@ body.mobile-menu-open {
   function updateCardTotal(card) {
     const total = calculateCardTotal(card);
     const totalEl = card.querySelector('.product-total');
+    const rateEl = card.querySelector('.product-rate');
+    const type = card.dataset.type || 'hourly';
+    const rate = Number(card.dataset.rate || 0);
+
+    if (rateEl) {
+      rateEl.textContent = formatMoney(rate) + (type === 'daily' ? ' / day' : ' / hr');
+    }
 
     if (totalEl) {
       totalEl.textContent = formatMoney(total) + ' total';
     }
   }
 
-  function initCards() {
-    document.querySelectorAll('.product-card').forEach(function(card) {
-      const select = card.querySelector('.duration-select');
+  function updateOptionProduct(select) {
+    const card = select.closest('.product-card');
 
-      if (select) {
-        select.addEventListener('change', function() {
-          updateCardTotal(card);
-        });
-      }
+    if (!card) return;
 
-      updateCardTotal(card);
+    const selectedOption = select.options[select.selectedIndex];
+    const optionName = selectedOption.dataset.name;
+    const optionRate = selectedOption.dataset.rate;
+    const optionNote = selectedOption.dataset.note;
+
+    if (optionName) {
+      card.dataset.name = optionName;
+    }
+
+    if (optionRate) {
+      card.dataset.rate = optionRate;
+    }
+
+    const noteEl = card.querySelector('.product-note');
+
+    if (noteEl && optionNote) {
+      noteEl.textContent = optionNote;
+    }
+
+    updateCardTotal(card);
+  }
+function addQuantityControl(card) {
+  if (!card || card.querySelector('.quantity-select')) return;
+
+  const quantityControl = document.createElement('div');
+  quantityControl.className = 'product-controls';
+
+  quantityControl.innerHTML = `
+    <label>Amount</label>
+    <select class="quantity-select">
+      <option value="1" selected>1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+  `;
+
+  const totalEl = card.querySelector('.product-total');
+
+  if (totalEl) {
+    card.insertBefore(quantityControl, totalEl);
+  } else {
+    card.appendChild(quantityControl);
+  }
+}
+  function addProductFromCard(button) {
+  const card = button.closest('.product-card');
+
+  if (!card) return;
+
+  const name = card.dataset.name || 'Selected Product';
+  const type = card.dataset.type || 'hourly';
+  const rate = Number(card.dataset.rate || 0);
+
+  const durationSelect = card.querySelector('.duration-select');
+  const duration = durationSelect ? Number(durationSelect.value || 1) : 1;
+
+  const quantitySelect = card.querySelector('.quantity-select');
+  const quantityToAdd = quantitySelect ? Number(quantitySelect.value || 1) : 1;
+
+  const unitPrice = rate * duration;
+  const key = getCartKey(name, type, duration);
+
+  const existing = buildCart.find(function(item) {
+    return item.key === key;
+  });
+
+  if (existing) {
+    existing.quantity += quantityToAdd;
+  } else {
+    buildCart.push({
+      key: key,
+      name: name,
+      type: type,
+      rate: rate,
+      duration: duration,
+      durationLabel: getDurationLabel(type, duration),
+      unitPrice: unitPrice,
+      quantity: quantityToAdd
     });
   }
+
+  saveCart();
+  renderCart();
+
+  const originalText = button.textContent;
+  button.textContent = quantityToAdd > 1 ? 'Added x' + quantityToAdd : 'Added';
+
+  setTimeout(function() {
+    button.textContent = originalText;
+  }, 900);
+}
 
   function getDurationLabel(type, duration) {
     const cleanDuration = Number(duration || 1);
@@ -2003,7 +2181,7 @@ body.mobile-menu-open {
     cartRemaining.textContent = formatMoney(totals.remainingBalance);
 
     if (!buildCart.length) {
-      cartItems.innerHTML = '<div class="cart-empty">No products selected yet. Add products from the left to start building your event cart.</div>';
+      cartItems.innerHTML = '<div class="cart-empty">No products selected yet. Use the filters to jump to a category, then add products to start building your event cart.</div>';
       return;
     }
 
@@ -2080,55 +2258,89 @@ body.mobile-menu-open {
 
     window.location.href = 'checkout.html';
   }
-const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const mobileNav = document.getElementById('mobileNav');
 
-function closeMobileMenu() {
-  if (!mobileMenuBtn || !mobileNav) return;
+  function filterGroups(groupName, clickedButton) {
+    const groups = document.querySelectorAll('.group-block');
+    const buttons = document.querySelectorAll('.filter-btn');
 
-  mobileNav.classList.remove('open');
-  mobileMenuBtn.classList.remove('active');
-  mobileMenuBtn.setAttribute('aria-expanded', 'false');
-  document.body.classList.remove('mobile-menu-open');
-}
+    buttons.forEach(function(button) {
+      button.classList.remove('active');
+    });
 
-function toggleMobileMenu() {
-  if (!mobileMenuBtn || !mobileNav) return;
+    if (clickedButton) {
+      clickedButton.classList.add('active');
+    }
 
-  const isOpen = mobileNav.classList.contains('open');
+    groups.forEach(function(group) {
+      const matches = group.dataset.group === groupName;
 
-  if (isOpen) {
-    closeMobileMenu();
-  } else {
-    mobileNav.classList.add('open');
-    mobileMenuBtn.classList.add('active');
-    mobileMenuBtn.setAttribute('aria-expanded', 'true');
-    document.body.classList.add('mobile-menu-open');
+      if (groupName === 'all' || matches) {
+        group.classList.remove('is-hidden');
+      } else {
+        group.classList.add('is-hidden');
+      }
+    });
+
+    const firstVisibleGroup = document.querySelector('.group-block:not(.is-hidden)');
+
+    if (firstVisibleGroup) {
+      firstVisibleGroup.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
   }
-}
 
-if (mobileMenuBtn && mobileNav) {
-  mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileNav = document.getElementById('mobileNav');
 
-  mobileNav.querySelectorAll('a').forEach(function(link) {
-    link.addEventListener('click', closeMobileMenu);
-  });
+  function closeMobileMenu() {
+    if (!mobileMenuBtn || !mobileNav) return;
 
-  window.addEventListener('resize', function() {
-    if (window.innerWidth > 900) {
+    mobileNav.classList.remove('open');
+    mobileMenuBtn.classList.remove('active');
+    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('mobile-menu-open');
+  }
+
+  function toggleMobileMenu() {
+    if (!mobileMenuBtn || !mobileNav) return;
+
+    const isOpen = mobileNav.classList.contains('open');
+
+    if (isOpen) {
       closeMobileMenu();
+    } else {
+      mobileNav.classList.add('open');
+      mobileMenuBtn.classList.add('active');
+      mobileMenuBtn.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('mobile-menu-open');
     }
-  });
+  }
 
-  document.addEventListener('click', function(event) {
-    const clickedInsideNav = mobileNav.contains(event.target);
-    const clickedButton = mobileMenuBtn.contains(event.target);
+  if (mobileMenuBtn && mobileNav) {
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
 
-    if (!clickedInsideNav && !clickedButton && mobileNav.classList.contains('open')) {
-      closeMobileMenu();
-    }
-  });
-}
+    mobileNav.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', closeMobileMenu);
+    });
+
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 900) {
+        closeMobileMenu();
+      }
+    });
+
+    document.addEventListener('click', function(event) {
+      const clickedInsideNav = mobileNav.contains(event.target);
+      const clickedButton = mobileMenuBtn.contains(event.target);
+
+      if (!clickedInsideNav && !clickedButton && mobileNav.classList.contains('open')) {
+        closeMobileMenu();
+      }
+    });
+  }
+
   loadCart();
   initCards();
   renderCart();

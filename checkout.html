@@ -1174,7 +1174,7 @@ if (!hasValidPackage && !hasValidProductBuild) {
   }
 
   try {
-    const response = await fetch('http://localhost:3000/api/create-quickbooks-invoice', {
+   const response = await fetch('https://heat-district-qb-backend.onrender.com/api/create-quickbooks-invoice', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

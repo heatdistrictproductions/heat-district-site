@@ -20,8 +20,15 @@
       --success: rgba(77,255,145,0.88);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       background: var(--dark-bg);
@@ -32,7 +39,9 @@
 
     nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 1000;
       display: flex;
       justify-content: space-between;
@@ -130,11 +139,6 @@
       transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
     }
 
-    .mobile-menu-btn:hover {
-      border-color: rgba(0,240,255,0.35);
-      box-shadow: 0 0 16px rgba(0,240,255,0.12);
-    }
-
     .mobile-menu-btn.active span:nth-child(1) {
       transform: translateY(6.5px) rotate(45deg);
       background: var(--neon-blue);
@@ -200,13 +204,6 @@
       border: 1.5px solid var(--neon-pink);
       color: var(--neon-pink) !important;
       text-align: center;
-    }
-
-    .mobile-nav-book:hover {
-      background: rgba(255,45,120,0.12) !important;
-      box-shadow: 0 0 18px rgba(255,45,120,0.18);
-      color: var(--neon-pink) !important;
-      text-shadow: none !important;
     }
 
     body.mobile-menu-open {
@@ -279,10 +276,9 @@
       flex-wrap: wrap;
     }
 
-    .btn-outline-blue {
+    .btn-outline-blue,
+    .btn-outline-pink {
       background: transparent;
-      color: var(--neon-blue);
-      border: 1.5px solid var(--neon-blue);
       padding: 14px 30px;
       font-size: 0.72rem;
       font-weight: 600;
@@ -293,6 +289,11 @@
       text-decoration: none;
       display: inline-block;
       transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
+    }
+
+    .btn-outline-blue {
+      color: var(--neon-blue);
+      border: 1.5px solid var(--neon-blue);
     }
 
     .btn-outline-blue:hover {
@@ -302,19 +303,8 @@
     }
 
     .btn-outline-pink {
-      background: transparent;
       color: var(--neon-pink);
       border: 1.5px solid var(--neon-pink);
-      padding: 14px 30px;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 2.8px;
-      text-transform: uppercase;
-      border-radius: 4px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
     }
 
     .btn-outline-pink:hover {
@@ -381,7 +371,7 @@
     .info-chip {
       border: 1px solid var(--soft-border);
       border-radius: 12px;
-      padding: 18px 18px;
+      padding: 18px;
       background: linear-gradient(180deg, rgba(10,10,26,0.95), rgba(8,8,22,0.98));
     }
 
@@ -477,7 +467,7 @@
 
     .builder-layout {
       display: grid;
-      grid-template-columns: minmax(0, 1.85fr) 360px;
+      grid-template-columns: minmax(0, 1fr) 360px;
       gap: 24px;
       margin-top: 34px;
       align-items: start;
@@ -499,7 +489,7 @@
       border: 1px solid rgba(0,240,255,0.08);
       border-radius: 18px;
       background: linear-gradient(180deg, rgba(10,10,26,0.94), rgba(8,8,22,0.98));
-      padding: 24px 22px 24px;
+      padding: 24px 22px;
       box-shadow: 0 14px 38px rgba(0,0,0,0.18);
     }
 
@@ -660,25 +650,25 @@
     }
 
     .duration-select,
-.setup-select,
-.quantity-select {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(0,240,255,0.14);
-  color: #fff;
-  border-radius: 6px;
-  padding: 8px 10px;
-  font-family: 'Raleway', sans-serif;
-  font-size: 0.78rem;
-  outline: none;
-  width: 100%;
-}
+    .setup-select,
+    .quantity-select {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(0,240,255,0.14);
+      color: #fff;
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.78rem;
+      outline: none;
+      width: 100%;
+    }
 
-.duration-select option,
-.setup-select option,
-.quantity-select option {
-  background: #0a0a1a;
-  color: #e8e8f0;
-}
+    .duration-select option,
+    .setup-select option,
+    .quantity-select option {
+      background: #0a0a1a;
+      color: #e8e8f0;
+    }
 
     .product-total {
       font-size: 0.86rem;
@@ -726,6 +716,7 @@
     .cart-panel {
       position: sticky;
       top: 98px;
+      align-self: start;
       border: 1px solid rgba(0,240,255,0.12);
       border-radius: 16px;
       background: linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.99));
@@ -770,20 +761,6 @@
       padding-right: 6px;
     }
 
-    .cart-items::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .cart-items::-webkit-scrollbar-track {
-      background: rgba(255,255,255,0.04);
-      border-radius: 999px;
-    }
-
-    .cart-items::-webkit-scrollbar-thumb {
-      background: rgba(0,240,255,0.35);
-      border-radius: 999px;
-    }
-
     .cart-empty {
       padding: 18px 16px;
       border-radius: 12px;
@@ -797,7 +774,7 @@
     .cart-item {
       border: 1px solid rgba(0,240,255,0.08);
       border-radius: 12px;
-      padding: 12px 12px;
+      padding: 12px;
       background: rgba(255,255,255,0.02);
     }
 
@@ -848,11 +825,15 @@
       padding-top: 18px;
     }
 
-    .cart-row {
+    .cart-row,
+    .cart-total-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 10px;
+    }
+
+    .cart-row {
       margin-bottom: 8px;
       font-size: 0.82rem;
     }
@@ -869,10 +850,6 @@
       margin-top: 10px;
       padding-top: 12px;
       border-top: 1px solid rgba(255,255,255,0.05);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
       font-size: 1rem;
       font-weight: 700;
     }
@@ -971,7 +948,9 @@
       font-weight: 300;
     }
 
-    .footer-contact a:hover { color: var(--neon-blue); }
+    .footer-contact a:hover {
+      color: var(--neon-blue);
+    }
 
     .footer-copy {
       font-size: 0.68rem;
@@ -981,7 +960,13 @@
       margin-top: 32px;
     }
 
-    @media (max-width: 1200px) {
+    @media (max-width: 1280px) {
+      .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 1100px) {
       .builder-layout {
         grid-template-columns: 1fr;
       }
@@ -996,10 +981,6 @@
         overflow: visible;
         max-height: none;
         padding-right: 0;
-      }
-
-      .products-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .info-bar {
@@ -1113,12 +1094,14 @@
       <div class="info-bar">
         <div class="info-chip">
           <div class="info-chip-label">Most Popular</div>
-          <div class="info-chip-copy">DJ, photography, videography, and the 2L Lighting Package are grouped together so clients can find the main high-demand items fast.</div>
+          <div class="info-chip-copy">Photo booth and CDJ rentals are grouped at the top so clients can find the high-demand rental items fast.</div>
         </div>
+
         <div class="info-chip">
-          <div class="info-chip-label">Filtered Browsing</div>
-          <div class="info-chip-copy">Click one category and the page only shows that group, so the client does not have to scroll through everything.</div>
+          <div class="info-chip-label">Services</div>
+          <div class="info-chip-copy">DJ, photography, and videography now have their own dedicated section with selectable deliverable options.</div>
         </div>
+
         <div class="info-chip">
           <div class="info-chip-label">Custom Builds</div>
           <div class="info-chip-copy">The cart updates automatically with the estimated total, 50% deposit, and remaining balance.</div>
@@ -1131,20 +1114,22 @@
             <div class="filter-kicker">Tap to Filter</div>
             <div class="filter-title">Choose what you are looking for</div>
           </div>
+
           <div class="filter-note">
-            Start with “Most Popular” or jump directly to lighting, effects, DJ rentals, or trussing. This keeps the page from feeling like endless scrolling.
+            Start with “Most Popular” or jump directly to services, sound, lighting, effects, DJ rentals, trussing, or guest experience.
           </div>
         </div>
 
         <div class="category-filter">
-          <button class="filter-btn active" type="button" data-filter="all" onclick="filterGroups('all', this)">Show All</button>
-          <button class="filter-btn" type="button" data-filter="popular" onclick="filterGroups('popular', this)">Most Popular</button>
-          <button class="filter-btn" type="button" data-filter="foundation" onclick="filterGroups('foundation', this)">Sound & Mics</button>
-          <button class="filter-btn" type="button" data-filter="lighting-packages" onclick="filterGroups('lighting-packages', this)">Lighting Packages</button>
-          <button class="filter-btn" type="button" data-filter="lighting-effects" onclick="filterGroups('lighting-effects', this)">Lighting & Effects</button>
-          <button class="filter-btn" type="button" data-filter="dj-rentals" onclick="filterGroups('dj-rentals', this)">DJ Rentals</button>
-          <button class="filter-btn" type="button" data-filter="staging-trussing" onclick="filterGroups('staging-trussing', this)">Trussing</button>
-          <button class="filter-btn" type="button" data-filter="guest-media" onclick="filterGroups('guest-media', this)">Photo Booth</button>
+          <button class="filter-btn active" type="button" onclick="filterGroups('all', this)">Show All</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('popular', this)">Most Popular</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('services', this)">Services</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('foundation', this)">Sound & Mics</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('lighting-packages', this)">Lighting Packages</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('lighting-effects', this)">Lighting & Effects</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('dj-rentals', this)">DJ Rentals</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('staging-trussing', this)">Trussing</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('guest-media', this)">Guest Experience</button>
         </div>
       </div>
     </div>
@@ -1166,11 +1151,85 @@
                 <div class="group-title">Most Popular Items</div>
                 <div class="group-line"></div>
               </div>
-              <p class="group-copy">These are the most requested add-ons and standalone services: DJ, photography, videography, and the 2L Lighting Package.</p>
+
+              <p class="group-copy">High-demand rental items clients commonly add to their event build.</p>
+
               <div class="group-meta">
                 <div class="group-pill">Most Requested</div>
                 <div class="group-pill">Fast Booking Items</div>
-                <div class="group-pill">Event Essentials</div>
+                <div class="group-pill">Event Upgrades</div>
+              </div>
+
+              <div class="products-grid">
+                <div class="product-card" data-name="Photo Booth" data-type="hourly" data-rate="80">
+                  <div class="product-top">
+                    <div class="product-icon">PB</div>
+                    <div class="product-type">Hourly</div>
+                  </div>
+
+                  <div class="product-name">Photo Booth</div>
+                  <div class="product-desc">Standalone booth experience with props included and the option of 3 different backdrops for your event.</div>
+                  <div class="product-rate">$80 / hr</div>
+
+                  <div class="product-controls">
+                    <label>Hours</label>
+                    <select class="duration-select">
+                      <option value="2">2 hrs</option>
+                      <option value="3">3 hrs</option>
+                      <option value="4">4 hrs</option>
+                      <option value="5" selected>5 hrs</option>
+                      <option value="6">6 hrs</option>
+                      <option value="7">7 hrs</option>
+                      <option value="8">8 hrs</option>
+                    </select>
+                  </div>
+
+                  <div class="product-total">$400 total</div>
+                  <div class="product-note">Props included · 3 backdrops included · custom backdrop contact us</div>
+                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-name="CDJ 3000" data-type="daily" data-rate="150">
+                  <div class="product-top">
+                    <div class="product-icon">CDJ</div>
+                    <div class="product-type">Daily</div>
+                  </div>
+
+                  <div class="product-name">CDJ 3000</div>
+                  <div class="product-desc">Standalone Pioneer CDJ rental. Use the amount selector to choose how many CDJs you need.</div>
+                  <div class="product-rate">$150 / day</div>
+
+                  <div class="product-controls">
+                    <label>Days</label>
+                    <select class="duration-select">
+                      <option value="1" selected>1 day</option>
+                      <option value="2">2 days</option>
+                      <option value="3">3 days</option>
+                      <option value="4">4 days</option>
+                    </select>
+                  </div>
+
+                  <div class="product-total">$150 total</div>
+                  <div class="product-note">Daily rental item · select amount for multiple CDJs</div>
+                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="group-block" id="services-media" data-group="services">
+            <div class="group-shell">
+              <div class="group-header">
+                <div class="group-title">Event Talent & Media Services</div>
+                <div class="group-line"></div>
+              </div>
+
+              <p class="group-copy">DJ, photography, and videography coverage for events that need people, content, and creative direction instead of only rental equipment.</p>
+
+              <div class="group-meta">
+                <div class="group-pill">DJ Service</div>
+                <div class="group-pill">Photo Coverage</div>
+                <div class="group-pill">Video Recaps</div>
               </div>
 
               <div class="products-grid">
@@ -1179,9 +1238,11 @@
                     <div class="product-icon">DJ</div>
                     <div class="product-type">Hourly</div>
                   </div>
+
                   <div class="product-name">DJ</div>
                   <div class="product-desc">Deck and DJ coverage for weddings, private parties, club-style events, and custom event builds.</div>
                   <div class="product-rate">$150 / hr</div>
+
                   <div class="product-controls">
                     <label>Hours</label>
                     <select class="duration-select">
@@ -1194,19 +1255,32 @@
                       <option value="8">8 hrs</option>
                     </select>
                   </div>
+
                   <div class="product-total">$750 total</div>
-                  <div class="product-note">Most popular service</div>
+                  <div class="product-note">DJ service</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
                 </div>
 
-                <div class="product-card" data-name="Photography" data-type="hourly" data-rate="125">
+                <div class="product-card" data-name="Photography — 50 Edited Pictures" data-type="hourly" data-rate="125">
                   <div class="product-top">
                     <div class="product-icon">PH</div>
                     <div class="product-type">Hourly</div>
                   </div>
+
                   <div class="product-name">Photography</div>
-                  <div class="product-desc">Professional event photography coverage for guests, details, candids, setup shots, and key moments.</div>
+                  <div class="product-desc">Professional event photography coverage. Deliverables range from 50 to 250 edited pictures depending on the option selected.</div>
                   <div class="product-rate">$125 / hr</div>
+
+                  <div class="product-controls stack">
+                    <label>Edited Pictures</label>
+                    <select class="setup-select" onchange="updateOptionProduct(this)">
+                      <option value="50" data-name="Photography — 50 Edited Pictures" data-rate="125" data-note="50 edited pictures" selected>50 edited pictures</option>
+                      <option value="100" data-name="Photography — 100 Edited Pictures" data-rate="150" data-note="100 edited pictures">100 edited pictures</option>
+                      <option value="150" data-name="Photography — 150 Edited Pictures" data-rate="175" data-note="150 edited pictures">150 edited pictures</option>
+                      <option value="250" data-name="Photography — 250 Edited Pictures" data-rate="225" data-note="250 edited pictures">250 edited pictures</option>
+                    </select>
+                  </div>
+
                   <div class="product-controls">
                     <label>Hours</label>
                     <select class="duration-select">
@@ -1219,44 +1293,32 @@
                       <option value="8">8 hrs</option>
                     </select>
                   </div>
+
                   <div class="product-total">$625 total</div>
-                  <div class="product-note">Media coverage</div>
+                  <div class="product-note">50 edited pictures</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
                 </div>
 
-                <div class="product-card" data-name="Videography" data-type="hourly" data-rate="150">
+                <div class="product-card" data-name="Videography — 15 Second Recap" data-type="hourly" data-rate="150">
                   <div class="product-top">
                     <div class="product-icon">VID</div>
                     <div class="product-type">Hourly</div>
                   </div>
-                  <div class="product-name">Videography</div>
-                  <div class="product-desc">Cinematic event video coverage for reels, recap videos, nightlife events, and commercial-style content.</div>
-                  <div class="product-rate">$150 / hr</div>
-                  <div class="product-controls">
-                    <label>Hours</label>
-                    <select class="duration-select">
-                      <option value="2">2 hrs</option>
-                      <option value="3">3 hrs</option>
-                      <option value="4">4 hrs</option>
-                      <option value="5" selected>5 hrs</option>
-                      <option value="6">6 hrs</option>
-                      <option value="7">7 hrs</option>
-                      <option value="8">8 hrs</option>
-                    </select>
-                  </div>
-                  <div class="product-total">$750 total</div>
-                  <div class="product-note">Media coverage</div>
-                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
-                </div>
 
-                <div class="product-card" data-name="2L Lighting Package" data-type="hourly" data-rate="125">
-                  <div class="product-top">
-                    <div class="product-icon">2L</div>
-                    <div class="product-type">Hourly</div>
+                  <div class="product-name">Videography</div>
+                  <div class="product-desc">Cinematic event video coverage. Choose from a 15 second recap up to a full 1 minute event recap.</div>
+                  <div class="product-rate">$150 / hr</div>
+
+                  <div class="product-controls stack">
+                    <label>Recap Length</label>
+                    <select class="setup-select" onchange="updateOptionProduct(this)">
+                      <option value="15" data-name="Videography — 15 Second Recap" data-rate="150" data-note="15 second recap" selected>15 second recap</option>
+                      <option value="30" data-name="Videography — 30 Second Recap" data-rate="175" data-note="30 second recap">30 second recap</option>
+                      <option value="45" data-name="Videography — 45 Second Recap" data-rate="200" data-note="45 second recap">45 second recap</option>
+                      <option value="60" data-name="Videography — 1 Minute Recap" data-rate="250" data-note="1 minute recap">1 minute recap</option>
+                    </select>
                   </div>
-                  <div class="product-name">2L Lighting Package</div>
-                  <div class="product-desc">Popular lighting upgrade with a clean two-light production look for parties, DJ setups, and smaller events.</div>
-                  <div class="product-rate">$125 / hr</div>
+
                   <div class="product-controls">
                     <label>Hours</label>
                     <select class="duration-select">
@@ -1269,8 +1331,9 @@
                       <option value="8">8 hrs</option>
                     </select>
                   </div>
-                  <div class="product-total">$625 total</div>
-                  <div class="product-note">Popular lighting option</div>
+
+                  <div class="product-total">$750 total</div>
+                  <div class="product-note">15 second recap</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
                 </div>
               </div>
@@ -1283,7 +1346,9 @@
                 <div class="group-title">Sound & Mic Support</div>
                 <div class="group-line"></div>
               </div>
+
               <p class="group-copy">These support items are for clients who already have a DJ or production plan but need sound reinforcement or microphones.</p>
+
               <div class="group-meta">
                 <div class="group-pill">Sound Support</div>
                 <div class="group-pill">Event Foundation</div>
@@ -1291,14 +1356,16 @@
               </div>
 
               <div class="products-grid">
-                <div class="product-card" data-name="Sound" data-type="hourly" data-rate="125">
+                <div class="product-card" data-name="Sound — 2 QSC Tops + 2 Subs" data-type="hourly" data-rate="125">
                   <div class="product-top">
                     <div class="product-icon">QSC</div>
                     <div class="product-type">Hourly</div>
                   </div>
-                  <div class="product-name">Sound</div>
+
+                  <div class="product-name">Sound — 2 QSC Tops + 2 Subs</div>
                   <div class="product-desc">Professional sound system with 2 QSC tops and 2 QSC subs for a clean, strong event foundation.</div>
                   <div class="product-rate">$125 / hr</div>
+
                   <div class="product-controls">
                     <label>Hours</label>
                     <select class="duration-select">
@@ -1311,8 +1378,37 @@
                       <option value="8">8 hrs</option>
                     </select>
                   </div>
+
                   <div class="product-total">$625 total</div>
                   <div class="product-note">QSC speakers & subs</div>
+                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-name="Sound — 2 QSC Tops" data-type="hourly" data-rate="75">
+                  <div class="product-top">
+                    <div class="product-icon">QSC</div>
+                    <div class="product-type">Hourly</div>
+                  </div>
+
+                  <div class="product-name">Sound — 2 QSC Tops</div>
+                  <div class="product-desc">Professional sound setup with 2 QSC top speakers only. Great for smaller events, speeches, cocktail areas, and setups that do not require subs.</div>
+                  <div class="product-rate">$75 / hr</div>
+
+                  <div class="product-controls">
+                    <label>Hours</label>
+                    <select class="duration-select">
+                      <option value="2">2 hrs</option>
+                      <option value="3">3 hrs</option>
+                      <option value="4">4 hrs</option>
+                      <option value="5" selected>5 hrs</option>
+                      <option value="6">6 hrs</option>
+                      <option value="7">7 hrs</option>
+                      <option value="8">8 hrs</option>
+                    </select>
+                  </div>
+
+                  <div class="product-total">$375 total</div>
+                  <div class="product-note">2 QSC tops · no subs</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
                 </div>
 
@@ -1321,9 +1417,11 @@
                     <div class="product-icon">MIC</div>
                     <div class="product-type">Hourly</div>
                   </div>
+
                   <div class="product-name">Mic</div>
                   <div class="product-desc">1 unit microphone rental for speeches, announcements, event hosting, and basic ceremony needs.</div>
                   <div class="product-rate">$20 / hr</div>
+
                   <div class="product-controls">
                     <label>Hours</label>
                     <select class="duration-select">
@@ -1336,6 +1434,7 @@
                       <option value="8">8 hrs</option>
                     </select>
                   </div>
+
                   <div class="product-total">$100 total</div>
                   <div class="product-note">Basic support item</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
@@ -1350,22 +1449,26 @@
                 <div class="group-title">Guest Experience</div>
                 <div class="group-line"></div>
               </div>
-              <p class="group-copy">Guest-facing experience add-ons for engagement, memories, and party interaction.</p>
+
+              <p class="group-copy">Guest-facing experience add-ons for entrances, photo moments, VIP areas, and event arrivals.</p>
+
               <div class="group-meta">
                 <div class="group-pill">Guest Facing</div>
-                <div class="group-pill">Interactive</div>
+                <div class="group-pill">Photo Moments</div>
                 <div class="group-pill">Upgrade Friendly</div>
               </div>
 
               <div class="products-grid">
-                <div class="product-card" data-name="Photo Booth" data-type="hourly" data-rate="80">
+                <div class="product-card" data-name="Red Carpet — 20 Foot" data-type="hourly" data-rate="50">
                   <div class="product-top">
-                    <div class="product-icon">PB</div>
+                    <div class="product-icon">RC</div>
                     <div class="product-type">Hourly</div>
                   </div>
-                  <div class="product-name">Photo Booth</div>
-                  <div class="product-desc">Standalone booth experience with the option of 3 different backdrops for your event.</div>
-                  <div class="product-rate">$80 / hr</div>
+
+                  <div class="product-name">Red Carpet</div>
+                  <div class="product-desc">20 foot red carpet setup for entrances, photo moments, VIP areas, and event arrivals.</div>
+                  <div class="product-rate">$50 / hr</div>
+
                   <div class="product-controls">
                     <label>Hours</label>
                     <select class="duration-select">
@@ -1378,8 +1481,9 @@
                       <option value="8">8 hrs</option>
                     </select>
                   </div>
-                  <div class="product-total">$400 total</div>
-                  <div class="product-note">3 backdrops included · custom backdrop contact us</div>
+
+                  <div class="product-total">$250 total</div>
+                  <div class="product-note">20 foot red carpet</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
                 </div>
               </div>
@@ -1392,7 +1496,9 @@
                 <div class="group-title">Lighting Packages</div>
                 <div class="group-line"></div>
               </div>
+
               <p class="group-copy">These are bundled lighting options for clients who want a cleaner step-up structure instead of piecing lighting together item by item.</p>
+
               <div class="group-meta">
                 <div class="group-pill">Bundled Lighting</div>
                 <div class="group-pill">Good / Better / Best</div>
@@ -1405,9 +1511,11 @@
                     <div class="product-icon">GLW</div>
                     <div class="product-type">Hourly</div>
                   </div>
+
                   <div class="product-name">Glow Lighting Package</div>
                   <div class="product-desc">Uplights and light bar package for a clean entry-level lighting look.</div>
                   <div class="product-rate">$50 / hr</div>
+
                   <div class="product-controls">
                     <label>Hours</label>
                     <select class="duration-select">
@@ -1420,6 +1528,7 @@
                       <option value="8">8 hrs</option>
                     </select>
                   </div>
+
                   <div class="product-total">$250 total</div>
                   <div class="product-note">Lighting package</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
@@ -1430,9 +1539,11 @@
                     <div class="product-icon">PLS</div>
                     <div class="product-type">Hourly</div>
                   </div>
+
                   <div class="product-name">Pulse Lighting Package</div>
                   <div class="product-desc">2 moving heads plus the Glow-level lighting foundation for a stronger event atmosphere.</div>
                   <div class="product-rate">$125 / hr</div>
+
                   <div class="product-controls">
                     <label>Hours</label>
                     <select class="duration-select">
@@ -1445,6 +1556,7 @@
                       <option value="8">8 hrs</option>
                     </select>
                   </div>
+
                   <div class="product-total">$625 total</div>
                   <div class="product-note">Lighting package</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
@@ -1455,9 +1567,11 @@
                     <div class="product-icon">DST</div>
                     <div class="product-type">Hourly</div>
                   </div>
+
                   <div class="product-name">District Lighting Package</div>
                   <div class="product-desc">4 moving heads, wash lights, and the full lower-level lighting build for the biggest lighting package here.</div>
                   <div class="product-rate">$200 / hr</div>
+
                   <div class="product-controls">
                     <label>Hours</label>
                     <select class="duration-select">
@@ -1470,6 +1584,7 @@
                       <option value="8">8 hrs</option>
                     </select>
                   </div>
+
                   <div class="product-total">$1,000 total</div>
                   <div class="product-note">Lighting package</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
@@ -1484,7 +1599,9 @@
                 <div class="group-title">Individual Lighting & Effects</div>
                 <div class="group-line"></div>
               </div>
+
               <p class="group-copy">For clients who want to mix and match the individual visual pieces instead of choosing a pre-built lighting package.</p>
+
               <div class="group-meta">
                 <div class="group-pill">Mix & Match</div>
                 <div class="group-pill">Atmosphere</div>
@@ -1497,9 +1614,11 @@
                     <div class="product-icon">FX</div>
                     <div class="product-type">Hourly</div>
                   </div>
+
                   <div class="product-name">Cold Spark</div>
                   <div class="product-desc">2 units for premium visual moments and event reveals.</div>
                   <div class="product-rate">$50 / hr</div>
+
                   <div class="product-controls">
                     <label>Hours</label>
                     <select class="duration-select">
@@ -1512,6 +1631,7 @@
                       <option value="8">8 hrs</option>
                     </select>
                   </div>
+
                   <div class="product-total">$250 total</div>
                   <div class="product-note">Visual effect</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
@@ -1522,9 +1642,11 @@
                     <div class="product-icon">FOG</div>
                     <div class="product-type">Hourly</div>
                   </div>
+
                   <div class="product-name">Fog Machines</div>
                   <div class="product-desc">2 units for atmosphere and beam enhancement.</div>
                   <div class="product-rate">$40 / hr</div>
+
                   <div class="product-controls">
                     <label>Hours</label>
                     <select class="duration-select">
@@ -1537,6 +1659,7 @@
                       <option value="8">8 hrs</option>
                     </select>
                   </div>
+
                   <div class="product-total">$200 total</div>
                   <div class="product-note">Atmosphere support</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
@@ -1547,9 +1670,11 @@
                     <div class="product-icon">UP</div>
                     <div class="product-type">Hourly</div>
                   </div>
+
                   <div class="product-name">Up Lights</div>
                   <div class="product-desc">5 units uplighting bundle.</div>
                   <div class="product-rate">$15 / hr</div>
+
                   <div class="product-controls">
                     <label>Hours</label>
                     <select class="duration-select">
@@ -1562,6 +1687,7 @@
                       <option value="8">8 hrs</option>
                     </select>
                   </div>
+
                   <div class="product-total">$75 total</div>
                   <div class="product-note">Lighting add-on</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
@@ -1572,9 +1698,11 @@
                     <div class="product-icon">BAR</div>
                     <div class="product-type">Hourly</div>
                   </div>
+
                   <div class="product-name">Light Bar</div>
                   <div class="product-desc">1 unit light bar rental.</div>
                   <div class="product-rate">$30 / hr</div>
+
                   <div class="product-controls">
                     <label>Hours</label>
                     <select class="duration-select">
@@ -1587,22 +1715,18 @@
                       <option value="8">8 hrs</option>
                     </select>
                   </div>
+
                   <div class="product-total">$150 total</div>
                   <div class="product-note">Lighting add-on</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
                 </div>
 
-                <div
-                  class="product-card"
-                  data-name="Moving Heads — 2 Units with Totems"
-                  data-type="hourly"
-                  data-rate="75"
-                  data-has-options="true"
-                >
+                <div class="product-card" data-name="Moving Heads — 2 Units with Totems" data-type="hourly" data-rate="75">
                   <div class="product-top">
                     <div class="product-icon">MH</div>
                     <div class="product-type">Hourly</div>
                   </div>
+
                   <div class="product-name">Moving Heads</div>
                   <div class="product-desc">2 moving head lights with your choice of totems or goal post setup.</div>
                   <div class="product-rate">$75 / hr</div>
@@ -1610,21 +1734,10 @@
                   <div class="product-controls stack">
                     <label>Setup Option</label>
                     <select class="setup-select" onchange="updateOptionProduct(this)">
-                      <option
-                        value="totems"
-                        data-name="Moving Heads — 2 Units with Totems"
-                        data-rate="75"
-                        data-note="2 moving heads with totems"
-                        selected
-                      >
+                      <option value="totems" data-name="Moving Heads — 2 Units with Totems" data-rate="75" data-note="2 moving heads with totems" selected>
                         2 Moving Heads + Totems
                       </option>
-                      <option
-                        value="goal-post"
-                        data-name="Moving Heads — 2 Units with Goal Post"
-                        data-rate="110"
-                        data-note="2 moving heads with goal post"
-                      >
+                      <option value="goal-post" data-name="Moving Heads — 2 Units with Goal Post" data-rate="110" data-note="2 moving heads with goal post">
                         2 Moving Heads + Goal Post
                       </option>
                     </select>
@@ -1653,9 +1766,11 @@
                     <div class="product-icon">WL</div>
                     <div class="product-type">Hourly</div>
                   </div>
+
                   <div class="product-name">Wash Lights</div>
                   <div class="product-desc">2 units wash lights.</div>
                   <div class="product-rate">$20 / hr</div>
+
                   <div class="product-controls">
                     <label>Hours</label>
                     <select class="duration-select">
@@ -1668,6 +1783,7 @@
                       <option value="8">8 hrs</option>
                     </select>
                   </div>
+
                   <div class="product-total">$100 total</div>
                   <div class="product-note">Lighting add-on</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
@@ -1682,7 +1798,9 @@
                 <div class="group-title">DJ Rentals</div>
                 <div class="group-line"></div>
               </div>
+
               <p class="group-copy">For clients who need individual DJ gear rentals instead of a full DJ service package.</p>
+
               <div class="group-meta">
                 <div class="group-pill">Daily Pricing</div>
                 <div class="group-pill">DJ Gear</div>
@@ -1695,9 +1813,11 @@
                     <div class="product-icon">XDJ</div>
                     <div class="product-type">Daily</div>
                   </div>
+
                   <div class="product-name">XDJ-XZ</div>
                   <div class="product-desc">Standalone DJ controller rental.</div>
                   <div class="product-rate">$200 / day</div>
+
                   <div class="product-controls">
                     <label>Days</label>
                     <select class="duration-select">
@@ -1707,6 +1827,7 @@
                       <option value="4">4 days</option>
                     </select>
                   </div>
+
                   <div class="product-total">$200 total</div>
                   <div class="product-note">Daily rental item</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
@@ -1717,9 +1838,11 @@
                     <div class="product-icon">CDJ</div>
                     <div class="product-type">Daily</div>
                   </div>
+
                   <div class="product-name">CDJ 3000</div>
-                  <div class="product-desc">1 unit standalone player rental.</div>
+                  <div class="product-desc">1 unit standalone player rental. Use the amount selector to choose multiple CDJs.</div>
                   <div class="product-rate">$150 / day</div>
+
                   <div class="product-controls">
                     <label>Days</label>
                     <select class="duration-select">
@@ -1729,8 +1852,9 @@
                       <option value="4">4 days</option>
                     </select>
                   </div>
+
                   <div class="product-total">$150 total</div>
-                  <div class="product-note">Daily rental item</div>
+                  <div class="product-note">Daily rental item · also listed in most popular</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
                 </div>
               </div>
@@ -1743,7 +1867,9 @@
                 <div class="group-title">Staging & Trussing</div>
                 <div class="group-line"></div>
               </div>
+
               <p class="group-copy">These are the staging structures that help frame the setup, hold lighting, and give the event a more complete production look.</p>
+
               <div class="group-meta">
                 <div class="group-pill">Stage Presence</div>
                 <div class="group-pill">Production Structure</div>
@@ -1756,9 +1882,11 @@
                     <div class="product-icon">2T</div>
                     <div class="product-type">Hourly</div>
                   </div>
+
                   <div class="product-name">Trussing — 2 Totems</div>
                   <div class="product-desc">2 totems at 8ft each for a cleaner vertical production look.</div>
                   <div class="product-rate">$50 / hr</div>
+
                   <div class="product-controls">
                     <label>Hours</label>
                     <select class="duration-select">
@@ -1771,6 +1899,7 @@
                       <option value="8">8 hrs</option>
                     </select>
                   </div>
+
                   <div class="product-total">$250 total</div>
                   <div class="product-note">8ft each · staging add-on</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
@@ -1781,9 +1910,11 @@
                     <div class="product-icon">4T</div>
                     <div class="product-type">Hourly</div>
                   </div>
+
                   <div class="product-name">Trussing — 4 Totems</div>
                   <div class="product-desc">4 totems at 8ft each for a larger, more symmetrical production setup.</div>
                   <div class="product-rate">$100 / hr</div>
+
                   <div class="product-controls">
                     <label>Hours</label>
                     <select class="duration-select">
@@ -1796,6 +1927,7 @@
                       <option value="8">8 hrs</option>
                     </select>
                   </div>
+
                   <div class="product-total">$500 total</div>
                   <div class="product-note">8ft each · staging add-on</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
@@ -1806,9 +1938,11 @@
                     <div class="product-icon">GP10</div>
                     <div class="product-type">Hourly</div>
                   </div>
+
                   <div class="product-name">Trussing — Goal Post 8x10</div>
                   <div class="product-desc">8x10 goal post truss setup for overhead production support and a bigger stage look.</div>
                   <div class="product-rate">$130 / hr</div>
+
                   <div class="product-controls">
                     <label>Hours</label>
                     <select class="duration-select">
@@ -1821,6 +1955,7 @@
                       <option value="8">8 hrs</option>
                     </select>
                   </div>
+
                   <div class="product-total">$650 total</div>
                   <div class="product-note">Overhead structure · staging add-on</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
@@ -1831,9 +1966,11 @@
                     <div class="product-icon">GP16</div>
                     <div class="product-type">Hourly</div>
                   </div>
+
                   <div class="product-name">Trussing — Goal Post 8x16</div>
                   <div class="product-desc">8x16 goal post truss setup for a wider, more dramatic production footprint.</div>
                   <div class="product-rate">$150 / hr</div>
+
                   <div class="product-controls">
                     <label>Hours</label>
                     <select class="duration-select">
@@ -1846,6 +1983,7 @@
                       <option value="8">8 hrs</option>
                     </select>
                   </div>
+
                   <div class="product-total">$750 total</div>
                   <div class="product-note">Wider overhead structure · staging add-on</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
@@ -1903,448 +2041,454 @@
       <img src="logo.png" alt="Heat District Productions" />
       <span class="footer-productions-text">Productions</span>
     </div>
+
     <div class="footer-contact">
       <a href="tel:9545472990">(954) 547-2990</a>
       <a href="mailto:HeatDistrictProd@gmail.com">HeatDistrictProd@gmail.com</a>
       <a href="https://instagram.com/heatdistrictproductions" target="_blank">@HeatDistrictProductions</a>
       <a href="https://www.heatdistrictproductions.com">heatdistrictproductions.com</a>
     </div>
+
     <p class="footer-copy">© 2025 Heat District Productions · Miami & Broward County · All Rights Reserved</p>
   </footer>
 
-<script>
-  let buildCart = [];
+  <script>
+    let buildCart = [];
 
-  const PRODUCT_CART_KEY = 'heatDistrictBuildCart';
-  const PRODUCT_ORDER_KEY = 'heatDistrictProductOrder';
+    const PRODUCT_CART_KEY = 'heatDistrictBuildCart';
+    const PRODUCT_ORDER_KEY = 'heatDistrictProductOrder';
 
-  function formatMoney(value) {
-    return '$' + Number(value || 0).toLocaleString();
-  }
-
-  function safeJsonParse(value) {
-    try {
-      return value ? JSON.parse(value) : null;
-    } catch (error) {
-      return null;
-    }
-  }
-
-  function calculateCardTotal(card) {
-    const rate = Number(card.dataset.rate || 0);
-    const durationSelect = card.querySelector('.duration-select');
-    const duration = durationSelect ? Number(durationSelect.value || 1) : 1;
-
-    return rate * duration;
-  }
-
-  function updateCardTotal(card) {
-    const total = calculateCardTotal(card);
-    const totalEl = card.querySelector('.product-total');
-    const rateEl = card.querySelector('.product-rate');
-    const type = card.dataset.type || 'hourly';
-    const rate = Number(card.dataset.rate || 0);
-
-    if (rateEl) {
-      rateEl.textContent = formatMoney(rate) + (type === 'daily' ? ' / day' : ' / hr');
+    function formatMoney(value) {
+      return '$' + Number(value || 0).toLocaleString();
     }
 
-    if (totalEl) {
-      totalEl.textContent = formatMoney(total) + ' total';
-    }
-  }
-
-  function updateOptionProduct(select) {
-    const card = select.closest('.product-card');
-
-    if (!card) return;
-
-    const selectedOption = select.options[select.selectedIndex];
-    const optionName = selectedOption.dataset.name;
-    const optionRate = selectedOption.dataset.rate;
-    const optionNote = selectedOption.dataset.note;
-
-    if (optionName) {
-      card.dataset.name = optionName;
+    function safeJsonParse(value) {
+      try {
+        return value ? JSON.parse(value) : null;
+      } catch (error) {
+        return null;
+      }
     }
 
-    if (optionRate) {
-      card.dataset.rate = optionRate;
+    function getDurationLabel(type, duration) {
+      const cleanDuration = Number(duration || 1);
+
+      if (type === 'daily') {
+        return cleanDuration + ' ' + (cleanDuration === 1 ? 'day' : 'days');
+      }
+
+      return cleanDuration + ' hrs';
     }
 
-    const noteEl = card.querySelector('.product-note');
-
-    if (noteEl && optionNote) {
-      noteEl.textContent = optionNote;
+    function getCartKey(name, type, duration) {
+      return name + '__' + type + '__' + duration;
     }
 
-    updateCardTotal(card);
-  }
-function addQuantityControl(card) {
-  if (!card || card.querySelector('.quantity-select')) return;
-
-  const quantityControl = document.createElement('div');
-  quantityControl.className = 'product-controls';
-
-  quantityControl.innerHTML = `
-    <label>Amount</label>
-    <select class="quantity-select">
-      <option value="1" selected>1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-    </select>
-  `;
-
-  const totalEl = card.querySelector('.product-total');
-
-  if (totalEl) {
-    card.insertBefore(quantityControl, totalEl);
-  } else {
-    card.appendChild(quantityControl);
-  }
-}
-  function addProductFromCard(button) {
-  const card = button.closest('.product-card');
-
-  if (!card) return;
-
-  const name = card.dataset.name || 'Selected Product';
-  const type = card.dataset.type || 'hourly';
-  const rate = Number(card.dataset.rate || 0);
-
-  const durationSelect = card.querySelector('.duration-select');
-  const duration = durationSelect ? Number(durationSelect.value || 1) : 1;
-
-  const quantitySelect = card.querySelector('.quantity-select');
-  const quantityToAdd = quantitySelect ? Number(quantitySelect.value || 1) : 1;
-
-  const unitPrice = rate * duration;
-  const key = getCartKey(name, type, duration);
-
-  const existing = buildCart.find(function(item) {
-    return item.key === key;
-  });
-
-  if (existing) {
-    existing.quantity += quantityToAdd;
-  } else {
-    buildCart.push({
-      key: key,
-      name: name,
-      type: type,
-      rate: rate,
-      duration: duration,
-      durationLabel: getDurationLabel(type, duration),
-      unitPrice: unitPrice,
-      quantity: quantityToAdd
-    });
-  }
-
-  saveCart();
-  renderCart();
-
-  const originalText = button.textContent;
-  button.textContent = quantityToAdd > 1 ? 'Added x' + quantityToAdd : 'Added';
-
-  setTimeout(function() {
-    button.textContent = originalText;
-  }, 900);
-}
-
-  function getDurationLabel(type, duration) {
-    const cleanDuration = Number(duration || 1);
-
-    if (type === 'daily') {
-      return cleanDuration + ' ' + (cleanDuration === 1 ? 'day' : 'days');
+    function getCardDuration(card) {
+      const durationSelect = card.querySelector('.duration-select');
+      return durationSelect ? Number(durationSelect.value || 1) : 1;
     }
 
-    return cleanDuration + ' hrs';
-  }
-
-  function getCartKey(name, type, duration) {
-    return name + '__' + type + '__' + duration;
-  }
-
-  function addProductFromCard(button) {
-    const card = button.closest('.product-card');
-
-    if (!card) return;
-
-    const name = card.dataset.name || 'Selected Product';
-    const type = card.dataset.type || 'hourly';
-    const rate = Number(card.dataset.rate || 0);
-    const durationSelect = card.querySelector('.duration-select');
-    const duration = durationSelect ? Number(durationSelect.value || 1) : 1;
-    const unitPrice = rate * duration;
-    const key = getCartKey(name, type, duration);
-
-    const existing = buildCart.find(function(item) {
-      return item.key === key;
-    });
-
-    if (existing) {
-      existing.quantity += 1;
-    } else {
-      buildCart.push({
-        key: key,
-        name: name,
-        type: type,
-        rate: rate,
-        duration: duration,
-        durationLabel: getDurationLabel(type, duration),
-        unitPrice: unitPrice,
-        quantity: 1
-      });
+    function getCardQuantity(card) {
+      const quantitySelect = card.querySelector('.quantity-select');
+      return quantitySelect ? Number(quantitySelect.value || 1) : 1;
     }
 
-    saveCart();
-    renderCart();
-  }
-
-  function removeCartItem(key) {
-    buildCart = buildCart.filter(function(item) {
-      return item.key !== key;
-    });
-
-    saveCart();
-    renderCart();
-  }
-
-  function clearCart() {
-    buildCart = [];
-    sessionStorage.removeItem(PRODUCT_CART_KEY);
-    sessionStorage.removeItem(PRODUCT_ORDER_KEY);
-    sessionStorage.removeItem('heatDistrictEstimate');
-    renderCart();
-  }
-
-  function saveCart() {
-    sessionStorage.setItem(PRODUCT_CART_KEY, JSON.stringify(buildCart));
-  }
-
-  function loadCart() {
-    const storedCart = safeJsonParse(sessionStorage.getItem(PRODUCT_CART_KEY));
-
-    if (Array.isArray(storedCart)) {
-      buildCart = storedCart;
-    } else {
-      buildCart = [];
-    }
-  }
-
-  function getCartTotals() {
-    let totalItems = 0;
-    let estimatedTotal = 0;
-
-    buildCart.forEach(function(item) {
-      const quantity = Number(item.quantity || 0);
-      const unitPrice = Number(item.unitPrice || 0);
-
-      totalItems += quantity;
-      estimatedTotal += unitPrice * quantity;
-    });
-
-    const depositDue = estimatedTotal * 0.5;
-    const remainingBalance = estimatedTotal - depositDue;
-
-    return {
-      totalItems: totalItems,
-      estimatedTotal: estimatedTotal,
-      depositDue: depositDue,
-      remainingBalance: remainingBalance
-    };
-  }
-
-  function renderCart() {
-    const cartItems = document.getElementById('cartItems');
-    const cartCount = document.getElementById('cartCount');
-    const cartTotal = document.getElementById('cartTotal');
-    const cartDeposit = document.getElementById('cartDeposit');
-    const cartRemaining = document.getElementById('cartRemaining');
-
-    if (!cartItems || !cartCount || !cartTotal || !cartDeposit || !cartRemaining) {
-      return;
+    function getCardUnitPrice(card) {
+      const rate = Number(card.dataset.rate || 0);
+      const duration = getCardDuration(card);
+      return rate * duration;
     }
 
-    const totals = getCartTotals();
+    function updateCardTotal(card) {
+      const unitPrice = getCardUnitPrice(card);
+      const quantity = getCardQuantity(card);
+      const total = unitPrice * quantity;
+      const totalEl = card.querySelector('.product-total');
+      const rateEl = card.querySelector('.product-rate');
+      const type = card.dataset.type || 'hourly';
+      const rate = Number(card.dataset.rate || 0);
 
-    cartCount.textContent = totals.totalItems;
-    cartTotal.textContent = formatMoney(totals.estimatedTotal);
-    cartDeposit.textContent = formatMoney(totals.depositDue);
-    cartRemaining.textContent = formatMoney(totals.remainingBalance);
+      if (rateEl) {
+        rateEl.textContent = formatMoney(rate) + (type === 'daily' ? ' / day' : ' / hr');
+      }
 
-    if (!buildCart.length) {
-      cartItems.innerHTML = '<div class="cart-empty">No products selected yet. Use the filters to jump to a category, then add products to start building your event cart.</div>';
-      return;
+      if (totalEl) {
+        if (quantity > 1) {
+          totalEl.textContent = formatMoney(total) + ' total · ' + formatMoney(unitPrice) + ' each';
+        } else {
+          totalEl.textContent = formatMoney(total) + ' total';
+        }
+      }
     }
 
-    cartItems.innerHTML = buildCart.map(function(item) {
-      const quantity = Number(item.quantity || 0);
-      const unitPrice = Number(item.unitPrice || 0);
-      const lineTotal = unitPrice * quantity;
-      const durationLabel = item.durationLabel || getDurationLabel(item.type, item.duration);
+    function updateOptionProduct(select) {
+      const card = select.closest('.product-card');
 
-      return '' +
-        '<div class="cart-item">' +
-          '<div class="cart-item-top">' +
-            '<div class="cart-item-name">' + item.name + '</div>' +
-            '<button class="cart-item-remove" type="button" onclick="removeCartItem(\'' + item.key + '\')">Remove</button>' +
-          '</div>' +
-          '<div class="cart-item-meta">' +
-            durationLabel + ' · ' + formatMoney(unitPrice) + ' each · Qty ' + quantity +
-          '</div>' +
-          '<div class="cart-item-total">' + formatMoney(lineTotal) + '</div>' +
-        '</div>';
-    }).join('');
-  }
+      if (!card) return;
 
-  function buildProductOrder() {
-    const totals = getCartTotals();
+      const selectedOption = select.options[select.selectedIndex];
+      const optionName = selectedOption.dataset.name;
+      const optionRate = selectedOption.dataset.rate;
+      const optionNote = selectedOption.dataset.note;
 
-    return {
-      type: 'products',
-      cart: buildCart,
-      totalItems: totals.totalItems,
-      estimatedTotal: totals.estimatedTotal,
-      depositDue: totals.depositDue,
-      remainingBalance: totals.remainingBalance
-    };
-  }
+      if (optionName) {
+        card.dataset.name = optionName;
+      }
 
-  function proceedToCheckout() {
-    if (!buildCart.length) {
-      alert('Please add at least one product before continuing to checkout.');
-      return;
+      if (optionRate) {
+        card.dataset.rate = optionRate;
+      }
+
+      const noteEl = card.querySelector('.product-note');
+
+      if (noteEl && optionNote) {
+        noteEl.textContent = optionNote;
+      }
+
+      updateCardTotal(card);
     }
 
-    const totals = getCartTotals();
+    function addQuantityControl(card) {
+      if (!card || card.querySelector('.quantity-select')) return;
 
-    const productAddons = buildCart.map(function(item) {
-      return {
-        id: item.key,
-        name: item.name,
-        category: item.type === 'daily' ? 'Daily Rental' : 'Product / Service',
-        price: Number(item.unitPrice || 0),
-        unit: item.durationLabel || getDurationLabel(item.type, item.duration),
-        qty: Number(item.quantity || 1)
-      };
-    });
+      const quantityControl = document.createElement('div');
+      quantityControl.className = 'product-controls';
 
-    const estimate = {
-      type: 'products',
-      package: 'Custom Product Build',
-      packagePrice: 0,
-      packageHours: 0,
-      addons: productAddons,
-      addonsTotal: totals.estimatedTotal,
-      total: totals.estimatedTotal,
-      depositDue: totals.depositDue,
-      remainingBalance: totals.remainingBalance
-    };
+      quantityControl.innerHTML = `
+        <label>Amount</label>
+        <select class="quantity-select">
+          <option value="1" selected>1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      `;
 
-    const productOrder = buildProductOrder();
+      const totalEl = card.querySelector('.product-total');
 
-    saveCart();
-
-    sessionStorage.setItem('heatDistrictEstimate', JSON.stringify(estimate));
-    sessionStorage.setItem(PRODUCT_ORDER_KEY, JSON.stringify(productOrder));
-
-    window.location.href = 'checkout.html';
-  }
-
-  function filterGroups(groupName, clickedButton) {
-    const groups = document.querySelectorAll('.group-block');
-    const buttons = document.querySelectorAll('.filter-btn');
-
-    buttons.forEach(function(button) {
-      button.classList.remove('active');
-    });
-
-    if (clickedButton) {
-      clickedButton.classList.add('active');
-    }
-
-    groups.forEach(function(group) {
-      const matches = group.dataset.group === groupName;
-
-      if (groupName === 'all' || matches) {
-        group.classList.remove('is-hidden');
+      if (totalEl) {
+        card.insertBefore(quantityControl, totalEl);
       } else {
-        group.classList.add('is-hidden');
+        card.appendChild(quantityControl);
       }
-    });
 
-    const firstVisibleGroup = document.querySelector('.group-block:not(.is-hidden)');
+      const quantitySelect = quantityControl.querySelector('.quantity-select');
 
-    if (firstVisibleGroup) {
-      firstVisibleGroup.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+      if (quantitySelect) {
+        quantitySelect.addEventListener('change', function() {
+          updateCardTotal(card);
+        });
+      }
+    }
+
+    function initCards() {
+      document.querySelectorAll('.product-card').forEach(function(card) {
+        const durationSelect = card.querySelector('.duration-select');
+        const setupSelect = card.querySelector('.setup-select');
+
+        addQuantityControl(card);
+
+        if (setupSelect) {
+          updateOptionProduct(setupSelect);
+        }
+
+        if (durationSelect) {
+          durationSelect.addEventListener('change', function() {
+            updateCardTotal(card);
+          });
+        }
+
+        updateCardTotal(card);
       });
     }
-  }
 
-  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-  const mobileNav = document.getElementById('mobileNav');
+    function addProductFromCard(button) {
+      const card = button.closest('.product-card');
 
-  function closeMobileMenu() {
-    if (!mobileMenuBtn || !mobileNav) return;
+      if (!card) return;
 
-    mobileNav.classList.remove('open');
-    mobileMenuBtn.classList.remove('active');
-    mobileMenuBtn.setAttribute('aria-expanded', 'false');
-    document.body.classList.remove('mobile-menu-open');
-  }
+      const name = card.dataset.name || 'Selected Product';
+      const type = card.dataset.type || 'hourly';
+      const rate = Number(card.dataset.rate || 0);
+      const duration = getCardDuration(card);
+      const quantityToAdd = getCardQuantity(card);
+      const unitPrice = rate * duration;
+      const key = getCartKey(name, type, duration);
 
-  function toggleMobileMenu() {
-    if (!mobileMenuBtn || !mobileNav) return;
+      const existing = buildCart.find(function(item) {
+        return item.key === key;
+      });
 
-    const isOpen = mobileNav.classList.contains('open');
+      if (existing) {
+        existing.quantity += quantityToAdd;
+      } else {
+        buildCart.push({
+          key: key,
+          name: name,
+          type: type,
+          rate: rate,
+          duration: duration,
+          durationLabel: getDurationLabel(type, duration),
+          unitPrice: unitPrice,
+          quantity: quantityToAdd
+        });
+      }
 
-    if (isOpen) {
-      closeMobileMenu();
-    } else {
-      mobileNav.classList.add('open');
-      mobileMenuBtn.classList.add('active');
-      mobileMenuBtn.setAttribute('aria-expanded', 'true');
-      document.body.classList.add('mobile-menu-open');
+      saveCart();
+      renderCart();
+
+      const originalText = button.textContent;
+      button.textContent = quantityToAdd > 1 ? 'Added x' + quantityToAdd : 'Added';
+
+      setTimeout(function() {
+        button.textContent = originalText;
+      }, 900);
     }
-  }
 
-  if (mobileMenuBtn && mobileNav) {
-    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    function removeCartItem(key) {
+      buildCart = buildCart.filter(function(item) {
+        return item.key !== key;
+      });
 
-    mobileNav.querySelectorAll('a').forEach(function(link) {
-      link.addEventListener('click', closeMobileMenu);
-    });
+      saveCart();
+      renderCart();
+    }
 
-    window.addEventListener('resize', function() {
-      if (window.innerWidth > 900) {
-        closeMobileMenu();
+    function clearCart() {
+      buildCart = [];
+      sessionStorage.removeItem(PRODUCT_CART_KEY);
+      sessionStorage.removeItem(PRODUCT_ORDER_KEY);
+      sessionStorage.removeItem('heatDistrictEstimate');
+      renderCart();
+    }
+
+    function saveCart() {
+      sessionStorage.setItem(PRODUCT_CART_KEY, JSON.stringify(buildCart));
+    }
+
+    function loadCart() {
+      const storedCart = safeJsonParse(sessionStorage.getItem(PRODUCT_CART_KEY));
+
+      if (Array.isArray(storedCart)) {
+        buildCart = storedCart;
+      } else {
+        buildCart = [];
       }
-    });
+    }
 
-    document.addEventListener('click', function(event) {
-      const clickedInsideNav = mobileNav.contains(event.target);
-      const clickedButton = mobileMenuBtn.contains(event.target);
+    function getCartTotals() {
+      let totalItems = 0;
+      let estimatedTotal = 0;
 
-      if (!clickedInsideNav && !clickedButton && mobileNav.classList.contains('open')) {
-        closeMobileMenu();
+      buildCart.forEach(function(item) {
+        const quantity = Number(item.quantity || 0);
+        const unitPrice = Number(item.unitPrice || 0);
+
+        totalItems += quantity;
+        estimatedTotal += unitPrice * quantity;
+      });
+
+      const depositDue = estimatedTotal * 0.5;
+      const remainingBalance = estimatedTotal - depositDue;
+
+      return {
+        totalItems: totalItems,
+        estimatedTotal: estimatedTotal,
+        depositDue: depositDue,
+        remainingBalance: remainingBalance
+      };
+    }
+
+    function renderCart() {
+      const cartItems = document.getElementById('cartItems');
+      const cartCount = document.getElementById('cartCount');
+      const cartTotal = document.getElementById('cartTotal');
+      const cartDeposit = document.getElementById('cartDeposit');
+      const cartRemaining = document.getElementById('cartRemaining');
+
+      if (!cartItems || !cartCount || !cartTotal || !cartDeposit || !cartRemaining) {
+        return;
       }
-    });
-  }
 
-  loadCart();
-  initCards();
-  renderCart();
-</script>
+      const totals = getCartTotals();
+
+      cartCount.textContent = totals.totalItems;
+      cartTotal.textContent = formatMoney(totals.estimatedTotal);
+      cartDeposit.textContent = formatMoney(totals.depositDue);
+      cartRemaining.textContent = formatMoney(totals.remainingBalance);
+
+      if (!buildCart.length) {
+        cartItems.innerHTML = '<div class="cart-empty">No products selected yet. Use the filters to jump to a category, then add products to start building your event cart.</div>';
+        return;
+      }
+
+      cartItems.innerHTML = buildCart.map(function(item) {
+        const quantity = Number(item.quantity || 0);
+        const unitPrice = Number(item.unitPrice || 0);
+        const lineTotal = unitPrice * quantity;
+        const durationLabel = item.durationLabel || getDurationLabel(item.type, item.duration);
+
+        return '' +
+          '<div class="cart-item">' +
+            '<div class="cart-item-top">' +
+              '<div class="cart-item-name">' + item.name + '</div>' +
+              '<button class="cart-item-remove" type="button" onclick="removeCartItem(\'' + item.key + '\')">Remove</button>' +
+            '</div>' +
+            '<div class="cart-item-meta">' +
+              durationLabel + ' · ' + formatMoney(unitPrice) + ' each · Qty ' + quantity +
+            '</div>' +
+            '<div class="cart-item-total">' + formatMoney(lineTotal) + '</div>' +
+          '</div>';
+      }).join('');
+    }
+
+    function buildProductOrder() {
+      const totals = getCartTotals();
+
+      return {
+        type: 'products',
+        cart: buildCart,
+        totalItems: totals.totalItems,
+        estimatedTotal: totals.estimatedTotal,
+        depositDue: totals.depositDue,
+        remainingBalance: totals.remainingBalance
+      };
+    }
+
+    function proceedToCheckout() {
+      if (!buildCart.length) {
+        alert('Please add at least one product before continuing to checkout.');
+        return;
+      }
+
+      const totals = getCartTotals();
+
+      const productAddons = buildCart.map(function(item) {
+        return {
+          id: item.key,
+          name: item.name,
+          category: item.type === 'daily' ? 'Daily Rental' : 'Product / Service',
+          price: Number(item.unitPrice || 0),
+          unit: item.durationLabel || getDurationLabel(item.type, item.duration),
+          qty: Number(item.quantity || 1)
+        };
+      });
+
+      const estimate = {
+        type: 'products',
+        package: 'Custom Product Build',
+        packagePrice: 0,
+        packageHours: 0,
+        addons: productAddons,
+        addonsTotal: totals.estimatedTotal,
+        total: totals.estimatedTotal,
+        depositDue: totals.depositDue,
+        remainingBalance: totals.remainingBalance
+      };
+
+      const productOrder = buildProductOrder();
+
+      saveCart();
+
+      sessionStorage.setItem('heatDistrictEstimate', JSON.stringify(estimate));
+      sessionStorage.setItem(PRODUCT_ORDER_KEY, JSON.stringify(productOrder));
+
+      window.location.href = 'checkout.html';
+    }
+
+    function filterGroups(groupName, clickedButton) {
+      const groups = document.querySelectorAll('.group-block');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(function(button) {
+        button.classList.remove('active');
+      });
+
+      if (clickedButton) {
+        clickedButton.classList.add('active');
+      }
+
+      groups.forEach(function(group) {
+        const matches = group.dataset.group === groupName;
+
+        if (groupName === 'all' || matches) {
+          group.classList.remove('is-hidden');
+        } else {
+          group.classList.add('is-hidden');
+        }
+      });
+
+      const firstVisibleGroup = document.querySelector('.group-block:not(.is-hidden)');
+
+      if (firstVisibleGroup) {
+        firstVisibleGroup.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+
+    function closeMobileMenu() {
+      if (!mobileMenuBtn || !mobileNav) return;
+
+      mobileNav.classList.remove('open');
+      mobileMenuBtn.classList.remove('active');
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('mobile-menu-open');
+    }
+
+    function toggleMobileMenu() {
+      if (!mobileMenuBtn || !mobileNav) return;
+
+      const isOpen = mobileNav.classList.contains('open');
+
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        mobileNav.classList.add('open');
+        mobileMenuBtn.classList.add('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('mobile-menu-open');
+      }
+    }
+
+    if (mobileMenuBtn && mobileNav) {
+      mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+      mobileNav.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', closeMobileMenu);
+      });
+
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 900) {
+          closeMobileMenu();
+        }
+      });
+
+      document.addEventListener('click', function(event) {
+        const clickedInsideNav = mobileNav.contains(event.target);
+        const clickedButton = mobileMenuBtn.contains(event.target);
+
+        if (!clickedInsideNav && !clickedButton && mobileNav.classList.contains('open')) {
+          closeMobileMenu();
+        }
+      });
+    }
+
+    loadCart();
+    initCards();
+    renderCart();
+  </script>
 
 </body>
 </html>

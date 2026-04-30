@@ -905,6 +905,12 @@
       transform: translateY(-2px);
     }
 
+    .cart-close-mobile,
+    .mobile-cart-toggle,
+    .mobile-cart-backdrop {
+      display: none;
+    }
+
     footer {
       text-align: center;
       padding: 60px 48px 100px;
@@ -996,6 +1002,14 @@
     }
 
     @media (max-width: 900px) {
+      body {
+        padding-bottom: 94px;
+      }
+
+      body.cart-drawer-open {
+        overflow: hidden;
+      }
+
       nav {
         padding: 10px 18px;
       }
@@ -1025,8 +1039,143 @@
         grid-template-columns: 1fr;
       }
 
+      .cart-panel {
+        position: fixed;
+        left: 14px;
+        right: 14px;
+        bottom: 92px;
+        top: auto;
+        z-index: 1300;
+        width: auto;
+        max-height: min(76vh, 620px);
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(calc(100% + 120px));
+        transition: transform 0.28s ease, opacity 0.28s ease;
+      }
+
+      .cart-panel.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      .cart-panel .cart-items {
+        overflow-y: auto;
+        max-height: none;
+        padding-right: 6px;
+      }
+
+      .cart-close-mobile {
+        display: flex;
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        border: 1px solid rgba(255,45,120,0.38);
+        background: rgba(255,45,120,0.08);
+        color: var(--neon-pink);
+        align-items: center;
+        justify-content: center;
+        font-size: 1.35rem;
+        line-height: 1;
+        cursor: pointer;
+        z-index: 2;
+        box-shadow: 0 0 16px rgba(255,45,120,0.12);
+      }
+
+      .cart-close-mobile:hover {
+        background: rgba(255,45,120,0.16);
+        box-shadow: 0 0 22px rgba(255,45,120,0.24);
+      }
+
+      .mobile-cart-backdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 1250;
+        background: rgba(0,0,0,0.58);
+        backdrop-filter: blur(5px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+      }
+
+      .mobile-cart-backdrop.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .mobile-cart-toggle {
+        display: flex;
+        position: fixed;
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        z-index: 1200;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 15px 18px;
+        border-radius: 999px;
+        border: 1.5px solid var(--neon-pink);
+        background:
+          linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.99)),
+          linear-gradient(90deg, rgba(0,240,255,0.08), rgba(255,45,120,0.08));
+        color: #fff;
+        box-shadow:
+          0 18px 45px rgba(0,0,0,0.48),
+          0 0 26px rgba(255,45,120,0.2);
+        cursor: pointer;
+      }
+
+      .mobile-cart-toggle-main {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+      }
+
+      .mobile-cart-toggle-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: var(--neon-pink);
+        white-space: nowrap;
+      }
+
+      .mobile-cart-toggle-count {
+        min-width: 26px;
+        height: 26px;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 8px;
+        background: rgba(0,240,255,0.12);
+        border: 1px solid rgba(0,240,255,0.28);
+        color: var(--neon-blue);
+        font-size: 0.72rem;
+        font-weight: 700;
+      }
+
+      .mobile-cart-toggle-total {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: #fff;
+        white-space: nowrap;
+      }
+
+      body.cart-drawer-open .mobile-cart-toggle {
+        z-index: 1350;
+      }
+
       footer {
-        padding: 60px 24px 100px;
+        padding: 60px 24px 130px;
       }
     }
   </style>
@@ -1086,18 +1235,18 @@
       <p class="section-label">Quick Product Finder</p>
       <h2 class="section-title">Pick a Category. <strong>Build Faster.</strong></h2>
       <p class="section-sub">
-        Use the buttons below to filter the page down to what you need. The order is set so clients see the most commonly requested event essentials first.
+        Use the buttons below to filter the page down to what you need. The order is set so clients see the most requested event items first.
       </p>
 
       <div class="info-bar">
         <div class="info-chip">
           <div class="info-chip-label">Most Popular</div>
-          <div class="info-chip-copy">Sound, DJ, photography, photo booth, and CDJ rentals are grouped at the top for fast booking decisions.</div>
+          <div class="info-chip-copy">Sound, DJ, photography, photo booth, and the premium club mixer/CDJ package are grouped at the top.</div>
         </div>
 
         <div class="info-chip">
-          <div class="info-chip-label">Separate Services</div>
-          <div class="info-chip-copy">DJ, photography, and videography also have their own sections so clients can browse them individually.</div>
+          <div class="info-chip-label">Fast Browsing</div>
+          <div class="info-chip-copy">Lighting packages and guest experience now sit directly under Most Popular for easier browsing.</div>
         </div>
 
         <div class="info-chip">
@@ -1114,19 +1263,17 @@
           </div>
 
           <div class="filter-note">
-            Start with “Most Popular” or jump directly to DJ, photography, video, sound, guest experience, lighting, DJ rentals, furniture, or trussing.
+            Start with Most Popular or jump directly to lighting packages, guest experience, services, sound, DJ rentals, furniture, or trussing.
           </div>
         </div>
 
         <div class="category-filter">
           <button class="filter-btn active" type="button" onclick="filterGroups('all', this)">Show All</button>
           <button class="filter-btn" type="button" onclick="filterGroups('popular', this)">Most Popular</button>
-          <button class="filter-btn" type="button" onclick="filterGroups('dj-services', this)">DJ Service</button>
-          <button class="filter-btn" type="button" onclick="filterGroups('photography-services', this)">Photography</button>
-          <button class="filter-btn" type="button" onclick="filterGroups('videography-services', this)">Videography</button>
-          <button class="filter-btn" type="button" onclick="filterGroups('foundation', this)">Sound & Mics</button>
-          <button class="filter-btn" type="button" onclick="filterGroups('guest-media', this)">Guest Experience</button>
           <button class="filter-btn" type="button" onclick="filterGroups('lighting-packages', this)">Lighting Packages</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('guest-media', this)">Guest Experience</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('services', this)">Services</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('foundation', this)">Sound & Mics</button>
           <button class="filter-btn" type="button" onclick="filterGroups('lighting-effects', this)">Lighting & Effects</button>
           <button class="filter-btn" type="button" onclick="filterGroups('dj-rentals', this)">DJ Rentals</button>
           <button class="filter-btn" type="button" onclick="filterGroups('party-furniture', this)">Party Furniture</button>
@@ -1153,7 +1300,7 @@
                 <div class="group-line"></div>
               </div>
 
-              <p class="group-copy">The most commonly requested starting points for event builds: sound, DJ, photography, photo booth, and CDJ rental.</p>
+              <p class="group-copy">The most commonly requested starting points for event builds.</p>
 
               <div class="group-meta">
                 <div class="group-pill">Highest Demand</div>
@@ -1221,6 +1368,7 @@
                   <div class="product-name">Photography</div>
                   <div class="product-desc">Professional event photography coverage. Choose from 50 to 250 edited pictures as your deliverable.</div>
                   <div class="product-rate">$125 / hr</div>
+
                   <div class="product-controls stack">
                     <label>Edited Pictures</label>
                     <select class="setup-select" onchange="updateOptionProduct(this)">
@@ -1230,6 +1378,7 @@
                       <option value="250" data-name="Photography — 250 Edited Pictures" data-rate="225" data-note="250 edited pictures">250 edited pictures</option>
                     </select>
                   </div>
+
                   <div class="product-controls">
                     <label>Hours</label>
                     <select class="duration-select">
@@ -1242,6 +1391,7 @@
                       <option value="8">8 hrs</option>
                     </select>
                   </div>
+
                   <div class="product-total">$625 total</div>
                   <div class="product-note">50 edited pictures</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
@@ -1272,14 +1422,14 @@
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
                 </div>
 
-                <div class="product-card" data-name="CDJ 3000" data-type="daily" data-rate="150">
+                <div class="product-card" data-name="Premium Club Mixer & CDJ Package — 2 CDJ 3000 + DJM-900NXS2" data-type="daily" data-rate="400">
                   <div class="product-top">
-                    <div class="product-icon">CDJ</div>
+                    <div class="product-icon">PKG</div>
                     <div class="product-type">Daily</div>
                   </div>
-                  <div class="product-name">CDJ 3000</div>
-                  <div class="product-desc">Standalone Pioneer CDJ rental. Use the amount selector to choose how many CDJs you need.</div>
-                  <div class="product-rate">$150 / day</div>
+                  <div class="product-name">Premium Club Mixer & CDJ Package</div>
+                  <div class="product-desc">Premium club-style DJ setup with 2 Pioneer CDJ 3000 players and 1 Pioneer DJM-900NXS2 mixer.</div>
+                  <div class="product-rate">$400 / day</div>
                   <div class="product-controls">
                     <label>Days</label>
                     <select class="duration-select">
@@ -1289,349 +1439,11 @@
                       <option value="4">4 days</option>
                     </select>
                   </div>
-                  <div class="product-total">$150 total</div>
-                  <div class="product-note">Popular DJ rental item</div>
-                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          <div class="group-block" id="dj-services" data-group="dj-services">
-            <div class="group-shell">
-              <div class="group-header">
-                <div class="group-title">DJ Service</div>
-                <div class="group-line"></div>
-              </div>
-
-              <p class="group-copy">Dedicated DJ coverage for clients who need music, energy, and event flow handled professionally.</p>
-
-              <div class="group-meta">
-                <div class="group-pill">DJ Coverage</div>
-                <div class="group-pill">Private Events</div>
-                <div class="group-pill">Club Style Events</div>
-              </div>
-
-              <div class="products-grid">
-                <div class="product-card" data-name="DJ" data-type="hourly" data-rate="150" data-no-quantity="true">
-                  <div class="product-top">
-                    <div class="product-icon">DJ</div>
-                    <div class="product-type">Hourly</div>
-                  </div>
-                  <div class="product-name">DJ</div>
-                  <div class="product-desc">Deck and DJ coverage for weddings, private parties, club-style events, and custom event builds.</div>
-                  <div class="product-rate">$150 / hr</div>
-                  <div class="product-controls">
-                    <label>Hours</label>
-                    <select class="duration-select">
-                      <option value="2">2 hrs</option>
-                      <option value="3">3 hrs</option>
-                      <option value="4">4 hrs</option>
-                      <option value="5" selected>5 hrs</option>
-                      <option value="6">6 hrs</option>
-                      <option value="7">7 hrs</option>
-                      <option value="8">8 hrs</option>
-                    </select>
-                  </div>
-                  <div class="product-total">$750 total</div>
-                  <div class="product-note">DJ service</div>
-                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="group-block" id="photography-services" data-group="photography-services">
-            <div class="group-shell">
-              <div class="group-header">
-                <div class="group-title">Photography</div>
-                <div class="group-line"></div>
-              </div>
-
-              <p class="group-copy">Professional photo coverage with selectable deliverable options from 50 to 250 edited pictures.</p>
-
-              <div class="group-meta">
-                <div class="group-pill">Edited Photos</div>
-                <div class="group-pill">Event Coverage</div>
-                <div class="group-pill">Digital Delivery</div>
-              </div>
-
-              <div class="products-grid">
-                <div class="product-card" data-name="Photography — 50 Edited Pictures" data-type="hourly" data-rate="125" data-no-quantity="true">
-                  <div class="product-top">
-                    <div class="product-icon">PH</div>
-                    <div class="product-type">Hourly</div>
-                  </div>
-                  <div class="product-name">Photography</div>
-                  <div class="product-desc">Professional event photography coverage. Deliverables range from 50 to 250 edited pictures depending on the option selected.</div>
-                  <div class="product-rate">$125 / hr</div>
-                  <div class="product-controls stack">
-                    <label>Edited Pictures</label>
-                    <select class="setup-select" onchange="updateOptionProduct(this)">
-                      <option value="50" data-name="Photography — 50 Edited Pictures" data-rate="125" data-note="50 edited pictures" selected>50 edited pictures</option>
-                      <option value="100" data-name="Photography — 100 Edited Pictures" data-rate="150" data-note="100 edited pictures">100 edited pictures</option>
-                      <option value="150" data-name="Photography — 150 Edited Pictures" data-rate="175" data-note="150 edited pictures">150 edited pictures</option>
-                      <option value="250" data-name="Photography — 250 Edited Pictures" data-rate="225" data-note="250 edited pictures">250 edited pictures</option>
-                    </select>
-                  </div>
-                  <div class="product-controls">
-                    <label>Hours</label>
-                    <select class="duration-select">
-                      <option value="2">2 hrs</option>
-                      <option value="3">3 hrs</option>
-                      <option value="4">4 hrs</option>
-                      <option value="5" selected>5 hrs</option>
-                      <option value="6">6 hrs</option>
-                      <option value="7">7 hrs</option>
-                      <option value="8">8 hrs</option>
-                    </select>
-                  </div>
-                  <div class="product-total">$625 total</div>
-                  <div class="product-note">50 edited pictures</div>
-                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="group-block" id="videography-services" data-group="videography-services">
-            <div class="group-shell">
-              <div class="group-header">
-                <div class="group-title">Videography</div>
-                <div class="group-line"></div>
-              </div>
-
-              <p class="group-copy">Cinematic video coverage with recap options from a 15 second event recap up to a full 1 minute recap.</p>
-
-              <div class="group-meta">
-                <div class="group-pill">Short Form Content</div>
-                <div class="group-pill">Event Recaps</div>
-                <div class="group-pill">Social Ready</div>
-              </div>
-
-              <div class="products-grid">
-                <div class="product-card" data-name="Videography — 15 Second Recap" data-type="hourly" data-rate="150" data-no-quantity="true">
-                  <div class="product-top">
-                    <div class="product-icon">VID</div>
-                    <div class="product-type">Hourly</div>
-                  </div>
-                  <div class="product-name">Videography</div>
-                  <div class="product-desc">Cinematic event video coverage. Choose from a 15 second recap up to a full 1 minute event recap.</div>
-                  <div class="product-rate">$150 / hr</div>
-                  <div class="product-controls stack">
-                    <label>Recap Length</label>
-                    <select class="setup-select" onchange="updateOptionProduct(this)">
-                      <option value="15" data-name="Videography — 15 Second Recap" data-rate="150" data-note="15 second recap" selected>15 second recap</option>
-                      <option value="30" data-name="Videography — 30 Second Recap" data-rate="175" data-note="30 second recap">30 second recap</option>
-                      <option value="45" data-name="Videography — 45 Second Recap" data-rate="200" data-note="45 second recap">45 second recap</option>
-                      <option value="60" data-name="Videography — 1 Minute Recap" data-rate="250" data-note="1 minute recap">1 minute recap</option>
-                    </select>
-                  </div>
-                  <div class="product-controls">
-                    <label>Hours</label>
-                    <select class="duration-select">
-                      <option value="2">2 hrs</option>
-                      <option value="3">3 hrs</option>
-                      <option value="4">4 hrs</option>
-                      <option value="5" selected>5 hrs</option>
-                      <option value="6">6 hrs</option>
-                      <option value="7">7 hrs</option>
-                      <option value="8">8 hrs</option>
-                    </select>
-                  </div>
-                  <div class="product-total">$750 total</div>
-                  <div class="product-note">15 second recap</div>
-                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="group-block" id="foundation-services" data-group="foundation">
-            <div class="group-shell">
-              <div class="group-header">
-                <div class="group-title">Sound & Mic Support</div>
-                <div class="group-line"></div>
-              </div>
-
-              <p class="group-copy">Sound reinforcement and microphone options for events that need clean audio support.</p>
-
-              <div class="group-meta">
-                <div class="group-pill">Sound Support</div>
-                <div class="group-pill">Event Foundation</div>
-                <div class="group-pill">Hourly Pricing</div>
-              </div>
-
-              <div class="products-grid">
-                <div class="product-card" data-name="Sound — 2 QSC Tops + 2 Subs" data-type="hourly" data-rate="125">
-                  <div class="product-top">
-                    <div class="product-icon">QSC</div>
-                    <div class="product-type">Hourly</div>
-                  </div>
-                  <div class="product-name">Sound — 2 QSC Tops + 2 Subs</div>
-                  <div class="product-desc">Professional sound system with 2 QSC tops and 2 QSC subs for a clean, strong event foundation.</div>
-                  <div class="product-rate">$125 / hr</div>
-                  <div class="product-controls">
-                    <label>Hours</label>
-                    <select class="duration-select">
-                      <option value="2">2 hrs</option>
-                      <option value="3">3 hrs</option>
-                      <option value="4">4 hrs</option>
-                      <option value="5" selected>5 hrs</option>
-                      <option value="6">6 hrs</option>
-                      <option value="7">7 hrs</option>
-                      <option value="8">8 hrs</option>
-                    </select>
-                  </div>
-                  <div class="product-total">$625 total</div>
-                  <div class="product-note">QSC speakers & subs</div>
-                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
-                </div>
-
-                <div class="product-card" data-name="Sound — 2 QSC Tops" data-type="hourly" data-rate="75">
-                  <div class="product-top">
-                    <div class="product-icon">QSC</div>
-                    <div class="product-type">Hourly</div>
-                  </div>
-                  <div class="product-name">Sound — 2 QSC Tops</div>
-                  <div class="product-desc">Professional sound setup with 2 QSC top speakers only. Great for smaller events, speeches, cocktail areas, and setups that do not require subs.</div>
-                  <div class="product-rate">$75 / hr</div>
-                  <div class="product-controls">
-                    <label>Hours</label>
-                    <select class="duration-select">
-                      <option value="2">2 hrs</option>
-                      <option value="3">3 hrs</option>
-                      <option value="4">4 hrs</option>
-                      <option value="5" selected>5 hrs</option>
-                      <option value="6">6 hrs</option>
-                      <option value="7">7 hrs</option>
-                      <option value="8">8 hrs</option>
-                    </select>
-                  </div>
-                  <div class="product-total">$375 total</div>
-                  <div class="product-note">2 QSC tops · no subs</div>
-                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
-                </div>
-
-                <div class="product-card" data-name="Mic" data-type="hourly" data-rate="20">
-                  <div class="product-top">
-                    <div class="product-icon">MIC</div>
-                    <div class="product-type">Hourly</div>
-                  </div>
-                  <div class="product-name">Mic</div>
-                  <div class="product-desc">1 unit microphone rental for speeches, announcements, event hosting, and basic ceremony needs.</div>
-                  <div class="product-rate">$20 / hr</div>
-                  <div class="product-controls">
-                    <label>Hours</label>
-                    <select class="duration-select">
-                      <option value="2">2 hrs</option>
-                      <option value="3">3 hrs</option>
-                      <option value="4">4 hrs</option>
-                      <option value="5" selected>5 hrs</option>
-                      <option value="6">6 hrs</option>
-                      <option value="7">7 hrs</option>
-                      <option value="8">8 hrs</option>
-                    </select>
-                  </div>
-                  <div class="product-total">$100 total</div>
-                  <div class="product-note">Basic support item</div>
-                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="group-block" id="guest-media" data-group="guest-media">
-            <div class="group-shell">
-              <div class="group-header">
-                <div class="group-title">Guest Experience</div>
-                <div class="group-line"></div>
-              </div>
-
-              <p class="group-copy">Guest-facing add-ons for photo moments, entrances, VIP areas, and event interaction.</p>
-
-              <div class="group-meta">
-                <div class="group-pill">Photo Booth</div>
-                <div class="group-pill">Guest Facing</div>
-                <div class="group-pill">Photo Moments</div>
-              </div>
-
-              <div class="products-grid">
-                <div class="product-card" data-name="Photo Booth — Digital Only" data-type="hourly" data-rate="80">
-                  <div class="product-top">
-                    <div class="product-icon">PB</div>
-                    <div class="product-type">Hourly</div>
-                  </div>
-                  <div class="product-name">Photo Booth — Digital Only</div>
-                  <div class="product-desc">Digital photo booth experience with props included and the option of 3 different backdrops for your event.</div>
-                  <div class="product-rate">$80 / hr</div>
-                  <div class="product-controls">
-                    <label>Hours</label>
-                    <select class="duration-select">
-                      <option value="2">2 hrs</option>
-                      <option value="3">3 hrs</option>
-                      <option value="4">4 hrs</option>
-                      <option value="5" selected>5 hrs</option>
-                      <option value="6">6 hrs</option>
-                      <option value="7">7 hrs</option>
-                      <option value="8">8 hrs</option>
-                    </select>
-                  </div>
                   <div class="product-total">$400 total</div>
-                  <div class="product-note">Digital only · props included</div>
+                  <div class="product-note">2 CDJ 3000 + DJM-900NXS2</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
                 </div>
 
-                <div class="product-card" data-name="Photo Booth — Digital + Print" data-type="hourly" data-rate="120">
-                  <div class="product-top">
-                    <div class="product-icon">P+P</div>
-                    <div class="product-type">Hourly</div>
-                  </div>
-                  <div class="product-name">Photo Booth — Digital + Print</div>
-                  <div class="product-desc">Photo booth experience with digital sharing, printouts, props included, and the option of 3 different backdrops.</div>
-                  <div class="product-rate">$120 / hr</div>
-                  <div class="product-controls">
-                    <label>Hours</label>
-                    <select class="duration-select">
-                      <option value="2">2 hrs</option>
-                      <option value="3">3 hrs</option>
-                      <option value="4">4 hrs</option>
-                      <option value="5" selected>5 hrs</option>
-                      <option value="6">6 hrs</option>
-                      <option value="7">7 hrs</option>
-                      <option value="8">8 hrs</option>
-                    </select>
-                  </div>
-                  <div class="product-total">$600 total</div>
-                  <div class="product-note">Digital + print · props included</div>
-                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
-                </div>
-
-                <div class="product-card" data-name="Red Carpet — 20 Foot" data-type="hourly" data-rate="50">
-                  <div class="product-top">
-                    <div class="product-icon">RC</div>
-                    <div class="product-type">Hourly</div>
-                  </div>
-                  <div class="product-name">Red Carpet</div>
-                  <div class="product-desc">20 foot red carpet setup for entrances, photo moments, VIP areas, and event arrivals.</div>
-                  <div class="product-rate">$50 / hr</div>
-                  <div class="product-controls">
-                    <label>Hours</label>
-                    <select class="duration-select">
-                      <option value="2">2 hrs</option>
-                      <option value="3">3 hrs</option>
-                      <option value="4">4 hrs</option>
-                      <option value="5" selected>5 hrs</option>
-                      <option value="6">6 hrs</option>
-                      <option value="7">7 hrs</option>
-                      <option value="8">8 hrs</option>
-                    </select>
-                  </div>
-                  <div class="product-total">$250 total</div>
-                  <div class="product-note">20 foot red carpet</div>
-                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
-                </div>
               </div>
             </div>
           </div>
@@ -1652,6 +1464,7 @@
               </div>
 
               <div class="products-grid">
+
                 <div class="product-card" data-name="Glow Lighting Package" data-type="hourly" data-rate="50">
                   <div class="product-top">
                     <div class="product-icon">GLW</div>
@@ -1726,6 +1539,319 @@
                   <div class="product-note">Lighting package</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
                 </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="group-block" id="guest-media" data-group="guest-media">
+            <div class="group-shell">
+              <div class="group-header">
+                <div class="group-title">Guest Experience</div>
+                <div class="group-line"></div>
+              </div>
+
+              <p class="group-copy">Guest-facing add-ons for photo moments, entrances, VIP areas, and event interaction.</p>
+
+              <div class="group-meta">
+                <div class="group-pill">Photo Booth</div>
+                <div class="group-pill">Guest Facing</div>
+                <div class="group-pill">Photo Moments</div>
+              </div>
+
+              <div class="products-grid">
+
+                <div class="product-card" data-name="Photo Booth — Digital Only" data-type="hourly" data-rate="80">
+                  <div class="product-top">
+                    <div class="product-icon">PB</div>
+                    <div class="product-type">Hourly</div>
+                  </div>
+                  <div class="product-name">Photo Booth — Digital Only</div>
+                  <div class="product-desc">Digital photo booth experience with props included and the option of 3 different backdrops for your event.</div>
+                  <div class="product-rate">$80 / hr</div>
+                  <div class="product-controls">
+                    <label>Hours</label>
+                    <select class="duration-select">
+                      <option value="2">2 hrs</option>
+                      <option value="3">3 hrs</option>
+                      <option value="4">4 hrs</option>
+                      <option value="5" selected>5 hrs</option>
+                      <option value="6">6 hrs</option>
+                      <option value="7">7 hrs</option>
+                      <option value="8">8 hrs</option>
+                    </select>
+                  </div>
+                  <div class="product-total">$400 total</div>
+                  <div class="product-note">Digital only · props included</div>
+                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-name="Photo Booth — Digital + Print" data-type="hourly" data-rate="120">
+                  <div class="product-top">
+                    <div class="product-icon">P+P</div>
+                    <div class="product-type">Hourly</div>
+                  </div>
+                  <div class="product-name">Photo Booth — Digital + Print</div>
+                  <div class="product-desc">Photo booth experience with digital sharing, printouts, props included, and the option of 3 different backdrops.</div>
+                  <div class="product-rate">$120 / hr</div>
+                  <div class="product-controls">
+                    <label>Hours</label>
+                    <select class="duration-select">
+                      <option value="2">2 hrs</option>
+                      <option value="3">3 hrs</option>
+                      <option value="4">4 hrs</option>
+                      <option value="5" selected>5 hrs</option>
+                      <option value="6">6 hrs</option>
+                      <option value="7">7 hrs</option>
+                      <option value="8">8 hrs</option>
+                    </select>
+                  </div>
+                  <div class="product-total">$600 total</div>
+                  <div class="product-note">Digital + print · props included</div>
+                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-name="Red Carpet — 20 Foot" data-type="hourly" data-rate="50">
+                  <div class="product-top">
+                    <div class="product-icon">RC</div>
+                    <div class="product-type">Hourly</div>
+                  </div>
+                  <div class="product-name">Red Carpet</div>
+                  <div class="product-desc">20 foot red carpet setup for entrances, photo moments, VIP areas, and event arrivals.</div>
+                  <div class="product-rate">$50 / hr</div>
+                  <div class="product-controls">
+                    <label>Hours</label>
+                    <select class="duration-select">
+                      <option value="2">2 hrs</option>
+                      <option value="3">3 hrs</option>
+                      <option value="4">4 hrs</option>
+                      <option value="5" selected>5 hrs</option>
+                      <option value="6">6 hrs</option>
+                      <option value="7">7 hrs</option>
+                      <option value="8">8 hrs</option>
+                    </select>
+                  </div>
+                  <div class="product-total">$250 total</div>
+                  <div class="product-note">20 foot red carpet</div>
+                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="group-block" id="services-media" data-group="services">
+            <div class="group-shell">
+              <div class="group-header">
+                <div class="group-title">Event Talent & Media Services</div>
+                <div class="group-line"></div>
+              </div>
+
+              <p class="group-copy">DJ, photography, and videography coverage for events that need music, media, content, and creative direction.</p>
+
+              <div class="group-meta">
+                <div class="group-pill">DJ Service</div>
+                <div class="group-pill">Photo Coverage</div>
+                <div class="group-pill">Video Recaps</div>
+              </div>
+
+              <div class="products-grid">
+
+                <div class="product-card" data-name="DJ" data-type="hourly" data-rate="150" data-no-quantity="true">
+                  <div class="product-top">
+                    <div class="product-icon">DJ</div>
+                    <div class="product-type">Hourly</div>
+                  </div>
+                  <div class="product-name">DJ</div>
+                  <div class="product-desc">Deck and DJ coverage for weddings, private parties, club-style events, and custom event builds.</div>
+                  <div class="product-rate">$150 / hr</div>
+                  <div class="product-controls">
+                    <label>Hours</label>
+                    <select class="duration-select">
+                      <option value="2">2 hrs</option>
+                      <option value="3">3 hrs</option>
+                      <option value="4">4 hrs</option>
+                      <option value="5" selected>5 hrs</option>
+                      <option value="6">6 hrs</option>
+                      <option value="7">7 hrs</option>
+                      <option value="8">8 hrs</option>
+                    </select>
+                  </div>
+                  <div class="product-total">$750 total</div>
+                  <div class="product-note">DJ service</div>
+                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-name="Photography — 50 Edited Pictures" data-type="hourly" data-rate="125" data-no-quantity="true">
+                  <div class="product-top">
+                    <div class="product-icon">PH</div>
+                    <div class="product-type">Hourly</div>
+                  </div>
+                  <div class="product-name">Photography</div>
+                  <div class="product-desc">Professional event photography coverage. Deliverables range from 50 to 250 edited pictures depending on the option selected.</div>
+                  <div class="product-rate">$125 / hr</div>
+
+                  <div class="product-controls stack">
+                    <label>Edited Pictures</label>
+                    <select class="setup-select" onchange="updateOptionProduct(this)">
+                      <option value="50" data-name="Photography — 50 Edited Pictures" data-rate="125" data-note="50 edited pictures" selected>50 edited pictures</option>
+                      <option value="100" data-name="Photography — 100 Edited Pictures" data-rate="150" data-note="100 edited pictures">100 edited pictures</option>
+                      <option value="150" data-name="Photography — 150 Edited Pictures" data-rate="175" data-note="150 edited pictures">150 edited pictures</option>
+                      <option value="250" data-name="Photography — 250 Edited Pictures" data-rate="225" data-note="250 edited pictures">250 edited pictures</option>
+                    </select>
+                  </div>
+
+                  <div class="product-controls">
+                    <label>Hours</label>
+                    <select class="duration-select">
+                      <option value="2">2 hrs</option>
+                      <option value="3">3 hrs</option>
+                      <option value="4">4 hrs</option>
+                      <option value="5" selected>5 hrs</option>
+                      <option value="6">6 hrs</option>
+                      <option value="7">7 hrs</option>
+                      <option value="8">8 hrs</option>
+                    </select>
+                  </div>
+
+                  <div class="product-total">$625 total</div>
+                  <div class="product-note">50 edited pictures</div>
+                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-name="Videography — 15 Second Recap" data-type="hourly" data-rate="150" data-no-quantity="true">
+                  <div class="product-top">
+                    <div class="product-icon">VID</div>
+                    <div class="product-type">Hourly</div>
+                  </div>
+                  <div class="product-name">Videography</div>
+                  <div class="product-desc">Cinematic event video coverage. Choose from a 15 second recap up to a full 1 minute event recap.</div>
+                  <div class="product-rate">$150 / hr</div>
+
+                  <div class="product-controls stack">
+                    <label>Recap Length</label>
+                    <select class="setup-select" onchange="updateOptionProduct(this)">
+                      <option value="15" data-name="Videography — 15 Second Recap" data-rate="150" data-note="15 second recap" selected>15 second recap</option>
+                      <option value="30" data-name="Videography — 30 Second Recap" data-rate="175" data-note="30 second recap">30 second recap</option>
+                      <option value="45" data-name="Videography — 45 Second Recap" data-rate="200" data-note="45 second recap">45 second recap</option>
+                      <option value="60" data-name="Videography — 1 Minute Recap" data-rate="250" data-note="1 minute recap">1 minute recap</option>
+                    </select>
+                  </div>
+
+                  <div class="product-controls">
+                    <label>Hours</label>
+                    <select class="duration-select">
+                      <option value="2">2 hrs</option>
+                      <option value="3">3 hrs</option>
+                      <option value="4">4 hrs</option>
+                      <option value="5" selected>5 hrs</option>
+                      <option value="6">6 hrs</option>
+                      <option value="7">7 hrs</option>
+                      <option value="8">8 hrs</option>
+                    </select>
+                  </div>
+
+                  <div class="product-total">$750 total</div>
+                  <div class="product-note">15 second recap</div>
+                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="group-block" id="foundation-services" data-group="foundation">
+            <div class="group-shell">
+              <div class="group-header">
+                <div class="group-title">Sound & Mic Support</div>
+                <div class="group-line"></div>
+              </div>
+
+              <p class="group-copy">Sound reinforcement and microphone options for events that need clean audio support.</p>
+
+              <div class="group-meta">
+                <div class="group-pill">Sound Support</div>
+                <div class="group-pill">Event Foundation</div>
+                <div class="group-pill">Hourly Pricing</div>
+              </div>
+
+              <div class="products-grid">
+
+                <div class="product-card" data-name="Sound — 2 QSC Tops + 2 Subs" data-type="hourly" data-rate="125">
+                  <div class="product-top">
+                    <div class="product-icon">QSC</div>
+                    <div class="product-type">Hourly</div>
+                  </div>
+                  <div class="product-name">Sound — 2 QSC Tops + 2 Subs</div>
+                  <div class="product-desc">Professional sound system with 2 QSC tops and 2 QSC subs for a clean, strong event foundation.</div>
+                  <div class="product-rate">$125 / hr</div>
+                  <div class="product-controls">
+                    <label>Hours</label>
+                    <select class="duration-select">
+                      <option value="2">2 hrs</option>
+                      <option value="3">3 hrs</option>
+                      <option value="4">4 hrs</option>
+                      <option value="5" selected>5 hrs</option>
+                      <option value="6">6 hrs</option>
+                      <option value="7">7 hrs</option>
+                      <option value="8">8 hrs</option>
+                    </select>
+                  </div>
+                  <div class="product-total">$625 total</div>
+                  <div class="product-note">QSC speakers & subs</div>
+                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-name="Sound — 2 QSC Tops" data-type="hourly" data-rate="75">
+                  <div class="product-top">
+                    <div class="product-icon">QSC</div>
+                    <div class="product-type">Hourly</div>
+                  </div>
+                  <div class="product-name">Sound — 2 QSC Tops</div>
+                  <div class="product-desc">Professional sound setup with 2 QSC top speakers only. Great for smaller events, speeches, cocktail areas, and setups that do not require subs.</div>
+                  <div class="product-rate">$75 / hr</div>
+                  <div class="product-controls">
+                    <label>Hours</label>
+                    <select class="duration-select">
+                      <option value="2">2 hrs</option>
+                      <option value="3">3 hrs</option>
+                      <option value="4">4 hrs</option>
+                      <option value="5" selected>5 hrs</option>
+                      <option value="6">6 hrs</option>
+                      <option value="7">7 hrs</option>
+                      <option value="8">8 hrs</option>
+                    </select>
+                  </div>
+                  <div class="product-total">$375 total</div>
+                  <div class="product-note">2 QSC tops · no subs</div>
+                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-name="Mic" data-type="hourly" data-rate="20">
+                  <div class="product-top">
+                    <div class="product-icon">MIC</div>
+                    <div class="product-type">Hourly</div>
+                  </div>
+                  <div class="product-name">Mic</div>
+                  <div class="product-desc">1 unit microphone rental for speeches, announcements, event hosting, and basic ceremony needs.</div>
+                  <div class="product-rate">$20 / hr</div>
+                  <div class="product-controls">
+                    <label>Hours</label>
+                    <select class="duration-select">
+                      <option value="2">2 hrs</option>
+                      <option value="3">3 hrs</option>
+                      <option value="4">4 hrs</option>
+                      <option value="5" selected>5 hrs</option>
+                      <option value="6">6 hrs</option>
+                      <option value="7">7 hrs</option>
+                      <option value="8">8 hrs</option>
+                    </select>
+                  </div>
+                  <div class="product-total">$100 total</div>
+                  <div class="product-note">Basic support item</div>
+                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
+                </div>
+
               </div>
             </div>
           </div>
@@ -1746,6 +1872,7 @@
               </div>
 
               <div class="products-grid">
+
                 <div class="product-card" data-name="Cold Spark" data-type="hourly" data-rate="50">
                   <div class="product-top">
                     <div class="product-icon">FX</div>
@@ -1854,6 +1981,7 @@
                   <div class="product-name">Moving Heads</div>
                   <div class="product-desc">2 moving head lights with your choice of totems or goal post setup.</div>
                   <div class="product-rate">$75 / hr</div>
+
                   <div class="product-controls stack">
                     <label>Setup Option</label>
                     <select class="setup-select" onchange="updateOptionProduct(this)">
@@ -1865,6 +1993,7 @@
                       </option>
                     </select>
                   </div>
+
                   <div class="product-controls">
                     <label>Hours</label>
                     <select class="duration-select">
@@ -1877,6 +2006,7 @@
                       <option value="8">8 hrs</option>
                     </select>
                   </div>
+
                   <div class="product-total">$375 total</div>
                   <div class="product-note">2 moving heads with totems</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
@@ -1906,6 +2036,7 @@
                   <div class="product-note">Lighting add-on</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
                 </div>
+
               </div>
             </div>
           </div>
@@ -1926,13 +2057,14 @@
               </div>
 
               <div class="products-grid">
-                <div class="product-card" data-name="Club Standard DJ Package — 2 CDJ 3000 + DJM-900NXS2" data-type="daily" data-rate="400">
+
+                <div class="product-card" data-name="Premium Club Mixer & CDJ Package — 2 CDJ 3000 + DJM-900NXS2" data-type="daily" data-rate="400">
                   <div class="product-top">
                     <div class="product-icon">PKG</div>
                     <div class="product-type">Daily</div>
                   </div>
-                  <div class="product-name">Club Standard DJ Package</div>
-                  <div class="product-desc">Package rental with 2 Pioneer CDJ 3000 players and 1 Pioneer DJM-900NXS2 mixer.</div>
+                  <div class="product-name">Premium Club Mixer & CDJ Package</div>
+                  <div class="product-desc">Premium club-style DJ setup with 2 Pioneer CDJ 3000 players and 1 Pioneer DJM-900NXS2 mixer.</div>
                   <div class="product-rate">$400 / day</div>
                   <div class="product-controls">
                     <label>Days</label>
@@ -2013,6 +2145,7 @@
                   <div class="product-note">Daily rental item</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
                 </div>
+
               </div>
             </div>
           </div>
@@ -2033,6 +2166,7 @@
               </div>
 
               <div class="products-grid">
+
                 <div class="product-card" data-name="LED Glow Cocktail Tables" data-type="hourly" data-rate="25">
                   <div class="product-top">
                     <div class="product-icon">LED</div>
@@ -2057,6 +2191,7 @@
                   <div class="product-note">Light-up cocktail table · select amount</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
                 </div>
+
               </div>
             </div>
           </div>
@@ -2077,6 +2212,7 @@
               </div>
 
               <div class="products-grid">
+
                 <div class="product-card" data-name="Trussing — 2 Totems 8ft" data-type="hourly" data-rate="50">
                   <div class="product-top">
                     <div class="product-icon">2T</div>
@@ -2176,13 +2312,16 @@
                   <div class="product-note">Wider overhead structure · staging add-on</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
                 </div>
+
               </div>
             </div>
           </div>
 
         </div>
 
-        <aside class="cart-panel">
+        <aside class="cart-panel" id="cartPanel" aria-label="Cart">
+          <button class="cart-close-mobile" type="button" onclick="closeMobileCart()" aria-label="Close cart">×</button>
+
           <div class="cart-kicker">Current Estimate</div>
           <div class="cart-title">Your Build</div>
           <div class="cart-copy">
@@ -2218,6 +2357,16 @@
             </div>
           </div>
         </aside>
+
+        <div class="mobile-cart-backdrop" id="mobileCartBackdrop"></div>
+
+        <button class="mobile-cart-toggle" id="mobileCartToggle" type="button" onclick="toggleMobileCart()" aria-controls="cartPanel" aria-expanded="false">
+          <span class="mobile-cart-toggle-main">
+            <span class="mobile-cart-toggle-label">View Cart</span>
+            <span class="mobile-cart-toggle-count" id="mobileCartCount">0</span>
+          </span>
+          <span class="mobile-cart-toggle-total" id="mobileCartTotal">$0</span>
+        </button>
 
       </div>
     </div>
@@ -2508,6 +2657,8 @@
       const cartTotal = document.getElementById('cartTotal');
       const cartDeposit = document.getElementById('cartDeposit');
       const cartRemaining = document.getElementById('cartRemaining');
+      const mobileCartCount = document.getElementById('mobileCartCount');
+      const mobileCartTotal = document.getElementById('mobileCartTotal');
 
       if (!cartItems || !cartCount || !cartTotal || !cartDeposit || !cartRemaining) {
         return;
@@ -2519,6 +2670,14 @@
       cartTotal.textContent = formatMoney(totals.estimatedTotal);
       cartDeposit.textContent = formatMoney(totals.depositDue);
       cartRemaining.textContent = formatMoney(totals.remainingBalance);
+
+      if (mobileCartCount) {
+        mobileCartCount.textContent = totals.totalItems;
+      }
+
+      if (mobileCartTotal) {
+        mobileCartTotal.textContent = formatMoney(totals.estimatedTotal);
+      }
 
       if (!buildCart.length) {
         cartItems.innerHTML = '<div class="cart-empty">No products selected yet. Use the filters to jump to a category, then add products to start building your event cart.</div>';
@@ -2680,6 +2839,62 @@
         }
       });
     }
+
+    function openMobileCart() {
+      const cartPanel = document.getElementById('cartPanel');
+      const cartBackdrop = document.getElementById('mobileCartBackdrop');
+      const cartToggle = document.getElementById('mobileCartToggle');
+
+      if (!cartPanel || !cartBackdrop || !cartToggle) return;
+
+      cartPanel.classList.add('open');
+      cartBackdrop.classList.add('open');
+      cartToggle.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('cart-drawer-open');
+    }
+
+    function closeMobileCart() {
+      const cartPanel = document.getElementById('cartPanel');
+      const cartBackdrop = document.getElementById('mobileCartBackdrop');
+      const cartToggle = document.getElementById('mobileCartToggle');
+
+      if (!cartPanel || !cartBackdrop || !cartToggle) return;
+
+      cartPanel.classList.remove('open');
+      cartBackdrop.classList.remove('open');
+      cartToggle.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('cart-drawer-open');
+    }
+
+    function toggleMobileCart() {
+      const cartPanel = document.getElementById('cartPanel');
+
+      if (!cartPanel) return;
+
+      if (cartPanel.classList.contains('open')) {
+        closeMobileCart();
+      } else {
+        openMobileCart();
+      }
+    }
+
+    const mobileCartBackdrop = document.getElementById('mobileCartBackdrop');
+
+    if (mobileCartBackdrop) {
+      mobileCartBackdrop.addEventListener('click', closeMobileCart);
+    }
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeMobileCart();
+      }
+    });
+
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 900) {
+        closeMobileCart();
+      }
+    });
 
     loadCart();
     initCards();

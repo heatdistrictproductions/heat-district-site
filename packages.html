@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Packages — Heat District Productions</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+
   <style>
     :root {
       --neon-blue: #00f0ff;
@@ -492,6 +493,12 @@
       font-weight: 500;
     }
 
+    .qty-new {
+      color: var(--neon-pink);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
     .packages-section {
       margin-bottom: 86px;
     }
@@ -681,6 +688,11 @@
       outline: none;
     }
 
+    .pkg-hours-select option {
+      background: #0a0a1a;
+      color: #e8e8f0;
+    }
+
     .pkg-note {
       font-size: 0.62rem;
       color: var(--success);
@@ -731,6 +743,7 @@
 
     .pkg-includes li.highlight {
       color: rgba(232,232,240,0.92);
+      font-weight: 500;
     }
 
     .pkg-includes li.highlight::before {
@@ -1012,6 +1025,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <nav>
@@ -1072,7 +1086,7 @@
       <p class="comparison-label">Compare</p>
       <h2 class="comparison-title">Side by Side — <strong>What's in Each Package</strong></h2>
       <p class="comparison-sub">
-        Compare the 4 strongest package options first, then choose the one that fits your event and continue to add-ons.
+        Pink checkmarks and pink quantities now only show upgrades that are new compared to the package before it.
       </p>
 
       <div class="comparison-table-wrap">
@@ -1098,99 +1112,136 @@
               </th>
             </tr>
           </thead>
+
           <tbody>
-            <tr>
-              <td>Sound System</td>
-              <td><span class="check">✓</span></td>
-              <td class="featured-col"><span class="check-pink">✓</span></td>
-              <td><span class="check">✓</span></td>
-              <td><span class="check">✓</span></td>
-            </tr>
-            <tr>
-              <td>Professional DJ</td>
-              <td><span class="check">✓</span></td>
-              <td class="featured-col"><span class="check-pink">✓</span></td>
-              <td><span class="check">✓</span></td>
-              <td><span class="check">✓</span></td>
-            </tr>
-            <tr>
-              <td>Microphone</td>
-              <td><span class="check">✓</span></td>
-              <td class="featured-col"><span class="check-pink">✓</span></td>
-              <td><span class="check">✓</span></td>
-              <td><span class="check">✓</span></td>
-            </tr>
-            <tr>
-              <td>Uplights</td>
-              <td><span class="dash">—</span></td>
-              <td class="featured-col"><span class="qty">10 units</span></td>
-              <td><span class="qty">15 units</span></td>
-              <td><span class="qty">15 units</span></td>
-            </tr>
-            <tr>
-              <td>LED Light Bar</td>
-              <td><span class="dash">—</span></td>
-              <td class="featured-col"><span class="check-pink">✓</span></td>
-              <td><span class="check">✓</span></td>
-              <td><span class="check">✓</span></td>
-            </tr>
-            <tr>
-              <td>Moving Head Lights</td>
-              <td><span class="dash">—</span></td>
-              <td class="featured-col"><span class="qty">2 units</span></td>
-              <td><span class="qty">4 units</span></td>
-              <td><span class="qty">4 units</span></td>
-            </tr>
-            <tr>
-              <td>Photo Booth</td>
-              <td><span class="dash">—</span></td>
-              <td class="featured-col"><span class="check-pink">✓</span></td>
-              <td><span class="check">✓</span></td>
-              <td><span class="check">✓</span></td>
-            </tr>
-            <tr>
-              <td>Photography</td>
-              <td><span class="dash">—</span></td>
-              <td class="featured-col"><span class="dash">—</span></td>
-              <td><span class="check">✓</span></td>
-              <td><span class="check">✓</span></td>
-            </tr>
-            <tr>
-              <td>Fog Machines</td>
-              <td><span class="dash">—</span></td>
-              <td class="featured-col"><span class="qty">2 units</span></td>
-              <td><span class="qty">2 units</span></td>
-              <td><span class="qty">2 units</span></td>
-            </tr>
-            <tr>
-              <td>Cold Spark Machines</td>
-              <td><span class="dash">—</span></td>
-              <td class="featured-col"><span class="dash">—</span></td>
-              <td><span class="qty">2 units</span></td>
-              <td><span class="qty">4 units</span></td>
-            </tr>
-            <tr>
-              <td>Trussing</td>
-              <td><span class="dash">—</span></td>
-              <td class="featured-col"><span class="qty">2 Totems</span></td>
-              <td><span class="qty">Goal Post + 2 Totems or 4 Totems</span></td>
-              <td><span class="qty">Goal Post + 2 Totems or 4 Totems</span></td>
-            </tr>
-            <tr>
-              <td>LED Screen / Wall</td>
-              <td><span class="dash">—</span></td>
-              <td class="featured-col"><span class="dash">—</span></td>
-              <td><span class="dash">—</span></td>
-              <td><span class="check">✓</span></td>
-            </tr>
-            <tr>
-              <td>Base Coverage</td>
-              <td><span class="qty">5 hours</span></td>
-              <td class="featured-col"><span class="qty">5 hours</span></td>
-              <td><span class="qty">5 hours</span></td>
-              <td><span class="qty">5 hours</span></td>
-            </tr>
-          </tbody>
+  <tr>
+    <td>Sound System</td>
+    <td><span class="check">✓</span></td>
+    <td class="featured-col"><span class="check">✓</span></td>
+    <td><span class="check">✓</span></td>
+    <td><span class="check">✓</span></td>
+  </tr>
+
+  <tr>
+    <td>Professional DJ</td>
+    <td><span class="check">✓</span></td>
+    <td class="featured-col"><span class="check">✓</span></td>
+    <td><span class="check">✓</span></td>
+    <td><span class="check">✓</span></td>
+  </tr>
+
+  <tr>
+    <td>Microphone</td>
+    <td><span class="check">✓</span></td>
+    <td class="featured-col"><span class="check">✓</span></td>
+    <td><span class="check">✓</span></td>
+    <td><span class="check">✓</span></td>
+  </tr>
+
+  <tr>
+    <td>Uplights</td>
+    <td><span class="dash">—</span></td>
+    <td class="featured-col"><span class="qty-new">10 units</span></td>
+    <td><span class="qty-new">15 units</span></td>
+    <td><span class="qty">15 units</span></td>
+  </tr>
+
+  <tr>
+    <td>LED Light Bar</td>
+    <td><span class="dash">—</span></td>
+    <td class="featured-col"><span class="check-pink">✓</span></td>
+    <td><span class="check">✓</span></td>
+    <td><span class="check">✓</span></td>
+  </tr>
+
+  <tr>
+    <td>Moving Head Lights</td>
+    <td><span class="dash">—</span></td>
+    <td class="featured-col"><span class="qty-new">2 units</span></td>
+    <td><span class="qty-new">4 units</span></td>
+    <td><span class="qty">4 units</span></td>
+  </tr>
+
+  <tr>
+    <td>Photo Booth</td>
+    <td><span class="dash">—</span></td>
+    <td class="featured-col"><span class="check-pink">✓</span></td>
+    <td><span class="check">✓</span></td>
+    <td><span class="check">✓</span></td>
+  </tr>
+
+  <tr>
+    <td>Red Carpet + Stanchions / Velvet Ropes</td>
+    <td><span class="dash">—</span></td>
+    <td class="featured-col"><span class="qty-new">10 ft</span></td>
+    <td><span class="qty">10 ft</span></td>
+    <td><span class="qty-new">20 ft</span></td>
+  </tr>
+
+  <tr>
+    <td>LED Glow Cocktail Tables</td>
+    <td><span class="dash">—</span></td>
+    <td class="featured-col"><span class="dash">—</span></td>
+    <td><span class="check-pink">✓</span></td>
+    <td><span class="check">✓</span></td>
+  </tr>
+
+  <tr>
+    <td>Foam Glow Sticks</td>
+    <td><span class="dash">—</span></td>
+    <td class="featured-col"><span class="dash">—</span></td>
+    <td><span class="check-pink">✓</span></td>
+    <td><span class="check">✓</span></td>
+  </tr>
+
+  <tr>
+    <td>Photography</td>
+    <td><span class="dash">—</span></td>
+    <td class="featured-col"><span class="dash">—</span></td>
+    <td><span class="dash">—</span></td>
+    <td><span class="check-pink">✓</span></td>
+  </tr>
+
+  <tr>
+    <td>Fog Machines</td>
+    <td><span class="dash">—</span></td>
+    <td class="featured-col"><span class="qty-new">2 units</span></td>
+    <td><span class="qty">2 units</span></td>
+    <td><span class="qty">2 units</span></td>
+  </tr>
+
+  <tr>
+    <td>Cold Spark Machines</td>
+    <td><span class="dash">—</span></td>
+    <td class="featured-col"><span class="dash">—</span></td>
+    <td><span class="qty-new">2 units</span></td>
+    <td><span class="qty-new">4 units</span></td>
+  </tr>
+
+  <tr>
+    <td>Trussing</td>
+    <td><span class="dash">—</span></td>
+    <td class="featured-col"><span class="qty-new">2 Totems</span></td>
+    <td><span class="qty-new">Goal Post + 2 Totems or 4 Totems</span></td>
+    <td><span class="qty">Goal Post + 2 Totems or 4 Totems</span></td>
+  </tr>
+
+  <tr>
+    <td>LED Screen / Wall</td>
+    <td><span class="dash">—</span></td>
+    <td class="featured-col"><span class="dash">—</span></td>
+    <td><span class="dash">—</span></td>
+    <td><span class="check-pink">✓</span></td>
+  </tr>
+
+  <tr>
+    <td>Base Coverage</td>
+    <td><span class="qty">5 hours</span></td>
+    <td class="featured-col"><span class="qty">5 hours</span></td>
+    <td><span class="qty">5 hours</span></td>
+    <td><span class="qty">5 hours</span></td>
+  </tr>
+</tbody>
         </table>
       </div>
     </div>
@@ -1199,7 +1250,7 @@
       <p class="packages-label">Choose Your Tier</p>
       <h2 class="packages-title">Pick the Package, Then <strong>Customize the Rest</strong></h2>
       <p class="packages-sub">
-        Choose a package below. The next step takes the client to add-ons so the package stays the foundation and upgrades happen after.
+        Pink dots inside each package now only highlight the upgrades that are new compared to the package before it.
       </p>
 
       <div class="packages-grid-scroll">
@@ -1278,10 +1329,12 @@
             <ul class="pkg-includes">
               <li>Sound System</li>
               <li>Professional DJ + Full Deck Setup</li>
-              <li>10 Uplights</li>
-              <li>LED Light Bar</li>
+              <li>Microphone</li>
+              <li class="highlight">10 Uplights</li>
+              <li class="highlight">LED Light Bar</li>
               <li class="highlight">2 Moving Head Lights</li>
               <li class="highlight">Premium Photo Booth</li>
+              <li class="highlight">10ft Red Carpet with Stanchions & Velvet Ropes</li>
               <li class="highlight">2x Fog Machines</li>
               <li class="highlight">2 Totems</li>
             </ul>
@@ -1323,11 +1376,14 @@
             <ul class="pkg-includes">
               <li>Sound System</li>
               <li>Professional DJ + Full Deck Setup</li>
-              <li>15 Uplights</li>
+              <li>Microphone</li>
+              <li class="highlight">15 Uplights</li>
               <li>LED Light Bar</li>
               <li class="highlight">4 Moving Head Lights</li>
-              <li class="highlight">Premium Photo Booth</li>
-              <li class="highlight">Photography</li>
+              <li>Premium Photo Booth</li>
+              <li>10ft Red Carpet with Stanchions & Velvet Ropes</li>
+              <li class="highlight">LED Glow Cocktail Tables</li>
+              <li class="highlight">Foam Glow Sticks</li>
               <li class="highlight">2x Cold Spark Machines</li>
               <li>2x Fog Machines</li>
               <li class="highlight">Choice of Goal Post + 2 Totems or 4 Totems</li>
@@ -1369,15 +1425,19 @@
             <ul class="pkg-includes">
               <li>Sound System</li>
               <li>Professional DJ + Full Deck Setup</li>
+              <li>Microphone</li>
               <li>15 Uplights</li>
               <li>LED Light Bar</li>
-              <li class="highlight">4 Moving Head Lights</li>
+              <li>4 Moving Head Lights</li>
               <li class="highlight">LED Screen / Wall Panel</li>
-              <li class="highlight">Premium Photo Booth</li>
+              <li>Premium Photo Booth</li>
+              <li class="highlight">20ft Red Carpet with Stanchions & Velvet Ropes</li>
+              <li>LED Glow Cocktail Tables</li>
+              <li>Foam Glow Sticks</li>
               <li class="highlight">Photography</li>
               <li class="highlight">4x Cold Spark Machines</li>
               <li>2x Fog Machines</li>
-              <li class="highlight">Choice of Goal Post + 2 Totems or 4 Totems</li>
+              <li>Choice of Goal Post + 2 Totems or 4 Totems</li>
             </ul>
 
             <p class="pkg-footer-note">For clients who want the biggest visual statement</p>
@@ -1435,204 +1495,206 @@
       <img src="logo.png" alt="Heat District Productions" />
       <span class="footer-productions-text">Productions</span>
     </div>
+
     <div class="footer-contact">
       <a href="tel:9545472990">(954) 547-2990</a>
       <a href="mailto:HeatDistrictProd@gmail.com">HeatDistrictProd@gmail.com</a>
       <a href="https://instagram.com/heatdistrictproductions" target="_blank">@HeatDistrictProductions</a>
       <a href="https://www.heatdistrictproductions.com">heatdistrictproductions.com</a>
     </div>
+
     <p class="footer-copy">© 2025 Heat District Productions · Miami & Broward County · All Rights Reserved</p>
   </footer>
 
- <script>
-  const PACKAGE_REDUCTION_MULTIPLIERS = {
-    2: 0.85,
-    3: 0.90,
-    4: 0.95,
-    5: 1.00
-  };
+  <script>
+    const PACKAGE_REDUCTION_MULTIPLIERS = {
+      2: 0.85,
+      3: 0.90,
+      4: 0.95,
+      5: 1.00
+    };
 
-  function roundToFive(value) {
-    return Math.round(value / 5) * 5;
-  }
-
-  function calculatePackagePrice(basePrice, hours) {
-    if (hours <= 5) {
-      const multiplier = PACKAGE_REDUCTION_MULTIPLIERS[hours] || 1;
-      return roundToFive(basePrice * multiplier);
+    function roundToFive(value) {
+      return Math.round(value / 5) * 5;
     }
 
-    return basePrice + ((hours - 5) * 150);
-  }
-
-  function formatCurrency(value) {
-    return Number(value || 0).toLocaleString();
-  }
-
-  function updatePackageCard(card) {
-    if (!card) return;
-
-    const basePrice = Number(card.dataset.basePrice || 0);
-    const hoursSelect = card.querySelector('.pkg-hours-select');
-    const priceValue = card.querySelector('.pkg-price-value');
-    const priceUnit = card.querySelector('.pkg-price-unit');
-
-    if (!hoursSelect || !priceValue || !priceUnit) return;
-
-    const hours = Number(hoursSelect.value || 5);
-    const price = calculatePackagePrice(basePrice, hours);
-
-    priceValue.textContent = formatCurrency(price);
-    priceUnit.textContent = `/ ${hours}hrs`;
-  }
-
-  function initPackageCards() {
-    const cards = document.querySelectorAll('.pkg-card');
-
-    cards.forEach((card) => {
-      const select = card.querySelector('.pkg-hours-select');
-
-      if (select) {
-        select.addEventListener('change', () => {
-          updatePackageCard(card);
-        });
+    function calculatePackagePrice(basePrice, hours) {
+      if (hours <= 5) {
+        const multiplier = PACKAGE_REDUCTION_MULTIPLIERS[hours] || 1;
+        return roundToFive(basePrice * multiplier);
       }
 
-      updatePackageCard(card);
-    });
-  }
-
-  function choosePackage(event, button) {
-    if (event) {
-      event.preventDefault();
+      return basePrice + ((hours - 5) * 150);
     }
 
-    const card = button.closest('.pkg-card');
-
-    if (!card) {
-      console.error('Package card not found.');
-      return;
+    function formatCurrency(value) {
+      return Number(value || 0).toLocaleString();
     }
 
-    const packageName = card.dataset.packageName || 'Selected Package';
-    const basePrice = Number(card.dataset.basePrice || 0);
-    const hoursSelect = card.querySelector('.pkg-hours-select');
-    const hours = hoursSelect ? Number(hoursSelect.value || 5) : 5;
-    const packagePrice = calculatePackagePrice(basePrice, hours);
+    function updatePackageCard(card) {
+      if (!card) return;
 
-    const selectedPackage = {
-      name: packageName,
-      basePrice: basePrice,
-      hours: hours,
-      total: packagePrice
-    };
+      const basePrice = Number(card.dataset.basePrice || 0);
+      const hoursSelect = card.querySelector('.pkg-hours-select');
+      const priceValue = card.querySelector('.pkg-price-value');
+      const priceUnit = card.querySelector('.pkg-price-unit');
 
-    const estimate = {
-      package: packageName,
-      packagePrice: packagePrice,
-      packageHours: hours,
-      basePrice: basePrice,
-      addons: [],
-      addonsTotal: 0,
-      total: packagePrice
-    };
+      if (!hoursSelect || !priceValue || !priceUnit) return;
 
-    sessionStorage.setItem('heatDistrictSelectedPackage', JSON.stringify(selectedPackage));
-    sessionStorage.setItem('heatDistrictEstimate', JSON.stringify(estimate));
+      const hours = Number(hoursSelect.value || 5);
+      const price = calculatePackagePrice(basePrice, hours);
 
-    window.location.href = 'addons.html';
-  }
+      priceValue.textContent = formatCurrency(price);
+      priceUnit.textContent = `/ ${hours}hrs`;
+    }
 
-  function applyIndexPreviewIfPresent() {
-    const previewRaw = sessionStorage.getItem('heatDistrictPackagePreview');
+    function initPackageCards() {
+      const cards = document.querySelectorAll('.pkg-card');
 
-    if (!previewRaw) return;
+      cards.forEach((card) => {
+        const select = card.querySelector('.pkg-hours-select');
 
-    try {
-      const preview = JSON.parse(previewRaw);
+        if (select) {
+          select.addEventListener('change', () => {
+            updatePackageCard(card);
+          });
+        }
 
-      if (!preview || !preview.name || !preview.hours) return;
+        updatePackageCard(card);
+      });
+    }
 
-      const targetCard = Array.from(document.querySelectorAll('.pkg-card')).find(card => {
-        return card.dataset.packageName === preview.name;
+    function choosePackage(event, button) {
+      if (event) {
+        event.preventDefault();
+      }
+
+      const card = button.closest('.pkg-card');
+
+      if (!card) {
+        console.error('Package card not found.');
+        return;
+      }
+
+      const packageName = card.dataset.packageName || 'Selected Package';
+      const basePrice = Number(card.dataset.basePrice || 0);
+      const hoursSelect = card.querySelector('.pkg-hours-select');
+      const hours = hoursSelect ? Number(hoursSelect.value || 5) : 5;
+      const packagePrice = calculatePackagePrice(basePrice, hours);
+
+      const selectedPackage = {
+        name: packageName,
+        basePrice: basePrice,
+        hours: hours,
+        total: packagePrice
+      };
+
+      const estimate = {
+        package: packageName,
+        packagePrice: packagePrice,
+        packageHours: hours,
+        basePrice: basePrice,
+        addons: [],
+        addonsTotal: 0,
+        total: packagePrice
+      };
+
+      sessionStorage.setItem('heatDistrictSelectedPackage', JSON.stringify(selectedPackage));
+      sessionStorage.setItem('heatDistrictEstimate', JSON.stringify(estimate));
+
+      window.location.href = 'addons.html';
+    }
+
+    function applyIndexPreviewIfPresent() {
+      const previewRaw = sessionStorage.getItem('heatDistrictPackagePreview');
+
+      if (!previewRaw) return;
+
+      try {
+        const preview = JSON.parse(previewRaw);
+
+        if (!preview || !preview.name || !preview.hours) return;
+
+        const targetCard = Array.from(document.querySelectorAll('.pkg-card')).find(card => {
+          return card.dataset.packageName === preview.name;
+        });
+
+        if (!targetCard) return;
+
+        const select = targetCard.querySelector('.pkg-hours-select');
+
+        if (select) {
+          select.value = String(preview.hours);
+          updatePackageCard(targetCard);
+        }
+
+        setTimeout(() => {
+          targetCard.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'center'
+          });
+        }, 150);
+
+      } catch (error) {
+        console.warn('Could not apply package preview.', error);
+      }
+
+      sessionStorage.removeItem('heatDistrictPackagePreview');
+    }
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+
+    function closeMobileMenu() {
+      if (!mobileMenuBtn || !mobileNav) return;
+
+      mobileNav.classList.remove('open');
+      mobileMenuBtn.classList.remove('active');
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('mobile-menu-open');
+    }
+
+    function toggleMobileMenu() {
+      if (!mobileMenuBtn || !mobileNav) return;
+
+      const isOpen = mobileNav.classList.contains('open');
+
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        mobileNav.classList.add('open');
+        mobileMenuBtn.classList.add('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('mobile-menu-open');
+      }
+    }
+
+    if (mobileMenuBtn && mobileNav) {
+      mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+      mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
       });
 
-      if (!targetCard) return;
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 900) {
+          closeMobileMenu();
+        }
+      });
 
-      const select = targetCard.querySelector('.pkg-hours-select');
+      document.addEventListener('click', (e) => {
+        const clickedInsideNav = mobileNav.contains(e.target);
+        const clickedButton = mobileMenuBtn.contains(e.target);
 
-      if (select) {
-        select.value = String(preview.hours);
-        updatePackageCard(targetCard);
-      }
-
-      setTimeout(() => {
-        targetCard.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center',
-          inline: 'center'
-        });
-      }, 150);
-
-    } catch (error) {
-      console.warn('Could not apply package preview.', error);
+        if (!clickedInsideNav && !clickedButton && mobileNav.classList.contains('open')) {
+          closeMobileMenu();
+        }
+      });
     }
 
-    sessionStorage.removeItem('heatDistrictPackagePreview');
-  }
-
-  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-  const mobileNav = document.getElementById('mobileNav');
-
-  function closeMobileMenu() {
-    if (!mobileMenuBtn || !mobileNav) return;
-
-    mobileNav.classList.remove('open');
-    mobileMenuBtn.classList.remove('active');
-    mobileMenuBtn.setAttribute('aria-expanded', 'false');
-    document.body.classList.remove('mobile-menu-open');
-  }
-
-  function toggleMobileMenu() {
-    if (!mobileMenuBtn || !mobileNav) return;
-
-    const isOpen = mobileNav.classList.contains('open');
-
-    if (isOpen) {
-      closeMobileMenu();
-    } else {
-      mobileNav.classList.add('open');
-      mobileMenuBtn.classList.add('active');
-      mobileMenuBtn.setAttribute('aria-expanded', 'true');
-      document.body.classList.add('mobile-menu-open');
-    }
-  }
-
-  if (mobileMenuBtn && mobileNav) {
-    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-
-    mobileNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', closeMobileMenu);
-    });
-
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 900) {
-        closeMobileMenu();
-      }
-    });
-
-    document.addEventListener('click', (e) => {
-      const clickedInsideNav = mobileNav.contains(e.target);
-      const clickedButton = mobileMenuBtn.contains(e.target);
-
-      if (!clickedInsideNav && !clickedButton && mobileNav.classList.contains('open')) {
-        closeMobileMenu();
-      }
-    });
-  }
-
-  initPackageCards();
-  applyIndexPreviewIfPresent();
-</script>
+    initPackageCards();
+    applyIndexPreviewIfPresent();
+  </script>
 </body>
 </html>

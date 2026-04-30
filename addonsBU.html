@@ -459,9 +459,8 @@
 
     .addons-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
-      align-items: stretch;
     }
 
     .addon-card {
@@ -472,8 +471,7 @@
       position: relative;
       display: flex;
       flex-direction: column;
-      min-height: 0;
-      height: 100%;
+      min-height: 300px;
       transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
     }
 
@@ -511,7 +509,7 @@
       line-height: 1.75;
       font-weight: 300;
       margin-bottom: 18px;
-      flex: 0 0 auto;
+      flex: 1;
     }
 
     .option-control {
@@ -552,11 +550,10 @@
     .addon-bottom {
       border-top: 1px solid rgba(255,255,255,0.05);
       padding-top: 16px;
-      margin-top: auto;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 13px;
-      align-items: stretch;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      justify-content: space-between;
     }
 
     .addon-price {
@@ -577,9 +574,7 @@
     .addon-actions {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 10px;
-      width: 100%;
       flex-shrink: 0;
     }
 
@@ -619,7 +614,6 @@
       background: transparent;
       color: var(--neon-pink);
       border: 1.5px solid var(--neon-pink);
-      min-width: 58px;
       padding: 9px 14px;
       border-radius: 4px;
       font-size: 0.62rem;
@@ -920,7 +914,7 @@
 
     @media (max-width: 1280px) {
       .addons-grid {
-        grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
@@ -1044,7 +1038,7 @@
     <p class="page-hero-eyebrow">Step 02 · Add Upgrades · Customize Your Event</p>
     <h1>Upgrade Your<br><strong>Production Package</strong></h1>
     <p>
-      These discounted add-on prices are available only to clients who book one of our event packages. Upgrade your selected package with extra lighting, sound, media, guest experiences, and production enhancements.
+      Add optional upgrades to your selected package. The add-ons are grouped like the Products page so clients can quickly find the type of upgrade they need.
     </p>
   </section>
 
@@ -1067,16 +1061,16 @@
           </div>
 
           <div class="filter-note">
-            Start with Most Popular or jump directly to lighting packages, guest experience, photo/video services, sound, DJ rentals, or trussing.
+            Start with Most Popular or jump directly to lighting packages, guest experience, services, sound, DJ rentals, or trussing.
           </div>
         </div>
 
         <div class="category-filter">
           <button class="filter-btn active" type="button" onclick="filterGroups('all', this)">Show All</button>
-          <button class="filter-btn" type="button" onclick="filterGroups('services', this)">Photo / Video</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('popular', this)">Most Popular</button>
           <button class="filter-btn" type="button" onclick="filterGroups('lighting-packages', this)">Lighting Packages</button>
           <button class="filter-btn" type="button" onclick="filterGroups('guest-media', this)">Guest Experience</button>
-          <button class="filter-btn" type="button" onclick="filterGroups('services', this)">DJ / Photo</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('services', this)">Services</button>
           <button class="filter-btn" type="button" onclick="filterGroups('foundation', this)">Sound & Mics</button>
           <button class="filter-btn" type="button" onclick="filterGroups('lighting-effects', this)">Lighting & Effects</button>
           <button class="filter-btn" type="button" onclick="filterGroups('dj-rentals', this)">DJ Rentals</button>
@@ -1158,34 +1152,25 @@
 
   <script>
     const ADDONS = {
-      'qsc-tops': {
-        id: 'qsc-tops',
+      'sound-system': {
+        id: 'sound-system',
         label: 'Sound & Mics',
-        title: '2 QSC Tops',
-        copy: 'Add two QSC powered top speakers for smaller rooms, cocktail areas, speeches, ceremonies, DJ support, or events that need clean sound without extra sub bass.',
+        title: 'Sound System',
+        copy: 'Add professional sound reinforcement for smaller rooms, speeches, DJ support, cocktail areas, or full event coverage.',
         options: [
           {
             id: 'sound-2-qsc-tops',
-            label: '2 QSC Tops',
+            label: '2 QSC speakers',
             name: 'Sound — 2 QSC Tops',
             category: 'Sound & Mics',
             price: 375,
             unit: 'event',
             displayUnit: 'event'
-          }
-        ]
-      },
-
-      'qsc-tops-subs': {
-        id: 'qsc-tops-subs',
-        label: 'Sound & Mics',
-        title: '2 QSC Tops + 2 QSC Subs',
-        copy: 'Add a fuller QSC sound system with two powered top speakers and two QSC subwoofers. Best for dance floors, DJs, parties, and events that need stronger low-end impact.',
-        options: [
+          },
           {
             id: 'sound-2-qsc-tops-2-subs',
-            label: '2 QSC Tops + 2 QSC Subs',
-            name: 'Sound — 2 QSC Tops + 2 QSC Subs',
+            label: '2 QSC Tops + 2 Subs',
+            name: 'Sound — 2 QSC Tops + 2 Subs',
             category: 'Sound & Mics',
             price: 625,
             unit: 'event',
@@ -1212,6 +1197,23 @@
         ]
       },
 
+      'dj-service': {
+        id: 'dj-service',
+        label: 'Services',
+        title: 'DJ',
+        copy: 'Add DJ coverage for weddings, private parties, club-style events, and custom production builds.',
+        options: [
+          {
+            id: 'dj-service-5hr',
+            label: 'DJ Service',
+            name: 'DJ',
+            category: 'Services',
+            price: 750,
+            unit: 'event',
+            displayUnit: 'event'
+          }
+        ]
+      },
 
       'photography': {
         id: 'photography',
@@ -1358,22 +1360,22 @@
       },
 
       'foam-glow-sticks': {
-  id: 'foam-glow-sticks',
-  label: 'Guest Experience',
-  title: 'Foam Glow Sticks',
-  copy: 'Add crowd energy for dance floors, club-style events, quinceañeras, birthdays, and high-energy party moments. Glow sticks are sold in packs of 25.',
-  options: [
-    {
-      id: 'foam-glow-sticks-pack-25',
-      label: 'Pack of 25 Foam Glow Sticks',
-      name: 'Foam Glow Sticks — Pack of 25',
-      category: 'Guest Experience',
-      price: 100,
-      unit: 'pack',
-      displayUnit: 'pack of 25'
-    }
-  ]
-},
+        id: 'foam-glow-sticks',
+        label: 'Guest Experience',
+        title: 'Foam Glow Sticks',
+        copy: 'Add crowd energy for dance floors, club-style events, quinceañeras, birthdays, and high-energy party moments.',
+        options: [
+          {
+            id: 'foam-glow-sticks-pack',
+            label: 'Foam Glow Sticks Pack',
+            name: 'Foam Glow Sticks',
+            category: 'Guest Experience',
+            price: 100,
+            unit: 'pack',
+            displayUnit: 'pack'
+          }
+        ]
+      },
 
       'led-cocktail-tables': {
         id: 'led-cocktail-tables',
@@ -1440,7 +1442,7 @@
             label: 'District Lighting Package',
             name: 'District Lighting Package — 15 Uplights + LED Light Bar + 4 Moving Heads + 2 Wash Lights + 2 Fog/Haze Machines',
             category: 'Lighting Packages',
-            price: 1000,
+            price: 1500,
             unit: 'event',
             displayUnit: 'event'
           }
@@ -1484,49 +1486,40 @@
       },
 
       'moving-heads': {
-  id: 'moving-heads',
-  label: 'Lighting',
-  title: 'Moving Heads',
-  copy: 'Add moving head lights for a bigger production look. Choose from 2-head or 4-head setups with totems, goal post trussing, or a combination setup depending on the size and style of the event.',
-  options: [
-    {
-      id: 'moving-heads-2-heads-2-totems',
-      label: '2 Moving Heads + 2 Totems',
-      name: 'Moving Heads — 2 Heads with 2 Totems',
-      category: 'Lighting',
-      price: 375,
-      unit: 'setup',
-      displayUnit: 'setup'
-    },
-    {
-      id: 'moving-heads-2-heads-goal-post',
-      label: '2 Moving Heads + Goal Post',
-      name: 'Moving Heads — 2 Heads with Goal Post',
-      category: 'Lighting',
-      price: 550,
-      unit: 'setup',
-      displayUnit: 'setup'
-    },
-    {
-      id: 'moving-heads-4-heads-4-totems',
-      label: '4 Moving Heads + 4 Totems',
-      name: 'Moving Heads — 4 Heads with 4 Totems',
-      category: 'Lighting',
-      price: 750,
-      unit: 'setup',
-      displayUnit: 'setup'
-    },
-    {
-      id: 'moving-heads-4-heads-2-totems-goal-post',
-      label: '4 Moving Heads + 2 Totems + Goal Post',
-      name: 'Moving Heads — 4 Heads with 2 Totems + Goal Post',
-      category: 'Lighting',
-      price: 950,
-      unit: 'setup',
-      displayUnit: 'setup'
-    }
-  ]
-},
+        id: 'moving-heads',
+        label: 'Lighting',
+        title: 'Moving Heads',
+        copy: 'Add moving head lights with a totem setup or a goal post setup for a bigger production look.',
+        options: [
+          {
+            id: 'moving-heads-totems',
+            label: '2 Moving Heads + Totems',
+            name: 'Moving Heads — 2 Units with Totems',
+            category: 'Lighting',
+            price: 375,
+            unit: 'setup',
+            displayUnit: 'setup'
+          },
+          {
+            id: 'moving-heads-goal-post',
+            label: '2 Moving Heads + Goal Post',
+            name: 'Moving Heads — 2 Units with Goal Post',
+            category: 'Lighting',
+            price: 550,
+            unit: 'setup',
+            displayUnit: 'setup'
+          },
+          {
+            id: 'moving-heads-4-units',
+            label: '4 Moving Heads',
+            name: 'Moving Heads — 4 Units',
+            category: 'Lighting',
+            price: 750,
+            unit: 'setup',
+            displayUnit: 'setup'
+          }
+        ]
+      },
 
       'light-bar': {
         id: 'light-bar',
@@ -1794,14 +1787,13 @@
       {
         id: 'popular',
         title: 'Most Popular Items',
-        copy: 'The cleanest high-demand upgrades clients are most likely to add after choosing a package. Every item shown here also appears again inside its main category below.',
+        copy: 'The cleanest high-demand upgrades clients are most likely to add after choosing a package.',
         pills: ['High Demand', 'Fast Upgrades', 'Best Add-Ons'],
         addonIds: [
           'photo-booth',
-          'qsc-tops-subs',
-          'photography',
+          'red-carpet',
           'moving-heads',
-          'red-carpet'
+          'extra-hour'
         ]
       },
       {
@@ -1828,24 +1820,23 @@
         ]
       },
       {
-  id: 'services',
-  title: 'Photo, Video & Coverage Services',
-  copy: 'Photography, videography, and added coverage time for events that need media, content, and longer service windows.',
-  pills: ['Photo Coverage', 'Video Recaps', 'Extra Time'],
-  addonIds: [
-    'photography',
-    'videography',
-    'extra-hour'
-  ]
-},
+        id: 'services',
+        title: 'Event Talent & Media Services',
+        copy: 'DJ, photography, and videography coverage for events that need music, media, content, and creative direction.',
+        pills: ['DJ Service', 'Photo Coverage', 'Video Recaps'],
+        addonIds: [
+          'dj-service',
+          'photography',
+          'videography'
+        ]
+      },
       {
         id: 'foundation',
         title: 'Sound & Mic Support',
-        copy: 'Sound reinforcement and microphone options for events that need clean audio support. The QSC tops option and the QSC tops plus subs option are separated into their own boxes.',
+        copy: 'Sound reinforcement and microphone options for events that need clean audio support.',
         pills: ['Sound Support', 'Event Foundation', 'Audio Add-Ons'],
         addonIds: [
-          'qsc-tops',
-          'qsc-tops-subs',
+          'sound-system',
           'microphone'
         ]
       },

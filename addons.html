@@ -1158,41 +1158,61 @@
 
   <script>
     const ADDONS = {
-      'qsc-tops': {
-        id: 'qsc-tops',
-        label: 'Sound & Mics',
-        title: '2 QSC Tops',
-        copy: 'Add two QSC powered top speakers for smaller rooms, cocktail areas, speeches, ceremonies, DJ support, or events that need clean sound without extra sub bass.',
-        options: [
-          {
-            id: 'sound-2-qsc-tops',
-            label: '2 QSC Tops',
-            name: 'Sound — 2 QSC Tops',
-            category: 'Sound & Mics',
-            price: 375,
-            unit: 'event',
-            displayUnit: 'event'
-          }
-        ]
-      },
+      
+'pa-speaker': {
+  id: 'pa-speaker',
+  label: 'Sound & Mics',
+  title: 'Additional PA Speaker',
+  copy: 'Add an extra PA speaker for larger rooms, cocktail areas, ceremonies, outdoor spaces, side rooms, or areas that need additional sound coverage beyond the package sound system.',
+  options: [
+    {
+      id: 'pa-speaker-single',
+      label: '1 Additional PA Speaker',
+      name: 'Additional PA Speaker',
+      category: 'Sound & Mics',
+      price: 125,
+      unit: 'speaker',
+      displayUnit: 'speaker'
+    }
+  ]
+},
 
-      'qsc-tops-subs': {
-        id: 'qsc-tops-subs',
-        label: 'Sound & Mics',
-        title: '2 QSC Tops + 2 QSC Subs',
-        copy: 'Add a fuller QSC sound system with two powered top speakers and two QSC subwoofers. Best for dance floors, DJs, parties, and events that need stronger low-end impact.',
-        options: [
-          {
-            id: 'sound-2-qsc-tops-2-subs',
-            label: '2 QSC Tops + 2 QSC Subs',
-            name: 'Sound — 2 QSC Tops + 2 QSC Subs',
-            category: 'Sound & Mics',
-            price: 625,
-            unit: 'event',
-            displayUnit: 'event'
-          }
-        ]
-      },
+'additional-speaker': {
+  id: 'additional-speaker',
+  label: 'Sound & Mics',
+  title: 'Additional Speaker',
+  copy: 'Add an extra speaker for more sound coverage in larger rooms, side areas, cocktail spaces, ceremonies, outdoor sections, or areas that need audio beyond the main package setup.',
+  options: [
+    {
+      id: 'additional-speaker-single',
+      label: '1 Additional Speaker',
+      name: 'Additional Speaker',
+      category: 'Sound & Mics',
+      price: 125,
+      unit: 'speaker',
+      displayUnit: 'speaker'
+    }
+  ]
+},
+
+'additional-subwoofer': {
+  id: 'additional-subwoofer',
+  label: 'Sound & Mics',
+  title: 'Additional Subwoofer',
+  copy: 'Add an extra subwoofer for stronger bass and more low-end impact. Best for larger dance floors, DJs, parties, outdoor events, and high-energy setups.',
+  options: [
+    {
+      id: 'additional-subwoofer-single',
+      label: '1 Additional Subwoofer',
+      name: 'Additional Subwoofer',
+      category: 'Sound & Mics',
+      price: 175,
+      unit: 'subwoofer',
+      displayUnit: 'subwoofer'
+    }
+  ]
+},
+
 
       'microphone': {
         id: 'microphone',
@@ -1205,7 +1225,7 @@
             label: '1 Microphone',
             name: 'Mic',
             category: 'Sound & Mics',
-            price: 100,
+            price: 75,
             unit: 'mic',
             displayUnit: 'mic'
           }
@@ -1368,7 +1388,7 @@
       label: 'Pack of 25 Foam Glow Sticks',
       name: 'Foam Glow Sticks — Pack of 25',
       category: 'Guest Experience',
-      price: 100,
+      price: 75,
       unit: 'pack',
       displayUnit: 'pack of 25'
     }
@@ -1772,22 +1792,22 @@
       },
 
       'extra-hour': {
-        id: 'extra-hour',
-        label: 'Coverage',
-        title: 'Extra Event Hour',
-        copy: 'Add extra time beyond the selected package coverage. Useful for longer receptions or late-night events.',
-        options: [
-          {
-            id: 'extra-hour',
-            label: 'Extra Event Hour',
-            name: 'Extra Event Hour',
-            category: 'Coverage',
-            price: 150,
-            unit: 'hour',
-            displayUnit: 'hour'
-          }
-        ]
-      }
+  id: 'extra-hour',
+  label: 'Guest Experience',
+  title: 'Extra Event Hour',
+  copy: 'Add extra time beyond the selected package coverage. Useful for longer receptions, extended parties, late-night events, or clients who want more time without upgrading the full package.',
+  options: [
+    {
+      id: 'extra-hour',
+      label: 'Extra Event Hour',
+      name: 'Extra Event Hour',
+      category: 'Guest Experience',
+      price: 150,
+      unit: 'hour',
+      displayUnit: 'hour'
+    }
+  ]
+}
     };
 
     const GROUPS = [
@@ -1796,13 +1816,14 @@
         title: 'Most Popular Items',
         copy: 'The cleanest high-demand upgrades clients are most likely to add after choosing a package. Every item shown here also appears again inside its main category below.',
         pills: ['High Demand', 'Fast Upgrades', 'Best Add-Ons'],
-        addonIds: [
-          'photo-booth',
-          'qsc-tops-subs',
-          'photography',
-          'moving-heads',
-          'red-carpet'
-        ]
+  addonIds: [
+  'photo-booth',
+  'photography',
+  'moving-heads',
+  'red-carpet',
+  'foam-glow-sticks',
+  'extra-hour'
+]
       },
       {
         id: 'lighting-packages',
@@ -1816,39 +1837,40 @@
         ]
       },
       {
-        id: 'guest-media',
-        title: 'Guest Experience',
-        copy: 'Guest-facing add-ons for photo moments, entrances, VIP areas, event interaction, and lounge-style upgrades.',
-        pills: ['Photo Booth', 'Guest Facing', 'Photo Moments'],
-        addonIds: [
-          'photo-booth',
-          'red-carpet',
-          'foam-glow-sticks',
-          'led-cocktail-tables'
-        ]
-      },
-      {
-  id: 'services',
-  title: 'Photo, Video & Coverage Services',
-  copy: 'Photography, videography, and added coverage time for events that need media, content, and longer service windows.',
-  pills: ['Photo Coverage', 'Video Recaps', 'Extra Time'],
+  id: 'guest-media',
+  title: 'Guest Experience',
+  copy: 'Guest-facing add-ons for photo moments, entrances, VIP areas, event interaction, lounge-style upgrades, and extended event time.',
+  pills: ['Photo Booth', 'Guest Facing', 'Photo Moments', 'Extra Time'],
   addonIds: [
-    'photography',
-    'videography',
+    'photo-booth',
+    'red-carpet',
+    'foam-glow-sticks',
+    'led-cocktail-tables',
     'extra-hour'
   ]
 },
+     {
+  id: 'services',
+  title: 'Photo & Video Services',
+  copy: 'Photography and videography coverage for events that need media, content, and creative recap deliverables.',
+  pills: ['Photo Coverage', 'Video Recaps'],
+  addonIds: [
+    'photography',
+    'videography'
+  ]
+},
       {
-        id: 'foundation',
-        title: 'Sound & Mic Support',
-        copy: 'Sound reinforcement and microphone options for events that need clean audio support. The QSC tops option and the QSC tops plus subs option are separated into their own boxes.',
-        pills: ['Sound Support', 'Event Foundation', 'Audio Add-Ons'],
-        addonIds: [
-          'qsc-tops',
-          'qsc-tops-subs',
-          'microphone'
-        ]
-      },
+  id: 'foundation',
+  title: 'Sound & Mic Support',
+  copy: 'Add extra audio support for areas that need more coverage, stronger bass, or microphone support beyond the sound system already included with your selected package.',
+  pills: ['PA Speaker', 'Extra Sound Coverage', 'Subwoofer Support', 'Microphone Support'],
+  addonIds: [
+    'pa-speaker',
+    'additional-speaker',
+    'additional-subwoofer',
+    'microphone'
+  ]
+},
       {
         id: 'lighting-effects',
         title: 'Individual Lighting & Effects',

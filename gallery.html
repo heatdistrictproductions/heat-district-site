@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gallery — Heat District Productions</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/global.css">
 
   <style>
     :root {
@@ -26,6 +27,7 @@
 
     html {
       scroll-behavior: smooth;
+      background: #05050f;
     }
 
     body {
@@ -33,6 +35,7 @@
       color: var(--text-light);
       font-family: 'Raleway', sans-serif;
       overflow-x: hidden;
+      min-height: 100vh;
     }
 
     nav {
@@ -75,6 +78,10 @@
       padding: 0 40px;
     }
 
+    .nav-links li {
+      position: relative;
+    }
+
     .nav-links a {
       color: var(--text-light);
       text-decoration: none;
@@ -90,6 +97,74 @@
     .nav-links a.active {
       color: var(--neon-blue);
       text-shadow: 0 0 8px var(--neon-blue);
+    }
+
+    .nav-item-dropdown {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-link-with-dropdown {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-link-with-dropdown::after {
+      content: '▾';
+      font-size: 0.58rem;
+      color: rgba(0,240,255,0.7);
+      transform: translateY(-1px);
+    }
+
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 18px);
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      width: 260px;
+      padding: 12px;
+      background: rgba(8,8,20,0.98);
+      border: 1px solid rgba(0,240,255,0.16);
+      border-radius: 14px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.45), 0 0 24px rgba(0,240,255,0.08);
+      backdrop-filter: blur(14px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+
+    .nav-dropdown::before {
+      content: '';
+      position: absolute;
+      top: -18px;
+      left: 0;
+      right: 0;
+      height: 18px;
+    }
+
+    .nav-item-dropdown:hover .nav-dropdown,
+    .nav-item-dropdown:focus-within .nav-dropdown {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-dropdown a {
+      display: block;
+      padding: 11px 12px;
+      border-radius: 8px;
+      color: rgba(232,232,240,0.72);
+      font-size: 0.68rem;
+      letter-spacing: 1.8px;
+      line-height: 1.25;
+    }
+
+    .nav-dropdown a:hover {
+      background: rgba(0,240,255,0.07);
+      color: var(--neon-blue);
+      text-shadow: 0 0 8px rgba(0,240,255,0.45);
     }
 
     .nav-cta {
@@ -195,6 +270,18 @@
       background: rgba(0,240,255,0.06);
       color: var(--neon-blue);
       text-shadow: 0 0 8px var(--neon-blue);
+    }
+
+    .mobile-nav-sub {
+      margin: -4px 0 8px;
+      padding: 4px 0 8px 14px;
+      border-left: 1px solid rgba(0,240,255,0.14);
+    }
+
+    .mobile-nav-sub a {
+      font-size: 0.68rem;
+      padding: 10px 12px;
+      color: rgba(232,232,240,0.58);
     }
 
     .mobile-nav-book {
@@ -709,10 +796,25 @@
     </a>
 
     <ul class="nav-links">
-      <li><a href="services.html">Products</a></li>
+      <li class="nav-item-dropdown">
+        <a href="services.html" class="nav-link-with-dropdown">Products</a>
+
+        <div class="nav-dropdown">
+          <a href="services.html#sound">Sound Systems</a>
+          <a href="services.html#lighting">Lighting</a>
+          <a href="services.html#dj-equipment">DJ Equipment</a>
+          <a href="services.html#photo-booth">Photo Booth</a>
+          <a href="services.html#photo-video">Photography & Video</a>
+          <a href="services.html#effects">Special Effects</a>
+          <a href="services.html#led-walls">LED Walls</a>
+          <a href="services.html#staging-trussing">Staging & Trussing</a>
+        </div>
+      </li>
+
       <li><a href="packages.html">Packages</a></li>
       <li><a href="gallery.html" class="active">Gallery</a></li>
       <li><a href="team.html">Our Team</a></li>
+      <li><a href="faq.html">FAQ</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
 
@@ -727,30 +829,43 @@
 
   <div class="mobile-nav" id="mobileNav">
     <a href="services.html">Products</a>
+
+    <div class="mobile-nav-sub">
+      <a href="services.html#sound">Sound Systems</a>
+      <a href="services.html#lighting">Lighting</a>
+      <a href="services.html#dj-equipment">DJ Equipment</a>
+      <a href="services.html#photo-booth">Photo Booth</a>
+      <a href="services.html#photo-video">Photography & Video</a>
+      <a href="services.html#effects">Special Effects</a>
+      <a href="services.html#led-walls">LED Walls</a>
+      <a href="services.html#staging-trussing">Staging & Trussing</a>
+    </div>
+
     <a href="packages.html">Packages</a>
     <a href="gallery.html" class="active">Gallery</a>
     <a href="team.html">Our Team</a>
+    <a href="faq.html">FAQ</a>
     <a href="contact.html">Contact</a>
     <a href="packages.html" class="mobile-nav-book">Book Now</a>
   </div>
 
   <section class="page-hero">
-  <p class="page-hero-eyebrow">Live Events · Lighting · DJ Setups · Guest Experience</p>
-  <h1>See the Energy<br><strong>Before You Book</strong></h1>
-  <p>
-    Explore highlights from Heat District Productions — event lighting, DJ setups, photo booth experiences,
-    staging, effects, and custom builds designed to make every event feel like a full production.
-  </p>
-</section>
+    <p class="page-hero-eyebrow">Live Events · Lighting · DJ Setups · Guest Experience</p>
+    <h1>See the Energy<br><strong>Before You Book</strong></h1>
+    <p>
+      Explore highlights from Heat District Productions — event lighting, DJ setups, photo booth experiences,
+      staging, effects, and custom builds designed to make every event feel like a full production.
+    </p>
+  </section>
 
-<div class="neon-divider"></div>
+  <div class="neon-divider"></div>
 
-<main class="gallery-wrap">
-  <p class="section-label">Gallery</p>
-  <h2 class="section-title">Recent Work & <strong>Production Moments</strong></h2>
-  <p class="section-sub">
-    Replace the sample image paths in the script with your real event photos. The layout, filters, and lightbox are already ready.
-  </p>
+  <main class="gallery-wrap">
+    <p class="section-label">Gallery</p>
+    <h2 class="section-title">Recent Work & <strong>Production Moments</strong></h2>
+    <p class="section-sub">
+      Replace the sample image paths in the script with your real event photos. The layout, filters, and lightbox are already ready.
+    </p>
 
     <div class="filter-bar" id="filterBar">
       <button class="filter-btn active" type="button" data-filter="all">All</button>
@@ -894,7 +1009,7 @@
         return activeFilter === 'all' || item.category === activeFilter;
       });
 
-      galleryGrid.innerHTML = filteredItems.map(function(item, index) {
+      galleryGrid.innerHTML = filteredItems.map(function(item) {
         const featuredClass = item.featured && activeFilter === 'all' ? ' featured' : '';
 
         return '' +
@@ -1006,6 +1121,6 @@
 
     renderGallery('all');
   </script>
-
+<script src="js/global-cart.js"></script>
 </body>
 </html>

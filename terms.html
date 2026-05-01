@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terms & Conditions — Heat District Productions</title>
+  <meta name="description" content="Terms and Conditions for Heat District Productions, including website use, estimates, booking, deposits, event services, rentals, cancellations, and client responsibilities." />
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/global.css">
+
+  <style>
+    :root {
+      --neon-blue: #00f0ff;
+      --neon-pink: #ff2d78;
+      --neon-purple: #bf00ff;
+      --dark-bg: #05050f;
+      --card-bg: #0a0a1a;
+      --card-bg-2: #0d0d20;
+      --text-light: #e8e8f0;
+      --muted-white: rgba(232,232,240,0.5);
+      --soft-border: rgba(0,240,255,0.1);
+      --success: rgba(77,255,145,0.88);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: #05050f;
+    }
+
+    body {
+      background: var(--dark-bg);
+      color: var(--text-light);
+      font-family: 'Raleway', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 48px;
+      background: rgba(5,5,15,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,240,255,0.15);
+    }
+
+    .nav-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .nav-logo img {
+      height: 52px;
+      width: auto;
+      filter:
+        drop-shadow(0 0 6px rgba(0,240,255,0.8))
+        drop-shadow(0 0 14px rgba(0,240,255,0.5))
+        drop-shadow(0 0 4px rgba(255,45,120,0.4));
+    }
+
+    .nav-links {
+      display: flex;
+      flex: 1;
+      justify-content: space-evenly;
+      align-items: center;
+      list-style: none;
+      padding: 0 40px;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color 0.3s, text-shadow 0.3s;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--neon-blue);
+      text-shadow: 0 0 8px var(--neon-blue);
+    }
+
+    .nav-item-dropdown {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-link-with-dropdown {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-link-with-dropdown::after {
+      content: '▾';
+      font-size: 0.58rem;
+      color: rgba(0,240,255,0.7);
+      transform: translateY(-1px);
+    }
+
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 18px);
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      width: 260px;
+      padding: 12px;
+      background: rgba(8,8,20,0.98);
+      border: 1px solid rgba(0,240,255,0.16);
+      border-radius: 14px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.45), 0 0 24px rgba(0,240,255,0.08);
+      backdrop-filter: blur(14px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+
+    .nav-dropdown::before {
+      content: '';
+      position: absolute;
+      top: -18px;
+      left: 0;
+      right: 0;
+      height: 18px;
+    }
+
+    .nav-item-dropdown:hover .nav-dropdown,
+    .nav-item-dropdown:focus-within .nav-dropdown {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-dropdown a {
+      display: block;
+      padding: 11px 12px;
+      border-radius: 8px;
+      color: rgba(232,232,240,0.72);
+      font-size: 0.68rem;
+      letter-spacing: 1.8px;
+      line-height: 1.25;
+    }
+
+    .nav-dropdown a:hover {
+      background: rgba(0,240,255,0.07);
+      color: var(--neon-blue);
+      text-shadow: 0 0 8px rgba(0,240,255,0.45);
+    }
+
+    .nav-cta {
+      flex-shrink: 0;
+      background: transparent;
+      border: 1.5px solid var(--neon-pink);
+      color: var(--neon-pink) !important;
+      padding: 8px 22px;
+      border-radius: 4px;
+      transition: background 0.3s, box-shadow 0.3s !important;
+      white-space: nowrap;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .nav-cta:hover {
+      background: rgba(255,45,120,0.15) !important;
+      box-shadow: 0 0 18px rgba(255,45,120,0.4) !important;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      width: 46px;
+      height: 46px;
+      background: transparent;
+      border: 1px solid rgba(0,240,255,0.18);
+      border-radius: 8px;
+      cursor: pointer;
+      padding: 10px 9px;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      flex-shrink: 0;
+    }
+
+    .mobile-menu-btn span {
+      display: block;
+      width: 100%;
+      height: 1.5px;
+      background: var(--text-light);
+      border-radius: 999px;
+      transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+    }
+
+    .mobile-menu-btn.active span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+      background: var(--neon-blue);
+    }
+
+    .mobile-menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mobile-menu-btn.active span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+      background: var(--neon-blue);
+    }
+
+    .mobile-nav {
+      position: fixed;
+      top: 73px;
+      left: 16px;
+      right: 16px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 14px;
+      background: rgba(8,8,20,0.98);
+      border: 1px solid rgba(0,240,255,0.14);
+      border-radius: 14px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-10px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .mobile-nav.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .mobile-nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 14px 12px;
+      border-radius: 8px;
+      transition: background 0.25s ease, color 0.25s ease, text-shadow 0.25s ease;
+    }
+
+    .mobile-nav a:hover,
+    .mobile-nav a.active {
+      background: rgba(0,240,255,0.06);
+      color: var(--neon-blue);
+      text-shadow: 0 0 8px var(--neon-blue);
+    }
+
+    .mobile-nav-sub {
+      margin: -4px 0 8px;
+      padding: 4px 0 8px 14px;
+      border-left: 1px solid rgba(0,240,255,0.14);
+    }
+
+    .mobile-nav-sub a {
+      font-size: 0.68rem;
+      padding: 10px 12px;
+      color: rgba(232,232,240,0.58);
+    }
+
+    .mobile-nav-book {
+      margin-top: 8px;
+      border: 1.5px solid var(--neon-pink);
+      color: var(--neon-pink) !important;
+      text-align: center;
+    }
+
+    body.mobile-menu-open {
+      overflow: hidden;
+    }
+
+    .page-hero {
+      padding: 160px 48px 76px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(0,240,255,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse at 20% 100%, rgba(255,45,120,0.06) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .page-hero-eyebrow {
+      position: relative;
+      z-index: 1;
+      font-size: 0.68rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: rgba(0,240,255,0.6);
+      margin-bottom: 16px;
+      font-weight: 400;
+    }
+
+    .page-hero h1 {
+      position: relative;
+      z-index: 1;
+      font-size: clamp(2.3rem, 5vw, 4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: #fff;
+      line-height: 1.12;
+      margin-bottom: 16px;
+    }
+
+    .page-hero h1 strong {
+      font-weight: 700;
+      font-style: normal;
+      color: var(--neon-pink);
+    }
+
+    .page-hero p {
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      line-height: 1.9;
+      color: var(--muted-white);
+      font-weight: 300;
+    }
+
+    .neon-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,240,255,0.25), rgba(255,45,120,0.25), transparent);
+    }
+
+    .terms-wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 76px 48px 110px;
+    }
+
+    .terms-layout {
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .terms-sidebar {
+      position: sticky;
+      top: 104px;
+      border: 1px solid rgba(0,240,255,0.1);
+      border-radius: 16px;
+      padding: 24px;
+      background: linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.98));
+      box-shadow: 0 16px 48px rgba(0,0,0,0.28);
+    }
+
+    .sidebar-kicker {
+      font-size: 0.58rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(0,240,255,0.7);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .sidebar-title {
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+
+    .sidebar-copy {
+      color: rgba(232,232,240,0.5);
+      font-size: 0.8rem;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .terms-nav-list {
+      display: grid;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .terms-nav-list a {
+      display: block;
+      text-decoration: none;
+      border: 1px solid rgba(0,240,255,0.08);
+      border-radius: 10px;
+      padding: 11px 12px;
+      color: rgba(232,232,240,0.7);
+      font-size: 0.72rem;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+      line-height: 1.45;
+      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .terms-nav-list a:hover {
+      background: rgba(0,240,255,0.06);
+      border-color: rgba(0,240,255,0.24);
+      color: var(--neon-blue);
+      transform: translateX(3px);
+    }
+
+    .terms-card {
+      border: 1px solid rgba(0,240,255,0.09);
+      border-radius: 18px;
+      padding: 34px;
+      background:
+        radial-gradient(ellipse at 0% 0%, rgba(0,240,255,0.045), transparent 48%),
+        radial-gradient(ellipse at 100% 100%, rgba(255,45,120,0.04), transparent 50%),
+        linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.98));
+      box-shadow: 0 16px 48px rgba(0,0,0,0.28);
+    }
+
+    .terms-top {
+      padding-bottom: 26px;
+      margin-bottom: 28px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .terms-kicker {
+      font-size: 0.62rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(0,240,255,0.7);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .terms-title {
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: #fff;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .terms-title strong {
+      color: var(--neon-pink);
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .terms-updated {
+      color: rgba(232,232,240,0.42);
+      font-size: 0.82rem;
+      line-height: 1.7;
+    }
+
+    .terms-section {
+      scroll-margin-top: 110px;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.055);
+    }
+
+    .terms-section:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .terms-section h2 {
+      color: #fff;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
+
+    .terms-section p {
+      color: rgba(232,232,240,0.58);
+      font-size: 0.9rem;
+      line-height: 1.9;
+      font-weight: 300;
+      margin-bottom: 14px;
+    }
+
+    .terms-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .terms-section strong {
+      color: rgba(232,232,240,0.92);
+      font-weight: 600;
+    }
+
+    .terms-list {
+      display: grid;
+      gap: 10px;
+      margin: 16px 0 4px;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .terms-list li {
+      color: rgba(232,232,240,0.58);
+      font-size: 0.88rem;
+      line-height: 1.8;
+      font-weight: 300;
+      display: grid;
+      grid-template-columns: 8px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .terms-list li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--neon-blue);
+      margin-top: 11px;
+      box-shadow: 0 0 10px rgba(0,240,255,0.35);
+    }
+
+    .terms-note {
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,45,120,0.14);
+      background: rgba(255,45,120,0.04);
+      color: rgba(232,232,240,0.64);
+      font-size: 0.82rem;
+      line-height: 1.8;
+    }
+
+    .contact-box {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .contact-mini {
+      border: 1px solid rgba(0,240,255,0.1);
+      border-radius: 12px;
+      padding: 16px;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .contact-mini-label {
+      font-size: 0.58rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(0,240,255,0.68);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .contact-mini a,
+    .contact-mini div {
+      color: rgba(232,232,240,0.82);
+      text-decoration: none;
+      font-size: 0.86rem;
+      line-height: 1.6;
+    }
+
+    .contact-mini a:hover {
+      color: var(--neon-blue);
+    }
+
+    footer {
+      text-align: center;
+      padding: 60px 48px 100px;
+      border-top: 1px solid rgba(0,240,255,0.08);
+    }
+
+    .footer-logo img {
+      height: 64px;
+      width: auto;
+      margin-bottom: 6px;
+      filter:
+        drop-shadow(0 0 5px rgba(0,240,255,0.6))
+        drop-shadow(0 0 12px rgba(255,45,120,0.3));
+    }
+
+    .footer-productions-text {
+      font-size: 0.55rem;
+      letter-spacing: 6px;
+      color: rgba(232,232,240,0.2);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .footer-contact {
+      margin: 28px 0;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .footer-contact a {
+      color: rgba(232,232,240,0.4);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+      font-weight: 300;
+    }
+
+    .footer-contact a:hover {
+      color: var(--neon-blue);
+    }
+
+    .footer-copy {
+      font-size: 0.68rem;
+      color: rgba(232,232,240,0.18);
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-top: 32px;
+    }
+
+    @media (max-width: 1050px) {
+      .terms-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .terms-sidebar {
+        position: relative;
+        top: auto;
+      }
+
+      .terms-nav-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        padding: 10px 18px;
+      }
+
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: flex;
+      }
+
+      .page-hero {
+        padding: 145px 24px 62px;
+      }
+
+      .terms-wrap {
+        padding: 60px 24px 92px;
+      }
+
+      .terms-card {
+        padding: 26px 22px;
+      }
+
+      .terms-nav-list {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        padding: 60px 24px 100px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="Heat District Productions" />
+    </a>
+
+    <ul class="nav-links">
+      <li class="nav-item-dropdown">
+        <a href="services.html" class="nav-link-with-dropdown">Products</a>
+
+        <div class="nav-dropdown">
+          <a href="services.html#foundation-services">Sound Systems</a>
+          <a href="services.html#lighting-packages">Lighting Packages</a>
+          <a href="services.html#lighting-effects">Lighting & Effects</a>
+          <a href="services.html#dj-rentals">DJ Equipment</a>
+          <a href="services.html#guest-media">Photo Booth</a>
+          <a href="services.html#services-media">Photography & Video</a>
+          <a href="services.html#party-furniture">Party Furniture</a>
+          <a href="services.html#staging-trussing">Staging & Trussing</a>
+        </div>
+      </li>
+
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="team.html">Our Team</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <a href="packages.html" class="nav-cta">Book Now</a>
+
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav" type="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="services.html">Products</a>
+
+    <div class="mobile-nav-sub">
+      <a href="services.html#foundation-services">Sound Systems</a>
+      <a href="services.html#lighting-packages">Lighting Packages</a>
+      <a href="services.html#lighting-effects">Lighting & Effects</a>
+      <a href="services.html#dj-rentals">DJ Equipment</a>
+      <a href="services.html#guest-media">Photo Booth</a>
+      <a href="services.html#services-media">Photography & Video</a>
+      <a href="services.html#party-furniture">Party Furniture</a>
+      <a href="services.html#staging-trussing">Staging & Trussing</a>
+    </div>
+
+    <a href="packages.html">Packages</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="team.html">Our Team</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a>
+    <a href="packages.html" class="mobile-nav-book">Book Now</a>
+  </div>
+
+  <section class="page-hero">
+    <p class="page-hero-eyebrow">Terms · Booking · Rentals · Event Services</p>
+    <h1>Terms &<br><strong>Conditions</strong></h1>
+    <p>
+      These terms explain the general rules for using the Heat District Productions website, requesting quotes, selecting packages, booking services, renting equipment, and submitting event details.
+    </p>
+  </section>
+
+  <div class="neon-divider"></div>
+
+  <main class="terms-wrap">
+    <div class="terms-layout">
+
+      <aside class="terms-sidebar">
+        <div class="sidebar-kicker">Quick Sections</div>
+        <div class="sidebar-title">Terms Menu</div>
+        <p class="sidebar-copy">
+          Use these links to jump through the main terms and booking sections.
+        </p>
+
+        <ul class="terms-nav-list">
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#website">Website Use</a></li>
+          <li><a href="#estimates">Estimates & Pricing</a></li>
+          <li><a href="#booking">Booking & Deposits</a></li>
+          <li><a href="#payments">Payments</a></li>
+          <li><a href="#event-access">Event Access</a></li>
+          <li><a href="#rentals">Rentals & Equipment</a></li>
+          <li><a href="#client">Client Responsibilities</a></li>
+          <li><a href="#cancellations">Cancellations</a></li>
+          <li><a href="#media">Photo & Video</a></li>
+          <li><a href="#liability">Liability</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </aside>
+
+      <section class="terms-card">
+        <div class="terms-top">
+          <p class="terms-kicker">Heat District Productions</p>
+          <h2 class="terms-title">Website <strong>Terms & Conditions</strong></h2>
+          <p class="terms-updated">
+            Last Updated: April 30, 2026
+          </p>
+        </div>
+
+        <section class="terms-section" id="overview">
+          <h2>1. Overview</h2>
+          <p>
+            These Terms & Conditions apply to the Heat District Productions website and to inquiries, quote requests, package selections, product selections, booking requests, event services, and rental requests submitted through the website or direct communication.
+          </p>
+          <p>
+            By using this website, submitting a form, selecting a package, adding products to a cart, requesting a quote, or booking services with Heat District Productions, you agree to these Terms & Conditions.
+          </p>
+
+          <div class="terms-note">
+            This website page is for general terms only. A separate signed agreement, invoice, rental agreement, waiver, or written confirmation may include additional terms that apply to your specific event.
+          </div>
+        </section>
+
+        <section class="terms-section" id="website">
+          <h2>2. Website Use</h2>
+          <p>
+            You agree to use this website only for lawful purposes and for requesting information, quotes, event services, packages, rentals, and related business communication.
+          </p>
+
+          <ul class="terms-list">
+            <li>You may not attempt to damage, disable, overload, hack, or interfere with the website.</li>
+            <li>You may not submit false, misleading, fraudulent, or abusive information through forms or checkout pages.</li>
+            <li>You may not copy, reproduce, or misuse Heat District Productions branding, text, images, pricing structure, website design, or content without written permission.</li>
+          </ul>
+        </section>
+
+        <section class="terms-section" id="estimates">
+          <h2>3. Estimates, Website Pricing, and Availability</h2>
+          <p>
+            Prices shown on the website are estimates and may change based on event details, availability, venue access, travel distance, staffing needs, power requirements, setup complexity, special requests, date, event duration, and production requirements.
+          </p>
+
+          <ul class="terms-list">
+            <li>Website pricing does not guarantee final pricing until reviewed and confirmed by Heat District Productions.</li>
+            <li>Package and add-on availability may change without notice.</li>
+            <li>Discounted add-on pricing may be available only to clients who book a qualifying package.</li>
+            <li>Custom builds, standalone rentals, and special production requests may be priced differently from package add-ons.</li>
+            <li>Heat District Productions may decline, revise, or require additional information before accepting any booking request.</li>
+          </ul>
+        </section>
+
+        <section class="terms-section" id="booking">
+          <h2>4. Booking, Deposits, and Date Holds</h2>
+          <p>
+            Submitting a checkout form, quote request, package selection, or product cart does not automatically confirm your event. Your event is not confirmed until Heat District Productions accepts the booking and any required deposit, invoice, written agreement, or confirmation has been completed.
+          </p>
+
+          <ul class="terms-list">
+            <li>A deposit may be required to secure your event date.</li>
+            <li>Dates are subject to availability until confirmed in writing.</li>
+            <li>Heat District Productions may require a signed agreement, rental terms, waiver, or written confirmation before the booking is finalized.</li>
+            <li>Any changes to event time, location, package, add-ons, or rental items may affect pricing and availability.</li>
+          </ul>
+        </section>
+
+        <section class="terms-section" id="payments">
+          <h2>5. Payments, Invoices, and Balances</h2>
+          <p>
+            Heat District Productions may send invoices through QuickBooks or another payment platform. Payment terms, deposit requirements, due dates, and remaining balances will be shown on the invoice, written agreement, or booking confirmation.
+          </p>
+
+          <ul class="terms-list">
+            <li>Invoices must be paid by the due date shown on the invoice or written agreement.</li>
+            <li>A 50% deposit may be required to secure the booking date, unless otherwise stated in writing.</li>
+            <li>The remaining balance is due according to the final invoice or event agreement.</li>
+            <li>Late payments, unpaid balances, or payment issues may result in delayed service, cancellation, or refusal to release deliverables.</li>
+            <li>Returned payments, chargebacks, or payment disputes may result in additional fees or collection action where permitted by law.</li>
+          </ul>
+        </section>
+
+        <section class="terms-section" id="event-access">
+          <h2>6. Event Access, Setup, Power, and Venue Requirements</h2>
+          <p>
+            The client is responsible for making sure Heat District Productions has safe and reasonable access to the venue, setup area, loading area, power, and any required permissions needed to perform the services.
+          </p>
+
+          <ul class="terms-list">
+            <li>The venue must allow adequate load-in and load-out time.</li>
+            <li>The client must provide accurate event timing, venue address, setup location, and access details.</li>
+            <li>Power must be available and suitable for the selected sound, lighting, DJ, effects, photo booth, LED, or production equipment.</li>
+            <li>Outdoor events may require weather protection, stable ground, cover, and additional safety planning.</li>
+            <li>Venue restrictions, security rules, elevator access, stairs, parking limitations, loading dock limitations, and long-distance load-ins may affect price or setup feasibility.</li>
+          </ul>
+        </section>
+
+        <section class="terms-section" id="rentals">
+          <h2>7. Rentals, Equipment, and Damage</h2>
+          <p>
+            Rental equipment remains the property of Heat District Productions or its equipment partners unless otherwise stated in writing. The client is responsible for protecting rental equipment from damage, misuse, theft, unauthorized movement, weather exposure, spilled drinks, unsafe conditions, or guest interference.
+          </p>
+
+          <ul class="terms-list">
+            <li>Equipment may only be used for the agreed event, date, location, and purpose.</li>
+            <li>Clients may be responsible for repair or replacement costs if equipment is damaged, lost, stolen, or misused during the rental period or event.</li>
+            <li>Equipment cannot be moved, modified, unplugged, rewired, or operated by unauthorized persons without approval.</li>
+            <li>Heat District Productions may stop operation of equipment if safety, weather, power, or venue conditions become unsafe.</li>
+          </ul>
+        </section>
+
+        <section class="terms-section" id="client">
+          <h2>8. Client Responsibilities</h2>
+          <p>
+            The client is responsible for providing accurate information and cooperating with reasonable requests needed to complete the event services.
+          </p>
+
+          <ul class="terms-list">
+            <li>Provide accurate contact information, event date, event type, venue details, guest count, timing, and service requests.</li>
+            <li>Confirm all package selections, add-ons, rental items, and special requests before the event.</li>
+            <li>Obtain venue approval for sound, lighting, fog, haze, cold sparks, LED walls, photo booth, trussing, staging, or other production elements when required.</li>
+            <li>Ensure guests, vendors, and venue staff do not interfere with equipment or work areas.</li>
+            <li>Provide safe working conditions for Heat District Productions staff, contractors, and equipment.</li>
+          </ul>
+        </section>
+
+        <section class="terms-section" id="cancellations">
+          <h2>9. Cancellations, Rescheduling, and Changes</h2>
+          <p>
+            Cancellation and rescheduling terms may be provided in the final invoice, written agreement, rental agreement, or booking confirmation. Unless otherwise stated in writing, deposits may be non-refundable once the date, equipment, staffing, or production planning has been reserved.
+          </p>
+
+          <ul class="terms-list">
+            <li>Rescheduling is subject to availability.</li>
+            <li>Changes to event date, time, location, duration, or services may change the final price.</li>
+            <li>Last-minute changes may require additional labor, travel, staffing, or production fees.</li>
+            <li>Weather-related changes for outdoor events may require additional arrangements, delays, relocation, or cancellation depending on safety.</li>
+          </ul>
+
+          <div class="terms-note">
+            For the cleanest booking process, cancellation and rescheduling terms should also be confirmed in your signed event agreement or invoice notes.
+          </div>
+        </section>
+
+        <section class="terms-section" id="media">
+          <h2>10. Photography, Videography, and Promotional Use</h2>
+          <p>
+            If photography, videography, content coverage, or event media services are included, the final deliverables, editing scope, delivery timeline, and usage rights should be confirmed in writing.
+          </p>
+
+          <ul class="terms-list">
+            <li>Edited photo and video quantities depend on the package or service selected.</li>
+            <li>Delivery timing may vary based on event size, editing needs, workload, and custom requests.</li>
+            <li>Raw files may not be included unless specifically agreed in writing.</li>
+            <li>Heat District Productions may request permission to use photos, videos, or event clips for portfolio, website, social media, and promotional purposes.</li>
+            <li>Clients should notify Heat District Productions in writing if privacy restrictions or media-use limitations apply to their event.</li>
+          </ul>
+        </section>
+
+        <section class="terms-section" id="special-effects">
+          <h2>11. Special Effects, Fog, Haze, Cold Sparks, and Venue Approval</h2>
+          <p>
+            Special effects such as fog, haze, cold sparks, atmospheric effects, and similar production elements may not be allowed at all venues. Approval from the venue, property owner, fire marshal, or event authority may be required.
+          </p>
+
+          <ul class="terms-list">
+            <li>Heat District Productions may refuse to operate effects if the venue does not allow them.</li>
+            <li>Effects may be stopped if they trigger alarms, create unsafe conditions, or violate venue rules.</li>
+            <li>Clients are responsible for confirming venue approval unless Heat District Productions agrees in writing to handle that coordination.</li>
+          </ul>
+        </section>
+
+        <section class="terms-section" id="third-party">
+          <h2>12. Third-Party Services and Platforms</h2>
+          <p>
+            Heat District Productions may use third-party tools or platforms for contact forms, email, invoicing, payments, website hosting, scheduling, or business operations.
+          </p>
+          <p>
+            Use of third-party platforms may also be subject to the terms and privacy policies of those providers. Heat District Productions is not responsible for outages, delays, errors, or issues caused by third-party platforms outside of our control.
+          </p>
+        </section>
+
+        <section class="terms-section" id="liability">
+          <h2>13. Limitation of Liability</h2>
+          <p>
+            To the fullest extent permitted by law, Heat District Productions is not responsible for indirect, incidental, special, or consequential damages arising from website use, event delays, venue restrictions, client-provided information, third-party actions, weather, power issues, or circumstances outside of our reasonable control.
+          </p>
+          <p>
+            Heat District Productions’ responsibility for any confirmed service issue will be limited to the amount paid for the specific affected service, unless a different remedy is required by law or agreed in writing.
+          </p>
+        </section>
+
+        <section class="terms-section" id="force-majeure">
+          <h2>14. Events Outside Our Control</h2>
+          <p>
+            Heat District Productions is not responsible for delays, cancellations, service interruptions, or inability to perform caused by events outside our reasonable control, including severe weather, natural disasters, venue shutdowns, power failure, emergencies, road closures, accidents, illness, government restrictions, labor disruptions, or safety concerns.
+          </p>
+        </section>
+
+        <section class="terms-section" id="changes">
+          <h2>15. Changes to These Terms</h2>
+          <p>
+            Heat District Productions may update these Terms & Conditions at any time. When changes are made, the updated date at the top of this page may be revised. Continued use of the website after changes are posted means you accept the updated terms.
+          </p>
+        </section>
+
+        <section class="terms-section" id="contact">
+          <h2>16. Contact Us</h2>
+          <p>
+            For questions about these Terms & Conditions, booking requirements, event agreements, invoices, rentals, or service details, contact Heat District Productions directly.
+          </p>
+
+          <div class="contact-box">
+            <div class="contact-mini">
+              <div class="contact-mini-label">Phone</div>
+              <a href="tel:9545472990">(954) 547-2990</a>
+            </div>
+
+            <div class="contact-mini">
+              <div class="contact-mini-label">Email</div>
+              <a href="mailto:HeatDistrictProd@gmail.com">HeatDistrictProd@gmail.com</a>
+            </div>
+
+            <div class="contact-mini">
+              <div class="contact-mini-label">Instagram</div>
+              <a href="https://instagram.com/heatdistrictproductions" target="_blank">@HeatDistrictProductions</a>
+            </div>
+
+            <div class="contact-mini">
+              <div class="contact-mini-label">Website</div>
+              <a href="https://www.heatdistrictproductions.com">heatdistrictproductions.com</a>
+            </div>
+          </div>
+        </section>
+
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-logo">
+      <img src="logo.png" alt="Heat District Productions" />
+      <span class="footer-productions-text">Productions</span>
+    </div>
+
+    <div class="footer-contact">
+      <a href="tel:9545472990">(954) 547-2990</a>
+      <a href="mailto:HeatDistrictProd@gmail.com">HeatDistrictProd@gmail.com</a>
+      <a href="https://instagram.com/heatdistrictproductions" target="_blank">@HeatDistrictProductions</a>
+      <a href="https://www.heatdistrictproductions.com">heatdistrictproductions.com</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms & Conditions</a>
+    </div>
+
+    <p class="footer-copy">© 2025 Heat District Productions · Miami & Broward County · All Rights Reserved</p>
+  </footer>
+
+  <script>
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+
+    function closeMobileMenu() {
+      if (!mobileMenuBtn || !mobileNav) return;
+
+      mobileNav.classList.remove('open');
+      mobileMenuBtn.classList.remove('active');
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('mobile-menu-open');
+    }
+
+    function toggleMobileMenu() {
+      if (!mobileMenuBtn || !mobileNav) return;
+
+      const isOpen = mobileNav.classList.contains('open');
+
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        mobileNav.classList.add('open');
+        mobileMenuBtn.classList.add('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('mobile-menu-open');
+      }
+    }
+
+    if (mobileMenuBtn && mobileNav) {
+      mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+      mobileNav.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', closeMobileMenu);
+      });
+
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 900) {
+          closeMobileMenu();
+        }
+      });
+
+      document.addEventListener('click', function(event) {
+        const clickedInsideNav = mobileNav.contains(event.target);
+        const clickedButton = mobileMenuBtn.contains(event.target);
+
+        if (!clickedInsideNav && !clickedButton && mobileNav.classList.contains('open')) {
+          closeMobileMenu();
+        }
+      });
+    }
+  </script>
+<script src="js/global-cart.js"></script>
+</body>
+</html>

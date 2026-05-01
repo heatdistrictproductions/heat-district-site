@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Products — Heat District Productions</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/global.css">
 
   <style>
     :root {
@@ -13,7 +14,7 @@
       --neon-purple: #bf00ff;
       --dark-bg: #05050f;
       --text-light: #e8e8f0;
-      --muted-white: rgba(232,232,240,0.5);
+      --muted-white: rgba(232,232,240,0.68);
       --soft-border: rgba(0,240,255,0.09);
       --success: rgba(77,255,145,0.88);
     }
@@ -26,6 +27,7 @@
 
     html {
       scroll-behavior: smooth;
+      background: #05050f;
     }
 
     body {
@@ -33,6 +35,7 @@
       color: var(--text-light);
       font-family: 'Raleway', sans-serif;
       overflow-x: hidden;
+      min-height: 100vh;
     }
 
     nav {
@@ -75,6 +78,10 @@
       padding: 0 40px;
     }
 
+    .nav-links li {
+      position: relative;
+    }
+
     .nav-links a {
       color: var(--text-light);
       text-decoration: none;
@@ -90,6 +97,74 @@
     .nav-links a.active {
       color: var(--neon-blue);
       text-shadow: 0 0 8px var(--neon-blue);
+    }
+
+    .nav-item-dropdown {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-link-with-dropdown {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-link-with-dropdown::after {
+      content: '▾';
+      font-size: 0.58rem;
+      color: rgba(0,240,255,0.7);
+      transform: translateY(-1px);
+    }
+
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 18px);
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      width: 260px;
+      padding: 12px;
+      background: rgba(8,8,20,0.98);
+      border: 1px solid rgba(0,240,255,0.16);
+      border-radius: 14px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.45), 0 0 24px rgba(0,240,255,0.08);
+      backdrop-filter: blur(14px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+
+    .nav-dropdown::before {
+      content: '';
+      position: absolute;
+      top: -18px;
+      left: 0;
+      right: 0;
+      height: 18px;
+    }
+
+    .nav-item-dropdown:hover .nav-dropdown,
+    .nav-item-dropdown:focus-within .nav-dropdown {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-dropdown a {
+      display: block;
+      padding: 11px 12px;
+      border-radius: 8px;
+      color: rgba(232,232,240,0.8);
+      font-size: 0.68rem;
+      letter-spacing: 1.8px;
+      line-height: 1.25;
+    }
+
+    .nav-dropdown a:hover {
+      background: rgba(0,240,255,0.07);
+      color: var(--neon-blue);
+      text-shadow: 0 0 8px rgba(0,240,255,0.45);
     }
 
     .nav-cta {
@@ -197,6 +272,18 @@
       text-shadow: 0 0 8px var(--neon-blue);
     }
 
+    .mobile-nav-sub {
+      margin: -4px 0 8px;
+      padding: 4px 0 8px 14px;
+      border-left: 1px solid rgba(0,240,255,0.14);
+    }
+
+    .mobile-nav-sub a {
+      font-size: 0.68rem;
+      padding: 10px 12px;
+      color: rgba(232,232,240,0.72);
+    }
+
     .mobile-nav-book {
       margin-top: 8px;
       border: 1.5px solid var(--neon-pink);
@@ -258,10 +345,10 @@
       z-index: 1;
       max-width: 840px;
       margin: 0 auto;
-      font-size: 0.95rem;
+      font-size: 1rem;
       line-height: 1.9;
-      color: var(--muted-white);
-      font-weight: 300;
+      color: rgba(232,232,240,0.76);
+      font-weight: 400;
     }
 
     .hero-actions {
@@ -352,40 +439,11 @@
     }
 
     .section-sub {
-      font-size: 0.9rem;
-      color: var(--muted-white);
-      font-weight: 300;
+      font-size: 0.98rem;
+      color: rgba(232,232,240,0.78);
+      font-weight: 400;
       line-height: 1.85;
       max-width: 860px;
-    }
-
-    .info-bar {
-      margin-top: 30px;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .info-chip {
-      border: 1px solid var(--soft-border);
-      border-radius: 12px;
-      padding: 18px;
-      background: linear-gradient(180deg, rgba(10,10,26,0.95), rgba(8,8,22,0.98));
-    }
-
-    .info-chip-label {
-      font-size: 0.58rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: rgba(0,240,255,0.68);
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-
-    .info-chip-copy {
-      font-size: 0.82rem;
-      line-height: 1.65;
-      color: rgba(232,232,240,0.62);
     }
 
     .filter-shell {
@@ -423,9 +481,9 @@
     }
 
     .filter-note {
-      color: rgba(232,232,240,0.45);
-      font-size: 0.78rem;
-      line-height: 1.65;
+      color: rgba(232,232,240,0.72);
+      font-size: 0.88rem;
+      line-height: 1.7;
       max-width: 520px;
     }
 
@@ -438,7 +496,7 @@
     .filter-btn {
       border: 1px solid rgba(0,240,255,0.13);
       background: rgba(255,255,255,0.02);
-      color: rgba(232,232,240,0.76);
+      color: rgba(232,232,240,0.86);
       padding: 13px 14px;
       border-radius: 10px;
       font-family: 'Raleway', sans-serif;
@@ -514,11 +572,12 @@
     }
 
     .group-copy {
-      font-size: 0.82rem;
-      color: rgba(232,232,240,0.48);
-      line-height: 1.75;
+      font-size: 0.9rem;
+      color: rgba(232,232,240,0.74);
+      line-height: 1.8;
       margin-bottom: 18px;
       max-width: 860px;
+      font-weight: 400;
     }
 
     .group-meta {
@@ -535,7 +594,7 @@
       font-size: 0.58rem;
       letter-spacing: 2.4px;
       text-transform: uppercase;
-      color: rgba(255,45,120,0.84);
+      color: rgba(255,45,120,0.9);
       background: rgba(255,45,120,0.04);
     }
 
@@ -590,7 +649,7 @@
       font-size: 0.56rem;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: rgba(255,45,120,0.8);
+      color: rgba(255,45,120,0.86);
       font-weight: 600;
       text-align: right;
     }
@@ -604,20 +663,21 @@
     }
 
     .product-desc {
-      font-size: 0.8rem;
-      color: rgba(232,232,240,0.48);
-      line-height: 1.65;
+      font-size: 0.86rem;
+      color: rgba(232,232,240,0.74);
+      line-height: 1.7;
       margin-bottom: 14px;
-      min-height: 82px;
+      min-height: 88px;
+      font-weight: 400;
     }
 
     .product-rate {
-      font-size: 0.72rem;
+      font-size: 0.76rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: rgba(0,240,255,0.76);
+      color: rgba(0,240,255,0.84);
       margin-bottom: 14px;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .product-controls {
@@ -640,11 +700,11 @@
     }
 
     .product-controls label {
-      font-size: 0.58rem;
+      font-size: 0.6rem;
       letter-spacing: 2.8px;
       text-transform: uppercase;
-      color: rgba(232,232,240,0.42);
-      font-weight: 600;
+      color: rgba(232,232,240,0.66);
+      font-weight: 700;
     }
 
     .duration-select,
@@ -656,7 +716,7 @@
       border-radius: 6px;
       padding: 8px 10px;
       font-family: 'Raleway', sans-serif;
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       outline: none;
       width: 100%;
     }
@@ -669,21 +729,23 @@
     }
 
     .product-total {
-      font-size: 0.86rem;
+      font-size: 0.9rem;
       color: #fff;
       margin-bottom: 16px;
       line-height: 1.6;
       min-height: 26px;
+      font-weight: 700;
     }
 
     .product-note {
-      font-size: 0.62rem;
+      font-size: 0.66rem;
       letter-spacing: 1.6px;
       text-transform: uppercase;
       color: var(--success);
       margin-bottom: 16px;
       line-height: 1.45;
       min-height: 36px;
+      font-weight: 600;
     }
 
     .product-btn {
@@ -743,10 +805,11 @@
     }
 
     .cart-copy {
-      font-size: 0.82rem;
-      line-height: 1.7;
-      color: rgba(232,232,240,0.5);
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: rgba(232,232,240,0.72);
       margin-bottom: 18px;
+      font-weight: 400;
     }
 
     .cart-items {
@@ -763,10 +826,11 @@
       padding: 18px 16px;
       border-radius: 12px;
       border: 1px dashed rgba(0,240,255,0.12);
-      color: rgba(232,232,240,0.42);
-      font-size: 0.82rem;
-      line-height: 1.65;
+      color: rgba(232,232,240,0.68);
+      font-size: 0.86rem;
+      line-height: 1.7;
       text-align: center;
+      font-weight: 400;
     }
 
     .cart-item {
@@ -794,7 +858,7 @@
     .cart-item-remove {
       background: none;
       border: none;
-      color: rgba(255,45,120,0.82);
+      color: rgba(255,45,120,0.86);
       font-size: 0.72rem;
       cursor: pointer;
       letter-spacing: 1px;
@@ -803,16 +867,17 @@
     }
 
     .cart-item-meta {
-      font-size: 0.72rem;
-      color: rgba(232,232,240,0.5);
-      line-height: 1.55;
+      font-size: 0.76rem;
+      color: rgba(232,232,240,0.7);
+      line-height: 1.6;
+      font-weight: 400;
     }
 
     .cart-item-total {
-      font-size: 0.78rem;
-      color: rgba(0,240,255,0.82);
+      font-size: 0.8rem;
+      color: rgba(0,240,255,0.9);
       margin-top: 6px;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 1px;
     }
 
@@ -833,11 +898,11 @@
 
     .cart-row {
       margin-bottom: 8px;
-      font-size: 0.82rem;
+      font-size: 0.86rem;
     }
 
     .cart-row span:first-child {
-      color: rgba(232,232,240,0.5);
+      color: rgba(232,232,240,0.76);
     }
 
     .cart-row span:last-child {
@@ -853,7 +918,7 @@
     }
 
     .cart-total-row span:first-child {
-      color: rgba(232,232,240,0.84);
+      color: rgba(232,232,240,0.9);
     }
 
     .cart-total-row span:last-child {
@@ -929,7 +994,7 @@
     .footer-productions-text {
       font-size: 0.55rem;
       letter-spacing: 6px;
-      color: rgba(232,232,240,0.2);
+      color: rgba(232,232,240,0.26);
       text-transform: uppercase;
       display: block;
       margin-bottom: 6px;
@@ -944,12 +1009,12 @@
     }
 
     .footer-contact a {
-      color: rgba(232,232,240,0.4);
+      color: rgba(232,232,240,0.62);
       text-decoration: none;
-      font-size: 0.8rem;
+      font-size: 0.84rem;
       letter-spacing: 1px;
       transition: color 0.3s;
-      font-weight: 300;
+      font-weight: 400;
     }
 
     .footer-contact a:hover {
@@ -957,8 +1022,8 @@
     }
 
     .footer-copy {
-      font-size: 0.68rem;
-      color: rgba(232,232,240,0.18);
+      font-size: 0.72rem;
+      color: rgba(232,232,240,0.34);
       letter-spacing: 2.5px;
       text-transform: uppercase;
       margin-top: 32px;
@@ -970,27 +1035,7 @@
       }
     }
 
-    @media (max-width: 1100px) {
-      .builder-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .cart-panel {
-        position: static;
-        max-height: none;
-        overflow: visible;
-      }
-
-      .cart-items {
-        overflow: visible;
-        max-height: none;
-        padding-right: 0;
-      }
-
-      .info-bar {
-        grid-template-columns: 1fr;
-      }
-
+        @media (max-width: 1100px) {
       .category-filter {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -1030,7 +1075,9 @@
       .page-wrap {
         padding: 56px 24px 100px;
       }
-
+      .builder-layout {
+        grid-template-columns: 1fr;
+      }
       .products-grid {
         grid-template-columns: 1fr;
       }
@@ -1189,10 +1236,25 @@
     </a>
 
     <ul class="nav-links">
-      <li><a href="services.html" class="active">Products</a></li>
+      <li class="nav-item-dropdown">
+        <a href="services.html" class="nav-link-with-dropdown active">Products</a>
+
+        <div class="nav-dropdown">
+          <a href="services.html#foundation-services">Sound Systems</a>
+          <a href="services.html#lighting-packages">Lighting Packages</a>
+          <a href="services.html#lighting-effects">Lighting & Effects</a>
+          <a href="services.html#dj-rentals">DJ Equipment</a>
+          <a href="services.html#guest-media">Photo Booth</a>
+          <a href="services.html#services-media">Photography & Video</a>
+          <a href="services.html#party-furniture">Party Furniture</a>
+          <a href="services.html#staging-trussing">Staging & Trussing</a>
+        </div>
+      </li>
+
       <li><a href="packages.html">Packages</a></li>
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="team.html">Our Team</a></li>
+      <li><a href="faq.html">FAQ</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
 
@@ -1207,9 +1269,22 @@
 
   <div class="mobile-nav" id="mobileNav">
     <a href="services.html" class="active">Products</a>
+
+    <div class="mobile-nav-sub">
+      <a href="services.html#foundation-services">Sound Systems</a>
+      <a href="services.html#lighting-packages">Lighting Packages</a>
+      <a href="services.html#lighting-effects">Lighting & Effects</a>
+      <a href="services.html#dj-rentals">DJ Equipment</a>
+      <a href="services.html#guest-media">Photo Booth</a>
+      <a href="services.html#services-media">Photography & Video</a>
+      <a href="services.html#party-furniture">Party Furniture</a>
+      <a href="services.html#staging-trussing">Staging & Trussing</a>
+    </div>
+
     <a href="packages.html">Packages</a>
     <a href="gallery.html">Gallery</a>
     <a href="team.html">Our Team</a>
+    <a href="faq.html">FAQ</a>
     <a href="contact.html">Contact</a>
     <a href="packages.html" class="mobile-nav-book">Book Now</a>
   </div>
@@ -1237,23 +1312,6 @@
       <p class="section-sub">
         Use the buttons below to filter the page down to what you need. The order is set so clients see the most requested event items first.
       </p>
-
-      <div class="info-bar">
-        <div class="info-chip">
-          <div class="info-chip-label">Most Popular</div>
-          <div class="info-chip-copy">Sound, DJ, photography, photo booth, and the premium club mixer/CDJ package are grouped at the top.</div>
-        </div>
-
-        <div class="info-chip">
-          <div class="info-chip-label">Fast Browsing</div>
-          <div class="info-chip-copy">Lighting packages and guest experience now sit directly under Most Popular for easier browsing.</div>
-        </div>
-
-        <div class="info-chip">
-          <div class="info-chip-label">Custom Builds</div>
-          <div class="info-chip-copy">The cart updates automatically with the estimated total, 50% deposit, and remaining balance.</div>
-        </div>
-      </div>
 
       <div class="filter-shell">
         <div class="filter-head">
@@ -1334,7 +1392,30 @@
                   <div class="product-note">Most requested sound setup</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
                 </div>
-
+                <div class="product-card" data-name="LED Glow Cocktail Tables" data-type="hourly" data-rate="25">
+                  <div class="product-top">
+                    <div class="product-icon">LED</div>
+                    <div class="product-type">Hourly</div>
+                  </div>
+                  <div class="product-name">LED Glow Cocktail Tables</div>
+                  <div class="product-desc">Light-up standing cocktail tables for lounges, VIP areas, cocktail hours, and party spaces.</div>
+                  <div class="product-rate">$25 / hr</div>
+                  <div class="product-controls">
+                    <label>Hours</label>
+                    <select class="duration-select">
+                      <option value="2">2 hrs</option>
+                      <option value="3">3 hrs</option>
+                      <option value="4">4 hrs</option>
+                      <option value="5" selected>5 hrs</option>
+                      <option value="6">6 hrs</option>
+                      <option value="7">7 hrs</option>
+                      <option value="8">8 hrs</option>
+                    </select>
+                  </div>
+                  <div class="product-total">$125 total</div>
+                  <div class="product-note">Light-up cocktail table · select amount</div>
+                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
+                </div>
                 <div class="product-card" data-name="DJ" data-type="hourly" data-rate="150" data-no-quantity="true">
                   <div class="product-top">
                     <div class="product-icon">DJ</div>
@@ -2900,6 +2981,6 @@
     initCards();
     renderCart();
   </script>
-
+<script src="js/global-cart.js"></script>
 </body>
 </html>

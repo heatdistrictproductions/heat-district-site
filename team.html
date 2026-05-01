@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Our Team — Heat District Productions</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/global.css">
 
   <style>
     :root {
@@ -27,6 +28,7 @@
 
     html {
       scroll-behavior: smooth;
+      background: #05050f;
     }
 
     body {
@@ -34,6 +36,7 @@
       color: var(--text-light);
       font-family: 'Raleway', sans-serif;
       overflow-x: hidden;
+      min-height: 100vh;
     }
 
     nav {
@@ -76,6 +79,10 @@
       padding: 0 40px;
     }
 
+    .nav-links li {
+      position: relative;
+    }
+
     .nav-links a {
       color: var(--text-light);
       text-decoration: none;
@@ -91,6 +98,74 @@
     .nav-links a.active {
       color: var(--neon-blue);
       text-shadow: 0 0 8px var(--neon-blue);
+    }
+
+    .nav-item-dropdown {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-link-with-dropdown {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-link-with-dropdown::after {
+      content: '▾';
+      font-size: 0.58rem;
+      color: rgba(0,240,255,0.7);
+      transform: translateY(-1px);
+    }
+
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 18px);
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      width: 260px;
+      padding: 12px;
+      background: rgba(8,8,20,0.98);
+      border: 1px solid rgba(0,240,255,0.16);
+      border-radius: 14px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.45), 0 0 24px rgba(0,240,255,0.08);
+      backdrop-filter: blur(14px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+
+    .nav-dropdown::before {
+      content: '';
+      position: absolute;
+      top: -18px;
+      left: 0;
+      right: 0;
+      height: 18px;
+    }
+
+    .nav-item-dropdown:hover .nav-dropdown,
+    .nav-item-dropdown:focus-within .nav-dropdown {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-dropdown a {
+      display: block;
+      padding: 11px 12px;
+      border-radius: 8px;
+      color: rgba(232,232,240,0.72);
+      font-size: 0.68rem;
+      letter-spacing: 1.8px;
+      line-height: 1.25;
+    }
+
+    .nav-dropdown a:hover {
+      background: rgba(0,240,255,0.07);
+      color: var(--neon-blue);
+      text-shadow: 0 0 8px rgba(0,240,255,0.45);
     }
 
     .nav-cta {
@@ -196,6 +271,18 @@
       background: rgba(0,240,255,0.06);
       color: var(--neon-blue);
       text-shadow: 0 0 8px var(--neon-blue);
+    }
+
+    .mobile-nav-sub {
+      margin: -4px 0 8px;
+      padding: 4px 0 8px 14px;
+      border-left: 1px solid rgba(0,240,255,0.14);
+    }
+
+    .mobile-nav-sub a {
+      font-size: 0.68rem;
+      padding: 10px 12px;
+      color: rgba(232,232,240,0.58);
     }
 
     .mobile-nav-book {
@@ -656,53 +743,53 @@
       }
     }
 
- @media (max-width: 900px) {
-  nav {
-    padding: 10px 18px;
-  }
+    @media (max-width: 900px) {
+      nav {
+        padding: 10px 18px;
+      }
 
-  .nav-links,
-  .nav-cta {
-    display: none;
-  }
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
 
-  .mobile-menu-btn {
-    display: flex;
-  }
+      .mobile-menu-btn {
+        display: flex;
+      }
 
-  .team-grid {
-    grid-template-columns: 1fr;
-  }
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
 
-  .page-hero {
-    padding: 145px 24px 64px;
-  }
+      .page-hero {
+        padding: 145px 24px 64px;
+      }
 
-  .team-wrap {
-    padding: 60px 24px 90px;
-  }
+      .team-wrap {
+        padding: 60px 24px 90px;
+      }
 
-  .values-grid,
-  .process-grid {
-    grid-template-columns: 1fr;
-  }
+      .values-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
 
-  .team-photo {
-    height: 235px;
-  }
+      .team-photo {
+        height: 235px;
+      }
 
-  .process-card {
-    padding: 24px;
-  }
+      .process-card {
+        padding: 24px;
+      }
 
-  .cta-section {
-    padding: 46px 26px;
-  }
+      .cta-section {
+        padding: 46px 26px;
+      }
 
-  footer {
-    padding: 60px 24px 100px;
-  }
-}
+      footer {
+        padding: 60px 24px 100px;
+      }
+    }
   </style>
 </head>
 
@@ -714,10 +801,25 @@
     </a>
 
     <ul class="nav-links">
-      <li><a href="services.html">Products</a></li>
+      <li class="nav-item-dropdown">
+        <a href="services.html" class="nav-link-with-dropdown">Products</a>
+
+        <div class="nav-dropdown">
+          <a href="services.html#foundation-services">Sound Systems</a>
+          <a href="services.html#lighting-packages">Lighting Packages</a>
+          <a href="services.html#lighting-effects">Lighting & Effects</a>
+          <a href="services.html#dj-rentals">DJ Equipment</a>
+          <a href="services.html#guest-media">Photo Booth</a>
+          <a href="services.html#services-media">Photography & Video</a>
+          <a href="services.html#party-furniture">Party Furniture</a>
+          <a href="services.html#staging-trussing">Staging & Trussing</a>
+        </div>
+      </li>
+
       <li><a href="packages.html">Packages</a></li>
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="team.html" class="active">Our Team</a></li>
+      <li><a href="faq.html">FAQ</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
 
@@ -732,9 +834,22 @@
 
   <div class="mobile-nav" id="mobileNav">
     <a href="services.html">Products</a>
+
+    <div class="mobile-nav-sub">
+      <a href="services.html#foundation-services">Sound Systems</a>
+      <a href="services.html#lighting-packages">Lighting Packages</a>
+      <a href="services.html#lighting-effects">Lighting & Effects</a>
+      <a href="services.html#dj-rentals">DJ Equipment</a>
+      <a href="services.html#guest-media">Photo Booth</a>
+      <a href="services.html#services-media">Photography & Video</a>
+      <a href="services.html#party-furniture">Party Furniture</a>
+      <a href="services.html#staging-trussing">Staging & Trussing</a>
+    </div>
+
     <a href="packages.html">Packages</a>
     <a href="gallery.html">Gallery</a>
     <a href="team.html" class="active">Our Team</a>
+    <a href="faq.html">FAQ</a>
     <a href="contact.html">Contact</a>
     <a href="packages.html" class="mobile-nav-book">Book Now</a>
   </div>
@@ -775,9 +890,9 @@
             <p class="team-role">Lighting / Photography / Production</p>
             <h3 class="team-name">Ozzy Melendez</h3>
             <p class="team-copy">
-            Ozzy handles the visual side of Heat District Productions, including lighting direction, photography,
-            production planning, event setup details, and the overall look of the experience. He has 2 years of experience
-            as a photographer and focuses on making every setup feel clean, intentional, and ready to impress.
+              Ozzy handles the visual side of Heat District Productions, including lighting direction, photography,
+              production planning, event setup details, and the overall look of the experience. He has 2 years of experience
+              as a photographer and focuses on making every setup feel clean, intentional, and ready to impress.
             </p>
             <div class="team-tags">
               <span class="team-tag">Lighting</span>
@@ -794,19 +909,19 @@
           </div>
           <div class="team-content">
             <p class="team-role">DJ / Sound Engineer / Design / Client Experience</p>
-<h3 class="team-name">Julian Mendez</h3>
-<p class="team-copy">
-  Julian brings the music and energy to the event as the DJ while also serving as the sound engineer.
-  With over 10 years of DJ and AV equipment experience, he helps shape the sound, flow, design direction,
-  and client experience so the event feels polished from both the guest and production side.
-</p>
-<div class="team-tags">
-  <span class="team-tag">DJ</span>
-  <span class="team-tag">Sound Engineer</span>
-  <span class="team-tag">AV Experience</span>
-  <span class="team-tag">Design</span>
-  <span class="team-tag">Client Experience</span>
-</div>
+            <h3 class="team-name">Julian Mendez</h3>
+            <p class="team-copy">
+              Julian brings the music and energy to the event as the DJ while also serving as the sound engineer.
+              With over 10 years of DJ and AV equipment experience, he helps shape the sound, flow, design direction,
+              and client experience so the event feels polished from both the guest and production side.
+            </p>
+            <div class="team-tags">
+              <span class="team-tag">DJ</span>
+              <span class="team-tag">Sound Engineer</span>
+              <span class="team-tag">AV Experience</span>
+              <span class="team-tag">Design</span>
+              <span class="team-tag">Client Experience</span>
+            </div>
           </div>
         </article>
 
@@ -900,16 +1015,16 @@
     </section>
 
     <section class="cta-section">
-  <h2>Let’s Build the Right<br><strong>Setup for Your Event</strong></h2>
-  <p>
-    Choose a package or build your own custom setup. We’ll help match the sound, lighting, visuals, and event flow to the experience you want.
-  </p>
+      <h2>Let’s Build the Right<br><strong>Setup for Your Event</strong></h2>
+      <p>
+        Choose a package or build your own custom setup. We’ll help match the sound, lighting, visuals, and event flow to the experience you want.
+      </p>
 
-  <div class="hero-actions">
-    <a href="packages.html" class="btn-outline-blue">View Packages</a>
-    <a href="services.html" class="btn-outline-pink">Browse Products</a>
-  </div>
-</section>
+      <div class="hero-actions">
+        <a href="packages.html" class="btn-outline-blue">View Packages</a>
+        <a href="services.html" class="btn-outline-pink">Browse Products</a>
+      </div>
+    </section>
 
   </main>
 
@@ -980,6 +1095,6 @@
       });
     }
   </script>
-
+<script src="js/global-cart.js"></script>
 </body>
 </html>

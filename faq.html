@@ -4,9 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FAQ — Heat District Productions</title>
-  <meta name="description" content="Frequently asked questions for Heat District Productions event production, DJ, lighting, photo booth, red carpet, sound, and event packages in Miami and Broward." />
+  <meta name="description" content="Frequently asked questions for Heat District Productions event packages, add-ons, rentals, deposits, setup, service areas, and booking process." />
 
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/global.css">
 
   <style>
     :root {
@@ -14,10 +15,11 @@
       --neon-pink: #ff2d78;
       --neon-purple: #bf00ff;
       --dark-bg: #05050f;
+      --card-bg: #0a0a1a;
+      --card-bg-2: #0d0d20;
       --text-light: #e8e8f0;
       --muted-white: rgba(232,232,240,0.5);
       --soft-border: rgba(0,240,255,0.1);
-      --success: rgba(77,255,145,0.88);
     }
 
     * {
@@ -28,6 +30,7 @@
 
     html {
       scroll-behavior: smooth;
+      background: #05050f;
     }
 
     body {
@@ -35,6 +38,7 @@
       color: var(--text-light);
       font-family: 'Raleway', sans-serif;
       overflow-x: hidden;
+      min-height: 100vh;
     }
 
     nav {
@@ -77,6 +81,10 @@
       padding: 0 40px;
     }
 
+    .nav-links li {
+      position: relative;
+    }
+
     .nav-links a {
       color: var(--text-light);
       text-decoration: none;
@@ -92,6 +100,74 @@
     .nav-links a.active {
       color: var(--neon-blue);
       text-shadow: 0 0 8px var(--neon-blue);
+    }
+
+    .nav-item-dropdown {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-link-with-dropdown {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-link-with-dropdown::after {
+      content: '▾';
+      font-size: 0.58rem;
+      color: rgba(0,240,255,0.7);
+      transform: translateY(-1px);
+    }
+
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 18px);
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      width: 260px;
+      padding: 12px;
+      background: rgba(8,8,20,0.98);
+      border: 1px solid rgba(0,240,255,0.16);
+      border-radius: 14px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.45), 0 0 24px rgba(0,240,255,0.08);
+      backdrop-filter: blur(14px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+
+    .nav-dropdown::before {
+      content: '';
+      position: absolute;
+      top: -18px;
+      left: 0;
+      right: 0;
+      height: 18px;
+    }
+
+    .nav-item-dropdown:hover .nav-dropdown,
+    .nav-item-dropdown:focus-within .nav-dropdown {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-dropdown a {
+      display: block;
+      padding: 11px 12px;
+      border-radius: 8px;
+      color: rgba(232,232,240,0.72);
+      font-size: 0.68rem;
+      letter-spacing: 1.8px;
+      line-height: 1.25;
+    }
+
+    .nav-dropdown a:hover {
+      background: rgba(0,240,255,0.07);
+      color: var(--neon-blue);
+      text-shadow: 0 0 8px rgba(0,240,255,0.45);
     }
 
     .nav-cta {
@@ -137,6 +213,11 @@
       background: var(--text-light);
       border-radius: 999px;
       transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+    }
+
+    .mobile-menu-btn:hover {
+      border-color: rgba(0,240,255,0.35);
+      box-shadow: 0 0 16px rgba(0,240,255,0.12);
     }
 
     .mobile-menu-btn.active span:nth-child(1) {
@@ -199,6 +280,18 @@
       text-shadow: 0 0 8px var(--neon-blue);
     }
 
+    .mobile-nav-sub {
+      margin: -4px 0 8px;
+      padding: 4px 0 8px 14px;
+      border-left: 1px solid rgba(0,240,255,0.14);
+    }
+
+    .mobile-nav-sub a {
+      font-size: 0.68rem;
+      padding: 10px 12px;
+      color: rgba(232,232,240,0.58);
+    }
+
     .mobile-nav-book {
       margin-top: 8px;
       border: 1.5px solid var(--neon-pink);
@@ -206,18 +299,25 @@
       text-align: center;
     }
 
+    .mobile-nav-book:hover {
+      background: rgba(255,45,120,0.12) !important;
+      box-shadow: 0 0 18px rgba(255,45,120,0.18);
+      color: var(--neon-pink) !important;
+      text-shadow: none !important;
+    }
+
     body.mobile-menu-open {
       overflow: hidden;
     }
 
-    .page-hero {
-      padding: 160px 48px 76px;
+    .hero {
+      padding: 165px 48px 78px;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
 
-    .page-hero::before {
+    .hero::before {
       content: '';
       position: absolute;
       inset: 0;
@@ -227,7 +327,7 @@
       pointer-events: none;
     }
 
-    .page-hero-eyebrow {
+    .hero-eyebrow {
       position: relative;
       z-index: 1;
       font-size: 0.68rem;
@@ -238,10 +338,10 @@
       font-weight: 400;
     }
 
-    .page-hero h1 {
+    .hero h1 {
       position: relative;
       z-index: 1;
-      font-size: clamp(2.35rem, 5vw, 4rem);
+      font-size: clamp(2.3rem, 5vw, 4rem);
       font-weight: 300;
       font-style: italic;
       color: #fff;
@@ -249,68 +349,21 @@
       margin-bottom: 16px;
     }
 
-    .page-hero h1 strong {
+    .hero h1 strong {
       font-weight: 700;
       font-style: normal;
       color: var(--neon-pink);
     }
 
-    .page-hero p {
+    .hero p {
       position: relative;
       z-index: 1;
-      max-width: 840px;
+      max-width: 760px;
       margin: 0 auto;
       font-size: 0.95rem;
       line-height: 1.9;
       color: var(--muted-white);
       font-weight: 300;
-    }
-
-    .hero-actions {
-      position: relative;
-      z-index: 1;
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .btn-outline-blue,
-    .btn-outline-pink {
-      background: transparent;
-      padding: 14px 30px;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 2.8px;
-      text-transform: uppercase;
-      border-radius: 4px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
-    }
-
-    .btn-outline-blue {
-      color: var(--neon-blue);
-      border: 1.5px solid var(--neon-blue);
-    }
-
-    .btn-outline-blue:hover {
-      background: rgba(0,240,255,0.08);
-      box-shadow: 0 0 26px rgba(0,240,255,0.3);
-      transform: translateY(-2px);
-    }
-
-    .btn-outline-pink {
-      color: var(--neon-pink);
-      border: 1.5px solid var(--neon-pink);
-    }
-
-    .btn-outline-pink:hover {
-      background: rgba(255,45,120,0.08);
-      box-shadow: 0 0 26px rgba(255,45,120,0.3);
-      transform: translateY(-2px);
     }
 
     .neon-divider {
@@ -322,152 +375,111 @@
     .faq-wrap {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 76px 48px 100px;
+      padding: 70px 48px 100px;
     }
 
-    .intro-grid {
+    .faq-intro {
       display: grid;
-      grid-template-columns: 1fr 360px;
+      grid-template-columns: 0.9fr 1.1fr;
       gap: 24px;
-      align-items: start;
-      margin-bottom: 44px;
+      align-items: stretch;
+      margin-bottom: 28px;
     }
 
-    .section-label {
-      font-size: 0.68rem;
-      letter-spacing: 5px;
+    .intro-card,
+    .faq-card {
+      background: linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.98));
+      border: 1px solid rgba(0,240,255,0.08);
+      border-radius: 14px;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.28);
+    }
+
+    .intro-card {
+      padding: 28px;
+    }
+
+    .intro-kicker {
+      font-size: 0.62rem;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      color: var(--neon-blue);
-      margin-bottom: 12px;
-      font-weight: 400;
+      color: rgba(0,240,255,0.65);
+      margin-bottom: 10px;
+      font-weight: 600;
     }
 
-    .section-title {
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
+    .intro-title {
+      font-size: clamp(1.3rem, 3vw, 2rem);
       font-weight: 300;
       font-style: italic;
       color: #fff;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       line-height: 1.2;
     }
 
-    .section-title strong {
+    .intro-title strong {
       font-weight: 700;
       font-style: normal;
       color: var(--neon-pink);
     }
 
-    .section-sub {
+    .intro-copy {
       font-size: 0.9rem;
+      line-height: 1.8;
       color: var(--muted-white);
       font-weight: 300;
-      line-height: 1.85;
-      max-width: 780px;
     }
 
-    .quick-card {
-      border: 1px solid rgba(255,45,120,0.14);
-      border-radius: 16px;
-      background:
-        linear-gradient(180deg, rgba(255,45,120,0.06), rgba(10,10,26,0.96)),
-        linear-gradient(90deg, rgba(0,240,255,0.03), rgba(255,45,120,0.03));
-      padding: 24px;
-      box-shadow: 0 14px 38px rgba(0,0,0,0.18);
-    }
-
-    .quick-card-title {
-      color: #fff;
-      font-size: 1.08rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .quick-card-copy {
-      color: rgba(232,232,240,0.54);
-      font-size: 0.84rem;
-      line-height: 1.75;
-      margin-bottom: 18px;
-    }
-
-    .quick-card-links {
+    .quick-links {
       display: grid;
-      gap: 10px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      padding: 28px;
     }
 
-    .quick-card-links a {
-      color: var(--neon-blue);
-      text-decoration: none;
-      font-size: 0.7rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      border: 1px solid rgba(0,240,255,0.14);
-      border-radius: 8px;
-      padding: 11px 12px;
-      transition: background 0.25s, box-shadow 0.25s, transform 0.2s;
-    }
-
-    .quick-card-links a:hover {
-      background: rgba(0,240,255,0.06);
-      box-shadow: 0 0 18px rgba(0,240,255,0.12);
-      transform: translateY(-2px);
-    }
-
-    .faq-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 34px 0 30px;
-    }
-
-    .faq-tab {
-      border: 1px solid rgba(0,240,255,0.13);
+    .quick-link {
+      border: 1px solid rgba(0,240,255,0.1);
       background: rgba(255,255,255,0.02);
-      color: rgba(232,232,240,0.76);
-      padding: 12px 14px;
-      border-radius: 999px;
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.62rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.28s ease;
+      border-radius: 12px;
+      padding: 16px;
+      text-decoration: none;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
     }
 
-    .faq-tab:hover {
-      color: var(--neon-blue);
-      border-color: rgba(0,240,255,0.28);
-      box-shadow: 0 0 18px rgba(0,240,255,0.12);
+    .quick-link:hover {
       transform: translateY(-2px);
+      border-color: rgba(0,240,255,0.28);
+      box-shadow: 0 0 22px rgba(0,240,255,0.08);
     }
 
-    .faq-tab.active {
-      color: var(--neon-pink);
-      border-color: rgba(255,45,120,0.45);
-      background: rgba(255,45,120,0.08);
-      box-shadow: 0 0 24px rgba(255,45,120,0.16);
+    .quick-link span {
+      display: block;
+      font-size: 0.58rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(0,240,255,0.58);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .quick-link strong {
+      color: rgba(232,232,240,0.88);
+      font-size: 0.92rem;
+      line-height: 1.5;
+      font-weight: 600;
     }
 
     .faq-section {
-      border: 1px solid rgba(0,240,255,0.08);
-      border-radius: 18px;
-      background: linear-gradient(180deg, rgba(10,10,26,0.94), rgba(8,8,22,0.98));
-      padding: 24px;
-      box-shadow: 0 14px 38px rgba(0,0,0,0.18);
-      margin-bottom: 28px;
+      margin-top: 34px;
     }
 
-    .faq-section.is-hidden {
-      display: none;
-    }
-
-    .faq-section-header {
+    .section-head {
       display: flex;
       align-items: center;
       gap: 14px;
       margin-bottom: 16px;
     }
 
-    .faq-section-title {
+    .section-title {
       font-size: 0.72rem;
       letter-spacing: 4px;
       text-transform: uppercase;
@@ -476,65 +488,63 @@
       white-space: nowrap;
     }
 
-    .faq-section-line {
+    .section-line {
       flex: 1;
       height: 1px;
       background: linear-gradient(90deg, rgba(0,240,255,0.28), rgba(255,45,120,0.1), transparent);
     }
 
-    .faq-list {
-      display: grid;
-      gap: 12px;
+    .faq-card {
+      overflow: hidden;
     }
 
     .faq-item {
-      border: 1px solid rgba(0,240,255,0.08);
-      border-radius: 12px;
-      background: rgba(255,255,255,0.02);
-      overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .faq-item:last-child {
+      border-bottom: 0;
     }
 
     .faq-question {
       width: 100%;
-      border: none;
       background: transparent;
+      border: 0;
+      padding: 22px 24px;
       color: #fff;
-      padding: 18px 18px;
       font-family: 'Raleway', sans-serif;
-      font-size: 0.92rem;
-      font-weight: 700;
-      line-height: 1.45;
+      font-size: 0.98rem;
+      font-weight: 600;
       text-align: left;
       cursor: pointer;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 18px;
+      line-height: 1.55;
     }
 
-    .faq-question span:first-child {
-      min-width: 0;
+    .faq-question:hover {
+      background: rgba(0,240,255,0.035);
     }
 
     .faq-icon {
       width: 28px;
       height: 28px;
-      border: 1px solid rgba(255,45,120,0.28);
-      color: var(--neon-pink);
+      border: 1px solid rgba(0,240,255,0.2);
       border-radius: 50%;
+      color: var(--neon-blue);
       display: inline-flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      font-size: 1.05rem;
-      line-height: 1;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      transition: transform 0.25s ease, border-color 0.25s ease;
     }
 
     .faq-item.open .faq-icon {
       transform: rotate(45deg);
-      background: rgba(255,45,120,0.08);
-      box-shadow: 0 0 16px rgba(255,45,120,0.16);
+      border-color: rgba(255,45,120,0.35);
+      color: var(--neon-pink);
     }
 
     .faq-answer {
@@ -544,52 +554,61 @@
     }
 
     .faq-answer-inner {
-      padding: 0 18px 18px;
+      padding: 0 24px 24px;
       color: rgba(232,232,240,0.58);
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       line-height: 1.85;
       font-weight: 300;
     }
 
     .faq-answer-inner strong {
-      color: rgba(232,232,240,0.86);
-      font-weight: 700;
+      color: rgba(232,232,240,0.9);
+      font-weight: 600;
     }
 
-    .cta-panel {
-      margin-top: 54px;
-      border: 1px solid rgba(255,45,120,0.16);
-      border-radius: 18px;
-      padding: 44px 34px;
-      text-align: center;
+    .faq-answer-inner a {
+      color: var(--neon-blue);
+      text-decoration: none;
+    }
+
+    .faq-answer-inner a:hover {
+      text-shadow: 0 0 8px rgba(0,240,255,0.55);
+    }
+
+    .cta-strip {
+      margin-top: 46px;
+      padding: 34px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,45,120,0.14);
       background:
-        linear-gradient(180deg, rgba(255,45,120,0.06), rgba(10,10,26,0.95)),
-        radial-gradient(ellipse at 50% 0%, rgba(0,240,255,0.05), transparent 65%);
-      box-shadow: 0 14px 38px rgba(0,0,0,0.22);
+        radial-gradient(ellipse at 20% 0%, rgba(0,240,255,0.06), transparent 55%),
+        radial-gradient(ellipse at 80% 100%, rgba(255,45,120,0.06), transparent 55%),
+        linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.98));
+      text-align: center;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.28);
     }
 
-    .cta-panel h2 {
-      font-size: clamp(1.5rem, 3vw, 2.3rem);
+    .cta-strip h2 {
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
       font-weight: 300;
       font-style: italic;
       color: #fff;
-      line-height: 1.25;
-      margin-bottom: 14px;
+      line-height: 1.2;
+      margin-bottom: 12px;
     }
 
-    .cta-panel h2 strong {
-      color: var(--neon-pink);
+    .cta-strip h2 strong {
       font-style: normal;
       font-weight: 700;
+      color: var(--neon-pink);
     }
 
-    .cta-panel p {
-      max-width: 700px;
-      margin: 0 auto 26px;
-      font-size: 0.92rem;
-      line-height: 1.85;
-      color: rgba(232,232,240,0.55);
-      font-weight: 300;
+    .cta-strip p {
+      max-width: 680px;
+      margin: 0 auto 24px;
+      color: rgba(232,232,240,0.5);
+      line-height: 1.8;
+      font-size: 0.9rem;
     }
 
     .cta-actions {
@@ -597,6 +616,40 @@
       justify-content: center;
       gap: 14px;
       flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
+    }
+
+    .cta-btn.pink {
+      color: var(--neon-pink);
+      border: 1.5px solid var(--neon-pink);
+    }
+
+    .cta-btn.pink:hover {
+      background: rgba(255,45,120,0.08);
+      box-shadow: 0 0 28px rgba(255,45,120,0.28);
+      transform: translateY(-2px);
+    }
+
+    .cta-btn.blue {
+      color: var(--neon-blue);
+      border: 1.5px solid var(--neon-blue);
+    }
+
+    .cta-btn.blue:hover {
+      background: rgba(0,240,255,0.08);
+      box-shadow: 0 0 28px rgba(0,240,255,0.28);
+      transform: translateY(-2px);
     }
 
     footer {
@@ -652,8 +705,8 @@
       margin-top: 32px;
     }
 
-    @media (max-width: 1050px) {
-      .intro-grid {
+    @media (max-width: 980px) {
+      .faq-intro {
         grid-template-columns: 1fr;
       }
     }
@@ -672,26 +725,34 @@
         display: flex;
       }
 
-      .page-hero {
-        padding: 145px 24px 62px;
+      .hero {
+        padding: 145px 24px 60px;
       }
 
       .faq-wrap {
-        padding: 56px 24px 86px;
+        padding: 56px 24px 100px;
       }
 
-      .faq-section {
-        padding: 20px 16px;
+      .quick-links {
+        grid-template-columns: 1fr;
       }
 
-      .faq-section-title {
+      .section-title {
         white-space: normal;
         line-height: 1.45;
       }
 
-      .footer-contact {
-        gap: 18px;
-        flex-direction: column;
+      .faq-question {
+        padding: 20px;
+        font-size: 0.92rem;
+      }
+
+      .faq-answer-inner {
+        padding: 0 20px 22px;
+      }
+
+      .cta-strip {
+        padding: 28px 22px;
       }
 
       footer {
@@ -699,47 +760,6 @@
       }
     }
   </style>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How do I book Heat District Productions?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Choose a package or build a custom setup from the Products page, then continue to checkout. A 50% deposit invoice is sent to confirm the booking."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do your packages include setup and breakdown?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Packages include professional setup and breakdown. Setup time depends on the package, venue access, and equipment selected."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does the red carpet include ropes and stands?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Red carpet setups include stanchions with velvet ropes. Some packages include a 10ft red carpet and the highest package includes a 20ft red carpet."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What areas do you serve?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Heat District Productions primarily serves Miami, Broward, and surrounding South Florida areas. Travel outside the main service area may require an additional fee."
-        }
-      }
-    ]
-  }
-  </script>
 </head>
 
 <body>
@@ -750,7 +770,21 @@
     </a>
 
     <ul class="nav-links">
-      <li><a href="services.html">Products</a></li>
+      <li class="nav-item-dropdown">
+        <a href="services.html" class="nav-link-with-dropdown">Products</a>
+
+        <div class="nav-dropdown">
+          <a href="services.html#foundation-services">Sound Systems</a>
+          <a href="services.html#lighting-packages">Lighting Packages</a>
+          <a href="services.html#lighting-effects">Lighting & Effects</a>
+          <a href="services.html#dj-rentals">DJ Equipment</a>
+          <a href="services.html#guest-media">Photo Booth</a>
+          <a href="services.html#services-media">Photography & Video</a>
+          <a href="services.html#party-furniture">Party Furniture</a>
+          <a href="services.html#staging-trussing">Staging & Trussing</a>
+        </div>
+      </li>
+
       <li><a href="packages.html">Packages</a></li>
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="team.html">Our Team</a></li>
@@ -769,6 +803,18 @@
 
   <div class="mobile-nav" id="mobileNav">
     <a href="services.html">Products</a>
+
+    <div class="mobile-nav-sub">
+      <a href="services.html#foundation-services">Sound Systems</a>
+      <a href="services.html#lighting-packages">Lighting Packages</a>
+      <a href="services.html#lighting-effects">Lighting & Effects</a>
+      <a href="services.html#dj-rentals">DJ Equipment</a>
+      <a href="services.html#guest-media">Photo Booth</a>
+      <a href="services.html#services-media">Photography & Video</a>
+      <a href="services.html#party-furniture">Party Furniture</a>
+      <a href="services.html#staging-trussing">Staging & Trussing</a>
+    </div>
+
     <a href="packages.html">Packages</a>
     <a href="gallery.html">Gallery</a>
     <a href="team.html">Our Team</a>
@@ -777,371 +823,495 @@
     <a href="packages.html" class="mobile-nav-book">Book Now</a>
   </div>
 
-  <section class="page-hero">
-    <p class="page-hero-eyebrow">Questions · Booking Details · Event Production Info</p>
+  <div class="hero">
+    <p class="hero-eyebrow">Questions · Booking · Packages · Rentals</p>
     <h1>Frequently Asked<br><strong>Questions</strong></h1>
     <p>
-      Quick answers about packages, deposits, sound, lighting, photo booth, DJ gear, red carpet setups, setup time, and custom event builds.
+      Find quick answers about Heat District Productions packages, add-ons, booking, deposits, setup, rentals, media delivery, equipment rules, and event production details.
     </p>
-
-    <div class="hero-actions">
-      <a href="packages.html" class="btn-outline-pink">View Packages</a>
-      <a href="services.html" class="btn-outline-blue">Build Your Setup</a>
-    </div>
-  </section>
+  </div>
 
   <div class="neon-divider"></div>
 
   <main class="faq-wrap">
 
-    <div class="intro-grid">
-      <div>
-        <p class="section-label">Before You Book</p>
-        <h2 class="section-title">Everything You Need to Know <strong>Before Checkout</strong></h2>
-        <p class="section-sub">
-          These answers are written to keep the booking process simple. If your event has special requirements, venue restrictions, outdoor conditions, limited power, tight load-in timing, or a custom production idea, contact us before booking so we can help choose the correct setup.
+    <section class="faq-intro">
+      <div class="intro-card">
+        <p class="intro-kicker">Before You Book</p>
+        <h2 class="intro-title">Know What To <strong>Expect</strong></h2>
+        <p class="intro-copy">
+          These answers are meant to help you understand how our packages, add-ons, deposits, rentals, setup, media services, outdoor events, and booking process work before you submit your event details.
         </p>
-
-        <div class="faq-tabs">
-          <button class="faq-tab active" type="button" onclick="filterFaq('all', this)">All</button>
-          <button class="faq-tab" type="button" onclick="filterFaq('booking', this)">Booking</button>
-          <button class="faq-tab" type="button" onclick="filterFaq('packages', this)">Packages</button>
-          <button class="faq-tab" type="button" onclick="filterFaq('equipment', this)">Equipment</button>
-          <button class="faq-tab" type="button" onclick="filterFaq('media', this)">Photo / Video</button>
-          <button class="faq-tab" type="button" onclick="filterFaq('venue', this)">Venue / Setup</button>
-        </div>
       </div>
 
-      <aside class="quick-card">
-        <div class="quick-card-title">Need a Faster Answer?</div>
-        <div class="quick-card-copy">
-          The fastest path is to pick a package, then add upgrades. For custom events, use the Products page to build your own setup.
-        </div>
+      <div class="intro-card quick-links">
+        <a href="#booking" class="quick-link">
+          <span>Booking</span>
+          <strong>Deposits, dates, quotes, and invoices</strong>
+        </a>
 
-        <div class="quick-card-links">
-          <a href="packages.html">Compare Packages</a>
-          <a href="services.html">Browse Products</a>
-          <a href="contact.html">Ask a Question</a>
-        </div>
-      </aside>
-    </div>
+        <a href="#packages" class="quick-link">
+          <span>Packages</span>
+          <strong>What is included and how upgrades work</strong>
+        </a>
 
-    <section class="faq-section" data-category="booking">
-      <div class="faq-section-header">
-        <div class="faq-section-title">Booking & Payments</div>
-        <div class="faq-section-line"></div>
+        <a href="#production" class="quick-link">
+          <span>Production</span>
+          <strong>Setup, power, access, weather, and timing</strong>
+        </a>
+
+        <a href="#rentals" class="quick-link">
+          <span>Rentals</span>
+          <strong>DJ equipment, lighting, trussing, and equipment rules</strong>
+        </a>
+
+        <a href="#media" class="quick-link">
+          <span>Media</span>
+          <strong>Photo booth, photography, video, and delivery</strong>
+        </a>
+
+        <a href="#expectations" class="quick-link">
+          <span>Expectations</span>
+          <strong>Important things to know before booking</strong>
+        </a>
+      </div>
+    </section>
+
+    <section class="faq-section" id="booking">
+      <div class="section-head">
+        <div class="section-title">Booking & Payment</div>
+        <div class="section-line"></div>
       </div>
 
-      <div class="faq-list">
-
+      <div class="faq-card">
         <div class="faq-item open">
-          <button class="faq-question" type="button" onclick="toggleFaq(this)">
-            <span>How do I book an event?</span>
+          <button class="faq-question" type="button">
+            How do I book Heat District Productions?
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Choose a package from the <strong>Packages</strong> page or build your own setup from the <strong>Products</strong> page. After checkout, an invoice is created and sent by email so the deposit can be paid through the invoice link.
+              Start by choosing a package, adding any upgrades, and submitting your checkout details. After that, we review the event information and send a deposit invoice or follow up if anything needs to be adjusted.
             </div>
           </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" type="button" onclick="toggleFaq(this)">
-            <span>Is a deposit required?</span>
+          <button class="faq-question" type="button">
+            How far in advance should I book?
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Yes. The standard deposit is <strong>50% of the estimated total</strong>. The remaining balance is due according to the final agreement or invoice terms.
+              The earlier you book, the better. Booking early gives us more time to confirm availability, plan the setup, reserve equipment, and make sure your event production is handled correctly. Last-minute requests may still be possible depending on availability.
             </div>
           </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" type="button" onclick="toggleFaq(this)">
-            <span>Can I change my package after booking?</span>
+          <button class="faq-question" type="button">
+            Is a deposit required to secure my date?
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              In most cases, yes. Package upgrades and add-ons can usually be adjusted if the equipment and crew are still available. Larger changes may affect the total price, setup time, and required power.
+              Yes. A <strong>50% deposit</strong> is required to secure the booking date. Your date is not fully secured until the deposit has been paid and the booking has been confirmed.
             </div>
           </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" type="button" onclick="toggleFaq(this)">
-            <span>Do you offer custom quotes?</span>
+          <button class="faq-question" type="button">
+            Are website prices final?
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Yes. Custom quotes are available for events that need a special setup, larger production, custom lighting, DJ rentals, photo booth, red carpet, LED wall, furniture, or a mix of individual products.
+              Website pricing is an estimate. Final pricing may change depending on event location, venue access, power needs, staffing, setup complexity, date, travel distance, outdoor requirements, and custom production needs.
             </div>
           </div>
         </div>
 
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            What happens after I submit checkout?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Your event details and selected build are reviewed. If everything looks correct, a deposit invoice can be created and sent. If something needs clarification, we may contact you before confirming the booking.
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="faq-section" data-category="packages">
-      <div class="faq-section-header">
-        <div class="faq-section-title">Packages & Add-Ons</div>
-        <div class="faq-section-line"></div>
+    <section class="faq-section" id="packages">
+      <div class="section-head">
+        <div class="section-title">Packages & Add-Ons</div>
+        <div class="section-line"></div>
       </div>
 
-      <div class="faq-list">
-
+      <div class="faq-card">
         <div class="faq-item">
-          <button class="faq-question" type="button" onclick="toggleFaq(this)">
-            <span>What is the difference between packages and individual products?</span>
+          <button class="faq-question" type="button">
+            What is included in the packages?
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Packages are pre-built event setups that combine the most common services and equipment. Individual products are better when you already know exactly what you need or want to build a custom setup piece by piece.
+              Packages include a starting production setup based on the selected tier. Depending on the package, this may include sound, lighting, event coverage, photo booth, special effects, trussing, or other production elements. The package page shows the exact structure for each option.
             </div>
           </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" type="button" onclick="toggleFaq(this)">
-            <span>Can I add extra products to a package?</span>
+          <button class="faq-question" type="button">
+            Can I add upgrades after selecting a package?
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Yes. The booking flow is designed so you pick the package first, then add upgrades after. This keeps the package as the foundation while allowing you to customize the event.
+              Yes. After selecting a package, you can add upgrades like moving heads, photo booth, red carpet, glow sticks, extra event hours, lighting packages, DJ rentals, trussing, special effects, and more.
             </div>
           </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" type="button" onclick="toggleFaq(this)">
-            <span>What comes with the red carpet setup?</span>
+          <button class="faq-question" type="button">
+            How do extra event hours work?
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Red carpet setups include the carpet plus <strong>stanchions with velvet ropes</strong>. Some packages include a 10ft red carpet, while the largest package includes a 20ft red carpet.
+              Extra event hours depend on whether you are booking a full package or individual items. For packages, larger tiers with more equipment cost more for additional hours because more gear, setup, and staff coverage may be involved. Smaller package tiers cost less as you move down the package levels. For individual items, extra hours are selected directly when adding those items to the cart.
             </div>
           </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" type="button" onclick="toggleFaq(this)">
-            <span>Which packages include foam glow sticks?</span>
+          <button class="faq-question" type="button">
+            Are add-on prices available without booking a package?
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Foam glow sticks are included in the two largest packages. They are designed to add extra crowd energy for higher-production events.
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="faq-section" data-category="equipment">
-      <div class="faq-section-header">
-        <div class="faq-section-title">Sound, Lighting & Equipment</div>
-        <div class="faq-section-line"></div>
-      </div>
-
-      <div class="faq-list">
-
-        <div class="faq-item">
-          <button class="faq-question" type="button" onclick="toggleFaq(this)">
-            <span>Do your sound packages include subs?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Some sound setups include both tops and subs, while smaller sound options may include only QSC top speakers. The Products page separates these so clients can choose the right sound level for the event.
+              The discounted add-on prices are intended for clients who book one of our event packages. Standalone rentals or standalone services may be priced differently depending on the item, event, location, delivery needs, and logistics.
             </div>
           </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" type="button" onclick="toggleFaq(this)">
-            <span>Do you rent DJ equipment by itself?</span>
+          <button class="faq-question" type="button">
+            Can I book only one item without a full package?
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Yes. DJ rental options can include CDJ 3000 units, Pioneer DJM-900NXS2 mixer, XDJ-XZ, and a premium club mixer/CDJ package depending on availability.
+              Yes. You may be able to book individual products or services without a full package, such as DJ equipment, photo booth, sound support, media coverage, or lighting rentals. Standalone pricing may differ from package add-on pricing.
             </div>
           </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" type="button" onclick="toggleFaq(this)">
-            <span>What are moving heads?</span>
+          <button class="faq-question" type="button">
+            Why do some add-ons appear in Most Popular and another category?
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Moving heads are professional event lights that move, rotate, and create beams, patterns, and motion effects. They make a setup feel more like a club, concert, or high-energy event.
+              That is intentional. Most Popular shows high-demand upgrades for faster decision-making, but those same items also remain in their proper category so clients can browse by type.
             </div>
           </div>
         </div>
-
-        <div class="faq-item">
-          <button class="faq-question" type="button" onclick="toggleFaq(this)">
-            <span>Can I choose moving heads on totems or a goal post?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Yes. The Products page includes moving head options with either <strong>totems</strong> or a <strong>goal post</strong>. Goal post setups are larger and usually cost more because they require more trussing and setup time.
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
 
-    <section class="faq-section" data-category="media">
-      <div class="faq-section-header">
-        <div class="faq-section-title">Photo Booth, Photography & Video</div>
-        <div class="faq-section-line"></div>
+    <section class="faq-section" id="production">
+      <div class="section-head">
+        <div class="section-title">Setup & Production</div>
+        <div class="section-line"></div>
       </div>
 
-      <div class="faq-list">
-
+      <div class="faq-card">
         <div class="faq-item">
-          <button class="faq-question" type="button" onclick="toggleFaq(this)">
-            <span>What is the difference between digital-only and digital + print photo booth?</span>
+          <button class="faq-question" type="button">
+            How much setup time do you need?
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Digital-only photo booth focuses on digital sharing and online delivery. Digital + print includes the digital experience plus printed photos at the event.
+              Setup time depends on how much equipment is being used for the event. Smaller setups may require less time, while larger setups with lighting, trussing, sound, photo booth, special effects, or LED visuals may require more venue access. We will never arrive later than <strong>1 hour and 30 minutes before the event start time</strong> so we can set up properly and do the job to the best of our ability.
             </div>
           </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" type="button" onclick="toggleFaq(this)">
-            <span>Does the photo booth include props?</span>
+          <button class="faq-question" type="button">
+            What does the venue need to provide?
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Yes. The photo booth includes props, and backdrop options may be available depending on the event setup and package selected.
+              The venue needs to provide reliable power and parking. Everything else depends on the event and setup, but power access and a reasonable place to park/load in are the main requirements we need to complete the job properly.
             </div>
           </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" type="button" onclick="toggleFaq(this)">
-            <span>How many edited photos are included with photography?</span>
+          <button class="faq-question" type="button">
+            Do I need to tell you about venue restrictions?
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Photography deliverables can be selected from <strong>50 to 250 edited pictures</strong>, depending on the coverage option chosen.
+              Yes. The client is responsible for giving us details about any venue restrictions. This includes rules about sound levels, fog, haze, cold sparks, lighting, load-in access, parking, timing, power, outdoor setup areas, or anything else that may affect the equipment or production.
             </div>
           </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" type="button" onclick="toggleFaq(this)">
-            <span>What type of video recap can I choose?</span>
+          <button class="faq-question" type="button">
+            Do you handle outdoor events?
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Videography options range from a short 15-second event recap up to a full 1-minute recap, with options in between depending on the final deliverable you choose.
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="faq-section" data-category="venue">
-      <div class="faq-section-header">
-        <div class="faq-section-title">Venue, Setup & Event Requirements</div>
-        <div class="faq-section-line"></div>
-      </div>
-
-      <div class="faq-list">
-
-        <div class="faq-item">
-          <button class="faq-question" type="button" onclick="toggleFaq(this)">
-            <span>How much setup time do you need?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Setup time depends on the package and venue access. Simple setups may need less time, while larger lighting, trussing, LED wall, cold spark, and photo booth setups need more time. Venue load-in access should be confirmed before the event.
+              Yes. We handle both indoor and outdoor events. For outdoor setups, the main requirement is a large enough and reliable power source for the equipment being used. Outdoor events may also require extra planning depending on weather, ground surface, distance from power, and equipment placement.
             </div>
           </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" type="button" onclick="toggleFaq(this)">
-            <span>Do you need access to power?</span>
+          <button class="faq-question" type="button">
+            What happens if it rains for an outdoor event?
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Yes. All sound, lighting, DJ equipment, photo booth, and effects require power. Larger setups may need multiple reliable circuits. We can review the setup and let you know what power is needed before the event.
+              Before the event, we check the weather. If rain is expected, we will speak with the client and review the equipment that was rented. If any equipment is not waterproof or cannot be safely used in the weather conditions, we will not be able to provide that specific equipment and will issue a refund for the equipment that cannot be rented.
             </div>
           </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" type="button" onclick="toggleFaq(this)">
-            <span>Can you do outdoor events?</span>
+          <button class="faq-question" type="button">
+            Can the setup be customized?
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Outdoor events are possible, but weather protection, stable flooring, safe power, wind conditions, and venue rules matter. Some equipment may require covering or backup plans if the event is outside.
+              Yes. We can customize the build depending on the event type, venue, budget, guest count, available power, and desired look. For custom builds, contact us directly through the <a href="contact.html">Contact page</a>.
             </div>
           </div>
         </div>
-
-        <div class="faq-item">
-          <button class="faq-question" type="button" onclick="toggleFaq(this)">
-            <span>Do cold sparks, fog, haze, or special effects need venue approval?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Yes. Effects such as cold sparks, fog, haze, or similar equipment may require venue approval and safe placement. Some venues restrict effects because of fire alarms, ceiling height, flooring, or house policies.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" type="button" onclick="toggleFaq(this)">
-            <span>What areas do you serve?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Heat District Productions primarily serves <strong>Miami, Broward, and surrounding South Florida areas</strong>. Travel outside the main service area may require an additional fee depending on distance and event scope.
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
 
-    <section class="cta-panel">
-      <h2>Still Have a Question?<br><strong>Send Us the Details.</strong></h2>
+    <section class="faq-section" id="rentals">
+      <div class="section-head">
+        <div class="section-title">Rentals & Equipment</div>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            Do you deliver, set up, and pick up rental equipment?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Yes. All rental equipment is delivered, set up, and picked up by Heat District Productions or an authorized team member. This helps make sure the equipment is installed correctly, safely placed, and ready for the event.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            Can clients or guests operate the rental equipment?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Only persons authorized by Heat District Productions are allowed to operate our equipment. If a DJ or production professional rents DJ equipment for a club, gig, or professional setup, they may be allowed to operate the approved equipment. However, guests or unauthorized persons are not allowed to operate production equipment such as LED walls, lighting systems, trussing setups, special effects, or other technical gear.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            What happens if equipment is damaged?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              If equipment is damaged by a guest, misuse, unauthorized handling, or spilled drinks, the client may be responsible for repair, replacement, or the cash value of the damaged item. If the damage is caused by the venue or by weather conditions outside of the client’s control, the client is not responsible for reimbursing Heat District Productions.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            Do you rent DJ equipment separately?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Yes. DJ equipment rentals are available without booking a DJ. This may include items like CDJs, mixers, or all-in-one DJ systems depending on availability. Standalone rental pricing may differ from package add-on pricing.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            Can lighting and effects be rented without your staff operating them?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Lighting and effects may only be rented for client-operated use when the renter has the proper experience or is running a professional setup. For most events, lighting, effects, trussing, LED walls, and similar production equipment must be operated or supervised by Heat District Productions or an approved operator to protect the equipment and keep the event safe.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            Can I rent extra speakers or subwoofers?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Yes. Extra speakers and subwoofers can be added for larger spaces, outdoor areas, dance floors, cocktail areas, or events that need more sound coverage and stronger bass.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            Do you offer trussing and moving head lighting?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Yes. We offer moving head options with totems and goal post configurations, plus trussing options depending on the setup size and event needs.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            Are cold sparks and fog/haze available for all venues?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Not always. Some venues restrict fog, haze, cold sparks, and atmospheric effects. These items may require venue approval, safe placement, proper operating conditions, and enough power. The client should let us know about any venue restrictions before the event.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section" id="media">
+      <div class="section-head">
+        <div class="section-title">Photo Booth & Media</div>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            What is included with the photo booth?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              The photo booth includes props and a choice between three different backdrops. Custom backdrops are available, but the client must contact us directly for a custom quote.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            How long does it take to receive photos or videos after the event?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Photo delivery is usually <strong>2–5 days</strong>, depending on the amount of pictures. Video delivery is usually <strong>3–7 days</strong>, depending on the length, editing needs, and amount of footage.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            Do you provide raw photo or video files?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              No. Raw photo and video files are not provided. Final deliverables include the edited photos, videos, or media items included in the selected service or package.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            Can I request that my event not be posted online?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Yes. If you do not want your event content posted on our Instagram, website, portfolio, or promotional materials, let us know before the event so we can respect that request.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section" id="expectations">
+      <div class="section-head">
+        <div class="section-title">Important Client Expectations</div>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            What is the biggest thing clients should know before booking?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              The earlier you book, the better. A <strong>50% deposit</strong> is required to secure the date, and setup will begin at least <strong>1 hour and 30 minutes before the event start time</strong>. Clients should also provide accurate venue details, power information, parking access, event timing, and any venue restrictions so we can prepare the right setup.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            What details should I send before requesting a quote?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Send us your event date, location, guest count, event type, start time, venue access details, power availability, and the type of setup you want. The more information you provide upfront, the easier it is for us to recommend the right package or custom production build.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-strip">
+      <h2>Still Have <strong>Questions?</strong></h2>
       <p>
-        Tell us the date, venue, guest count, indoor or outdoor setup, and what type of production look you want. We can help guide you toward the right package or custom build.
+        Send us your event date, location, guest count, and the type of setup you are looking for. We’ll help you choose the right package or custom production build.
       </p>
 
       <div class="cta-actions">
-        <a href="contact.html" class="btn-outline-pink">Contact Us</a>
-        <a href="packages.html" class="btn-outline-blue">View Packages</a>
+        <a href="contact.html" class="cta-btn pink">Contact Us</a>
+        <a href="packages.html" class="cta-btn blue">View Packages</a>
       </div>
     </section>
 
@@ -1158,68 +1328,14 @@
       <a href="mailto:HeatDistrictProd@gmail.com">HeatDistrictProd@gmail.com</a>
       <a href="https://instagram.com/heatdistrictproductions" target="_blank">@HeatDistrictProductions</a>
       <a href="https://www.heatdistrictproductions.com">heatdistrictproductions.com</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms & Conditions</a>
     </div>
 
     <p class="footer-copy">© 2025 Heat District Productions · Miami & Broward County · All Rights Reserved</p>
   </footer>
 
   <script>
-    function toggleFaq(button) {
-      const item = button.closest('.faq-item');
-      const answer = item.querySelector('.faq-answer');
-
-      if (!item || !answer) return;
-
-      const isOpen = item.classList.contains('open');
-
-      if (isOpen) {
-        answer.style.maxHeight = null;
-        item.classList.remove('open');
-      } else {
-        item.classList.add('open');
-        answer.style.maxHeight = answer.scrollHeight + 'px';
-      }
-    }
-
-    function openInitialFaqs() {
-      document.querySelectorAll('.faq-item.open').forEach(function(item) {
-        const answer = item.querySelector('.faq-answer');
-        if (answer) {
-          answer.style.maxHeight = answer.scrollHeight + 'px';
-        }
-      });
-    }
-
-    function filterFaq(category, clickedButton) {
-      const sections = document.querySelectorAll('.faq-section');
-      const tabs = document.querySelectorAll('.faq-tab');
-
-      tabs.forEach(function(tab) {
-        tab.classList.remove('active');
-      });
-
-      if (clickedButton) {
-        clickedButton.classList.add('active');
-      }
-
-      sections.forEach(function(section) {
-        if (category === 'all' || section.dataset.category === category) {
-          section.classList.remove('is-hidden');
-        } else {
-          section.classList.add('is-hidden');
-        }
-      });
-
-      const firstVisible = document.querySelector('.faq-section:not(.is-hidden)');
-
-      if (firstVisible) {
-        firstVisible.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
-    }
-
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileNav = document.getElementById('mobileNav');
 
@@ -1258,13 +1374,6 @@
         if (window.innerWidth > 900) {
           closeMobileMenu();
         }
-
-        document.querySelectorAll('.faq-item.open').forEach(function(item) {
-          const answer = item.querySelector('.faq-answer');
-          if (answer) {
-            answer.style.maxHeight = answer.scrollHeight + 'px';
-          }
-        });
       });
 
       document.addEventListener('click', function(event) {
@@ -1277,8 +1386,54 @@
       });
     }
 
-    openInitialFaqs();
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(function(item) {
+      const question = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+
+      if (!question || !answer) return;
+
+      function setHeight() {
+        if (item.classList.contains('open')) {
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        } else {
+          answer.style.maxHeight = '0px';
+        }
+      }
+
+      question.addEventListener('click', function() {
+        const isOpen = item.classList.contains('open');
+
+        faqItems.forEach(function(otherItem) {
+          otherItem.classList.remove('open');
+          const otherAnswer = otherItem.querySelector('.faq-answer');
+          if (otherAnswer) {
+            otherAnswer.style.maxHeight = '0px';
+          }
+        });
+
+        if (!isOpen) {
+          item.classList.add('open');
+        }
+
+        setHeight();
+      });
+
+      setHeight();
+    });
+
+    window.addEventListener('resize', function() {
+      faqItems.forEach(function(item) {
+        const answer = item.querySelector('.faq-answer');
+
+        if (answer && item.classList.contains('open')) {
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
   </script>
 
+  <script src="js/global-cart.js"></script>
 </body>
 </html>

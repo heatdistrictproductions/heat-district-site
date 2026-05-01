@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy — Heat District Productions</title>
+  <meta name="description" content="Privacy Policy for Heat District Productions. Learn how we collect, use, and protect information submitted through our website, contact forms, booking forms, and event checkout process." />
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/global.css">
+
+  <style>
+    :root {
+      --neon-blue: #00f0ff;
+      --neon-pink: #ff2d78;
+      --neon-purple: #bf00ff;
+      --dark-bg: #05050f;
+      --card-bg: #0a0a1a;
+      --card-bg-2: #0d0d20;
+      --text-light: #e8e8f0;
+      --muted-white: rgba(232,232,240,0.5);
+      --soft-border: rgba(0,240,255,0.1);
+      --success: rgba(77,255,145,0.88);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: #05050f;
+    }
+
+    body {
+      background: var(--dark-bg);
+      color: var(--text-light);
+      font-family: 'Raleway', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 48px;
+      background: rgba(5,5,15,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,240,255,0.15);
+    }
+
+    .nav-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .nav-logo img {
+      height: 52px;
+      width: auto;
+      filter:
+        drop-shadow(0 0 6px rgba(0,240,255,0.8))
+        drop-shadow(0 0 14px rgba(0,240,255,0.5))
+        drop-shadow(0 0 4px rgba(255,45,120,0.4));
+    }
+
+    .nav-links {
+      display: flex;
+      flex: 1;
+      justify-content: space-evenly;
+      align-items: center;
+      list-style: none;
+      padding: 0 40px;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color 0.3s, text-shadow 0.3s;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--neon-blue);
+      text-shadow: 0 0 8px var(--neon-blue);
+    }
+
+    .nav-item-dropdown {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-link-with-dropdown {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-link-with-dropdown::after {
+      content: '▾';
+      font-size: 0.58rem;
+      color: rgba(0,240,255,0.7);
+      transform: translateY(-1px);
+    }
+
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 18px);
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      width: 260px;
+      padding: 12px;
+      background: rgba(8,8,20,0.98);
+      border: 1px solid rgba(0,240,255,0.16);
+      border-radius: 14px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.45), 0 0 24px rgba(0,240,255,0.08);
+      backdrop-filter: blur(14px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+
+    .nav-dropdown::before {
+      content: '';
+      position: absolute;
+      top: -18px;
+      left: 0;
+      right: 0;
+      height: 18px;
+    }
+
+    .nav-item-dropdown:hover .nav-dropdown,
+    .nav-item-dropdown:focus-within .nav-dropdown {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-dropdown a {
+      display: block;
+      padding: 11px 12px;
+      border-radius: 8px;
+      color: rgba(232,232,240,0.72);
+      font-size: 0.68rem;
+      letter-spacing: 1.8px;
+      line-height: 1.25;
+    }
+
+    .nav-dropdown a:hover {
+      background: rgba(0,240,255,0.07);
+      color: var(--neon-blue);
+      text-shadow: 0 0 8px rgba(0,240,255,0.45);
+    }
+
+    .nav-cta {
+      flex-shrink: 0;
+      background: transparent;
+      border: 1.5px solid var(--neon-pink);
+      color: var(--neon-pink) !important;
+      padding: 8px 22px;
+      border-radius: 4px;
+      transition: background 0.3s, box-shadow 0.3s !important;
+      white-space: nowrap;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .nav-cta:hover {
+      background: rgba(255,45,120,0.15) !important;
+      box-shadow: 0 0 18px rgba(255,45,120,0.4) !important;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      width: 46px;
+      height: 46px;
+      background: transparent;
+      border: 1px solid rgba(0,240,255,0.18);
+      border-radius: 8px;
+      cursor: pointer;
+      padding: 10px 9px;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      flex-shrink: 0;
+    }
+
+    .mobile-menu-btn span {
+      display: block;
+      width: 100%;
+      height: 1.5px;
+      background: var(--text-light);
+      border-radius: 999px;
+      transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+    }
+
+    .mobile-menu-btn.active span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+      background: var(--neon-blue);
+    }
+
+    .mobile-menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mobile-menu-btn.active span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+      background: var(--neon-blue);
+    }
+
+    .mobile-nav {
+      position: fixed;
+      top: 73px;
+      left: 16px;
+      right: 16px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 14px;
+      background: rgba(8,8,20,0.98);
+      border: 1px solid rgba(0,240,255,0.14);
+      border-radius: 14px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-10px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .mobile-nav.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .mobile-nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 14px 12px;
+      border-radius: 8px;
+      transition: background 0.25s ease, color 0.25s ease, text-shadow 0.25s ease;
+    }
+
+    .mobile-nav a:hover,
+    .mobile-nav a.active {
+      background: rgba(0,240,255,0.06);
+      color: var(--neon-blue);
+      text-shadow: 0 0 8px var(--neon-blue);
+    }
+
+    .mobile-nav-sub {
+      margin: -4px 0 8px;
+      padding: 4px 0 8px 14px;
+      border-left: 1px solid rgba(0,240,255,0.14);
+    }
+
+    .mobile-nav-sub a {
+      font-size: 0.68rem;
+      padding: 10px 12px;
+      color: rgba(232,232,240,0.58);
+    }
+
+    .mobile-nav-book {
+      margin-top: 8px;
+      border: 1.5px solid var(--neon-pink);
+      color: var(--neon-pink) !important;
+      text-align: center;
+    }
+
+    body.mobile-menu-open {
+      overflow: hidden;
+    }
+
+    .page-hero {
+      padding: 160px 48px 76px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(0,240,255,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse at 20% 100%, rgba(255,45,120,0.06) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .page-hero-eyebrow {
+      position: relative;
+      z-index: 1;
+      font-size: 0.68rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: rgba(0,240,255,0.6);
+      margin-bottom: 16px;
+      font-weight: 400;
+    }
+
+    .page-hero h1 {
+      position: relative;
+      z-index: 1;
+      font-size: clamp(2.3rem, 5vw, 4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: #fff;
+      line-height: 1.12;
+      margin-bottom: 16px;
+    }
+
+    .page-hero h1 strong {
+      font-weight: 700;
+      font-style: normal;
+      color: var(--neon-pink);
+    }
+
+    .page-hero p {
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      line-height: 1.9;
+      color: var(--muted-white);
+      font-weight: 300;
+    }
+
+    .neon-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,240,255,0.25), rgba(255,45,120,0.25), transparent);
+    }
+
+    .privacy-wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 76px 48px 110px;
+    }
+
+    .privacy-layout {
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .privacy-sidebar {
+      position: sticky;
+      top: 104px;
+      border: 1px solid rgba(0,240,255,0.1);
+      border-radius: 16px;
+      padding: 24px;
+      background: linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.98));
+      box-shadow: 0 16px 48px rgba(0,0,0,0.28);
+    }
+
+    .sidebar-kicker {
+      font-size: 0.58rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(0,240,255,0.7);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .sidebar-title {
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+
+    .sidebar-copy {
+      color: rgba(232,232,240,0.5);
+      font-size: 0.8rem;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .privacy-nav-list {
+      display: grid;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .privacy-nav-list a {
+      display: block;
+      text-decoration: none;
+      border: 1px solid rgba(0,240,255,0.08);
+      border-radius: 10px;
+      padding: 11px 12px;
+      color: rgba(232,232,240,0.7);
+      font-size: 0.72rem;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+      line-height: 1.45;
+      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .privacy-nav-list a:hover {
+      background: rgba(0,240,255,0.06);
+      border-color: rgba(0,240,255,0.24);
+      color: var(--neon-blue);
+      transform: translateX(3px);
+    }
+
+    .privacy-card {
+      border: 1px solid rgba(0,240,255,0.09);
+      border-radius: 18px;
+      padding: 34px;
+      background:
+        radial-gradient(ellipse at 0% 0%, rgba(0,240,255,0.045), transparent 48%),
+        radial-gradient(ellipse at 100% 100%, rgba(255,45,120,0.04), transparent 50%),
+        linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.98));
+      box-shadow: 0 16px 48px rgba(0,0,0,0.28);
+    }
+
+    .policy-top {
+      padding-bottom: 26px;
+      margin-bottom: 28px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .policy-kicker {
+      font-size: 0.62rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(0,240,255,0.7);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .policy-title {
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: #fff;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .policy-title strong {
+      color: var(--neon-pink);
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .policy-updated {
+      color: rgba(232,232,240,0.42);
+      font-size: 0.82rem;
+      line-height: 1.7;
+    }
+
+    .policy-section {
+      scroll-margin-top: 110px;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.055);
+    }
+
+    .policy-section:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .policy-section h2 {
+      color: #fff;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
+
+    .policy-section p {
+      color: rgba(232,232,240,0.58);
+      font-size: 0.9rem;
+      line-height: 1.9;
+      font-weight: 300;
+      margin-bottom: 14px;
+    }
+
+    .policy-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .policy-section strong {
+      color: rgba(232,232,240,0.92);
+      font-weight: 600;
+    }
+
+    .policy-list {
+      display: grid;
+      gap: 10px;
+      margin: 16px 0 4px;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .policy-list li {
+      color: rgba(232,232,240,0.58);
+      font-size: 0.88rem;
+      line-height: 1.8;
+      font-weight: 300;
+      display: grid;
+      grid-template-columns: 8px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .policy-list li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--neon-blue);
+      margin-top: 11px;
+      box-shadow: 0 0 10px rgba(0,240,255,0.35);
+    }
+
+    .policy-note {
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,45,120,0.14);
+      background: rgba(255,45,120,0.04);
+      color: rgba(232,232,240,0.64);
+      font-size: 0.82rem;
+      line-height: 1.8;
+    }
+
+    .contact-box {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .contact-mini {
+      border: 1px solid rgba(0,240,255,0.1);
+      border-radius: 12px;
+      padding: 16px;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .contact-mini-label {
+      font-size: 0.58rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(0,240,255,0.68);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .contact-mini a,
+    .contact-mini div {
+      color: rgba(232,232,240,0.82);
+      text-decoration: none;
+      font-size: 0.86rem;
+      line-height: 1.6;
+    }
+
+    .contact-mini a:hover {
+      color: var(--neon-blue);
+    }
+
+    footer {
+      text-align: center;
+      padding: 60px 48px 100px;
+      border-top: 1px solid rgba(0,240,255,0.08);
+    }
+
+    .footer-logo img {
+      height: 64px;
+      width: auto;
+      margin-bottom: 6px;
+      filter:
+        drop-shadow(0 0 5px rgba(0,240,255,0.6))
+        drop-shadow(0 0 12px rgba(255,45,120,0.3));
+    }
+
+    .footer-productions-text {
+      font-size: 0.55rem;
+      letter-spacing: 6px;
+      color: rgba(232,232,240,0.2);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .footer-contact {
+      margin: 28px 0;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .footer-contact a {
+      color: rgba(232,232,240,0.4);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+      font-weight: 300;
+    }
+
+    .footer-contact a:hover {
+      color: var(--neon-blue);
+    }
+
+    .footer-copy {
+      font-size: 0.68rem;
+      color: rgba(232,232,240,0.18);
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-top: 32px;
+    }
+
+    @media (max-width: 1050px) {
+      .privacy-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .privacy-sidebar {
+        position: relative;
+        top: auto;
+      }
+
+      .privacy-nav-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        padding: 10px 18px;
+      }
+
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: flex;
+      }
+
+      .page-hero {
+        padding: 145px 24px 62px;
+      }
+
+      .privacy-wrap {
+        padding: 60px 24px 92px;
+      }
+
+      .privacy-card {
+        padding: 26px 22px;
+      }
+
+      .privacy-nav-list {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        padding: 60px 24px 100px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="Heat District Productions" />
+    </a>
+
+    <ul class="nav-links">
+      <li class="nav-item-dropdown">
+        <a href="services.html" class="nav-link-with-dropdown">Products</a>
+
+        <div class="nav-dropdown">
+          <a href="services.html#foundation-services">Sound Systems</a>
+          <a href="services.html#lighting-packages">Lighting Packages</a>
+          <a href="services.html#lighting-effects">Lighting & Effects</a>
+          <a href="services.html#dj-rentals">DJ Equipment</a>
+          <a href="services.html#guest-media">Photo Booth</a>
+          <a href="services.html#services-media">Photography & Video</a>
+          <a href="services.html#party-furniture">Party Furniture</a>
+          <a href="services.html#staging-trussing">Staging & Trussing</a>
+        </div>
+      </li>
+
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="team.html">Our Team</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <a href="packages.html" class="nav-cta">Book Now</a>
+
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav" type="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="services.html">Products</a>
+
+    <div class="mobile-nav-sub">
+      <a href="services.html#foundation-services">Sound Systems</a>
+      <a href="services.html#lighting-packages">Lighting Packages</a>
+      <a href="services.html#lighting-effects">Lighting & Effects</a>
+      <a href="services.html#dj-rentals">DJ Equipment</a>
+      <a href="services.html#guest-media">Photo Booth</a>
+      <a href="services.html#services-media">Photography & Video</a>
+      <a href="services.html#party-furniture">Party Furniture</a>
+      <a href="services.html#staging-trussing">Staging & Trussing</a>
+    </div>
+
+    <a href="packages.html">Packages</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="team.html">Our Team</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a>
+    <a href="packages.html" class="mobile-nav-book">Book Now</a>
+  </div>
+
+  <section class="page-hero">
+    <p class="page-hero-eyebrow">Privacy · Client Information · Booking Details</p>
+    <h1>Privacy<br><strong>Policy</strong></h1>
+    <p>
+      This page explains how Heat District Productions collects, uses, and protects information submitted through our website, quote forms, package builder, checkout process, and direct contact channels.
+    </p>
+  </section>
+
+  <div class="neon-divider"></div>
+
+  <main class="privacy-wrap">
+    <div class="privacy-layout">
+
+      <aside class="privacy-sidebar">
+        <div class="sidebar-kicker">Quick Sections</div>
+        <div class="sidebar-title">Privacy Policy Menu</div>
+        <p class="sidebar-copy">
+          Use these links to jump through the main privacy sections.
+        </p>
+
+        <ul class="privacy-nav-list">
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#information">Information We Collect</a></li>
+          <li><a href="#usage">How We Use Information</a></li>
+          <li><a href="#payments">Invoices & Payments</a></li>
+          <li><a href="#storage">Website Storage</a></li>
+          <li><a href="#sharing">Sharing Information</a></li>
+          <li><a href="#security">Security</a></li>
+          <li><a href="#rights">Your Choices</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </aside>
+
+      <section class="privacy-card">
+        <div class="policy-top">
+          <p class="policy-kicker">Heat District Productions</p>
+          <h2 class="policy-title">Website <strong>Privacy Policy</strong></h2>
+          <p class="policy-updated">
+            Last Updated: April 30, 2026
+          </p>
+        </div>
+
+        <section class="policy-section" id="overview">
+          <h2>1. Overview</h2>
+          <p>
+            Heat District Productions respects your privacy. This Privacy Policy explains how we collect, use, store, and protect information when you visit our website, request a quote, select packages or products, submit checkout details, or contact us directly.
+          </p>
+          <p>
+            By using this website, submitting a form, or providing event information to Heat District Productions, you agree to the practices described in this Privacy Policy.
+          </p>
+        </section>
+
+        <section class="policy-section" id="information">
+          <h2>2. Information We Collect</h2>
+          <p>
+            We may collect information that you voluntarily provide through our website forms, booking process, checkout page, email, phone, text, or social media messages.
+          </p>
+
+          <ul class="policy-list">
+            <li><strong>Contact information:</strong> name, phone number, email address, and preferred contact method.</li>
+            <li><strong>Event information:</strong> event date, event type, venue name, venue address, guest count, start time, setup notes, and special requests.</li>
+            <li><strong>Booking selections:</strong> selected package, selected add-ons, product cart items, event hours, estimated totals, deposit amounts, and remaining balance.</li>
+            <li><strong>Quote request details:</strong> services needed, custom production requests, budget-related notes, and event preferences.</li>
+            <li><strong>Communication records:</strong> messages sent through our contact form, email, phone, Instagram, or other communication channels.</li>
+          </ul>
+        </section>
+
+        <section class="policy-section" id="usage">
+          <h2>3. How We Use Your Information</h2>
+          <p>
+            We use the information you provide to respond to your inquiries, prepare quotes, review event details, create booking estimates, send invoices, coordinate event production, and communicate with you before and after your event.
+          </p>
+
+          <ul class="policy-list">
+            <li>To respond to quote requests, booking requests, and general questions.</li>
+            <li>To prepare event estimates, package recommendations, and custom production builds.</li>
+            <li>To create deposit invoices and send payment instructions.</li>
+            <li>To coordinate event logistics such as timing, location, setup needs, power requirements, and access details.</li>
+            <li>To improve our website, services, packages, and client experience.</li>
+            <li>To keep internal records related to quotes, bookings, invoices, and event communication.</li>
+          </ul>
+        </section>
+
+        <section class="policy-section" id="payments">
+          <h2>4. Invoices, Deposits, and Payments</h2>
+          <p>
+            Heat District Productions may use third-party tools such as QuickBooks or other payment/invoicing platforms to create invoices, send payment links, collect deposits, and track payment status.
+          </p>
+          <p>
+            Our website does not directly collect or store your full credit card number, bank account details, or payment card security code. Payment information is handled by the payment or invoicing provider used to complete the transaction.
+          </p>
+
+          <div class="policy-note">
+            Deposit amounts shown on the website are estimates until reviewed and confirmed by Heat District Productions. Final pricing may change based on venue access, staffing, power needs, event complexity, travel, timing, and custom production requirements.
+          </div>
+        </section>
+
+        <section class="policy-section" id="storage">
+          <h2>5. Website Storage and Session Data</h2>
+          <p>
+            Our website may temporarily store package selections, add-on selections, product cart items, estimated totals, and checkout details in your browser using session storage or similar browser-based storage. This helps the website remember your selections as you move from packages to add-ons to checkout.
+          </p>
+          <p>
+            This browser-based information is mainly used to make the booking flow work correctly. You can clear this data by closing the browser session, clearing your browser storage, or using the clear cart options where available.
+          </p>
+        </section>
+
+        <section class="policy-section" id="sharing">
+          <h2>6. How We Share Information</h2>
+          <p>
+            We do not sell your personal information. We may share information only when needed to operate our business, complete your booking, process invoices, respond to your request, or comply with legal requirements.
+          </p>
+
+          <ul class="policy-list">
+            <li><strong>Service providers:</strong> invoicing, payment processing, contact forms, email services, hosting, website tools, and other business operations.</li>
+            <li><strong>Event-related vendors:</strong> only when necessary for a specific event or custom production request.</li>
+            <li><strong>Legal or safety reasons:</strong> if required to comply with law, enforce agreements, prevent fraud, or protect the rights and safety of Heat District Productions, our clients, or others.</li>
+          </ul>
+        </section>
+
+        <section class="policy-section" id="security">
+          <h2>7. Data Security</h2>
+          <p>
+            We take reasonable steps to protect the information submitted to us. However, no website, email system, payment platform, or internet transmission can be guaranteed to be completely secure.
+          </p>
+          <p>
+            Please avoid sending highly sensitive payment information, passwords, or private documents through regular contact forms, text messages, or social media messages.
+          </p>
+        </section>
+
+        <section class="policy-section" id="rights">
+          <h2>8. Your Choices and Requests</h2>
+          <p>
+            You may contact us to request that we update, correct, or delete certain personal information we have collected from you, subject to any business, legal, accounting, or contractual obligations that require us to keep certain records.
+          </p>
+          <p>
+            You may also choose not to provide certain information, but some information may be required for us to prepare a quote, confirm event details, create an invoice, or complete a booking.
+          </p>
+        </section>
+
+        <section class="policy-section" id="children">
+          <h2>9. Children’s Privacy</h2>
+          <p>
+            Our website and services are intended for clients, event organizers, and individuals who are able to request event services. We do not knowingly collect personal information from children under 13.
+          </p>
+        </section>
+
+        <section class="policy-section" id="changes">
+          <h2>10. Changes to This Policy</h2>
+          <p>
+            Heat District Productions may update this Privacy Policy from time to time. When changes are made, the updated date at the top of this page may be revised. Continued use of the website after changes are posted means you accept the updated policy.
+          </p>
+        </section>
+
+        <section class="policy-section" id="contact">
+          <h2>11. Contact Us</h2>
+          <p>
+            For questions about this Privacy Policy or how your information is handled, contact Heat District Productions directly.
+          </p>
+
+          <div class="contact-box">
+            <div class="contact-mini">
+              <div class="contact-mini-label">Phone</div>
+              <a href="tel:9545472990">(954) 547-2990</a>
+            </div>
+
+            <div class="contact-mini">
+              <div class="contact-mini-label">Email</div>
+              <a href="mailto:HeatDistrictProd@gmail.com">HeatDistrictProd@gmail.com</a>
+            </div>
+
+            <div class="contact-mini">
+              <div class="contact-mini-label">Instagram</div>
+              <a href="https://instagram.com/heatdistrictproductions" target="_blank">@HeatDistrictProductions</a>
+            </div>
+
+            <div class="contact-mini">
+              <div class="contact-mini-label">Website</div>
+              <a href="https://www.heatdistrictproductions.com">heatdistrictproductions.com</a>
+            </div>
+          </div>
+        </section>
+
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-logo">
+      <img src="logo.png" alt="Heat District Productions" />
+      <span class="footer-productions-text">Productions</span>
+    </div>
+
+    <div class="footer-contact">
+      <a href="tel:9545472990">(954) 547-2990</a>
+      <a href="mailto:HeatDistrictProd@gmail.com">HeatDistrictProd@gmail.com</a>
+      <a href="https://instagram.com/heatdistrictproductions" target="_blank">@HeatDistrictProductions</a>
+      <a href="https://www.heatdistrictproductions.com">heatdistrictproductions.com</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+
+    <p class="footer-copy">© 2025 Heat District Productions · Miami & Broward County · All Rights Reserved</p>
+  </footer>
+
+  <script>
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+
+    function closeMobileMenu() {
+      if (!mobileMenuBtn || !mobileNav) return;
+
+      mobileNav.classList.remove('open');
+      mobileMenuBtn.classList.remove('active');
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('mobile-menu-open');
+    }
+
+    function toggleMobileMenu() {
+      if (!mobileMenuBtn || !mobileNav) return;
+
+      const isOpen = mobileNav.classList.contains('open');
+
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        mobileNav.classList.add('open');
+        mobileMenuBtn.classList.add('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('mobile-menu-open');
+      }
+    }
+
+    if (mobileMenuBtn && mobileNav) {
+      mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+      mobileNav.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', closeMobileMenu);
+      });
+
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 900) {
+          closeMobileMenu();
+        }
+      });
+
+      document.addEventListener('click', function(event) {
+        const clickedInsideNav = mobileNav.contains(event.target);
+        const clickedButton = mobileMenuBtn.contains(event.target);
+
+        if (!clickedInsideNav && !clickedButton && mobileNav.classList.contains('open')) {
+          closeMobileMenu();
+        }
+      });
+    }
+  </script>
+<script src="js/global-cart.js"></script>
+</body>
+</html>

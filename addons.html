@@ -7,6 +7,7 @@
   <meta name="description" content="Customize your Heat District Productions event package with add-ons for lighting, sound, photo booth, photography, videography, red carpet, trussing, DJ rentals, and special effects." />
 
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/global.css">
 
   <style>
     :root {
@@ -30,6 +31,7 @@
 
     html {
       scroll-behavior: smooth;
+      background: #05050f;
     }
 
     body {
@@ -37,6 +39,7 @@
       color: var(--text-light);
       font-family: 'Raleway', sans-serif;
       overflow-x: hidden;
+      min-height: 100vh;
     }
 
     nav {
@@ -79,6 +82,10 @@
       padding: 0 40px;
     }
 
+    .nav-links li {
+      position: relative;
+    }
+
     .nav-links a {
       color: var(--text-light);
       text-decoration: none;
@@ -94,6 +101,74 @@
     .nav-links a.active {
       color: var(--neon-blue);
       text-shadow: 0 0 8px var(--neon-blue);
+    }
+
+    .nav-item-dropdown {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-link-with-dropdown {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-link-with-dropdown::after {
+      content: '▾';
+      font-size: 0.58rem;
+      color: rgba(0,240,255,0.7);
+      transform: translateY(-1px);
+    }
+
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 18px);
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      width: 260px;
+      padding: 12px;
+      background: rgba(8,8,20,0.98);
+      border: 1px solid rgba(0,240,255,0.16);
+      border-radius: 14px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.45), 0 0 24px rgba(0,240,255,0.08);
+      backdrop-filter: blur(14px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+
+    .nav-dropdown::before {
+      content: '';
+      position: absolute;
+      top: -18px;
+      left: 0;
+      right: 0;
+      height: 18px;
+    }
+
+    .nav-item-dropdown:hover .nav-dropdown,
+    .nav-item-dropdown:focus-within .nav-dropdown {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-dropdown a {
+      display: block;
+      padding: 11px 12px;
+      border-radius: 8px;
+      color: rgba(232,232,240,0.72);
+      font-size: 0.68rem;
+      letter-spacing: 1.8px;
+      line-height: 1.25;
+    }
+
+    .nav-dropdown a:hover {
+      background: rgba(0,240,255,0.07);
+      color: var(--neon-blue);
+      text-shadow: 0 0 8px rgba(0,240,255,0.45);
     }
 
     .nav-cta {
@@ -199,6 +274,18 @@
       background: rgba(0,240,255,0.06);
       color: var(--neon-blue);
       text-shadow: 0 0 8px var(--neon-blue);
+    }
+
+    .mobile-nav-sub {
+      margin: -4px 0 8px;
+      padding: 4px 0 8px 14px;
+      border-left: 1px solid rgba(0,240,255,0.14);
+    }
+
+    .mobile-nav-sub a {
+      font-size: 0.68rem;
+      padding: 10px 12px;
+      color: rgba(232,232,240,0.58);
     }
 
     .mobile-nav-book {
@@ -1013,7 +1100,21 @@
     </a>
 
     <ul class="nav-links">
-      <li><a href="services.html">Products</a></li>
+      <li class="nav-item-dropdown">
+        <a href="services.html" class="nav-link-with-dropdown">Products</a>
+
+        <div class="nav-dropdown">
+          <a href="services.html#sound">Sound Systems</a>
+          <a href="services.html#lighting">Lighting</a>
+          <a href="services.html#dj-equipment">DJ Equipment</a>
+          <a href="services.html#photo-booth">Photo Booth</a>
+          <a href="services.html#photo-video">Photography & Video</a>
+          <a href="services.html#effects">Special Effects</a>
+          <a href="services.html#led-walls">LED Walls</a>
+          <a href="services.html#staging-trussing">Staging & Trussing</a>
+        </div>
+      </li>
+
       <li><a href="packages.html">Packages</a></li>
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="team.html">Our Team</a></li>
@@ -1032,6 +1133,18 @@
 
   <div class="mobile-nav" id="mobileNav">
     <a href="services.html">Products</a>
+
+    <div class="mobile-nav-sub">
+      <a href="services.html#sound">Sound Systems</a>
+      <a href="services.html#lighting">Lighting</a>
+      <a href="services.html#dj-equipment">DJ Equipment</a>
+      <a href="services.html#photo-booth">Photo Booth</a>
+      <a href="services.html#photo-video">Photography & Video</a>
+      <a href="services.html#effects">Special Effects</a>
+      <a href="services.html#led-walls">LED Walls</a>
+      <a href="services.html#staging-trussing">Staging & Trussing</a>
+    </div>
+
     <a href="packages.html">Packages</a>
     <a href="gallery.html">Gallery</a>
     <a href="team.html">Our Team</a>
@@ -1073,10 +1186,10 @@
 
         <div class="category-filter">
           <button class="filter-btn active" type="button" onclick="filterGroups('all', this)">Show All</button>
-          <button class="filter-btn" type="button" onclick="filterGroups('services', this)">Photo / Video</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('popular', this)">Most Popular</button>
           <button class="filter-btn" type="button" onclick="filterGroups('lighting-packages', this)">Lighting Packages</button>
           <button class="filter-btn" type="button" onclick="filterGroups('guest-media', this)">Guest Experience</button>
-          <button class="filter-btn" type="button" onclick="filterGroups('services', this)">DJ / Photo</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('services', this)">Photo / Video</button>
           <button class="filter-btn" type="button" onclick="filterGroups('foundation', this)">Sound & Mics</button>
           <button class="filter-btn" type="button" onclick="filterGroups('lighting-effects', this)">Lighting & Effects</button>
           <button class="filter-btn" type="button" onclick="filterGroups('dj-rentals', this)">DJ Rentals</button>
@@ -1158,61 +1271,59 @@
 
   <script>
     const ADDONS = {
-      
-'pa-speaker': {
-  id: 'pa-speaker',
-  label: 'Sound & Mics',
-  title: 'Additional PA Speaker',
-  copy: 'Add an extra PA speaker for larger rooms, cocktail areas, ceremonies, outdoor spaces, side rooms, or areas that need additional sound coverage beyond the package sound system.',
-  options: [
-    {
-      id: 'pa-speaker-single',
-      label: '1 Additional PA Speaker',
-      name: 'Additional PA Speaker',
-      category: 'Sound & Mics',
-      price: 125,
-      unit: 'speaker',
-      displayUnit: 'speaker'
-    }
-  ]
-},
+      'pa-speaker': {
+        id: 'pa-speaker',
+        label: 'Sound & Mics',
+        title: 'Additional PA Speaker',
+        copy: 'Add an extra PA speaker for larger rooms, cocktail areas, ceremonies, outdoor spaces, side rooms, or areas that need additional sound coverage beyond the package sound system.',
+        options: [
+          {
+            id: 'pa-speaker-single',
+            label: '1 Additional PA Speaker',
+            name: 'Additional PA Speaker',
+            category: 'Sound & Mics',
+            price: 125,
+            unit: 'speaker',
+            displayUnit: 'speaker'
+          }
+        ]
+      },
 
-'additional-speaker': {
-  id: 'additional-speaker',
-  label: 'Sound & Mics',
-  title: 'Additional Speaker',
-  copy: 'Add an extra speaker for more sound coverage in larger rooms, side areas, cocktail spaces, ceremonies, outdoor sections, or areas that need audio beyond the main package setup.',
-  options: [
-    {
-      id: 'additional-speaker-single',
-      label: '1 Additional Speaker',
-      name: 'Additional Speaker',
-      category: 'Sound & Mics',
-      price: 125,
-      unit: 'speaker',
-      displayUnit: 'speaker'
-    }
-  ]
-},
+      'additional-speaker': {
+        id: 'additional-speaker',
+        label: 'Sound & Mics',
+        title: 'Additional Speaker',
+        copy: 'Add an extra speaker for more sound coverage in larger rooms, side areas, cocktail spaces, ceremonies, outdoor sections, or areas that need audio beyond the main package setup.',
+        options: [
+          {
+            id: 'additional-speaker-single',
+            label: '1 Additional Speaker',
+            name: 'Additional Speaker',
+            category: 'Sound & Mics',
+            price: 125,
+            unit: 'speaker',
+            displayUnit: 'speaker'
+          }
+        ]
+      },
 
-'additional-subwoofer': {
-  id: 'additional-subwoofer',
-  label: 'Sound & Mics',
-  title: 'Additional Subwoofer',
-  copy: 'Add an extra subwoofer for stronger bass and more low-end impact. Best for larger dance floors, DJs, parties, outdoor events, and high-energy setups.',
-  options: [
-    {
-      id: 'additional-subwoofer-single',
-      label: '1 Additional Subwoofer',
-      name: 'Additional Subwoofer',
-      category: 'Sound & Mics',
-      price: 175,
-      unit: 'subwoofer',
-      displayUnit: 'subwoofer'
-    }
-  ]
-},
-
+      'additional-subwoofer': {
+        id: 'additional-subwoofer',
+        label: 'Sound & Mics',
+        title: 'Additional Subwoofer',
+        copy: 'Add an extra subwoofer for stronger bass and more low-end impact. Best for larger dance floors, DJs, parties, outdoor events, and high-energy setups.',
+        options: [
+          {
+            id: 'additional-subwoofer-single',
+            label: '1 Additional Subwoofer',
+            name: 'Additional Subwoofer',
+            category: 'Sound & Mics',
+            price: 175,
+            unit: 'subwoofer',
+            displayUnit: 'subwoofer'
+          }
+        ]
+      },
 
       'microphone': {
         id: 'microphone',
@@ -1231,7 +1342,6 @@
           }
         ]
       },
-
 
       'photography': {
         id: 'photography',
@@ -1378,22 +1488,22 @@
       },
 
       'foam-glow-sticks': {
-  id: 'foam-glow-sticks',
-  label: 'Guest Experience',
-  title: 'Foam Glow Sticks',
-  copy: 'Add crowd energy for dance floors, club-style events, quinceañeras, birthdays, and high-energy party moments. Glow sticks are sold in packs of 25.',
-  options: [
-    {
-      id: 'foam-glow-sticks-pack-25',
-      label: 'Pack of 25 Foam Glow Sticks',
-      name: 'Foam Glow Sticks — Pack of 25',
-      category: 'Guest Experience',
-      price: 75,
-      unit: 'pack',
-      displayUnit: 'pack of 25'
-    }
-  ]
-},
+        id: 'foam-glow-sticks',
+        label: 'Guest Experience',
+        title: 'Foam Glow Sticks',
+        copy: 'Add crowd energy for dance floors, club-style events, quinceañeras, birthdays, and high-energy party moments. Glow sticks are sold in packs of 25.',
+        options: [
+          {
+            id: 'foam-glow-sticks-pack-25',
+            label: 'Pack of 25 Foam Glow Sticks',
+            name: 'Foam Glow Sticks — Pack of 25',
+            category: 'Guest Experience',
+            price: 75,
+            unit: 'pack',
+            displayUnit: 'pack of 25'
+          }
+        ]
+      },
 
       'led-cocktail-tables': {
         id: 'led-cocktail-tables',
@@ -1413,7 +1523,7 @@
         ]
       },
 
-            'glow-lighting-package': {
+      'glow-lighting-package': {
         id: 'glow-lighting-package',
         label: 'Lighting Packages',
         title: 'Glow Lighting Package',
@@ -1504,49 +1614,49 @@
       },
 
       'moving-heads': {
-  id: 'moving-heads',
-  label: 'Lighting',
-  title: 'Moving Heads',
-  copy: 'Add moving head lights for a bigger production look. Choose from 2-head or 4-head setups with totems, goal post trussing, or a combination setup depending on the size and style of the event.',
-  options: [
-    {
-      id: 'moving-heads-2-heads-2-totems',
-      label: '2 Moving Heads + 2 Totems',
-      name: 'Moving Heads — 2 Heads with 2 Totems',
-      category: 'Lighting',
-      price: 375,
-      unit: 'setup',
-      displayUnit: 'setup'
-    },
-    {
-      id: 'moving-heads-2-heads-goal-post',
-      label: '2 Moving Heads + Goal Post',
-      name: 'Moving Heads — 2 Heads with Goal Post',
-      category: 'Lighting',
-      price: 550,
-      unit: 'setup',
-      displayUnit: 'setup'
-    },
-    {
-      id: 'moving-heads-4-heads-4-totems',
-      label: '4 Moving Heads + 4 Totems',
-      name: 'Moving Heads — 4 Heads with 4 Totems',
-      category: 'Lighting',
-      price: 750,
-      unit: 'setup',
-      displayUnit: 'setup'
-    },
-    {
-      id: 'moving-heads-4-heads-2-totems-goal-post',
-      label: '4 Moving Heads + 2 Totems + Goal Post',
-      name: 'Moving Heads — 4 Heads with 2 Totems + Goal Post',
-      category: 'Lighting',
-      price: 950,
-      unit: 'setup',
-      displayUnit: 'setup'
-    }
-  ]
-},
+        id: 'moving-heads',
+        label: 'Lighting',
+        title: 'Moving Heads',
+        copy: 'Add moving head lights for a bigger production look. Choose from 2-head or 4-head setups with totems, goal post trussing, or a combination setup depending on the size and style of the event.',
+        options: [
+          {
+            id: 'moving-heads-2-heads-2-totems',
+            label: '2 Moving Heads + 2 Totems',
+            name: 'Moving Heads — 2 Heads with 2 Totems',
+            category: 'Lighting',
+            price: 375,
+            unit: 'setup',
+            displayUnit: 'setup'
+          },
+          {
+            id: 'moving-heads-2-heads-goal-post',
+            label: '2 Moving Heads + Goal Post',
+            name: 'Moving Heads — 2 Heads with Goal Post',
+            category: 'Lighting',
+            price: 550,
+            unit: 'setup',
+            displayUnit: 'setup'
+          },
+          {
+            id: 'moving-heads-4-heads-4-totems',
+            label: '4 Moving Heads + 4 Totems',
+            name: 'Moving Heads — 4 Heads with 4 Totems',
+            category: 'Lighting',
+            price: 750,
+            unit: 'setup',
+            displayUnit: 'setup'
+          },
+          {
+            id: 'moving-heads-4-heads-2-totems-goal-post',
+            label: '4 Moving Heads + 2 Totems + Goal Post',
+            name: 'Moving Heads — 4 Heads with 2 Totems + Goal Post',
+            category: 'Lighting',
+            price: 950,
+            unit: 'setup',
+            displayUnit: 'setup'
+          }
+        ]
+      },
 
       'light-bar': {
         id: 'light-bar',
@@ -1792,22 +1902,22 @@
       },
 
       'extra-hour': {
-  id: 'extra-hour',
-  label: 'Guest Experience',
-  title: 'Extra Event Hour',
-  copy: 'Add extra time beyond the selected package coverage. Useful for longer receptions, extended parties, late-night events, or clients who want more time without upgrading the full package.',
-  options: [
-    {
-      id: 'extra-hour',
-      label: 'Extra Event Hour',
-      name: 'Extra Event Hour',
-      category: 'Guest Experience',
-      price: 150,
-      unit: 'hour',
-      displayUnit: 'hour'
-    }
-  ]
-}
+        id: 'extra-hour',
+        label: 'Guest Experience',
+        title: 'Extra Event Hour',
+        copy: 'Add extra time beyond the selected package coverage. Useful for longer receptions, extended parties, late-night events, or clients who want more time without upgrading the full package.',
+        options: [
+          {
+            id: 'extra-hour',
+            label: 'Extra Event Hour',
+            name: 'Extra Event Hour',
+            category: 'Guest Experience',
+            price: 150,
+            unit: 'hour',
+            displayUnit: 'hour'
+          }
+        ]
+      }
     };
 
     const GROUPS = [
@@ -1816,14 +1926,14 @@
         title: 'Most Popular Items',
         copy: 'The cleanest high-demand upgrades clients are most likely to add after choosing a package. Every item shown here also appears again inside its main category below.',
         pills: ['High Demand', 'Fast Upgrades', 'Best Add-Ons'],
-  addonIds: [
-  'photo-booth',
-  'photography',
-  'moving-heads',
-  'red-carpet',
-  'foam-glow-sticks',
-  'extra-hour'
-]
+        addonIds: [
+          'photo-booth',
+          'photography',
+          'moving-heads',
+          'red-carpet',
+          'foam-glow-sticks',
+          'extra-hour'
+        ]
       },
       {
         id: 'lighting-packages',
@@ -1837,40 +1947,40 @@
         ]
       },
       {
-  id: 'guest-media',
-  title: 'Guest Experience',
-  copy: 'Guest-facing add-ons for photo moments, entrances, VIP areas, event interaction, lounge-style upgrades, and extended event time.',
-  pills: ['Photo Booth', 'Guest Facing', 'Photo Moments', 'Extra Time'],
-  addonIds: [
-    'photo-booth',
-    'red-carpet',
-    'foam-glow-sticks',
-    'led-cocktail-tables',
-    'extra-hour'
-  ]
-},
-     {
-  id: 'services',
-  title: 'Photo & Video Services',
-  copy: 'Photography and videography coverage for events that need media, content, and creative recap deliverables.',
-  pills: ['Photo Coverage', 'Video Recaps'],
-  addonIds: [
-    'photography',
-    'videography'
-  ]
-},
+        id: 'guest-media',
+        title: 'Guest Experience',
+        copy: 'Guest-facing add-ons for photo moments, entrances, VIP areas, event interaction, lounge-style upgrades, and extended event time.',
+        pills: ['Photo Booth', 'Guest Facing', 'Photo Moments', 'Extra Time'],
+        addonIds: [
+          'photo-booth',
+          'red-carpet',
+          'foam-glow-sticks',
+          'led-cocktail-tables',
+          'extra-hour'
+        ]
+      },
       {
-  id: 'foundation',
-  title: 'Sound & Mic Support',
-  copy: 'Add extra audio support for areas that need more coverage, stronger bass, or microphone support beyond the sound system already included with your selected package.',
-  pills: ['PA Speaker', 'Extra Sound Coverage', 'Subwoofer Support', 'Microphone Support'],
-  addonIds: [
-    'pa-speaker',
-    'additional-speaker',
-    'additional-subwoofer',
-    'microphone'
-  ]
-},
+        id: 'services',
+        title: 'Photo & Video Services',
+        copy: 'Photography and videography coverage for events that need media, content, and creative recap deliverables.',
+        pills: ['Photo Coverage', 'Video Recaps'],
+        addonIds: [
+          'photography',
+          'videography'
+        ]
+      },
+      {
+        id: 'foundation',
+        title: 'Sound & Mic Support',
+        copy: 'Add extra audio support for areas that need more coverage, stronger bass, or microphone support beyond the sound system already included with your selected package.',
+        pills: ['PA Speaker', 'Extra Sound Coverage', 'Subwoofer Support', 'Microphone Support'],
+        addonIds: [
+          'pa-speaker',
+          'additional-speaker',
+          'additional-subwoofer',
+          'microphone'
+        ]
+      },
       {
         id: 'lighting-effects',
         title: 'Individual Lighting & Effects',
@@ -2350,6 +2460,6 @@
     estimate = loadEstimate();
     renderEstimate();
   </script>
-
+<script src="js/global-cart.js"></script>
 </body>
 </html>

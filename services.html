@@ -604,6 +604,116 @@
       gap: 18px;
     }
 
+
+    /* Product image cards
+       Best look for your dark neon website: place each product photo inside a controlled "studio tile"
+       instead of dropping a plain white rectangle directly on the black card. This makes white-background
+       product images look intentional, while also supporting transparent PNGs later. */
+    .product-media {
+      position: relative;
+      height: 210px;
+      width: 100%;
+      flex: 0 0 210px;
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      border: 1px solid rgba(0,240,255,0.14);
+      background:
+        radial-gradient(circle at 50% 95%, rgba(0,240,255,0.22), transparent 42%),
+        radial-gradient(circle at 82% 18%, rgba(255,45,120,0.12), transparent 38%),
+        linear-gradient(180deg, rgba(255,255,255,0.96), rgba(236,240,248,0.92));
+      box-shadow:
+        inset 0 0 38px rgba(0,0,0,0.08),
+        0 14px 34px rgba(0,0,0,0.22),
+        0 0 18px rgba(0,240,255,0.05);
+    }
+
+    .product-media::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(0,240,255,0.12), transparent 32%, transparent 68%, rgba(255,45,120,0.10)),
+        linear-gradient(180deg, rgba(255,255,255,0.24), transparent 44%, rgba(0,0,0,0.04));
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .product-media::after {
+      content: '';
+      position: absolute;
+      left: 18%;
+      right: 18%;
+      bottom: 10px;
+      height: 22px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.18), transparent 70%);
+      filter: blur(8px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .product-img {
+      position: relative;
+      z-index: 2;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 16px;
+      filter: drop-shadow(0 16px 18px rgba(0,0,0,0.26));
+      transition: transform 0.35s ease, filter 0.35s ease;
+    }
+
+    .product-card:hover .product-img {
+      transform: scale(1.035);
+      filter: drop-shadow(0 20px 22px rgba(0,0,0,0.32));
+    }
+
+    .product-image-fallback {
+      position: absolute;
+      inset: 14px;
+      z-index: 2;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 16px;
+      border: 1px dashed rgba(0,0,0,0.18);
+      border-radius: 10px;
+      color: rgba(6,8,18,0.72);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      line-height: 1.45;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.35);
+    }
+
+    .product-image-fallback span {
+      display: block;
+      margin-top: 7px;
+      font-size: 0.58rem;
+      letter-spacing: 0.6px;
+      text-transform: none;
+      font-weight: 600;
+      color: rgba(6,8,18,0.56);
+      overflow-wrap: anywhere;
+    }
+
+    .product-media.image-missing .product-image-fallback {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-media.image-missing::after {
+      display: none;
+    }
+
+    .product-media-wide .product-img { padding: 10px; }
+    .product-media-tall .product-img { padding: 10px 28px; }
+    .product-media-gear .product-img { padding: 14px; }
+
     .product-card {
       background: linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.98));
       border: 1px solid rgba(0,240,255,0.1);
@@ -746,6 +856,28 @@
       line-height: 1.45;
       min-height: 36px;
       font-weight: 600;
+    }
+
+
+    /* Keeps the card readable now that the top half has an image. */
+    .product-card .product-desc {
+      min-height: 0;
+      font-size: 0.82rem;
+      line-height: 1.55;
+      margin-bottom: 12px;
+    }
+
+    .product-card .product-controls {
+      margin-bottom: 10px;
+    }
+
+    .product-card .product-total {
+      margin-bottom: 10px;
+    }
+
+    .product-card .product-note {
+      min-height: 0;
+      margin-bottom: 14px;
     }
 
     .product-btn {
@@ -1082,6 +1214,12 @@
         grid-template-columns: 1fr;
       }
 
+
+      .product-media {
+        height: 190px;
+        flex-basis: 190px;
+      }
+
       .category-filter {
         grid-template-columns: 1fr;
       }
@@ -1225,6 +1363,124 @@
         padding: 60px 24px 130px;
       }
     }
+    /* START: FINAL PRODUCT IMAGE BLEND FIX */
+.product-media {
+  position: relative;
+  height: 210px;
+  width: 100%;
+  flex: 0 0 210px;
+  border-radius: 18px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background:
+    linear-gradient(135deg,
+      rgba(236,242,247,0.98) 0%,
+      rgba(247,249,252,0.98) 52%,
+      rgba(245,238,245,0.98) 100%) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.55),
+    inset 0 0 0 1px rgba(255,255,255,0.18),
+    0 12px 30px rgba(0,0,0,0.20) !important;
+  isolation: isolate;
+}
+
+.product-media::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 18%, rgba(0,240,255,0.08), transparent 34%),
+    radial-gradient(circle at 82% 20%, rgba(255,45,120,0.08), transparent 34%),
+    linear-gradient(180deg, rgba(255,255,255,0.22), transparent 48%) !important;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.product-media::after {
+  content: '';
+  position: absolute;
+  left: 16%;
+  right: 16%;
+  bottom: 12px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.16), transparent 72%) !important;
+  filter: blur(7px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.product-img {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 14px;
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 14px 18px rgba(0,0,0,0.18)) !important;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.product-card:hover .product-img {
+  transform: scale(1.02);
+  filter: drop-shadow(0 18px 22px rgba(0,0,0,0.22)) !important;
+}
+
+.product-media-wide .product-img {
+  padding: 10px;
+}
+
+.product-media-tall .product-img {
+  padding: 10px 24px;
+}
+
+.product-media-gear .product-img {
+  padding: 12px;
+}
+
+.product-image-fallback {
+  position: absolute;
+  inset: 14px;
+  z-index: 2;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+  border: 1px dashed rgba(0,0,0,0.16);
+  border-radius: 12px;
+  color: rgba(6,8,18,0.72);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  line-height: 1.45;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.30);
+}
+
+.product-image-fallback span {
+  display: block;
+  margin-top: 7px;
+  font-size: 0.58rem;
+  letter-spacing: 0.6px;
+  text-transform: none;
+  font-weight: 600;
+  color: rgba(6,8,18,0.56);
+  overflow-wrap: anywhere;
+}
+
+.product-media.image-missing .product-image-fallback {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-media.image-missing::after {
+  display: none;
+}
+/* END: FINAL PRODUCT IMAGE BLEND FIX */
   </style>
 </head>
 
@@ -1351,6 +1607,13 @@
 
         <div class="builder-main">
 
+      <!--
+        PRODUCT IMAGE NOTE:
+        Save your product images in /images/products/ using the filenames already placed in each card below.
+        Example: images/products/sound-system.png
+        If an image is missing, the card will show the file path so you know exactly what to upload.
+      -->
+
           <div class="group-block" id="popular-products" data-group="popular">
             <div class="group-shell">
               <div class="group-header">
@@ -1369,6 +1632,18 @@
               <div class="products-grid">
 
                 <div class="product-card" data-name="Sound — 2 QSC Tops + 2 Subs" data-type="hourly" data-rate="125">
+
+
+                  <div class="product-media product-media-wide">
+
+
+                    <img class="product-img" src="images/products/sound-system.png" alt="Sound — 2 QSC Tops + 2 Subs" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/sound-system.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">QSC</div>
                     <div class="product-type">Hourly</div>
@@ -1393,6 +1668,14 @@
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
                 </div>
                 <div class="product-card" data-name="LED Glow Cocktail Tables" data-type="hourly" data-rate="25">
+
+                  <div class="product-media product-media-gear">
+
+                    <img class="product-img" src="images/products/led-cocktail-tables.png" alt="LED Glow Cocktail Tables" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/led-cocktail-tables.png</span></div>
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">LED</div>
                     <div class="product-type">Hourly</div>
@@ -1417,6 +1700,14 @@
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
                 </div>
                 <div class="product-card" data-name="DJ" data-type="hourly" data-rate="150" data-no-quantity="true">
+
+                  <div class="product-media product-media-wide">
+
+                    <img class="product-img" src="images/products/dj-service.png" alt="DJ" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/dj-service.png</span></div>
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">DJ</div>
                     <div class="product-type">Hourly</div>
@@ -1442,6 +1733,18 @@
                 </div>
 
                 <div class="product-card" data-name="Photography — 50 Edited Pictures" data-type="hourly" data-rate="125" data-no-quantity="true">
+
+
+                  <div class="product-media product-media-wide">
+
+
+                    <img class="product-img" src="images/products/photography.png" alt="Photography — 50 Edited Pictures" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/photography.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">PH</div>
                     <div class="product-type">Hourly</div>
@@ -1479,6 +1782,18 @@
                 </div>
 
                 <div class="product-card" data-name="Photo Booth — Digital Only" data-type="hourly" data-rate="80">
+
+
+                  <div class="product-media product-media-tall">
+
+
+                    <img class="product-img" src="images/products/photo-booth-digital.png" alt="Photo Booth — Digital Only" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/photo-booth-digital.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">PB</div>
                     <div class="product-type">Hourly</div>
@@ -1504,6 +1819,18 @@
                 </div>
 
                 <div class="product-card" data-name="Premium Club Mixer & CDJ Package — 2 CDJ 3000 + DJM-900NXS2" data-type="daily" data-rate="400">
+
+
+                  <div class="product-media product-media-wide">
+
+
+                    <img class="product-img" src="images/products/cdj-djm-package.png" alt="Premium Club Mixer &amp; CDJ Package — 2 CDJ 3000 + DJM-900NXS2" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/cdj-djm-package.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">PKG</div>
                     <div class="product-type">Daily</div>
@@ -1547,6 +1874,18 @@
               <div class="products-grid">
 
                 <div class="product-card" data-name="Glow Lighting Package" data-type="hourly" data-rate="50">
+
+
+                  <div class="product-media product-media-wide">
+
+
+                    <img class="product-img" src="images/products/glow-lighting-package.png" alt="Glow Lighting Package" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/glow-lighting-package.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">GLW</div>
                     <div class="product-type">Hourly</div>
@@ -1572,6 +1911,18 @@
                 </div>
 
                 <div class="product-card" data-name="Pulse Lighting Package" data-type="hourly" data-rate="125">
+
+
+                  <div class="product-media product-media-wide">
+
+
+                    <img class="product-img" src="images/products/pulse-lighting-package.png" alt="Pulse Lighting Package" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/pulse-lighting-package.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">PLS</div>
                     <div class="product-type">Hourly</div>
@@ -1597,6 +1948,18 @@
                 </div>
 
                 <div class="product-card" data-name="District Lighting Package" data-type="hourly" data-rate="200">
+
+
+                  <div class="product-media product-media-wide">
+
+
+                    <img class="product-img" src="images/products/district-lighting-package.png" alt="District Lighting Package" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/district-lighting-package.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">DST</div>
                     <div class="product-type">Hourly</div>
@@ -1643,6 +2006,18 @@
               <div class="products-grid">
 
                 <div class="product-card" data-name="Photo Booth — Digital Only" data-type="hourly" data-rate="80">
+
+
+                  <div class="product-media product-media-tall">
+
+
+                    <img class="product-img" src="images/products/photo-booth-digital.png" alt="Photo Booth — Digital Only" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/photo-booth-digital.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">PB</div>
                     <div class="product-type">Hourly</div>
@@ -1668,6 +2043,18 @@
                 </div>
 
                 <div class="product-card" data-name="Photo Booth — Digital + Print" data-type="hourly" data-rate="120">
+
+
+                  <div class="product-media product-media-tall">
+
+
+                    <img class="product-img" src="images/products/photo-booth-print.png" alt="Photo Booth — Digital + Print" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/photo-booth-print.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">P+P</div>
                     <div class="product-type">Hourly</div>
@@ -1693,6 +2080,18 @@
                 </div>
 
                 <div class="product-card" data-name="Red Carpet — 20 Foot" data-type="hourly" data-rate="50">
+
+
+                  <div class="product-media product-media-wide">
+
+
+                    <img class="product-img" src="images/products/red-carpet.png" alt="Red Carpet — 20 Foot" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/red-carpet.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">RC</div>
                     <div class="product-type">Hourly</div>
@@ -1739,6 +2138,18 @@
               <div class="products-grid">
 
                 <div class="product-card" data-name="DJ" data-type="hourly" data-rate="150" data-no-quantity="true">
+
+
+                  <div class="product-media product-media-wide">
+
+
+                    <img class="product-img" src="images/products/dj-service.png" alt="DJ" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/dj-service.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">DJ</div>
                     <div class="product-type">Hourly</div>
@@ -1764,6 +2175,18 @@
                 </div>
 
                 <div class="product-card" data-name="Photography — 50 Edited Pictures" data-type="hourly" data-rate="125" data-no-quantity="true">
+
+
+                  <div class="product-media product-media-wide">
+
+
+                    <img class="product-img" src="images/products/photography.png" alt="Photography — 50 Edited Pictures" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/photography.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">PH</div>
                     <div class="product-type">Hourly</div>
@@ -1801,6 +2224,18 @@
                 </div>
 
                 <div class="product-card" data-name="Videography — 15 Second Recap" data-type="hourly" data-rate="150" data-no-quantity="true">
+
+
+                  <div class="product-media product-media-wide">
+
+
+                    <img class="product-img" src="images/products/videography.png" alt="Videography — 15 Second Recap" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/videography.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">VID</div>
                     <div class="product-type">Hourly</div>
@@ -1859,6 +2294,18 @@
               <div class="products-grid">
 
                 <div class="product-card" data-name="Sound — 2 QSC Tops + 2 Subs" data-type="hourly" data-rate="125">
+
+
+                  <div class="product-media product-media-wide">
+
+
+                    <img class="product-img" src="images/products/sound-system.png" alt="Sound — 2 QSC Tops + 2 Subs" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/sound-system.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">QSC</div>
                     <div class="product-type">Hourly</div>
@@ -1879,18 +2326,29 @@
                     </select>
                   </div>
                   <div class="product-total">$625 total</div>
-                  <div class="product-note">QSC speakers & subs</div>
+                  <div class="product-note">Most requested sound setup</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
                 </div>
+                <div class="product-card" data-name="QSC Top Speaker" data-type="hourly" data-rate="37.5">
 
-                <div class="product-card" data-name="Sound — 2 QSC Tops" data-type="hourly" data-rate="75">
+
+                  <div class="product-media product-media-gear">
+
+
+                    <img class="product-img" src="images/products/qsc-top-speaker.png" alt="QSC Top Speaker" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/qsc-top-speaker.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">QSC</div>
                     <div class="product-type">Hourly</div>
                   </div>
-                  <div class="product-name">Sound — 2 QSC Tops</div>
-                  <div class="product-desc">Professional sound setup with 2 QSC top speakers only. Great for smaller events, speeches, cocktail areas, and setups that do not require subs.</div>
-                  <div class="product-rate">$75 / hr</div>
+                  <div class="product-name">QSC Top Speaker</div>
+                  <div class="product-desc">Single QSC top speaker rental for clean event sound. Great for smaller events, speeches, cocktail areas, or building a larger sound setup.</div>
+                  <div class="product-rate">$37.50 / hr</div>
                   <div class="product-controls">
                     <label>Hours</label>
                     <select class="duration-select">
@@ -1903,12 +2361,61 @@
                       <option value="8">8 hrs</option>
                     </select>
                   </div>
-                  <div class="product-total">$375 total</div>
-                  <div class="product-note">2 QSC tops · no subs</div>
+                  <div class="product-total">$187.50 total</div>
+                  <div class="product-note">Single QSC top speaker · select amount</div>
+                  <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-name="QSC Subwoofer" data-type="hourly" data-rate="25">
+
+
+                  <div class="product-media product-media-gear">
+
+
+                    <img class="product-img" src="images/products/qsc-subwoofer.png" alt="QSC Subwoofer" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/qsc-subwoofer.png</span></div>
+
+
+                  </div>
+                  <div class="product-top">
+                    <div class="product-icon">SUB</div>
+                    <div class="product-type">Hourly</div>
+                  </div>
+                  <div class="product-name">QSC Subwoofer</div>
+                  <div class="product-desc">Single QSC subwoofer rental for stronger bass and fuller low-end. Pair it with QSC top speakers for a complete sound setup.</div>
+                  <div class="product-rate">$25 / hr</div>
+                  <div class="product-controls">
+                    <label>Hours</label>
+                    <select class="duration-select">
+                      <option value="2">2 hrs</option>
+                      <option value="3">3 hrs</option>
+                      <option value="4">4 hrs</option>
+                      <option value="5" selected>5 hrs</option>
+                      <option value="6">6 hrs</option>
+                      <option value="7">7 hrs</option>
+                      <option value="8">8 hrs</option>
+                    </select>
+                  </div>
+                  <div class="product-total">$125 total</div>
+                  <div class="product-note">Single QSC subwoofer · select amount</div>
                   <button class="product-btn" onclick="addProductFromCard(this)">Add to Cart</button>
                 </div>
 
                 <div class="product-card" data-name="Mic" data-type="hourly" data-rate="20">
+
+
+                  <div class="product-media product-media-gear">
+
+
+                    <img class="product-img" src="images/products/wireless-mic.png" alt="Mic" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/wireless-mic.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">MIC</div>
                     <div class="product-type">Hourly</div>
@@ -1955,6 +2462,18 @@
               <div class="products-grid">
 
                 <div class="product-card" data-name="Cold Spark" data-type="hourly" data-rate="50">
+
+
+                  <div class="product-media product-media-gear">
+
+
+                    <img class="product-img" src="images/products/cold-spark.png" alt="Cold Spark" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/cold-spark.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">FX</div>
                     <div class="product-type">Hourly</div>
@@ -1980,6 +2499,18 @@
                 </div>
 
                 <div class="product-card" data-name="Fog Machines" data-type="hourly" data-rate="40">
+
+
+                  <div class="product-media product-media-gear">
+
+
+                    <img class="product-img" src="images/products/fog-machine.png" alt="Fog Machines" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/fog-machine.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">FOG</div>
                     <div class="product-type">Hourly</div>
@@ -2005,6 +2536,18 @@
                 </div>
 
                 <div class="product-card" data-name="Up Lights" data-type="hourly" data-rate="15">
+
+
+                  <div class="product-media product-media-gear">
+
+
+                    <img class="product-img" src="images/products/uplight.png" alt="Up Lights" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/uplight.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">UP</div>
                     <div class="product-type">Hourly</div>
@@ -2030,6 +2573,18 @@
                 </div>
 
                 <div class="product-card" data-name="Light Bar" data-type="hourly" data-rate="30">
+
+
+                  <div class="product-media product-media-wide">
+
+
+                    <img class="product-img" src="images/products/light-bar.png" alt="Light Bar" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/light-bar.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">BAR</div>
                     <div class="product-type">Hourly</div>
@@ -2055,6 +2610,18 @@
                 </div>
 
                 <div class="product-card" data-name="Moving Heads — 2 Units with Totems" data-type="hourly" data-rate="75">
+
+
+                  <div class="product-media product-media-tall">
+
+
+                    <img class="product-img" src="images/products/moving-heads-totems.png" alt="Moving Heads — 2 Units with Totems" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/moving-heads-totems.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">MH</div>
                     <div class="product-type">Hourly</div>
@@ -2094,6 +2661,18 @@
                 </div>
 
                 <div class="product-card" data-name="Wash Lights" data-type="hourly" data-rate="20">
+
+
+                  <div class="product-media product-media-gear">
+
+
+                    <img class="product-img" src="images/products/wash-lights.png" alt="Wash Lights" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/wash-lights.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">WL</div>
                     <div class="product-type">Hourly</div>
@@ -2140,6 +2719,18 @@
               <div class="products-grid">
 
                 <div class="product-card" data-name="Premium Club Mixer & CDJ Package — 2 CDJ 3000 + DJM-900NXS2" data-type="daily" data-rate="400">
+
+
+                  <div class="product-media product-media-wide">
+
+
+                    <img class="product-img" src="images/products/cdj-djm-package.png" alt="Premium Club Mixer &amp; CDJ Package — 2 CDJ 3000 + DJM-900NXS2" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/cdj-djm-package.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">PKG</div>
                     <div class="product-type">Daily</div>
@@ -2162,6 +2753,18 @@
                 </div>
 
                 <div class="product-card" data-name="CDJ 3000" data-type="daily" data-rate="150">
+
+
+                  <div class="product-media product-media-gear">
+
+
+                    <img class="product-img" src="images/products/cdj-3000.png" alt="CDJ 3000" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/cdj-3000.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">CDJ</div>
                     <div class="product-type">Daily</div>
@@ -2184,6 +2787,18 @@
                 </div>
 
                 <div class="product-card" data-name="Pioneer DJM-900NXS2" data-type="daily" data-rate="125">
+
+
+                  <div class="product-media product-media-gear">
+
+
+                    <img class="product-img" src="images/products/djm-900nxs2.png" alt="Pioneer DJM-900NXS2" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/djm-900nxs2.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">DJM</div>
                     <div class="product-type">Daily</div>
@@ -2206,6 +2821,18 @@
                 </div>
 
                 <div class="product-card" data-name="XDJ-XZ" data-type="daily" data-rate="200">
+
+
+                  <div class="product-media product-media-gear">
+
+
+                    <img class="product-img" src="images/products/xdj-xz.png" alt="XDJ-XZ" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/xdj-xz.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">XDJ</div>
                     <div class="product-type">Daily</div>
@@ -2249,6 +2876,18 @@
               <div class="products-grid">
 
                 <div class="product-card" data-name="LED Glow Cocktail Tables" data-type="hourly" data-rate="25">
+
+
+                  <div class="product-media product-media-gear">
+
+
+                    <img class="product-img" src="images/products/led-cocktail-tables.png" alt="LED Glow Cocktail Tables" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/led-cocktail-tables.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">LED</div>
                     <div class="product-type">Hourly</div>
@@ -2295,6 +2934,18 @@
               <div class="products-grid">
 
                 <div class="product-card" data-name="Trussing — 2 Totems 8ft" data-type="hourly" data-rate="50">
+
+
+                  <div class="product-media product-media-tall">
+
+
+                    <img class="product-img" src="images/products/trussing-2-totems.png" alt="Trussing — 2 Totems 8ft" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/trussing-2-totems.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">2T</div>
                     <div class="product-type">Hourly</div>
@@ -2320,6 +2971,18 @@
                 </div>
 
                 <div class="product-card" data-name="Trussing — 4 Totems 8ft" data-type="hourly" data-rate="100">
+
+
+                  <div class="product-media product-media-wide">
+
+
+                    <img class="product-img" src="images/products/trussing-4-totems.png" alt="Trussing — 4 Totems 8ft" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/trussing-4-totems.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">4T</div>
                     <div class="product-type">Hourly</div>
@@ -2345,6 +3008,18 @@
                 </div>
 
                 <div class="product-card" data-name="Trussing — Goal Post 8x10" data-type="hourly" data-rate="130">
+
+
+                  <div class="product-media product-media-wide">
+
+
+                    <img class="product-img" src="images/products/trussing-goalpost-8x10.png" alt="Trussing — Goal Post 8x10" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/trussing-goalpost-8x10.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">GP10</div>
                     <div class="product-type">Hourly</div>
@@ -2370,6 +3045,18 @@
                 </div>
 
                 <div class="product-card" data-name="Trussing — Goal Post 8x16" data-type="hourly" data-rate="150">
+
+
+                  <div class="product-media product-media-wide">
+
+
+                    <img class="product-img" src="images/products/trussing-goalpost-8x16.png" alt="Trussing — Goal Post 8x16" loading="lazy" decoding="async" onerror="this.closest('.product-media').classList.add('image-missing'); this.remove();" />
+
+
+                    <div class="product-image-fallback">Add Product Image<span>images/products/trussing-goalpost-8x16.png</span></div>
+
+
+                  </div>
                   <div class="product-top">
                     <div class="product-icon">GP16</div>
                     <div class="product-type">Hourly</div>
@@ -2477,7 +3164,11 @@
     const PRODUCT_ORDER_KEY = 'heatDistrictProductOrder';
 
     function formatMoney(value) {
-      return '$' + Number(value || 0).toLocaleString();
+      const amount = Number(value || 0);
+      return '$' + amount.toLocaleString(undefined, {
+        minimumFractionDigits: amount % 1 === 0 ? 0 : 2,
+        maximumFractionDigits: 2
+      });
     }
 
     function safeJsonParse(value) {

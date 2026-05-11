@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Add-Ons — Heat District Productions</title>
-  <meta name="description" content="Customize your Heat District Productions event package with add-ons for lighting, sound, photo booth, photography, videography, red carpet, trussing, DJ rentals, and special effects." />
+  <title>Add-Ons & Upgrades — Heat District Productions</title>
+  <meta name="description" content="Upgrade your Heat District Productions event package with lighting, sound, photo booth, photography, videography, red carpet, trussing, DJ rentals, special effects, and custom event add-ons." />
 
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/global.css">
@@ -951,6 +951,17 @@
       line-height: 1.7;
     }
 
+    .lighting-warning {
+      display: none;
+      border-color: rgba(0,240,255,0.2);
+      background: rgba(0,240,255,0.04);
+      color: rgba(232,232,240,0.65);
+    }
+
+    .lighting-warning strong {
+      color: var(--neon-blue);
+    }
+
     footer {
       text-align: center;
       padding: 60px 48px 100px;
@@ -1101,7 +1112,7 @@
 
     <ul class="nav-links">
       <li class="nav-item-dropdown">
-        <a href="services.html" class="nav-link-with-dropdown">Products</a>
+        <a href="services.html" class="nav-link-with-dropdown">Rentals & Builds</a>
 
         <div class="nav-dropdown">
           <a href="services.html#sound">Sound Systems</a>
@@ -1132,7 +1143,7 @@
   </nav>
 
   <div class="mobile-nav" id="mobileNav">
-    <a href="services.html">Products</a>
+    <a href="services.html">Rentals & Builds</a>
 
     <div class="mobile-nav-sub">
       <a href="services.html#sound">Sound Systems</a>
@@ -1155,9 +1166,9 @@
 
   <section class="page-hero">
     <p class="page-hero-eyebrow">Step 02 · Add Upgrades · Customize Your Event</p>
-    <h1>Upgrade Your<br><strong>Production Package</strong></h1>
+    <h1>Upgrade the<br><strong>Event Experience</strong></h1>
     <p>
-      These discounted add-on prices are available only to clients who book one of our event packages. Upgrade your selected package with extra lighting, sound, media, guest experiences, and production enhancements.
+      Start with your selected package, then add only what improves the event: better room lighting, stronger dance floor energy, guest experiences, media coverage, special effects, extra time, or custom production needs.
     </p>
   </section>
 
@@ -1167,33 +1178,33 @@
 
     <section>
       <p class="section-label">Available Add-Ons</p>
-      <h2 class="section-title">Build the Final <strong>Event Experience</strong></h2>
+      <h2 class="section-title">Choose Upgrades by <strong>Outcome</strong></h2>
       <p class="section-sub">
-        These upgrades can be added on top of your selected package. Items may also appear under Most Popular and again in their proper category on purpose.
+        These add-ons are grouped by what they do for the event, not just by equipment type. This keeps the decision easier: upgrade the look, improve the dance floor, add guest experiences, capture media, add effects, or extend the event.
       </p>
 
       <div class="filter-shell">
         <div class="filter-head">
           <div>
             <div class="filter-kicker">Tap to Filter</div>
-            <div class="filter-title">Choose what you are looking for</div>
+            <div class="filter-title">What do you want to improve?</div>
           </div>
 
           <div class="filter-note">
-            Start with Most Popular or jump directly to lighting packages, guest experience, photo/video services, sound, DJ rentals, or trussing.
+            Start with Most Popular or choose the outcome that matches your event. If your package already includes lighting, only add lighting upgrades if you want a larger or stronger setup.
           </div>
         </div>
 
         <div class="category-filter">
           <button class="filter-btn active" type="button" onclick="filterGroups('all', this)">Show All</button>
           <button class="filter-btn" type="button" onclick="filterGroups('popular', this)">Most Popular</button>
-          <button class="filter-btn" type="button" onclick="filterGroups('lighting-packages', this)">Lighting Packages</button>
-          <button class="filter-btn" type="button" onclick="filterGroups('guest-media', this)">Guest Experience</button>
-          <button class="filter-btn" type="button" onclick="filterGroups('services', this)">Photo / Video</button>
-          <button class="filter-btn" type="button" onclick="filterGroups('foundation', this)">Sound & Mics</button>
-          <button class="filter-btn" type="button" onclick="filterGroups('lighting-effects', this)">Lighting & Effects</button>
-          <button class="filter-btn" type="button" onclick="filterGroups('dj-rentals', this)">DJ Rentals</button>
-          <button class="filter-btn" type="button" onclick="filterGroups('staging-trussing', this)">Trussing</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('upgrade-look', this)">Upgrade the Look</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('dance-floor', this)">Dance Floor</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('guest-experience', this)">Guest Experience</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('media-coverage', this)">Media Coverage</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('special-effects', this)">Special Effects</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('time-logistics', this)">Time / Logistics</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('pro-rentals', this)">Pro Rentals</button>
         </div>
       </div>
 
@@ -1245,8 +1256,12 @@
           <button class="clear-btn" type="button" onclick="clearAddons()">Clear Add-Ons</button>
         </div>
 
+        <div class="warning-box lighting-warning" id="lightingWarning">
+          <strong>Lighting check:</strong> your selected package may already include lighting. Only add lighting upgrades if you want more coverage, more fixtures, a stronger dance floor look, or a larger production setup.
+        </div>
+
         <div class="warning-box">
-          If this page opens without a selected package, it will still work. The invoice will show the add-ons selected and any package that was already saved.
+          Final setup may depend on venue layout, ceiling height, power access, indoor/outdoor conditions, and venue approval. Cold sparks, fog, haze, trussing, and LED wall setups may require additional approval or planning.
         </div>
       </div>
     </aside>
@@ -1270,18 +1285,39 @@
   </footer>
 
   <script>
+    const EXTRA_HOUR_PRICES_BY_PACKAGE = {
+      'The Spark': 125,
+      'The Blaze': 175,
+      'The Inferno': 225,
+      'The District': 300
+    };
+
+    const PACKAGE_NAMES_WITH_LIGHTING = [
+      'The Blaze',
+      'The Inferno',
+      'The District'
+    ];
+
+    const LIGHTING_RELATED_CATEGORIES = [
+      'Lighting Packages',
+      'Lighting',
+      'Effects',
+      'Video / Visuals',
+      'Staging & Trussing'
+    ];
+
     const ADDONS = {
       'pa-speaker': {
         id: 'pa-speaker',
-        label: 'Sound & Mics',
+        label: 'Sound',
         title: 'Additional PA Speaker',
-        copy: 'Add an extra PA speaker for larger rooms, cocktail areas, ceremonies, outdoor spaces, side rooms, or areas that need additional sound coverage beyond the package sound system.',
+        copy: 'Add extra speaker coverage for larger rooms, cocktail areas, ceremonies, outdoor spaces, side rooms, or areas that need audio beyond the main package setup.',
         options: [
           {
             id: 'pa-speaker-single',
             label: '1 Additional PA Speaker',
             name: 'Additional PA Speaker',
-            category: 'Sound & Mics',
+            category: 'Sound',
             price: 125,
             unit: 'speaker',
             displayUnit: 'speaker'
@@ -1291,15 +1327,15 @@
 
       'additional-speaker': {
         id: 'additional-speaker',
-        label: 'Sound & Mics',
+        label: 'Sound',
         title: 'Additional Speaker',
-        copy: 'Add an extra speaker for more sound coverage in larger rooms, side areas, cocktail spaces, ceremonies, outdoor sections, or areas that need audio beyond the main package setup.',
+        copy: 'Add an extra speaker for more coverage in larger rooms, side areas, cocktail spaces, ceremonies, outdoor sections, or overflow areas.',
         options: [
           {
             id: 'additional-speaker-single',
             label: '1 Additional Speaker',
             name: 'Additional Speaker',
-            category: 'Sound & Mics',
+            category: 'Sound',
             price: 125,
             unit: 'speaker',
             displayUnit: 'speaker'
@@ -1309,15 +1345,15 @@
 
       'additional-subwoofer': {
         id: 'additional-subwoofer',
-        label: 'Sound & Mics',
+        label: 'Sound',
         title: 'Additional Subwoofer',
-        copy: 'Add an extra subwoofer for stronger bass and more low-end impact. Best for larger dance floors, DJs, parties, outdoor events, and high-energy setups.',
+        copy: 'Add stronger bass and more low-end impact. Best for larger dance floors, DJs, high-energy parties, outdoor events, and rooms where the music needs more weight.',
         options: [
           {
             id: 'additional-subwoofer-single',
             label: '1 Additional Subwoofer',
             name: 'Additional Subwoofer',
-            category: 'Sound & Mics',
+            category: 'Sound',
             price: 175,
             unit: 'subwoofer',
             displayUnit: 'subwoofer'
@@ -1327,15 +1363,15 @@
 
       'microphone': {
         id: 'microphone',
-        label: 'Sound & Mics',
+        label: 'Sound',
         title: 'Microphone',
-        copy: 'Add a microphone for speeches, announcements, ceremony use, event hosting, or basic audio support.',
+        copy: 'Add a microphone for speeches, announcements, ceremony use, event hosting, introductions, or basic audio support.',
         options: [
           {
             id: 'microphone-single',
             label: '1 Microphone',
-            name: 'Mic',
-            category: 'Sound & Mics',
+            name: 'Microphone',
+            category: 'Sound',
             price: 75,
             unit: 'mic',
             displayUnit: 'mic'
@@ -1345,15 +1381,15 @@
 
       'photography': {
         id: 'photography',
-        label: 'Services',
+        label: 'Media Coverage',
         title: 'Photography',
-        copy: 'Add professional event photography coverage. Deliverables can range from 50 to 250 edited pictures.',
+        copy: 'Add professional event photography coverage focused on guests, moments, details, energy, and the overall look of the event.',
         options: [
           {
             id: 'photography-50',
             label: '50 Edited Pictures',
             name: 'Photography — 50 Edited Pictures',
-            category: 'Services',
+            category: 'Media Coverage',
             price: 625,
             unit: 'event',
             displayUnit: 'event'
@@ -1362,7 +1398,7 @@
             id: 'photography-100',
             label: '100 Edited Pictures',
             name: 'Photography — 100 Edited Pictures',
-            category: 'Services',
+            category: 'Media Coverage',
             price: 750,
             unit: 'event',
             displayUnit: 'event'
@@ -1371,7 +1407,7 @@
             id: 'photography-150',
             label: '150 Edited Pictures',
             name: 'Photography — 150 Edited Pictures',
-            category: 'Services',
+            category: 'Media Coverage',
             price: 875,
             unit: 'event',
             displayUnit: 'event'
@@ -1380,7 +1416,7 @@
             id: 'photography-250',
             label: '250 Edited Pictures',
             name: 'Photography — 250 Edited Pictures',
-            category: 'Services',
+            category: 'Media Coverage',
             price: 1125,
             unit: 'event',
             displayUnit: 'event'
@@ -1390,15 +1426,15 @@
 
       'videography': {
         id: 'videography',
-        label: 'Services',
+        label: 'Media Coverage',
         title: 'Videography',
-        copy: 'Add cinematic video coverage. Choose from a short 15 second recap to a full 1 minute event recap.',
+        copy: 'Add cinematic video coverage for recap content, social media clips, event highlights, and stronger post-event marketing value.',
         options: [
           {
             id: 'videography-15',
             label: '15 Second Recap',
             name: 'Videography — 15 Second Recap',
-            category: 'Services',
+            category: 'Media Coverage',
             price: 750,
             unit: 'event',
             displayUnit: 'event'
@@ -1407,7 +1443,7 @@
             id: 'videography-30',
             label: '30 Second Recap',
             name: 'Videography — 30 Second Recap',
-            category: 'Services',
+            category: 'Media Coverage',
             price: 875,
             unit: 'event',
             displayUnit: 'event'
@@ -1416,7 +1452,7 @@
             id: 'videography-45',
             label: '45 Second Recap',
             name: 'Videography — 45 Second Recap',
-            category: 'Services',
+            category: 'Media Coverage',
             price: 1000,
             unit: 'event',
             displayUnit: 'event'
@@ -1425,7 +1461,7 @@
             id: 'videography-60',
             label: '1 Minute Recap',
             name: 'Videography — 1 Minute Recap',
-            category: 'Services',
+            category: 'Media Coverage',
             price: 1250,
             unit: 'event',
             displayUnit: 'event'
@@ -1437,7 +1473,7 @@
         id: 'photo-booth',
         label: 'Guest Experience',
         title: 'Photo Booth',
-        copy: 'Add a guest-facing photo booth experience with props included. Choose digital-only or digital plus prints.',
+        copy: 'Give guests something interactive to do and something easy to share. Best for weddings, quinces, birthdays, corporate events, and private parties.',
         options: [
           {
             id: 'photo-booth-digital-only',
@@ -1464,7 +1500,7 @@
         id: 'red-carpet',
         label: 'Guest Experience',
         title: 'Red Carpet',
-        copy: 'Add a red carpet arrival/photo moment. Includes stanchions with velvet ropes for a cleaner VIP entrance look.',
+        copy: 'Add a clean arrival or photo moment. Includes stanchions with velvet ropes for a stronger entrance, VIP, or photo-area look.',
         options: [
           {
             id: 'red-carpet-10ft',
@@ -1491,7 +1527,7 @@
         id: 'foam-glow-sticks',
         label: 'Guest Experience',
         title: 'Foam Glow Sticks',
-        copy: 'Add crowd energy for dance floors, club-style events, quinceañeras, birthdays, and high-energy party moments. Glow sticks are sold in packs of 25.',
+        copy: 'Add crowd energy for dance floors, club-style events, quinceañeras, birthdays, and high-energy party moments. Sold in packs of 25.',
         options: [
           {
             id: 'foam-glow-sticks-pack-25',
@@ -1545,7 +1581,7 @@
         id: 'pulse-lighting-package',
         label: 'Lighting Packages',
         title: 'Pulse Lighting Package',
-        copy: 'Includes everything in the Glow Package — 10 uplights and 1 LED light bar — plus 2 moving head lights on totems. Best for dance floors, birthdays, quinces, weddings, and events that need movement and energy.',
+        copy: 'Includes 10 uplights, 1 LED light bar, and 2 moving head lights on totems. Best for events that need dance floor movement and a stronger party look.',
         options: [
           {
             id: 'pulse-lighting-package',
@@ -1563,7 +1599,7 @@
         id: 'district-lighting-package',
         label: 'Lighting Packages',
         title: 'District Lighting Package',
-        copy: 'Includes 15 uplights, 1 LED light bar, 4 moving head lights, 2 wash lights, and 2 fog/haze machines. Best for larger events, club-style setups, big dance floors, and clients who want a stronger production look.',
+        copy: 'Includes 15 uplights, 1 LED light bar, 4 moving head lights, 2 wash lights, and 2 fog/haze machines. Best for larger events and full dance floor impact.',
         options: [
           {
             id: 'district-lighting-package',
@@ -1581,12 +1617,12 @@
         id: 'uplights',
         label: 'Lighting',
         title: 'Uplights',
-        copy: 'Add extra room color coverage for larger venues, walls, corners, columns, stages, and photo areas.',
+        copy: 'Add extra room color coverage for larger venues, walls, corners, columns, stages, entrances, and photo areas.',
         options: [
           {
             id: 'uplights-5-pack',
             label: '5 Uplights',
-            name: 'Up Lights — 5 Units',
+            name: 'Uplights — 5 Units',
             category: 'Lighting',
             price: 75,
             unit: 'pack',
@@ -1595,7 +1631,7 @@
           {
             id: 'uplights-10-pack',
             label: '10 Uplights',
-            name: 'Up Lights — 10 Units',
+            name: 'Uplights — 10 Units',
             category: 'Lighting',
             price: 150,
             unit: 'pack',
@@ -1604,7 +1640,7 @@
           {
             id: 'uplights-15-pack',
             label: '15 Uplights',
-            name: 'Up Lights — 15 Units',
+            name: 'Uplights — 15 Units',
             category: 'Lighting',
             price: 200,
             unit: 'pack',
@@ -1617,7 +1653,7 @@
         id: 'moving-heads',
         label: 'Lighting',
         title: 'Moving Heads',
-        copy: 'Add moving head lights for a bigger production look. Choose from 2-head or 4-head setups with totems, goal post trussing, or a combination setup depending on the size and style of the event.',
+        copy: 'Add moving head lights for a bigger production look. Best for dance floors, DJ booths, stage looks, entrances, and dramatic room energy.',
         options: [
           {
             id: 'moving-heads-2-heads-2-totems',
@@ -1662,7 +1698,7 @@
         id: 'light-bar',
         label: 'Lighting',
         title: 'Light Bar',
-        copy: 'Add a light bar for extra color, movement, and visual presence around the DJ area or dance floor.',
+        copy: 'Add a light bar for extra color, movement, and visual presence around the DJ area, stage area, or dance floor.',
         options: [
           {
             id: 'light-bar-single',
@@ -1680,7 +1716,7 @@
         id: 'wash-lights',
         label: 'Lighting',
         title: 'Wash Lights',
-        copy: 'Add wash lighting for broader color coverage across dance floors, stages, walls, and performance areas.',
+        copy: 'Add broader color coverage across dance floors, stages, walls, and performance areas.',
         options: [
           {
             id: 'wash-lights-2-units',
@@ -1698,7 +1734,7 @@
         id: 'cold-sparks',
         label: 'Effects',
         title: 'Cold Spark Machines',
-        copy: 'Add high-impact spark effects for entrances, first dances, drops, reveals, and big event moments.',
+        copy: 'Add high-impact spark effects for entrances, first dances, music drops, reveals, and big event moments. Venue approval may be required.',
         options: [
           {
             id: 'cold-sparks-2-units',
@@ -1725,7 +1761,7 @@
         id: 'fog-machines',
         label: 'Effects',
         title: 'Fog / Haze Machines',
-        copy: 'Add fog or haze to make beams and lighting effects more visible and atmospheric.',
+        copy: 'Add fog or haze to make beams and lighting effects more visible and atmospheric. Venue approval may be required.',
         options: [
           {
             id: 'fog-machines-2-units',
@@ -1743,7 +1779,7 @@
         id: 'led-wall',
         label: 'Video / Visuals',
         title: 'LED Screen / Wall',
-        copy: 'Add a visual screen element for logos, visuals, slideshows, DJ visuals, branding, or custom event content.',
+        copy: 'Add a visual screen element for logos, slideshows, DJ visuals, branding, presentations, or custom event content.',
         options: [
           {
             id: 'led-screen-wall',
@@ -1779,7 +1815,7 @@
         id: 'cdj-3000',
         label: 'DJ Rentals',
         title: 'CDJ 3000',
-        copy: 'Standalone Pioneer CDJ 3000 rental for professional DJ setups, club-style events, and custom booths.',
+        copy: 'Standalone Pioneer CDJ 3000 rental for professional DJ setups, guest DJs, club-style events, and custom booths.',
         options: [
           {
             id: 'cdj-3000-single',
@@ -1833,7 +1869,7 @@
         id: 'trussing-2-totems',
         label: 'Staging & Trussing',
         title: 'Trussing — 2 Totems',
-        copy: '2 totems at 8ft each for a cleaner vertical production look.',
+        copy: '2 truss totems at 8ft each for a cleaner vertical production look, lighting placement, DJ booth framing, or entrance visuals.',
         options: [
           {
             id: 'trussing-2-totems',
@@ -1851,7 +1887,7 @@
         id: 'trussing-4-totems',
         label: 'Staging & Trussing',
         title: 'Trussing — 4 Totems',
-        copy: '4 totems at 8ft each for a larger, more symmetrical production setup.',
+        copy: '4 truss totems at 8ft each for a larger, more symmetrical production setup and stronger lighting placement.',
         options: [
           {
             id: 'trussing-4-totems',
@@ -1869,7 +1905,7 @@
         id: 'trussing-goal-post-8x10',
         label: 'Staging & Trussing',
         title: 'Trussing — Goal Post 8x10',
-        copy: '8x10 goal post truss setup for overhead production support and a bigger stage look.',
+        copy: '8x10 goal post truss setup for overhead production support, lighting placement, DJ booth framing, and a bigger stage look.',
         options: [
           {
             id: 'trussing-goal-post-8x10',
@@ -1887,7 +1923,7 @@
         id: 'trussing-goal-post-8x16',
         label: 'Staging & Trussing',
         title: 'Trussing — Goal Post 8x16',
-        copy: '8x16 goal post truss setup for a wider, more dramatic production footprint.',
+        copy: '8x16 goal post truss setup for a wider, more dramatic production footprint and larger event staging presence.',
         options: [
           {
             id: 'trussing-goal-post-8x16',
@@ -1903,15 +1939,15 @@
 
       'extra-hour': {
         id: 'extra-hour',
-        label: 'Guest Experience',
+        label: 'Extra Time',
         title: 'Extra Event Hour',
-        copy: 'Add extra time beyond the selected package coverage. Useful for longer receptions, extended parties, late-night events, or clients who want more time without upgrading the full package.',
+        copy: 'Add extra time beyond the selected package coverage. Pricing adjusts based on the package selected because larger setups require more staffing, equipment time, and support.',
         options: [
           {
             id: 'extra-hour',
             label: 'Extra Event Hour',
             name: 'Extra Event Hour',
-            category: 'Guest Experience',
+            category: 'Extra Time',
             price: 150,
             unit: 'hour',
             displayUnit: 'hour'
@@ -1923,9 +1959,9 @@
     const GROUPS = [
       {
         id: 'popular',
-        title: 'Most Popular Items',
-        copy: 'The cleanest high-demand upgrades clients are most likely to add after choosing a package. Every item shown here also appears again inside its main category below.',
-        pills: ['High Demand', 'Fast Upgrades', 'Best Add-Ons'],
+        title: 'Most Popular Upgrades',
+        copy: 'The upgrades most clients are likely to add after choosing a package. These are high-impact, easy-to-understand add-ons that improve the event quickly.',
+        pills: ['High Demand', 'Fast Upgrades', 'Client Favorites'],
         addonIds: [
           'photo-booth',
           'photography',
@@ -1936,84 +1972,94 @@
         ]
       },
       {
-        id: 'lighting-packages',
-        title: 'Lighting Packages',
-        copy: 'Bundled lighting options for clients who want a cleaner step-up structure instead of piecing lighting together item by item.',
-        pills: ['Bundled Lighting', 'Good / Better / Best', 'Faster Decision'],
+        id: 'upgrade-look',
+        title: 'Upgrade the Look',
+        copy: 'Use these options when the goal is to make the room look more polished, more premium, or more production-heavy in photos and videos.',
+        pills: ['Room Transformation', 'Lighting Look', 'Stage Presence'],
         addonIds: [
           'glow-lighting-package',
           'pulse-lighting-package',
-          'district-lighting-package'
+          'district-lighting-package',
+          'uplights',
+          'moving-heads',
+          'light-bar',
+          'wash-lights',
+          'led-wall',
+          'trussing-2-totems',
+          'trussing-4-totems',
+          'trussing-goal-post-8x10',
+          'trussing-goal-post-8x16'
         ]
       },
       {
-        id: 'guest-media',
+        id: 'dance-floor',
+        title: 'Improve the Dance Floor',
+        copy: 'Use these options when the priority is stronger music impact, more movement, better lighting energy, and a dance floor that feels alive.',
+        pills: ['Bass', 'Energy', 'Movement', 'Atmosphere'],
+        addonIds: [
+          'additional-speaker',
+          'additional-subwoofer',
+          'pulse-lighting-package',
+          'district-lighting-package',
+          'moving-heads',
+          'fog-machines',
+          'foam-glow-sticks'
+        ]
+      },
+      {
+        id: 'guest-experience',
         title: 'Guest Experience',
-        copy: 'Guest-facing add-ons for photo moments, entrances, VIP areas, event interaction, lounge-style upgrades, and extended event time.',
-        pills: ['Photo Booth', 'Guest Facing', 'Photo Moments', 'Extra Time'],
+        copy: 'Guest-facing add-ons that create photo moments, social moments, VIP touches, lounge areas, and interactive things for guests to remember.',
+        pills: ['Photo Moments', 'Interactive', 'VIP Feel'],
         addonIds: [
           'photo-booth',
           'red-carpet',
           'foam-glow-sticks',
-          'led-cocktail-tables',
-          'extra-hour'
+          'led-cocktail-tables'
         ]
       },
       {
-        id: 'services',
-        title: 'Photo & Video Services',
-        copy: 'Photography and videography coverage for events that need media, content, and creative recap deliverables.',
-        pills: ['Photo Coverage', 'Video Recaps'],
+        id: 'media-coverage',
+        title: 'Media Coverage',
+        copy: 'Add professional coverage so the event lives beyond the night itself. Great for weddings, quinces, brand events, private parties, and social content.',
+        pills: ['Photos', 'Video Recaps', 'Content Value'],
         addonIds: [
           'photography',
           'videography'
         ]
       },
       {
-        id: 'foundation',
-        title: 'Sound & Mic Support',
-        copy: 'Add extra audio support for areas that need more coverage, stronger bass, or microphone support beyond the sound system already included with your selected package.',
-        pills: ['PA Speaker', 'Extra Sound Coverage', 'Subwoofer Support', 'Microphone Support'],
+        id: 'special-effects',
+        title: 'Special Effects',
+        copy: 'Effects that create bigger moments for entrances, first dances, reveals, drops, and dramatic lighting looks. Venue approval may be required.',
+        pills: ['Big Moments', 'Venue Approval May Apply', 'Atmosphere'],
         addonIds: [
-          'pa-speaker',
-          'additional-speaker',
-          'additional-subwoofer',
-          'microphone'
-        ]
-      },
-      {
-        id: 'lighting-effects',
-        title: 'Individual Lighting & Effects',
-        copy: 'Individual visual pieces for clients who want to mix and match lighting and effects.',
-        pills: ['Mix & Match', 'Atmosphere', 'Visual Upgrades'],
-        addonIds: [
-          'uplights',
-          'moving-heads',
-          'light-bar',
-          'wash-lights',
           'cold-sparks',
-          'fog-machines',
-          'led-wall'
+          'fog-machines'
         ]
       },
       {
-        id: 'dj-rentals',
-        title: 'DJ Rentals',
-        copy: 'Standalone DJ gear rentals for clients, DJs, and events that need professional playback equipment.',
-        pills: ['Daily Pricing', 'DJ Gear', 'Club Standard'],
+        id: 'time-logistics',
+        title: 'Extra Time & Logistics',
+        copy: 'Use these options when the event needs to run longer or needs extra basic support beyond the included package coverage.',
+        pills: ['Longer Events', 'Extra Support', 'Cleaner Planning'],
+        addonIds: [
+          'extra-hour',
+          'microphone',
+          'pa-speaker'
+        ]
+      },
+      {
+        id: 'pro-rentals',
+        title: 'Pro Rentals & Custom Needs',
+        copy: 'For DJs, planners, venues, and clients who know exactly what equipment they need. This is closer to a custom build than a simple package upgrade.',
+        pills: ['DJs', 'Venues', 'Custom Builds'],
         addonIds: [
           'premium-club-mixer-cdj-package',
           'cdj-3000',
           'djm-900nxs2',
-          'xdj-xz'
-        ]
-      },
-      {
-        id: 'staging-trussing',
-        title: 'Staging & Trussing',
-        copy: 'Trussing structures that help frame the setup, hold lighting, and create a more complete production look.',
-        pills: ['Stage Presence', 'Production Structure', 'Expandable Category'],
-        addonIds: [
+          'xdj-xz',
+          'led-wall',
           'trussing-2-totems',
           'trussing-4-totems',
           'trussing-goal-post-8x10',
@@ -2040,6 +2086,27 @@
       return ADDONS[addonId] || null;
     }
 
+    function getExtraHourPrice() {
+      if (!estimate || !estimate.package) {
+        return 150;
+      }
+
+      return EXTRA_HOUR_PRICES_BY_PACKAGE[estimate.package] || 150;
+    }
+
+    function getEffectiveOption(option) {
+      if (!option) return null;
+
+      const adjustedOption = Object.assign({}, option);
+
+      if (adjustedOption.id === 'extra-hour') {
+        adjustedOption.price = getExtraHourPrice();
+        adjustedOption.name = 'Extra Event Hour — ' + (estimate && estimate.package ? estimate.package : 'Package');
+      }
+
+      return adjustedOption;
+    }
+
     function getSelectedOption(addonId, cardId) {
       const addon = getAddon(addonId);
 
@@ -2050,14 +2117,16 @@
       const select = document.getElementById('option-' + cardId);
 
       if (!select) {
-        return addon.options[0];
+        return getEffectiveOption(addon.options[0]);
       }
 
       const selectedId = select.value;
 
-      return addon.options.find(function(option) {
-        return option.id === selectedId;
+      const option = addon.options.find(function(item) {
+        return item.id === selectedId;
       }) || addon.options[0];
+
+      return getEffectiveOption(option);
     }
 
     function getQtyForOption(optionId) {
@@ -2309,6 +2378,32 @@
       renderEstimate();
     }
 
+    function packageAlreadyHasLighting() {
+      if (!estimate || !estimate.package) return false;
+
+      return PACKAGE_NAMES_WITH_LIGHTING.includes(estimate.package);
+    }
+
+    function selectedLightingRelatedAddons() {
+      if (!estimate || !Array.isArray(estimate.addons)) return false;
+
+      return estimate.addons.some(function(item) {
+        return LIGHTING_RELATED_CATEGORIES.includes(item.category);
+      });
+    }
+
+    function updateLightingWarning() {
+      const lightingWarning = document.getElementById('lightingWarning');
+
+      if (!lightingWarning) return;
+
+      if (packageAlreadyHasLighting() && selectedLightingRelatedAddons()) {
+        lightingWarning.style.display = 'block';
+      } else {
+        lightingWarning.style.display = 'none';
+      }
+    }
+
     function renderEstimate() {
       const packageNameEl = document.getElementById('summaryPackageName');
       const packagePriceEl = document.getElementById('summaryPackagePrice');
@@ -2367,6 +2462,8 @@
 
         updateCardDisplay(addonId, cardId);
       });
+
+      updateLightingWarning();
     }
 
     function continueToCheckout() {
@@ -2460,6 +2557,6 @@
     estimate = loadEstimate();
     renderEstimate();
   </script>
-<script src="js/global-cart.js"></script>
+  <script src="js/global-cart.js"></script>
 </body>
 </html>

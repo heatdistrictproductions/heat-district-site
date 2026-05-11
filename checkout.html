@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Checkout — Heat District Productions</title>
+  <meta name="description" content="Review your Heat District Productions event package, add-ons, event details, 50% deposit, and booking request before receiving your QuickBooks deposit invoice." />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/global.css">
 
@@ -348,7 +349,7 @@
       font-size: 0.95rem;
       font-weight: 300;
       color: rgba(232,232,240,0.52);
-      max-width: 760px;
+      max-width: 820px;
       margin: 0 auto;
       line-height: 1.9;
       letter-spacing: 0.3px;
@@ -413,6 +414,21 @@
       line-height: 1.85;
       max-width: 780px;
       margin-bottom: 30px;
+    }
+
+    .trust-note {
+      border: 1px solid rgba(0,240,255,0.12);
+      background: rgba(0,240,255,0.04);
+      border-radius: 14px;
+      padding: 18px;
+      color: rgba(232,232,240,0.62);
+      line-height: 1.75;
+      font-size: 0.84rem;
+      margin-bottom: 28px;
+    }
+
+    .trust-note strong {
+      color: var(--neon-blue);
     }
 
     .form-section {
@@ -1138,7 +1154,7 @@
 
     <ul class="nav-links">
       <li class="nav-item-dropdown">
-        <a href="services.html" class="nav-link-with-dropdown">Products</a>
+        <a href="services.html" class="nav-link-with-dropdown">Rentals & Builds</a>
 
         <div class="nav-dropdown">
           <a href="services.html#sound">Sound Systems</a>
@@ -1169,7 +1185,7 @@
   </nav>
 
   <div class="mobile-nav" id="mobileNav">
-    <a href="services.html">Products</a>
+    <a href="services.html">Rentals & Builds</a>
 
     <div class="mobile-nav-sub">
       <a href="services.html#sound">Sound Systems</a>
@@ -1191,12 +1207,13 @@
   </div>
 
   <section class="page-hero">
-    <p class="page-hero-eyebrow">Step 03 · Checkout · Deposit & Event Details</p>
-    <h1>Review Your Build<br><strong>Secure Your Date</strong></h1>
-    <p>
-      Confirm your event details, review your selected package and add-ons, then create your 50% deposit invoice.
-    </p>
-  </section>
+  <p class="page-hero-eyebrow">Step 03 · Checkout · Invoice & Event Details</p>
+  <h1>Review Your Build<br><strong>Create Your Invoice</strong></h1>
+  <p>
+    Confirm your event details, review your selected package and add-ons, then create your 50% deposit invoice.
+    Once the invoice is created, your event will be added to our calendar with the details submitted below.
+  </p>
+</section>
 
   <div class="neon-divider"></div>
 
@@ -1204,15 +1221,15 @@
 
     <section class="checkout-card">
       <div class="missing-cart" id="missingCart">
-        <strong>No package was found.</strong><br>
-        Go back to the Packages page and choose a package before checking out.
+        <strong>No package or custom build was found.</strong><br>
+        Go back to the Packages page or Rentals & Builds page and choose items before checking out.
       </div>
 
       <p class="section-label">Checkout Details</p>
       <h2 class="section-title">Tell Us About <strong>Your Event</strong></h2>
       <p class="section-sub">
-        Fill out your event information below. Once submitted, Heat District Productions will create and email your 50% deposit invoice through QuickBooks.
-      </p>
+  Fill out your event information below. Once submitted, Heat District Productions will create your 50% deposit invoice and automatically add the event details to our calendar.
+</p>
 
       <form id="checkoutForm">
 
@@ -1252,37 +1269,69 @@
                 <option value="">Select event type</option>
                 <option value="Wedding">Wedding</option>
                 <option value="Quinceañera">Quinceañera</option>
+                <option value="Birthday Party">Birthday Party</option>
                 <option value="Corporate Event">Corporate Event</option>
                 <option value="Private Party">Private Party</option>
                 <option value="Club / DJ Event">Club / DJ Event</option>
                 <option value="School Event">School Event</option>
+                <option value="Brand Activation">Brand Activation</option>
                 <option value="Other">Other</option>
               </select>
             </div>
 
             <div class="form-group">
               <label for="startTime">Start Time</label>
-              <input type="time" id="startTime" name="startTime">
+              <input type="time" id="startTime" name="startTime" required>
+            </div>
+
+            <div class="form-group">
+              <label for="endTime">End Time</label>
+              <input type="time" id="endTime" name="endTime" required>
             </div>
 
             <div class="form-group">
               <label for="guestCount">Estimated Guest Count</label>
-              <input type="number" id="guestCount" name="guestCount" placeholder="Example: 150" min="1">
+              <input type="number" id="guestCount" name="guestCount" placeholder="Example: 150" min="1" required>
+            </div>
+
+            <div class="form-group">
+              <label for="indoorOutdoor">Indoor or Outdoor?</label>
+              <select id="indoorOutdoor" name="indoorOutdoor" required>
+                <option value="">Select one</option>
+                <option value="Indoor">Indoor</option>
+                <option value="Outdoor">Outdoor</option>
+                <option value="Both Indoor & Outdoor">Both Indoor & Outdoor</option>
+                <option value="Not Sure Yet">Not Sure Yet</option>
+              </select>
             </div>
 
             <div class="form-group full">
               <label for="venueName">Venue Name</label>
-              <input type="text" id="venueName" name="venueName" placeholder="Venue name">
+              <input type="text" id="venueName" name="venueName" placeholder="Venue name" required>
             </div>
 
             <div class="form-group full">
               <label for="venueAddress">Venue Address</label>
-              <input type="text" id="venueAddress" name="venueAddress" placeholder="Venue address">
+              <input type="text" id="venueAddress" name="venueAddress" placeholder="Venue address" required>
+            </div>
+
+            <div class="form-group full">
+              <label for="hearAbout">How Did You Hear About Us?</label>
+              <select id="hearAbout" name="hearAbout" required>
+                <option value="">Select one</option>
+                <option value="Instagram">Instagram</option>
+                <option value="Google">Google</option>
+                <option value="Referral">Referral</option>
+                <option value="Venue Recommendation">Venue Recommendation</option>
+                <option value="Event Planner">Event Planner</option>
+                <option value="Previous Event">Previous Event</option>
+                <option value="Other">Other</option>
+              </select>
             </div>
 
             <div class="form-group full">
               <label for="eventNotes">Notes / Special Requests</label>
-              <textarea id="eventNotes" name="eventNotes" placeholder="Tell us anything important about access, setup location, load-in, power, indoor/outdoor setup, or custom requests."></textarea>
+              <textarea id="eventNotes" name="eventNotes" placeholder="Tell us anything important about access, setup location, load-in, power, indoor/outdoor setup, venue restrictions, special effects approval, or custom requests."></textarea>
             </div>
           </div>
         </div>
@@ -1290,20 +1339,32 @@
         <div class="form-section">
           <h3 class="form-section-title">Agreement Acknowledgment</h3>
 
+          <div class="form-grid">
+            <div class="form-group full">
+              <label for="signatureName">Type Full Name as Signature</label>
+              <input type="text" id="signatureName" name="signatureName" placeholder="Type your full name" required>
+            </div>
+          </div>
+
           <div class="agreement-box">
             <label class="checkbox-line">
               <input type="checkbox" id="ackEstimate" required>
-              <span>I understand this is an estimated total and final pricing may change based on venue access, event details, staffing, power requirements, date, and custom production needs.</span>
+              <span>I understand this is an estimated total and final pricing may change based on venue access, event details, staffing, power requirements, date, travel, and custom production needs.</span>
             </label>
 
             <label class="checkbox-line">
               <input type="checkbox" id="ackDeposit" required>
-              <span>I understand a 50% deposit is required to secure the booking date.</span>
+              <span>I understand a 50% deposit is required to secure the booking request and that the remaining balance will be due according to the final invoice/agreement terms.</span>
+            </label>
+
+            <label class="checkbox-line">
+              <input type="checkbox" id="ackConfirmation" required>
+              <span>I understand my event is not fully confirmed until Heat District Productions reviews availability, venue logistics, access, power, setup requirements, and any required approvals.</span>
             </label>
 
             <label class="checkbox-line">
               <input type="checkbox" id="ackDocuments" required>
-              <span>I understand Heat District Productions may require signed documents, terms, waivers, or rental agreements before the event is confirmed.</span>
+              <span>I understand Heat District Productions may require signed documents, terms, waivers, certificates of insurance, venue approval, or rental agreements before the event is finalized.</span>
             </label>
           </div>
         </div>
@@ -1424,6 +1485,8 @@
       storedEstimate.packageHours = Number(storedEstimate.packageHours || 0);
       storedEstimate.addonsTotal = addonsTotal;
       storedEstimate.total = storedEstimate.packagePrice + addonsTotal;
+      storedEstimate.depositDue = storedEstimate.total * 0.5;
+      storedEstimate.remainingBalance = storedEstimate.total - storedEstimate.depositDue;
 
       sessionStorage.setItem('heatDistrictEstimate', JSON.stringify(storedEstimate));
 
@@ -1506,13 +1569,18 @@
         eventDate: document.getElementById('eventDate').value,
         eventType: document.getElementById('eventType').value,
         startTime: document.getElementById('startTime').value,
+        endTime: document.getElementById('endTime').value,
         guestCount: document.getElementById('guestCount').value,
+        indoorOutdoor: document.getElementById('indoorOutdoor').value,
         venueName: document.getElementById('venueName').value.trim(),
         venueAddress: document.getElementById('venueAddress').value.trim(),
+        hearAbout: document.getElementById('hearAbout').value,
         eventNotes: document.getElementById('eventNotes').value.trim(),
+        signatureName: document.getElementById('signatureName').value.trim(),
         acknowledgments: {
           estimate: document.getElementById('ackEstimate').checked,
           deposit: document.getElementById('ackDeposit').checked,
+          confirmation: document.getElementById('ackConfirmation').checked,
           documents: document.getElementById('ackDocuments').checked
         }
       };
@@ -1687,7 +1755,7 @@
       const remainingBalance = Number(estimate.remainingBalance || 0);
 
       if (!total || total <= 0) {
-        alert('Your cart total is $0. Please go back and select a package or product before checking out.');
+        alert('Your cart total is $0. Please go back and select a package or custom build before checking out.');
         return;
       }
 
@@ -1717,30 +1785,52 @@
       ].filter(Boolean);
 
       const notesParts = [
+        'Event Date: ' + (checkoutDetails.eventDate || 'Not provided'),
+        'Event Type: ' + (checkoutDetails.eventType || 'Not provided'),
         'Start Time: ' + (checkoutDetails.startTime || 'Not provided'),
+        'End Time: ' + (checkoutDetails.endTime || 'Not provided'),
+        'Guest Count: ' + (checkoutDetails.guestCount || 'Not provided'),
+        'Indoor / Outdoor: ' + (checkoutDetails.indoorOutdoor || 'Not provided'),
         '',
         'Venue Name: ' + (checkoutDetails.venueName || 'Not provided'),
         'Venue Address: ' + (checkoutDetails.venueAddress || 'Not provided'),
+        '',
+        'How Customer Heard About Us: ' + (checkoutDetails.hearAbout || 'Not provided'),
+        'Typed Signature: ' + (checkoutDetails.signatureName || 'Not provided'),
+        '',
+        'Acknowledgments:',
+        '- Estimate / final pricing acknowledgment: ' + (checkoutDetails.acknowledgments.estimate ? 'Yes' : 'No'),
+        '- 50% deposit acknowledgment: ' + (checkoutDetails.acknowledgments.deposit ? 'Yes' : 'No'),
+        '- Final confirmation acknowledgment: ' + (checkoutDetails.acknowledgments.confirmation ? 'Yes' : 'No'),
+        '- Documents / agreement acknowledgment: ' + (checkoutDetails.acknowledgments.documents ? 'Yes' : 'No'),
         '',
         'Customer Notes:',
         checkoutDetails.eventNotes || 'No notes provided'
       ];
 
       const quickBooksOrder = {
-        customerName: checkoutDetails.clientName,
-        customerEmail: checkoutDetails.clientEmail,
-        customerPhone: checkoutDetails.clientPhone,
-        eventDate: checkoutDetails.eventDate,
-        eventType: checkoutDetails.eventType,
-        guestCount: checkoutDetails.guestCount || 'Not provided',
-        location: venueParts.length ? venueParts.join(' — ') : 'Not provided',
-        packageName: estimate.package || 'Custom Product Build',
-        total: total,
-        depositDue: depositDue,
-        remainingBalance: remainingBalance,
-        items: selectedItems,
-        notes: notesParts.join('\n')
-      };
+  customerName: checkoutDetails.clientName,
+  customerEmail: checkoutDetails.clientEmail,
+  customerPhone: checkoutDetails.clientPhone,
+  eventDate: checkoutDetails.eventDate,
+  eventType: checkoutDetails.eventType,
+  eventStartTime: checkoutDetails.startTime,
+  eventEndTime: checkoutDetails.endTime,
+  guestCount: checkoutDetails.guestCount || 'Not provided',
+  indoorOutdoor: checkoutDetails.indoorOutdoor || 'Not provided',
+  venueName: checkoutDetails.venueName || 'Not provided',
+  venueAddress: checkoutDetails.venueAddress || 'Not provided',
+  hearAbout: checkoutDetails.hearAbout || 'Not provided',
+  signatureName: checkoutDetails.signatureName || 'Not provided',
+  location: venueParts.length ? venueParts.join(' — ') : 'Not provided',
+  packageName: estimate.package || 'Custom Product Build',
+  packageHours: Number(estimate.packageHours || 0),
+  total: total,
+  depositDue: depositDue,
+  remainingBalance: remainingBalance,
+  items: selectedItems,
+  notes: notesParts.join('\n')
+};
 
       sessionStorage.setItem('heatDistrictCheckoutDetails', JSON.stringify(checkoutDetails));
       sessionStorage.setItem('heatDistrictEstimate', JSON.stringify(estimate));
@@ -1858,6 +1948,6 @@
     estimate = loadEstimate();
     renderCheckoutSummary();
   </script>
-<script src="js/global-cart.js"></script>
+  <script src="js/global-cart.js"></script>
 </body>
 </html>

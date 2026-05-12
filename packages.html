@@ -301,132 +301,177 @@
     }
 
     body.mobile-menu-open {
-      overflow: hidden;
-    }
+  overflow: hidden;
+}
 
-    .page-hero {
-      padding: 160px 48px 54px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
+.page-hero {
+  padding: 160px 48px 54px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
 
-    .page-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at 50% 0%, rgba(0,240,255,0.06) 0%, transparent 60%),
-        radial-gradient(ellipse at 20% 100%, rgba(255,45,120,0.05) 0%, transparent 50%);
-      pointer-events: none;
-    }
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(0,240,255,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 100%, rgba(255,45,120,0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
 
-    .page-hero-eyebrow {
-      position: relative;
-      z-index: 1;
-      font-size: 0.68rem;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: rgba(0,240,255,0.6);
-      margin-bottom: 16px;
-      font-weight: 400;
-    }
+.page-hero-image-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: none;
+  border-radius: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.46;
+  z-index: 0;
+  box-shadow: none;
+  background:
+    radial-gradient(circle at 30% 35%, rgba(0,240,255,0.28), transparent 28%),
+    radial-gradient(circle at 72% 45%, rgba(255,45,120,0.24), transparent 30%),
+    radial-gradient(circle at 52% 68%, rgba(191,0,255,0.22), transparent 34%),
+    linear-gradient(135deg, rgba(12,12,34,0.95), rgba(5,5,15,0.98));
+  filter: blur(0.35px);
+  mask-image: none;
+  -webkit-mask-image: none;
+}
 
-    .page-hero h1 {
-      position: relative;
-      z-index: 1;
-      font-size: clamp(2.2rem, 5vw, 3.9rem);
-      font-weight: 300;
-      font-style: italic;
-      color: #fff;
-      line-height: 1.14;
-      margin-bottom: 18px;
-    }
+.page-hero-image-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(5,5,15,0.72) 0%, rgba(5,5,15,0.28) 22%, rgba(5,5,15,0.34) 62%, rgba(5,5,15,0.84) 100%),
+    radial-gradient(circle at center, rgba(255,255,255,0.05), rgba(5,5,15,0.48) 74%);
+  z-index: 1;
+}
 
-    .page-hero h1 strong {
-      font-weight: 700;
-      font-style: normal;
-      color: var(--neon-pink);
-    }
+.page-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+  filter: blur(1.5px) saturate(0.92);
+  transform: scale(1.05);
+  transform-origin: center 28%;
+  display: block;
+  opacity: 0.78;
+}
 
-    .page-hero p {
-      position: relative;
-      z-index: 1;
-      font-size: 0.95rem;
-      font-weight: 300;
-      color: rgba(232,232,240,0.52);
-      max-width: 760px;
-      margin: 0 auto;
-      line-height: 1.9;
-      letter-spacing: 0.3px;
-    }
+.page-hero-eyebrow {
+  position: relative;
+  z-index: 1;
+  font-size: 0.68rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: rgba(0,240,255,0.6);
+  margin-bottom: 16px;
+  font-weight: 400;
+}
 
-    .hero-contact-box {
-      max-width: 860px;
-      margin: 34px auto 0;
-      padding: 24px 26px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,45,120,0.18);
-      background:
-        linear-gradient(180deg, rgba(255,45,120,0.06), rgba(10,10,26,0.9)),
-        linear-gradient(90deg, rgba(0,240,255,0.03), rgba(255,45,120,0.03));
-      box-shadow: 0 14px 40px rgba(0,0,0,0.24);
-      position: relative;
-      z-index: 1;
-    }
+.page-hero h1 {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(2.2rem, 5vw, 3.9rem);
+  font-weight: 300;
+  font-style: italic;
+  color: #fff;
+  line-height: 1.14;
+  margin-bottom: 18px;
+}
 
-    .hero-contact-kicker {
-      font-size: 0.62rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: rgba(0,240,255,0.72);
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
+.page-hero h1 strong {
+  font-weight: 700;
+  font-style: normal;
+  color: var(--neon-pink);
+}
 
-    .hero-contact-title {
-      font-size: clamp(1.15rem, 2vw, 1.65rem);
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 8px;
-      line-height: 1.2;
-    }
+.page-hero p {
+  position: relative;
+  z-index: 1;
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: rgba(232,232,240,0.52);
+  max-width: 760px;
+  margin: 0 auto;
+  line-height: 1.9;
+  letter-spacing: 0.3px;
+}
 
-    .hero-contact-copy {
-      font-size: 0.88rem;
-      line-height: 1.8;
-      color: rgba(232,232,240,0.72);
-      max-width: 690px;
-      margin: 0 auto 18px;
-    }
+.hero-contact-box {
+  max-width: 860px;
+  margin: 34px auto 0;
+  padding: 24px 26px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,45,120,0.18);
+  background:
+    linear-gradient(180deg, rgba(255,45,120,0.06), rgba(10,10,26,0.9)),
+    linear-gradient(90deg, rgba(0,240,255,0.03), rgba(255,45,120,0.03));
+  box-shadow: 0 14px 40px rgba(0,0,0,0.24);
+  position: relative;
+  z-index: 1;
+}
 
-    .hero-contact-btn {
-      display: inline-block;
-      background: transparent;
-      color: var(--neon-pink);
-      border: 1.5px solid var(--neon-pink);
-      padding: 12px 26px;
-      border-radius: 4px;
-      text-decoration: none;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 2.6px;
-      text-transform: uppercase;
-      transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
-    }
+.hero-contact-kicker {
+  font-size: 0.62rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(0,240,255,0.72);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
 
-    .hero-contact-btn:hover {
-      background: rgba(255,45,120,0.12);
-      box-shadow: 0 0 22px rgba(255,45,120,0.28);
-      transform: translateY(-2px);
-    }
+.hero-contact-title {
+  font-size: clamp(1.15rem, 2vw, 1.65rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
 
-    .neon-divider {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(0,240,255,0.25), rgba(255,45,120,0.25), transparent);
-    }
+.hero-contact-copy {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: rgba(232,232,240,0.72);
+  max-width: 690px;
+  margin: 0 auto 18px;
+}
 
+.hero-contact-btn {
+  display: inline-block;
+  background: transparent;
+  color: var(--neon-pink);
+  border: 1.5px solid var(--neon-pink);
+  padding: 12px 26px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2.6px;
+  text-transform: uppercase;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+
+.hero-contact-btn:hover {
+  background: rgba(255,45,120,0.12);
+  box-shadow: 0 0 22px rgba(255,45,120,0.28);
+  transform: translateY(-2px);
+}
+
+.neon-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,240,255,0.25), rgba(255,45,120,0.25), transparent);
+}
     .packages-wrap {
       max-width: 1400px;
       margin: 0 auto;
@@ -1117,8 +1162,22 @@
       }
 
       .page-hero {
-        padding: 145px 24px 54px;
-      }
+  padding: 145px 24px 54px;
+}
+
+.page-hero-image-wrap {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.42;
+}
+.page-hero-image {
+  object-fit: cover;
+  object-position: center 28%;
+  filter: blur(1.5px) saturate(0.9);
+  transform: scale(1.05);
+  transform-origin: center 28%;
+}
 
       .packages-wrap {
         padding: 60px 24px 90px;
@@ -1206,23 +1265,28 @@
   </div>
 
   <div class="page-hero">
-    <p class="page-hero-eyebrow">Transparent Packages · South Florida Events · Customizable Next Step</p>
-    <h1>Choose Your<br><strong>Event Package</strong></h1>
-    <p>
-      Start with the package that fits the size, style, and energy of your event. After choosing a package,
-      you can continue to add upgrades, rentals, media coverage, or custom production elements.
-    </p>
-
-    <div class="hero-contact-box">
-      <div class="hero-contact-kicker">Not Sure Which Package Fits?</div>
-      <div class="hero-contact-title">Send Us Your Date, Venue, Guest Count, and Vision</div>
-      <div class="hero-contact-copy">
-        If you are between packages, need a custom setup, or want help choosing the right production level,
-        reach out and we’ll point you toward the best option before you book.
-      </div>
-      <a href="contact.html" class="hero-contact-btn">Get Recommendation</a>
-    </div>
+  <div class="page-hero-image-wrap" aria-hidden="true">
+    <!-- Replace this placeholder image later with your own event image -->
+    <img src="images/packages-hero-placeholder.jpg" alt="" class="page-hero-image">
   </div>
+
+  <p class="page-hero-eyebrow">Transparent Packages · South Florida Events · Customizable Next Step</p>
+  <h1>Choose Your<br><strong>Event Package</strong></h1>
+  <p>
+    Start with the package that fits the size, style, and energy of your event. After choosing a package,
+    you can continue to add upgrades, rentals, media coverage, or custom production elements.
+  </p>
+
+  <div class="hero-contact-box">
+    <div class="hero-contact-kicker">Not Sure Which Package Fits?</div>
+    <div class="hero-contact-title">Send Us Your Date, Venue, Guest Count, and Vision</div>
+    <div class="hero-contact-copy">
+      If you are between packages, need a custom setup, or want help choosing the right production level,
+      reach out and we’ll point you toward the best option before you book.
+    </div>
+    <a href="contact.html" class="hero-contact-btn">Get Recommendation</a>
+  </div>
+</div>
 
   <div class="neon-divider"></div>
 
@@ -1239,9 +1303,9 @@
       <div class="packages-grid-scroll">
         <div class="packages-grid">
 
-          <div class="pkg-card" data-package-name="The Spark" data-base-price="1295">
+          <div class="pkg-card" data-package-name="Essential Package" data-base-price="1295">
             <p class="pkg-tier">Level One</p>
-            <h3 class="pkg-name">The Spark</h3>
+            <h3 class="pkg-name">Essential Package</h3>
             <p class="pkg-tagline">Clean sound, professional DJ, and the essentials for a polished smaller-scale event.</p>
 
             <div class="pkg-fit-box">
@@ -1284,10 +1348,10 @@
             <button class="btn-full-blue" type="button" onclick="choosePackage(event, this)">Continue to Add-Ons</button>
           </div>
 
-          <div class="pkg-card featured" data-package-name="The Blaze" data-base-price="2195">
+          <div class="pkg-card featured" data-package-name="Signature Package" data-base-price="2195">
             <div class="pkg-badge popular">Most Popular</div>
             <p class="pkg-tier">Level Two</p>
-            <h3 class="pkg-name">The Blaze</h3>
+            <h3 class="pkg-name">Signature Package</h3>
             <p class="pkg-tagline">The strongest all-around package for clients who want energy, lighting, and guest interaction.</p>
 
             <div class="pkg-fit-box">
@@ -1336,10 +1400,10 @@
             <button class="btn-full-pink" type="button" onclick="choosePackage(event, this)">Continue to Add-Ons</button>
           </div>
 
-          <div class="pkg-card value" data-package-name="The Inferno" data-base-price="2995">
+          <div class="pkg-card value" data-package-name="Premier Package" data-base-price="2995">
             <div class="pkg-badge best">Best Value</div>
             <p class="pkg-tier">Level Three</p>
-            <h3 class="pkg-name">The Inferno</h3>
+            <h3 class="pkg-name">Premier Package</h3>
             <p class="pkg-tagline">Premium production with stronger lighting, sparks, guest upgrades, and a larger room presence.</p>
 
             <div class="pkg-fit-box">
@@ -1391,9 +1455,9 @@
             <button class="btn-full-blue" type="button" onclick="choosePackage(event, this)">Continue to Add-Ons</button>
           </div>
 
-          <div class="pkg-card" data-package-name="The District" data-base-price="4995">
+          <div class="pkg-card" data-package-name="Elite Production Package" data-base-price="4995">
             <p class="pkg-tier">Level Four</p>
-            <h3 class="pkg-name">The District</h3>
+            <h3 class="pkg-name">Elite Production Package</h3>
             <p class="pkg-tagline">The full statement package with LED wall presence, maximum staging, and high-impact visual production.</p>
 
             <div class="pkg-fit-box">
@@ -1464,19 +1528,19 @@
             <tr>
               <th>Feature</th>
               <th>
-                <span class="th-name">The Spark</span>
+                <span class="th-name">Essential Package</span>
                 <span class="th-price">$1,295</span>
               </th>
               <th class="featured-col">
-                <span class="th-name">The Blaze</span>
+                <span class="th-name">Signature Package</span>
                 <span class="th-price">$2,195</span>
               </th>
               <th>
-                <span class="th-name">The Inferno</span>
+                <span class="th-name">Premier Package</span>
                 <span class="th-price">$2,995</span>
               </th>
               <th>
-                <span class="th-name">The District</span>
+                <span class="th-name">Elite Production Package</span>
                 <span class="th-price">$4,995</span>
               </th>
             </tr>

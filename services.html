@@ -1457,7 +1457,7 @@
       <p class="section-label">Rentals & Services</p>
       <h2 class="section-title">Individual Rentals & <strong>Custom Build Cart</strong></h2>
       <p class="section-sub">
-        Everything below can be added individually. Some high-demand rentals appear in more than one category so clients can find them faster.
+        Everything below can be added individually. Physical rental pricing includes standard setup and breakdown unless noted otherwise. Some high-demand rentals appear in more than one category so clients can find them faster.
       </p>
 
       <div class="builder-layout">
@@ -1470,7 +1470,7 @@
           <div class="cart-kicker">Current Estimate</div>
           <div class="cart-title">Your Build</div>
           <div class="cart-copy">
-            Add rentals and services from the left. Your total, 50% deposit, and remaining balance update automatically.
+            Add rentals and services from the left. Physical rental pricing includes standard setup and breakdown. Your total, 50% deposit, and remaining balance update automatically.
           </div>
 
           <div class="cart-items" id="cartItems"></div>
@@ -1677,23 +1677,25 @@
         name: 'Sound — 2 QSC Tops + 2 Subs',
         title: 'Sound — 2 QSC Tops + 2 Subs',
         icon: 'QSC',
-        type: 'hourly',
-        rate: 125,
+        type: 'event',
+        rate: 425,
+        extraHourRate: 65,
         image: 'images/products/sound-system.png',
         mediaClass: 'product-media-wide',
-        desc: 'Professional sound system with 2 QSC tops and 2 QSC subs for a clean, strong event foundation.',
-        note: 'Most requested sound setup'
+        desc: 'Professional sound system with 2 QSC tops and 2 QSC subs for a clean, strong event foundation. Bundled lower than renting the speakers and subs separately. Includes standard setup and breakdown.',
+        note: 'Event base up to 5 hrs · setup + breakdown included'
       },
       'led-cocktail-tables': {
         name: 'LED Glow Cocktail Tables',
         title: 'LED Glow Cocktail Tables',
         icon: 'LED',
-        type: 'hourly',
-        rate: 25,
+        type: 'event',
+        rate: 85,
+        extraHourRate: 10,
         image: 'images/products/led-cocktail-tables.png',
         mediaClass: 'product-media-gear',
-        desc: 'Light-up standing cocktail tables for lounges, VIP areas, cocktail hours, and party spaces.',
-        note: 'Light-up cocktail table · select amount'
+        desc: 'Light-up standing cocktail tables for lounges, VIP areas, cocktail hours, and party spaces. Includes delivery placement, setup, and breakdown.',
+        note: 'Per table · event base up to 5 hrs'
       },
       'dj-service': {
         name: 'DJ',
@@ -1730,58 +1732,62 @@
         name: 'Photo Booth — Digital Only',
         title: 'Photo Booth — Digital Only',
         icon: 'PB',
-        type: 'hourly',
-        rate: 80,
+        type: 'event',
+        rate: 495,
+        extraHourRate: 75,
         image: 'images/products/photo-booth-digital.png',
         mediaClass: 'product-media-tall',
-        desc: 'Digital photo booth experience with props included and the option of 3 different backdrops for your event.',
-        note: 'Digital only · props included'
+        desc: 'Digital photo booth experience with props included and the option of 3 different backdrops for your event. Includes setup and breakdown.',
+        note: 'Event base up to 5 hrs · props included'
       },
       'photo-booth-print': {
         name: 'Photo Booth — Digital + Print',
         title: 'Photo Booth — Digital + Print',
         icon: 'P+P',
-        type: 'hourly',
-        rate: 120,
+        type: 'event',
+        rate: 650,
+        extraHourRate: 100,
         image: 'images/products/photo-booth-print.png',
         mediaClass: 'product-media-tall',
-        desc: 'Photo booth experience with digital sharing, printouts, props included, and the option of 3 different backdrops.',
-        note: 'Digital + print · props included'
+        desc: 'Photo booth experience with digital sharing, printouts, props included, and the option of 3 different backdrops. Includes setup and breakdown.',
+        note: 'Event base up to 5 hrs · digital + print'
       },
       'red-carpet': {
         name: 'Red Carpet — 20 Foot',
         title: 'Red Carpet',
         icon: 'RC',
-        type: 'hourly',
-        rate: 50,
+        type: 'event',
+        rate: 175,
+        extraHourRate: 0,
         image: 'images/products/red-carpet.png',
         mediaClass: 'product-media-wide',
-        desc: '20 foot red carpet setup for entrances, photo moments, VIP areas, and event arrivals.',
-        note: '20 foot red carpet'
+        desc: '20 foot red carpet setup for entrances, photo moments, VIP areas, and event arrivals. Includes standard setup and breakdown.',
+        note: '20 foot red carpet · setup + breakdown included'
       },
       'foam-glow-sticks': {
-  name: 'Foam Glow Sticks — Pack of 25',
-  title: 'Foam Glow Sticks',
-  icon: 'GLO',
-  type: 'hourly',
-  rate: 15,
-  image: 'images/products/foam-glow-sticks.png',
-  mediaClass: 'product-media-gear',
-  desc: 'Pack of 25 purple foam glow sticks for dance floors, party moments, club-style events, birthdays, and guest interaction.',
-  note: 'Pack of 25 foam glow sticks'
-},
-
-'led-bottle-sign': {
-  name: 'LED Bottle Sign',
-  title: 'LED Bottle Sign',
-  icon: 'LED',
-  type: 'hourly',
-  rate: 20,
-  image: 'images/products/led-bottle-sign.png',
-  mediaClass: 'product-media-gear',
-  desc: 'LED bottle sign display for VIP tables, bottle service moments, birthday entrances, and nightlife-style event upgrades.',
-  note: 'LED bottle sign display'
-},
+        name: 'Foam Glow Sticks — Pack of 25',
+        title: 'Foam Glow Sticks',
+        icon: 'GLO',
+        type: 'event',
+        rate: 35,
+        extraHourRate: 0,
+        image: 'images/products/foam-glow-sticks.png',
+        mediaClass: 'product-media-gear',
+        desc: 'Pack of 25 purple foam glow sticks for dance floors, party moments, club-style events, birthdays, and guest interaction.',
+        note: 'Per 25-pack · event supply item'
+      },
+      'led-bottle-sign': {
+        name: 'LED Bottle Sign',
+        title: 'LED Bottle Sign',
+        icon: 'LED',
+        type: 'event',
+        rate: 75,
+        extraHourRate: 0,
+        image: 'images/products/led-bottle-sign.png',
+        mediaClass: 'product-media-gear',
+        desc: 'LED bottle sign display for VIP tables, bottle service moments, birthday entrances, and nightlife-style event upgrades. Includes setup and pickup.',
+        note: 'Event display item · setup included'
+      },
       'videography': {
         name: 'Videography — 15 Second Recap',
         title: 'Videography',
@@ -1805,133 +1811,145 @@
         name: 'Glow Lighting Package',
         title: 'Glow Lighting Package',
         icon: 'GLW',
-        type: 'hourly',
-        rate: 50,
+        type: 'event',
+        rate: 200,
+        extraHourRate: 25,
         image: 'images/products/glow-lighting-package.png',
         mediaClass: 'product-media-wide',
-        desc: 'Uplights and light bar package for a clean entry-level lighting look.',
-        note: 'Lighting package'
+        desc: '5 uplights plus 1 light bar for a clean entry-level lighting look. Priced lower than adding the same lighting individually. Includes setup, programming, cabling, and breakdown.',
+        note: 'Event base up to 5 hrs · setup + breakdown included'
       },
       'pulse-lighting-package': {
         name: 'Pulse Lighting Package',
         title: 'Pulse Lighting Package',
         icon: 'PLS',
-        type: 'hourly',
-        rate: 125,
+        type: 'event',
+        rate: 475,
+        extraHourRate: 70,
         image: 'images/products/pulse-lighting-package.png',
         mediaClass: 'product-media-wide',
-        desc: '2 moving heads plus the Glow-level lighting foundation for a stronger event atmosphere.',
-        note: 'Lighting package'
+        desc: '5 uplights, 1 light bar, and 2 moving heads for a stronger event atmosphere. Priced lower than adding the same lighting individually. Includes setup, programming, cabling, and breakdown.',
+        note: 'Event base up to 5 hrs · setup + breakdown included'
       },
       'district-lighting-package': {
         name: 'District Lighting Package',
         title: 'District Lighting Package',
         icon: 'DST',
-        type: 'hourly',
-        rate: 200,
+        type: 'event',
+        rate: 875,
+        extraHourRate: 125,
         image: 'images/products/district-lighting-package.png',
         mediaClass: 'product-media-wide',
-        desc: '4 moving heads, wash lights, and the full lower-level lighting build for the biggest lighting package here.',
-        note: 'Lighting package'
+        desc: '5 uplights, 1 light bar, 4 moving heads, and 2 wash lights for the biggest lighting package here. Priced lower than adding the same lighting individually. Includes setup, programming, cabling, and breakdown.',
+        note: 'Event base up to 5 hrs · setup + breakdown included'
       },
       'qsc-top-speaker': {
         name: 'QSC Top Speaker',
         title: 'QSC Top Speaker',
         icon: 'QSC',
-        type: 'hourly',
-        rate: 37.5,
+        type: 'event',
+        rate: 95,
+        extraHourRate: 15,
         image: 'images/products/qsc-top-speaker.png',
         mediaClass: 'product-media-gear',
-        desc: 'Single QSC top speaker rental for clean event sound. Great for smaller events, speeches, cocktail areas, or building a larger sound setup.',
-        note: 'Single QSC top speaker · select amount'
+        desc: 'Single QSC top speaker rental for clean event sound. Great for smaller events, speeches, cocktail areas, or building a larger sound setup. Includes setup and breakdown.',
+        note: 'Single QSC top speaker · setup included'
       },
       'qsc-subwoofer': {
         name: 'QSC Subwoofer',
         title: 'QSC Subwoofer',
         icon: 'SUB',
-        type: 'hourly',
-        rate: 25,
+        type: 'event',
+        rate: 125,
+        extraHourRate: 20,
         image: 'images/products/qsc-subwoofer.png',
         mediaClass: 'product-media-gear',
-        desc: 'Single QSC subwoofer rental for stronger bass and fuller low-end. Pair it with QSC top speakers for a complete sound setup.',
-        note: 'Single QSC subwoofer · select amount'
+        desc: 'Single QSC subwoofer rental for stronger bass and fuller low-end. Pair it with QSC top speakers for a complete sound setup. Includes setup and breakdown.',
+        note: 'Single QSC subwoofer · setup included'
       },
       'wireless-mic': {
         name: 'Mic',
         title: 'Mic',
         icon: 'MIC',
-        type: 'hourly',
-        rate: 20,
+        type: 'event',
+        rate: 45,
+        extraHourRate: 10,
         image: 'images/products/wireless-mic.png',
         mediaClass: 'product-media-gear',
-        desc: '1 unit microphone rental for speeches, announcements, event hosting, and basic ceremony needs.',
-        note: 'Basic support item'
+        desc: '1 unit microphone rental for speeches, announcements, event hosting, and basic ceremony needs. Includes setup and breakdown.',
+        note: 'Basic support item · setup included'
       },
       'cold-spark': {
         name: 'Cold Spark',
         title: 'Cold Spark',
         icon: 'FX',
-        type: 'hourly',
-        rate: 50,
+        type: 'event',
+        rate: 450,
+        extraHourRate: 75,
         image: 'images/products/cold-spark.png',
         mediaClass: 'product-media-gear',
-        desc: '2 units for premium visual moments and event reveals.',
-        note: 'Visual effect'
+        desc: '2 units for premium visual moments and event reveals. Includes standard setup, breakdown, and basic spark powder supply.',
+        note: '2 units · venue approval may be required'
       },
       'fog-machines': {
         name: 'Fog Machines',
         title: 'Fog Machines',
         icon: 'FOG',
-        type: 'hourly',
-        rate: 40,
+        type: 'event',
+        rate: 150,
+        extraHourRate: 20,
         image: 'images/products/fog-machine.png',
         mediaClass: 'product-media-gear',
-        desc: '2 units for atmosphere and beam enhancement.',
-        note: 'Atmosphere support'
+        desc: '2 units for atmosphere and beam enhancement. Includes standard fluid, setup, and breakdown.',
+        note: '2 units · atmosphere support'
       },
       'uplights': {
-        name: 'Up Lights',
+        name: 'Up Lights — 5 Units',
         title: 'Up Lights',
         icon: 'UP',
-        type: 'hourly',
-        rate: 15,
+        type: 'event',
+        rate: 125,
+        extraHourRate: 15,
         image: 'images/products/uplight.png',
         mediaClass: 'product-media-gear',
-        desc: '5 units uplighting bundle.',
-        note: 'Lighting add-on'
+        desc: '5 unit uplighting bundle for room color, walls, entrances, and atmosphere. Includes setup, programming, and breakdown.',
+        note: '5 units · setup + programming included'
       },
       'light-bar': {
         name: 'Light Bar',
         title: 'Light Bar',
         icon: 'BAR',
-        type: 'hourly',
-        rate: 30,
+        type: 'event',
+        rate: 125,
+        extraHourRate: 15,
         image: 'images/products/light-bar.png',
         mediaClass: 'product-media-wide',
-        desc: '1 unit light bar rental.',
-        note: 'Lighting add-on'
+        desc: '1 unit light bar rental for dance floor movement, color, and automatic party lighting. Includes setup and breakdown.',
+        note: '1 unit · setup included'
       },
       'moving-heads': {
         name: 'Moving Head Light',
         title: 'Moving Head Light',
         icon: 'MH',
-        type: 'hourly',
-        rate: 37.5,
+        type: 'event',
+        rate: 150,
+        extraHourRate: 25,
         image: 'images/products/moving-head.png',
         mediaClass: 'product-media-gear',
-        desc: 'Single moving head light rental for dance floor movement, beams, spotlight moments, and custom lighting builds.',
+        desc: 'Single moving head light rental for dance floor movement, beams, spotlight moments, and custom lighting builds. Includes setup and breakdown.',
         note: 'Single moving head light · select amount'
       },
       'wash-lights': {
         name: 'Wash Lights',
         title: 'Wash Lights',
         icon: 'WL',
-        type: 'hourly',
-        rate: 20,
+        type: 'event',
+        rate: 150,
+        extraHourRate: 20,
         image: 'images/products/wash-lights.png',
         mediaClass: 'product-media-gear',
-        desc: '2 units wash lights.',
-        note: 'Lighting add-on'
+        desc: '2 units wash lights for wider color coverage and room atmosphere. Includes setup and breakdown.',
+        note: '2 units · lighting add-on'
       },
       'cdj-djm-package': {
         name: 'Premium Club Mixer & CDJ Package — 2 CDJ 3000 + DJM-900NXS2',
@@ -1981,78 +1999,85 @@
         name: 'LED Wall with Goal Post Trussing',
         title: 'LED Wall with Goal Post Trussing',
         icon: 'LED',
-        type: 'hourly',
-        rate: 240,
+        type: 'event',
+        rate: 2800,
+        extraHourRate: 300,
         image: 'images/products/led-wall.png',
         mediaClass: 'product-media-wide',
-        desc: 'LED wall setup mounted with goal post trussing for logos, visuals, DJ content, slideshows, branding, and high-impact event backdrops.',
-        note: 'LED wall + goal post trussing'
+        desc: 'LED wall setup mounted with goal post trussing for logos, visuals, DJ content, slideshows, branding, and high-impact event backdrops. Includes standard setup, processor, cabling, and breakdown.',
+        note: 'LED wall + goal post trussing · setup included'
       },
       'led-wall-floor': {
         name: 'Floor-Supported LED Wall',
         title: 'Floor-Supported LED Wall',
         icon: 'LED',
-        type: 'hourly',
-        rate: 220,
+        type: 'event',
+        rate: 2400,
+        extraHourRate: 300,
         image: 'images/products/led-wall-floor.png',
         mediaClass: 'product-media-wide',
-        desc: 'Freestanding LED wall propped up from the floor with support hidden behind the screen. Great for clean visuals, logos, DJ content, presentations, and event backdrops when overhead trussing is not needed.',
-        note: 'Floor-supported LED wall'
+        desc: 'Freestanding LED wall propped up from the floor with support hidden behind the screen. Great for clean visuals, logos, DJ content, presentations, and event backdrops when overhead trussing is not needed. Includes standard setup, processor, cabling, and breakdown.',
+        note: 'Floor-supported LED wall · setup included'
       },
       'led-wall-2-totems': {
-  name: 'LED Wall with 2 Totems',
-  title: 'LED Wall with 2 Totems',
-  icon: 'LED',
-  type: 'hourly',
-  rate: 230,
-  image: 'images/products/led-wall-2-totems.png',
-  mediaClass: 'product-media-wide',
-  desc: 'LED wall setup mounted between two truss totems for a clean visual display without a full overhead goal post. Great for DJ visuals, logos, slideshows, branding, and event backdrops.',
-  note: 'LED wall + 2 truss totems'
-},
+        name: 'LED Wall with 2 Totems',
+        title: 'LED Wall with 2 Totems',
+        icon: 'LED',
+        type: 'event',
+        rate: 2600,
+        extraHourRate: 300,
+        image: 'images/products/led-wall-2-totems.png',
+        mediaClass: 'product-media-wide',
+        desc: 'LED wall setup mounted between two truss totems for a clean visual display without a full overhead goal post. Great for DJ visuals, logos, slideshows, branding, and event backdrops. Includes standard setup, processor, cabling, and breakdown.',
+        note: 'LED wall + 2 truss totems · setup included'
+      },
       'trussing-2-totems': {
         name: 'Trussing — 2 Totems 8ft',
         title: 'Trussing — 2 Totems',
         icon: '2T',
-        type: 'hourly',
-        rate: 50,
+        type: 'event',
+        rate: 250,
+        extraHourRate: 50,
         image: 'images/products/trussing-2-totems.png',
         mediaClass: 'product-media-tall',
-        desc: '2 totems at 8ft each for a cleaner vertical production look.',
-        note: '8ft each · staging add-on'
+        desc: '2 totems at 8ft each for a cleaner vertical production look. Includes setup, leveling, and breakdown.',
+        note: '8ft each · setup + breakdown included'
       },
       'trussing-4-totems': {
         name: 'Trussing — 4 Totems 8ft',
         title: 'Trussing — 4 Totems',
         icon: '4T',
-        type: 'hourly',
-        rate: 100,
+        type: 'event',
+        rate: 450,
+        extraHourRate: 75,
         image: 'images/products/trussing-4-totems.png',
         mediaClass: 'product-media-wide',
-        desc: '4 totems at 8ft each for a larger, more symmetrical production setup.',
-        note: '8ft each · staging add-on'
+        desc: '4 totems at 8ft each for a larger, more symmetrical production setup. Includes setup, leveling, and breakdown.',
+        note: '8ft each · setup + breakdown included'
       },
       'trussing-goalpost-8x10': {
         name: 'Trussing — Goal Post 8x10',
         title: 'Trussing — Goal Post 8x10',
         icon: 'GP10',
-        type: 'hourly',
-        rate: 130,
+        type: 'event',
+        rate: 650,
+        extraHourRate: 100,
         image: 'images/products/trussing-goalpost-8x10.png',
         mediaClass: 'product-media-wide',
-        desc: '8x10 goal post truss setup for overhead production support and a bigger stage look.',
-        note: 'Overhead structure · staging add-on'
+        desc: '8x10 goal post truss setup for overhead production support and a bigger stage look. Includes setup, leveling, and breakdown.',
+        note: 'Overhead structure · setup + breakdown included'
       },
       'trussing-goalpost-8x16': {
         name: 'Trussing — Goal Post 8x16',
         title: 'Trussing — Goal Post 8x16',
         icon: 'GP16',
-        type: 'hourly',
-        rate: 150,
+        type: 'event',
+        rate: 850,
+        extraHourRate: 125,
         image: 'images/products/trussing-goalpost-8x16.png',
         mediaClass: 'product-media-wide',
-        desc: '8x16 goal post truss setup for a wider, more dramatic production footprint.',
-        note: 'Wider overhead structure · staging add-on'
+        desc: '8x16 goal post truss setup for a wider, more dramatic production footprint. Includes setup, leveling, and breakdown.',
+        note: 'Wider overhead structure · setup + breakdown included'
       }
     };
 
@@ -2088,7 +2113,36 @@
         return cleanDuration + ' ' + (cleanDuration === 1 ? 'day' : 'days');
       }
 
+      if (type === 'event') {
+        return cleanDuration + ' hr event';
+      }
+
       return cleanDuration + ' hrs';
+    }
+
+    function getProductTypeLabel(type) {
+      if (type === 'daily') return 'Daily';
+      if (type === 'event') return 'Event Base';
+      return 'Hourly';
+    }
+
+    function formatRateLabel(rate, type, extraHourRate) {
+      const cleanRate = Number(rate || 0);
+      const cleanExtraRate = Number(extraHourRate || 0);
+
+      if (type === 'daily') {
+        return formatMoney(cleanRate) + ' / day';
+      }
+
+      if (type === 'event') {
+        if (cleanExtraRate > 0) {
+          return formatMoney(cleanRate) + ' event base · +' + formatMoney(cleanExtraRate) + '/hr after 5 hrs';
+        }
+
+        return formatMoney(cleanRate) + ' event base';
+      }
+
+      return formatMoney(cleanRate) + ' / hr';
     }
 
     function getCartKey(name, type, duration) {
@@ -2148,6 +2202,7 @@
           data-name="${escapeHtml(product.name)}"
           data-type="${escapeHtml(product.type)}"
           data-rate="${escapeHtml(product.rate)}"
+          data-extra-rate="${escapeHtml(product.extraHourRate || 0)}"
           ${product.noQuantity ? 'data-no-quantity="true"' : ''}
         >
           <div class="product-media ${escapeHtml(product.mediaClass || 'product-media-gear')}">
@@ -2164,12 +2219,12 @@
 
           <div class="product-top">
             <div class="product-icon">${escapeHtml(product.icon)}</div>
-            <div class="product-type">${product.type === 'daily' ? 'Daily' : 'Hourly'}</div>
+            <div class="product-type">${getProductTypeLabel(product.type)}</div>
           </div>
 
           <div class="product-name">${escapeHtml(product.title)}</div>
           <div class="product-desc">${escapeHtml(product.desc)}</div>
-          <div class="product-rate">${formatMoney(product.rate)} / ${product.type === 'daily' ? 'day' : 'hr'}</div>
+          <div class="product-rate">${formatRateLabel(product.rate, product.type, product.extraHourRate)}</div>
 
           ${optionsHtml}
 
@@ -2235,6 +2290,14 @@
     function getCardUnitPrice(card) {
       const rate = Number(card.dataset.rate || 0);
       const duration = getCardDuration(card);
+      const type = card.dataset.type || 'hourly';
+
+      if (type === 'event') {
+        const extraHourRate = Number(card.dataset.extraRate || 0);
+        const extraHours = Math.max(0, duration - 5);
+        return rate + (extraHours * extraHourRate);
+      }
+
       return rate * duration;
     }
 
@@ -2246,9 +2309,10 @@
       const rateEl = card.querySelector('.product-rate');
       const type = card.dataset.type || 'hourly';
       const rate = Number(card.dataset.rate || 0);
+      const extraHourRate = Number(card.dataset.extraRate || 0);
 
       if (rateEl) {
-        rateEl.textContent = formatMoney(rate) + (type === 'daily' ? ' / day' : ' / hr');
+        rateEl.textContent = formatRateLabel(rate, type, extraHourRate);
       }
 
       if (totalEl) {
@@ -2361,7 +2425,7 @@
       const rate = Number(card.dataset.rate || 0);
       const duration = getCardDuration(card);
       const quantityToAdd = getCardQuantity(card);
-      const unitPrice = rate * duration;
+      const unitPrice = getCardUnitPrice(card);
       const key = getCartKey(name, type, duration);
 
       const existing = buildCart.find(function(item) {
@@ -2523,7 +2587,7 @@
         return {
           id: item.key,
           name: item.name,
-          category: item.type === 'daily' ? 'Daily Rental' : 'Rental / Service',
+          category: item.type === 'daily' ? 'Daily Rental' : item.type === 'event' ? 'Event Rental' : 'Rental / Service',
           price: Number(item.unitPrice || 0),
           unit: item.durationLabel || getDurationLabel(item.type, item.duration),
           qty: Number(item.quantity || 1)

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gallery — Heat District Productions</title>
-  <meta name="description" content="View real Heat District Productions event setups, lighting packages, DJ setups, sound systems, photo booth activations, trussing, and behind-the-scenes production work in South Florida." />
+  <meta name="description" content="A growing gallery of real Heat District Productions event setups, lighting details, DJ builds, and behind-the-scenes production work in South Florida." />
 
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/global.css">
@@ -485,6 +485,81 @@
       margin-bottom: 30px;
     }
 
+    .gallery-note-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+      margin: 30px 0 34px;
+      padding: 20px 22px;
+      border: 1px solid rgba(0,240,255,0.1);
+      border-radius: 16px;
+      background:
+        radial-gradient(ellipse at 0% 0%, rgba(0,240,255,0.06), transparent 62%),
+        linear-gradient(180deg, rgba(10,10,26,0.94), rgba(8,8,22,0.98));
+      box-shadow: 0 14px 38px rgba(0,0,0,0.18);
+    }
+
+    .gallery-note-kicker {
+      font-size: 0.58rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,45,120,0.84);
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+
+    .gallery-note-title {
+      color: #fff;
+      font-size: 1.08rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .gallery-note-copy {
+      color: rgba(232,232,240,0.64);
+      font-size: 0.86rem;
+      line-height: 1.7;
+      max-width: 760px;
+    }
+
+    .gallery-focus-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .gallery-focus-tag {
+      border: 1px solid rgba(0,240,255,0.14);
+      border-radius: 999px;
+      padding: 9px 12px;
+      color: rgba(0,240,255,0.82);
+      background: rgba(0,240,255,0.04);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .gallery-next-panel {
+      margin-top: 20px;
+      padding: 20px 22px;
+      border: 1px solid rgba(255,45,120,0.12);
+      border-radius: 16px;
+      background:
+        radial-gradient(ellipse at 100% 0%, rgba(255,45,120,0.06), transparent 62%),
+        linear-gradient(180deg, rgba(10,10,26,0.94), rgba(8,8,22,0.98));
+      color: rgba(232,232,240,0.68);
+      font-size: 0.88rem;
+      line-height: 1.75;
+    }
+
+    .gallery-next-panel strong {
+      color: #fff;
+    }
+
     .filter-bar {
       display: flex;
       flex-wrap: wrap;
@@ -516,13 +591,15 @@
 
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.85fr);
+      grid-auto-rows: 190px;
       gap: 18px;
+      align-items: stretch;
     }
 
     .gallery-card {
       position: relative;
-      min-height: 275px;
+      min-height: 190px;
       border-radius: 16px;
       overflow: hidden;
       border: 1px solid rgba(0,240,255,0.1);
@@ -539,9 +616,13 @@
     }
 
     .gallery-card.featured {
-      grid-column: span 2;
-      grid-row: span 2;
-      min-height: 568px;
+      grid-column: 1;
+      grid-row: span 3;
+      min-height: 606px;
+    }
+
+    .gallery-card:not(.featured) {
+      grid-column: 2;
     }
 
     .gallery-img {
@@ -868,13 +949,18 @@
 
     @media (max-width: 1200px) {
       .gallery-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 240px;
       }
 
       .gallery-card.featured {
         grid-column: span 2;
         grid-row: span 1;
-        min-height: 360px;
+        min-height: 380px;
+      }
+
+      .gallery-card:not(.featured) {
+        grid-column: auto;
       }
 
       .proof-strip {
@@ -911,13 +997,23 @@
 
       .gallery-grid {
         grid-template-columns: 1fr;
+        grid-auto-rows: auto;
       }
 
       .gallery-card,
-      .gallery-card.featured {
+      .gallery-card.featured,
+      .gallery-card:not(.featured) {
         grid-column: auto;
         grid-row: auto;
         min-height: 320px;
+      }
+
+      .gallery-note-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-focus-tags {
+        justify-content: flex-start;
       }
 
       .filter-btn {
@@ -1005,10 +1101,10 @@
   </div>
 
   <section class="page-hero">
-    <p class="page-hero-eyebrow">Real Setups · Real Equipment · Real Events · South Florida</p>
+    <p class="page-hero-eyebrow">Real Setups · Growing Gallery · South Florida</p>
     <h1>See the Setup<br><strong>Before You Book</strong></h1>
     <p>
-      Browse real event setups, lighting looks, DJ builds, guest experiences, and behind-the-scenes production details from Heat District Productions. Use this page to see the style, scale, and production quality we bring before choosing a package or building a custom setup.
+      A focused look at our current real setup photos, lighting details, DJ builds, and behind-the-scenes production work. This gallery is intentionally curated while the portfolio grows with new South Florida events.
     </p>
 
     <div class="hero-actions">
@@ -1048,22 +1144,31 @@
     </section>
 
     <p class="section-label">Gallery</p>
-    <h2 class="section-title">Real Work & <strong>Production Proof</strong></h2>
+    <h2 class="section-title">Recent Work & <strong>Production Proof</strong></h2>
     <p class="section-sub">
-      Explore examples of event setups, lighting, sound systems, DJ equipment, photo booth experiences, and behind-the-scenes production work. Every event is different, but this gallery gives you a clear idea of the kind of atmosphere and setup Heat District Productions can create.
+      This page starts with a tight selection of real setup photos instead of spreading a small gallery thin. More finished setups, detail shots, and event moments will be added as new events are completed.
     </p>
 
-    <div class="filter-bar" id="filterBar">
-      <button class="filter-btn active" type="button" data-filter="all">All</button>
-      <button class="filter-btn" type="button" data-filter="setups">Event Setups</button>
-      <button class="filter-btn" type="button" data-filter="lighting">Lighting</button>
-      <button class="filter-btn" type="button" data-filter="sound">Sound</button>
-      <button class="filter-btn" type="button" data-filter="dj">DJ Setups</button>
-      <button class="filter-btn" type="button" data-filter="photobooth">Photo Booth</button>
-      <button class="filter-btn" type="button" data-filter="behind">Behind the Scenes</button>
+    <div class="gallery-note-panel">
+      <div>
+        <div class="gallery-note-kicker">Curated, Not Empty</div>
+        <div class="gallery-note-title">A focused gallery built around your current real photos</div>
+        <div class="gallery-note-copy">Instead of showing a large empty grid, this page highlights four strong setup angles: the full event look, lighting detail, DJ setup, and behind-the-scenes production. Replace the four image files below with your real photos as you collect more content.</div>
+      </div>
+
+      <div class="gallery-focus-tags" aria-label="Current gallery focus areas">
+        <span class="gallery-focus-tag">Setups</span>
+        <span class="gallery-focus-tag">Lighting</span>
+        <span class="gallery-focus-tag">DJ Booth</span>
+        <span class="gallery-focus-tag">BTS</span>
+      </div>
     </div>
 
     <div class="gallery-grid" id="galleryGrid"></div>
+
+    <div class="gallery-next-panel">
+      <strong>More real setups are being added.</strong> This gallery is designed to launch cleanly with a small portfolio now, then expand naturally as new events, detail shots, photo booth moments, lighting looks, and package builds are completed.
+    </div>
 
     <section class="trust-section">
       <div class="trust-panel">
@@ -1075,13 +1180,13 @@
 
       <div class="trust-list">
         <div class="trust-list-item">
-          <div class="trust-list-title">Full setup visibility</div>
-          <div class="trust-list-copy">Wide setup photos help you see the scale, layout, and overall production look before booking.</div>
+          <div class="trust-list-title">Focused setup visibility</div>
+          <div class="trust-list-copy">A smaller curated gallery helps visitors understand the setup style without making the page feel unfinished.</div>
         </div>
 
         <div class="trust-list-item">
           <div class="trust-list-title">Real equipment details</div>
-          <div class="trust-list-copy">Close-up shots of speakers, truss, lights, DJ gear, and photo booth equipment show what is actually being used at events.</div>
+          <div class="trust-list-copy">As more events are completed, close-up shots of speakers, truss, lights, DJ gear, and guest moments can be added without changing the page structure.</div>
         </div>
 
         <div class="trust-list-item">
@@ -1141,89 +1246,33 @@
   <script>
     const galleryItems = [
       {
-        title: 'Full Event Production Setup',
+        title: 'Recent Event Setup',
         category: 'setups',
-        categoryLabel: 'Event Setups',
+        categoryLabel: 'Event Setup',
         image: 'gallery/event-setup-1.jpg',
-        description: 'Wide event setup showing the finished production look with sound, lighting, and guest-facing layout.',
+        description: 'Main setup photo showing the finished event look, layout, lighting presence, and overall production style.',
         featured: true
       },
       {
-        title: 'Lighting Package Look',
+        title: 'Lighting Detail',
         category: 'lighting',
         categoryLabel: 'Lighting',
         image: 'gallery/lighting-package-1.jpg',
-        description: 'Lighting package example showing color, atmosphere, and dance floor energy.'
+        description: 'Lighting-focused image showing room color, atmosphere, fixture placement, or dance floor energy.'
       },
       {
         title: 'DJ Booth Setup',
         category: 'dj',
-        categoryLabel: 'DJ Setups',
+        categoryLabel: 'DJ Setup',
         image: 'gallery/dj-setup-1.jpg',
-        description: 'Clean DJ booth setup ready for private events, clubs, weddings, and celebrations.'
-      },
-      {
-        title: 'Photo Booth Guest Experience',
-        category: 'photobooth',
-        categoryLabel: 'Photo Booth',
-        image: 'gallery/photo-booth-1.jpg',
-        description: 'Photo booth activation designed for guest interaction, sharing, and event memories.'
-      },
-      {
-        title: 'Sound System Setup',
-        category: 'sound',
-        categoryLabel: 'Sound',
-        image: 'gallery/sound-system-1.jpg',
-        description: 'Sound system setup with speakers and subs placed for clean coverage and a professional look.'
+        description: 'DJ setup image showing the booth area, equipment layout, and clean event presentation.'
       },
       {
         title: 'Behind the Scenes Setup',
         category: 'behind',
         categoryLabel: 'Behind the Scenes',
         image: 'gallery/behind-scenes-1.jpg',
-        description: 'Load-in, setup, wiring, testing, and production prep before the event starts.'
-      },
-      {
-        title: 'Moving Head Lighting',
-        category: 'lighting',
-        categoryLabel: 'Lighting',
-        image: 'gallery/moving-heads-1.jpg',
-        description: 'Moving head lighting for beams, movement, energy, and stronger event atmosphere.'
-      },
-      {
-        title: 'Private Event Energy',
-        category: 'setups',
-        categoryLabel: 'Event Setups',
-        image: 'gallery/event-energy-1.jpg',
-        description: 'Lighting, sound, and layout combined to create a polished private event experience.'
-      },
-      {
-        title: 'Truss and Lighting Build',
-        category: 'behind',
-        categoryLabel: 'Behind the Scenes',
-        image: 'gallery/truss-build-1.jpg',
-        description: 'Trussing and fixture setup for a cleaner production look and better lighting placement.'
-      },
-      {
-        title: 'CDJ / Club Style Setup',
-        category: 'dj',
-        categoryLabel: 'DJ Setups',
-        image: 'gallery/cdj-setup-1.jpg',
-        description: 'Club-style DJ equipment setup for DJs, venues, and production-heavy events.'
-      },
-      {
-        title: 'Uplighting Room Design',
-        category: 'lighting',
-        categoryLabel: 'Lighting',
-        image: 'gallery/uplighting-1.jpg',
-        description: 'Room uplighting used to add color, depth, and a more finished event design.'
-      },
-      {
-        title: 'Guest Moment',
-        category: 'photobooth',
-        categoryLabel: 'Photo Booth',
-        image: 'gallery/guest-moment-1.jpg',
-        description: 'Guest-facing event moment that helps show the experience beyond the equipment.'
+        description: 'Setup or prep photo showing the production process before the event starts.'
       }
     ];
 
@@ -1275,7 +1324,7 @@
 
       const placeholder = document.createElement('div');
       placeholder.className = 'gallery-placeholder';
-      placeholder.textContent = 'Gallery Image Coming Soon';
+      placeholder.textContent = 'Recent Setup Photo Coming Soon';
 
       img.replaceWith(placeholder);
     }
@@ -1295,7 +1344,7 @@
       lightboxImg.onerror = function() {
         lightboxImg.style.display = 'none';
         lightboxPlaceholder.style.display = 'flex';
-        lightboxPlaceholder.textContent = 'Gallery image coming soon.';
+        lightboxPlaceholder.textContent = 'Recent setup photo coming soon.';
       };
 
       lightboxCategory.textContent = item.categoryLabel;

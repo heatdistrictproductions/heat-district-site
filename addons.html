@@ -555,7 +555,7 @@
       background: linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.98));
       border: 1px solid rgba(0,240,255,0.1);
       border-radius: 14px;
-      padding: 24px;
+      padding: 22px 20px 20px;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -574,6 +574,111 @@
       border-color: rgba(255,45,120,0.42);
       box-shadow: 0 0 34px rgba(255,45,120,0.08);
     }
+
+    .addon-media {
+      position: relative;
+      height: 210px;
+      width: 100%;
+      flex: 0 0 210px;
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      border: 1px solid rgba(0,240,255,0.14);
+      background:
+        radial-gradient(circle at 50% 95%, rgba(0,240,255,0.22), transparent 42%),
+        radial-gradient(circle at 82% 18%, rgba(255,45,120,0.12), transparent 38%),
+        linear-gradient(180deg, rgba(255,255,255,0.96), rgba(236,240,248,0.92));
+      box-shadow:
+        inset 0 0 38px rgba(0,0,0,0.08),
+        0 14px 34px rgba(0,0,0,0.22),
+        0 0 18px rgba(0,240,255,0.05);
+    }
+
+    .addon-media::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(0,240,255,0.12), transparent 32%, transparent 68%, rgba(255,45,120,0.10)),
+        linear-gradient(180deg, rgba(255,255,255,0.24), transparent 44%, rgba(0,0,0,0.04));
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .addon-media::after {
+      content: '';
+      position: absolute;
+      left: 18%;
+      right: 18%;
+      bottom: 10px;
+      height: 22px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.18), transparent 70%);
+      filter: blur(8px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .addon-img {
+      position: relative;
+      z-index: 2;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 16px;
+      filter: drop-shadow(0 16px 18px rgba(0,0,0,0.26));
+      transition: transform 0.35s ease, filter 0.35s ease;
+    }
+
+    .addon-card:hover .addon-img {
+      transform: scale(1.035);
+      filter: drop-shadow(0 20px 22px rgba(0,0,0,0.32));
+    }
+
+    .addon-image-fallback {
+      position: absolute;
+      inset: 14px;
+      z-index: 2;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 16px;
+      border: 1px dashed rgba(0,0,0,0.18);
+      border-radius: 10px;
+      color: rgba(6,8,18,0.72);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      line-height: 1.45;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.35);
+    }
+
+    .addon-image-fallback span {
+      display: block;
+      margin-top: 7px;
+      font-size: 0.58rem;
+      letter-spacing: 0.6px;
+      text-transform: none;
+      font-weight: 600;
+      color: rgba(6,8,18,0.56);
+      overflow-wrap: anywhere;
+    }
+
+    .addon-media.image-missing .addon-image-fallback {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .addon-media.image-missing::after {
+      display: none;
+    }
+
+    .addon-media-wide .addon-img { padding: 10px; }
+    .addon-media-tall .addon-img { padding: 10px 28px; }
+    .addon-media-gear .addon-img { padding: 14px; }
 
     .addon-category {
       font-size: 0.58rem;
@@ -766,6 +871,35 @@
       min-height: 0;
       overflow-y: auto;
       padding-right: 6px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(0,240,255,0.28) rgba(255,255,255,0.025);
+    }
+
+    .estimate-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .estimate-scroll::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.025);
+      border-radius: 999px;
+    }
+
+    .estimate-scroll::-webkit-scrollbar-thumb {
+      background: linear-gradient(
+        180deg,
+        rgba(0,240,255,0.34),
+        rgba(255,45,120,0.24)
+      );
+      border-radius: 999px;
+      border: 1px solid rgba(8,8,22,0.9);
+    }
+
+    .estimate-scroll::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(
+        180deg,
+        rgba(0,240,255,0.5),
+        rgba(255,45,120,0.38)
+      );
     }
 
     .estimate-line {
@@ -962,6 +1096,106 @@
       color: var(--neon-blue);
     }
 
+    .duplicate-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      background: rgba(0,0,0,0.72);
+      backdrop-filter: blur(8px);
+    }
+
+    .duplicate-modal-backdrop.open {
+      display: flex;
+    }
+
+    .duplicate-modal {
+      width: min(100%, 460px);
+      border-radius: 18px;
+      border: 1px solid rgba(255,45,120,0.26);
+      background:
+        radial-gradient(circle at top left, rgba(0,240,255,0.08), transparent 38%),
+        radial-gradient(circle at bottom right, rgba(255,45,120,0.10), transparent 42%),
+        linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.99));
+      box-shadow:
+        0 26px 80px rgba(0,0,0,0.62),
+        0 0 34px rgba(255,45,120,0.12);
+      padding: 26px;
+    }
+
+    .duplicate-modal-kicker {
+      font-size: 0.58rem;
+      letter-spacing: 3.2px;
+      text-transform: uppercase;
+      color: rgba(0,240,255,0.78);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .duplicate-modal-title {
+      color: #fff;
+      font-size: 1.35rem;
+      line-height: 1.25;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .duplicate-modal-copy {
+      color: rgba(232,232,240,0.68);
+      font-size: 0.9rem;
+      line-height: 1.75;
+      margin-bottom: 22px;
+    }
+
+    .duplicate-modal-copy strong {
+      color: var(--neon-pink);
+      font-weight: 700;
+    }
+
+    .duplicate-modal-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .duplicate-modal-btn {
+      border-radius: 4px;
+      padding: 13px 14px;
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 2.3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      background: transparent;
+      font-family: 'Raleway', sans-serif;
+      transition: background 0.25s, box-shadow 0.25s, transform 0.2s;
+    }
+
+    .duplicate-modal-btn.cancel {
+      color: var(--neon-blue);
+      border: 1.5px solid var(--neon-blue);
+    }
+
+    .duplicate-modal-btn.cancel:hover {
+      background: rgba(0,240,255,0.08);
+      box-shadow: 0 0 22px rgba(0,240,255,0.2);
+      transform: translateY(-1px);
+    }
+
+    .duplicate-modal-btn.confirm {
+      color: var(--neon-pink);
+      border: 1.5px solid var(--neon-pink);
+    }
+
+    .duplicate-modal-btn.confirm:hover {
+      background: rgba(255,45,120,0.08);
+      box-shadow: 0 0 22px rgba(255,45,120,0.22);
+      transform: translateY(-1px);
+    }
+
     footer {
       text-align: center;
       padding: 60px 48px 100px;
@@ -1077,6 +1311,11 @@
         grid-template-columns: 1fr;
       }
 
+      .addon-media {
+        height: 190px;
+        flex-basis: 190px;
+      }
+
       .category-filter {
         grid-template-columns: 1fr;
       }
@@ -1098,6 +1337,14 @@
 
       footer {
         padding: 60px 24px 100px;
+      }
+
+      .duplicate-modal {
+        padding: 22px;
+      }
+
+      .duplicate-modal-actions {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -1198,13 +1445,15 @@
         <div class="category-filter">
           <button class="filter-btn active" type="button" onclick="filterGroups('all', this)">Show All</button>
           <button class="filter-btn" type="button" onclick="filterGroups('popular', this)">Most Popular</button>
-          <button class="filter-btn" type="button" onclick="filterGroups('upgrade-look', this)">Upgrade the Look</button>
-          <button class="filter-btn" type="button" onclick="filterGroups('dance-floor', this)">Dance Floor</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('lighting-packages', this)">Lighting Packages</button>
           <button class="filter-btn" type="button" onclick="filterGroups('guest-experience', this)">Guest Experience</button>
-          <button class="filter-btn" type="button" onclick="filterGroups('media-coverage', this)">Media Coverage</button>
-          <button class="filter-btn" type="button" onclick="filterGroups('special-effects', this)">Special Effects</button>
-          <button class="filter-btn" type="button" onclick="filterGroups('time-logistics', this)">Time / Logistics</button>
-          <button class="filter-btn" type="button" onclick="filterGroups('pro-rentals', this)">Pro Rentals</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('services', this)">Media / DJ</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('foundation', this)">Sound & Mics</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('lighting-effects', this)">Effects</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('dj-rentals', this)">DJ Rentals</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('led-walls', this)">LED Walls</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('party-furniture', this)">Furniture</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('staging-trussing', this)">Trussing</button>
         </div>
       </div>
 
@@ -1268,6 +1517,21 @@
 
   </main>
 
+  <div class="duplicate-modal-backdrop" id="duplicateModalBackdrop">
+    <div class="duplicate-modal" role="dialog" aria-modal="true" aria-labelledby="duplicateModalTitle">
+      <div class="duplicate-modal-kicker">Already Included</div>
+      <h3 class="duplicate-modal-title" id="duplicateModalTitle">Double-check this add-on</h3>
+      <p class="duplicate-modal-copy" id="duplicateModalCopy">
+        This item may already be included.
+      </p>
+
+      <div class="duplicate-modal-actions">
+        <button class="duplicate-modal-btn cancel" type="button" id="duplicateModalCancel">Cancel</button>
+        <button class="duplicate-modal-btn confirm" type="button" id="duplicateModalConfirm">Add Anyway</button>
+      </div>
+    </div>
+  </div>
+
   <footer>
     <div class="footer-logo">
       <img src="logo.png" alt="Heat District Productions" />
@@ -1285,13 +1549,6 @@
   </footer>
 
   <script>
-    const EXTRA_HOUR_PRICES_BY_PACKAGE = {
-      'The Spark': 125,
-      'The Blaze': 175,
-      'The Inferno': 225,
-      'The District': 300
-    };
-
     const PACKAGE_NAMES_WITH_LIGHTING = [
       'The Blaze',
       'The Inferno',
@@ -1306,11 +1563,105 @@
       'Staging & Trussing'
     ];
 
+    const PACKAGE_DUPLICATE_WARNINGS = {
+      'The Spark': {
+        'pa-speaker-single': 'The Spark already includes a sound system.',
+        'additional-speaker-single': 'The Spark already includes a sound system.',
+        'additional-subwoofer-single': 'The Spark already includes subs.',
+        'microphone-single': 'The Spark already includes a microphone.'
+      },
+
+      'The Blaze': {
+        'pa-speaker-single': 'The Blaze already includes a sound system.',
+        'additional-speaker-single': 'The Blaze already includes a sound system.',
+        'additional-subwoofer-single': 'The Blaze already includes subs.',
+        'microphone-single': 'The Blaze already includes a microphone.',
+        'glow-lighting-package': 'The Blaze already includes 10 uplights and an LED light bar.',
+        'pulse-lighting-package': 'The Blaze already includes 10 uplights, an LED light bar, 2 moving heads, and 2 totems.',
+        'uplights-5-pack': 'The Blaze already includes 10 uplights.',
+        'uplights-10-pack': 'The Blaze already includes 10 uplights.',
+        'light-bar-single': 'The Blaze already includes an LED light bar.',
+        'moving-heads-2-heads-2-totems': 'The Blaze already includes 2 moving heads and 2 totems.',
+        'photo-booth-digital-only': 'The Blaze already includes Premium Photo Booth.',
+        'photo-booth-digital-print': 'The Blaze already includes Premium Photo Booth.',
+        'red-carpet-10ft': 'The Blaze already includes a 10ft red carpet with stanchions and velvet ropes.',
+        'fog-machines-2-units': 'The Blaze already includes 2 fog machines.',
+        'trussing-2-totems': 'The Blaze already includes 2 totems.'
+      },
+
+      'The Inferno': {
+        'pa-speaker-single': 'The Inferno already includes a sound system.',
+        'additional-speaker-single': 'The Inferno already includes a sound system.',
+        'additional-subwoofer-single': 'The Inferno already includes subs.',
+        'microphone-single': 'The Inferno already includes a microphone.',
+        'glow-lighting-package': 'The Inferno already includes uplighting and an LED light bar.',
+        'pulse-lighting-package': 'The Inferno already includes uplighting, an LED light bar, moving heads, fog machines, and trussing.',
+        'district-lighting-package': 'The Inferno already includes 15 uplights, an LED light bar, 4 moving heads, 2 fog machines, and trussing.',
+        'uplights-5-pack': 'The Inferno already includes 15 uplights.',
+        'uplights-10-pack': 'The Inferno already includes 15 uplights.',
+        'uplights-15-pack': 'The Inferno already includes 15 uplights.',
+        'light-bar-single': 'The Inferno already includes an LED light bar.',
+        'moving-heads-2-heads-2-totems': 'The Inferno already includes 4 moving heads.',
+        'moving-heads-2-heads-goal-post': 'The Inferno already includes 4 moving heads and trussing.',
+        'moving-heads-4-heads-4-totems': 'The Inferno already includes 4 moving heads and trussing.',
+        'moving-heads-4-heads-2-totems-goal-post': 'The Inferno already includes 4 moving heads and trussing.',
+        'photo-booth-digital-only': 'The Inferno already includes Premium Photo Booth.',
+        'photo-booth-digital-print': 'The Inferno already includes Premium Photo Booth.',
+        'red-carpet-10ft': 'The Inferno already includes a 10ft red carpet with stanchions and velvet ropes.',
+        'led-glow-cocktail-table': 'The Inferno already includes LED glow cocktail tables.',
+        'foam-glow-sticks-pack-25': 'The Inferno already includes foam glow sticks.',
+        'cold-sparks-2-units': 'The Inferno already includes 2 cold spark machines.',
+        'fog-machines-2-units': 'The Inferno already includes 2 fog machines.',
+        'trussing-2-totems': 'The Inferno already includes trussing.',
+        'trussing-4-totems': 'The Inferno already includes a trussing option.',
+        'trussing-goal-post-8x10': 'The Inferno already includes a trussing option.',
+        'trussing-goal-post-8x16': 'The Inferno already includes a trussing option.'
+      },
+
+      'The District': {
+        'pa-speaker-single': 'The District already includes a sound system.',
+        'additional-speaker-single': 'The District already includes a sound system.',
+        'additional-subwoofer-single': 'The District already includes subs.',
+        'microphone-single': 'The District already includes a microphone.',
+        'glow-lighting-package': 'The District already includes uplighting and an LED light bar.',
+        'pulse-lighting-package': 'The District already includes uplighting, an LED light bar, moving heads, fog machines, and trussing.',
+        'district-lighting-package': 'The District already includes 15 uplights, an LED light bar, 4 moving heads, 2 fog machines, and trussing.',
+        'uplights-5-pack': 'The District already includes 15 uplights.',
+        'uplights-10-pack': 'The District already includes 15 uplights.',
+        'uplights-15-pack': 'The District already includes 15 uplights.',
+        'light-bar-single': 'The District already includes an LED light bar.',
+        'moving-heads-2-heads-2-totems': 'The District already includes 4 moving heads.',
+        'moving-heads-2-heads-goal-post': 'The District already includes 4 moving heads and trussing.',
+        'moving-heads-4-heads-4-totems': 'The District already includes 4 moving heads and trussing.',
+        'moving-heads-4-heads-2-totems-goal-post': 'The District already includes 4 moving heads and trussing.',
+        'led-screen-wall': 'The District already includes an LED screen / wall.',
+        'photo-booth-digital-only': 'The District already includes Premium Photo Booth.',
+        'photo-booth-digital-print': 'The District already includes Premium Photo Booth.',
+        'red-carpet-10ft': 'The District already includes red carpet with stanchions and velvet ropes.',
+        'red-carpet-20ft': 'The District already includes a 20ft red carpet with stanchions and velvet ropes.',
+        'led-glow-cocktail-table': 'The District already includes LED glow cocktail tables.',
+        'foam-glow-sticks-pack-25': 'The District already includes foam glow sticks.',
+        'photography-50': 'The District already includes photography.',
+        'photography-100': 'The District already includes photography.',
+        'photography-150': 'The District already includes photography.',
+        'photography-250': 'The District already includes photography.',
+        'cold-sparks-2-units': 'The District already includes cold spark machines.',
+        'cold-sparks-4-units': 'The District already includes 4 cold spark machines.',
+        'fog-machines-2-units': 'The District already includes 2 fog machines.',
+        'trussing-2-totems': 'The District already includes trussing.',
+        'trussing-4-totems': 'The District already includes a trussing option.',
+        'trussing-goal-post-8x10': 'The District already includes a trussing option.',
+        'trussing-goal-post-8x16': 'The District already includes a trussing option.'
+      }
+    };
+
     const ADDONS = {
       'pa-speaker': {
         id: 'pa-speaker',
         label: 'Sound',
         title: 'Additional PA Speaker',
+        image: 'images/products/qsc-top-speaker.png',
+        mediaClass: 'addon-media-gear',
         copy: 'Add extra speaker coverage for larger rooms, cocktail areas, ceremonies, outdoor spaces, side rooms, or areas that need audio beyond the main package setup.',
         options: [
           {
@@ -1329,6 +1680,8 @@
         id: 'additional-speaker',
         label: 'Sound',
         title: 'Additional Speaker',
+        image: 'images/products/qsc-top-speaker.png',
+        mediaClass: 'addon-media-gear',
         copy: 'Add an extra speaker for more coverage in larger rooms, side areas, cocktail spaces, ceremonies, outdoor sections, or overflow areas.',
         options: [
           {
@@ -1347,6 +1700,8 @@
         id: 'additional-subwoofer',
         label: 'Sound',
         title: 'Additional Subwoofer',
+        image: 'images/products/qsc-subwoofer.png',
+        mediaClass: 'addon-media-gear',
         copy: 'Add stronger bass and more low-end impact. Best for larger dance floors, DJs, high-energy parties, outdoor events, and rooms where the music needs more weight.',
         options: [
           {
@@ -1365,6 +1720,8 @@
         id: 'microphone',
         label: 'Sound',
         title: 'Microphone',
+        image: 'images/products/wireless-mic.png',
+        mediaClass: 'addon-media-gear',
         copy: 'Add a microphone for speeches, announcements, ceremony use, event hosting, introductions, or basic audio support.',
         options: [
           {
@@ -1383,6 +1740,8 @@
         id: 'photography',
         label: 'Media Coverage',
         title: 'Photography',
+        image: 'images/products/photography.png',
+        mediaClass: 'addon-media-wide',
         copy: 'Add professional event photography coverage focused on guests, moments, details, energy, and the overall look of the event.',
         options: [
           {
@@ -1428,6 +1787,8 @@
         id: 'videography',
         label: 'Media Coverage',
         title: 'Videography',
+        image: 'images/products/videography.png',
+        mediaClass: 'addon-media-wide',
         copy: 'Add cinematic video coverage for recap content, social media clips, event highlights, and stronger post-event marketing value.',
         options: [
           {
@@ -1473,6 +1834,8 @@
         id: 'photo-booth',
         label: 'Guest Experience',
         title: 'Photo Booth',
+        image: 'images/products/photo-booth-digital.png',
+        mediaClass: 'addon-media-tall',
         copy: 'Give guests something interactive to do and something easy to share. Best for weddings, quinces, birthdays, corporate events, and private parties.',
         options: [
           {
@@ -1500,6 +1863,8 @@
         id: 'red-carpet',
         label: 'Guest Experience',
         title: 'Red Carpet',
+        image: 'images/products/red-carpet.png',
+        mediaClass: 'addon-media-wide',
         copy: 'Add a clean arrival or photo moment. Includes stanchions with velvet ropes for a stronger entrance, VIP, or photo-area look.',
         options: [
           {
@@ -1527,6 +1892,8 @@
         id: 'foam-glow-sticks',
         label: 'Guest Experience',
         title: 'Foam Glow Sticks',
+        image: 'images/products/foam-glow-sticks.png',
+        mediaClass: 'addon-media-gear',
         copy: 'Add crowd energy for dance floors, club-style events, quinceañeras, birthdays, and high-energy party moments. Sold in packs of 25.',
         options: [
           {
@@ -1541,10 +1908,32 @@
         ]
       },
 
+      'led-bottle-sign': {
+        id: 'led-bottle-sign',
+        label: 'Guest Experience',
+        title: 'LED Bottle Sign',
+        image: 'images/products/led-bottle-sign.png',
+        mediaClass: 'addon-media-wide',
+        copy: 'Custom LED bottle sign display for VIP tables, bottle service moments, birthday entrances, nightlife-style events, and personalized guest messages.',
+        options: [
+          {
+            id: 'led-bottle-sign',
+            label: 'LED Bottle Sign',
+            name: 'LED Bottle Sign',
+            category: 'Guest Experience',
+            price: 100,
+            unit: 'event',
+            displayUnit: 'event'
+          }
+        ]
+      },
+
       'led-cocktail-tables': {
         id: 'led-cocktail-tables',
         label: 'Guest Experience',
         title: 'LED Glow Cocktail Tables',
+        image: 'images/products/led-cocktail-tables.png',
+        mediaClass: 'addon-media-gear',
         copy: 'Light-up standing cocktail tables for lounges, VIP areas, cocktail hours, party spaces, and guest gathering areas.',
         options: [
           {
@@ -1563,6 +1952,8 @@
         id: 'glow-lighting-package',
         label: 'Lighting Packages',
         title: 'Glow Lighting Package',
+        image: 'images/products/glow-lighting-package.png',
+        mediaClass: 'addon-media-wide',
         copy: 'Includes 10 uplights and 1 LED light bar. Best for smaller rooms, cocktail areas, private parties, and events that need a clean color wash without a full moving-head setup.',
         options: [
           {
@@ -1581,6 +1972,8 @@
         id: 'pulse-lighting-package',
         label: 'Lighting Packages',
         title: 'Pulse Lighting Package',
+        image: 'images/products/pulse-lighting-package.png',
+        mediaClass: 'addon-media-wide',
         copy: 'Includes 10 uplights, 1 LED light bar, and 2 moving head lights on totems. Best for events that need dance floor movement and a stronger party look.',
         options: [
           {
@@ -1599,6 +1992,8 @@
         id: 'district-lighting-package',
         label: 'Lighting Packages',
         title: 'District Lighting Package',
+        image: 'images/products/district-lighting-package.png',
+        mediaClass: 'addon-media-wide',
         copy: 'Includes 15 uplights, 1 LED light bar, 4 moving head lights, 2 wash lights, and 2 fog/haze machines. Best for larger events and full dance floor impact.',
         options: [
           {
@@ -1617,6 +2012,8 @@
         id: 'uplights',
         label: 'Lighting',
         title: 'Uplights',
+        image: 'images/products/uplight.png',
+        mediaClass: 'addon-media-gear',
         copy: 'Add extra room color coverage for larger venues, walls, corners, columns, stages, entrances, and photo areas.',
         options: [
           {
@@ -1653,6 +2050,8 @@
         id: 'moving-heads',
         label: 'Lighting',
         title: 'Moving Heads',
+        image: 'images/products/moving-head.png',
+        mediaClass: 'addon-media-gear',
         copy: 'Add moving head lights for a bigger production look. Best for dance floors, DJ booths, stage looks, entrances, and dramatic room energy.',
         options: [
           {
@@ -1698,6 +2097,8 @@
         id: 'light-bar',
         label: 'Lighting',
         title: 'Light Bar',
+        image: 'images/products/light-bar.png',
+        mediaClass: 'addon-media-wide',
         copy: 'Add a light bar for extra color, movement, and visual presence around the DJ area, stage area, or dance floor.',
         options: [
           {
@@ -1716,6 +2117,8 @@
         id: 'wash-lights',
         label: 'Lighting',
         title: 'Wash Lights',
+        image: 'images/products/wash-lights.png',
+        mediaClass: 'addon-media-gear',
         copy: 'Add broader color coverage across dance floors, stages, walls, and performance areas.',
         options: [
           {
@@ -1734,6 +2137,8 @@
         id: 'cold-sparks',
         label: 'Effects',
         title: 'Cold Spark Machines',
+        image: 'images/products/cold-spark.png',
+        mediaClass: 'addon-media-gear',
         copy: 'Add high-impact spark effects for entrances, first dances, music drops, reveals, and big event moments. Venue approval may be required.',
         options: [
           {
@@ -1761,6 +2166,8 @@
         id: 'fog-machines',
         label: 'Effects',
         title: 'Fog / Haze Machines',
+        image: 'images/products/fog-machine.png',
+        mediaClass: 'addon-media-gear',
         copy: 'Add fog or haze to make beams and lighting effects more visible and atmospheric. Venue approval may be required.',
         options: [
           {
@@ -1779,6 +2186,8 @@
         id: 'led-wall',
         label: 'Video / Visuals',
         title: 'LED Screen / Wall',
+        image: 'images/products/led-wall.png',
+        mediaClass: 'addon-media-wide',
         copy: 'Add a visual screen element for logos, slideshows, DJ visuals, branding, presentations, or custom event content.',
         options: [
           {
@@ -1797,6 +2206,8 @@
         id: 'premium-club-mixer-cdj-package',
         label: 'DJ Rentals',
         title: 'Premium Club Mixer & CDJ Package',
+        image: 'images/products/cdj-djm-package.png',
+        mediaClass: 'addon-media-wide',
         copy: 'Premium club-style DJ setup with 2 Pioneer CDJ 3000 players and 1 Pioneer DJM-900NXS2 mixer.',
         options: [
           {
@@ -1815,6 +2226,8 @@
         id: 'cdj-3000',
         label: 'DJ Rentals',
         title: 'CDJ 3000',
+        image: 'images/products/cdj-3000.png',
+        mediaClass: 'addon-media-gear',
         copy: 'Standalone Pioneer CDJ 3000 rental for professional DJ setups, guest DJs, club-style events, and custom booths.',
         options: [
           {
@@ -1833,6 +2246,8 @@
         id: 'djm-900nxs2',
         label: 'DJ Rentals',
         title: 'Pioneer DJM-900NXS2',
+        image: 'images/products/djm-900nxs2.png',
+        mediaClass: 'addon-media-gear',
         copy: 'Professional Pioneer DJ mixer rental for CDJ setups, guest DJs, club-style booths, and event production builds.',
         options: [
           {
@@ -1851,6 +2266,8 @@
         id: 'xdj-xz',
         label: 'DJ Rentals',
         title: 'XDJ-XZ',
+        image: 'images/products/xdj-xz.png',
+        mediaClass: 'addon-media-gear',
         copy: 'Standalone DJ controller rental for compact DJ setups, private events, and all-in-one booth builds.',
         options: [
           {
@@ -1869,6 +2286,8 @@
         id: 'trussing-2-totems',
         label: 'Staging & Trussing',
         title: 'Trussing — 2 Totems',
+        image: 'images/products/trussing-2-totems.png',
+        mediaClass: 'addon-media-tall',
         copy: '2 truss totems at 8ft each for a cleaner vertical production look, lighting placement, DJ booth framing, or entrance visuals.',
         options: [
           {
@@ -1887,6 +2306,8 @@
         id: 'trussing-4-totems',
         label: 'Staging & Trussing',
         title: 'Trussing — 4 Totems',
+        image: 'images/products/trussing-4-totems.png',
+        mediaClass: 'addon-media-wide',
         copy: '4 truss totems at 8ft each for a larger, more symmetrical production setup and stronger lighting placement.',
         options: [
           {
@@ -1905,6 +2326,8 @@
         id: 'trussing-goal-post-8x10',
         label: 'Staging & Trussing',
         title: 'Trussing — Goal Post 8x10',
+        image: 'images/products/trussing-goalpost-8x10.png',
+        mediaClass: 'addon-media-wide',
         copy: '8x10 goal post truss setup for overhead production support, lighting placement, DJ booth framing, and a bigger stage look.',
         options: [
           {
@@ -1923,6 +2346,8 @@
         id: 'trussing-goal-post-8x16',
         label: 'Staging & Trussing',
         title: 'Trussing — Goal Post 8x16',
+        image: 'images/products/trussing-goalpost-8x16.png',
+        mediaClass: 'addon-media-wide',
         copy: '8x16 goal post truss setup for a wider, more dramatic production footprint and larger event staging presence.',
         options: [
           {
@@ -1935,24 +2360,6 @@
             displayUnit: 'setup'
           }
         ]
-      },
-
-      'extra-hour': {
-        id: 'extra-hour',
-        label: 'Extra Time',
-        title: 'Extra Event Hour',
-        copy: 'Add extra time beyond the selected package coverage. Pricing adjusts based on the package selected because larger setups require more staffing, equipment time, and support.',
-        options: [
-          {
-            id: 'extra-hour',
-            label: 'Extra Event Hour',
-            name: 'Extra Event Hour',
-            category: 'Extra Time',
-            price: 150,
-            unit: 'hour',
-            displayUnit: 'hour'
-          }
-        ]
       }
     };
 
@@ -1960,106 +2367,113 @@
       {
         id: 'popular',
         title: 'Most Popular Upgrades',
-        copy: 'The upgrades most clients are likely to add after choosing a package. These are high-impact, easy-to-understand add-ons that improve the event quickly.',
+        copy: 'The most commonly requested add-ons after choosing a package.',
         pills: ['High Demand', 'Fast Upgrades', 'Client Favorites'],
         addonIds: [
           'photo-booth',
           'photography',
-          'moving-heads',
+          'pulse-lighting-package',
           'red-carpet',
           'foam-glow-sticks',
-          'extra-hour'
+          'led-bottle-sign'
         ]
       },
       {
-        id: 'upgrade-look',
-        title: 'Upgrade the Look',
-        copy: 'Use these options when the goal is to make the room look more polished, more premium, or more production-heavy in photos and videos.',
-        pills: ['Room Transformation', 'Lighting Look', 'Stage Presence'],
+        id: 'lighting-packages',
+        title: 'Lighting Packages',
+        copy: 'Bundled lighting options for clients who want a cleaner step-up structure instead of piecing lighting together item by item.',
+        pills: ['Bundled Lighting', 'Good / Better / Best', 'Faster Decision'],
         addonIds: [
           'glow-lighting-package',
           'pulse-lighting-package',
-          'district-lighting-package',
-          'uplights',
-          'moving-heads',
-          'light-bar',
-          'wash-lights',
-          'led-wall',
-          'trussing-2-totems',
-          'trussing-4-totems',
-          'trussing-goal-post-8x10',
-          'trussing-goal-post-8x16'
-        ]
-      },
-      {
-        id: 'dance-floor',
-        title: 'Improve the Dance Floor',
-        copy: 'Use these options when the priority is stronger music impact, more movement, better lighting energy, and a dance floor that feels alive.',
-        pills: ['Bass', 'Energy', 'Movement', 'Atmosphere'],
-        addonIds: [
-          'additional-speaker',
-          'additional-subwoofer',
-          'pulse-lighting-package',
-          'district-lighting-package',
-          'moving-heads',
-          'fog-machines',
-          'foam-glow-sticks'
+          'district-lighting-package'
         ]
       },
       {
         id: 'guest-experience',
         title: 'Guest Experience',
-        copy: 'Guest-facing add-ons that create photo moments, social moments, VIP touches, lounge areas, and interactive things for guests to remember.',
-        pills: ['Photo Moments', 'Interactive', 'VIP Feel'],
+        copy: 'Guest-facing add-ons for photo moments, entrances, VIP areas, lounges, and event interaction.',
+        pills: ['Photo Booth', 'Guest Facing', 'Photo Moments'],
         addonIds: [
           'photo-booth',
           'red-carpet',
           'foam-glow-sticks',
+          'led-bottle-sign',
           'led-cocktail-tables'
         ]
       },
       {
-        id: 'media-coverage',
-        title: 'Media Coverage',
-        copy: 'Add professional coverage so the event lives beyond the night itself. Great for weddings, quinces, brand events, private parties, and social content.',
-        pills: ['Photos', 'Video Recaps', 'Content Value'],
+        id: 'services',
+        title: 'Event Talent & Media Services',
+        copy: 'Photography and videography coverage for events that need media, content, and creative direction.',
+        pills: ['Photo Coverage', 'Video Recaps', 'Content'],
         addonIds: [
           'photography',
           'videography'
         ]
       },
       {
-        id: 'special-effects',
-        title: 'Special Effects',
-        copy: 'Effects that create bigger moments for entrances, first dances, reveals, drops, and dramatic lighting looks. Venue approval may be required.',
-        pills: ['Big Moments', 'Venue Approval May Apply', 'Atmosphere'],
+        id: 'foundation',
+        title: 'Sound & Mic Support',
+        copy: 'Sound reinforcement and microphone options for events that need clean audio support.',
+        pills: ['Sound Support', 'Event Foundation', 'Audio Coverage'],
+        addonIds: [
+          'pa-speaker',
+          'additional-speaker',
+          'additional-subwoofer',
+          'microphone'
+        ]
+      },
+      {
+        id: 'lighting-effects',
+        title: 'Individual Lighting & Effects',
+        copy: 'Individual visual pieces for clients who want to mix and match lighting and effects.',
+        pills: ['Mix & Match', 'Atmosphere', 'Visual Upgrades'],
         addonIds: [
           'cold-sparks',
-          'fog-machines'
+          'fog-machines',
+          'uplights',
+          'light-bar',
+          'moving-heads',
+          'wash-lights'
         ]
       },
       {
-        id: 'time-logistics',
-        title: 'Extra Time & Logistics',
-        copy: 'Use these options when the event needs to run longer or needs extra basic support beyond the included package coverage.',
-        pills: ['Longer Events', 'Extra Support', 'Cleaner Planning'],
-        addonIds: [
-          'extra-hour',
-          'microphone',
-          'pa-speaker'
-        ]
-      },
-      {
-        id: 'pro-rentals',
-        title: 'Pro Rentals & Custom Needs',
-        copy: 'For DJs, planners, venues, and clients who know exactly what equipment they need. This is closer to a custom build than a simple package upgrade.',
-        pills: ['DJs', 'Venues', 'Custom Builds'],
+        id: 'dj-rentals',
+        title: 'DJ Rentals',
+        copy: 'Standalone DJ gear rentals for clients, DJs, and events that need professional playback equipment.',
+        pills: ['Daily Pricing', 'DJ Gear', 'Club Standard'],
         addonIds: [
           'premium-club-mixer-cdj-package',
           'cdj-3000',
           'djm-900nxs2',
-          'xdj-xz',
-          'led-wall',
+          'xdj-xz'
+        ]
+      },
+      {
+        id: 'led-walls',
+        title: 'LED Walls & Visuals',
+        copy: 'LED screen and wall options for visuals, branding, DJ content, slideshows, presentations, and high-impact event backdrops.',
+        pills: ['Visual Impact', 'Branding', 'Custom Content'],
+        addonIds: [
+          'led-wall'
+        ]
+      },
+      {
+        id: 'party-furniture',
+        title: 'Party Furniture',
+        copy: 'Furniture and guest-area upgrades that help make lounges, cocktail areas, and event spaces feel more polished.',
+        pills: ['Cocktail Areas', 'Glow Furniture', 'Guest Upgrade'],
+        addonIds: [
+          'led-cocktail-tables'
+        ]
+      },
+      {
+        id: 'staging-trussing',
+        title: 'Staging & Trussing',
+        copy: 'Trussing structures that help frame the setup, hold lighting, and create a more complete production look.',
+        pills: ['Stage Presence', 'Production Structure', 'Expandable Category'],
+        addonIds: [
           'trussing-2-totems',
           'trussing-4-totems',
           'trussing-goal-post-8x10',
@@ -2082,29 +2496,102 @@
       }
     }
 
+    function escapeHtml(value) {
+      return String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
     function getAddon(addonId) {
       return ADDONS[addonId] || null;
     }
 
-    function getExtraHourPrice() {
-      if (!estimate || !estimate.package) {
-        return 150;
+    function getSelectedPackageName() {
+      if (estimate && estimate.package) {
+        return estimate.package;
       }
 
-      return EXTRA_HOUR_PRICES_BY_PACKAGE[estimate.package] || 150;
+      const selectedPackage = safeJsonParse(sessionStorage.getItem('heatDistrictSelectedPackage'));
+
+      if (selectedPackage && selectedPackage.name) {
+        return selectedPackage.name;
+      }
+
+      return '';
+    }
+
+    function getDuplicateWarning(option) {
+      if (!option || !option.id) return '';
+
+      const selectedPackageName = getSelectedPackageName();
+      const packageWarnings = PACKAGE_DUPLICATE_WARNINGS[selectedPackageName];
+
+      if (!packageWarnings) return '';
+
+      return packageWarnings[option.id] || '';
+    }
+
+    function showDuplicateWarningModal(message) {
+      return new Promise(function(resolve) {
+        const backdrop = document.getElementById('duplicateModalBackdrop');
+        const copy = document.getElementById('duplicateModalCopy');
+        const cancelBtn = document.getElementById('duplicateModalCancel');
+        const confirmBtn = document.getElementById('duplicateModalConfirm');
+
+        if (!backdrop || !copy || !cancelBtn || !confirmBtn) {
+          resolve(true);
+          return;
+        }
+
+        copy.innerHTML = '<strong>Heads up —</strong> ' + escapeHtml(message) + '<br><br>Only add this if you want extra coverage or another one.';
+
+        function closeModal(result) {
+          backdrop.classList.remove('open');
+          document.body.style.overflow = '';
+          cancelBtn.removeEventListener('click', onCancel);
+          confirmBtn.removeEventListener('click', onConfirm);
+          backdrop.removeEventListener('click', onBackdropClick);
+          document.removeEventListener('keydown', onKeydown);
+          resolve(result);
+        }
+
+        function onCancel() {
+          closeModal(false);
+        }
+
+        function onConfirm() {
+          closeModal(true);
+        }
+
+        function onBackdropClick(event) {
+          if (event.target === backdrop) {
+            closeModal(false);
+          }
+        }
+
+        function onKeydown(event) {
+          if (event.key === 'Escape') {
+            closeModal(false);
+          }
+        }
+
+        cancelBtn.addEventListener('click', onCancel);
+        confirmBtn.addEventListener('click', onConfirm);
+        backdrop.addEventListener('click', onBackdropClick);
+        document.addEventListener('keydown', onKeydown);
+
+        backdrop.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
     }
 
     function getEffectiveOption(option) {
       if (!option) return null;
 
-      const adjustedOption = Object.assign({}, option);
-
-      if (adjustedOption.id === 'extra-hour') {
-        adjustedOption.price = getExtraHourPrice();
-        adjustedOption.name = 'Extra Event Hour — ' + (estimate && estimate.package ? estimate.package : 'Package');
-      }
-
-      return adjustedOption;
+      return Object.assign({}, option);
     }
 
     function getSelectedOption(addonId, cardId) {
@@ -2151,6 +2638,8 @@
       const cardId = groupId + '-' + addon.id;
       const firstOption = addon.options[0];
       const hasMultipleOptions = addon.options.length > 1;
+      const imagePath = addon.image || 'images/products/' + addon.id + '.png';
+      const mediaClass = addon.mediaClass || 'addon-media-gear';
 
       const optionsHtml = hasMultipleOptions ? `
         <div class="option-control">
@@ -2165,6 +2654,18 @@
 
       return `
         <article class="addon-card" data-addon-card="${addon.id}" data-card-id="${cardId}">
+          <div class="addon-media ${escapeHtml(mediaClass)}">
+            <img
+              class="addon-img"
+              src="${escapeHtml(imagePath)}"
+              alt="${escapeHtml(addon.title)}"
+              loading="lazy"
+              decoding="async"
+              onerror="this.closest('.addon-media').classList.add('image-missing'); this.remove();"
+            />
+            <div class="addon-image-fallback">Add Product Image<span>${escapeHtml(imagePath)}</span></div>
+          </div>
+
           <p class="addon-category">${addon.label}</p>
           <h3 class="addon-name">${addon.title}</h3>
           <p class="addon-copy">${addon.copy}</p>
@@ -2319,12 +2820,26 @@
       sessionStorage.setItem('heatDistrictEstimate', JSON.stringify(estimate));
     }
 
-    function setAddonQty(addonId, cardId, qty) {
+    async function setAddonQty(addonId, cardId, qty) {
       const option = getSelectedOption(addonId, cardId);
 
       if (!option) return;
 
       const safeQty = Math.max(0, Number(qty) || 0);
+      const currentQty = getQtyForOption(option.id);
+
+      if (safeQty > currentQty && currentQty === 0) {
+        const duplicateWarning = getDuplicateWarning(option);
+
+        if (duplicateWarning) {
+          const shouldContinue = await showDuplicateWarningModal(duplicateWarning);
+
+          if (!shouldContinue) {
+            return;
+          }
+        }
+      }
+
       const existingIndex = estimate.addons.findIndex(function(item) {
         return item.id === option.id;
       });

@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact — Heat District Productions</title>
+  <meta name="description" content="Contact Heat District Productions for event production, DJ services, lighting, sound systems, photo booth, photography, videography, trussing, and custom event rental quotes in South Florida." />
+
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/global.css">
 
@@ -15,10 +17,14 @@
       --dark-bg: #05050f;
       --card-bg: #0a0a1a;
       --text-light: #e8e8f0;
-      --muted-white: rgba(232,232,240,0.5);
+      --muted-white: rgba(232,232,240,0.68);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     html {
       scroll-behavior: smooth;
@@ -35,7 +41,9 @@
 
     nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 1000;
       display: flex;
       justify-content: space-between;
@@ -348,12 +356,59 @@
     .hero p {
       position: relative;
       z-index: 1;
-      max-width: 720px;
+      max-width: 790px;
       margin: 0 auto;
-      font-size: 0.95rem;
+      font-size: 0.98rem;
       line-height: 1.9;
       color: var(--muted-white);
-      font-weight: 300;
+      font-weight: 400;
+    }
+
+    .hero-actions {
+      position: relative;
+      z-index: 1;
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-outline-blue,
+    .btn-outline-pink {
+      background: transparent;
+      padding: 14px 30px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 2.8px;
+      text-transform: uppercase;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
+    }
+
+    .btn-outline-blue {
+      color: var(--neon-blue);
+      border: 1.5px solid var(--neon-blue);
+    }
+
+    .btn-outline-blue:hover {
+      background: rgba(0,240,255,0.08);
+      box-shadow: 0 0 26px rgba(0,240,255,0.3);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-pink {
+      color: var(--neon-pink);
+      border: 1.5px solid var(--neon-pink);
+    }
+
+    .btn-outline-pink:hover {
+      background: rgba(255,45,120,0.08);
+      box-shadow: 0 0 26px rgba(255,45,120,0.3);
+      transform: translateY(-2px);
     }
 
     .neon-divider {
@@ -363,20 +418,21 @@
     }
 
     .page-wrap {
-      max-width: 1200px;
+      max-width: 1240px;
       margin: 0 auto;
       padding: 70px 48px 100px;
     }
 
     .contact-grid {
       display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
+      grid-template-columns: 0.9fr 1.1fr;
       gap: 24px;
       align-items: start;
     }
 
     .contact-panel,
-    .form-panel {
+    .form-panel,
+    .path-panel {
       background: linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.98));
       border: 1px solid rgba(0,240,255,0.08);
       border-radius: 14px;
@@ -409,11 +465,11 @@
     }
 
     .panel-copy {
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       line-height: 1.8;
       color: var(--muted-white);
       margin-bottom: 24px;
-      font-weight: 300;
+      font-weight: 400;
     }
 
     .contact-list {
@@ -478,6 +534,57 @@
       box-shadow: 0 0 10px rgba(255,45,120,0.4);
     }
 
+    .path-panel {
+      margin-top: 24px;
+    }
+
+    .path-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .path-link {
+      display: block;
+      text-decoration: none;
+      border: 1px solid rgba(0,240,255,0.1);
+      border-radius: 12px;
+      padding: 16px;
+      background: rgba(255,255,255,0.02);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .path-link:hover {
+      transform: translateY(-2px);
+      border-color: rgba(0,240,255,0.28);
+      box-shadow: 0 0 22px rgba(0,240,255,0.08);
+    }
+
+    .path-link span {
+      display: block;
+      color: rgba(0,240,255,0.68);
+      font-size: 0.58rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .path-link strong {
+      display: block;
+      color: #fff;
+      font-size: 0.96rem;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .path-link em {
+      display: block;
+      font-style: normal;
+      color: rgba(232,232,240,0.62);
+      line-height: 1.6;
+      font-size: 0.82rem;
+    }
+
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -498,7 +605,7 @@
       font-size: 0.66rem;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: rgba(232,232,240,0.5);
+      color: rgba(232,232,240,0.6);
       font-weight: 600;
     }
 
@@ -531,7 +638,7 @@
 
     input::placeholder,
     textarea::placeholder {
-      color: rgba(232,232,240,0.28);
+      color: rgba(232,232,240,0.32);
     }
 
     select option {
@@ -604,10 +711,10 @@
 
     .success-sub {
       font-size: 0.92rem;
-      color: rgba(232,232,240,0.55);
-      font-weight: 300;
+      color: rgba(232,232,240,0.65);
+      font-weight: 400;
       line-height: 1.8;
-      max-width: 440px;
+      max-width: 500px;
       margin-bottom: 36px;
       animation: fadeInUp 0.6s ease 0.35s both;
     }
@@ -679,7 +786,7 @@
     .form-note {
       margin-top: 14px;
       font-size: 0.78rem;
-      color: rgba(232,232,240,0.42);
+      color: rgba(232,232,240,0.52);
       line-height: 1.7;
     }
 
@@ -823,7 +930,7 @@
     </div>
     <div class="success-divider"></div>
     <h2 class="success-title">We Got Your <strong>Request</strong></h2>
-    <p class="success-sub">Your quote request has been sent to Heat District Productions. We'll be in touch within 24 hours to discuss your event.</p>
+    <p class="success-sub">Your quote request has been sent to Heat District Productions. We will review your event details and follow up as soon as possible.</p>
     <button class="success-close" onclick="closeSuccess()">Back to the Site</button>
   </div>
 
@@ -834,16 +941,16 @@
 
     <ul class="nav-links">
       <li class="nav-item-dropdown">
-        <a href="services.html" class="nav-link-with-dropdown">Products</a>
+        <a href="services.html" class="nav-link-with-dropdown">Rentals & Builds</a>
 
         <div class="nav-dropdown">
-          <a href="services.html#sound">Sound Systems</a>
-          <a href="services.html#lighting">Lighting</a>
-          <a href="services.html#dj-equipment">DJ Equipment</a>
-          <a href="services.html#photo-booth">Photo Booth</a>
-          <a href="services.html#photo-video">Photography & Video</a>
-          <a href="services.html#effects">Special Effects</a>
-          <a href="services.html#led-walls">LED Walls</a>
+          <a href="services.html#foundation-services">Sound Systems</a>
+          <a href="services.html#lighting-packages">Lighting Packages</a>
+          <a href="services.html#lighting-effects">Lighting & Effects</a>
+          <a href="services.html#dj-rentals">DJ Equipment</a>
+          <a href="services.html#guest-media">Photo Booth</a>
+          <a href="services.html#services-media">Photography & Video</a>
+          <a href="services.html#party-furniture">Party Furniture</a>
           <a href="services.html#staging-trussing">Staging & Trussing</a>
         </div>
       </li>
@@ -865,16 +972,16 @@
   </nav>
 
   <div class="mobile-nav" id="mobileNav">
-    <a href="services.html">Products</a>
+    <a href="services.html">Rentals & Builds</a>
 
     <div class="mobile-nav-sub">
-      <a href="services.html#sound">Sound Systems</a>
-      <a href="services.html#lighting">Lighting</a>
-      <a href="services.html#dj-equipment">DJ Equipment</a>
-      <a href="services.html#photo-booth">Photo Booth</a>
-      <a href="services.html#photo-video">Photography & Video</a>
-      <a href="services.html#effects">Special Effects</a>
-      <a href="services.html#led-walls">LED Walls</a>
+      <a href="services.html#foundation-services">Sound Systems</a>
+      <a href="services.html#lighting-packages">Lighting Packages</a>
+      <a href="services.html#lighting-effects">Lighting & Effects</a>
+      <a href="services.html#dj-rentals">DJ Equipment</a>
+      <a href="services.html#guest-media">Photo Booth</a>
+      <a href="services.html#services-media">Photography & Video</a>
+      <a href="services.html#party-furniture">Party Furniture</a>
       <a href="services.html#staging-trussing">Staging & Trussing</a>
     </div>
 
@@ -887,9 +994,16 @@
   </div>
 
   <div class="hero">
-    <p class="hero-eyebrow">Book Your Event · Miami & Broward</p>
-    <h1>Let's Build Your<br><strong>Event Experience</strong></h1>
-    <p>Tell us what you're planning and we'll help you put together the right package, upgrades, and production setup for your event.</p>
+    <p class="hero-eyebrow">Quotes · Availability · Event Planning · South Florida</p>
+    <h1>Let’s Build Your<br><strong>Event Setup</strong></h1>
+    <p>
+      Tell us the event date, location, guest count, and the type of setup you want. We will help you choose the right package, rental build, or custom production setup.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#quote-form" class="btn-outline-blue">Request A Quote</a>
+      <a href="packages.html" class="btn-outline-pink">View Packages</a>
+    </div>
   </div>
 
   <div class="neon-divider"></div>
@@ -897,54 +1011,85 @@
   <div class="page-wrap">
     <div class="contact-grid">
 
-      <div class="contact-panel">
-        <div class="panel-kicker">Direct Contact</div>
-        <h2 class="panel-title">Talk to <strong>Heat District</strong></h2>
-        <p class="panel-copy">For pricing, availability, and custom event production quotes, use the form or contact us directly below.</p>
+      <div>
+        <div class="contact-panel">
+          <div class="panel-kicker">Direct Contact</div>
+          <h2 class="panel-title">Talk to <strong>Heat District</strong></h2>
+          <p class="panel-copy">
+            Not sure what you need yet? Send the event date, city, guest count, and a quick description of the setup. We can point you toward a package or help build a custom rental quote.
+          </p>
 
-        <div class="contact-list">
-          <div class="contact-item">
-            <div class="contact-item-label">Phone</div>
-            <a href="tel:9545472990">(954) 547-2990</a>
+          <div class="contact-list">
+            <div class="contact-item">
+              <div class="contact-item-label">Call / Text</div>
+              <a href="tel:9545472990">(954) 547-2990</a>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-label">Email</div>
+              <a href="mailto:HeatDistrictProd@gmail.com">HeatDistrictProd@gmail.com</a>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-label">Instagram</div>
+              <a href="https://instagram.com/heatdistrictproductions" target="_blank">@HeatDistrictProductions</a>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-label">Service Area</div>
+              <div>Miami-Dade, Broward, and surrounding South Florida events</div>
+            </div>
           </div>
-          <div class="contact-item">
-            <div class="contact-item-label">Email</div>
-            <a href="mailto:HeatDistrictProd@gmail.com">HeatDistrictProd@gmail.com</a>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-label">Instagram</div>
-            <a href="https://instagram.com/heatdistrictproductions" target="_blank">@HeatDistrictProductions</a>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-label">Service Area</div>
-            <div>Miami-Dade, Broward, and surrounding South Florida events</div>
+
+          <div class="quick-points">
+            <div>For fastest pricing, include your event date, city, guest count, and venue if you already have one.</div>
+            <div>Tell us if the event is indoor or outdoor so we can plan power, weather, and setup requirements correctly.</div>
+            <div>Use packages for the easiest booking path, or Rentals & Builds if you already know what equipment you want.</div>
           </div>
         </div>
 
-        <div class="quick-points">
-          <div>Send your event date and location so we can check availability faster.</div>
-          <div>Let us know if you need DJ, lighting, photo booth, photography, videography, LED visuals, or staging.</div>
-          <div>Package clients can add upgrades after selecting their package.</div>
+        <div class="path-panel">
+          <div class="panel-kicker">Choose Your Path</div>
+          <h2 class="panel-title">Not sure where to <strong>start?</strong></h2>
+          <p class="panel-copy">
+            There are two simple ways to book: start with a package or build a custom setup.
+          </p>
+
+          <div class="path-grid">
+            <a href="packages.html" class="path-link">
+              <span>Option 1</span>
+              <strong>Start With Packages</strong>
+              <em>Best for weddings, quinces, birthdays, private parties, and clients who want a simple ready-made setup.</em>
+            </a>
+
+            <a href="services.html" class="path-link">
+              <span>Option 2</span>
+              <strong>Use Rentals & Builds</strong>
+              <em>Best for venues, DJs, planners, promoters, and clients who know exactly what equipment or services they need.</em>
+            </a>
+          </div>
         </div>
       </div>
 
       <div class="form-panel">
         <div class="panel-kicker">Quote Request</div>
         <h2 class="panel-title">Request a <strong>Custom Quote</strong></h2>
-        <p class="panel-copy">Fill this out with as much detail as you can and we'll get back to you within 24 hours.</p>
+        <p class="panel-copy">
+          Fill this out with as much detail as possible. The more information we have, the faster we can recommend the right setup and pricing.
+        </p>
 
         <form id="quote-form">
           <div class="form-grid">
 
             <div class="form-group">
               <label for="name">Full Name</label>
-              <input id="name" name="name" type="text" placeholder="Your name" required />
+              <input id="name" name="name" type="text" placeholder="Your full name" required />
               <span class="field-error" id="err-name"></span>
             </div>
 
             <div class="form-group">
               <label for="phone">Phone</label>
-              <input id="phone" name="phone" type="text" placeholder="Your phone number" />
+              <input id="phone" name="phone" type="text" placeholder="Best number to reach you" required />
               <span class="field-error" id="err-phone"></span>
             </div>
 
@@ -960,6 +1105,16 @@
             </div>
 
             <div class="form-group">
+              <label for="start-time">Start Time</label>
+              <input id="start-time" name="start_time" type="time" />
+            </div>
+
+            <div class="form-group">
+              <label for="end-time">End Time</label>
+              <input id="end-time" name="end_time" type="time" />
+            </div>
+
+            <div class="form-group">
               <label for="event-type">Event Type</label>
               <select id="event-type" name="event_type">
                 <option value="">Select event type</option>
@@ -969,35 +1124,75 @@
                 <option>Private Party</option>
                 <option>Corporate Event</option>
                 <option>Club / Nightlife</option>
+                <option>Festival / Outdoor Event</option>
+                <option>School Event</option>
                 <option>Other</option>
               </select>
             </div>
 
             <div class="form-group">
               <label for="guest-count">Guest Count</label>
-              <input id="guest-count" name="guest_count" type="text" placeholder="Approximate guest count" />
+              <input id="guest-count" name="guest_count" type="text" placeholder="Approx. guest count" />
+            </div>
+
+            <div class="form-group">
+              <label for="indoor-outdoor">Indoor / Outdoor</label>
+              <select id="indoor-outdoor" name="indoor_outdoor">
+                <option value="">Select one</option>
+                <option>Indoor</option>
+                <option>Outdoor</option>
+                <option>Both Indoor & Outdoor</option>
+                <option>Not Sure Yet</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="budget">Budget Range</label>
+              <select id="budget" name="budget_range">
+                <option value="">Select range</option>
+                <option>Under $1,000</option>
+                <option>$1,000 - $2,500</option>
+                <option>$2,500 - $5,000</option>
+                <option>$5,000+</option>
+                <option>Not Sure Yet</option>
+              </select>
             </div>
 
             <div class="form-group full">
-              <label for="location">Venue / Location</label>
-              <input id="location" name="location" type="text" placeholder="Venue name or city" />
+              <label for="location">Venue / City</label>
+              <input id="location" name="location" type="text" placeholder="Venue name, city, or event address if available" />
             </div>
 
             <div class="form-group full">
-              <label for="services">Services Needed</label>
-              <input id="services" name="services_needed" type="text" placeholder="DJ, lighting, photo booth, photography, videography, LED wall, truss, etc." />
+              <label for="services">What Do You Need?</label>
+              <select id="services" name="services_needed">
+                <option value="">Select the closest option</option>
+                <option>Full Event Package</option>
+                <option>DJ + Sound</option>
+                <option>Lighting Package</option>
+                <option>Photo Booth</option>
+                <option>Photography / Video</option>
+                <option>DJ Equipment Rental</option>
+                <option>Sound System Rental</option>
+                <option>Trussing / Moving Heads</option>
+                <option>LED Wall / Visuals</option>
+                <option>Special Effects</option>
+                <option>Custom Build / Not Sure Yet</option>
+              </select>
             </div>
 
             <div class="form-group full">
               <label for="message">Event Details</label>
-              <textarea id="message" name="message" placeholder="Tell us what kind of setup you want, your vibe, timing, and anything important for the quote." required></textarea>
+              <textarea id="message" name="message" placeholder="Tell us what kind of setup you want, your event vibe, venue details, timing, parking/load-in details, power availability, and anything important for the quote." required></textarea>
               <span class="field-error" id="err-message"></span>
             </div>
 
           </div>
 
           <button type="submit" class="submit-btn" id="submitBtn">Send Quote Request</button>
-          <p class="form-note">We typically respond within 24 hours. You can also reach us directly at (954) 547-2990.</p>
+          <p class="form-note">
+            We usually respond as soon as possible. For urgent events, call or text (954) 547-2990 after submitting the form.
+          </p>
         </form>
       </div>
 
@@ -1009,12 +1204,16 @@
       <img src="logo.png" alt="Heat District Productions" />
       <span class="footer-productions-text">Productions</span>
     </div>
+
     <div class="footer-contact">
       <a href="tel:9545472990">(954) 547-2990</a>
       <a href="mailto:HeatDistrictProd@gmail.com">HeatDistrictProd@gmail.com</a>
       <a href="https://instagram.com/heatdistrictproductions" target="_blank">@HeatDistrictProductions</a>
       <a href="https://www.heatdistrictproductions.com">heatdistrictproductions.com</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms & Conditions</a>
     </div>
+
     <p class="footer-copy">© 2025 Heat District Productions · Miami & Broward County · All Rights Reserved</p>
   </footer>
 
@@ -1094,16 +1293,18 @@
       e.preventDefault();
 
       const validName = validateField('name', 'err-name', 'Please enter your name.');
+      const validPhone = validateField('phone', 'err-phone', 'Please enter your phone number.');
       const validEmail = validateField('email', 'err-email', 'Please enter your email.');
       const validMessage = validateField('message', 'err-message', 'Please add some event details.');
 
-      if (!validName || !validEmail || !validMessage) return;
+      if (!validName || !validPhone || !validEmail || !validMessage) return;
 
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending...';
 
       try {
         const data = new FormData(form);
+
         const response = await fetch('https://formspree.io/f/mkokqpnz', {
           method: 'POST',
           body: data,
@@ -1129,6 +1330,7 @@
       submitBtn.disabled = false;
     }
   </script>
-<script src="js/global-cart.js"></script>
+
+  <script src="js/global-cart.js"></script>
 </body>
 </html>

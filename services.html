@@ -449,51 +449,50 @@
     }
 
     .filter-shell {
-      margin-top: 34px;
-      border: 1px solid rgba(0,240,255,0.1);
-      border-radius: 16px;
-      background:
-        linear-gradient(180deg, rgba(10,10,26,0.94), rgba(8,8,22,0.98)),
-        linear-gradient(90deg, rgba(0,240,255,0.04), rgba(255,45,120,0.04));
-      padding: 22px;
-      box-shadow: 0 14px 38px rgba(0,0,0,0.18);
-    }
+  margin-top: 34px;
+  border: 1px solid rgba(0,240,255,0.1);
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(10,10,26,0.94), rgba(8,8,22,0.98)),
+    linear-gradient(90deg, rgba(0,240,255,0.04), rgba(255,45,120,0.04));
+  padding: 22px;
+  box-shadow: 0 14px 38px rgba(0,0,0,0.18);
+}
 
-    .filter-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      align-items: flex-end;
-      margin-bottom: 18px;
-    }
+.filter-head {
+  display: block;
+  margin-bottom: 18px;
+}
 
-    .filter-kicker {
-      font-size: 0.58rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: rgba(255,45,120,0.84);
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
+.filter-kicker {
+  font-size: 0.58rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,45,120,0.84);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
 
-    .filter-title {
-      color: #fff;
-      font-size: 1.1rem;
-      font-weight: 700;
-    }
+.filter-title {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
 
-    .filter-note {
-      color: rgba(232,232,240,0.72);
-      font-size: 0.88rem;
-      line-height: 1.7;
-      max-width: 520px;
-    }
+.filter-note {
+  color: rgba(232,232,240,0.72);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  max-width: 620px;
+  margin: 0;
+}
 
-    .category-filter {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-    }
+.category-filter {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
 
     .filter-btn {
       border: 1px solid rgba(0,240,255,0.13);
@@ -1141,16 +1140,18 @@
     }
 
     @media (max-width: 1100px) {
-      .category-filter {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+  .category-filter {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 
-      .filter-head {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
+  .filter-head {
+    display: block;
+  }
 
+  .filter-note {
+    max-width: 100%;
+  }
+}
     @media (max-width: 900px) {
       body {
         padding-bottom: 94px;
@@ -1568,17 +1569,19 @@
         ]
       },
       {
-        id: 'photo-booth',
-        filter: 'guest-media',
-        title: 'Guest Experience',
-        copy: 'Guest-facing add-ons for photo moments, entrances, VIP areas, and event interaction.',
-        pills: ['Photo Booth', 'Guest Facing', 'Photo Moments'],
-        products: [
-          'photo-booth-digital',
-          'photo-booth-print',
-          'red-carpet'
-        ]
-      },
+  id: 'photo-booth',
+  filter: 'guest-media',
+  title: 'Guest Experience',
+  copy: 'Guest-facing add-ons for photo moments, entrances, VIP areas, and event interaction.',
+  pills: ['Photo Booth', 'Guest Facing', 'Photo Moments'],
+  products: [
+    'photo-booth-digital',
+    'photo-booth-print',
+    'red-carpet',
+    'foam-glow-sticks',
+    'led-bottle-sign'
+  ]
+},
       {
         id: 'photo-video',
         filter: 'services',
@@ -1639,7 +1642,9 @@
         copy: 'LED screen and wall options for visuals, branding, DJ content, slideshows, presentations, and high-impact event backdrops.',
         pills: ['Visual Impact', 'Branding', 'Custom Content'],
         products: [
-          'led-wall'
+          'led-wall',
+          'led-wall-floor',
+          'led-wall-2-totems'
         ]
       },
       {
@@ -1754,6 +1759,29 @@
         desc: '20 foot red carpet setup for entrances, photo moments, VIP areas, and event arrivals.',
         note: '20 foot red carpet'
       },
+      'foam-glow-sticks': {
+  name: 'Foam Glow Sticks — Pack of 25',
+  title: 'Foam Glow Sticks',
+  icon: 'GLO',
+  type: 'hourly',
+  rate: 15,
+  image: 'images/products/foam-glow-sticks.png',
+  mediaClass: 'product-media-gear',
+  desc: 'Pack of 25 purple foam glow sticks for dance floors, party moments, club-style events, birthdays, and guest interaction.',
+  note: 'Pack of 25 foam glow sticks'
+},
+
+'led-bottle-sign': {
+  name: 'LED Bottle Sign',
+  title: 'LED Bottle Sign',
+  icon: 'LED',
+  type: 'hourly',
+  rate: 20,
+  image: 'images/products/led-bottle-sign.png',
+  mediaClass: 'product-media-gear',
+  desc: 'LED bottle sign display for VIP tables, bottle service moments, birthday entrances, and nightlife-style event upgrades.',
+  note: 'LED bottle sign display'
+},
       'videography': {
         name: 'Videography — 15 Second Recap',
         title: 'Videography',
@@ -1884,20 +1912,15 @@
         note: 'Lighting add-on'
       },
       'moving-heads': {
-        name: 'Moving Heads — 2 Units with Totems',
-        title: 'Moving Heads',
+        name: 'Moving Head Light',
+        title: 'Moving Head Light',
         icon: 'MH',
         type: 'hourly',
-        rate: 75,
-        image: 'images/products/moving-heads-totems.png',
-        mediaClass: 'product-media-tall',
-        desc: '2 moving head lights with your choice of totems or goal post setup.',
-        note: '2 moving heads with totems',
-        optionsLabel: 'Setup Option',
-        options: [
-          { value: 'totems', label: '2 Moving Heads + Totems', name: 'Moving Heads — 2 Units with Totems', rate: 75, note: '2 moving heads with totems' },
-          { value: 'goal-post', label: '2 Moving Heads + Goal Post', name: 'Moving Heads — 2 Units with Goal Post', rate: 110, note: '2 moving heads with goal post' }
-        ]
+        rate: 37.5,
+        image: 'images/products/moving-head.png',
+        mediaClass: 'product-media-gear',
+        desc: 'Single moving head light rental for dance floor movement, beams, spotlight moments, and custom lighting builds.',
+        note: 'Single moving head light · select amount'
       },
       'wash-lights': {
         name: 'Wash Lights',
@@ -1955,16 +1978,38 @@
         note: 'Daily rental item'
       },
       'led-wall': {
-        name: 'LED Screen / Wall',
-        title: 'LED Screen / Wall',
+        name: 'LED Wall with Goal Post Trussing',
+        title: 'LED Wall with Goal Post Trussing',
         icon: 'LED',
         type: 'hourly',
         rate: 240,
         image: 'images/products/led-wall.png',
         mediaClass: 'product-media-wide',
-        desc: 'LED screen or wall setup for logos, visuals, DJ content, slideshows, branding, and custom event backdrops.',
-        note: 'LED visual setup'
+        desc: 'LED wall setup mounted with goal post trussing for logos, visuals, DJ content, slideshows, branding, and high-impact event backdrops.',
+        note: 'LED wall + goal post trussing'
       },
+      'led-wall-floor': {
+        name: 'Floor-Supported LED Wall',
+        title: 'Floor-Supported LED Wall',
+        icon: 'LED',
+        type: 'hourly',
+        rate: 220,
+        image: 'images/products/led-wall-floor.png',
+        mediaClass: 'product-media-wide',
+        desc: 'Freestanding LED wall propped up from the floor with support hidden behind the screen. Great for clean visuals, logos, DJ content, presentations, and event backdrops when overhead trussing is not needed.',
+        note: 'Floor-supported LED wall'
+      },
+      'led-wall-2-totems': {
+  name: 'LED Wall with 2 Totems',
+  title: 'LED Wall with 2 Totems',
+  icon: 'LED',
+  type: 'hourly',
+  rate: 230,
+  image: 'images/products/led-wall-2-totems.png',
+  mediaClass: 'product-media-wide',
+  desc: 'LED wall setup mounted between two truss totems for a clean visual display without a full overhead goal post. Great for DJ visuals, logos, slideshows, branding, and event backdrops.',
+  note: 'LED wall + 2 truss totems'
+},
       'trussing-2-totems': {
         name: 'Trussing — 2 Totems 8ft',
         title: 'Trussing — 2 Totems',

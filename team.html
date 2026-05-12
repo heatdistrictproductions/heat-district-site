@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Our Team — Heat District Productions</title>
+  <meta name="description" content="Meet the team behind Heat District Productions, a South Florida event production company providing DJ services, sound, lighting, photo booth, photography, video, trussing, and custom event builds." />
+
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/global.css">
 
@@ -15,7 +17,7 @@
       --dark-bg: #05050f;
       --card-bg: #0a0a1a;
       --text-light: #e8e8f0;
-      --muted-white: rgba(232,232,240,0.5);
+      --muted-white: rgba(232,232,240,0.68);
       --soft-border: rgba(0,240,255,0.1);
       --success: rgba(77,255,145,0.88);
     }
@@ -344,12 +346,12 @@
     .page-hero p {
       position: relative;
       z-index: 1;
-      max-width: 820px;
+      max-width: 860px;
       margin: 0 auto;
-      font-size: 0.95rem;
+      font-size: 0.98rem;
       line-height: 1.9;
       color: var(--muted-white);
-      font-weight: 300;
+      font-weight: 400;
     }
 
     .hero-actions {
@@ -440,11 +442,11 @@
     }
 
     .section-sub {
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       color: var(--muted-white);
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.85;
-      max-width: 860px;
+      max-width: 900px;
       margin-bottom: 30px;
     }
 
@@ -535,10 +537,10 @@
     }
 
     .team-copy {
-      font-size: 0.86rem;
-      color: rgba(232,232,240,0.56);
+      font-size: 0.88rem;
+      color: rgba(232,232,240,0.66);
       line-height: 1.8;
-      font-weight: 300;
+      font-weight: 400;
       margin-bottom: 20px;
     }
 
@@ -557,6 +559,50 @@
       text-transform: uppercase;
       color: rgba(255,45,120,0.84);
       background: rgba(255,45,120,0.04);
+    }
+
+    .about-panel {
+      margin-top: 34px;
+      border: 1px solid rgba(0,240,255,0.1);
+      border-radius: 18px;
+      padding: 34px;
+      background:
+        radial-gradient(ellipse at 20% 0%, rgba(0,240,255,0.06), transparent 58%),
+        radial-gradient(ellipse at 85% 100%, rgba(255,45,120,0.055), transparent 58%),
+        linear-gradient(180deg, rgba(10,10,26,0.96), rgba(8,8,22,0.98));
+      box-shadow: 0 18px 50px rgba(0,0,0,0.22);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .about-heading {
+      font-size: clamp(1.25rem, 3vw, 1.85rem);
+      font-weight: 300;
+      font-style: italic;
+      color: #fff;
+      line-height: 1.25;
+    }
+
+    .about-heading strong {
+      font-style: normal;
+      color: var(--neon-pink);
+      font-weight: 700;
+    }
+
+    .about-copy {
+      color: rgba(232,232,240,0.68);
+      line-height: 1.85;
+      font-size: 0.92rem;
+      font-weight: 400;
+    }
+
+    .about-copy p + p {
+      margin-top: 16px;
     }
 
     .values-grid {
@@ -593,9 +639,41 @@
 
     .value-copy {
       font-size: 0.84rem;
-      color: rgba(232,232,240,0.52);
+      color: rgba(232,232,240,0.64);
       line-height: 1.75;
-      font-weight: 300;
+      font-weight: 400;
+    }
+
+    .standards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .standard-card {
+      border: 1px solid rgba(0,240,255,0.09);
+      border-radius: 16px;
+      padding: 26px 24px;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(0,240,255,0.05), transparent 60%),
+        linear-gradient(180deg, rgba(10,10,26,0.96), rgba(8,8,22,0.98));
+      box-shadow: 0 14px 38px rgba(0,0,0,0.18);
+    }
+
+    .standard-title {
+      font-size: 1.02rem;
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+
+    .standard-copy {
+      font-size: 0.84rem;
+      color: rgba(232,232,240,0.64);
+      line-height: 1.75;
+      font-weight: 400;
     }
 
     .process-card {
@@ -642,9 +720,9 @@
 
     .process-step-copy {
       font-size: 0.8rem;
-      color: rgba(232,232,240,0.52);
+      color: rgba(232,232,240,0.62);
       line-height: 1.65;
-      font-weight: 300;
+      font-weight: 400;
     }
 
     .cta-section {
@@ -675,12 +753,12 @@
     }
 
     .cta-section p {
-      max-width: 680px;
+      max-width: 720px;
       margin: 0 auto 30px;
-      color: rgba(232,232,240,0.52);
+      color: rgba(232,232,240,0.66);
       line-height: 1.85;
       font-size: 0.92rem;
-      font-weight: 300;
+      font-weight: 400;
     }
 
     footer {
@@ -741,6 +819,16 @@
       .process-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+
+      .standards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 900px) {
@@ -778,6 +866,7 @@
         height: 235px;
       }
 
+      .about-panel,
       .process-card {
         padding: 24px;
       }
@@ -802,7 +891,7 @@
 
     <ul class="nav-links">
       <li class="nav-item-dropdown">
-        <a href="services.html" class="nav-link-with-dropdown">Products</a>
+        <a href="services.html" class="nav-link-with-dropdown">Rentals & Builds</a>
 
         <div class="nav-dropdown">
           <a href="services.html#foundation-services">Sound Systems</a>
@@ -833,7 +922,7 @@
   </nav>
 
   <div class="mobile-nav" id="mobileNav">
-    <a href="services.html">Products</a>
+    <a href="services.html">Rentals & Builds</a>
 
     <div class="mobile-nav-sub">
       <a href="services.html#foundation-services">Sound Systems</a>
@@ -855,11 +944,10 @@
   </div>
 
   <section class="page-hero">
-    <p class="page-hero-eyebrow">The Team Behind the Production</p>
-    <h1>Small Team.<br><strong>Big Event Energy.</strong></h1>
+    <p class="page-hero-eyebrow">The People Behind the Production</p>
+    <h1>Small Team.<br><strong>Serious Event Energy.</strong></h1>
     <p>
-      Heat District Productions is led by Ozzy Melendez and Julian Mendez — combining lighting, photography, DJ performance,
-      design direction, and client experience to create clean, intentional event setups.
+      Heat District Productions is built by a hands-on team focused on clean setups, strong sound, polished lighting, reliable event flow, and guest experiences that feel intentional from start to finish.
     </p>
 
     <div class="hero-actions">
@@ -873,11 +961,33 @@
   <main class="team-wrap">
 
     <section class="section-block">
-      <p class="section-label">Our Team</p>
-      <h2 class="section-title">Two Roles. <strong>One Production Vision.</strong></h2>
+      <p class="section-label">Who We Are</p>
+      <h2 class="section-title">Real People. <strong>Real Production.</strong></h2>
       <p class="section-sub">
-        We keep the team page simple and real. Heat District is powered by the people directly handling the creative,
-        technical, and client-facing side of the event.
+        Heat District Productions is not built around generic rentals. We focus on the full event experience — how the setup looks, how the music feels, how the room sounds, how guests interact, and how smoothly the event runs behind the scenes.
+      </p>
+
+      <div class="about-panel">
+        <div class="about-grid">
+          <h3 class="about-heading">Built for clients who want <strong>more than equipment dropped off.</strong></h3>
+
+          <div class="about-copy">
+            <p>
+              Our work is centered on creating event environments. That means sound, lighting, DJ setups, photo booth, media coverage, effects, trussing, and visual details all need to feel connected to the event instead of thrown together.
+            </p>
+            <p>
+              Whether the event is a wedding, quince, birthday, private party, nightlife event, corporate event, or custom rental build, the goal is the same: make the setup feel professional, make the process easy to understand, and give the client confidence before event day.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <p class="section-label">Our Team</p>
+      <h2 class="section-title">Creative Direction & <strong>Technical Execution.</strong></h2>
+      <p class="section-sub">
+        Heat District Productions is led by the people directly involved in the setup, visuals, sound, music, and client experience.
       </p>
 
       <div class="team-grid">
@@ -886,14 +996,14 @@
           <div class="team-photo">
             <div class="team-initials">OM</div>
           </div>
+
           <div class="team-content">
             <p class="team-role">Lighting / Photography / Production</p>
             <h3 class="team-name">Ozzy Melendez</h3>
             <p class="team-copy">
-              Ozzy handles the visual side of Heat District Productions, including lighting direction, photography,
-              production planning, event setup details, and the overall look of the experience. He has 2 years of experience
-              as a photographer and focuses on making every setup feel clean, intentional, and ready to impress.
+              Ozzy focuses on the visual and production side of Heat District Productions, including lighting direction, photography, setup planning, equipment presentation, and the overall look of the event. His goal is to make every setup feel clean, intentional, and ready for the moment.
             </p>
+
             <div class="team-tags">
               <span class="team-tag">Lighting</span>
               <span class="team-tag">Photography</span>
@@ -907,14 +1017,14 @@
           <div class="team-photo">
             <div class="team-initials">JM</div>
           </div>
+
           <div class="team-content">
-            <p class="team-role">DJ / Sound Engineer / Design / Client Experience</p>
+            <p class="team-role">DJ / Sound Engineer / Client Experience</p>
             <h3 class="team-name">Julian Mendez</h3>
             <p class="team-copy">
-              Julian brings the music and energy to the event as the DJ while also serving as the sound engineer.
-              With over 10 years of DJ and AV equipment experience, he helps shape the sound, flow, design direction,
-              and client experience so the event feels polished from both the guest and production side.
+              Julian brings the music, sound, and event flow together. With years of DJ and AV equipment experience, he helps shape the energy of the event while making sure the sound, music, and client-facing details feel polished.
             </p>
+
             <div class="team-tags">
               <span class="team-tag">DJ</span>
               <span class="team-tag">Sound Engineer</span>
@@ -932,7 +1042,7 @@
       <p class="section-label">What We Handle</p>
       <h2 class="section-title">Creative. Technical. <strong>Client-Focused.</strong></h2>
       <p class="section-sub">
-        Our setup is built around a simple idea: the event should look good, sound good, feel good, and be easy for the client to understand.
+        Every event has a different purpose. We look at the space, guest count, equipment needs, music, lighting, media, and overall feel so the setup supports the actual event, not just a checklist of rentals.
       </p>
 
       <div class="values-grid">
@@ -940,31 +1050,62 @@
           <div class="value-number">01</div>
           <div class="value-title">Lighting & Atmosphere</div>
           <div class="value-copy">
-            We focus on lighting placement, color, movement, effects, and the overall visual atmosphere that makes the event feel elevated.
+            Lighting placement, color, movement, and effects help create the mood of the room and make the event feel more elevated.
           </div>
         </div>
 
         <div class="value-card">
           <div class="value-number">02</div>
-          <div class="value-title">Photography & Content</div>
+          <div class="value-title">Sound & DJ Flow</div>
           <div class="value-copy">
-            We capture the people, energy, details, and key moments so the event has a visual story beyond the night itself.
+            Music and sound are planned around the event type, guest energy, venue size, and the moments that matter throughout the night.
           </div>
         </div>
 
         <div class="value-card">
           <div class="value-number">03</div>
-          <div class="value-title">DJ & Event Flow</div>
+          <div class="value-title">Guest Experience</div>
           <div class="value-copy">
-            Music, timing, transitions, and crowd energy are handled with the goal of keeping the event moving naturally.
+            Photo booth, effects, lighting, media, and setup design help create moments guests remember and interact with.
           </div>
         </div>
 
         <div class="value-card">
           <div class="value-number">04</div>
-          <div class="value-title">Design & Client Experience</div>
+          <div class="value-title">Custom Builds</div>
           <div class="value-copy">
-            From package direction to setup presentation, we care about making the process clear and the final result look intentional.
+            For clients who know exactly what they need, we can help build a custom setup using rentals, services, and production add-ons.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <p class="section-label">Production Standards</p>
+      <h2 class="section-title">What Clients Can <strong>Expect From Us.</strong></h2>
+      <p class="section-sub">
+        A good setup is not only about having gear. It is about showing up prepared, understanding the event, placing equipment correctly, and making the final result feel intentional.
+      </p>
+
+      <div class="standards-grid">
+        <div class="standard-card">
+          <div class="standard-title">Clear communication before the event</div>
+          <div class="standard-copy">
+            We ask for the details that matter: date, timing, venue, guest count, power, parking, indoor/outdoor setup, restrictions, and the type of experience you want.
+          </div>
+        </div>
+
+        <div class="standard-card">
+          <div class="standard-title">Professional setup presentation</div>
+          <div class="standard-copy">
+            The layout, lighting placement, trussing, sound position, and visible equipment should look clean and purposeful, especially for weddings, quinces, private events, and venue setups.
+          </div>
+        </div>
+
+        <div class="standard-card">
+          <div class="standard-title">A setup built around the event</div>
+          <div class="standard-copy">
+            We help clients choose the right package or custom build so they are not overpaying for things they do not need or missing the pieces that would make the event stronger.
           </div>
         </div>
       </div>
@@ -972,9 +1113,9 @@
 
     <section class="section-block">
       <p class="section-label">Our Process</p>
-      <h2 class="section-title">From Inquiry to <strong>Event Day</strong></h2>
+      <h2 class="section-title">From Inquiry to <strong>Event Day.</strong></h2>
       <p class="section-sub">
-        This gives clients confidence by showing that there is a clear process behind the production.
+        This is the basic process clients can expect when booking with Heat District Productions.
       </p>
 
       <div class="process-card">
@@ -983,15 +1124,15 @@
             <div class="process-step-number">Step 01</div>
             <div class="process-step-title">Understand the Event</div>
             <div class="process-step-copy">
-              We look at the event type, venue, date, guest count, timing, and the kind of energy the client wants.
+              We review the event type, venue, date, guest count, timing, location, and the kind of setup or atmosphere the client wants.
             </div>
           </div>
 
           <div class="process-step">
             <div class="process-step-number">Step 02</div>
-            <div class="process-step-title">Build the Setup</div>
+            <div class="process-step-title">Choose the Build</div>
             <div class="process-step-copy">
-              The client chooses a package or builds a custom cart with sound, lighting, media, effects, and add-ons.
+              Clients can start with a package or build a custom setup with sound, lighting, DJ equipment, media, photo booth, effects, and add-ons.
             </div>
           </div>
 
@@ -999,7 +1140,7 @@
             <div class="process-step-number">Step 03</div>
             <div class="process-step-title">Confirm the Details</div>
             <div class="process-step-copy">
-              We confirm timing, setup needs, access, power, design direction, and any special requests before event day.
+              We confirm setup needs, access, power, timing, venue restrictions, and any custom requests before the event.
             </div>
           </div>
 
@@ -1007,7 +1148,7 @@
             <div class="process-step-number">Step 04</div>
             <div class="process-step-title">Execute the Experience</div>
             <div class="process-step-copy">
-              Ozzy and Julian handle the production, visuals, music, and client-facing details that bring the event together.
+              On event day, the team handles the setup, equipment, sound, lighting, music, visuals, and production details that bring the event together.
             </div>
           </div>
         </div>
@@ -1015,14 +1156,15 @@
     </section>
 
     <section class="cta-section">
-      <h2>Let’s Build the Right<br><strong>Setup for Your Event</strong></h2>
+      <h2>Let’s Build the Right<br><strong>Setup for Your Event.</strong></h2>
       <p>
-        Choose a package or build your own custom setup. We’ll help match the sound, lighting, visuals, and event flow to the experience you want.
+        Choose a package if you want the easiest booking path, or use Rentals & Builds to create a custom setup with the exact sound, lighting, DJ equipment, media, and production add-ons you need.
       </p>
 
       <div class="hero-actions">
         <a href="packages.html" class="btn-outline-blue">View Packages</a>
-        <a href="services.html" class="btn-outline-pink">Browse Products</a>
+        <a href="services.html" class="btn-outline-pink">Rentals & Builds</a>
+        <a href="contact.html" class="btn-outline-blue">Contact Us</a>
       </div>
     </section>
 
@@ -1039,6 +1181,8 @@
       <a href="mailto:HeatDistrictProd@gmail.com">HeatDistrictProd@gmail.com</a>
       <a href="https://instagram.com/heatdistrictproductions" target="_blank">@HeatDistrictProductions</a>
       <a href="https://www.heatdistrictproductions.com">heatdistrictproductions.com</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms & Conditions</a>
     </div>
 
     <p class="footer-copy">© 2025 Heat District Productions · Miami & Broward County · All Rights Reserved</p>
@@ -1095,6 +1239,7 @@
       });
     }
   </script>
-<script src="js/global-cart.js"></script>
+
+  <script src="js/global-cart.js"></script>
 </body>
 </html>

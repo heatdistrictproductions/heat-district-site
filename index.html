@@ -3,11 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Heat District Productions | Event Production, DJ, Lighting & Rentals</title>
-  <meta name="description" content="Heat District Productions provides event production, DJ services, sound systems, lighting, photo booths, photography, video, LED walls, trussing, and party rentals for South Florida events." />
+  <title>Heat District Productions | South Florida Event Production & Party Rentals</title>
+  <meta name="description" content="Heat District Productions is a South Florida event production company serving Miami, Broward, and surrounding areas with DJ services, sound systems, event lighting, photo booths, media coverage, trussing, special effects, LED wall production by custom quote, and custom event rentals." />
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://heatdistrictproductions.com/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Heat District Productions | South Florida Event Production">
+  <meta property="og:description" content="Event production, DJ services, sound, lighting, photo booth, media coverage, trussing, effects, and custom event rentals across Miami, Broward, and South Florida.">
+  <meta property="og:url" content="https://heatdistrictproductions.com/">
+  <meta property="og:image" content="https://heatdistrictproductions.com/logo.png">
+  <meta property="og:site_name" content="Heat District Productions">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Heat District Productions | South Florida Event Production">
+  <meta name="twitter:description" content="Professional event production, lighting, sound, DJ setups, photo booth, media coverage, and custom event rentals across Miami & Broward.">
+  <meta name="twitter:image" content="https://heatdistrictproductions.com/logo.png">
 
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/global.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="shortcut icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Heat District Productions",
+    "url": "https://heatdistrictproductions.com/",
+    "logo": "https://heatdistrictproductions.com/logo.png",
+    "image": "https://heatdistrictproductions.com/logo.png",
+    "telephone": "+1-954-547-2990",
+    "email": "HeatDistrictProd@gmail.com",
+    "priceRange": "$$$",
+    "description": "Heat District Productions is a South Florida event production company serving Miami, Broward, and surrounding areas with DJ services, sound systems, event lighting, photo booths, photography, videography, trussing, special effects, LED wall production by custom quote, and custom event rentals.",
+    "areaServed": [
+      { "@type": "City", "name": "Miami" },
+      { "@type": "AdministrativeArea", "name": "Broward County" },
+      { "@type": "AdministrativeArea", "name": "South Florida" }
+    ],
+    "sameAs": [
+      "https://instagram.com/heatdistrictproductions"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Heat District Productions Event Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Event Production" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "DJ Services" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Event Lighting" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sound System Rentals" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Photo Booth Rentals" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Photography and Videography" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Trussing and Custom Event Builds" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "LED Wall Production by Custom Quote" } }
+      ]
+    }
+  }
+  </script>
 
   <style>
     :root {
@@ -518,6 +572,88 @@
       letter-spacing: 3px;
       text-transform: uppercase;
       line-height: 1;
+    }
+
+    .hero-title-visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .brand-intro-section {
+      max-width: 1200px;
+      padding: 86px 48px;
+    }
+
+    .brand-intro-card {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: stretch;
+      border: 1px solid rgba(0,240,255,0.12);
+      border-radius: 16px;
+      padding: 34px 32px;
+      background:
+        radial-gradient(ellipse at 20% 0%, rgba(0,240,255,0.055), transparent 62%),
+        radial-gradient(ellipse at 90% 100%, rgba(255,45,120,0.045), transparent 58%),
+        linear-gradient(180deg, rgba(10,10,26,0.92), rgba(8,8,22,0.98));
+      box-shadow: 0 18px 50px rgba(0,0,0,0.22);
+    }
+
+    .brand-intro-main h2 {
+      color: #fff;
+      font-size: clamp(1.35rem, 3vw, 2.05rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.28;
+      margin-bottom: 14px;
+    }
+
+    .brand-intro-main h2 strong {
+      color: var(--neon-pink);
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .brand-intro-main p {
+      color: rgba(232,232,240,0.66);
+      font-size: 0.94rem;
+      line-height: 1.9;
+      font-weight: 300;
+    }
+
+    .brand-intro-points {
+      display: grid;
+      gap: 12px;
+    }
+
+    .brand-intro-point {
+      border: 1px solid rgba(0,240,255,0.09);
+      border-radius: 12px;
+      padding: 15px 16px;
+      background: rgba(255,255,255,0.022);
+    }
+
+    .brand-intro-point-title {
+      color: rgba(0,240,255,0.78);
+      font-size: 0.58rem;
+      letter-spacing: 2.7px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .brand-intro-point-copy {
+      color: rgba(232,232,240,0.62);
+      font-size: 0.8rem;
+      line-height: 1.65;
+      font-weight: 300;
     }
 
     .scroll-arrow {
@@ -1246,6 +1382,16 @@
         padding: 80px 24px;
       }
 
+
+      .brand-intro-section {
+        padding: 64px 24px;
+      }
+
+      .brand-intro-card {
+        grid-template-columns: 1fr;
+        padding: 28px 24px;
+      }
+
       .path-grid {
         grid-template-columns: 1fr;
       }
@@ -1295,12 +1441,12 @@
         <a href="services.html" class="nav-link-with-dropdown">Rentals & Builds</a>
 
         <div class="nav-dropdown">
-          <a href="services.html#foundation-services">Sound Systems</a>
-          <a href="services.html#lighting-packages">Lighting Packages</a>
-          <a href="services.html#lighting-effects">Lighting & Effects</a>
-          <a href="services.html#dj-rentals">DJ Equipment</a>
-          <a href="services.html#guest-media">Photo Booth</a>
-          <a href="services.html#services-media">Photography & Video</a>
+          <a href="services.html#sound">Sound Systems</a>
+          <a href="services.html#lighting">Lighting & Effects</a>
+          <a href="services.html#dj-equipment">DJ Equipment</a>
+          <a href="services.html#photo-booth">Photo Booth</a>
+          <a href="services.html#photo-video">Photography & Video</a>
+          <a href="services.html#led-walls">LED Walls</a>
           <a href="services.html#party-furniture">Party Furniture</a>
           <a href="services.html#staging-trussing">Staging & Trussing</a>
         </div>
@@ -1347,14 +1493,16 @@
   <div class="hero">
     <div class="hero-eyebrow">South Florida Event Production · Weddings · Private Events · Corporate · Nightlife</div>
 
-    <img src="logo.png" alt="Heat District Productions" class="hero-logo-img" id="heroLogo" />
+    <h1 class="hero-title-visually-hidden">Heat District Productions — South Florida Event Production, DJ Services, Lighting, Sound and Event Rentals</h1>
+
+    <img src="logo.png" alt="Heat District Productions South Florida event production company logo" class="hero-logo-img" id="heroLogo" />
 
     <div class="hero-productions">— Productions —</div>
 
     <p class="hero-tagline">Production That Makes the Room Feel Different</p>
 
     <p class="hero-sub">
-      DJ Services · Sound Systems · Lighting · Photo Booths · Photography · Video · Trussing · LED Walls · Event Rentals
+      DJ Services · Sound Systems · Event Lighting · Photo Booths · Photography · Videography · Trussing · LED Wall Production · Party Rentals
     </p>
 
     <div class="hero-buttons">
@@ -1368,6 +1516,37 @@
       <div class="scroll-arrow"></div>
     </div>
   </div>
+
+  <div class="neon-divider"></div>
+
+  <section class="brand-intro-section" aria-labelledby="south-florida-event-production">
+    <div class="brand-intro-card">
+      <div class="brand-intro-main">
+        <p class="section-label">South Florida Event Production</p>
+        <h2 id="south-florida-event-production">Heat District Productions serves <strong>Miami, Broward & South Florida.</strong></h2>
+        <p>
+          Heat District Productions is a South Florida event production company providing DJ services, sound systems, event lighting, photo booths, photography, videography, trussing, special effects, LED wall production by custom quote, and custom event rentals for weddings, graduations, birthdays, quinces, corporate events, private parties, and nightlife-style celebrations.
+        </p>
+      </div>
+
+      <div class="brand-intro-points" aria-label="Heat District Productions service highlights">
+        <div class="brand-intro-point">
+          <div class="brand-intro-point-title">Service Area</div>
+          <div class="brand-intro-point-copy">Miami, Broward, and surrounding South Florida event locations.</div>
+        </div>
+
+        <div class="brand-intro-point">
+          <div class="brand-intro-point-title">Production Style</div>
+          <div class="brand-intro-point-copy">Clean setups, intentional lighting, strong sound, and stress-free booking from setup to breakdown.</div>
+        </div>
+
+        <div class="brand-intro-point">
+          <div class="brand-intro-point-title">Event Types</div>
+          <div class="brand-intro-point-copy">Private events, graduations, weddings, birthdays, quinces, corporate events, and club-style parties.</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <div class="neon-divider"></div>
 
@@ -1441,7 +1620,7 @@
     <p class="section-label">What We Offer</p>
     <h2 class="section-title">Everything Your Event Needs.<br><strong>One Production Team.</strong></h2>
     <p class="section-sub">
-      Heat District Productions provides event production, DJ services, sound systems, lighting, photo booths, photography, video, LED walls, trussing, special effects, and custom rentals for South Florida events.
+      Heat District Productions provides event production, DJ services, sound systems, event lighting, photo booths, photography, videography, LED wall production by custom quote, trussing, special effects, and custom rentals for events across Miami, Broward, and South Florida.
     </p>
 
     <div class="services-grid">
@@ -1526,7 +1705,7 @@
           </svg>
         </div>
         <h3>LED Walls</h3>
-        <p>LED screen and wall options for visuals, branding, music videos, presentations, and high-impact backdrops.</p>
+        <p>LED screen and wall production available by custom quote for visuals, branding, DJ content, presentations, and high-impact backdrops.</p>
       </div>
 
       <div class="service-card">
@@ -1750,7 +1929,7 @@
       <a href="terms.html">Terms & Conditions</a>
     </div>
 
-    <p class="footer-copy">© 2025 Heat District Productions · Miami & Broward County · All Rights Reserved</p>
+    <p class="footer-copy">© 2025 Heat District Productions · Miami · Broward · South Florida · All Rights Reserved</p>
   </footer>
 
   <script>

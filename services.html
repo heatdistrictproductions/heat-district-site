@@ -1357,7 +1357,7 @@
           <a href="services.html#dj-equipment">DJ Equipment</a>
           <a href="services.html#photo-booth">Photo Booth</a>
           <a href="services.html#photo-video">Photography & Video</a>
-          <a href="services.html#effects">Special Effects</a>
+          <a href="services.html#lighting">Special Effects</a>
           <a href="services.html#led-walls">LED Walls</a>
           <a href="services.html#staging-trussing">Staging & Trussing</a>
         </div>
@@ -1388,7 +1388,7 @@
       <a href="services.html#dj-equipment">DJ Equipment</a>
       <a href="services.html#photo-booth">Photo Booth</a>
       <a href="services.html#photo-video">Photography & Video</a>
-      <a href="services.html#effects">Special Effects</a>
+      <a href="services.html#lighting">Special Effects</a>
       <a href="services.html#led-walls">LED Walls</a>
       <a href="services.html#staging-trussing">Staging & Trussing</a>
     </div>
@@ -1433,18 +1433,17 @@
           </div>
 
           <div class="filter-note">
-            Start with Most Popular or jump directly to sound, lighting, guest experience, media, DJ equipment, LED walls, special effects, furniture, or trussing.
+            Start with Most Popular or jump directly to sound, lighting & effects, guest experience, media, DJ equipment, LED walls, furniture, or trussing.
           </div>
         </div>
 
         <div class="category-filter">
           <button class="filter-btn active" type="button" onclick="filterGroups('all', this)">Show All</button>
           <button class="filter-btn" type="button" onclick="filterGroups('popular', this)">Most Popular</button>
-          <button class="filter-btn" type="button" onclick="filterGroups('lighting-packages', this)">Lighting Packages</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('lighting-effects', this)">Lighting & Effects</button>
           <button class="filter-btn" type="button" onclick="filterGroups('guest-media', this)">Guest Experience</button>
           <button class="filter-btn" type="button" onclick="filterGroups('services', this)">Media / DJ</button>
           <button class="filter-btn" type="button" onclick="filterGroups('foundation', this)">Sound & Mics</button>
-          <button class="filter-btn" type="button" onclick="filterGroups('lighting-effects', this)">Effects</button>
           <button class="filter-btn" type="button" onclick="filterGroups('dj-rentals', this)">DJ Rentals</button>
           <button class="filter-btn" type="button" onclick="filterGroups('led-walls', this)">LED Walls</button>
           <button class="filter-btn" type="button" onclick="filterGroups('party-furniture', this)">Furniture</button>
@@ -1558,14 +1557,20 @@
       },
       {
         id: 'lighting',
-        filter: 'lighting-packages',
-        title: 'Lighting Packages',
-        copy: 'Bundled lighting options for clients who want a cleaner step-up structure instead of piecing lighting together item by item.',
-        pills: ['Bundled Lighting', 'Good / Better / Best', 'Faster Decision'],
+        filter: 'lighting-effects',
+        title: 'Lighting & Effects',
+        copy: 'Lighting packages, individual fixtures, and atmosphere effects are grouped together so clients can compare full bundles and single upgrades in one place.',
+        pills: ['Lighting Packages', 'Individual Fixtures', 'Atmosphere Effects'],
         products: [
           'glow-lighting-package',
           'pulse-lighting-package',
-          'district-lighting-package'
+          'district-lighting-package',
+          'uplights',
+          'light-bar',
+          'moving-heads',
+          'wash-lights',
+          'fog-machines',
+          'cold-spark'
         ]
       },
       {
@@ -1605,21 +1610,6 @@
           'qsc-top-speaker',
           'qsc-subwoofer',
           'wireless-mic'
-        ]
-      },
-      {
-        id: 'effects',
-        filter: 'lighting-effects',
-        title: 'Individual Lighting & Effects',
-        copy: 'Individual visual pieces for clients who want to mix and match lighting and effects.',
-        pills: ['Mix & Match', 'Atmosphere', 'Visual Upgrades'],
-        products: [
-          'cold-spark',
-          'fog-machines',
-          'uplights',
-          'light-bar',
-          'moving-heads',
-          'wash-lights'
         ]
       },
       {
@@ -1678,11 +1668,11 @@
         title: 'Sound — 2 QSC Tops + 2 Subs',
         icon: 'QSC',
         type: 'event',
-        rate: 425,
-        extraHourRate: 65,
+        rate: 495,
+        extraHourRate: 75,
         image: 'images/products/sound-system.png',
         mediaClass: 'product-media-wide',
-        desc: 'Professional sound system with 2 QSC tops and 2 QSC subs for a clean, strong event foundation. Bundled lower than renting the speakers and subs separately. Includes standard setup and breakdown.',
+        desc: 'Professional sound system with 2 QSC tops and 2 QSC subs for a clean, strong event foundation. Includes standard setup and breakdown.',
         note: 'Event base up to 5 hrs · setup + breakdown included'
       },
       'led-cocktail-tables': {
@@ -1812,11 +1802,11 @@
         title: 'Glow Lighting Package',
         icon: 'GLW',
         type: 'event',
-        rate: 200,
-        extraHourRate: 25,
+        rate: 395,
+        extraHourRate: 50,
         image: 'images/products/glow-lighting-package.png',
         mediaClass: 'product-media-wide',
-        desc: '5 uplights plus 1 light bar for a clean entry-level lighting look. Priced lower than adding the same lighting individually. Includes setup, programming, cabling, and breakdown.',
+        desc: 'Uplights and light bar package for a clean entry-level lighting look. Includes setup, programming, cabling, and breakdown.',
         note: 'Event base up to 5 hrs · setup + breakdown included'
       },
       'pulse-lighting-package': {
@@ -1824,11 +1814,11 @@
         title: 'Pulse Lighting Package',
         icon: 'PLS',
         type: 'event',
-        rate: 475,
-        extraHourRate: 70,
+        rate: 695,
+        extraHourRate: 85,
         image: 'images/products/pulse-lighting-package.png',
         mediaClass: 'product-media-wide',
-        desc: '5 uplights, 1 light bar, and 2 moving heads for a stronger event atmosphere. Priced lower than adding the same lighting individually. Includes setup, programming, cabling, and breakdown.',
+        desc: '2 moving heads plus the Glow-level lighting foundation for a stronger event atmosphere. Includes setup, programming, cabling, and breakdown.',
         note: 'Event base up to 5 hrs · setup + breakdown included'
       },
       'district-lighting-package': {
@@ -1836,11 +1826,11 @@
         title: 'District Lighting Package',
         icon: 'DST',
         type: 'event',
-        rate: 875,
+        rate: 995,
         extraHourRate: 125,
         image: 'images/products/district-lighting-package.png',
         mediaClass: 'product-media-wide',
-        desc: '5 uplights, 1 light bar, 4 moving heads, and 2 wash lights for the biggest lighting package here. Priced lower than adding the same lighting individually. Includes setup, programming, cabling, and breakdown.',
+        desc: '4 moving heads, wash lights, and the full lower-level lighting build for the biggest lighting package here. Includes setup, programming, cabling, and breakdown.',
         note: 'Event base up to 5 hrs · setup + breakdown included'
       },
       'qsc-top-speaker': {
@@ -2425,7 +2415,7 @@
       const rate = Number(card.dataset.rate || 0);
       const duration = getCardDuration(card);
       const quantityToAdd = getCardQuantity(card);
-      const unitPrice = getCardUnitPrice(card);
+      const unitPrice = rate * duration;
       const key = getCartKey(name, type, duration);
 
       const existing = buildCart.find(function(item) {

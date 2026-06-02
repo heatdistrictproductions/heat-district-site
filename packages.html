@@ -638,6 +638,128 @@
       min-height: 68px;
     }
 
+    .pkg-visual {
+      position: relative;
+      display: block;
+      width: 100%;
+      cursor: pointer;
+      text-align: left;
+      min-height: 172px;
+      margin: -2px 0 20px;
+      border-radius: 13px;
+      overflow: hidden;
+      border: 1px solid rgba(0,240,255,0.12);
+      background:
+        linear-gradient(180deg, rgba(5,5,15,0.10), rgba(5,5,15,0.78)),
+        radial-gradient(circle at 24% 24%, rgba(0,240,255,0.20), transparent 32%),
+        radial-gradient(circle at 82% 18%, rgba(255,45,120,0.18), transparent 30%),
+        radial-gradient(circle at 52% 86%, rgba(191,0,255,0.20), transparent 38%),
+        var(--pkg-image, none),
+        linear-gradient(135deg, rgba(13,13,32,0.98), rgba(5,5,15,0.98));
+      background-size: cover;
+      background-position: center;
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.025),
+        0 16px 32px rgba(0,0,0,0.22);
+      isolation: isolate;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .pkg-visual:hover,
+    .pkg-visual:focus-visible {
+      transform: translateY(-3px);
+      border-color: rgba(255,45,120,0.34);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.035),
+        0 18px 38px rgba(0,0,0,0.28),
+        0 0 28px rgba(255,45,120,0.10);
+      outline: none;
+    }
+
+    .pkg-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(0,240,255,0.08), transparent 26%, transparent 74%, rgba(255,45,120,0.08)),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.035) 0, rgba(255,255,255,0.035) 1px, transparent 1px, transparent 9px);
+      opacity: 0.55;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .pkg-visual::after {
+      content: 'View Photos';
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 2;
+      padding: 5px 9px;
+      border: 1px solid rgba(0,240,255,0.18);
+      border-radius: 999px;
+      background: rgba(5,5,15,0.62);
+      color: rgba(232,232,240,0.54);
+      font-size: 0.52rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
+
+    .pkg-visual:hover::after,
+    .pkg-visual:focus-visible::after {
+      border-color: rgba(255,45,120,0.34);
+      color: rgba(255,255,255,0.86);
+      background: rgba(255,45,120,0.16);
+    }
+
+    .pkg-visual-content {
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      z-index: 2;
+    }
+
+    .pkg-visual-label {
+      display: inline-block;
+      margin-bottom: 7px;
+      color: rgba(0,240,255,0.78);
+      font-size: 0.54rem;
+      font-weight: 700;
+      letter-spacing: 2.6px;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px rgba(0,240,255,0.38);
+    }
+
+    .pkg-visual-title {
+      color: #fff;
+      font-size: 0.94rem;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 10px;
+      text-shadow: 0 8px 22px rgba(0,0,0,0.78);
+    }
+
+    .pkg-visual-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .pkg-visual-chip {
+      padding: 5px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(5,5,15,0.58);
+      color: rgba(232,232,240,0.72);
+      font-size: 0.56rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
+
     .pkg-fit-box {
       border: 1px solid rgba(0,240,255,0.08);
       border-radius: 10px;
@@ -1142,6 +1264,292 @@
       margin-top: 32px;
     }
 
+
+
+    .package-gallery-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+    }
+
+    .package-gallery-modal.open {
+      display: flex;
+    }
+
+    .package-gallery-backdrop {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 25% 15%, rgba(0,240,255,0.12), transparent 34%),
+        radial-gradient(circle at 80% 12%, rgba(255,45,120,0.12), transparent 36%),
+        rgba(2,2,8,0.86);
+      backdrop-filter: blur(12px);
+    }
+
+    .package-gallery-dialog {
+      width: min(980px, 100%);
+      max-height: calc(100vh - 56px);
+      overflow: auto;
+      position: relative;
+      z-index: 1;
+      border: 1px solid rgba(0,240,255,0.16);
+      border-radius: 18px;
+      background:
+        linear-gradient(180deg, rgba(12,12,32,0.98), rgba(5,5,15,0.98)),
+        radial-gradient(circle at 50% 0%, rgba(0,240,255,0.08), transparent 56%);
+      box-shadow:
+        0 30px 90px rgba(0,0,0,0.62),
+        0 0 44px rgba(0,240,255,0.08),
+        0 0 40px rgba(255,45,120,0.06);
+      padding: 22px;
+    }
+
+    .package-gallery-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(5,5,15,0.72);
+      color: #fff;
+      font-size: 1.7rem;
+      line-height: 1;
+      cursor: pointer;
+      z-index: 3;
+      transition: border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .package-gallery-close:hover,
+    .package-gallery-close:focus-visible {
+      border-color: rgba(255,45,120,0.44);
+      color: var(--neon-pink);
+      box-shadow: 0 0 20px rgba(255,45,120,0.16);
+      outline: none;
+    }
+
+    .package-gallery-top {
+      padding: 4px 56px 16px 4px;
+    }
+
+    .package-gallery-kicker {
+      color: rgba(0,240,255,0.75);
+      font-size: 0.62rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .package-gallery-top h2 {
+      color: #fff;
+      font-size: clamp(1.35rem, 3vw, 2.2rem);
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 8px;
+      line-height: 1.18;
+    }
+
+    .package-gallery-top h2 strong {
+      color: var(--neon-pink);
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    .package-gallery-top p {
+      max-width: 760px;
+      color: rgba(232,232,240,0.58);
+      font-size: 0.88rem;
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    .package-gallery-stage {
+      position: relative;
+      min-height: 520px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        radial-gradient(circle at 24% 24%, rgba(0,240,255,0.18), transparent 34%),
+        radial-gradient(circle at 78% 18%, rgba(255,45,120,0.16), transparent 34%),
+        linear-gradient(135deg, rgba(10,10,28,0.98), rgba(5,5,15,0.98));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .package-gallery-image {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.2s ease;
+    }
+
+    .package-gallery-placeholder {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 34px;
+      background:
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.035) 0, rgba(255,255,255,0.035) 1px, transparent 1px, transparent 10px),
+        radial-gradient(circle at center, rgba(0,240,255,0.11), transparent 42%);
+    }
+
+    .package-gallery-placeholder-title {
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .package-gallery-placeholder-copy {
+      color: rgba(232,232,240,0.6);
+      font-size: 0.82rem;
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    .package-gallery-modal.image-missing .package-gallery-image {
+      opacity: 0;
+    }
+
+    .package-gallery-modal.image-missing .package-gallery-placeholder {
+      display: flex;
+    }
+
+    .package-gallery-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 64px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(5,5,15,0.58);
+      color: #fff;
+      font-size: 2.35rem;
+      line-height: 1;
+      cursor: pointer;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .package-gallery-nav:hover,
+    .package-gallery-nav:focus-visible {
+      background: rgba(0,240,255,0.10);
+      border-color: rgba(0,240,255,0.38);
+      box-shadow: 0 0 24px rgba(0,240,255,0.14);
+      outline: none;
+    }
+
+    .package-gallery-prev {
+      left: 16px;
+    }
+
+    .package-gallery-next {
+      right: 16px;
+    }
+
+    .package-gallery-caption-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 2px 12px;
+      color: rgba(232,232,240,0.58);
+      font-size: 0.76rem;
+      line-height: 1.55;
+    }
+
+    .package-gallery-photo-title {
+      color: rgba(232,232,240,0.82);
+      font-weight: 600;
+    }
+
+    .package-gallery-count {
+      color: rgba(0,240,255,0.72);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 0.62rem;
+      white-space: nowrap;
+      font-weight: 700;
+    }
+
+    .package-gallery-thumbs {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .package-gallery-thumb {
+      position: relative;
+      min-height: 84px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        radial-gradient(circle at 30% 25%, rgba(0,240,255,0.18), transparent 34%),
+        radial-gradient(circle at 72% 70%, rgba(255,45,120,0.14), transparent 38%),
+        rgba(255,255,255,0.03);
+      cursor: pointer;
+      padding: 0;
+      transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .package-gallery-thumb img {
+      width: 100%;
+      height: 84px;
+      object-fit: cover;
+      display: block;
+      opacity: 0.74;
+    }
+
+    .package-gallery-thumb span {
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      bottom: 7px;
+      color: rgba(255,255,255,0.88);
+      font-size: 0.54rem;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      text-align: left;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.84);
+    }
+
+    .package-gallery-thumb.active,
+    .package-gallery-thumb:hover,
+    .package-gallery-thumb:focus-visible {
+      border-color: rgba(255,45,120,0.45);
+      box-shadow: 0 0 22px rgba(255,45,120,0.12);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .package-gallery-thumb.active img {
+      opacity: 1;
+    }
+
+    body.package-gallery-open {
+      overflow: hidden;
+    }
+
     @keyframes rotateBg {
       from { transform: rotate(0deg); }
       to   { transform: rotate(360deg); }
@@ -1201,6 +1609,55 @@
       .custom-build-card {
         padding: 46px 28px;
       }
+
+
+
+      .package-gallery-modal {
+        padding: 14px;
+      }
+
+      .package-gallery-dialog {
+        max-height: calc(100vh - 28px);
+        padding: 16px;
+        border-radius: 16px;
+      }
+
+      .package-gallery-top {
+        padding: 4px 48px 14px 2px;
+      }
+
+      .package-gallery-stage {
+        min-height: 340px;
+      }
+
+      .package-gallery-image {
+        height: 340px;
+      }
+
+      .package-gallery-nav {
+        width: 40px;
+        height: 54px;
+        font-size: 2rem;
+      }
+
+      .package-gallery-prev {
+        left: 10px;
+      }
+
+      .package-gallery-next {
+        right: 10px;
+      }
+
+      .package-gallery-caption-bar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .package-gallery-thumbs {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
 
       footer {
         padding: 60px 24px 100px;
@@ -1309,10 +1766,22 @@
       <div class="packages-grid-scroll">
         <div class="packages-grid">
 
-          <div class="pkg-card" data-package-name="Essential Package" data-base-price="1295">
+          <div class="pkg-card" data-package-name="Essential Package" data-base-price="1295" style="--pkg-image: url('images/packages/essential-package.jpg');">
             <p class="pkg-tier">Level One</p>
             <h3 class="pkg-name">Essential Package</h3>
             <p class="pkg-tagline">Clean sound, professional DJ, and the essentials for a polished smaller-scale event.</p>
+
+            <div class="pkg-visual" role="button" tabindex="0" data-gallery-key="essential" aria-label="Open mini gallery for the Essential Package">
+              <div class="pkg-visual-content">
+                <span class="pkg-visual-label">Setup Preview</span>
+                <div class="pkg-visual-title">DJ + Sound Foundation</div>
+                <div class="pkg-visual-chips">
+                  <span class="pkg-visual-chip">2 Tops / 2 Subs</span>
+                  <span class="pkg-visual-chip">DJ Decks</span>
+                  <span class="pkg-visual-chip">Mic</span>
+                </div>
+              </div>
+            </div>
 
             <div class="pkg-fit-box">
               <div class="pkg-fit-label">Best For</div>
@@ -1354,11 +1823,23 @@
             <button class="btn-full-blue" type="button" onclick="choosePackage(event, this)">Continue to Add-Ons</button>
           </div>
 
-          <div class="pkg-card featured" data-package-name="Signature Package" data-base-price="2195">
+          <div class="pkg-card featured" data-package-name="Signature Package" data-base-price="2195" style="--pkg-image: url('images/packages/signature-package.jpg');">
             <div class="pkg-badge popular">Most Popular</div>
             <p class="pkg-tier">Level Two</p>
             <h3 class="pkg-name">Signature Package</h3>
             <p class="pkg-tagline">The strongest all-around package for clients who want energy, lighting, and guest interaction.</p>
+
+            <div class="pkg-visual" role="button" tabindex="0" data-gallery-key="signature" aria-label="Open mini gallery for the Signature Package">
+              <div class="pkg-visual-content">
+                <span class="pkg-visual-label">Setup Preview</span>
+                <div class="pkg-visual-title">Full Party Setup</div>
+                <div class="pkg-visual-chips">
+                  <span class="pkg-visual-chip">10 Uplights</span>
+                  <span class="pkg-visual-chip">Photo Booth</span>
+                  <span class="pkg-visual-chip">Fog + Totems</span>
+                </div>
+              </div>
+            </div>
 
             <div class="pkg-fit-box">
               <div class="pkg-fit-label">Best For</div>
@@ -1406,11 +1887,23 @@
             <button class="btn-full-pink" type="button" onclick="choosePackage(event, this)">Continue to Add-Ons</button>
           </div>
 
-          <div class="pkg-card value" data-package-name="Premier Package" data-base-price="2995">
+          <div class="pkg-card value" data-package-name="Premier Package" data-base-price="2995" style="--pkg-image: url('images/packages/premier-package.jpg');">
             <div class="pkg-badge best">Best Value</div>
             <p class="pkg-tier">Level Three</p>
             <h3 class="pkg-name">Premier Package</h3>
-            <p class="pkg-tagline">Premium production with stronger lighting, sparks, guest upgrades, and a larger room presence.</p>
+            <p class="pkg-tagline">Premium production with stronger lighting, cold sparks, a CO2 LED gun, guest upgrades, and a larger room presence.</p>
+
+            <div class="pkg-visual" role="button" tabindex="0" data-gallery-key="premier" aria-label="Open mini gallery for the Premier Package">
+              <div class="pkg-visual-content">
+                <span class="pkg-visual-label">Setup Preview</span>
+                <div class="pkg-visual-title">Premium Production Look</div>
+                <div class="pkg-visual-chips">
+                  <span class="pkg-visual-chip">4 Moving Heads</span>
+                  <span class="pkg-visual-chip">Cold Sparks</span>
+                  <span class="pkg-visual-chip">CO2 LED Gun</span>
+                </div>
+              </div>
+            </div>
 
             <div class="pkg-fit-box">
               <div class="pkg-fit-label">Best For</div>
@@ -1453,6 +1946,7 @@
               <li class="highlight">LED Glow Cocktail Tables</li>
               <li class="highlight">Foam Glow Sticks</li>
               <li class="highlight">2x Cold Spark Machines</li>
+              <li class="highlight">CO2 LED Gun</li>
               <li>2x Fog Machines</li>
               <li class="highlight">Choice of Goal Post + 2 Totems or 4 Totems</li>
             </ul>
@@ -1461,10 +1955,22 @@
             <button class="btn-full-blue" type="button" onclick="choosePackage(event, this)">Continue to Add-Ons</button>
           </div>
 
-          <div class="pkg-card" data-package-name="Elite Production Package" data-base-price="4995">
+          <div class="pkg-card" data-package-name="Elite Production Package" data-base-price="4995" style="--pkg-image: url('images/packages/elite-production-package.jpg');">
             <p class="pkg-tier">Level Four</p>
             <h3 class="pkg-name">Elite Production Package</h3>
-            <p class="pkg-tagline">The full statement package with LED wall presence, maximum staging, and high-impact visual production.</p>
+            <p class="pkg-tagline">The full statement package with LED wall presence, maximum staging, CO2 effects, and high-impact visual production.</p>
+
+            <div class="pkg-visual" role="button" tabindex="0" data-gallery-key="elite" aria-label="Open mini gallery for the Elite Production Package">
+              <div class="pkg-visual-content">
+                <span class="pkg-visual-label">Setup Preview</span>
+                <div class="pkg-visual-title">Statement Visual Build</div>
+                <div class="pkg-visual-chips">
+                  <span class="pkg-visual-chip">LED Wall</span>
+                  <span class="pkg-visual-chip">CO2 Effects</span>
+                  <span class="pkg-visual-chip">Photography</span>
+                </div>
+              </div>
+            </div>
 
             <div class="pkg-fit-box">
               <div class="pkg-fit-label">Best For</div>
@@ -1509,6 +2015,8 @@
               <li>Foam Glow Sticks</li>
               <li class="highlight">Photography</li>
               <li class="highlight">4x Cold Spark Machines</li>
+              <li class="highlight">CO2 LED Gun</li>
+              <li class="highlight">2x CO2 Cannons</li>
               <li>2x Fog Machines</li>
               <li>Choice of Goal Post + 2 Totems or 4 Totems</li>
             </ul>
@@ -1658,6 +2166,22 @@
             </tr>
 
             <tr>
+              <td>CO2 LED Gun</td>
+              <td><span class="dash">—</span></td>
+              <td class="featured-col"><span class="dash">—</span></td>
+              <td><span class="qty-new">1 unit</span></td>
+              <td><span class="qty">1 unit</span></td>
+            </tr>
+
+            <tr>
+              <td>CO2 Cannons</td>
+              <td><span class="dash">—</span></td>
+              <td class="featured-col"><span class="dash">—</span></td>
+              <td><span class="dash">—</span></td>
+              <td><span class="qty-new">2 units</span></td>
+            </tr>
+
+            <tr>
               <td>Trussing</td>
               <td><span class="dash">—</span></td>
               <td class="featured-col"><span class="qty-new">2 Totems</span></td>
@@ -1727,6 +2251,41 @@
 
   </div>
 
+
+  <div class="package-gallery-modal" id="packageGalleryModal" aria-hidden="true">
+    <div class="package-gallery-backdrop" data-gallery-close></div>
+
+    <div class="package-gallery-dialog" role="dialog" aria-modal="true" aria-labelledby="packageGalleryTitle" aria-describedby="packageGalleryIntro">
+      <button class="package-gallery-close" type="button" aria-label="Close package gallery" data-gallery-close>&times;</button>
+
+      <div class="package-gallery-top">
+        <p class="package-gallery-kicker">Package Mini Gallery</p>
+        <h2 id="packageGalleryTitle">Package <strong>Preview</strong></h2>
+        <p id="packageGalleryIntro">Click through the photos to see the type of setup included in this package.</p>
+      </div>
+
+      <div class="package-gallery-stage">
+        <button class="package-gallery-nav package-gallery-prev" type="button" aria-label="Previous package photo" id="packageGalleryPrev">&#8249;</button>
+        <img src="" alt="" class="package-gallery-image" id="packageGalleryImage">
+        <div class="package-gallery-placeholder" id="packageGalleryPlaceholder">
+          <div class="package-gallery-placeholder-title">Photo Slot Ready</div>
+          <div class="package-gallery-placeholder-copy">Add this package photo to your images folder and it will show here automatically.</div>
+        </div>
+        <button class="package-gallery-nav package-gallery-next" type="button" aria-label="Next package photo" id="packageGalleryNext">&#8250;</button>
+      </div>
+
+      <div class="package-gallery-caption-bar">
+        <div>
+          <div class="package-gallery-photo-title" id="packageGalleryPhotoTitle">Setup Photo</div>
+          <div id="packageGalleryPhotoCaption">Package setup preview.</div>
+        </div>
+        <div class="package-gallery-count" id="packageGalleryCount">1 / 4</div>
+      </div>
+
+      <div class="package-gallery-thumbs" id="packageGalleryThumbs"></div>
+    </div>
+  </div>
+
   <footer>
     <div class="footer-logo">
       <img src="logo.png" alt="Heat District Productions" />
@@ -1744,6 +2303,273 @@
   </footer>
 
   <script>
+
+
+    const PACKAGE_GALLERIES = {
+      essential: {
+        title: 'Essential <strong>Package</strong>',
+        intro: 'A clean foundation package focused on DJ, sound, microphone support, setup, and breakdown.',
+        photos: [
+          {
+            src: 'images/packages/essential-package.jpg',
+            title: 'DJ + Sound Foundation',
+            caption: 'Main preview image for the Essential Package setup.'
+          },
+          {
+            src: 'images/packages/essential-package-sound.jpg',
+            title: '2 Tops / 2 Subs',
+            caption: 'Show the main speaker and subwoofer setup included with the package.'
+          },
+          {
+            src: 'images/packages/essential-package-dj.jpg',
+            title: 'DJ Deck Setup',
+            caption: 'Show the DJ table, controller/decks, and clean cable setup.'
+          },
+          {
+            src: 'images/packages/essential-package-mic.jpg',
+            title: 'Microphone Support',
+            caption: 'Use this slot for speeches, announcements, ceremony audio, or host microphone examples.'
+          }
+        ]
+      },
+      signature: {
+        title: 'Signature <strong>Package</strong>',
+        intro: 'A full party package with DJ, sound, lighting, booth, fog, red carpet, and truss/totem presence.',
+        photos: [
+          {
+            src: 'images/packages/signature-package.jpg',
+            title: 'Full Party Setup',
+            caption: 'Main preview image for the Signature Package look.'
+          },
+          {
+            src: 'images/packages/signature-package-lighting.jpg',
+            title: 'Lighting + Uplights',
+            caption: 'Show the uplights, moving heads, and light bar atmosphere.'
+          },
+          {
+            src: 'images/packages/signature-package-booth.jpg',
+            title: 'Premium Photo Booth',
+            caption: 'Use this slot to show the photo booth area guests will interact with.'
+          },
+          {
+            src: 'images/packages/signature-package-carpet.jpg',
+            title: 'Red Carpet Entrance',
+            caption: 'Show the 10ft red carpet, stanchions, velvet ropes, fog, or entrance detail.'
+          }
+        ]
+      },
+      premier: {
+        title: 'Premier <strong>Package</strong>',
+        intro: 'A bigger production look with stronger lighting, cold sparks, CO2 LED gun effects, glow tables, trussing options, and premium guest upgrades.',
+        photos: [
+          {
+            src: 'images/packages/premier-package.jpg',
+            title: 'Premium Production Look',
+            caption: 'Main preview image for the Premier Package setup.'
+          },
+          {
+            src: 'images/packages/premier-package-moving-heads.jpg',
+            title: '4 Moving Heads',
+            caption: 'Show the upgraded moving head lighting layout.'
+          },
+          {
+            src: 'images/packages/premier-package-sparks.jpg',
+            title: 'Cold Spark + CO2 Moment',
+            caption: 'Use this slot for entrance, first dance, birthday entrance, CO2 gun, or drop moment examples.'
+          },
+          {
+            src: 'images/packages/premier-package-trussing.jpg',
+            title: 'Goal Post / Totems',
+            caption: 'Show the available trussing look: goal post with totems or four-totem setup.'
+          }
+        ]
+      },
+      elite: {
+        title: 'Elite Production <strong>Package</strong>',
+        intro: 'The largest visual package with LED wall support, photography, expanded carpet, sparks, CO2 gun/cannon effects, trussing, and high-impact room presence.',
+        photos: [
+          {
+            src: 'images/packages/elite-production-package.jpg',
+            title: 'Statement Visual Build',
+            caption: 'Main preview image for the Elite Production Package setup.'
+          },
+          {
+            src: 'images/packages/elite-production-package-led-wall.jpg',
+            title: 'LED Wall / Screen',
+            caption: 'Show the LED wall or screen-supported visual setup.'
+          },
+          {
+            src: 'images/packages/elite-production-package-sparks.jpg',
+            title: '4 Cold Sparks + CO2 Effects',
+            caption: 'Use this slot for the high-impact spark, CO2 gun, and cannon moments included in this package.'
+          },
+          {
+            src: 'images/packages/elite-production-package-photography.jpg',
+            title: 'Photography + Entrance Detail',
+            caption: 'Show the event photography look, 20ft carpet, or full room production angle.'
+          }
+        ]
+      }
+    };
+
+    let activeGalleryKey = null;
+    let activeGalleryIndex = 0;
+
+    const packageGalleryModal = document.getElementById('packageGalleryModal');
+    const packageGalleryTitle = document.getElementById('packageGalleryTitle');
+    const packageGalleryIntro = document.getElementById('packageGalleryIntro');
+    const packageGalleryImage = document.getElementById('packageGalleryImage');
+    const packageGalleryPlaceholder = document.getElementById('packageGalleryPlaceholder');
+    const packageGalleryPhotoTitle = document.getElementById('packageGalleryPhotoTitle');
+    const packageGalleryPhotoCaption = document.getElementById('packageGalleryPhotoCaption');
+    const packageGalleryCount = document.getElementById('packageGalleryCount');
+    const packageGalleryThumbs = document.getElementById('packageGalleryThumbs');
+    const packageGalleryPrev = document.getElementById('packageGalleryPrev');
+    const packageGalleryNext = document.getElementById('packageGalleryNext');
+
+    function getActiveGallery() {
+      return activeGalleryKey ? PACKAGE_GALLERIES[activeGalleryKey] : null;
+    }
+
+    function setGalleryImageState(isMissing, src) {
+      if (!packageGalleryModal || !packageGalleryPlaceholder) return;
+
+      packageGalleryModal.classList.toggle('image-missing', Boolean(isMissing));
+
+      if (isMissing) {
+        packageGalleryPlaceholder.innerHTML =
+          '<div class="package-gallery-placeholder-title">Photo Slot Ready</div>' +
+          '<div class="package-gallery-placeholder-copy">Add this image file and it will show automatically:<br><strong>' + src + '</strong></div>';
+      }
+    }
+
+    function renderPackageGallery() {
+      const gallery = getActiveGallery();
+
+      if (!gallery || !packageGalleryModal) return;
+
+      const photos = gallery.photos || [];
+      const current = photos[activeGalleryIndex] || photos[0];
+
+      if (!current) return;
+
+      setGalleryImageState(false, current.src);
+
+      packageGalleryTitle.innerHTML = gallery.title;
+      packageGalleryIntro.textContent = gallery.intro;
+      packageGalleryPhotoTitle.textContent = current.title;
+      packageGalleryPhotoCaption.textContent = current.caption;
+      packageGalleryCount.textContent = (activeGalleryIndex + 1) + ' / ' + photos.length;
+
+      packageGalleryImage.alt = current.title + ' — ' + current.caption;
+      packageGalleryImage.src = current.src;
+
+      packageGalleryThumbs.innerHTML = '';
+
+      photos.forEach(function(photo, index) {
+        const thumb = document.createElement('button');
+        thumb.type = 'button';
+        thumb.className = 'package-gallery-thumb' + (index === activeGalleryIndex ? ' active' : '');
+        thumb.setAttribute('aria-label', 'View ' + photo.title);
+        thumb.innerHTML = '<img src="' + photo.src + '" alt=""><span>' + photo.title + '</span>';
+        thumb.addEventListener('click', function() {
+          activeGalleryIndex = index;
+          renderPackageGallery();
+        });
+
+        packageGalleryThumbs.appendChild(thumb);
+      });
+    }
+
+    function openPackageGallery(key) {
+      if (!PACKAGE_GALLERIES[key] || !packageGalleryModal) return;
+
+      activeGalleryKey = key;
+      activeGalleryIndex = 0;
+      renderPackageGallery();
+      packageGalleryModal.classList.add('open');
+      packageGalleryModal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('package-gallery-open');
+
+      const closeButton = packageGalleryModal.querySelector('.package-gallery-close');
+      if (closeButton) closeButton.focus();
+    }
+
+    function closePackageGallery() {
+      if (!packageGalleryModal) return;
+
+      packageGalleryModal.classList.remove('open');
+      packageGalleryModal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('package-gallery-open');
+      activeGalleryKey = null;
+      activeGalleryIndex = 0;
+    }
+
+    function movePackageGallery(direction) {
+      const gallery = getActiveGallery();
+      if (!gallery || !gallery.photos || !gallery.photos.length) return;
+
+      activeGalleryIndex = (activeGalleryIndex + direction + gallery.photos.length) % gallery.photos.length;
+      renderPackageGallery();
+    }
+
+    function initPackageGallery() {
+      document.querySelectorAll('.pkg-visual[data-gallery-key]').forEach(function(slot) {
+        slot.addEventListener('click', function() {
+          openPackageGallery(slot.dataset.galleryKey);
+        });
+
+        slot.addEventListener('keydown', function(event) {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openPackageGallery(slot.dataset.galleryKey);
+          }
+        });
+      });
+
+      if (packageGalleryImage) {
+        packageGalleryImage.addEventListener('load', function() {
+          setGalleryImageState(false, packageGalleryImage.getAttribute('src') || '');
+        });
+
+        packageGalleryImage.addEventListener('error', function() {
+          setGalleryImageState(true, packageGalleryImage.getAttribute('src') || '');
+        });
+      }
+
+      if (packageGalleryPrev) {
+        packageGalleryPrev.addEventListener('click', function() {
+          movePackageGallery(-1);
+        });
+      }
+
+      if (packageGalleryNext) {
+        packageGalleryNext.addEventListener('click', function() {
+          movePackageGallery(1);
+        });
+      }
+
+      document.querySelectorAll('[data-gallery-close]').forEach(function(closeTrigger) {
+        closeTrigger.addEventListener('click', closePackageGallery);
+      });
+
+      document.addEventListener('keydown', function(event) {
+        if (!packageGalleryModal || !packageGalleryModal.classList.contains('open')) return;
+
+        if (event.key === 'Escape') {
+          closePackageGallery();
+        }
+
+        if (event.key === 'ArrowLeft') {
+          movePackageGallery(-1);
+        }
+
+        if (event.key === 'ArrowRight') {
+          movePackageGallery(1);
+        }
+      });
+    }
+
     const PACKAGE_REDUCTION_MULTIPLIERS = {
       2: 0.85,
       3: 0.90,
@@ -1818,12 +2644,16 @@
       const hoursSelect = card.querySelector('.pkg-hours-select');
       const hours = hoursSelect ? Number(hoursSelect.value || 5) : 5;
       const packagePrice = calculatePackagePrice(basePrice, hours);
+      const packageIncludes = Array.from(card.querySelectorAll('.pkg-includes li')).map(function(item) {
+        return item.textContent.trim();
+      }).filter(Boolean);
 
       const selectedPackage = {
         name: packageName,
         basePrice: basePrice,
         hours: hours,
-        total: packagePrice
+        total: packagePrice,
+        includes: packageIncludes
       };
 
       const estimate = {
@@ -1831,6 +2661,8 @@
         packagePrice: packagePrice,
         packageHours: hours,
         basePrice: basePrice,
+        packageIncludes: packageIncludes,
+        includedItems: packageIncludes,
         addons: [],
         addonsTotal: 0,
         total: packagePrice
@@ -1931,6 +2763,7 @@
     }
 
     initPackageCards();
+    initPackageGallery();
     applyIndexPreviewIfPresent();
   </script>
   <script src="js/global-cart.js"></script>

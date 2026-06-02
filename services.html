@@ -1570,6 +1570,8 @@
           'moving-heads',
           'wash-lights',
           'fog-machines',
+          'co2-cannons',
+          'co2-led-gun',
           'cold-spark'
         ]
       },
@@ -1802,7 +1804,7 @@
         title: 'Glow Lighting Package',
         icon: 'GLW',
         type: 'event',
-        rate: 395,
+        rate: 300,
         extraHourRate: 50,
         image: 'images/products/glow-lighting-package.png',
         mediaClass: 'product-media-wide',
@@ -1814,7 +1816,7 @@
         title: 'Pulse Lighting Package',
         icon: 'PLS',
         type: 'event',
-        rate: 695,
+        rate: 600,
         extraHourRate: 85,
         image: 'images/products/pulse-lighting-package.png',
         mediaClass: 'product-media-wide',
@@ -1893,12 +1895,36 @@
         desc: '2 units for atmosphere and beam enhancement. Includes standard fluid, setup, and breakdown.',
         note: '2 units · atmosphere support'
       },
+      'co2-cannons': {
+        name: 'CO2 Cannons — 2 Units',
+        title: 'CO2 Cannons',
+        icon: 'CO2',
+        type: 'event',
+        rate: 450,
+        extraHourRate: 75,
+        image: 'images/products/co2-cannon.png',
+        mediaClass: 'product-media-gear',
+        desc: '2 mounted CO2 cannons for high-impact drops, entrances, dance floor moments, and party effects. Includes setup, positioning, and breakdown.',
+        note: '2 units · CO2 supply confirmed during booking'
+      },
+      'co2-led-gun': {
+        name: 'CO2 LED Gun — 1 Unit',
+        title: 'CO2 LED Gun',
+        icon: 'CO2',
+        type: 'event',
+        rate: 250,
+        extraHourRate: 50,
+        image: 'images/products/co2-led-gun.png',
+        mediaClass: 'product-media-gear',
+        desc: '1 handheld CO2 LED gun with purple LED effect for crowd hype moments, entrances, birthday drops, and nightlife-style event upgrades.',
+        note: '1 unit · CO2 supply confirmed during booking'
+      },
       'uplights': {
         name: 'Up Lights — 5 Units',
         title: 'Up Lights',
         icon: 'UP',
         type: 'event',
-        rate: 125,
+        rate: 100,
         extraHourRate: 15,
         image: 'images/products/uplight.png',
         mediaClass: 'product-media-gear',
@@ -2189,6 +2215,7 @@
       return `
         <div
           class="product-card"
+          data-product-id="${escapeHtml(productId)}"
           data-name="${escapeHtml(product.name)}"
           data-type="${escapeHtml(product.type)}"
           data-rate="${escapeHtml(product.rate)}"
@@ -2277,18 +2304,40 @@
       return quantitySelect ? Number(quantitySelect.value || 1) : 1;
     }
 
+    function calculateUnitPrice(rate, type, duration, extraHourRate) {
+      const cleanRate = Number(rate || 0);
+      const cleanDuration = Number(duration || 1);
+      const cleanExtraRate = Number(extraHourRate || 0);
+
+      if (type === 'event') {
+        const extraHours = Math.max(0, cleanDuration - 5);
+        return cleanRate + (extraHours * cleanExtraRate);
+      }
+
+      return cleanRate * cleanDuration;
+    }
+
+    function findProductByCartItem(item) {
+      if (!item) return null;
+
+      if (item.productId && PRODUCTS[item.productId]) {
+        return PRODUCTS[item.productId];
+      }
+
+      return Object.keys(PRODUCTS).map(function(productId) {
+        return Object.assign({ productId: productId }, PRODUCTS[productId]);
+      }).find(function(product) {
+        return product.name === item.name || product.title === item.name;
+      }) || null;
+    }
+
     function getCardUnitPrice(card) {
       const rate = Number(card.dataset.rate || 0);
       const duration = getCardDuration(card);
       const type = card.dataset.type || 'hourly';
+      const extraHourRate = Number(card.dataset.extraRate || 0);
 
-      if (type === 'event') {
-        const extraHourRate = Number(card.dataset.extraRate || 0);
-        const extraHours = Math.max(0, duration - 5);
-        return rate + (extraHours * extraHourRate);
-      }
-
-      return rate * duration;
+      return calculateUnitPrice(rate, type, duration, extraHourRate);
     }
 
     function updateCardTotal(card) {
@@ -2410,12 +2459,14 @@
 
       if (!card) return;
 
+      const productId = card.dataset.productId || '';
       const name = card.dataset.name || 'Selected Rental';
       const type = card.dataset.type || 'hourly';
       const rate = Number(card.dataset.rate || 0);
+      const extraHourRate = Number(card.dataset.extraRate || 0);
       const duration = getCardDuration(card);
       const quantityToAdd = getCardQuantity(card);
-      const unitPrice = rate * duration;
+      const unitPrice = getCardUnitPrice(card);
       const key = getCartKey(name, type, duration);
 
       const existing = buildCart.find(function(item) {
@@ -2424,12 +2475,17 @@
 
       if (existing) {
         existing.quantity += quantityToAdd;
+        existing.rate = rate;
+        existing.extraHourRate = extraHourRate;
+        existing.unitPrice = unitPrice;
       } else {
         buildCart.push({
           key: key,
+          productId: productId,
           name: name,
           type: type,
           rate: rate,
+          extraHourRate: extraHourRate,
           duration: duration,
           durationLabel: getDurationLabel(type, duration),
           unitPrice: unitPrice,
@@ -2470,7 +2526,27 @@
       const storedCart = safeJsonParse(sessionStorage.getItem(PRODUCT_CART_KEY));
 
       if (Array.isArray(storedCart)) {
-        buildCart = storedCart;
+        buildCart = storedCart.map(function(item) {
+          const product = findProductByCartItem(item);
+          const type = item.type || (product ? product.type : 'hourly');
+          const duration = Number(item.duration || 1);
+          const rate = Number(item.rate || (product ? product.rate : 0));
+          const extraHourRate = Number(item.extraHourRate || (product ? product.extraHourRate : 0));
+          const unitPrice = calculateUnitPrice(rate, type, duration, extraHourRate);
+
+          return Object.assign({}, item, {
+            productId: item.productId || (product ? product.productId : ''),
+            type: type,
+            rate: rate,
+            extraHourRate: extraHourRate,
+            duration: duration,
+            durationLabel: item.durationLabel || getDurationLabel(type, duration),
+            unitPrice: unitPrice,
+            quantity: Number(item.quantity || 1)
+          });
+        });
+
+        saveCart();
       } else {
         buildCart = [];
       }

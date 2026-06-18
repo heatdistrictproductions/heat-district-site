@@ -235,8 +235,26 @@
     .addon-copy { font-size: 0.82rem; color: rgba(232,232,240,0.5); line-height: 1.75; font-weight: 300; margin-bottom: 18px; flex: 0 0 auto; }
     .option-control { display: grid; gap: 8px; margin-bottom: 14px; padding: 12px; border: 1px solid rgba(0,240,255,0.08); border-radius: 10px; background: rgba(255,255,255,0.02); }
     .option-control label { font-size: 0.58rem; letter-spacing: 2.8px; text-transform: uppercase; color: rgba(232,232,240,0.42); font-weight: 600; }
-    .option-select { background: rgba(255,255,255,0.03); border: 1px solid rgba(0,240,255,0.14); color: #fff; border-radius: 6px; padding: 9px 10px; font-family: 'Raleway', sans-serif; font-size: 0.78rem; outline: none; width: 100%; }
-    .option-select option { background: #0a0a1a; color: #e8e8f0; }
+    .option-select {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(0,240,255,0.14);
+  color: #fff;
+  border-radius: 6px;
+  padding: 9px 10px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.72rem;
+  outline: none;
+  width: 100%;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.option-select option {
+  background: #0a0a1a;
+  color: #e8e8f0;
+}
 
     .addon-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 16px; margin-top: auto; display: grid; grid-template-columns: 1fr; gap: 13px; align-items: stretch; }
     .addon-price { color: #fff; font-size: 1.25rem; font-weight: 300; white-space: nowrap; }
@@ -499,6 +517,7 @@
         'moving-heads-2-heads-2-totems': 'The Blaze already includes 2 moving heads and 2 totems.',
         'photo-booth-digital-only': 'The Blaze already includes Premium Photo Booth.',
         'photo-booth-digital-print': 'The Blaze already includes Premium Photo Booth.',
+        'photo-booth-360': 'The Blaze already includes Premium Photo Booth. Only add this if you want the 360 booth experience instead of or in addition to the included booth.',
         'red-carpet-10ft': 'The Blaze already includes a 10ft red carpet with stanchions and velvet ropes.',
         'fog-machines-2-units': 'The Blaze already includes 2 fog machines.',
         'trussing-2-totems': 'The Blaze already includes 2 totems.'
@@ -521,6 +540,7 @@
         'moving-heads-4-heads-2-totems-goal-post': 'The Inferno already includes 4 moving heads and trussing.',
         'photo-booth-digital-only': 'The Inferno already includes Premium Photo Booth.',
         'photo-booth-digital-print': 'The Inferno already includes Premium Photo Booth.',
+        'photo-booth-360': 'The Inferno already includes Premium Photo Booth. Only add this if you want the 360 booth experience instead of or in addition to the included booth.',
         'red-carpet-10ft': 'The Inferno already includes a 10ft red carpet with stanchions and velvet ropes.',
         'led-glow-cocktail-table': 'The Inferno already includes LED glow cocktail tables.',
         'foam-glow-sticks-pack-25': 'The Inferno already includes foam glow sticks.',
@@ -551,6 +571,7 @@
         'led-screen-wall': 'The District already includes an LED screen / wall.',
         'photo-booth-digital-only': 'The District already includes Premium Photo Booth.',
         'photo-booth-digital-print': 'The District already includes Premium Photo Booth.',
+        'photo-booth-360': 'The District already includes Premium Photo Booth. Only add this if you want the 360 booth experience instead of or in addition to the included booth.',
         'red-carpet-10ft': 'The District already includes red carpet with stanchions and velvet ropes.',
         'red-carpet-20ft': 'The District already includes a 20ft red carpet with stanchions and velvet ropes.',
         'led-glow-cocktail-table': 'The District already includes LED glow cocktail tables.',
@@ -594,6 +615,9 @@
         { id: 'photo-booth-digital-only', label: 'Digital Only', name: 'Photo Booth — Digital Only', category: 'Guest Experience', price: 395, unit: 'event', displayUnit: 'event' },
         { id: 'photo-booth-digital-print', label: 'Digital + Print', name: 'Photo Booth — Digital + Print', category: 'Guest Experience', price: 550, unit: 'event', displayUnit: 'event' }
       ] },
+      'photo-booth-360': { id: 'photo-booth-360', label: 'Guest Experience', title: '360 Photo Booth', image: 'images/products/360-photo-booth.png', mediaClass: 'addon-media-tall', copy: 'Add an interactive 360 photo booth experience with a rotating platform, ring light arm, and shareable event videos for weddings, birthdays, quinces, private parties, and branded events.', options: [
+        { id: 'photo-booth-360', label: '360 Photo Booth', name: '360 Photo Booth', category: 'Guest Experience', price: 495, unit: 'event', displayUnit: 'event' }
+      ] },
       'red-carpet': { id: 'red-carpet', label: 'Guest Experience', title: 'Red Carpet', image: 'images/products/red-carpet.png', mediaClass: 'addon-media-wide', copy: 'Add a clean arrival or photo moment. Includes stanchions with velvet ropes for a stronger entrance, VIP, or photo-area look.', options: [
         { id: 'red-carpet-10ft', label: '10ft Red Carpet + Stanchions & Velvet Ropes', name: 'Red Carpet — 10ft with Stanchions & Velvet Ropes', category: 'Guest Experience', price: 75, unit: 'event', displayUnit: 'event' },
         { id: 'red-carpet-20ft', label: '20ft Red Carpet + Stanchions & Velvet Ropes', name: 'Red Carpet — 20ft with Stanchions & Velvet Ropes', category: 'Guest Experience', price: 125, unit: 'event', displayUnit: 'event' }
@@ -610,16 +634,135 @@
         { id: 'uplights-10-pack', label: '10 Uplights', name: 'Uplights — 10 Units', category: 'Lighting', price: 140, unit: 'pack', displayUnit: 'pack' },
         { id: 'uplights-15-pack', label: '15 Uplights', name: 'Uplights — 15 Units', category: 'Lighting', price: 185, unit: 'pack', displayUnit: 'pack' }
       ] },
-      'moving-heads': { id: 'moving-heads', label: 'Lighting', title: 'Intimidator Spot 355 IRC', image: 'images/products/moving-head.png', mediaClass: 'addon-media-gear', copy: 'Add Intimidator Spot 355 IRC moving heads for a bigger production look.', options: [
-        { id: 'moving-heads-2-heads-2-totems', label: '2 Intimidator Spot 355 IRC + 2 Global Truss F34 Totems', name: 'Intimidator Spot 355 IRC — 2 Heads with 2 Global Truss F34 Totems', category: 'Lighting', price: 325, unit: 'setup', displayUnit: 'setup' },
-        { id: 'moving-heads-2-heads-goal-post', label: '2 Intimidator Spot 355 IRC + Global Truss F34 Goal Post', name: 'Intimidator Spot 355 IRC — 2 Heads with Global Truss F34 Goal Post', category: 'Lighting', price: 475, unit: 'setup', displayUnit: 'setup' },
-        { id: 'moving-heads-4-heads-4-totems', label: '4 Intimidator Spot 355 IRC + 4 Global Truss F34 Totems', name: 'Intimidator Spot 355 IRC — 4 Heads with 4 Global Truss F34 Totems', category: 'Lighting', price: 650, unit: 'setup', displayUnit: 'setup' },
-        { id: 'moving-heads-4-heads-2-totems-goal-post', label: '4 Intimidator Spot 355 IRC + 2 Totems + Goal Post', name: 'Intimidator Spot 355 IRC — 4 Heads with 2 Global Truss F34 Totems + Goal Post', category: 'Lighting', price: 825, unit: 'setup', displayUnit: 'setup' }
-      ] },
-      'beam-140sr': { id: 'beam-140sr', label: 'Lighting', title: 'Chauvet Intimidator Beam 140SR', image: 'images/products/intimidator-beam-140sr.png', mediaClass: 'addon-media-gear', copy: 'Add Chauvet Intimidator Beam 140SR moving head beam lights for sharper aerial looks, beam effects, DJ energy, and high-impact dance floor moments.', options: [
-        { id: 'beam-140sr-single', label: '1 Chauvet Intimidator Beam 140SR', name: 'Chauvet Intimidator Beam 140SR', category: 'Lighting', price: 125, unit: 'fixture', displayUnit: 'fixture' },
-        { id: 'beam-140sr-2-units', label: '2 Chauvet Intimidator Beam 140SR', name: 'Chauvet Intimidator Beam 140SR — 2 Units', category: 'Lighting', price: 225, unit: 'pair', displayUnit: 'pair' }
-      ] },
+    'moving-heads': {
+  id: 'moving-heads',
+  label: 'Lighting',
+  title: 'Intimidator Spot 355 IRC',
+  image: 'images/products/moving-head.png',
+  mediaClass: 'addon-media-gear',
+  copy: 'Add Intimidator Spot 355 IRC moving heads for a bigger production look. Choose a solo fixture or a full trussing setup.',
+  options: [
+    {
+      id: 'moving-heads-solo',
+      label: '1 Head Only',
+      name: 'Intimidator Spot 355 IRC — 1 Head Only',
+      category: 'Lighting',
+      price: 125,
+      unit: 'fixture',
+      displayUnit: 'fixture'
+    },
+    {
+      id: 'moving-heads-2-heads-2-totems',
+      label: '2 Heads + 2 Totems',
+      name: 'Intimidator Spot 355 IRC — 2 Heads with 2 Global Truss F34 Totems',
+      category: 'Lighting',
+      price: 325,
+      unit: 'setup',
+      displayUnit: 'setup'
+    },
+    {
+      id: 'moving-heads-2-heads-goal-post',
+      label: '2 Heads + Goal Post',
+      name: 'Intimidator Spot 355 IRC — 2 Heads with Global Truss F34 Goal Post',
+      category: 'Lighting',
+      price: 475,
+      unit: 'setup',
+      displayUnit: 'setup'
+    },
+    {
+      id: 'moving-heads-4-heads-4-totems',
+      label: '4 Heads + 4 Totems',
+      name: 'Intimidator Spot 355 IRC — 4 Heads with 4 Global Truss F34 Totems',
+      category: 'Lighting',
+      price: 650,
+      unit: 'setup',
+      displayUnit: 'setup'
+    },
+    {
+      id: 'moving-heads-4-heads-goal-post',
+      label: '4 Heads + Goal Post',
+      name: 'Intimidator Spot 355 IRC — 4 Heads with Global Truss F34 Goal Post',
+      category: 'Lighting',
+      price: 750,
+      unit: 'setup',
+      displayUnit: 'setup'
+    },
+    {
+      id: 'moving-heads-4-heads-2-totems-goal-post',
+      label: '4 Heads + 2 Totems + Goal Post',
+      name: 'Intimidator Spot 355 IRC — 4 Heads with 2 Global Truss F34 Totems + Goal Post',
+      category: 'Lighting',
+      price: 825,
+      unit: 'setup',
+      displayUnit: 'setup'
+    }
+  ]
+},
+
+'beam-140sr': {
+  id: 'beam-140sr',
+  label: 'Lighting',
+  title: 'Chauvet Intimidator Beam 140SR',
+  image: 'images/products/intimidator-beam-140sr.png',
+  mediaClass: 'addon-media-gear',
+  copy: 'Add Chauvet Intimidator Beam 140SR moving head beam lights for sharper aerial looks, beam effects, DJ energy, and high-impact dance floor moments. Choose a solo fixture or a full trussing setup.',
+  options: [
+    {
+      id: 'beam-140sr-solo',
+      label: '1 Head Only',
+      name: 'Chauvet Intimidator Beam 140SR — 1 Head Only',
+      category: 'Lighting',
+      price: 125,
+      unit: 'fixture',
+      displayUnit: 'fixture'
+    },
+    {
+      id: 'beam-140sr-2-heads-2-totems',
+      label: '2 Heads + 2 Totems',
+      name: 'Chauvet Intimidator Beam 140SR — 2 Heads with 2 Global Truss F34 Totems',
+      category: 'Lighting',
+      price: 325,
+      unit: 'setup',
+      displayUnit: 'setup'
+    },
+    {
+      id: 'beam-140sr-2-heads-goal-post',
+      label: '2 Heads + Goal Post',
+      name: 'Chauvet Intimidator Beam 140SR — 2 Heads with Global Truss F34 Goal Post',
+      category: 'Lighting',
+      price: 475,
+      unit: 'setup',
+      displayUnit: 'setup'
+    },
+    {
+      id: 'beam-140sr-4-heads-4-totems',
+      label: '4 Heads + 4 Totems',
+      name: 'Chauvet Intimidator Beam 140SR — 4 Heads with 4 Global Truss F34 Totems',
+      category: 'Lighting',
+      price: 650,
+      unit: 'setup',
+      displayUnit: 'setup'
+    },
+    {
+      id: 'beam-140sr-4-heads-goal-post',
+      label: '4 Heads + Goal Post',
+      name: 'Chauvet Intimidator Beam 140SR — 4 Heads with Global Truss F34 Goal Post',
+      category: 'Lighting',
+      price: 750,
+      unit: 'setup',
+      displayUnit: 'setup'
+    },
+    {
+      id: 'beam-140sr-4-heads-2-totems-goal-post',
+      label: '4 Heads + 2 Totems + Goal Post',
+      name: 'Chauvet Intimidator Beam 140SR — 4 Heads with 2 Global Truss F34 Totems + Goal Post',
+      category: 'Lighting',
+      price: 825,
+      unit: 'setup',
+      displayUnit: 'setup'
+    }
+  ]
+},
       'light-bar': { id: 'light-bar', label: 'Lighting', title: 'Chauvet GigBAR 2', image: 'images/products/light-bar.png', mediaClass: 'addon-media-wide', copy: 'Add a Chauvet GigBAR 2 for extra color, movement, and visual presence around the DJ area, stage area, or dance floor.', options: [{ id: 'light-bar-single', label: '1 Chauvet GigBAR 2', name: 'Chauvet GigBAR 2', category: 'Lighting', price: 100, unit: 'event', displayUnit: 'event' }] },
       'wash-lights': { id: 'wash-lights', label: 'Lighting', title: 'Chauvet Wash FX 2', image: 'images/products/wash-lights.png', mediaClass: 'addon-media-gear', copy: 'Add 2 Chauvet Wash FX 2 wash lights for wider color coverage across dance floors, stages, walls, and performance areas.', options: [{ id: 'wash-lights-2-units', label: '2 Chauvet Wash FX 2', name: 'Chauvet Wash FX 2 — 2 Units', category: 'Lighting', price: 125, unit: 'pack', displayUnit: 'pack' }] },
 
@@ -642,6 +785,7 @@
       'cdj-3000': { id: 'cdj-3000', label: 'DJ Rentals', title: 'CDJ 3000', image: 'images/products/cdj-3000.png', mediaClass: 'addon-media-gear', copy: 'Standalone Pioneer CDJ 3000 rental for professional DJ setups, guest DJs, club-style events, and custom booths.', options: [{ id: 'cdj-3000-single', label: 'CDJ 3000', name: 'CDJ 3000', category: 'DJ Rentals', price: 125, unit: 'day', displayUnit: 'day' }] },
       'djm-900nxs2': { id: 'djm-900nxs2', label: 'DJ Rentals', title: 'Pioneer DJM-900NXS2', image: 'images/products/djm-900nxs2.png', mediaClass: 'addon-media-gear', copy: 'Professional Pioneer DJ mixer rental for CDJ setups, guest DJs, club-style booths, and event production builds.', options: [{ id: 'djm-900nxs2', label: 'Pioneer DJM-900NXS2', name: 'Pioneer DJM-900NXS2', category: 'DJ Rentals', price: 100, unit: 'day', displayUnit: 'day' }] },
       'xdj-xz': { id: 'xdj-xz', label: 'DJ Rentals', title: 'XDJ-XZ', image: 'images/products/xdj-xz.png', mediaClass: 'addon-media-gear', copy: 'Standalone DJ controller rental for compact DJ setups, private events, and all-in-one booth builds.', options: [{ id: 'xdj-xz', label: 'XDJ-XZ', name: 'XDJ-XZ', category: 'DJ Rentals', price: 175, unit: 'day', displayUnit: 'day' }] },
+      'rmx-1000': { id: 'rmx-1000', label: 'DJ Rentals', title: 'Pioneer RMX-1000', image: 'images/products/pioneer-rmx-1000.png', mediaClass: 'addon-media-gear', copy: 'Standalone Pioneer RMX-1000 remix station for live effects, build-ups, transitions, DJ performance control, and club-style event setups.', options: [{ id: 'rmx-1000', label: 'Pioneer RMX-1000', name: 'Pioneer RMX-1000 Remix Station', category: 'DJ Rentals', price: 75, unit: 'day', displayUnit: 'day' }] },
 
       'trussing-2-totems': { id: 'trussing-2-totems', label: 'Staging & Trussing', title: 'Global Truss F34 — 2 Totems', image: 'images/products/trussing-2-totems.png', mediaClass: 'addon-media-tall', copy: '2 Global Truss F34 totems at 8ft each for a cleaner vertical production look, lighting placement, DJ booth framing, or entrance visuals.', options: [{ id: 'trussing-2-totems', label: '2 Global Truss F34 Totems — 8ft Each', name: 'Global Truss F34 — 2 Totems 8ft', category: 'Staging & Trussing', price: 200, unit: 'setup', displayUnit: 'setup' }] },
       'trussing-4-totems': { id: 'trussing-4-totems', label: 'Staging & Trussing', title: 'Global Truss F34 — 4 Totems', image: 'images/products/trussing-4-totems.png', mediaClass: 'addon-media-wide', copy: '4 Global Truss F34 totems at 8ft each for a larger, more symmetrical production setup and stronger lighting placement.', options: [{ id: 'trussing-4-totems', label: '4 Global Truss F34 Totems — 8ft Each', name: 'Global Truss F34 — 4 Totems 8ft', category: 'Staging & Trussing', price: 375, unit: 'setup', displayUnit: 'setup' }] },
@@ -650,13 +794,13 @@
     };
 
     const GROUPS = [
-      { id: 'popular', title: 'Most Popular Upgrades', copy: 'The most commonly requested add-ons after choosing a package.', pills: ['High Demand', 'Fast Upgrades', 'Client Favorites'], addonIds: ['photo-booth', 'photography', 'pulse-lighting-package', 'co2-led-gun', 'red-carpet', 'led-cocktail-tables', 'foam-glow-sticks', 'led-bottle-sign'] },
+      { id: 'popular', title: 'Most Popular Upgrades', copy: 'The most commonly requested add-ons after choosing a package.', pills: ['High Demand', 'Fast Upgrades', 'Client Favorites'], addonIds: ['photo-booth', 'photo-booth-360', 'photography', 'pulse-lighting-package', 'co2-led-gun', 'red-carpet', 'led-cocktail-tables', 'foam-glow-sticks', 'led-bottle-sign'] },
       { id: 'lighting-packages', title: 'Lighting Packages', copy: 'Bundled lighting options for clients who want a cleaner step-up structure instead of piecing lighting together item by item.', pills: ['Bundled Lighting', 'Good / Better / Best', 'Faster Decision'], addonIds: ['glow-lighting-package', 'pulse-lighting-package', 'district-lighting-package'] },
-      { id: 'guest-experience', title: 'Guest Experience', copy: 'Guest-facing add-ons for photo moments, entrances, VIP areas, lounges, and event interaction.', pills: ['Photo Booth', 'Guest Facing', 'Photo Moments'], addonIds: ['photo-booth', 'red-carpet', 'foam-glow-sticks', 'led-bottle-sign', 'led-cocktail-tables'] },
+      { id: 'guest-experience', title: 'Guest Experience', copy: 'Guest-facing add-ons for photo moments, entrances, VIP areas, lounges, and event interaction.', pills: ['Photo Booth', 'Guest Facing', 'Photo Moments'], addonIds: ['photo-booth', 'photo-booth-360', 'red-carpet', 'foam-glow-sticks', 'led-bottle-sign', 'led-cocktail-tables'] },
       { id: 'services', title: 'Event Talent & Media Services', copy: 'Photography and videography coverage for events that need media, content, and creative direction.', pills: ['Photo Coverage', 'Video Recaps', 'Content'], addonIds: ['photography', 'videography'] },
       { id: 'foundation', title: 'Sound & Mic Support', copy: 'Sound reinforcement and microphone options for events that need clean audio support.', pills: ['Sound Support', 'Event Foundation', 'Audio Coverage'], addonIds: ['pa-speaker', 'additional-speaker', 'additional-subwoofer', 'microphone'] },
       { id: 'lighting-effects', title: 'Individual Lighting & Effects', copy: 'Individual visual pieces for clients who want to mix and match lighting, CO2, fog, sparkle effects, and dance floor atmosphere.', pills: ['Mix & Match', 'Atmosphere', 'Visual Upgrades'], addonIds: ['cold-sparks', 'co2-cannons', 'co2-led-gun', 'fog-machines', 'uplights', 'light-bar', 'moving-heads', 'beam-140sr', 'wash-lights', 'disco-ball-20in'] },
-      { id: 'dj-rentals', title: 'DJ Rentals', copy: 'Standalone DJ gear rentals for clients, DJs, and events that need professional playback equipment.', pills: ['Daily Pricing', 'DJ Gear', 'Club Standard'], addonIds: ['premium-club-mixer-cdj-package', 'cdj-3000', 'djm-900nxs2', 'xdj-xz'] },
+      { id: 'dj-rentals', title: 'DJ Rentals', copy: 'Standalone DJ gear rentals for clients, DJs, and events that need professional playback equipment.', pills: ['Daily Pricing', 'DJ Gear', 'Club Standard'], addonIds: ['premium-club-mixer-cdj-package', 'cdj-3000', 'djm-900nxs2', 'xdj-xz', 'rmx-1000'] },
       { id: 'led-walls', title: 'LED Walls & Visuals', copy: 'LED screen and wall options for visuals, branding, DJ content, slideshows, presentations, and high-impact event backdrops.', pills: ['Visual Impact', 'Branding', 'Custom Content'], addonIds: ['led-wall'] },
       { id: 'staging-trussing', title: 'Staging & Trussing', copy: 'Global Truss F34 structures that help frame the setup, hold lighting, and create a more complete production look.', pills: ['Stage Presence', 'Production Structure', 'Expandable Category'], addonIds: ['trussing-2-totems', 'trussing-4-totems', 'trussing-goal-post-8x10', 'trussing-goal-post-8x16'] }
     ];

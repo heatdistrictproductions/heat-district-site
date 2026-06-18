@@ -1433,7 +1433,7 @@
           </div>
 
           <div class="filter-note">
-            Start with Most Popular or jump directly to sound, lighting & effects, guest experience, media, DJ equipment, LED walls, or trussing.
+            Start with Most Popular or jump directly to sound, lighting & effects, guest experience, media, DJ equipment, LED walls, furniture, or trussing.
           </div>
         </div>
 
@@ -1446,6 +1446,7 @@
           <button class="filter-btn" type="button" onclick="filterGroups('foundation', this)">Sound & Mics</button>
           <button class="filter-btn" type="button" onclick="filterGroups('dj-rentals', this)">DJ Rentals</button>
           <button class="filter-btn" type="button" onclick="filterGroups('led-walls', this)">LED Walls</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('party-furniture', this)">Furniture</button>
           <button class="filter-btn" type="button" onclick="filterGroups('staging-trussing', this)">Trussing</button>
         </div>
       </div>
@@ -1551,6 +1552,7 @@
           'dj-service',
           'photography',
           'photo-booth-digital',
+          'photo-booth-360',
           'cdj-djm-package'
         ]
       },
@@ -1567,9 +1569,7 @@
           'uplights',
           'light-bar',
           'moving-heads',
-          'beam-140sr',
           'wash-lights',
-          'disco-ball-20in',
           'fog-machines',
           'co2-cannons',
           'co2-led-gun',
@@ -1585,8 +1585,8 @@
   products: [
     'photo-booth-digital',
     'photo-booth-print',
+    'photo-booth-360',
     'red-carpet',
-    'led-cocktail-tables',
     'foam-glow-sticks',
     'led-bottle-sign'
   ]
@@ -1626,7 +1626,8 @@
           'cdj-djm-package',
           'cdj-3000',
           'djm-900nxs2',
-          'xdj-xz'
+          'xdj-xz',
+          'rmx-1000'
         ]
       },
       {
@@ -1639,6 +1640,16 @@
           'led-wall',
           'led-wall-floor',
           'led-wall-2-totems'
+        ]
+      },
+      {
+        id: 'party-furniture',
+        filter: 'party-furniture',
+        title: 'Party Furniture',
+        copy: 'Furniture and guest-area upgrades that help make lounges, cocktail areas, and event spaces feel more polished.',
+        pills: ['Cocktail Areas', 'Glow Furniture', 'Guest Upgrade'],
+        products: [
+          'led-cocktail-tables'
         ]
       },
       {
@@ -1736,6 +1747,18 @@
         desc: 'Photo booth experience with digital sharing, printouts, props included, and the option of 3 different backdrops. Includes setup and breakdown.',
         note: 'Event base up to 5 hrs · digital + print'
       },
+      'photo-booth-360': {
+        name: '360 Photo Booth',
+        title: '360 Photo Booth',
+        icon: '360',
+        type: 'event',
+        rate: 595,
+        extraHourRate: 100,
+        image: 'images/products/360-photo-booth.png',
+        mediaClass: 'product-media-tall',
+        desc: 'Interactive 360 photo booth experience with rotating platform, ring light arm, and shareable video content for weddings, birthdays, quinces, private parties, and branded events. Includes setup and breakdown.',
+        note: 'Event base up to 5 hrs · setup + breakdown included'
+      },
       'red-carpet': {
         name: 'Red Carpet — 20 Foot',
         title: 'Red Carpet',
@@ -1824,7 +1847,7 @@
         extraHourRate: 125,
         image: 'images/products/district-lighting-package.png',
         mediaClass: 'product-media-wide',
-        desc: '4 Chauvet Intimidator Spot 355 IRC moving heads, Chauvet Wash FX 2 wash lights, and the full lower-level lighting build for the biggest lighting package here. Includes setup, programming, cabling, and breakdown.',
+        desc: '4 Chauvet Intimidator Spot 355 IRC moving heads, wash lights, and the full lower-level lighting build for the biggest lighting package here. Includes setup, programming, cabling, and breakdown.',
         note: 'Event base up to 5 hrs · setup + breakdown included'
       },
       'qsc-top-speaker': {
@@ -1874,18 +1897,6 @@
         mediaClass: 'product-media-gear',
         desc: '2 units for premium visual moments and event reveals. Includes standard setup, breakdown, and basic spark powder supply.',
         note: '2 units · venue approval may be required'
-      },
-      'disco-ball-20in': {
-        name: 'ADJ Disco Ball — 20 Inch',
-        title: 'ADJ Disco Ball — 20 Inch',
-        icon: 'DB',
-        type: 'event',
-        rate: 95,
-        extraHourRate: 0,
-        image: 'images/products/adj-disco-ball-20in.png',
-        mediaClass: 'product-media-gear',
-        desc: '20 inch ADJ disco ball rental for classic mirrored reflections, dance floor sparkle, themed events, parties, and nightlife-style room atmosphere. Includes standard setup and breakdown.',
-        note: '20 inch disco ball · setup + breakdown included'
       },
       'fog-machines': {
         name: 'Fog Machines',
@@ -1948,8 +1959,8 @@
         note: '1 Chauvet GigBAR 2 unit · setup included'
       },
       'moving-heads': {
-        name: 'Chauvet Intimidator Spot 355 IRC',
-        title: 'Chauvet Intimidator 355 IRC Spot',
+        name: 'Chauvet Intimidator Spot 355 IRC Moving Head',
+        title: 'Chauvet 355 IRC Spot Moving Head',
         icon: 'MH',
         type: 'event',
         rate: 150,
@@ -1957,31 +1968,19 @@
         image: 'images/products/moving-head.png',
         mediaClass: 'product-media-gear',
         desc: 'Single Chauvet Intimidator Spot 355 IRC Spot moving head for dance floor movement, spotlight moments, and custom lighting builds. Includes setup and breakdown.',
-        note: 'Single Chauvet Intimidator 355 IRC spot · select amount'
-      },
-      'beam-140sr': {
-        name: 'Chauvet Intimidator Beam 140SR',
-        title: 'Chauvet Intimidator Beam 140SR',
-        icon: 'BM',
-        type: 'event',
-        rate: 150,
-        extraHourRate: 25,
-        image: 'images/products/intimidator-beam-140sr.png',
-        mediaClass: 'product-media-gear',
-        desc: 'Single Chauvet Intimidator Beam 140SR moving head beam light rental for sharp beam looks, aerial effects, dance floor energy, and custom lighting builds. Includes setup and breakdown.',
-        note: 'Single Chauvet Intimidator Beam 140SR · select amount'
+        note: 'Single Chauvet 355 IRC spot · select amount'
       },
       'wash-lights': {
-        name: 'Chauvet Wash FX 2 — 2 Units',
-        title: 'Chauvet Wash FX 2',
-        icon: 'FX2',
+        name: 'Wash Lights',
+        title: 'Wash Lights',
+        icon: 'WL',
         type: 'event',
         rate: 150,
         extraHourRate: 20,
         image: 'images/products/wash-lights.png',
         mediaClass: 'product-media-gear',
-        desc: '2 Chauvet Wash FX 2 wash lights for wider color coverage, dance floor energy, and room atmosphere. Includes setup and breakdown.',
-        note: '2 Chauvet Wash FX 2 units · lighting add-on'
+        desc: '2 units wash lights for wider color coverage and room atmosphere. Includes setup and breakdown.',
+        note: '2 units · lighting add-on'
       },
       'cdj-djm-package': {
         name: 'Premium Club Mixer & CDJ Package — 2 CDJ 3000 + DJM-900NXS2',
@@ -2025,6 +2024,17 @@
         image: 'images/products/xdj-xz.png',
         mediaClass: 'product-media-gear',
         desc: 'Standalone DJ controller rental for compact DJ setups and private event use.',
+        note: 'Daily rental item'
+      },
+      'rmx-1000': {
+        name: 'Pioneer RMX-1000 Remix Station',
+        title: 'Pioneer RMX-1000',
+        icon: 'RMX',
+        type: 'daily',
+        rate: 100,
+        image: 'images/products/pioneer-rmx-1000.png',
+        mediaClass: 'product-media-gear',
+        desc: 'Standalone Pioneer RMX-1000 remix station rental for live effects, build-ups, transitions, DJ performance control, and club-style event setups.',
         note: 'Daily rental item'
       },
       'led-wall': {

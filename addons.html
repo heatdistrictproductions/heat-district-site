@@ -8,13 +8,9 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/global.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="css/global.css">
-
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="shortcut icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="favicon.png">
-
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="shortcut icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
 
   <style>
     :root {
@@ -22,25 +18,12 @@
       --neon-pink: #ff2d78;
       --neon-purple: #bf00ff;
       --dark-bg: #05050f;
-      --card-bg: #0a0a1a;
-      --card-bg-2: #0d0d20;
       --text-light: #e8e8f0;
-      --soft-text: rgba(232,232,240,0.55);
-      --soft-border: rgba(0,240,255,0.1);
       --success: rgba(77,255,145,0.88);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      background: #05050f;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: #05050f; }
     body {
       background-color: var(--dark-bg);
       color: var(--text-light);
@@ -64,20 +47,11 @@
       border-bottom: 1px solid rgba(0,240,255,0.15);
     }
 
-    .nav-logo {
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      flex-shrink: 0;
-    }
-
+    .nav-logo { text-decoration: none; display: flex; align-items: center; flex-shrink: 0; }
     .nav-logo img {
       height: 52px;
       width: auto;
-      filter:
-        drop-shadow(0 0 6px rgba(0,240,255,0.8))
-        drop-shadow(0 0 14px rgba(0,240,255,0.5))
-        drop-shadow(0 0 4px rgba(255,45,120,0.4));
+      filter: drop-shadow(0 0 6px rgba(0,240,255,0.8)) drop-shadow(0 0 14px rgba(0,240,255,0.5)) drop-shadow(0 0 4px rgba(255,45,120,0.4));
     }
 
     .nav-links {
@@ -89,10 +63,7 @@
       padding: 0 40px;
     }
 
-    .nav-links li {
-      position: relative;
-    }
-
+    .nav-links li { position: relative; }
     .nav-links a {
       color: var(--text-light);
       text-decoration: none;
@@ -103,31 +74,11 @@
       transition: color 0.3s, text-shadow 0.3s;
       white-space: nowrap;
     }
+    .nav-links a:hover, .nav-links a.active { color: var(--neon-blue); text-shadow: 0 0 8px var(--neon-blue); }
 
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--neon-blue);
-      text-shadow: 0 0 8px var(--neon-blue);
-    }
-
-    .nav-item-dropdown {
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
-
-    .nav-link-with-dropdown {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .nav-link-with-dropdown::after {
-      content: '▾';
-      font-size: 0.58rem;
-      color: rgba(0,240,255,0.7);
-      transform: translateY(-1px);
-    }
+    .nav-item-dropdown { position: relative; display: flex; align-items: center; }
+    .nav-link-with-dropdown { display: inline-flex; align-items: center; gap: 6px; }
+    .nav-link-with-dropdown::after { content: '▾'; font-size: 0.58rem; color: rgba(0,240,255,0.7); transform: translateY(-1px); }
 
     .nav-dropdown {
       position: absolute;
@@ -145,38 +96,10 @@
       pointer-events: none;
       transition: opacity 0.22s ease, transform 0.22s ease;
     }
-
-    .nav-dropdown::before {
-      content: '';
-      position: absolute;
-      top: -18px;
-      left: 0;
-      right: 0;
-      height: 18px;
-    }
-
-    .nav-item-dropdown:hover .nav-dropdown,
-    .nav-item-dropdown:focus-within .nav-dropdown {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    .nav-dropdown a {
-      display: block;
-      padding: 11px 12px;
-      border-radius: 8px;
-      color: rgba(232,232,240,0.72);
-      font-size: 0.68rem;
-      letter-spacing: 1.8px;
-      line-height: 1.25;
-    }
-
-    .nav-dropdown a:hover {
-      background: rgba(0,240,255,0.07);
-      color: var(--neon-blue);
-      text-shadow: 0 0 8px rgba(0,240,255,0.45);
-    }
+    .nav-dropdown::before { content: ''; position: absolute; top: -18px; left: 0; right: 0; height: 18px; }
+    .nav-item-dropdown:hover .nav-dropdown, .nav-item-dropdown:focus-within .nav-dropdown { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+    .nav-dropdown a { display: block; padding: 11px 12px; border-radius: 8px; color: rgba(232,232,240,0.72); font-size: 0.68rem; letter-spacing: 1.8px; line-height: 1.25; }
+    .nav-dropdown a:hover { background: rgba(0,240,255,0.07); color: var(--neon-blue); text-shadow: 0 0 8px rgba(0,240,255,0.45); }
 
     .nav-cta {
       flex-shrink: 0;
@@ -193,11 +116,7 @@
       letter-spacing: 2px;
       text-transform: uppercase;
     }
-
-    .nav-cta:hover {
-      background: rgba(255,45,120,0.15) !important;
-      box-shadow: 0 0 18px rgba(255,45,120,0.4) !important;
-    }
+    .nav-cta:hover { background: rgba(255,45,120,0.15) !important; box-shadow: 0 0 18px rgba(255,45,120,0.4) !important; }
 
     .mobile-menu-btn {
       display: none;
@@ -213,29 +132,10 @@
       gap: 5px;
       flex-shrink: 0;
     }
-
-    .mobile-menu-btn span {
-      display: block;
-      width: 100%;
-      height: 1.5px;
-      background: var(--text-light);
-      border-radius: 999px;
-      transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
-    }
-
-    .mobile-menu-btn.active span:nth-child(1) {
-      transform: translateY(6.5px) rotate(45deg);
-      background: var(--neon-blue);
-    }
-
-    .mobile-menu-btn.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .mobile-menu-btn.active span:nth-child(3) {
-      transform: translateY(-6.5px) rotate(-45deg);
-      background: var(--neon-blue);
-    }
+    .mobile-menu-btn span { display: block; width: 100%; height: 1.5px; background: var(--text-light); border-radius: 999px; transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease; }
+    .mobile-menu-btn.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); background: var(--neon-blue); }
+    .mobile-menu-btn.active span:nth-child(2) { opacity: 0; }
+    .mobile-menu-btn.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); background: var(--neon-blue); }
 
     .mobile-nav {
       position: fixed;
@@ -257,54 +157,13 @@
       transform: translateY(-10px);
       transition: opacity 0.25s ease, transform 0.25s ease;
     }
-
-    .mobile-nav.open {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-
-    .mobile-nav a {
-      color: var(--text-light);
-      text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 14px 12px;
-      border-radius: 8px;
-      transition: background 0.25s ease, color 0.25s ease, text-shadow 0.25s ease;
-    }
-
-    .mobile-nav a:hover,
-    .mobile-nav a.active {
-      background: rgba(0,240,255,0.06);
-      color: var(--neon-blue);
-      text-shadow: 0 0 8px var(--neon-blue);
-    }
-
-    .mobile-nav-sub {
-      margin: -4px 0 8px;
-      padding: 4px 0 8px 14px;
-      border-left: 1px solid rgba(0,240,255,0.14);
-    }
-
-    .mobile-nav-sub a {
-      font-size: 0.68rem;
-      padding: 10px 12px;
-      color: rgba(232,232,240,0.58);
-    }
-
-    .mobile-nav-book {
-      margin-top: 8px;
-      border: 1.5px solid var(--neon-pink);
-      color: var(--neon-pink) !important;
-      text-align: center;
-    }
-
-    body.mobile-menu-open {
-      overflow: hidden;
-    }
+    .mobile-nav.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .mobile-nav a { color: var(--text-light); text-decoration: none; font-size: 0.82rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 14px 12px; border-radius: 8px; transition: background 0.25s ease, color 0.25s ease, text-shadow 0.25s ease; }
+    .mobile-nav a:hover, .mobile-nav a.active { background: rgba(0,240,255,0.06); color: var(--neon-blue); text-shadow: 0 0 8px var(--neon-blue); }
+    .mobile-nav-sub { margin: -4px 0 8px; padding: 4px 0 8px 14px; border-left: 1px solid rgba(0,240,255,0.14); }
+    .mobile-nav-sub a { font-size: 0.68rem; padding: 10px 12px; color: rgba(232,232,240,0.58); }
+    .mobile-nav-book { margin-top: 8px; border: 1.5px solid var(--neon-pink); color: var(--neon-pink) !important; text-align: center; }
+    body.mobile-menu-open { overflow: hidden; }
 
     .page-hero {
       padding: 160px 48px 58px;
@@ -312,7 +171,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .page-hero::before {
       content: '';
       position: absolute;
@@ -322,1052 +180,163 @@
         radial-gradient(ellipse at 20% 100%, rgba(255,45,120,0.05) 0%, transparent 50%);
       pointer-events: none;
     }
+    .page-hero-eyebrow { position: relative; z-index: 1; font-size: 0.68rem; letter-spacing: 5px; text-transform: uppercase; color: rgba(0,240,255,0.6); margin-bottom: 16px; font-weight: 400; }
+    .page-hero h1 { position: relative; z-index: 1; font-size: clamp(2.2rem, 5vw, 3.9rem); font-weight: 300; font-style: italic; color: #fff; line-height: 1.14; margin-bottom: 18px; }
+    .page-hero h1 strong { font-weight: 700; font-style: normal; color: var(--neon-pink); }
+    .page-hero p { position: relative; z-index: 1; font-size: 0.95rem; font-weight: 300; color: rgba(232,232,240,0.52); max-width: 820px; margin: 0 auto; line-height: 1.9; letter-spacing: 0.3px; }
+    .neon-divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(0,240,255,0.25), rgba(255,45,120,0.25), transparent); }
 
-    .page-hero-eyebrow {
-      position: relative;
-      z-index: 1;
-      font-size: 0.68rem;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: rgba(0,240,255,0.6);
-      margin-bottom: 16px;
-      font-weight: 400;
-    }
+    .addons-wrap { max-width: 1500px; margin: 0 auto; padding: 76px 48px 100px; display: grid; grid-template-columns: minmax(0, 1fr) 390px; gap: 28px; align-items: start; }
+    .section-label { font-size: 0.68rem; letter-spacing: 5px; text-transform: uppercase; color: var(--neon-blue); margin-bottom: 12px; font-weight: 400; }
+    .section-title { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 300; font-style: italic; color: #fff; margin-bottom: 14px; line-height: 1.2; }
+    .section-title strong { font-weight: 700; font-style: normal; color: var(--neon-pink); }
+    .section-sub { font-size: 0.9rem; color: rgba(232,232,240,0.5); font-weight: 300; line-height: 1.85; max-width: 820px; margin-bottom: 28px; }
 
-    .page-hero h1 {
-      position: relative;
-      z-index: 1;
-      font-size: clamp(2.2rem, 5vw, 3.9rem);
-      font-weight: 300;
-      font-style: italic;
-      color: #fff;
-      line-height: 1.14;
-      margin-bottom: 18px;
-    }
+    .filter-shell { margin-bottom: 34px; border: 1px solid rgba(0,240,255,0.1); border-radius: 16px; background: linear-gradient(180deg, rgba(10,10,26,0.94), rgba(8,8,22,0.98)), linear-gradient(90deg, rgba(0,240,255,0.04), rgba(255,45,120,0.04)); padding: 20px; box-shadow: 0 14px 38px rgba(0,0,0,0.18); }
+    .filter-head { display: flex; justify-content: space-between; gap: 20px; align-items: flex-end; margin-bottom: 16px; }
+    .filter-kicker { font-size: 0.58rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,45,120,0.84); font-weight: 600; margin-bottom: 6px; }
+    .filter-title { color: #fff; font-size: 1.08rem; font-weight: 700; }
+    .filter-note { color: rgba(232,232,240,0.45); font-size: 0.78rem; line-height: 1.65; max-width: 520px; }
+    .category-filter { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .filter-btn { border: 1px solid rgba(0,240,255,0.13); background: rgba(255,255,255,0.02); color: rgba(232,232,240,0.76); padding: 12px 13px; border-radius: 10px; font-family: 'Raleway', sans-serif; font-size: 0.62rem; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.28s ease; }
+    .filter-btn:hover { color: var(--neon-blue); border-color: rgba(0,240,255,0.28); box-shadow: 0 0 18px rgba(0,240,255,0.12); transform: translateY(-2px); }
+    .filter-btn.active { color: var(--neon-pink); border-color: rgba(255,45,120,0.45); background: rgba(255,45,120,0.08); box-shadow: 0 0 24px rgba(255,45,120,0.16); }
 
-    .page-hero h1 strong {
-      font-weight: 700;
-      font-style: normal;
-      color: var(--neon-pink);
-    }
+    .group-block + .group-block { margin-top: 38px; }
+    .group-block.is-hidden { display: none; }
+    .group-shell { border: 1px solid rgba(0,240,255,0.08); border-radius: 18px; background: linear-gradient(180deg, rgba(10,10,26,0.94), rgba(8,8,22,0.98)); padding: 24px 22px; box-shadow: 0 14px 38px rgba(0,0,0,0.18); }
+    .group-header { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+    .group-title { font-size: 0.72rem; letter-spacing: 4px; text-transform: uppercase; color: rgba(0,240,255,0.78); font-weight: 600; white-space: nowrap; }
+    .group-line { flex: 1; height: 1px; background: linear-gradient(90deg, rgba(0,240,255,0.28), rgba(255,45,120,0.1), transparent); }
+    .group-copy { font-size: 0.82rem; color: rgba(232,232,240,0.48); line-height: 1.75; margin-bottom: 18px; max-width: 860px; }
+    .group-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+    .group-pill { border: 1px solid rgba(255,45,120,0.14); border-radius: 999px; padding: 8px 12px; font-size: 0.58rem; letter-spacing: 2.4px; text-transform: uppercase; color: rgba(255,45,120,0.84); background: rgba(255,45,120,0.04); }
 
-    .page-hero p {
-      position: relative;
-      z-index: 1;
-      font-size: 0.95rem;
-      font-weight: 300;
-      color: rgba(232,232,240,0.52);
-      max-width: 820px;
-      margin: 0 auto;
-      line-height: 1.9;
-      letter-spacing: 0.3px;
-    }
+    .addons-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap: 18px; align-items: stretch; }
+    .addon-card { background: linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.98)); border: 1px solid rgba(0,240,255,0.1); border-radius: 14px; padding: 22px 20px 20px; position: relative; display: flex; flex-direction: column; min-height: 0; height: 100%; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; }
+    .addon-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.35), 0 0 24px rgba(0,240,255,0.07); border-color: rgba(0,240,255,0.22); }
+    .addon-card.selected { border-color: rgba(255,45,120,0.42); box-shadow: 0 0 34px rgba(255,45,120,0.08); }
 
-    .neon-divider {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(0,240,255,0.25), rgba(255,45,120,0.25), transparent);
-    }
-
-    .addons-wrap {
-      max-width: 1500px;
-      margin: 0 auto;
-      padding: 76px 48px 100px;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 390px;
-      gap: 28px;
-      align-items: start;
-    }
-
-    .section-label {
-      font-size: 0.68rem;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: var(--neon-blue);
-      margin-bottom: 12px;
-      font-weight: 400;
-    }
-
-    .section-title {
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      font-weight: 300;
-      font-style: italic;
-      color: #fff;
-      margin-bottom: 14px;
-      line-height: 1.2;
-    }
-
-    .section-title strong {
-      font-weight: 700;
-      font-style: normal;
-      color: var(--neon-pink);
-    }
-
-    .section-sub {
-      font-size: 0.9rem;
-      color: rgba(232,232,240,0.5);
-      font-weight: 300;
-      line-height: 1.85;
-      max-width: 820px;
-      margin-bottom: 28px;
-    }
-
-    .filter-shell {
-      margin-bottom: 34px;
-      border: 1px solid rgba(0,240,255,0.1);
-      border-radius: 16px;
-      background:
-        linear-gradient(180deg, rgba(10,10,26,0.94), rgba(8,8,22,0.98)),
-        linear-gradient(90deg, rgba(0,240,255,0.04), rgba(255,45,120,0.04));
-      padding: 20px;
-      box-shadow: 0 14px 38px rgba(0,0,0,0.18);
-    }
-
-    .filter-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      align-items: flex-end;
-      margin-bottom: 16px;
-    }
-
-    .filter-kicker {
-      font-size: 0.58rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: rgba(255,45,120,0.84);
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-    .filter-title {
-      color: #fff;
-      font-size: 1.08rem;
-      font-weight: 700;
-    }
-
-    .filter-note {
-      color: rgba(232,232,240,0.45);
-      font-size: 0.78rem;
-      line-height: 1.65;
-      max-width: 520px;
-    }
-
-    .category-filter {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .filter-btn {
-      border: 1px solid rgba(0,240,255,0.13);
-      background: rgba(255,255,255,0.02);
-      color: rgba(232,232,240,0.76);
-      padding: 12px 13px;
-      border-radius: 10px;
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.62rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.28s ease;
-    }
-
-    .filter-btn:hover {
-      color: var(--neon-blue);
-      border-color: rgba(0,240,255,0.28);
-      box-shadow: 0 0 18px rgba(0,240,255,0.12);
-      transform: translateY(-2px);
-    }
-
-    .filter-btn.active {
-      color: var(--neon-pink);
-      border-color: rgba(255,45,120,0.45);
-      background: rgba(255,45,120,0.08);
-      box-shadow: 0 0 24px rgba(255,45,120,0.16);
-    }
-
-    .group-block + .group-block {
-      margin-top: 38px;
-    }
-
-    .group-block.is-hidden {
-      display: none;
-    }
-
-    .group-shell {
-      border: 1px solid rgba(0,240,255,0.08);
-      border-radius: 18px;
-      background: linear-gradient(180deg, rgba(10,10,26,0.94), rgba(8,8,22,0.98));
-      padding: 24px 22px;
-      box-shadow: 0 14px 38px rgba(0,0,0,0.18);
-    }
-
-    .group-header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 10px;
-    }
-
-    .group-title {
-      font-size: 0.72rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: rgba(0,240,255,0.78);
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    .group-line {
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(90deg, rgba(0,240,255,0.28), rgba(255,45,120,0.1), transparent);
-    }
-
-    .group-copy {
-      font-size: 0.82rem;
-      color: rgba(232,232,240,0.48);
-      line-height: 1.75;
-      margin-bottom: 18px;
-      max-width: 860px;
-    }
-
-    .group-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-
-    .group-pill {
-      border: 1px solid rgba(255,45,120,0.14);
-      border-radius: 999px;
-      padding: 8px 12px;
-      font-size: 0.58rem;
-      letter-spacing: 2.4px;
-      text-transform: uppercase;
-      color: rgba(255,45,120,0.84);
-      background: rgba(255,45,120,0.04);
-    }
-
-    .addons-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
-      gap: 18px;
-      align-items: stretch;
-    }
-
-    .addon-card {
-      background: linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.98));
-      border: 1px solid rgba(0,240,255,0.1);
-      border-radius: 14px;
-      padding: 22px 20px 20px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      min-height: 0;
-      height: 100%;
-      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-    }
-
-    .addon-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.35), 0 0 24px rgba(0,240,255,0.07);
-      border-color: rgba(0,240,255,0.22);
-    }
-
-    .addon-card.selected {
-      border-color: rgba(255,45,120,0.42);
-      box-shadow: 0 0 34px rgba(255,45,120,0.08);
-    }
-
-    .addon-media {
-      position: relative;
-      height: 210px;
-      width: 100%;
-      flex: 0 0 210px;
-      border-radius: 14px;
-      overflow: hidden;
-      margin-bottom: 16px;
-      border: 1px solid rgba(0,240,255,0.14);
-      background:
-        radial-gradient(circle at 50% 95%, rgba(0,240,255,0.22), transparent 42%),
-        radial-gradient(circle at 82% 18%, rgba(255,45,120,0.12), transparent 38%),
-        linear-gradient(180deg, rgba(255,255,255,0.96), rgba(236,240,248,0.92));
-      box-shadow:
-        inset 0 0 38px rgba(0,0,0,0.08),
-        0 14px 34px rgba(0,0,0,0.22),
-        0 0 18px rgba(0,240,255,0.05);
-    }
-
-    .addon-media::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(135deg, rgba(0,240,255,0.12), transparent 32%, transparent 68%, rgba(255,45,120,0.10)),
-        linear-gradient(180deg, rgba(255,255,255,0.24), transparent 44%, rgba(0,0,0,0.04));
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .addon-media::after {
-      content: '';
-      position: absolute;
-      left: 18%;
-      right: 18%;
-      bottom: 10px;
-      height: 22px;
-      border-radius: 50%;
-      background: radial-gradient(ellipse at center, rgba(0,0,0,0.18), transparent 70%);
-      filter: blur(8px);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .addon-img {
-      position: relative;
-      z-index: 2;
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      padding: 16px;
-      filter: drop-shadow(0 16px 18px rgba(0,0,0,0.26));
-      transition: transform 0.35s ease, filter 0.35s ease;
-    }
-
-    .addon-card:hover .addon-img {
-      transform: scale(1.035);
-      filter: drop-shadow(0 20px 22px rgba(0,0,0,0.32));
-    }
-
-    .addon-image-fallback {
-      position: absolute;
-      inset: 14px;
-      z-index: 2;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 16px;
-      border: 1px dashed rgba(0,0,0,0.18);
-      border-radius: 10px;
-      color: rgba(6,8,18,0.72);
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 1.8px;
-      line-height: 1.45;
-      text-transform: uppercase;
-      background: rgba(255,255,255,0.35);
-    }
-
-    .addon-image-fallback span {
-      display: block;
-      margin-top: 7px;
-      font-size: 0.58rem;
-      letter-spacing: 0.6px;
-      text-transform: none;
-      font-weight: 600;
-      color: rgba(6,8,18,0.56);
-      overflow-wrap: anywhere;
-    }
-
-    .addon-media.image-missing .addon-image-fallback {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .addon-media.image-missing::after {
-      display: none;
-    }
-
+    .addon-media { position: relative; height: 210px; width: 100%; flex: 0 0 210px; border-radius: 14px; overflow: hidden; margin-bottom: 16px; border: 1px solid rgba(0,240,255,0.14); background: radial-gradient(circle at 50% 95%, rgba(0,240,255,0.22), transparent 42%), radial-gradient(circle at 82% 18%, rgba(255,45,120,0.12), transparent 38%), linear-gradient(180deg, rgba(255,255,255,0.96), rgba(236,240,248,0.92)); box-shadow: inset 0 0 38px rgba(0,0,0,0.08), 0 14px 34px rgba(0,0,0,0.22), 0 0 18px rgba(0,240,255,0.05); }
+    .addon-media::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,240,255,0.12), transparent 32%, transparent 68%, rgba(255,45,120,0.10)), linear-gradient(180deg, rgba(255,255,255,0.24), transparent 44%, rgba(0,0,0,0.04)); pointer-events: none; z-index: 1; }
+    .addon-media::after { content: ''; position: absolute; left: 18%; right: 18%; bottom: 10px; height: 22px; border-radius: 50%; background: radial-gradient(ellipse at center, rgba(0,0,0,0.18), transparent 70%); filter: blur(8px); pointer-events: none; z-index: 0; }
+    .addon-img { position: relative; z-index: 2; display: block; width: 100%; height: 100%; object-fit: contain; padding: 16px; filter: drop-shadow(0 16px 18px rgba(0,0,0,0.26)); transition: transform 0.35s ease, filter 0.35s ease; }
+    .addon-card:hover .addon-img { transform: scale(1.035); filter: drop-shadow(0 20px 22px rgba(0,0,0,0.32)); }
+    .addon-image-fallback { position: absolute; inset: 14px; z-index: 2; display: none; align-items: center; justify-content: center; text-align: center; padding: 16px; border: 1px dashed rgba(0,0,0,0.18); border-radius: 10px; color: rgba(6,8,18,0.72); font-size: 0.7rem; font-weight: 700; letter-spacing: 1.8px; line-height: 1.45; text-transform: uppercase; background: rgba(255,255,255,0.35); }
+    .addon-image-fallback span { display: block; margin-top: 7px; font-size: 0.58rem; letter-spacing: 0.6px; text-transform: none; font-weight: 600; color: rgba(6,8,18,0.56); overflow-wrap: anywhere; }
+    .addon-media.image-missing .addon-image-fallback { display: flex; flex-direction: column; }
+    .addon-media.image-missing::after { display: none; }
     .addon-media-wide .addon-img { padding: 10px; }
     .addon-media-tall .addon-img { padding: 10px 28px; }
     .addon-media-gear .addon-img { padding: 14px; }
 
-    .addon-category {
-      font-size: 0.58rem;
-      letter-spacing: 3.5px;
-      text-transform: uppercase;
-      color: rgba(0,240,255,0.62);
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-
-    .addon-name {
-      font-size: 1.18rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 9px;
-      line-height: 1.3;
-    }
-
-    .addon-copy {
-      font-size: 0.82rem;
-      color: rgba(232,232,240,0.5);
-      line-height: 1.75;
-      font-weight: 300;
-      margin-bottom: 18px;
-      flex: 0 0 auto;
-    }
-
-    .option-control {
-      display: grid;
-      gap: 8px;
-      margin-bottom: 14px;
-      padding: 12px;
-      border: 1px solid rgba(0,240,255,0.08);
-      border-radius: 10px;
-      background: rgba(255,255,255,0.02);
-    }
-
-    .option-control label {
-      font-size: 0.58rem;
-      letter-spacing: 2.8px;
-      text-transform: uppercase;
-      color: rgba(232,232,240,0.42);
-      font-weight: 600;
-    }
-
-    .option-select {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(0,240,255,0.14);
-      color: #fff;
-      border-radius: 6px;
-      padding: 9px 10px;
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.78rem;
-      outline: none;
-      width: 100%;
-    }
-
-    .option-select option {
-      background: #0a0a1a;
-      color: #e8e8f0;
-    }
-
-    .addon-bottom {
-      border-top: 1px solid rgba(255,255,255,0.05);
-      padding-top: 16px;
-      margin-top: auto;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 13px;
-      align-items: stretch;
-    }
-
-    .addon-price {
-      color: #fff;
-      font-size: 1.25rem;
-      font-weight: 300;
-      white-space: nowrap;
-    }
-
-    .addon-price span {
-      color: rgba(232,232,240,0.38);
-      font-size: 0.72rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-left: 3px;
-    }
-
-    .addon-actions {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      width: 100%;
-      flex-shrink: 0;
-    }
-
-    .qty-control {
-      display: flex;
-      align-items: center;
-      border: 1px solid rgba(0,240,255,0.16);
-      border-radius: 999px;
-      overflow: hidden;
-      background: rgba(255,255,255,0.02);
-    }
-
-    .qty-btn {
-      width: 32px;
-      height: 32px;
-      background: transparent;
-      border: 0;
-      color: var(--neon-blue);
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.25s;
-    }
-
-    .qty-btn:hover {
-      background: rgba(0,240,255,0.08);
-    }
-
-    .qty-value {
-      width: 34px;
-      text-align: center;
-      font-size: 0.78rem;
-      color: #fff;
-      font-weight: 600;
-    }
-
-    .add-btn {
-      background: transparent;
-      color: var(--neon-pink);
-      border: 1.5px solid var(--neon-pink);
-      min-width: 58px;
-      padding: 9px 14px;
-      border-radius: 4px;
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
-      white-space: nowrap;
-    }
-
-    .add-btn:hover {
-      background: rgba(255,45,120,0.08);
-      box-shadow: 0 0 18px rgba(255,45,120,0.22);
-      transform: translateY(-1px);
-    }
-
-    .estimate-panel {
-      position: sticky;
-      top: 104px;
-      background: linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.98));
-      border: 1px solid rgba(255,45,120,0.18);
-      border-radius: 16px;
-      padding: 26px;
-      box-shadow: 0 18px 50px rgba(0,0,0,0.3);
-      max-height: calc(100vh - 124px);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-
-    .estimate-kicker {
-      font-size: 0.62rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: rgba(0,240,255,0.7);
-      margin-bottom: 10px;
-      font-weight: 600;
-    }
-
-    .estimate-title {
-      font-size: 1.4rem;
-      color: #fff;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .estimate-note {
-      color: rgba(232,232,240,0.45);
-      font-size: 0.78rem;
-      line-height: 1.6;
-      margin-bottom: 18px;
-    }
-
-    .estimate-scroll {
-      flex: 1 1 auto;
-      min-height: 0;
-      overflow-y: auto;
-      padding-right: 6px;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(0,240,255,0.28) rgba(255,255,255,0.025);
-    }
-
-    .estimate-scroll::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .estimate-scroll::-webkit-scrollbar-track {
-      background: rgba(255,255,255,0.025);
-      border-radius: 999px;
-    }
-
-    .estimate-scroll::-webkit-scrollbar-thumb {
-      background: linear-gradient(
-        180deg,
-        rgba(0,240,255,0.34),
-        rgba(255,45,120,0.24)
-      );
-      border-radius: 999px;
-      border: 1px solid rgba(8,8,22,0.9);
-    }
-
-    .estimate-scroll::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient(
-        180deg,
-        rgba(0,240,255,0.5),
-        rgba(255,45,120,0.38)
-      );
-    }
-
-    .estimate-line {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 13px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      color: rgba(232,232,240,0.68);
-      font-size: 0.82rem;
-      line-height: 1.45;
-    }
-
-    .estimate-line strong {
-      color: #fff;
-      font-weight: 600;
-    }
-
-    .estimate-line span:last-child {
-      white-space: nowrap;
-      color: #fff;
-    }
-
-    .estimate-items {
-      margin: 8px 0 6px;
-    }
-
-    .estimate-empty {
-      color: rgba(232,232,240,0.32);
-      font-size: 0.78rem;
-      line-height: 1.6;
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .estimate-addon {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 10px;
-      padding: 13px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .estimate-addon-name {
-      color: rgba(232,232,240,0.72);
-      font-size: 0.8rem;
-      line-height: 1.5;
-    }
-
-    .estimate-addon-name small {
-      color: rgba(0,240,255,0.55);
-      display: block;
-      margin-top: 2px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-size: 0.58rem;
-    }
-
-    .estimate-addon-price {
-      color: #fff;
-      font-size: 0.82rem;
-      white-space: nowrap;
-    }
-
-    .estimate-summary {
-      flex: 0 0 auto;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      padding-top: 14px;
-      margin-top: 12px;
-    }
-
-    .estimate-total {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 16px;
-      padding: 10px 0 8px;
-    }
-
-    .estimate-total-label {
-      color: rgba(232,232,240,0.52);
-      font-size: 0.68rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-
-    .estimate-total-value {
-      color: var(--neon-pink);
-      font-size: 2rem;
-      font-weight: 300;
-      line-height: 1;
-      text-shadow: 0 0 16px rgba(255,45,120,0.18);
-    }
-
-    .deposit-line {
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      color: rgba(232,232,240,0.55);
-      font-size: 0.78rem;
-      padding: 7px 0;
-    }
-
-    .deposit-line span:last-child {
-      color: #fff;
-    }
-
-    .deposit-line.deposit span:last-child {
-      color: var(--neon-blue);
-      font-weight: 700;
-    }
-
-    .estimate-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .btn-primary,
-    .btn-secondary {
-      width: 100%;
-      text-align: center;
-      padding: 14px 16px;
-      border-radius: 4px;
-      text-decoration: none;
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 2.8px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
-    }
-
-    .btn-primary {
-      background: transparent;
-      color: var(--neon-pink);
-      border: 1.5px solid var(--neon-pink);
-    }
-
-    .btn-primary:hover {
-      background: rgba(255,45,120,0.08);
-      box-shadow: 0 0 26px rgba(255,45,120,0.22);
-      transform: translateY(-2px);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--neon-blue);
-      border: 1.5px solid var(--neon-blue);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(0,240,255,0.08);
-      box-shadow: 0 0 26px rgba(0,240,255,0.22);
-      transform: translateY(-2px);
-    }
-
-    .clear-btn {
-      background: transparent;
-      border: 0;
-      color: rgba(232,232,240,0.32);
-      cursor: pointer;
-      font-size: 0.68rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 8px 0 0;
-      transition: color 0.25s;
-    }
-
-    .clear-btn:hover {
-      color: var(--neon-pink);
-    }
-
-    .warning-box {
-      margin-top: 18px;
-      border: 1px solid rgba(255,45,120,0.12);
-      background: rgba(255,45,120,0.04);
-      border-radius: 12px;
-      padding: 15px;
-      color: rgba(232,232,240,0.5);
-      font-size: 0.76rem;
-      line-height: 1.7;
-    }
-
-    .lighting-warning {
-      display: none;
-      border-color: rgba(0,240,255,0.2);
-      background: rgba(0,240,255,0.04);
-      color: rgba(232,232,240,0.65);
-    }
-
-    .lighting-warning strong {
-      color: var(--neon-blue);
-    }
-
-    .duplicate-modal-backdrop {
-      position: fixed;
-      inset: 0;
-      z-index: 3000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 22px;
-      background: rgba(0,0,0,0.72);
-      backdrop-filter: blur(8px);
-    }
-
-    .duplicate-modal-backdrop.open {
-      display: flex;
-    }
-
-    .duplicate-modal {
-      width: min(100%, 460px);
-      border-radius: 18px;
-      border: 1px solid rgba(255,45,120,0.26);
-      background:
-        radial-gradient(circle at top left, rgba(0,240,255,0.08), transparent 38%),
-        radial-gradient(circle at bottom right, rgba(255,45,120,0.10), transparent 42%),
-        linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.99));
-      box-shadow:
-        0 26px 80px rgba(0,0,0,0.62),
-        0 0 34px rgba(255,45,120,0.12);
-      padding: 26px;
-    }
-
-    .duplicate-modal-kicker {
-      font-size: 0.58rem;
-      letter-spacing: 3.2px;
-      text-transform: uppercase;
-      color: rgba(0,240,255,0.78);
-      margin-bottom: 10px;
-      font-weight: 700;
-    }
-
-    .duplicate-modal-title {
-      color: #fff;
-      font-size: 1.35rem;
-      line-height: 1.25;
-      margin-bottom: 12px;
-      font-weight: 700;
-    }
-
-    .duplicate-modal-copy {
-      color: rgba(232,232,240,0.68);
-      font-size: 0.9rem;
-      line-height: 1.75;
-      margin-bottom: 22px;
-    }
-
-    .duplicate-modal-copy strong {
-      color: var(--neon-pink);
-      font-weight: 700;
-    }
-
-    .duplicate-modal-actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .duplicate-modal-btn {
-      border-radius: 4px;
-      padding: 13px 14px;
-      font-size: 0.66rem;
-      font-weight: 700;
-      letter-spacing: 2.3px;
-      text-transform: uppercase;
-      cursor: pointer;
-      background: transparent;
-      font-family: 'Raleway', sans-serif;
-      transition: background 0.25s, box-shadow 0.25s, transform 0.2s;
-    }
-
-    .duplicate-modal-btn.cancel {
-      color: var(--neon-blue);
-      border: 1.5px solid var(--neon-blue);
-    }
-
-    .duplicate-modal-btn.cancel:hover {
-      background: rgba(0,240,255,0.08);
-      box-shadow: 0 0 22px rgba(0,240,255,0.2);
-      transform: translateY(-1px);
-    }
-
-    .duplicate-modal-btn.confirm {
-      color: var(--neon-pink);
-      border: 1.5px solid var(--neon-pink);
-    }
-
-    .duplicate-modal-btn.confirm:hover {
-      background: rgba(255,45,120,0.08);
-      box-shadow: 0 0 22px rgba(255,45,120,0.22);
-      transform: translateY(-1px);
-    }
-
-    footer {
-      text-align: center;
-      padding: 60px 48px 100px;
-      border-top: 1px solid rgba(0,240,255,0.08);
-      margin-top: 20px;
-    }
-
-    .footer-logo img {
-      height: 64px;
-      width: auto;
-      margin-bottom: 6px;
-      filter:
-        drop-shadow(0 0 5px rgba(0,240,255,0.6))
-        drop-shadow(0 0 12px rgba(255,45,120,0.3));
-    }
-
-    .footer-productions-text {
-      font-size: 0.55rem;
-      letter-spacing: 6px;
-      color: rgba(232,232,240,0.2);
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 6px;
-    }
-
-    .footer-contact {
-      margin: 28px 0;
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-
-    .footer-contact a {
-      color: rgba(232,232,240,0.4);
-      text-decoration: none;
-      font-size: 0.8rem;
-      letter-spacing: 1px;
-      transition: color 0.3s;
-      font-weight: 300;
-    }
-
-    .footer-contact a:hover {
-      color: var(--neon-blue);
-    }
-
-    .footer-copy {
-      font-size: 0.68rem;
-      color: rgba(232,232,240,0.18);
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      margin-top: 32px;
-    }
-
-    @media (max-width: 1280px) {
-      .addons-grid {
-        grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
-      }
-    }
+    .addon-category { font-size: 0.58rem; letter-spacing: 3.5px; text-transform: uppercase; color: rgba(0,240,255,0.62); margin-bottom: 8px; font-weight: 600; }
+    .addon-name { font-size: 1.18rem; font-weight: 700; color: #fff; margin-bottom: 9px; line-height: 1.3; }
+    .addon-copy { font-size: 0.82rem; color: rgba(232,232,240,0.5); line-height: 1.75; font-weight: 300; margin-bottom: 18px; flex: 0 0 auto; }
+    .option-control { display: grid; gap: 8px; margin-bottom: 14px; padding: 12px; border: 1px solid rgba(0,240,255,0.08); border-radius: 10px; background: rgba(255,255,255,0.02); }
+    .option-control label { font-size: 0.58rem; letter-spacing: 2.8px; text-transform: uppercase; color: rgba(232,232,240,0.42); font-weight: 600; }
+    .option-select { background: rgba(255,255,255,0.03); border: 1px solid rgba(0,240,255,0.14); color: #fff; border-radius: 6px; padding: 9px 10px; font-family: 'Raleway', sans-serif; font-size: 0.78rem; outline: none; width: 100%; }
+    .option-select option { background: #0a0a1a; color: #e8e8f0; }
+
+    .addon-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 16px; margin-top: auto; display: grid; grid-template-columns: 1fr; gap: 13px; align-items: stretch; }
+    .addon-price { color: #fff; font-size: 1.25rem; font-weight: 300; white-space: nowrap; }
+    .addon-price span { color: rgba(232,232,240,0.38); font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase; margin-left: 3px; }
+    .addon-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; flex-shrink: 0; }
+    .qty-control { display: flex; align-items: center; border: 1px solid rgba(0,240,255,0.16); border-radius: 999px; overflow: hidden; background: rgba(255,255,255,0.02); }
+    .qty-btn { width: 32px; height: 32px; background: transparent; border: 0; color: var(--neon-blue); font-size: 1rem; cursor: pointer; transition: background 0.25s; }
+    .qty-btn:hover { background: rgba(0,240,255,0.08); }
+    .qty-value { width: 34px; text-align: center; font-size: 0.78rem; color: #fff; font-weight: 600; }
+    .add-btn { background: transparent; color: var(--neon-pink); border: 1.5px solid var(--neon-pink); min-width: 58px; padding: 9px 14px; border-radius: 4px; font-size: 0.62rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: background 0.3s, box-shadow 0.3s, transform 0.2s; white-space: nowrap; }
+    .add-btn:hover { background: rgba(255,45,120,0.08); box-shadow: 0 0 18px rgba(255,45,120,0.22); transform: translateY(-1px); }
+
+    .estimate-panel { position: sticky; top: 104px; background: linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.98)); border: 1px solid rgba(255,45,120,0.18); border-radius: 16px; padding: 26px; box-shadow: 0 18px 50px rgba(0,0,0,0.3); max-height: calc(100vh - 124px); display: flex; flex-direction: column; overflow: hidden; }
+    .estimate-kicker { font-size: 0.62rem; letter-spacing: 4px; text-transform: uppercase; color: rgba(0,240,255,0.7); margin-bottom: 10px; font-weight: 600; }
+    .estimate-title { font-size: 1.4rem; color: #fff; font-weight: 700; margin-bottom: 6px; }
+    .estimate-note { color: rgba(232,232,240,0.45); font-size: 0.78rem; line-height: 1.6; margin-bottom: 18px; }
+    .estimate-scroll { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding-right: 6px; scrollbar-width: thin; scrollbar-color: rgba(0,240,255,0.28) rgba(255,255,255,0.025); }
+    .estimate-line { display: flex; justify-content: space-between; gap: 16px; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.05); color: rgba(232,232,240,0.68); font-size: 0.82rem; line-height: 1.45; }
+    .estimate-line strong { color: #fff; font-weight: 600; }
+    .estimate-line span:last-child { white-space: nowrap; color: #fff; }
+    .estimate-items { margin: 8px 0 6px; }
+    .estimate-empty { color: rgba(232,232,240,0.32); font-size: 0.78rem; line-height: 1.6; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .estimate-addon { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .estimate-addon-name { color: rgba(232,232,240,0.72); font-size: 0.8rem; line-height: 1.5; }
+    .estimate-addon-name small { color: rgba(0,240,255,0.55); display: block; margin-top: 2px; letter-spacing: 1px; text-transform: uppercase; font-size: 0.58rem; }
+    .estimate-addon-price { color: #fff; font-size: 0.82rem; white-space: nowrap; }
+    .estimate-summary { flex: 0 0 auto; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 14px; margin-top: 12px; }
+    .estimate-total { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; padding: 10px 0 8px; }
+    .estimate-total-label { color: rgba(232,232,240,0.52); font-size: 0.68rem; letter-spacing: 3px; text-transform: uppercase; }
+    .estimate-total-value { color: var(--neon-pink); font-size: 2rem; font-weight: 300; line-height: 1; text-shadow: 0 0 16px rgba(255,45,120,0.18); }
+    .deposit-line { display: flex; justify-content: space-between; gap: 14px; color: rgba(232,232,240,0.55); font-size: 0.78rem; padding: 7px 0; }
+    .deposit-line span:last-child { color: #fff; }
+    .deposit-line.deposit span:last-child { color: var(--neon-blue); font-weight: 700; }
+    .estimate-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 18px; }
+    .btn-primary, .btn-secondary { width: 100%; text-align: center; padding: 14px 16px; border-radius: 4px; text-decoration: none; font-size: 0.68rem; font-weight: 600; letter-spacing: 2.8px; text-transform: uppercase; cursor: pointer; transition: box-shadow 0.3s, transform 0.2s, background 0.3s; }
+    .btn-primary { background: transparent; color: var(--neon-pink); border: 1.5px solid var(--neon-pink); }
+    .btn-primary:hover { background: rgba(255,45,120,0.08); box-shadow: 0 0 26px rgba(255,45,120,0.22); transform: translateY(-2px); }
+    .btn-secondary { background: transparent; color: var(--neon-blue); border: 1.5px solid var(--neon-blue); }
+    .btn-secondary:hover { background: rgba(0,240,255,0.08); box-shadow: 0 0 26px rgba(0,240,255,0.22); transform: translateY(-2px); }
+    .clear-btn { background: transparent; border: 0; color: rgba(232,232,240,0.32); cursor: pointer; font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; padding: 8px 0 0; transition: color 0.25s; }
+    .clear-btn:hover { color: var(--neon-pink); }
+    .warning-box { margin-top: 18px; border: 1px solid rgba(255,45,120,0.12); background: rgba(255,45,120,0.04); border-radius: 12px; padding: 15px; color: rgba(232,232,240,0.5); font-size: 0.76rem; line-height: 1.7; }
+    .lighting-warning { display: none; border-color: rgba(0,240,255,0.2); background: rgba(0,240,255,0.04); color: rgba(232,232,240,0.65); }
+    .lighting-warning strong { color: var(--neon-blue); }
+
+    .duplicate-modal-backdrop { position: fixed; inset: 0; z-index: 3000; display: none; align-items: center; justify-content: center; padding: 22px; background: rgba(0,0,0,0.72); backdrop-filter: blur(8px); }
+    .duplicate-modal-backdrop.open { display: flex; }
+    .duplicate-modal { width: min(100%, 460px); border-radius: 18px; border: 1px solid rgba(255,45,120,0.26); background: radial-gradient(circle at top left, rgba(0,240,255,0.08), transparent 38%), radial-gradient(circle at bottom right, rgba(255,45,120,0.10), transparent 42%), linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.99)); box-shadow: 0 26px 80px rgba(0,0,0,0.62), 0 0 34px rgba(255,45,120,0.12); padding: 26px; }
+    .duplicate-modal-kicker { font-size: 0.58rem; letter-spacing: 3.2px; text-transform: uppercase; color: rgba(0,240,255,0.78); margin-bottom: 10px; font-weight: 700; }
+    .duplicate-modal-title { color: #fff; font-size: 1.35rem; line-height: 1.25; margin-bottom: 12px; font-weight: 700; }
+    .duplicate-modal-copy { color: rgba(232,232,240,0.68); font-size: 0.9rem; line-height: 1.75; margin-bottom: 22px; }
+    .duplicate-modal-copy strong { color: var(--neon-pink); font-weight: 700; }
+    .duplicate-modal-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .duplicate-modal-btn { border-radius: 4px; padding: 13px 14px; font-size: 0.66rem; font-weight: 700; letter-spacing: 2.3px; text-transform: uppercase; cursor: pointer; background: transparent; font-family: 'Raleway', sans-serif; transition: background 0.25s, box-shadow 0.25s, transform 0.2s; }
+    .duplicate-modal-btn.cancel { color: var(--neon-blue); border: 1.5px solid var(--neon-blue); }
+    .duplicate-modal-btn.cancel:hover { background: rgba(0,240,255,0.08); box-shadow: 0 0 22px rgba(0,240,255,0.2); transform: translateY(-1px); }
+    .duplicate-modal-btn.confirm { color: var(--neon-pink); border: 1.5px solid var(--neon-pink); }
+    .duplicate-modal-btn.confirm:hover { background: rgba(255,45,120,0.08); box-shadow: 0 0 22px rgba(255,45,120,0.22); transform: translateY(-1px); }
+
+    footer { text-align: center; padding: 60px 48px 100px; border-top: 1px solid rgba(0,240,255,0.08); margin-top: 20px; }
+    .footer-logo img { height: 64px; width: auto; margin-bottom: 6px; filter: drop-shadow(0 0 5px rgba(0,240,255,0.6)) drop-shadow(0 0 12px rgba(255,45,120,0.3)); }
+    .footer-productions-text { font-size: 0.55rem; letter-spacing: 6px; color: rgba(232,232,240,0.2); text-transform: uppercase; display: block; margin-bottom: 6px; }
+    .footer-contact { margin: 28px 0; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+    .footer-contact a { color: rgba(232,232,240,0.4); text-decoration: none; font-size: 0.8rem; letter-spacing: 1px; transition: color 0.3s; font-weight: 300; }
+    .footer-contact a:hover { color: var(--neon-blue); }
+    .footer-copy { font-size: 0.68rem; color: rgba(232,232,240,0.18); letter-spacing: 2.5px; text-transform: uppercase; margin-top: 32px; }
 
     @media (max-width: 1180px) {
-      .addons-wrap {
-        grid-template-columns: 1fr;
-      }
-
-      .estimate-panel {
-        position: relative;
-        top: auto;
-        max-height: none;
-        overflow: visible;
-      }
-
-      .estimate-scroll {
-        overflow: visible;
-        padding-right: 0;
-      }
+      .addons-wrap { grid-template-columns: 1fr; }
+      .estimate-panel { position: relative; top: auto; max-height: none; overflow: visible; }
+      .estimate-scroll { overflow: visible; padding-right: 0; }
     }
-
     @media (max-width: 980px) {
-      .category-filter {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .filter-head {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      .category-filter { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .filter-head { flex-direction: column; align-items: flex-start; }
     }
-
     @media (max-width: 900px) {
-      nav {
-        padding: 10px 18px;
-      }
-
-      .nav-links,
-      .nav-cta {
-        display: none;
-      }
-
-      .mobile-menu-btn {
-        display: flex;
-      }
-
-      .page-hero {
-        padding: 145px 24px 54px;
-      }
-
-      .addons-wrap {
-        padding: 60px 24px 90px;
-      }
-
-      .addons-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .addon-media {
-        height: 190px;
-        flex-basis: 190px;
-      }
-
-      .category-filter {
-        grid-template-columns: 1fr;
-      }
-
-      .addon-bottom {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .addon-actions {
-        width: 100%;
-        justify-content: space-between;
-      }
-
-      .group-title {
-        white-space: normal;
-        line-height: 1.45;
-      }
-
-      footer {
-        padding: 60px 24px 100px;
-      }
-
-      .duplicate-modal {
-        padding: 22px;
-      }
-
-      .duplicate-modal-actions {
-        grid-template-columns: 1fr;
-      }
+      nav { padding: 10px 18px; }
+      .nav-links, .nav-cta { display: none; }
+      .mobile-menu-btn { display: flex; }
+      .page-hero { padding: 145px 24px 54px; }
+      .addons-wrap { padding: 60px 24px 90px; }
+      .addons-grid { grid-template-columns: 1fr; }
+      .addon-media { height: 190px; flex-basis: 190px; }
+      .category-filter { grid-template-columns: 1fr; }
+      .addon-actions { width: 100%; justify-content: space-between; }
+      .group-title { white-space: normal; line-height: 1.45; }
+      footer { padding: 60px 24px 100px; }
+      .duplicate-modal { padding: 22px; }
+      .duplicate-modal-actions { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 
 <body>
-
   <nav>
-    <a href="index.html" class="nav-logo">
-      <img src="logo.png" alt="Heat District Productions" />
-    </a>
-
+    <a href="index.html" class="nav-logo"><img src="logo.png" alt="Heat District Productions" /></a>
     <ul class="nav-links">
       <li class="nav-item-dropdown">
         <a href="services.html" class="nav-link-with-dropdown">Rentals & Builds</a>
-
         <div class="nav-dropdown">
           <a href="services.html#sound">Sound Systems</a>
           <a href="services.html#lighting">Lighting</a>
@@ -1379,26 +348,18 @@
           <a href="services.html#staging-trussing">Staging & Trussing</a>
         </div>
       </li>
-
       <li><a href="packages.html">Packages</a></li>
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="team.html">Our Team</a></li>
       <li><a href="faq.html">FAQ</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-
     <a href="packages.html" class="nav-cta">Book Now</a>
-
-    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav" type="button">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav" type="button"><span></span><span></span><span></span></button>
   </nav>
 
   <div class="mobile-nav" id="mobileNav">
     <a href="services.html">Rentals & Builds</a>
-
     <div class="mobile-nav-sub">
       <a href="services.html#sound">Sound Systems</a>
       <a href="services.html#lighting">Lighting</a>
@@ -1409,7 +370,6 @@
       <a href="services.html#led-walls">LED Walls</a>
       <a href="services.html#staging-trussing">Staging & Trussing</a>
     </div>
-
     <a href="packages.html">Packages</a>
     <a href="gallery.html">Gallery</a>
     <a href="team.html">Our Team</a>
@@ -1429,12 +389,11 @@
   <div class="neon-divider"></div>
 
   <main class="addons-wrap">
-
     <section>
       <p class="section-label">Available Add-Ons</p>
       <h2 class="section-title">Choose Upgrades by <strong>Outcome</strong></h2>
       <p class="section-sub">
-        These add-ons are grouped by what they do for the event, not just by equipment type. This keeps the decision easier: upgrade the look, improve the dance floor, add guest experiences, capture media, add effects, or extend the event.
+        Add-on pricing is discounted below standalone rental pricing because these are upgrades added onto an existing Heat District package.
       </p>
 
       <div class="filter-shell">
@@ -1443,9 +402,8 @@
             <div class="filter-kicker">Tap to Filter</div>
             <div class="filter-title">What do you want to improve?</div>
           </div>
-
           <div class="filter-note">
-            Start with Most Popular or choose the outcome that matches your event. If your package already includes lighting, only add lighting upgrades if you want a larger or stronger setup.
+            Start with Most Popular or choose the outcome that matches your event. Furniture was removed as its own section; LED glow cocktail tables now live under Guest Experience.
           </div>
         </div>
 
@@ -1459,7 +417,6 @@
           <button class="filter-btn" type="button" onclick="filterGroups('lighting-effects', this)">Effects</button>
           <button class="filter-btn" type="button" onclick="filterGroups('dj-rentals', this)">DJ Rentals</button>
           <button class="filter-btn" type="button" onclick="filterGroups('led-walls', this)">LED Walls</button>
-          <button class="filter-btn" type="button" onclick="filterGroups('party-furniture', this)">Furniture</button>
           <button class="filter-btn" type="button" onclick="filterGroups('staging-trussing', this)">Trussing</button>
         </div>
       </div>
@@ -1470,41 +427,18 @@
     <aside class="estimate-panel">
       <p class="estimate-kicker">Current Estimate</p>
       <h2 class="estimate-title">Your Build</h2>
-      <p class="estimate-note">
-        This estimate updates live. Final pricing may change based on venue, date, access, power, staffing, distance, and event details.
-      </p>
+      <p class="estimate-note">This estimate updates live. Final pricing may change based on venue, date, access, power, staffing, distance, and event details.</p>
 
       <div class="estimate-scroll">
-        <div class="estimate-line">
-          <strong id="summaryPackageName">No Package Selected</strong>
-          <span id="summaryPackagePrice">$0</span>
-        </div>
-
-        <div class="estimate-line">
-          <span>Package Coverage</span>
-          <span id="summaryPackageHours">0 hrs</span>
-        </div>
-
-        <div class="estimate-items" id="estimateItems">
-          <div class="estimate-empty">No add-ons selected yet.</div>
-        </div>
+        <div class="estimate-line"><strong id="summaryPackageName">No Package Selected</strong><span id="summaryPackagePrice">$0</span></div>
+        <div class="estimate-line"><span>Package Coverage</span><span id="summaryPackageHours">0 hrs</span></div>
+        <div class="estimate-items" id="estimateItems"><div class="estimate-empty">No add-ons selected yet.</div></div>
       </div>
 
       <div class="estimate-summary">
-        <div class="estimate-total">
-          <div class="estimate-total-label">Estimated Total</div>
-          <div class="estimate-total-value" id="summaryTotal">$0</div>
-        </div>
-
-        <div class="deposit-line deposit">
-          <span>50% Deposit Due</span>
-          <span id="summaryDeposit">$0</span>
-        </div>
-
-        <div class="deposit-line">
-          <span>Remaining Balance</span>
-          <span id="summaryRemaining">$0</span>
-        </div>
+        <div class="estimate-total"><div class="estimate-total-label">Estimated Total</div><div class="estimate-total-value" id="summaryTotal">$0</div></div>
+        <div class="deposit-line deposit"><span>50% Deposit Due</span><span id="summaryDeposit">$0</span></div>
+        <div class="deposit-line"><span>Remaining Balance</span><span id="summaryRemaining">$0</span></div>
 
         <div class="estimate-actions">
           <button class="btn-primary" type="button" onclick="continueToCheckout()">Continue to Checkout</button>
@@ -1512,26 +446,17 @@
           <button class="clear-btn" type="button" onclick="clearAddons()">Clear Add-Ons</button>
         </div>
 
-        <div class="warning-box lighting-warning" id="lightingWarning">
-          <strong>Lighting check:</strong> your selected package may already include lighting. Only add lighting upgrades if you want more coverage, more fixtures, a stronger dance floor look, or a larger production setup.
-        </div>
-
-        <div class="warning-box">
-          Final setup may depend on venue layout, ceiling height, power access, indoor/outdoor conditions, and venue approval. Cold sparks, fog, haze, trussing, and LED wall setups may require additional approval or planning.
-        </div>
+        <div class="warning-box lighting-warning" id="lightingWarning"><strong>Lighting check:</strong> your selected package may already include lighting. Only add lighting upgrades if you want more coverage, more fixtures, a stronger dance floor look, or a larger production setup.</div>
+        <div class="warning-box">Final setup may depend on venue layout, ceiling height, power access, indoor/outdoor conditions, and venue approval. Cold sparks, fog, haze, trussing, CO2, and LED wall setups may require additional approval or planning.</div>
       </div>
     </aside>
-
   </main>
 
   <div class="duplicate-modal-backdrop" id="duplicateModalBackdrop">
     <div class="duplicate-modal" role="dialog" aria-modal="true" aria-labelledby="duplicateModalTitle">
       <div class="duplicate-modal-kicker">Already Included</div>
       <h3 class="duplicate-modal-title" id="duplicateModalTitle">Double-check this add-on</h3>
-      <p class="duplicate-modal-copy" id="duplicateModalCopy">
-        This item may already be included.
-      </p>
-
+      <p class="duplicate-modal-copy" id="duplicateModalCopy">This item may already be included.</p>
       <div class="duplicate-modal-actions">
         <button class="duplicate-modal-btn cancel" type="button" id="duplicateModalCancel">Cancel</button>
         <button class="duplicate-modal-btn confirm" type="button" id="duplicateModalConfirm">Add Anyway</button>
@@ -1540,35 +465,19 @@
   </div>
 
   <footer>
-    <div class="footer-logo">
-      <img src="logo.png" alt="Heat District Productions" />
-      <span class="footer-productions-text">Productions</span>
-    </div>
-
+    <div class="footer-logo"><img src="logo.png" alt="Heat District Productions" /><span class="footer-productions-text">Productions</span></div>
     <div class="footer-contact">
       <a href="tel:9545472990">(954) 547-2990</a>
       <a href="mailto:HeatDistrictProd@gmail.com">HeatDistrictProd@gmail.com</a>
       <a href="https://instagram.com/heatdistrictproductions" target="_blank">@HeatDistrictProductions</a>
       <a href="https://www.heatdistrictproductions.com">heatdistrictproductions.com</a>
     </div>
-
     <p class="footer-copy">© 2025 Heat District Productions · Miami & Broward County · All Rights Reserved</p>
   </footer>
 
   <script>
-    const PACKAGE_NAMES_WITH_LIGHTING = [
-      'The Blaze',
-      'The Inferno',
-      'The District'
-    ];
-
-    const LIGHTING_RELATED_CATEGORIES = [
-      'Lighting Packages',
-      'Lighting',
-      'Effects',
-      'Video / Visuals',
-      'Staging & Trussing'
-    ];
+    const PACKAGE_NAMES_WITH_LIGHTING = ['The Blaze', 'The Inferno', 'The District'];
+    const LIGHTING_RELATED_CATEGORIES = ['Lighting Packages', 'Lighting', 'Effects', 'Video / Visuals', 'Staging & Trussing'];
 
     const PACKAGE_DUPLICATE_WARNINGS = {
       'The Spark': {
@@ -1577,17 +486,16 @@
         'additional-subwoofer-single': 'The Spark already includes subs.',
         'microphone-single': 'The Spark already includes a microphone.'
       },
-
       'The Blaze': {
         'pa-speaker-single': 'The Blaze already includes a sound system.',
         'additional-speaker-single': 'The Blaze already includes a sound system.',
         'additional-subwoofer-single': 'The Blaze already includes subs.',
         'microphone-single': 'The Blaze already includes a microphone.',
-        'glow-lighting-package': 'The Blaze already includes 10 uplights and an LED light bar.',
-        'pulse-lighting-package': 'The Blaze already includes 10 uplights, an LED light bar, 2 moving heads, and 2 totems.',
+        'glow-lighting-package': 'The Blaze already includes 10 uplights and a Chauvet GigBAR 2.',
+        'pulse-lighting-package': 'The Blaze already includes 10 uplights, a Chauvet GigBAR 2, 2 moving heads, and 2 totems.',
         'uplights-5-pack': 'The Blaze already includes 10 uplights.',
         'uplights-10-pack': 'The Blaze already includes 10 uplights.',
-        'light-bar-single': 'The Blaze already includes an LED light bar.',
+        'light-bar-single': 'The Blaze already includes a Chauvet GigBAR 2.',
         'moving-heads-2-heads-2-totems': 'The Blaze already includes 2 moving heads and 2 totems.',
         'photo-booth-digital-only': 'The Blaze already includes Premium Photo Booth.',
         'photo-booth-digital-print': 'The Blaze already includes Premium Photo Booth.',
@@ -1595,19 +503,18 @@
         'fog-machines-2-units': 'The Blaze already includes 2 fog machines.',
         'trussing-2-totems': 'The Blaze already includes 2 totems.'
       },
-
       'The Inferno': {
         'pa-speaker-single': 'The Inferno already includes a sound system.',
         'additional-speaker-single': 'The Inferno already includes a sound system.',
         'additional-subwoofer-single': 'The Inferno already includes subs.',
         'microphone-single': 'The Inferno already includes a microphone.',
-        'glow-lighting-package': 'The Inferno already includes uplighting and an LED light bar.',
-        'pulse-lighting-package': 'The Inferno already includes uplighting, an LED light bar, moving heads, fog machines, and trussing.',
-        'district-lighting-package': 'The Inferno already includes 15 uplights, an LED light bar, 4 moving heads, 2 fog machines, and trussing.',
+        'glow-lighting-package': 'The Inferno already includes uplighting and a Chauvet GigBAR 2.',
+        'pulse-lighting-package': 'The Inferno already includes uplighting, a Chauvet GigBAR 2, moving heads, fog machines, and trussing.',
+        'district-lighting-package': 'The Inferno already includes 15 uplights, a Chauvet GigBAR 2, 4 moving heads, 2 fog machines, and trussing.',
         'uplights-5-pack': 'The Inferno already includes 15 uplights.',
         'uplights-10-pack': 'The Inferno already includes 15 uplights.',
         'uplights-15-pack': 'The Inferno already includes 15 uplights.',
-        'light-bar-single': 'The Inferno already includes an LED light bar.',
+        'light-bar-single': 'The Inferno already includes a Chauvet GigBAR 2.',
         'moving-heads-2-heads-2-totems': 'The Inferno already includes 4 moving heads.',
         'moving-heads-2-heads-goal-post': 'The Inferno already includes 4 moving heads and trussing.',
         'moving-heads-4-heads-4-totems': 'The Inferno already includes 4 moving heads and trussing.',
@@ -1618,25 +525,25 @@
         'led-glow-cocktail-table': 'The Inferno already includes LED glow cocktail tables.',
         'foam-glow-sticks-pack-25': 'The Inferno already includes foam glow sticks.',
         'cold-sparks-2-units': 'The Inferno already includes 2 cold spark machines.',
+        'co2-led-gun-1-unit': 'The Inferno already includes the CO2 LED gun.',
         'fog-machines-2-units': 'The Inferno already includes 2 fog machines.',
         'trussing-2-totems': 'The Inferno already includes trussing.',
         'trussing-4-totems': 'The Inferno already includes a trussing option.',
         'trussing-goal-post-8x10': 'The Inferno already includes a trussing option.',
         'trussing-goal-post-8x16': 'The Inferno already includes a trussing option.'
       },
-
       'The District': {
         'pa-speaker-single': 'The District already includes a sound system.',
         'additional-speaker-single': 'The District already includes a sound system.',
         'additional-subwoofer-single': 'The District already includes subs.',
         'microphone-single': 'The District already includes a microphone.',
-        'glow-lighting-package': 'The District already includes uplighting and an LED light bar.',
-        'pulse-lighting-package': 'The District already includes uplighting, an LED light bar, moving heads, fog machines, and trussing.',
-        'district-lighting-package': 'The District already includes 15 uplights, an LED light bar, 4 moving heads, 2 fog machines, and trussing.',
+        'glow-lighting-package': 'The District already includes uplighting and a Chauvet GigBAR 2.',
+        'pulse-lighting-package': 'The District already includes uplighting, a Chauvet GigBAR 2, moving heads, fog machines, and trussing.',
+        'district-lighting-package': 'The District already includes 15 uplights, a Chauvet GigBAR 2, 4 moving heads, 2 fog machines, and trussing.',
         'uplights-5-pack': 'The District already includes 15 uplights.',
         'uplights-10-pack': 'The District already includes 15 uplights.',
         'uplights-15-pack': 'The District already includes 15 uplights.',
-        'light-bar-single': 'The District already includes an LED light bar.',
+        'light-bar-single': 'The District already includes a Chauvet GigBAR 2.',
         'moving-heads-2-heads-2-totems': 'The District already includes 4 moving heads.',
         'moving-heads-2-heads-goal-post': 'The District already includes 4 moving heads and trussing.',
         'moving-heads-4-heads-4-totems': 'The District already includes 4 moving heads and trussing.',
@@ -1654,6 +561,8 @@
         'photography-250': 'The District already includes photography.',
         'cold-sparks-2-units': 'The District already includes cold spark machines.',
         'cold-sparks-4-units': 'The District already includes 4 cold spark machines.',
+        'co2-led-gun-1-unit': 'The District already includes the CO2 LED gun.',
+        'co2-cannons-2-units': 'The District already includes 2 CO2 cannons.',
         'fog-machines-2-units': 'The District already includes 2 fog machines.',
         'trussing-2-totems': 'The District already includes trussing.',
         'trussing-4-totems': 'The District already includes a trussing option.',
@@ -1663,898 +572,119 @@
     };
 
     const ADDONS = {
-      'pa-speaker': {
-        id: 'pa-speaker',
-        label: 'Sound',
-        title: 'Additional PA Speaker',
-        image: 'images/products/qsc-top-speaker.png',
-        mediaClass: 'addon-media-gear',
-        copy: 'Add extra speaker coverage for larger rooms, cocktail areas, ceremonies, outdoor spaces, side rooms, or areas that need audio beyond the main package setup.',
-        options: [
-          {
-            id: 'pa-speaker-single',
-            label: '1 Additional PA Speaker',
-            name: 'Additional PA Speaker',
-            category: 'Sound',
-            price: 125,
-            unit: 'speaker',
-            displayUnit: 'speaker'
-          }
-        ]
-      },
+      'pa-speaker': { id: 'pa-speaker', label: 'Sound', title: 'QSC K12 Top Speaker', image: 'images/products/qsc-top-speaker.png', mediaClass: 'addon-media-gear', copy: 'Add 1 QSC K12 top speaker for extra audio coverage beyond the main package setup.', options: [{ id: 'pa-speaker-single', label: '1 QSC K12 Top Speaker', name: 'QSC K12 Top Speaker', category: 'Sound', price: 75, unit: 'speaker', displayUnit: 'speaker' }] },
+      'additional-speaker': { id: 'additional-speaker', label: 'Sound', title: 'Additional QSC K12 Speaker', image: 'images/products/qsc-top-speaker.png', mediaClass: 'addon-media-gear', copy: 'Add an extra QSC K12 top speaker for larger rooms, side areas, cocktail spaces, ceremonies, outdoor sections, or overflow areas.', options: [{ id: 'additional-speaker-single', label: '1 Additional QSC K12 Speaker', name: 'Additional QSC K12 Speaker', category: 'Sound', price: 75, unit: 'speaker', displayUnit: 'speaker' }] },
+      'additional-subwoofer': { id: 'additional-subwoofer', label: 'Sound', title: 'QSC K18 Subwoofer', image: 'images/products/qsc-subwoofer.png', mediaClass: 'addon-media-gear', copy: 'Add 1 QSC K18 subwoofer for stronger bass and more low-end impact.', options: [{ id: 'additional-subwoofer-single', label: '1 QSC K18 Subwoofer', name: 'QSC K18 Subwoofer', category: 'Sound', price: 100, unit: 'subwoofer', displayUnit: 'subwoofer' }] },
+      'microphone': { id: 'microphone', label: 'Sound', title: 'Shure Wireless Microphone + Receiver', image: 'images/products/wireless-mic.png', mediaClass: 'addon-media-gear', copy: 'Add 1 Shure wireless microphone with receiver for speeches, announcements, ceremony use, hosting, or introductions.', options: [{ id: 'microphone-single', label: '1 Shure Wireless Microphone + Receiver', name: 'Shure Wireless Microphone + Receiver', category: 'Sound', price: 35, unit: 'mic', displayUnit: 'mic' }] },
 
-      'additional-speaker': {
-        id: 'additional-speaker',
-        label: 'Sound',
-        title: 'Additional Speaker',
-        image: 'images/products/qsc-top-speaker.png',
-        mediaClass: 'addon-media-gear',
-        copy: 'Add an extra speaker for more coverage in larger rooms, side areas, cocktail spaces, ceremonies, outdoor sections, or overflow areas.',
-        options: [
-          {
-            id: 'additional-speaker-single',
-            label: '1 Additional Speaker',
-            name: 'Additional Speaker',
-            category: 'Sound',
-            price: 125,
-            unit: 'speaker',
-            displayUnit: 'speaker'
-          }
-        ]
-      },
+      'photography': { id: 'photography', label: 'Media Coverage', title: 'Photography', image: 'images/products/photography.png', mediaClass: 'addon-media-wide', copy: 'Add professional event photography coverage focused on guests, moments, details, energy, and the overall look of the event.', options: [
+        { id: 'photography-50', label: '50 Edited Pictures', name: 'Photography — 50 Edited Pictures', category: 'Media Coverage', price: 500, unit: 'event', displayUnit: 'event' },
+        { id: 'photography-100', label: '100 Edited Pictures', name: 'Photography — 100 Edited Pictures', category: 'Media Coverage', price: 650, unit: 'event', displayUnit: 'event' },
+        { id: 'photography-150', label: '150 Edited Pictures', name: 'Photography — 150 Edited Pictures', category: 'Media Coverage', price: 775, unit: 'event', displayUnit: 'event' },
+        { id: 'photography-250', label: '250 Edited Pictures', name: 'Photography — 250 Edited Pictures', category: 'Media Coverage', price: 1000, unit: 'event', displayUnit: 'event' }
+      ] },
+      'videography': { id: 'videography', label: 'Media Coverage', title: 'Videography', image: 'images/products/videography.png', mediaClass: 'addon-media-wide', copy: 'Add cinematic video coverage for recap content, social media clips, event highlights, and stronger post-event marketing value.', options: [
+        { id: 'videography-15', label: '15 Second Recap', name: 'Videography — 15 Second Recap', category: 'Media Coverage', price: 600, unit: 'event', displayUnit: 'event' },
+        { id: 'videography-30', label: '30 Second Recap', name: 'Videography — 30 Second Recap', category: 'Media Coverage', price: 750, unit: 'event', displayUnit: 'event' },
+        { id: 'videography-45', label: '45 Second Recap', name: 'Videography — 45 Second Recap', category: 'Media Coverage', price: 900, unit: 'event', displayUnit: 'event' },
+        { id: 'videography-60', label: '1 Minute Recap', name: 'Videography — 1 Minute Recap', category: 'Media Coverage', price: 1100, unit: 'event', displayUnit: 'event' }
+      ] },
 
-      'additional-subwoofer': {
-        id: 'additional-subwoofer',
-        label: 'Sound',
-        title: 'Additional Subwoofer',
-        image: 'images/products/qsc-subwoofer.png',
-        mediaClass: 'addon-media-gear',
-        copy: 'Add stronger bass and more low-end impact. Best for larger dance floors, DJs, high-energy parties, outdoor events, and rooms where the music needs more weight.',
-        options: [
-          {
-            id: 'additional-subwoofer-single',
-            label: '1 Additional Subwoofer',
-            name: 'Additional Subwoofer',
-            category: 'Sound',
-            price: 175,
-            unit: 'subwoofer',
-            displayUnit: 'subwoofer'
-          }
-        ]
-      },
+      'photo-booth': { id: 'photo-booth', label: 'Guest Experience', title: 'Photo Booth', image: 'images/products/photo-booth-digital.png', mediaClass: 'addon-media-tall', copy: 'Give guests something interactive to do and something easy to share.', options: [
+        { id: 'photo-booth-digital-only', label: 'Digital Only', name: 'Photo Booth — Digital Only', category: 'Guest Experience', price: 395, unit: 'event', displayUnit: 'event' },
+        { id: 'photo-booth-digital-print', label: 'Digital + Print', name: 'Photo Booth — Digital + Print', category: 'Guest Experience', price: 550, unit: 'event', displayUnit: 'event' }
+      ] },
+      'red-carpet': { id: 'red-carpet', label: 'Guest Experience', title: 'Red Carpet', image: 'images/products/red-carpet.png', mediaClass: 'addon-media-wide', copy: 'Add a clean arrival or photo moment. Includes stanchions with velvet ropes for a stronger entrance, VIP, or photo-area look.', options: [
+        { id: 'red-carpet-10ft', label: '10ft Red Carpet + Stanchions & Velvet Ropes', name: 'Red Carpet — 10ft with Stanchions & Velvet Ropes', category: 'Guest Experience', price: 75, unit: 'event', displayUnit: 'event' },
+        { id: 'red-carpet-20ft', label: '20ft Red Carpet + Stanchions & Velvet Ropes', name: 'Red Carpet — 20ft with Stanchions & Velvet Ropes', category: 'Guest Experience', price: 125, unit: 'event', displayUnit: 'event' }
+      ] },
+      'foam-glow-sticks': { id: 'foam-glow-sticks', label: 'Guest Experience', title: 'Foam Glow Sticks', image: 'images/products/foam-glow-sticks.png', mediaClass: 'addon-media-gear', copy: 'Add crowd energy for dance floors, club-style events, quinceañeras, birthdays, and high-energy party moments. Sold in packs of 25.', options: [{ id: 'foam-glow-sticks-pack-25', label: 'Pack of 25 Foam Glow Sticks', name: 'Foam Glow Sticks — Pack of 25', category: 'Guest Experience', price: 30, unit: 'pack', displayUnit: 'pack of 25' }] },
+      'led-bottle-sign': { id: 'led-bottle-sign', label: 'Guest Experience', title: 'LED Bottle Sign', image: 'images/products/led-bottle-sign.png', mediaClass: 'addon-media-wide', copy: 'Custom LED bottle sign display for VIP tables, bottle service moments, birthday entrances, nightlife-style events, and personalized guest messages.', options: [{ id: 'led-bottle-sign', label: 'LED Bottle Sign', name: 'LED Bottle Sign', category: 'Guest Experience', price: 60, unit: 'event', displayUnit: 'event' }] },
+      'led-cocktail-tables': { id: 'led-cocktail-tables', label: 'Guest Experience', title: 'LED Glow Cocktail Tables', image: 'images/products/led-cocktail-tables.png', mediaClass: 'addon-media-gear', copy: 'Light-up standing cocktail tables for lounges, VIP areas, cocktail hours, party spaces, and guest gathering areas.', options: [{ id: 'led-glow-cocktail-table', label: 'LED Glow Cocktail Table', name: 'LED Glow Cocktail Tables', category: 'Guest Experience', price: 70, unit: 'table', displayUnit: 'table' }] },
 
-      'microphone': {
-        id: 'microphone',
-        label: 'Sound',
-        title: 'Microphone',
-        image: 'images/products/wireless-mic.png',
-        mediaClass: 'addon-media-gear',
-        copy: 'Add a microphone for speeches, announcements, ceremony use, event hosting, introductions, or basic audio support.',
-        options: [
-          {
-            id: 'microphone-single',
-            label: '1 Microphone',
-            name: 'Microphone',
-            category: 'Sound',
-            price: 75,
-            unit: 'mic',
-            displayUnit: 'mic'
-          }
-        ]
-      },
+      'glow-lighting-package': { id: 'glow-lighting-package', label: 'Lighting Packages', title: 'Glow Lighting Package', image: 'images/products/glow-lighting-package.png', mediaClass: 'addon-media-wide', copy: 'Includes 10 uplights and 1 Chauvet GigBAR 2.', options: [{ id: 'glow-lighting-package', label: 'Glow Lighting Package', name: 'Glow Lighting Package — 10 Uplights + Chauvet GigBAR 2', category: 'Lighting Packages', price: 225, unit: 'event', displayUnit: 'event' }] },
+      'pulse-lighting-package': { id: 'pulse-lighting-package', label: 'Lighting Packages', title: 'Pulse Lighting Package', image: 'images/products/pulse-lighting-package.png', mediaClass: 'addon-media-wide', copy: 'Includes 10 uplights, 1 Chauvet GigBAR 2, and 2 Intimidator Spot 355 IRC moving heads on Global Truss F34 totems.', options: [{ id: 'pulse-lighting-package', label: 'Pulse Lighting Package', name: 'Pulse Lighting Package — 10 Uplights + Chauvet GigBAR 2 + 2 Intimidator Spot 355 IRC with Global Truss F34 Totems', category: 'Lighting Packages', price: 500, unit: 'event', displayUnit: 'event' }] },
+      'district-lighting-package': { id: 'district-lighting-package', label: 'Lighting Packages', title: 'District Lighting Package', image: 'images/products/district-lighting-package.png', mediaClass: 'addon-media-wide', copy: 'Includes 15 uplights, 1 Chauvet GigBAR 2, 4 Intimidator Spot 355 IRC moving heads, 2 Chauvet Wash FX 2 lights, and 2 fog/haze machines.', options: [{ id: 'district-lighting-package', label: 'District Lighting Package', name: 'District Lighting Package — 15 Uplights + Chauvet GigBAR 2 + 4 Intimidator Spot 355 IRC + 2 Chauvet Wash FX 2 + 2 Fog/Haze Machines', category: 'Lighting Packages', price: 850, unit: 'event', displayUnit: 'event' }] },
+      'uplights': { id: 'uplights', label: 'Lighting', title: 'Uplights', image: 'images/products/uplight.png', mediaClass: 'addon-media-gear', copy: 'Add extra room color coverage for larger venues, walls, corners, columns, stages, entrances, and photo areas.', options: [
+        { id: 'uplights-5-pack', label: '5 Uplights', name: 'Uplights — 5 Units', category: 'Lighting', price: 75, unit: 'pack', displayUnit: 'pack' },
+        { id: 'uplights-10-pack', label: '10 Uplights', name: 'Uplights — 10 Units', category: 'Lighting', price: 140, unit: 'pack', displayUnit: 'pack' },
+        { id: 'uplights-15-pack', label: '15 Uplights', name: 'Uplights — 15 Units', category: 'Lighting', price: 185, unit: 'pack', displayUnit: 'pack' }
+      ] },
+      'moving-heads': { id: 'moving-heads', label: 'Lighting', title: 'Intimidator Spot 355 IRC', image: 'images/products/moving-head.png', mediaClass: 'addon-media-gear', copy: 'Add Intimidator Spot 355 IRC moving heads for a bigger production look.', options: [
+        { id: 'moving-heads-2-heads-2-totems', label: '2 Intimidator Spot 355 IRC + 2 Global Truss F34 Totems', name: 'Intimidator Spot 355 IRC — 2 Heads with 2 Global Truss F34 Totems', category: 'Lighting', price: 325, unit: 'setup', displayUnit: 'setup' },
+        { id: 'moving-heads-2-heads-goal-post', label: '2 Intimidator Spot 355 IRC + Global Truss F34 Goal Post', name: 'Intimidator Spot 355 IRC — 2 Heads with Global Truss F34 Goal Post', category: 'Lighting', price: 475, unit: 'setup', displayUnit: 'setup' },
+        { id: 'moving-heads-4-heads-4-totems', label: '4 Intimidator Spot 355 IRC + 4 Global Truss F34 Totems', name: 'Intimidator Spot 355 IRC — 4 Heads with 4 Global Truss F34 Totems', category: 'Lighting', price: 650, unit: 'setup', displayUnit: 'setup' },
+        { id: 'moving-heads-4-heads-2-totems-goal-post', label: '4 Intimidator Spot 355 IRC + 2 Totems + Goal Post', name: 'Intimidator Spot 355 IRC — 4 Heads with 2 Global Truss F34 Totems + Goal Post', category: 'Lighting', price: 825, unit: 'setup', displayUnit: 'setup' }
+      ] },
+      'beam-140sr': { id: 'beam-140sr', label: 'Lighting', title: 'Chauvet Intimidator Beam 140SR', image: 'images/products/intimidator-beam-140sr.png', mediaClass: 'addon-media-gear', copy: 'Add Chauvet Intimidator Beam 140SR moving head beam lights for sharper aerial looks, beam effects, DJ energy, and high-impact dance floor moments.', options: [
+        { id: 'beam-140sr-single', label: '1 Chauvet Intimidator Beam 140SR', name: 'Chauvet Intimidator Beam 140SR', category: 'Lighting', price: 125, unit: 'fixture', displayUnit: 'fixture' },
+        { id: 'beam-140sr-2-units', label: '2 Chauvet Intimidator Beam 140SR', name: 'Chauvet Intimidator Beam 140SR — 2 Units', category: 'Lighting', price: 225, unit: 'pair', displayUnit: 'pair' }
+      ] },
+      'light-bar': { id: 'light-bar', label: 'Lighting', title: 'Chauvet GigBAR 2', image: 'images/products/light-bar.png', mediaClass: 'addon-media-wide', copy: 'Add a Chauvet GigBAR 2 for extra color, movement, and visual presence around the DJ area, stage area, or dance floor.', options: [{ id: 'light-bar-single', label: '1 Chauvet GigBAR 2', name: 'Chauvet GigBAR 2', category: 'Lighting', price: 100, unit: 'event', displayUnit: 'event' }] },
+      'wash-lights': { id: 'wash-lights', label: 'Lighting', title: 'Chauvet Wash FX 2', image: 'images/products/wash-lights.png', mediaClass: 'addon-media-gear', copy: 'Add 2 Chauvet Wash FX 2 wash lights for wider color coverage across dance floors, stages, walls, and performance areas.', options: [{ id: 'wash-lights-2-units', label: '2 Chauvet Wash FX 2', name: 'Chauvet Wash FX 2 — 2 Units', category: 'Lighting', price: 125, unit: 'pack', displayUnit: 'pack' }] },
 
-      'photography': {
-        id: 'photography',
-        label: 'Media Coverage',
-        title: 'Photography',
-        image: 'images/products/photography.png',
-        mediaClass: 'addon-media-wide',
-        copy: 'Add professional event photography coverage focused on guests, moments, details, energy, and the overall look of the event.',
-        options: [
-          {
-            id: 'photography-50',
-            label: '50 Edited Pictures',
-            name: 'Photography — 50 Edited Pictures',
-            category: 'Media Coverage',
-            price: 625,
-            unit: 'event',
-            displayUnit: 'event'
-          },
-          {
-            id: 'photography-100',
-            label: '100 Edited Pictures',
-            name: 'Photography — 100 Edited Pictures',
-            category: 'Media Coverage',
-            price: 750,
-            unit: 'event',
-            displayUnit: 'event'
-          },
-          {
-            id: 'photography-150',
-            label: '150 Edited Pictures',
-            name: 'Photography — 150 Edited Pictures',
-            category: 'Media Coverage',
-            price: 875,
-            unit: 'event',
-            displayUnit: 'event'
-          },
-          {
-            id: 'photography-250',
-            label: '250 Edited Pictures',
-            name: 'Photography — 250 Edited Pictures',
-            category: 'Media Coverage',
-            price: 1125,
-            unit: 'event',
-            displayUnit: 'event'
-          }
-        ]
-      },
+      'cold-sparks': { id: 'cold-sparks', label: 'Effects', title: 'Cold Spark Machines', image: 'images/products/cold-spark.png', mediaClass: 'addon-media-gear', copy: 'Add high-impact spark effects for entrances, first dances, music drops, reveals, and big event moments. Venue approval may be required.', options: [
+        { id: 'cold-sparks-2-units', label: '2 Cold Spark Machines', name: 'Cold Spark Machines — 2 Units', category: 'Effects', price: 375, unit: 'setup', displayUnit: 'setup' },
+        { id: 'cold-sparks-4-units', label: '4 Cold Spark Machines', name: 'Cold Spark Machines — 4 Units', category: 'Effects', price: 650, unit: 'setup', displayUnit: 'setup' }
+      ] },
+      'co2-cannons': { id: 'co2-cannons', label: 'Effects', title: 'CO2 Cannons', image: 'images/products/co2-cannon.png', mediaClass: 'addon-media-gear', copy: 'Add 2 mounted CO2 cannons for high-impact drops, entrances, dance floor moments, and party effects. CO2 supply is confirmed during booking.', options: [{ id: 'co2-cannons-2-units', label: '2 CO2 Cannons', name: 'CO2 Cannons — 2 Units', category: 'Effects', price: 375, unit: 'setup', displayUnit: 'setup' }] },
+      'co2-led-gun': { id: 'co2-led-gun', label: 'Effects', title: 'CO2 LED Gun', image: 'images/products/co2-led-gun.png', mediaClass: 'addon-media-gear', copy: 'Add 1 handheld CO2 LED gun for crowd hype moments, birthday drops, entrances, and nightlife-style event upgrades. CO2 supply is confirmed during booking.', options: [{ id: 'co2-led-gun-1-unit', label: '1 CO2 LED Gun', name: 'CO2 LED Gun — 1 Unit', category: 'Effects', price: 200, unit: 'event', displayUnit: 'event' }] },
+      'fog-machines': { id: 'fog-machines', label: 'Effects', title: 'Fog / Haze Machines', image: 'images/products/fog-machine.png', mediaClass: 'addon-media-gear', copy: 'Add fog or haze to make beams and lighting effects more visible and atmospheric. Venue approval may be required.', options: [{ id: 'fog-machines-2-units', label: '2 Fog / Haze Machines', name: 'Fog / Haze Machines — 2 Units', category: 'Effects', price: 125, unit: 'setup', displayUnit: 'setup' }] },
+      'disco-ball-20in': { id: 'disco-ball-20in', label: 'Effects', title: 'ADJ Disco Ball — 20 Inch', image: 'images/products/adj-disco-ball-20in.png', mediaClass: 'addon-media-gear', copy: 'Add a 20 inch ADJ disco ball for classic mirrored reflections, dance floor sparkle, themed events, parties, and nightlife-style room atmosphere.', options: [{ id: 'adj-disco-ball-20in', label: '20 Inch ADJ Disco Ball', name: 'ADJ Disco Ball — 20 Inch', category: 'Effects', price: 75, unit: 'event', displayUnit: 'event' }] },
 
-      'videography': {
-        id: 'videography',
-        label: 'Media Coverage',
-        title: 'Videography',
-        image: 'images/products/videography.png',
-        mediaClass: 'addon-media-wide',
-        copy: 'Add cinematic video coverage for recap content, social media clips, event highlights, and stronger post-event marketing value.',
-        options: [
-          {
-            id: 'videography-15',
-            label: '15 Second Recap',
-            name: 'Videography — 15 Second Recap',
-            category: 'Media Coverage',
-            price: 750,
-            unit: 'event',
-            displayUnit: 'event'
-          },
-          {
-            id: 'videography-30',
-            label: '30 Second Recap',
-            name: 'Videography — 30 Second Recap',
-            category: 'Media Coverage',
-            price: 875,
-            unit: 'event',
-            displayUnit: 'event'
-          },
-          {
-            id: 'videography-45',
-            label: '45 Second Recap',
-            name: 'Videography — 45 Second Recap',
-            category: 'Media Coverage',
-            price: 1000,
-            unit: 'event',
-            displayUnit: 'event'
-          },
-          {
-            id: 'videography-60',
-            label: '1 Minute Recap',
-            name: 'Videography — 1 Minute Recap',
-            category: 'Media Coverage',
-            price: 1250,
-            unit: 'event',
-            displayUnit: 'event'
-          }
-        ]
-      },
+      'led-wall': { id: 'led-wall', label: 'Video / Visuals', title: 'LED Walls & Visuals', image: 'images/products/led-wall.png', mediaClass: 'addon-media-wide', copy: 'Add a visual screen element for logos, slideshows, DJ visuals, branding, presentations, or custom event content.', options: [
+        { id: 'led-wall-floor', label: 'Floor-Supported LED Wall', name: 'Floor-Supported LED Wall', category: 'Video / Visuals', price: 2200, unit: 'event', displayUnit: 'event' },
+        { id: 'led-wall-2-totems', label: 'LED Wall with 2 Global Truss F34 Totems', name: 'LED Wall with 2 Global Truss F34 Totems', category: 'Video / Visuals', price: 2400, unit: 'event', displayUnit: 'event' },
+        { id: 'led-screen-wall', label: 'LED Wall with Global Truss F34 Goal Post', name: 'LED Wall with Global Truss F34 Goal Post', category: 'Video / Visuals', price: 2600, unit: 'event', displayUnit: 'event' }
+      ] },
 
-      'photo-booth': {
-        id: 'photo-booth',
-        label: 'Guest Experience',
-        title: 'Photo Booth',
-        image: 'images/products/photo-booth-digital.png',
-        mediaClass: 'addon-media-tall',
-        copy: 'Give guests something interactive to do and something easy to share. Best for weddings, quinces, birthdays, corporate events, and private parties.',
-        options: [
-          {
-            id: 'photo-booth-digital-only',
-            label: 'Digital Only',
-            name: 'Photo Booth — Digital Only',
-            category: 'Guest Experience',
-            price: 400,
-            unit: 'event',
-            displayUnit: 'event'
-          },
-          {
-            id: 'photo-booth-digital-print',
-            label: 'Digital + Print',
-            name: 'Photo Booth — Digital + Print',
-            category: 'Guest Experience',
-            price: 600,
-            unit: 'event',
-            displayUnit: 'event'
-          }
-        ]
-      },
+      'premium-club-mixer-cdj-package': { id: 'premium-club-mixer-cdj-package', label: 'DJ Rentals', title: 'Premium Club Mixer & CDJ Package', image: 'images/products/cdj-djm-package.png', mediaClass: 'addon-media-wide', copy: 'Premium club-style DJ setup with 2 Pioneer CDJ 3000 players and 1 Pioneer DJM-900NXS2 mixer.', options: [{ id: 'premium-club-mixer-cdj-package', label: 'Premium Club Mixer & CDJ Package', name: 'Premium Club Mixer & CDJ Package — 2 CDJ 3000 + DJM-900NXS2', category: 'DJ Rentals', price: 350, unit: 'day', displayUnit: 'day' }] },
+      'cdj-3000': { id: 'cdj-3000', label: 'DJ Rentals', title: 'CDJ 3000', image: 'images/products/cdj-3000.png', mediaClass: 'addon-media-gear', copy: 'Standalone Pioneer CDJ 3000 rental for professional DJ setups, guest DJs, club-style events, and custom booths.', options: [{ id: 'cdj-3000-single', label: 'CDJ 3000', name: 'CDJ 3000', category: 'DJ Rentals', price: 125, unit: 'day', displayUnit: 'day' }] },
+      'djm-900nxs2': { id: 'djm-900nxs2', label: 'DJ Rentals', title: 'Pioneer DJM-900NXS2', image: 'images/products/djm-900nxs2.png', mediaClass: 'addon-media-gear', copy: 'Professional Pioneer DJ mixer rental for CDJ setups, guest DJs, club-style booths, and event production builds.', options: [{ id: 'djm-900nxs2', label: 'Pioneer DJM-900NXS2', name: 'Pioneer DJM-900NXS2', category: 'DJ Rentals', price: 100, unit: 'day', displayUnit: 'day' }] },
+      'xdj-xz': { id: 'xdj-xz', label: 'DJ Rentals', title: 'XDJ-XZ', image: 'images/products/xdj-xz.png', mediaClass: 'addon-media-gear', copy: 'Standalone DJ controller rental for compact DJ setups, private events, and all-in-one booth builds.', options: [{ id: 'xdj-xz', label: 'XDJ-XZ', name: 'XDJ-XZ', category: 'DJ Rentals', price: 175, unit: 'day', displayUnit: 'day' }] },
 
-      'red-carpet': {
-        id: 'red-carpet',
-        label: 'Guest Experience',
-        title: 'Red Carpet',
-        image: 'images/products/red-carpet.png',
-        mediaClass: 'addon-media-wide',
-        copy: 'Add a clean arrival or photo moment. Includes stanchions with velvet ropes for a stronger entrance, VIP, or photo-area look.',
-        options: [
-          {
-            id: 'red-carpet-10ft',
-            label: '10ft Red Carpet + Stanchions & Velvet Ropes',
-            name: 'Red Carpet — 10ft with Stanchions & Velvet Ropes',
-            category: 'Guest Experience',
-            price: 75,
-            unit: 'event',
-            displayUnit: 'event'
-          },
-          {
-            id: 'red-carpet-20ft',
-            label: '20ft Red Carpet + Stanchions & Velvet Ropes',
-            name: 'Red Carpet — 20ft with Stanchions & Velvet Ropes',
-            category: 'Guest Experience',
-            price: 125,
-            unit: 'event',
-            displayUnit: 'event'
-          }
-        ]
-      },
-
-      'foam-glow-sticks': {
-        id: 'foam-glow-sticks',
-        label: 'Guest Experience',
-        title: 'Foam Glow Sticks',
-        image: 'images/products/foam-glow-sticks.png',
-        mediaClass: 'addon-media-gear',
-        copy: 'Add crowd energy for dance floors, club-style events, quinceañeras, birthdays, and high-energy party moments. Sold in packs of 25.',
-        options: [
-          {
-            id: 'foam-glow-sticks-pack-25',
-            label: 'Pack of 25 Foam Glow Sticks',
-            name: 'Foam Glow Sticks — Pack of 25',
-            category: 'Guest Experience',
-            price: 75,
-            unit: 'pack',
-            displayUnit: 'pack of 25'
-          }
-        ]
-      },
-
-      'led-bottle-sign': {
-        id: 'led-bottle-sign',
-        label: 'Guest Experience',
-        title: 'LED Bottle Sign',
-        image: 'images/products/led-bottle-sign.png',
-        mediaClass: 'addon-media-wide',
-        copy: 'Custom LED bottle sign display for VIP tables, bottle service moments, birthday entrances, nightlife-style events, and personalized guest messages.',
-        options: [
-          {
-            id: 'led-bottle-sign',
-            label: 'LED Bottle Sign',
-            name: 'LED Bottle Sign',
-            category: 'Guest Experience',
-            price: 100,
-            unit: 'event',
-            displayUnit: 'event'
-          }
-        ]
-      },
-
-      'led-cocktail-tables': {
-        id: 'led-cocktail-tables',
-        label: 'Guest Experience',
-        title: 'LED Glow Cocktail Tables',
-        image: 'images/products/led-cocktail-tables.png',
-        mediaClass: 'addon-media-gear',
-        copy: 'Light-up standing cocktail tables for lounges, VIP areas, cocktail hours, party spaces, and guest gathering areas.',
-        options: [
-          {
-            id: 'led-glow-cocktail-table',
-            label: 'LED Glow Cocktail Table',
-            name: 'LED Glow Cocktail Tables',
-            category: 'Guest Experience',
-            price: 75,
-            unit: 'table',
-            displayUnit: 'table'
-          }
-        ]
-      },
-
-      'glow-lighting-package': {
-        id: 'glow-lighting-package',
-        label: 'Lighting Packages',
-        title: 'Glow Lighting Package',
-        image: 'images/products/glow-lighting-package.png',
-        mediaClass: 'addon-media-wide',
-        copy: 'Includes 10 uplights and 1 LED light bar. Best for smaller rooms, cocktail areas, private parties, and events that need a clean color wash without a full moving-head setup.',
-        options: [
-          {
-            id: 'glow-lighting-package',
-            label: 'Glow Lighting Package',
-            name: 'Glow Lighting Package — 10 Uplights + 1 LED Light Bar',
-            category: 'Lighting Packages',
-            price: 200,
-            unit: 'event',
-            displayUnit: 'event'
-          }
-        ]
-      },
-
-      'pulse-lighting-package': {
-        id: 'pulse-lighting-package',
-        label: 'Lighting Packages',
-        title: 'Pulse Lighting Package',
-        image: 'images/products/pulse-lighting-package.png',
-        mediaClass: 'addon-media-wide',
-        copy: 'Includes 10 uplights, 1 LED light bar, and 2 moving head lights on totems. Best for events that need dance floor movement and a stronger party look.',
-        options: [
-          {
-            id: 'pulse-lighting-package',
-            label: 'Pulse Lighting Package',
-            name: 'Pulse Lighting Package — 10 Uplights + LED Light Bar + 2 Moving Heads with Totems',
-            category: 'Lighting Packages',
-            price: 650,
-            unit: 'event',
-            displayUnit: 'event'
-          }
-        ]
-      },
-
-      'district-lighting-package': {
-        id: 'district-lighting-package',
-        label: 'Lighting Packages',
-        title: 'District Lighting Package',
-        image: 'images/products/district-lighting-package.png',
-        mediaClass: 'addon-media-wide',
-        copy: 'Includes 15 uplights, 1 LED light bar, 4 moving head lights, 2 wash lights, and 2 fog/haze machines. Best for larger events and full dance floor impact.',
-        options: [
-          {
-            id: 'district-lighting-package',
-            label: 'District Lighting Package',
-            name: 'District Lighting Package — 15 Uplights + LED Light Bar + 4 Moving Heads + 2 Wash Lights + 2 Fog/Haze Machines',
-            category: 'Lighting Packages',
-            price: 1000,
-            unit: 'event',
-            displayUnit: 'event'
-          }
-        ]
-      },
-
-      'uplights': {
-        id: 'uplights',
-        label: 'Lighting',
-        title: 'Uplights',
-        image: 'images/products/uplight.png',
-        mediaClass: 'addon-media-gear',
-        copy: 'Add extra room color coverage for larger venues, walls, corners, columns, stages, entrances, and photo areas.',
-        options: [
-          {
-            id: 'uplights-5-pack',
-            label: '5 Uplights',
-            name: 'Uplights — 5 Units',
-            category: 'Lighting',
-            price: 75,
-            unit: 'pack',
-            displayUnit: 'pack'
-          },
-          {
-            id: 'uplights-10-pack',
-            label: '10 Uplights',
-            name: 'Uplights — 10 Units',
-            category: 'Lighting',
-            price: 150,
-            unit: 'pack',
-            displayUnit: 'pack'
-          },
-          {
-            id: 'uplights-15-pack',
-            label: '15 Uplights',
-            name: 'Uplights — 15 Units',
-            category: 'Lighting',
-            price: 200,
-            unit: 'pack',
-            displayUnit: 'pack'
-          }
-        ]
-      },
-
-      'moving-heads': {
-        id: 'moving-heads',
-        label: 'Lighting',
-        title: 'Moving Heads',
-        image: 'images/products/moving-head.png',
-        mediaClass: 'addon-media-gear',
-        copy: 'Add moving head lights for a bigger production look. Best for dance floors, DJ booths, stage looks, entrances, and dramatic room energy.',
-        options: [
-          {
-            id: 'moving-heads-2-heads-2-totems',
-            label: '2 Moving Heads + 2 Totems',
-            name: 'Moving Heads — 2 Heads with 2 Totems',
-            category: 'Lighting',
-            price: 375,
-            unit: 'setup',
-            displayUnit: 'setup'
-          },
-          {
-            id: 'moving-heads-2-heads-goal-post',
-            label: '2 Moving Heads + Goal Post',
-            name: 'Moving Heads — 2 Heads with Goal Post',
-            category: 'Lighting',
-            price: 550,
-            unit: 'setup',
-            displayUnit: 'setup'
-          },
-          {
-            id: 'moving-heads-4-heads-4-totems',
-            label: '4 Moving Heads + 4 Totems',
-            name: 'Moving Heads — 4 Heads with 4 Totems',
-            category: 'Lighting',
-            price: 750,
-            unit: 'setup',
-            displayUnit: 'setup'
-          },
-          {
-            id: 'moving-heads-4-heads-2-totems-goal-post',
-            label: '4 Moving Heads + 2 Totems + Goal Post',
-            name: 'Moving Heads — 4 Heads with 2 Totems + Goal Post',
-            category: 'Lighting',
-            price: 950,
-            unit: 'setup',
-            displayUnit: 'setup'
-          }
-        ]
-      },
-
-      'light-bar': {
-        id: 'light-bar',
-        label: 'Lighting',
-        title: 'Light Bar',
-        image: 'images/products/light-bar.png',
-        mediaClass: 'addon-media-wide',
-        copy: 'Add a light bar for extra color, movement, and visual presence around the DJ area, stage area, or dance floor.',
-        options: [
-          {
-            id: 'light-bar-single',
-            label: '1 Light Bar',
-            name: 'Light Bar',
-            category: 'Lighting',
-            price: 150,
-            unit: 'event',
-            displayUnit: 'event'
-          }
-        ]
-      },
-
-      'wash-lights': {
-        id: 'wash-lights',
-        label: 'Lighting',
-        title: 'Wash Lights',
-        image: 'images/products/wash-lights.png',
-        mediaClass: 'addon-media-gear',
-        copy: 'Add broader color coverage across dance floors, stages, walls, and performance areas.',
-        options: [
-          {
-            id: 'wash-lights-2-units',
-            label: '2 Wash Lights',
-            name: 'Wash Lights — 2 Units',
-            category: 'Lighting',
-            price: 100,
-            unit: 'pack',
-            displayUnit: 'pack'
-          }
-        ]
-      },
-
-      'cold-sparks': {
-        id: 'cold-sparks',
-        label: 'Effects',
-        title: 'Cold Spark Machines',
-        image: 'images/products/cold-spark.png',
-        mediaClass: 'addon-media-gear',
-        copy: 'Add high-impact spark effects for entrances, first dances, music drops, reveals, and big event moments. Venue approval may be required.',
-        options: [
-          {
-            id: 'cold-sparks-2-units',
-            label: '2 Cold Spark Machines',
-            name: 'Cold Spark Machines — 2 Units',
-            category: 'Effects',
-            price: 250,
-            unit: 'setup',
-            displayUnit: 'setup'
-          },
-          {
-            id: 'cold-sparks-4-units',
-            label: '4 Cold Spark Machines',
-            name: 'Cold Spark Machines — 4 Units',
-            category: 'Effects',
-            price: 400,
-            unit: 'setup',
-            displayUnit: 'setup'
-          }
-        ]
-      },
-
-      'fog-machines': {
-        id: 'fog-machines',
-        label: 'Effects',
-        title: 'Fog / Haze Machines',
-        image: 'images/products/fog-machine.png',
-        mediaClass: 'addon-media-gear',
-        copy: 'Add fog or haze to make beams and lighting effects more visible and atmospheric. Venue approval may be required.',
-        options: [
-          {
-            id: 'fog-machines-2-units',
-            label: '2 Fog / Haze Machines',
-            name: 'Fog / Haze Machines — 2 Units',
-            category: 'Effects',
-            price: 150,
-            unit: 'setup',
-            displayUnit: 'setup'
-          }
-        ]
-      },
-
-      'led-wall': {
-        id: 'led-wall',
-        label: 'Video / Visuals',
-        title: 'LED Screen / Wall',
-        image: 'images/products/led-wall.png',
-        mediaClass: 'addon-media-wide',
-        copy: 'Add a visual screen element for logos, slideshows, DJ visuals, branding, presentations, or custom event content.',
-        options: [
-          {
-            id: 'led-screen-wall',
-            label: 'LED Screen / Wall',
-            name: 'LED Screen / Wall',
-            category: 'Video / Visuals',
-            price: 1200,
-            unit: 'event',
-            displayUnit: 'event'
-          }
-        ]
-      },
-
-      'premium-club-mixer-cdj-package': {
-        id: 'premium-club-mixer-cdj-package',
-        label: 'DJ Rentals',
-        title: 'Premium Club Mixer & CDJ Package',
-        image: 'images/products/cdj-djm-package.png',
-        mediaClass: 'addon-media-wide',
-        copy: 'Premium club-style DJ setup with 2 Pioneer CDJ 3000 players and 1 Pioneer DJM-900NXS2 mixer.',
-        options: [
-          {
-            id: 'premium-club-mixer-cdj-package',
-            label: 'Premium Club Mixer & CDJ Package',
-            name: 'Premium Club Mixer & CDJ Package — 2 CDJ 3000 + DJM-900NXS2',
-            category: 'DJ Rentals',
-            price: 400,
-            unit: 'day',
-            displayUnit: 'day'
-          }
-        ]
-      },
-
-      'cdj-3000': {
-        id: 'cdj-3000',
-        label: 'DJ Rentals',
-        title: 'CDJ 3000',
-        image: 'images/products/cdj-3000.png',
-        mediaClass: 'addon-media-gear',
-        copy: 'Standalone Pioneer CDJ 3000 rental for professional DJ setups, guest DJs, club-style events, and custom booths.',
-        options: [
-          {
-            id: 'cdj-3000-single',
-            label: 'CDJ 3000',
-            name: 'CDJ 3000',
-            category: 'DJ Rentals',
-            price: 150,
-            unit: 'day',
-            displayUnit: 'day'
-          }
-        ]
-      },
-
-      'djm-900nxs2': {
-        id: 'djm-900nxs2',
-        label: 'DJ Rentals',
-        title: 'Pioneer DJM-900NXS2',
-        image: 'images/products/djm-900nxs2.png',
-        mediaClass: 'addon-media-gear',
-        copy: 'Professional Pioneer DJ mixer rental for CDJ setups, guest DJs, club-style booths, and event production builds.',
-        options: [
-          {
-            id: 'djm-900nxs2',
-            label: 'Pioneer DJM-900NXS2',
-            name: 'Pioneer DJM-900NXS2',
-            category: 'DJ Rentals',
-            price: 125,
-            unit: 'day',
-            displayUnit: 'day'
-          }
-        ]
-      },
-
-      'xdj-xz': {
-        id: 'xdj-xz',
-        label: 'DJ Rentals',
-        title: 'XDJ-XZ',
-        image: 'images/products/xdj-xz.png',
-        mediaClass: 'addon-media-gear',
-        copy: 'Standalone DJ controller rental for compact DJ setups, private events, and all-in-one booth builds.',
-        options: [
-          {
-            id: 'xdj-xz',
-            label: 'XDJ-XZ',
-            name: 'XDJ-XZ',
-            category: 'DJ Rentals',
-            price: 200,
-            unit: 'day',
-            displayUnit: 'day'
-          }
-        ]
-      },
-
-      'trussing-2-totems': {
-        id: 'trussing-2-totems',
-        label: 'Staging & Trussing',
-        title: 'Trussing — 2 Totems',
-        image: 'images/products/trussing-2-totems.png',
-        mediaClass: 'addon-media-tall',
-        copy: '2 truss totems at 8ft each for a cleaner vertical production look, lighting placement, DJ booth framing, or entrance visuals.',
-        options: [
-          {
-            id: 'trussing-2-totems',
-            label: '2 Totems — 8ft Each',
-            name: 'Trussing — 2 Totems 8ft',
-            category: 'Staging & Trussing',
-            price: 300,
-            unit: 'setup',
-            displayUnit: 'setup'
-          }
-        ]
-      },
-
-      'trussing-4-totems': {
-        id: 'trussing-4-totems',
-        label: 'Staging & Trussing',
-        title: 'Trussing — 4 Totems',
-        image: 'images/products/trussing-4-totems.png',
-        mediaClass: 'addon-media-wide',
-        copy: '4 truss totems at 8ft each for a larger, more symmetrical production setup and stronger lighting placement.',
-        options: [
-          {
-            id: 'trussing-4-totems',
-            label: '4 Totems — 8ft Each',
-            name: 'Trussing — 4 Totems 8ft',
-            category: 'Staging & Trussing',
-            price: 500,
-            unit: 'setup',
-            displayUnit: 'setup'
-          }
-        ]
-      },
-
-      'trussing-goal-post-8x10': {
-        id: 'trussing-goal-post-8x10',
-        label: 'Staging & Trussing',
-        title: 'Trussing — Goal Post 8x10',
-        image: 'images/products/trussing-goalpost-8x10.png',
-        mediaClass: 'addon-media-wide',
-        copy: '8x10 goal post truss setup for overhead production support, lighting placement, DJ booth framing, and a bigger stage look.',
-        options: [
-          {
-            id: 'trussing-goal-post-8x10',
-            label: 'Goal Post — 8x10',
-            name: 'Trussing — Goal Post 8x10',
-            category: 'Staging & Trussing',
-            price: 700,
-            unit: 'setup',
-            displayUnit: 'setup'
-          }
-        ]
-      },
-
-      'trussing-goal-post-8x16': {
-        id: 'trussing-goal-post-8x16',
-        label: 'Staging & Trussing',
-        title: 'Trussing — Goal Post 8x16',
-        image: 'images/products/trussing-goalpost-8x16.png',
-        mediaClass: 'addon-media-wide',
-        copy: '8x16 goal post truss setup for a wider, more dramatic production footprint and larger event staging presence.',
-        options: [
-          {
-            id: 'trussing-goal-post-8x16',
-            label: 'Goal Post — 8x16',
-            name: 'Trussing — Goal Post 8x16',
-            category: 'Staging & Trussing',
-            price: 800,
-            unit: 'setup',
-            displayUnit: 'setup'
-          }
-        ]
-      }
+      'trussing-2-totems': { id: 'trussing-2-totems', label: 'Staging & Trussing', title: 'Global Truss F34 — 2 Totems', image: 'images/products/trussing-2-totems.png', mediaClass: 'addon-media-tall', copy: '2 Global Truss F34 totems at 8ft each for a cleaner vertical production look, lighting placement, DJ booth framing, or entrance visuals.', options: [{ id: 'trussing-2-totems', label: '2 Global Truss F34 Totems — 8ft Each', name: 'Global Truss F34 — 2 Totems 8ft', category: 'Staging & Trussing', price: 200, unit: 'setup', displayUnit: 'setup' }] },
+      'trussing-4-totems': { id: 'trussing-4-totems', label: 'Staging & Trussing', title: 'Global Truss F34 — 4 Totems', image: 'images/products/trussing-4-totems.png', mediaClass: 'addon-media-wide', copy: '4 Global Truss F34 totems at 8ft each for a larger, more symmetrical production setup and stronger lighting placement.', options: [{ id: 'trussing-4-totems', label: '4 Global Truss F34 Totems — 8ft Each', name: 'Global Truss F34 — 4 Totems 8ft', category: 'Staging & Trussing', price: 375, unit: 'setup', displayUnit: 'setup' }] },
+      'trussing-goal-post-8x10': { id: 'trussing-goal-post-8x10', label: 'Staging & Trussing', title: 'Global Truss F34 — Goal Post 8x10', image: 'images/products/trussing-goalpost-8x10.png', mediaClass: 'addon-media-wide', copy: 'Global Truss F34 8x10 goal post setup for overhead production support, lighting placement, DJ booth framing, and a bigger stage look.', options: [{ id: 'trussing-goal-post-8x10', label: 'Global Truss F34 Goal Post — 8x10', name: 'Global Truss F34 — Goal Post 8x10', category: 'Staging & Trussing', price: 550, unit: 'setup', displayUnit: 'setup' }] },
+      'trussing-goal-post-8x16': { id: 'trussing-goal-post-8x16', label: 'Staging & Trussing', title: 'Global Truss F34 — Goal Post 8x16', image: 'images/products/trussing-goalpost-8x16.png', mediaClass: 'addon-media-wide', copy: 'Global Truss F34 8x16 goal post setup for a wider, more dramatic production footprint and larger event staging presence.', options: [{ id: 'trussing-goal-post-8x16', label: 'Global Truss F34 Goal Post — 8x16', name: 'Global Truss F34 — Goal Post 8x16', category: 'Staging & Trussing', price: 700, unit: 'setup', displayUnit: 'setup' }] }
     };
 
     const GROUPS = [
-      {
-        id: 'popular',
-        title: 'Most Popular Upgrades',
-        copy: 'The most commonly requested add-ons after choosing a package.',
-        pills: ['High Demand', 'Fast Upgrades', 'Client Favorites'],
-        addonIds: [
-          'photo-booth',
-          'photography',
-          'pulse-lighting-package',
-          'red-carpet',
-          'foam-glow-sticks',
-          'led-bottle-sign'
-        ]
-      },
-      {
-        id: 'lighting-packages',
-        title: 'Lighting Packages',
-        copy: 'Bundled lighting options for clients who want a cleaner step-up structure instead of piecing lighting together item by item.',
-        pills: ['Bundled Lighting', 'Good / Better / Best', 'Faster Decision'],
-        addonIds: [
-          'glow-lighting-package',
-          'pulse-lighting-package',
-          'district-lighting-package'
-        ]
-      },
-      {
-        id: 'guest-experience',
-        title: 'Guest Experience',
-        copy: 'Guest-facing add-ons for photo moments, entrances, VIP areas, lounges, and event interaction.',
-        pills: ['Photo Booth', 'Guest Facing', 'Photo Moments'],
-        addonIds: [
-          'photo-booth',
-          'red-carpet',
-          'foam-glow-sticks',
-          'led-bottle-sign',
-          'led-cocktail-tables'
-        ]
-      },
-      {
-        id: 'services',
-        title: 'Event Talent & Media Services',
-        copy: 'Photography and videography coverage for events that need media, content, and creative direction.',
-        pills: ['Photo Coverage', 'Video Recaps', 'Content'],
-        addonIds: [
-          'photography',
-          'videography'
-        ]
-      },
-      {
-        id: 'foundation',
-        title: 'Sound & Mic Support',
-        copy: 'Sound reinforcement and microphone options for events that need clean audio support.',
-        pills: ['Sound Support', 'Event Foundation', 'Audio Coverage'],
-        addonIds: [
-          'pa-speaker',
-          'additional-speaker',
-          'additional-subwoofer',
-          'microphone'
-        ]
-      },
-      {
-        id: 'lighting-effects',
-        title: 'Individual Lighting & Effects',
-        copy: 'Individual visual pieces for clients who want to mix and match lighting and effects.',
-        pills: ['Mix & Match', 'Atmosphere', 'Visual Upgrades'],
-        addonIds: [
-          'cold-sparks',
-          'fog-machines',
-          'uplights',
-          'light-bar',
-          'moving-heads',
-          'wash-lights'
-        ]
-      },
-      {
-        id: 'dj-rentals',
-        title: 'DJ Rentals',
-        copy: 'Standalone DJ gear rentals for clients, DJs, and events that need professional playback equipment.',
-        pills: ['Daily Pricing', 'DJ Gear', 'Club Standard'],
-        addonIds: [
-          'premium-club-mixer-cdj-package',
-          'cdj-3000',
-          'djm-900nxs2',
-          'xdj-xz'
-        ]
-      },
-      {
-        id: 'led-walls',
-        title: 'LED Walls & Visuals',
-        copy: 'LED screen and wall options for visuals, branding, DJ content, slideshows, presentations, and high-impact event backdrops.',
-        pills: ['Visual Impact', 'Branding', 'Custom Content'],
-        addonIds: [
-          'led-wall'
-        ]
-      },
-      {
-        id: 'party-furniture',
-        title: 'Party Furniture',
-        copy: 'Furniture and guest-area upgrades that help make lounges, cocktail areas, and event spaces feel more polished.',
-        pills: ['Cocktail Areas', 'Glow Furniture', 'Guest Upgrade'],
-        addonIds: [
-          'led-cocktail-tables'
-        ]
-      },
-      {
-        id: 'staging-trussing',
-        title: 'Staging & Trussing',
-        copy: 'Trussing structures that help frame the setup, hold lighting, and create a more complete production look.',
-        pills: ['Stage Presence', 'Production Structure', 'Expandable Category'],
-        addonIds: [
-          'trussing-2-totems',
-          'trussing-4-totems',
-          'trussing-goal-post-8x10',
-          'trussing-goal-post-8x16'
-        ]
-      }
+      { id: 'popular', title: 'Most Popular Upgrades', copy: 'The most commonly requested add-ons after choosing a package.', pills: ['High Demand', 'Fast Upgrades', 'Client Favorites'], addonIds: ['photo-booth', 'photography', 'pulse-lighting-package', 'co2-led-gun', 'red-carpet', 'led-cocktail-tables', 'foam-glow-sticks', 'led-bottle-sign'] },
+      { id: 'lighting-packages', title: 'Lighting Packages', copy: 'Bundled lighting options for clients who want a cleaner step-up structure instead of piecing lighting together item by item.', pills: ['Bundled Lighting', 'Good / Better / Best', 'Faster Decision'], addonIds: ['glow-lighting-package', 'pulse-lighting-package', 'district-lighting-package'] },
+      { id: 'guest-experience', title: 'Guest Experience', copy: 'Guest-facing add-ons for photo moments, entrances, VIP areas, lounges, and event interaction.', pills: ['Photo Booth', 'Guest Facing', 'Photo Moments'], addonIds: ['photo-booth', 'red-carpet', 'foam-glow-sticks', 'led-bottle-sign', 'led-cocktail-tables'] },
+      { id: 'services', title: 'Event Talent & Media Services', copy: 'Photography and videography coverage for events that need media, content, and creative direction.', pills: ['Photo Coverage', 'Video Recaps', 'Content'], addonIds: ['photography', 'videography'] },
+      { id: 'foundation', title: 'Sound & Mic Support', copy: 'Sound reinforcement and microphone options for events that need clean audio support.', pills: ['Sound Support', 'Event Foundation', 'Audio Coverage'], addonIds: ['pa-speaker', 'additional-speaker', 'additional-subwoofer', 'microphone'] },
+      { id: 'lighting-effects', title: 'Individual Lighting & Effects', copy: 'Individual visual pieces for clients who want to mix and match lighting, CO2, fog, sparkle effects, and dance floor atmosphere.', pills: ['Mix & Match', 'Atmosphere', 'Visual Upgrades'], addonIds: ['cold-sparks', 'co2-cannons', 'co2-led-gun', 'fog-machines', 'uplights', 'light-bar', 'moving-heads', 'beam-140sr', 'wash-lights', 'disco-ball-20in'] },
+      { id: 'dj-rentals', title: 'DJ Rentals', copy: 'Standalone DJ gear rentals for clients, DJs, and events that need professional playback equipment.', pills: ['Daily Pricing', 'DJ Gear', 'Club Standard'], addonIds: ['premium-club-mixer-cdj-package', 'cdj-3000', 'djm-900nxs2', 'xdj-xz'] },
+      { id: 'led-walls', title: 'LED Walls & Visuals', copy: 'LED screen and wall options for visuals, branding, DJ content, slideshows, presentations, and high-impact event backdrops.', pills: ['Visual Impact', 'Branding', 'Custom Content'], addonIds: ['led-wall'] },
+      { id: 'staging-trussing', title: 'Staging & Trussing', copy: 'Global Truss F34 structures that help frame the setup, hold lighting, and create a more complete production look.', pills: ['Stage Presence', 'Production Structure', 'Expandable Category'], addonIds: ['trussing-2-totems', 'trussing-4-totems', 'trussing-goal-post-8x10', 'trussing-goal-post-8x16'] }
     ];
 
     let estimate = null;
 
-    function formatCurrency(value) {
-      return '$' + Number(value || 0).toLocaleString();
-    }
-
-    function safeJsonParse(value) {
-      try {
-        return value ? JSON.parse(value) : null;
-      } catch (error) {
-        return null;
-      }
-    }
-
-    function escapeHtml(value) {
-      return String(value || '')
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
-    }
-
-    function getAddon(addonId) {
-      return ADDONS[addonId] || null;
-    }
-
+    function formatCurrency(value) { return '$' + Number(value || 0).toLocaleString(); }
+    function safeJsonParse(value) { try { return value ? JSON.parse(value) : null; } catch (error) { return null; } }
+    function escapeHtml(value) { return String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;'); }
+    function getAddon(addonId) { return ADDONS[addonId] || null; }
     function getSelectedPackageName() {
-      if (estimate && estimate.package) {
-        return estimate.package;
-      }
-
+      if (estimate && estimate.package) return estimate.package;
       const selectedPackage = safeJsonParse(sessionStorage.getItem('heatDistrictSelectedPackage'));
-
-      if (selectedPackage && selectedPackage.name) {
-        return selectedPackage.name;
-      }
-
-      return '';
+      return selectedPackage && selectedPackage.name ? selectedPackage.name : '';
     }
-
     function getDuplicateWarning(option) {
       if (!option || !option.id) return '';
-
-      const selectedPackageName = getSelectedPackageName();
-      const packageWarnings = PACKAGE_DUPLICATE_WARNINGS[selectedPackageName];
-
-      if (!packageWarnings) return '';
-
-      return packageWarnings[option.id] || '';
+      const packageWarnings = PACKAGE_DUPLICATE_WARNINGS[getSelectedPackageName()];
+      return packageWarnings ? (packageWarnings[option.id] || '') : '';
     }
-
     function showDuplicateWarningModal(message) {
       return new Promise(function(resolve) {
         const backdrop = document.getElementById('duplicateModalBackdrop');
         const copy = document.getElementById('duplicateModalCopy');
         const cancelBtn = document.getElementById('duplicateModalCancel');
         const confirmBtn = document.getElementById('duplicateModalConfirm');
-
-        if (!backdrop || !copy || !cancelBtn || !confirmBtn) {
-          resolve(true);
-          return;
-        }
-
+        if (!backdrop || !copy || !cancelBtn || !confirmBtn) { resolve(true); return; }
         copy.innerHTML = '<strong>Heads up —</strong> ' + escapeHtml(message) + '<br><br>Only add this if you want extra coverage or another one.';
-
         function closeModal(result) {
           backdrop.classList.remove('open');
           document.body.style.overflow = '';
@@ -2564,368 +694,122 @@
           document.removeEventListener('keydown', onKeydown);
           resolve(result);
         }
-
-        function onCancel() {
-          closeModal(false);
-        }
-
-        function onConfirm() {
-          closeModal(true);
-        }
-
-        function onBackdropClick(event) {
-          if (event.target === backdrop) {
-            closeModal(false);
-          }
-        }
-
-        function onKeydown(event) {
-          if (event.key === 'Escape') {
-            closeModal(false);
-          }
-        }
-
+        function onCancel() { closeModal(false); }
+        function onConfirm() { closeModal(true); }
+        function onBackdropClick(event) { if (event.target === backdrop) closeModal(false); }
+        function onKeydown(event) { if (event.key === 'Escape') closeModal(false); }
         cancelBtn.addEventListener('click', onCancel);
         confirmBtn.addEventListener('click', onConfirm);
         backdrop.addEventListener('click', onBackdropClick);
         document.addEventListener('keydown', onKeydown);
-
         backdrop.classList.add('open');
         document.body.style.overflow = 'hidden';
       });
     }
-
-    function getEffectiveOption(option) {
-      if (!option) return null;
-
-      return Object.assign({}, option);
-    }
-
     function getSelectedOption(addonId, cardId) {
       const addon = getAddon(addonId);
-
-      if (!addon || !addon.options || !addon.options.length) {
-        return null;
-      }
-
+      if (!addon || !addon.options || !addon.options.length) return null;
       const select = document.getElementById('option-' + cardId);
-
-      if (!select) {
-        return getEffectiveOption(addon.options[0]);
-      }
-
+      if (!select) return Object.assign({}, addon.options[0]);
       const selectedId = select.value;
-
-      const option = addon.options.find(function(item) {
-        return item.id === selectedId;
-      }) || addon.options[0];
-
-      return getEffectiveOption(option);
+      const option = addon.options.find(function(item) { return item.id === selectedId; }) || addon.options[0];
+      return Object.assign({}, option);
     }
-
     function getQtyForOption(optionId) {
-      if (!estimate || !Array.isArray(estimate.addons)) {
-        return 0;
-      }
-
-      const existing = estimate.addons.find(function(item) {
-        return item.id === optionId;
-      });
-
+      if (!estimate || !Array.isArray(estimate.addons)) return 0;
+      const existing = estimate.addons.find(function(item) { return item.id === optionId; });
       return existing ? Number(existing.qty || 0) : 0;
     }
-
     function buildAddonCard(addonId, groupId) {
       const addon = getAddon(addonId);
-
-      if (!addon) {
-        return '';
-      }
-
+      if (!addon) return '';
       const cardId = groupId + '-' + addon.id;
       const firstOption = addon.options[0];
       const hasMultipleOptions = addon.options.length > 1;
       const imagePath = addon.image || 'images/products/' + addon.id + '.png';
       const mediaClass = addon.mediaClass || 'addon-media-gear';
-
-      const optionsHtml = hasMultipleOptions ? `
-        <div class="option-control">
-          <label>Choose Option</label>
-          <select class="option-select" id="option-${cardId}" onchange="handleOptionChange('${addon.id}', '${cardId}')">
-            ${addon.options.map(function(option) {
-              return `<option value="${option.id}">${option.label}</option>`;
-            }).join('')}
-          </select>
-        </div>
-      ` : '';
-
-      return `
-        <article class="addon-card" data-addon-card="${addon.id}" data-card-id="${cardId}">
-          <div class="addon-media ${escapeHtml(mediaClass)}">
-            <img
-              class="addon-img"
-              src="${escapeHtml(imagePath)}"
-              alt="${escapeHtml(addon.title)}"
-              loading="lazy"
-              decoding="async"
-              onerror="this.closest('.addon-media').classList.add('image-missing'); this.remove();"
-            />
-            <div class="addon-image-fallback">Add Product Image<span>${escapeHtml(imagePath)}</span></div>
-          </div>
-
-          <p class="addon-category">${addon.label}</p>
-          <h3 class="addon-name">${addon.title}</h3>
-          <p class="addon-copy">${addon.copy}</p>
-
-          ${optionsHtml}
-
-          <div class="addon-bottom">
-            <div class="addon-price" id="price-${cardId}">
-              ${formatCurrency(firstOption.price)} <span>/ ${firstOption.displayUnit}</span>
-            </div>
-
-            <div class="addon-actions">
-              <div class="qty-control">
-                <button class="qty-btn" type="button" onclick="changeAddonQty('${addon.id}', '${cardId}', -1)">−</button>
-                <div class="qty-value" id="qty-${cardId}">0</div>
-                <button class="qty-btn" type="button" onclick="changeAddonQty('${addon.id}', '${cardId}', 1)">+</button>
-              </div>
-
-              <button class="add-btn" type="button" onclick="addOneAddon('${addon.id}', '${cardId}')">Add</button>
-            </div>
-          </div>
-        </article>
-      `;
+      const optionsHtml = hasMultipleOptions ? '<div class="option-control"><label>Choose Option</label><select class="option-select" id="option-' + cardId + '" onchange="handleOptionChange(\'' + addon.id + '\', \'' + cardId + '\')">' + addon.options.map(function(option) { return '<option value="' + escapeHtml(option.id) + '">' + escapeHtml(option.label) + '</option>'; }).join('') + '</select></div>' : '';
+      return '<article class="addon-card" data-addon-card="' + escapeHtml(addon.id) + '" data-card-id="' + escapeHtml(cardId) + '">' +
+        '<div class="addon-media ' + escapeHtml(mediaClass) + '"><img class="addon-img" src="' + escapeHtml(imagePath) + '" alt="' + escapeHtml(addon.title) + '" loading="lazy" decoding="async" onerror="this.closest(\'.addon-media\').classList.add(\'image-missing\'); this.remove();"/><div class="addon-image-fallback">Add Product Image<span>' + escapeHtml(imagePath) + '</span></div></div>' +
+        '<p class="addon-category">' + escapeHtml(addon.label) + '</p><h3 class="addon-name">' + escapeHtml(addon.title) + '</h3><p class="addon-copy">' + escapeHtml(addon.copy) + '</p>' + optionsHtml +
+        '<div class="addon-bottom"><div class="addon-price" id="price-' + escapeHtml(cardId) + '">' + formatCurrency(firstOption.price) + ' <span>/ ' + escapeHtml(firstOption.displayUnit) + '</span></div>' +
+        '<div class="addon-actions"><div class="qty-control"><button class="qty-btn" type="button" onclick="changeAddonQty(\'' + addon.id + '\', \'' + cardId + '\', -1)">−</button><div class="qty-value" id="qty-' + escapeHtml(cardId) + '">0</div><button class="qty-btn" type="button" onclick="changeAddonQty(\'' + addon.id + '\', \'' + cardId + '\', 1)">+</button></div><button class="add-btn" type="button" onclick="addOneAddon(\'' + addon.id + '\', \'' + cardId + '\')">Add</button></div></div></article>';
     }
-
     function buildAddonGroups() {
       const groupsEl = document.getElementById('addonGroups');
-
       if (!groupsEl) return;
-
       groupsEl.innerHTML = GROUPS.map(function(group) {
-        return `
-          <div class="group-block" id="${group.id}" data-group="${group.id}">
-            <div class="group-shell">
-              <div class="group-header">
-                <div class="group-title">${group.title}</div>
-                <div class="group-line"></div>
-              </div>
-
-              <p class="group-copy">${group.copy}</p>
-
-              <div class="group-meta">
-                ${group.pills.map(function(pill) {
-                  return `<div class="group-pill">${pill}</div>`;
-                }).join('')}
-              </div>
-
-              <div class="addons-grid">
-                ${group.addonIds.map(function(addonId) {
-                  return buildAddonCard(addonId, group.id);
-                }).join('')}
-              </div>
-            </div>
-          </div>
-        `;
+        return '<div class="group-block" id="' + escapeHtml(group.id) + '" data-group="' + escapeHtml(group.id) + '"><div class="group-shell"><div class="group-header"><div class="group-title">' + escapeHtml(group.title) + '</div><div class="group-line"></div></div><p class="group-copy">' + escapeHtml(group.copy) + '</p><div class="group-meta">' + group.pills.map(function(pill) { return '<div class="group-pill">' + escapeHtml(pill) + '</div>'; }).join('') + '</div><div class="addons-grid">' + group.addonIds.map(function(addonId) { return buildAddonCard(addonId, group.id); }).join('') + '</div></div></div>';
       }).join('');
     }
-
-    function handleOptionChange(addonId, cardId) {
-      updateCardDisplay(addonId, cardId);
-      renderEstimate();
-    }
-
+    function handleOptionChange(addonId, cardId) { updateCardDisplay(addonId, cardId); renderEstimate(); }
     function updateCardDisplay(addonId, cardId) {
       const option = getSelectedOption(addonId, cardId);
       const priceEl = document.getElementById('price-' + cardId);
       const qtyEl = document.getElementById('qty-' + cardId);
       const card = document.querySelector('[data-card-id="' + cardId + '"]');
-
-      if (option && priceEl) {
-        priceEl.innerHTML = formatCurrency(option.price) + ' <span>/ ' + option.displayUnit + '</span>';
-      }
-
-      if (option && qtyEl) {
-        qtyEl.textContent = getQtyForOption(option.id);
-      }
-
-      if (option && card) {
-        const qty = getQtyForOption(option.id);
-
-        if (qty > 0) {
-          card.classList.add('selected');
-        } else {
-          card.classList.remove('selected');
-        }
-      }
+      if (option && priceEl) priceEl.innerHTML = formatCurrency(option.price) + ' <span>/ ' + escapeHtml(option.displayUnit) + '</span>';
+      if (option && qtyEl) qtyEl.textContent = getQtyForOption(option.id);
+      if (option && card) card.classList.toggle('selected', getQtyForOption(option.id) > 0);
     }
-
     function loadEstimate() {
       const storedEstimate = safeJsonParse(sessionStorage.getItem('heatDistrictEstimate'));
-
       if (storedEstimate && storedEstimate.package) {
-        if (!Array.isArray(storedEstimate.addons)) {
-          storedEstimate.addons = [];
-        }
-
+        if (!Array.isArray(storedEstimate.addons)) storedEstimate.addons = [];
         storedEstimate.packagePrice = Number(storedEstimate.packagePrice || 0);
         storedEstimate.packageHours = Number(storedEstimate.packageHours || 0);
-
         return storedEstimate;
       }
-
       const selectedPackage = safeJsonParse(sessionStorage.getItem('heatDistrictSelectedPackage'));
-
       if (selectedPackage) {
-        const newEstimate = {
-          package: selectedPackage.name || 'Selected Package',
-          packagePrice: Number(selectedPackage.total) || 0,
-          packageHours: Number(selectedPackage.hours) || 5,
-          basePrice: Number(selectedPackage.basePrice) || Number(selectedPackage.total) || 0,
-          addons: [],
-          addonsTotal: 0,
-          total: Number(selectedPackage.total) || 0,
-          depositDue: (Number(selectedPackage.total) || 0) * 0.5,
-          remainingBalance: (Number(selectedPackage.total) || 0) * 0.5
-        };
-
+        const total = Number(selectedPackage.total) || 0;
+        const newEstimate = { package: selectedPackage.name || 'Selected Package', packagePrice: total, packageHours: Number(selectedPackage.hours) || 5, basePrice: Number(selectedPackage.basePrice) || total, addons: [], addonsTotal: 0, total: total, depositDue: total * 0.5, remainingBalance: total * 0.5 };
         sessionStorage.setItem('heatDistrictEstimate', JSON.stringify(newEstimate));
         return newEstimate;
       }
-
-      const emptyEstimate = {
-        package: 'No Package Selected',
-        packagePrice: 0,
-        packageHours: 0,
-        addons: [],
-        addonsTotal: 0,
-        total: 0,
-        depositDue: 0,
-        remainingBalance: 0
-      };
-
+      const emptyEstimate = { package: 'No Package Selected', packagePrice: 0, packageHours: 0, addons: [], addonsTotal: 0, total: 0, depositDue: 0, remainingBalance: 0 };
       sessionStorage.setItem('heatDistrictEstimate', JSON.stringify(emptyEstimate));
       return emptyEstimate;
     }
-
     function saveEstimate() {
-      const addonsTotal = estimate.addons.reduce(function(sum, item) {
-        return sum + (Number(item.price) * Number(item.qty));
-      }, 0);
-
+      const addonsTotal = estimate.addons.reduce(function(sum, item) { return sum + (Number(item.price) * Number(item.qty)); }, 0);
       const packagePrice = Number(estimate.packagePrice || 0);
       const total = packagePrice + addonsTotal;
-      const depositDue = total * 0.5;
-      const remainingBalance = total - depositDue;
-
       estimate.addonsTotal = addonsTotal;
       estimate.total = total;
-      estimate.depositDue = depositDue;
-      estimate.remainingBalance = remainingBalance;
-
+      estimate.depositDue = total * 0.5;
+      estimate.remainingBalance = total - estimate.depositDue;
       sessionStorage.setItem('heatDistrictEstimate', JSON.stringify(estimate));
     }
-
     async function setAddonQty(addonId, cardId, qty) {
       const option = getSelectedOption(addonId, cardId);
-
       if (!option) return;
-
       const safeQty = Math.max(0, Number(qty) || 0);
       const currentQty = getQtyForOption(option.id);
-
       if (safeQty > currentQty && currentQty === 0) {
         const duplicateWarning = getDuplicateWarning(option);
-
         if (duplicateWarning) {
           const shouldContinue = await showDuplicateWarningModal(duplicateWarning);
-
-          if (!shouldContinue) {
-            return;
-          }
+          if (!shouldContinue) return;
         }
       }
-
-      const existingIndex = estimate.addons.findIndex(function(item) {
-        return item.id === option.id;
-      });
-
+      const existingIndex = estimate.addons.findIndex(function(item) { return item.id === option.id; });
       if (safeQty === 0) {
-        if (existingIndex !== -1) {
-          estimate.addons.splice(existingIndex, 1);
-        }
+        if (existingIndex !== -1) estimate.addons.splice(existingIndex, 1);
       } else {
-        const addonData = {
-          id: option.id,
-          name: option.name,
-          category: option.category,
-          price: Number(option.price),
-          unit: option.unit,
-          qty: safeQty
-        };
-
-        if (existingIndex !== -1) {
-          estimate.addons[existingIndex] = addonData;
-        } else {
-          estimate.addons.push(addonData);
-        }
+        const addonData = { id: option.id, name: option.name, category: option.category, price: Number(option.price), unit: option.unit, qty: safeQty };
+        if (existingIndex !== -1) estimate.addons[existingIndex] = addonData;
+        else estimate.addons.push(addonData);
       }
-
       saveEstimate();
       renderEstimate();
     }
-
-    function changeAddonQty(addonId, cardId, change) {
-      const option = getSelectedOption(addonId, cardId);
-
-      if (!option) return;
-
-      const currentQty = getQtyForOption(option.id);
-      setAddonQty(addonId, cardId, currentQty + change);
-    }
-
-    function addOneAddon(addonId, cardId) {
-      const option = getSelectedOption(addonId, cardId);
-
-      if (!option) return;
-
-      const currentQty = getQtyForOption(option.id);
-      setAddonQty(addonId, cardId, currentQty + 1);
-    }
-
-    function clearAddons() {
-      estimate.addons = [];
-      saveEstimate();
-      renderEstimate();
-    }
-
-    function packageAlreadyHasLighting() {
-      if (!estimate || !estimate.package) return false;
-
-      return PACKAGE_NAMES_WITH_LIGHTING.includes(estimate.package);
-    }
-
-    function selectedLightingRelatedAddons() {
-      if (!estimate || !Array.isArray(estimate.addons)) return false;
-
-      return estimate.addons.some(function(item) {
-        return LIGHTING_RELATED_CATEGORIES.includes(item.category);
-      });
-    }
-
-    function updateLightingWarning() {
-      const lightingWarning = document.getElementById('lightingWarning');
-
-      if (!lightingWarning) return;
-
-      if (packageAlreadyHasLighting() && selectedLightingRelatedAddons()) {
-        lightingWarning.style.display = 'block';
-      } else {
-        lightingWarning.style.display = 'none';
-      }
-    }
-
+    function changeAddonQty(addonId, cardId, change) { const option = getSelectedOption(addonId, cardId); if (!option) return; setAddonQty(addonId, cardId, getQtyForOption(option.id) + change); }
+    function addOneAddon(addonId, cardId) { const option = getSelectedOption(addonId, cardId); if (!option) return; setAddonQty(addonId, cardId, getQtyForOption(option.id) + 1); }
+    function clearAddons() { estimate.addons = []; saveEstimate(); renderEstimate(); }
+    function packageAlreadyHasLighting() { return estimate && estimate.package && PACKAGE_NAMES_WITH_LIGHTING.includes(estimate.package); }
+    function selectedLightingRelatedAddons() { return estimate && Array.isArray(estimate.addons) && estimate.addons.some(function(item) { return LIGHTING_RELATED_CATEGORIES.includes(item.category); }); }
+    function updateLightingWarning() { const lightingWarning = document.getElementById('lightingWarning'); if (!lightingWarning) return; lightingWarning.style.display = packageAlreadyHasLighting() && selectedLightingRelatedAddons() ? 'block' : 'none'; }
     function renderEstimate() {
       const packageNameEl = document.getElementById('summaryPackageName');
       const packagePriceEl = document.getElementById('summaryPackagePrice');
@@ -2934,144 +818,49 @@
       const summaryTotalEl = document.getElementById('summaryTotal');
       const summaryDepositEl = document.getElementById('summaryDeposit');
       const summaryRemainingEl = document.getElementById('summaryRemaining');
-
-      if (!packageNameEl || !packagePriceEl || !packageHoursEl || !estimateItemsEl || !summaryTotalEl) {
-        return;
-      }
-
+      if (!packageNameEl || !packagePriceEl || !packageHoursEl || !estimateItemsEl || !summaryTotalEl) return;
       saveEstimate();
-
-      const packagePrice = Number(estimate.packagePrice || 0);
-      const packageHours = Number(estimate.packageHours || 0);
-      const total = Number(estimate.total || 0);
-      const depositDue = Number(estimate.depositDue || 0);
-      const remainingBalance = Number(estimate.remainingBalance || 0);
-
       packageNameEl.textContent = estimate.package || 'No Package Selected';
-      packagePriceEl.textContent = formatCurrency(packagePrice);
-      packageHoursEl.textContent = packageHours ? packageHours + ' hrs' : '0 hrs';
-      summaryTotalEl.textContent = formatCurrency(total);
-
-      if (summaryDepositEl) {
-        summaryDepositEl.textContent = formatCurrency(depositDue);
-      }
-
-      if (summaryRemainingEl) {
-        summaryRemainingEl.textContent = formatCurrency(remainingBalance);
-      }
-
+      packagePriceEl.textContent = formatCurrency(estimate.packagePrice || 0);
+      packageHoursEl.textContent = estimate.packageHours ? estimate.packageHours + ' hrs' : '0 hrs';
+      summaryTotalEl.textContent = formatCurrency(estimate.total || 0);
+      if (summaryDepositEl) summaryDepositEl.textContent = formatCurrency(estimate.depositDue || 0);
+      if (summaryRemainingEl) summaryRemainingEl.textContent = formatCurrency(estimate.remainingBalance || 0);
       if (!estimate.addons.length) {
         estimateItemsEl.innerHTML = '<div class="estimate-empty">No add-ons selected yet.</div>';
       } else {
         estimateItemsEl.innerHTML = estimate.addons.map(function(item) {
           const lineTotal = Number(item.price) * Number(item.qty);
-
-          return `
-            <div class="estimate-addon">
-              <div class="estimate-addon-name">
-                ${item.name}
-                <small>Qty ${item.qty} · ${item.unit}</small>
-              </div>
-              <div class="estimate-addon-price">${formatCurrency(lineTotal)}</div>
-            </div>
-          `;
+          return '<div class="estimate-addon"><div class="estimate-addon-name">' + escapeHtml(item.name) + '<small>Qty ' + Number(item.qty) + ' · ' + escapeHtml(item.unit) + '</small></div><div class="estimate-addon-price">' + formatCurrency(lineTotal) + '</div></div>';
         }).join('');
       }
-
-      document.querySelectorAll('.addon-card').forEach(function(card) {
-        const addonId = card.dataset.addonCard;
-        const cardId = card.dataset.cardId;
-
-        updateCardDisplay(addonId, cardId);
-      });
-
+      document.querySelectorAll('.addon-card').forEach(function(card) { updateCardDisplay(card.dataset.addonCard, card.dataset.cardId); });
       updateLightingWarning();
     }
-
-    function continueToCheckout() {
-      saveEstimate();
-      window.location.href = 'checkout.html';
-    }
-
+    function continueToCheckout() { saveEstimate(); window.location.href = 'checkout.html'; }
     function filterGroups(groupName, clickedButton) {
-      const groups = document.querySelectorAll('.group-block');
-      const buttons = document.querySelectorAll('.filter-btn');
-
-      buttons.forEach(function(button) {
-        button.classList.remove('active');
-      });
-
-      if (clickedButton) {
-        clickedButton.classList.add('active');
-      }
-
-      groups.forEach(function(group) {
+      document.querySelectorAll('.filter-btn').forEach(function(button) { button.classList.remove('active'); });
+      if (clickedButton) clickedButton.classList.add('active');
+      document.querySelectorAll('.group-block').forEach(function(group) {
         const matches = group.dataset.group === groupName;
-
-        if (groupName === 'all' || matches) {
-          group.classList.remove('is-hidden');
-        } else {
-          group.classList.add('is-hidden');
-        }
+        if (groupName === 'all' || matches) group.classList.remove('is-hidden'); else group.classList.add('is-hidden');
       });
-
       const firstVisibleGroup = document.querySelector('.group-block:not(.is-hidden)');
-
-      if (firstVisibleGroup) {
-        firstVisibleGroup.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
+      if (firstVisibleGroup) firstVisibleGroup.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileNav = document.getElementById('mobileNav');
-
-    function closeMobileMenu() {
-      if (!mobileMenuBtn || !mobileNav) return;
-
-      mobileNav.classList.remove('open');
-      mobileMenuBtn.classList.remove('active');
-      mobileMenuBtn.setAttribute('aria-expanded', 'false');
-      document.body.classList.remove('mobile-menu-open');
-    }
-
-    function toggleMobileMenu() {
-      if (!mobileMenuBtn || !mobileNav) return;
-
-      const isOpen = mobileNav.classList.contains('open');
-
-      if (isOpen) {
-        closeMobileMenu();
-      } else {
-        mobileNav.classList.add('open');
-        mobileMenuBtn.classList.add('active');
-        mobileMenuBtn.setAttribute('aria-expanded', 'true');
-        document.body.classList.add('mobile-menu-open');
-      }
-    }
-
+    function closeMobileMenu() { if (!mobileMenuBtn || !mobileNav) return; mobileNav.classList.remove('open'); mobileMenuBtn.classList.remove('active'); mobileMenuBtn.setAttribute('aria-expanded', 'false'); document.body.classList.remove('mobile-menu-open'); }
+    function toggleMobileMenu() { if (!mobileMenuBtn || !mobileNav) return; const isOpen = mobileNav.classList.contains('open'); if (isOpen) closeMobileMenu(); else { mobileNav.classList.add('open'); mobileMenuBtn.classList.add('active'); mobileMenuBtn.setAttribute('aria-expanded', 'true'); document.body.classList.add('mobile-menu-open'); } }
     if (mobileMenuBtn && mobileNav) {
       mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-
-      mobileNav.querySelectorAll('a').forEach(function(link) {
-        link.addEventListener('click', closeMobileMenu);
-      });
-
-      window.addEventListener('resize', function() {
-        if (window.innerWidth > 900) {
-          closeMobileMenu();
-        }
-      });
-
+      mobileNav.querySelectorAll('a').forEach(function(link) { link.addEventListener('click', closeMobileMenu); });
+      window.addEventListener('resize', function() { if (window.innerWidth > 900) closeMobileMenu(); });
       document.addEventListener('click', function(event) {
         const clickedInsideNav = mobileNav.contains(event.target);
         const clickedButton = mobileMenuBtn.contains(event.target);
-
-        if (!clickedInsideNav && !clickedButton && mobileNav.classList.contains('open')) {
-          closeMobileMenu();
-        }
+        if (!clickedInsideNav && !clickedButton && mobileNav.classList.contains('open')) closeMobileMenu();
       });
     }
 

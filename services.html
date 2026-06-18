@@ -1433,7 +1433,7 @@
           </div>
 
           <div class="filter-note">
-            Start with Most Popular or jump directly to sound, lighting & effects, guest experience, media, DJ equipment, LED walls, furniture, or trussing.
+            Start with Most Popular or jump directly to sound, lighting & effects, guest experience, media, DJ equipment, LED walls, or trussing.
           </div>
         </div>
 
@@ -1446,7 +1446,6 @@
           <button class="filter-btn" type="button" onclick="filterGroups('foundation', this)">Sound & Mics</button>
           <button class="filter-btn" type="button" onclick="filterGroups('dj-rentals', this)">DJ Rentals</button>
           <button class="filter-btn" type="button" onclick="filterGroups('led-walls', this)">LED Walls</button>
-          <button class="filter-btn" type="button" onclick="filterGroups('party-furniture', this)">Furniture</button>
           <button class="filter-btn" type="button" onclick="filterGroups('staging-trussing', this)">Trussing</button>
         </div>
       </div>
@@ -1568,7 +1567,9 @@
           'uplights',
           'light-bar',
           'moving-heads',
+          'beam-140sr',
           'wash-lights',
+          'disco-ball-20in',
           'fog-machines',
           'co2-cannons',
           'co2-led-gun',
@@ -1585,6 +1586,7 @@
     'photo-booth-digital',
     'photo-booth-print',
     'red-carpet',
+    'led-cocktail-tables',
     'foam-glow-sticks',
     'led-bottle-sign'
   ]
@@ -1640,20 +1642,10 @@
         ]
       },
       {
-        id: 'party-furniture',
-        filter: 'party-furniture',
-        title: 'Party Furniture',
-        copy: 'Furniture and guest-area upgrades that help make lounges, cocktail areas, and event spaces feel more polished.',
-        pills: ['Cocktail Areas', 'Glow Furniture', 'Guest Upgrade'],
-        products: [
-          'led-cocktail-tables'
-        ]
-      },
-      {
         id: 'staging-trussing',
         filter: 'staging-trussing',
         title: 'Staging & Trussing',
-        copy: 'Trussing structures that help frame the setup, hold lighting, and create a more complete production look.',
+        copy: 'Global Truss F34 structures that help frame the setup, hold lighting, and create a more complete production look.',
         pills: ['Stage Presence', 'Production Structure', 'Expandable Category'],
         products: [
           'trussing-2-totems',
@@ -1666,15 +1658,15 @@
 
     const PRODUCTS = {
       'sound-system': {
-        name: 'Sound — 2 QSC Tops + 2 Subs',
-        title: 'Sound — 2 QSC Tops + 2 Subs',
+        name: 'Sound — 2 QSC K12 Tops + 2 QSC K18 Subs',
+        title: 'Sound — 2 QSC K12 Tops + 2 QSC K18 Subs',
         icon: 'QSC',
         type: 'event',
         rate: 495,
         extraHourRate: 75,
         image: 'images/products/sound-system.png',
         mediaClass: 'product-media-wide',
-        desc: 'Professional sound system with 2 QSC tops and 2 QSC subs for a clean, strong event foundation. Includes standard setup and breakdown.',
+        desc: 'Professional QSC sound system with 2 QSC K12 top speakers and 2 QSC K18 subwoofers for a clean, strong event foundation. Includes standard setup and breakdown.',
         note: 'Event base up to 5 hrs · setup + breakdown included'
       },
       'led-cocktail-tables': {
@@ -1808,7 +1800,7 @@
         extraHourRate: 50,
         image: 'images/products/glow-lighting-package.png',
         mediaClass: 'product-media-wide',
-        desc: 'Uplights and light bar package for a clean entry-level lighting look. Includes setup, programming, cabling, and breakdown.',
+        desc: 'Uplights and Chauvet GigBAR 2 package for a clean entry-level lighting look. Includes setup, programming, cabling, and breakdown.',
         note: 'Event base up to 5 hrs · setup + breakdown included'
       },
       'pulse-lighting-package': {
@@ -1820,7 +1812,7 @@
         extraHourRate: 85,
         image: 'images/products/pulse-lighting-package.png',
         mediaClass: 'product-media-wide',
-        desc: '2 moving heads plus the Glow-level lighting foundation for a stronger event atmosphere. Includes setup, programming, cabling, and breakdown.',
+        desc: '2 Chauvet Intimidator Spot 355 IRC moving heads plus the Glow-level lighting foundation for a stronger event atmosphere. Includes setup, programming, cabling, and breakdown.',
         note: 'Event base up to 5 hrs · setup + breakdown included'
       },
       'district-lighting-package': {
@@ -1832,44 +1824,44 @@
         extraHourRate: 125,
         image: 'images/products/district-lighting-package.png',
         mediaClass: 'product-media-wide',
-        desc: '4 moving heads, wash lights, and the full lower-level lighting build for the biggest lighting package here. Includes setup, programming, cabling, and breakdown.',
+        desc: '4 Chauvet Intimidator Spot 355 IRC moving heads, Chauvet Wash FX 2 wash lights, and the full lower-level lighting build for the biggest lighting package here. Includes setup, programming, cabling, and breakdown.',
         note: 'Event base up to 5 hrs · setup + breakdown included'
       },
       'qsc-top-speaker': {
-        name: 'QSC Top Speaker',
-        title: 'QSC Top Speaker',
+        name: 'QSC K12 Top Speaker',
+        title: 'QSC K12 Top Speaker',
         icon: 'QSC',
         type: 'event',
         rate: 95,
         extraHourRate: 15,
         image: 'images/products/qsc-top-speaker.png',
         mediaClass: 'product-media-gear',
-        desc: 'Single QSC top speaker rental for clean event sound. Great for smaller events, speeches, cocktail areas, or building a larger sound setup. Includes setup and breakdown.',
-        note: 'Single QSC top speaker · setup included'
+        desc: 'Single QSC K12 powered top speaker rental for clean event sound. Great for smaller events, speeches, cocktail areas, or building a larger sound setup. Includes setup and breakdown.',
+        note: 'Single QSC K12 top speaker · setup included'
       },
       'qsc-subwoofer': {
-        name: 'QSC Subwoofer',
-        title: 'QSC Subwoofer',
+        name: 'QSC K18 Subwoofer',
+        title: 'QSC K18 Subwoofer',
         icon: 'SUB',
         type: 'event',
         rate: 125,
         extraHourRate: 20,
         image: 'images/products/qsc-subwoofer.png',
         mediaClass: 'product-media-gear',
-        desc: 'Single QSC subwoofer rental for stronger bass and fuller low-end. Pair it with QSC top speakers for a complete sound setup. Includes setup and breakdown.',
-        note: 'Single QSC subwoofer · setup included'
+        desc: 'Single QSC K18 subwoofer rental for stronger bass and fuller low-end. Pair it with QSC K12 top speakers for a complete sound setup. Includes setup and breakdown.',
+        note: 'Single QSC K18 subwoofer · setup included'
       },
       'wireless-mic': {
-        name: 'Mic',
-        title: 'Mic',
+        name: 'Shure Wireless Microphone + Receiver',
+        title: 'Shure Wireless Microphone + Receiver',
         icon: 'MIC',
         type: 'event',
         rate: 45,
         extraHourRate: 10,
         image: 'images/products/wireless-mic.png',
         mediaClass: 'product-media-gear',
-        desc: '1 unit microphone rental for speeches, announcements, event hosting, and basic ceremony needs. Includes setup and breakdown.',
-        note: 'Basic support item · setup included'
+        desc: '1 Shure wireless microphone with receiver for speeches, announcements, event hosting, and basic ceremony needs. Includes setup and breakdown.',
+        note: 'Shure wireless mic + receiver · setup included'
       },
       'cold-spark': {
         name: 'Cold Spark',
@@ -1882,6 +1874,18 @@
         mediaClass: 'product-media-gear',
         desc: '2 units for premium visual moments and event reveals. Includes standard setup, breakdown, and basic spark powder supply.',
         note: '2 units · venue approval may be required'
+      },
+      'disco-ball-20in': {
+        name: 'ADJ Disco Ball — 20 Inch',
+        title: 'ADJ Disco Ball — 20 Inch',
+        icon: 'DB',
+        type: 'event',
+        rate: 95,
+        extraHourRate: 0,
+        image: 'images/products/adj-disco-ball-20in.png',
+        mediaClass: 'product-media-gear',
+        desc: '20 inch ADJ disco ball rental for classic mirrored reflections, dance floor sparkle, themed events, parties, and nightlife-style room atmosphere. Includes standard setup and breakdown.',
+        note: '20 inch disco ball · setup + breakdown included'
       },
       'fog-machines': {
         name: 'Fog Machines',
@@ -1932,40 +1936,52 @@
         note: '5 units · setup + programming included'
       },
       'light-bar': {
-        name: 'Light Bar',
-        title: 'Light Bar',
+        name: 'Chauvet GigBAR 2',
+        title: 'Chauvet GigBAR 2',
         icon: 'BAR',
         type: 'event',
         rate: 125,
         extraHourRate: 15,
         image: 'images/products/light-bar.png',
         mediaClass: 'product-media-wide',
-        desc: '1 unit light bar rental for dance floor movement, color, and automatic party lighting. Includes setup and breakdown.',
-        note: '1 unit · setup included'
+        desc: '1 Chauvet GigBAR 2 rental for dance floor movement, color, automatic party lighting, and a clean all-in-one lighting look. Includes setup and breakdown.',
+        note: '1 Chauvet GigBAR 2 unit · setup included'
       },
       'moving-heads': {
-        name: 'Moving Head Light',
-        title: 'Moving Head Light',
+        name: 'Chauvet Intimidator Spot 355 IRC',
+        title: 'Chauvet Intimidator 355 IRC Spot',
         icon: 'MH',
         type: 'event',
         rate: 150,
         extraHourRate: 25,
         image: 'images/products/moving-head.png',
         mediaClass: 'product-media-gear',
-        desc: 'Single moving head light rental for dance floor movement, beams, spotlight moments, and custom lighting builds. Includes setup and breakdown.',
-        note: 'Single moving head light · select amount'
+        desc: 'Single Chauvet Intimidator Spot 355 IRC Spot moving head for dance floor movement, spotlight moments, and custom lighting builds. Includes setup and breakdown.',
+        note: 'Single Chauvet Intimidator 355 IRC spot · select amount'
+      },
+      'beam-140sr': {
+        name: 'Chauvet Intimidator Beam 140SR',
+        title: 'Chauvet Intimidator Beam 140SR',
+        icon: 'BM',
+        type: 'event',
+        rate: 150,
+        extraHourRate: 25,
+        image: 'images/products/intimidator-beam-140sr.png',
+        mediaClass: 'product-media-gear',
+        desc: 'Single Chauvet Intimidator Beam 140SR moving head beam light rental for sharp beam looks, aerial effects, dance floor energy, and custom lighting builds. Includes setup and breakdown.',
+        note: 'Single Chauvet Intimidator Beam 140SR · select amount'
       },
       'wash-lights': {
-        name: 'Wash Lights',
-        title: 'Wash Lights',
-        icon: 'WL',
+        name: 'Chauvet Wash FX 2 — 2 Units',
+        title: 'Chauvet Wash FX 2',
+        icon: 'FX2',
         type: 'event',
         rate: 150,
         extraHourRate: 20,
         image: 'images/products/wash-lights.png',
         mediaClass: 'product-media-gear',
-        desc: '2 units wash lights for wider color coverage and room atmosphere. Includes setup and breakdown.',
-        note: '2 units · lighting add-on'
+        desc: '2 Chauvet Wash FX 2 wash lights for wider color coverage, dance floor energy, and room atmosphere. Includes setup and breakdown.',
+        note: '2 Chauvet Wash FX 2 units · lighting add-on'
       },
       'cdj-djm-package': {
         name: 'Premium Club Mixer & CDJ Package — 2 CDJ 3000 + DJM-900NXS2',
@@ -2020,7 +2036,7 @@
         extraHourRate: 300,
         image: 'images/products/led-wall.png',
         mediaClass: 'product-media-wide',
-        desc: 'LED wall setup mounted with goal post trussing for logos, visuals, DJ content, slideshows, branding, and high-impact event backdrops. Includes standard setup, processor, cabling, and breakdown.',
+        desc: 'LED wall setup mounted with Global Truss F34 goal post trussing for logos, visuals, DJ content, slideshows, branding, and high-impact event backdrops. Includes standard setup, processor, cabling, and breakdown.',
         note: 'LED wall + goal post trussing · setup included'
       },
       'led-wall-floor': {
@@ -2044,56 +2060,56 @@
         extraHourRate: 300,
         image: 'images/products/led-wall-2-totems.png',
         mediaClass: 'product-media-wide',
-        desc: 'LED wall setup mounted between two truss totems for a clean visual display without a full overhead goal post. Great for DJ visuals, logos, slideshows, branding, and event backdrops. Includes standard setup, processor, cabling, and breakdown.',
+        desc: 'LED wall setup mounted between two Global Truss F34 truss totems for a clean visual display without a full overhead goal post. Great for DJ visuals, logos, slideshows, branding, and event backdrops. Includes standard setup, processor, cabling, and breakdown.',
         note: 'LED wall + 2 truss totems · setup included'
       },
       'trussing-2-totems': {
-        name: 'Trussing — 2 Totems 8ft',
-        title: 'Trussing — 2 Totems',
+        name: 'Global Truss F34 — 2 Totems 8ft',
+        title: 'Global Truss F34 — 2 Totems',
         icon: '2T',
         type: 'event',
         rate: 250,
         extraHourRate: 50,
         image: 'images/products/trussing-2-totems.png',
         mediaClass: 'product-media-tall',
-        desc: '2 totems at 8ft each for a cleaner vertical production look. Includes setup, leveling, and breakdown.',
-        note: '8ft each · setup + breakdown included'
+        desc: '2 Global Truss F34 totems at 8ft each for a cleaner vertical production look. Includes setup, leveling, and breakdown.',
+        note: 'Global Truss F34 · 8ft each · setup + breakdown included'
       },
       'trussing-4-totems': {
-        name: 'Trussing — 4 Totems 8ft',
-        title: 'Trussing — 4 Totems',
+        name: 'Global Truss F34 — 4 Totems 8ft',
+        title: 'Global Truss F34 — 4 Totems',
         icon: '4T',
         type: 'event',
         rate: 450,
         extraHourRate: 75,
         image: 'images/products/trussing-4-totems.png',
         mediaClass: 'product-media-wide',
-        desc: '4 totems at 8ft each for a larger, more symmetrical production setup. Includes setup, leveling, and breakdown.',
-        note: '8ft each · setup + breakdown included'
+        desc: '4 Global Truss F34 totems at 8ft each for a larger, more symmetrical production setup. Includes setup, leveling, and breakdown.',
+        note: 'Global Truss F34 · 8ft each · setup + breakdown included'
       },
       'trussing-goalpost-8x10': {
-        name: 'Trussing — Goal Post 8x10',
-        title: 'Trussing — Goal Post 8x10',
+        name: 'Global Truss F34 — Goal Post 8x10',
+        title: 'Global Truss F34 — Goal Post 8x10',
         icon: 'GP10',
         type: 'event',
         rate: 650,
         extraHourRate: 100,
         image: 'images/products/trussing-goalpost-8x10.png',
         mediaClass: 'product-media-wide',
-        desc: '8x10 goal post truss setup for overhead production support and a bigger stage look. Includes setup, leveling, and breakdown.',
-        note: 'Overhead structure · setup + breakdown included'
+        desc: 'Global Truss F34 8x10 goal post setup for overhead production support and a bigger stage look. Includes setup, leveling, and breakdown.',
+        note: 'Global Truss F34 overhead structure · setup + breakdown included'
       },
       'trussing-goalpost-8x16': {
-        name: 'Trussing — Goal Post 8x16',
-        title: 'Trussing — Goal Post 8x16',
+        name: 'Global Truss F34 — Goal Post 8x16',
+        title: 'Global Truss F34 — Goal Post 8x16',
         icon: 'GP16',
         type: 'event',
         rate: 850,
         extraHourRate: 125,
         image: 'images/products/trussing-goalpost-8x16.png',
         mediaClass: 'product-media-wide',
-        desc: '8x16 goal post truss setup for a wider, more dramatic production footprint. Includes setup, leveling, and breakdown.',
-        note: 'Wider overhead structure · setup + breakdown included'
+        desc: 'Global Truss F34 8x16 goal post setup for a wider, more dramatic production footprint. Includes setup, leveling, and breakdown.',
+        note: 'Global Truss F34 wider overhead structure · setup + breakdown included'
       }
     };
 

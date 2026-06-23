@@ -1433,7 +1433,7 @@
           </div>
 
           <div class="filter-note">
-            Start with Most Popular or jump directly to sound, lighting & effects, guest experience, media, DJ equipment, LED walls, or trussing.
+            Start with Most Popular or jump directly to sound, lighting & effects, guest experience, media, DJ equipment, LED walls, furniture, or trussing.
           </div>
         </div>
 
@@ -1446,6 +1446,7 @@
           <button class="filter-btn" type="button" onclick="filterGroups('foundation', this)">Sound & Mics</button>
           <button class="filter-btn" type="button" onclick="filterGroups('dj-rentals', this)">DJ Rentals</button>
           <button class="filter-btn" type="button" onclick="filterGroups('led-walls', this)">LED Walls</button>
+          <button class="filter-btn" type="button" onclick="filterGroups('party-furniture', this)">Furniture</button>
           <button class="filter-btn" type="button" onclick="filterGroups('staging-trussing', this)">Trussing</button>
         </div>
       </div>
@@ -1586,7 +1587,6 @@
     'photo-booth-print',
     'photo-booth-360',
     'red-carpet',
-    'led-cocktail-tables',
     'foam-glow-sticks',
     'led-bottle-sign'
   ]
@@ -1640,6 +1640,16 @@
           'led-wall',
           'led-wall-floor',
           'led-wall-2-totems'
+        ]
+      },
+      {
+        id: 'party-furniture',
+        filter: 'party-furniture',
+        title: 'Party Furniture',
+        copy: 'Furniture and guest-area upgrades that help make lounges, cocktail areas, and event spaces feel more polished.',
+        pills: ['Cocktail Areas', 'Glow Furniture', 'Guest Upgrade'],
+        products: [
+          'led-cocktail-tables'
         ]
       },
       {
@@ -1770,7 +1780,7 @@
         extraHourRate: 0,
         image: 'images/products/foam-glow-sticks.png',
         mediaClass: 'product-media-gear',
-        desc: 'Pack of 25 purple foam glow sticks for dance floors, party moments, club-style events, birthdays, and guest interaction.',
+        desc: 'Pack of 25 LED foam glow sticks for dance floors, party moments, club-style events, birthdays, and guest interaction.',
         note: 'Per 25-pack · event supply item'
       },
       'led-bottle-sign': {

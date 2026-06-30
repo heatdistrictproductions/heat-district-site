@@ -390,6 +390,461 @@
       .duplicate-modal { padding: 22px; }
       .duplicate-modal-actions { grid-template-columns: 1fr; }
     }
+
+    /* =========================================================
+       RESPONSIVE OPTIMIZATION PATCH — Add-Ons Page
+       Keeps desktop resizing, tablets, and phones from overlapping.
+       Layout/content stays the same; this only improves fit and flow.
+    ========================================================= */
+
+    img,
+    picture,
+    video {
+      max-width: 100%;
+    }
+
+    button,
+    select,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    nav,
+    .nav-links,
+    .nav-links li,
+    .nav-links a,
+    .addons-wrap,
+    .filter-shell,
+    .group-shell,
+    .addon-card,
+    .estimate-panel {
+      min-width: 0;
+    }
+
+    .addons-wrap {
+      width: 100%;
+      grid-template-columns: minmax(0, 1fr) clamp(340px, 28vw, 390px);
+      gap: clamp(18px, 2vw, 28px);
+      padding-left: clamp(28px, 3.3vw, 48px);
+      padding-right: clamp(28px, 3.3vw, 48px);
+    }
+
+    .page-hero,
+    .filter-shell,
+    .group-shell,
+    .estimate-panel,
+    footer {
+      overflow-wrap: break-word;
+    }
+
+    .page-hero h1 {
+      max-width: 980px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .page-hero p,
+    .section-sub,
+    .filter-note,
+    .group-copy,
+    .addon-copy,
+    .estimate-note,
+    .warning-box {
+      overflow-wrap: break-word;
+      text-wrap: pretty;
+    }
+
+    .filter-head {
+      min-width: 0;
+    }
+
+    .filter-head > * {
+      min-width: 0;
+    }
+
+    .category-filter {
+      grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+    }
+
+    .filter-btn {
+      min-width: 0;
+      width: 100%;
+      line-height: 1.35;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+
+    .group-block {
+      scroll-margin-top: 96px;
+    }
+
+    .group-header {
+      min-width: 0;
+    }
+
+    .group-title {
+      white-space: normal;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+
+    .group-pill {
+      max-width: 100%;
+      overflow-wrap: anywhere;
+      line-height: 1.35;
+    }
+
+    .addons-grid {
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    }
+
+    .addon-card {
+      min-width: 0;
+    }
+
+    .addon-name,
+    .addon-category {
+      overflow-wrap: anywhere;
+    }
+
+    .option-control {
+      min-width: 0;
+    }
+
+    .option-select {
+      min-width: 0;
+    }
+
+    .addon-price {
+      min-width: 0;
+      flex-wrap: wrap;
+      row-gap: 4px;
+    }
+
+    .addon-price-symbol,
+    .addon-price-value,
+    .addon-price-unit,
+    .estimate-total-value,
+    .estimate-addon-price,
+    .estimate-line span:last-child,
+    .deposit-line span:last-child {
+      font-variant-numeric: lining-nums tabular-nums;
+      font-feature-settings: "lnum" 1, "tnum" 1, "kern" 1;
+    }
+
+    .addon-price-value {
+      font-size: clamp(2rem, 3vw, 2.35rem);
+    }
+
+    .addon-actions {
+      min-width: 0;
+      flex-wrap: wrap;
+    }
+
+    .qty-control {
+      flex-shrink: 0;
+    }
+
+    .add-btn {
+      min-width: 88px;
+      text-align: center;
+    }
+
+    .estimate-line,
+    .deposit-line,
+    .estimate-addon,
+    .estimate-total {
+      min-width: 0;
+    }
+
+    .estimate-line strong,
+    .estimate-line span:first-child,
+    .deposit-line span:first-child,
+    .estimate-addon-name {
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .estimate-total-value {
+      font-size: clamp(1.55rem, 4vw, 2rem);
+      white-space: nowrap;
+    }
+
+    .btn-primary,
+    .btn-secondary,
+    .clear-btn,
+    .duplicate-modal-btn {
+      white-space: normal;
+      line-height: 1.35;
+    }
+
+    .footer-contact {
+      row-gap: 14px;
+    }
+
+    .footer-contact a {
+      overflow-wrap: anywhere;
+    }
+
+    @media (max-width: 1360px) {
+      nav {
+        padding-left: 28px;
+        padding-right: 28px;
+      }
+
+      .nav-links {
+        padding: 0 22px;
+      }
+
+      .nav-links a,
+      .nav-cta {
+        font-size: 0.76rem;
+        letter-spacing: 1.7px;
+      }
+
+      .nav-cta {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .addons-wrap {
+        grid-template-columns: minmax(0, 1fr) 360px;
+      }
+
+      .addon-media {
+        height: 195px;
+        flex-basis: 195px;
+      }
+    }
+
+    @media (max-width: 1180px) {
+      nav {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: flex;
+      }
+
+      .addons-wrap {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      .estimate-panel {
+        position: relative;
+        top: auto;
+        max-height: none;
+        overflow: visible;
+      }
+
+      .estimate-scroll {
+        overflow: visible;
+        padding-right: 0;
+      }
+
+      .category-filter {
+        grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .page-hero {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+
+      .page-hero-eyebrow {
+        font-size: 0.6rem;
+        letter-spacing: 3.2px;
+        line-height: 1.65;
+      }
+
+      .page-hero p {
+        font-size: 0.9rem;
+        line-height: 1.75;
+      }
+
+      .addons-wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .filter-shell,
+      .group-shell,
+      .estimate-panel,
+      .duplicate-modal {
+        border-radius: 14px;
+      }
+
+      .filter-shell {
+        padding: 18px;
+      }
+
+      .group-shell {
+        padding: 22px 18px;
+      }
+
+      .group-header {
+        align-items: flex-start;
+      }
+
+      .group-line {
+        margin-top: 0.45rem;
+      }
+
+      .group-meta {
+        gap: 8px;
+      }
+
+      .group-pill {
+        padding: 7px 10px;
+        letter-spacing: 1.8px;
+      }
+
+      .addon-card {
+        padding: 20px 18px 18px;
+      }
+
+      .addon-media {
+        height: 180px;
+        flex-basis: 180px;
+      }
+
+      .estimate-panel {
+        padding: 22px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      nav {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .nav-logo img {
+        height: 46px;
+      }
+
+      .mobile-nav {
+        top: 67px;
+        left: 12px;
+        right: 12px;
+      }
+
+      .page-hero {
+        padding-top: 132px;
+        padding-bottom: 46px;
+      }
+
+      .addons-wrap {
+        padding-top: 44px;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-bottom: 76px;
+      }
+
+      .section-label,
+      .page-hero-eyebrow {
+        letter-spacing: 2.8px;
+      }
+
+      .section-title {
+        font-size: clamp(1.35rem, 8vw, 1.9rem);
+      }
+
+      .filter-head {
+        gap: 12px;
+      }
+
+      .category-filter {
+        grid-template-columns: 1fr;
+      }
+
+      .addon-media {
+        height: 168px;
+        flex-basis: 168px;
+      }
+
+      .addon-img {
+        padding: 12px;
+      }
+
+      .addon-media-tall .addon-img {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .addon-bottom {
+        gap: 15px;
+      }
+
+      .addon-actions {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        align-items: center;
+        gap: 10px;
+      }
+
+      .add-btn {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .estimate-line {
+        gap: 10px;
+      }
+
+      .estimate-total {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .estimate-total-value {
+        white-space: normal;
+      }
+
+      .footer-contact {
+        flex-direction: column;
+        gap: 14px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .addon-actions {
+        grid-template-columns: 1fr;
+      }
+
+      .qty-control {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .qty-btn {
+        width: 42px;
+      }
+
+      .qty-value {
+        flex: 1;
+      }
+
+      .estimate-addon {
+        grid-template-columns: 1fr;
+      }
+
+      .estimate-addon-price {
+        white-space: normal;
+      }
+    }
+
   </style>
 </head>
 

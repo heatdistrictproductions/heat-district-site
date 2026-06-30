@@ -499,26 +499,56 @@
       background:
         linear-gradient(135deg, transparent 0%, rgba(0,240,255,0.05) 40%, transparent 70%),
         linear-gradient(45deg, transparent 0%, rgba(255,45,120,0.05) 42%, transparent 72%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .team-photo-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      z-index: 0;
+      filter: saturate(0.96) contrast(1.04);
+      transform: scale(1.01);
+    }
+
+    .team-photo.has-image {
+      background: #05050f;
+    }
+
+    .team-photo.has-image::before {
+      background:
+        linear-gradient(180deg, rgba(5,5,15,0.02) 0%, rgba(5,5,15,0.18) 58%, rgba(5,5,15,0.48) 100%),
+        linear-gradient(135deg, rgba(0,240,255,0.05), transparent 42%, rgba(255,45,120,0.05));
+    }
+
+    .team-photo.has-image .team-initials {
+      display: none;
     }
 
     .team-initials {
-      position: relative;
-      z-index: 1;
-      width: 118px;
-      height: 118px;
-      border-radius: 50%;
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1.5px solid rgba(0,240,255,0.26);
-      color: #fff;
+      border: none;
+      color: rgba(255,255,255,0.92);
       font-size: 1.55rem;
       font-weight: 700;
       letter-spacing: 3px;
-      background: rgba(255,255,255,0.03);
-      box-shadow:
-        0 0 28px rgba(0,240,255,0.12),
-        0 0 38px rgba(255,45,120,0.08);
+      background:
+        linear-gradient(180deg, rgba(5,5,15,0.05), rgba(5,5,15,0.28)),
+        radial-gradient(circle at center, rgba(0,240,255,0.10), transparent 42%);
+      box-shadow: none;
     }
 
     .team-content {
@@ -1000,6 +1030,15 @@
 
         <article class="team-card">
           <div class="team-photo">
+            <img
+              src="images/team/ozzy-melendez.jpg"
+              alt="Ozzy Melendez"
+              class="team-photo-img"
+              loading="lazy"
+              decoding="async"
+              onload="this.closest('.team-photo').classList.add('has-image');"
+              onerror="this.remove();"
+            />
             <div class="team-initials">OM</div>
           </div>
 
@@ -1021,6 +1060,15 @@
 
         <article class="team-card">
           <div class="team-photo">
+            <img
+              src="images/team/julian-mendez.jpg"
+              alt="Julian Mendez"
+              class="team-photo-img"
+              loading="lazy"
+              decoding="async"
+              onload="this.closest('.team-photo').classList.add('has-image');"
+              onerror="this.remove();"
+            />
             <div class="team-initials">JM</div>
           </div>
 
@@ -1028,7 +1076,7 @@
             <p class="team-role">DJ / Sound Engineer / Client Experience</p>
             <h3 class="team-name">Julian Mendez</h3>
             <p class="team-copy">
-              Julian brings the music, sound, and event flow together. With years of DJ and AV equipment experience, he helps shape the energy of the event while making sure the sound, music, and client-facing details feel polished.
+              Julian brings the music, sound, and event flow together. With over 8 years of experience as a DJ and with AV equipment, he helps shape the energy of the event while making sure the sound, music, and client-facing details feel polished.
             </p>
 
             <div class="team-tags">

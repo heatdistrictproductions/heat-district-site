@@ -2,18 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gallery — Heat District Productions</title>
-  <meta name="description" content="A growing gallery of real Heat District Productions event setups, lighting details, DJ builds, and behind-the-scenes production work in South Florida." />
+  <meta name="description" content="A clean visual gallery of Heat District Productions event setups and event photography in South Florida." />
 
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/global.css">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="css/global.css">
-
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="shortcut icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="shortcut icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="favicon.png" />
 
   <style>
     :root {
@@ -23,8 +20,9 @@
       --dark-bg: #05050f;
       --card-bg: #0a0a1a;
       --text-light: #e8e8f0;
-      --muted-white: rgba(232,232,240,0.68);
-      --soft-border: rgba(0,240,255,0.1);
+      --muted-white: rgba(232, 232, 240, 0.68);
+      --soft-text: rgba(232, 232, 240, 0.48);
+      --soft-border: rgba(0, 240, 255, 0.12);
     }
 
     * {
@@ -35,15 +33,19 @@
 
     html {
       scroll-behavior: smooth;
-      background: #05050f;
+      background: var(--dark-bg);
     }
 
     body {
-      background: var(--dark-bg);
+      min-height: 100vh;
+      overflow-x: hidden;
+      background:
+        radial-gradient(ellipse at 50% -10%, rgba(0, 240, 255, 0.085), transparent 42%),
+        radial-gradient(ellipse at 12% 24%, rgba(255, 45, 120, 0.055), transparent 35%),
+        radial-gradient(ellipse at 88% 42%, rgba(191, 0, 255, 0.045), transparent 34%),
+        linear-gradient(180deg, #05050f 0%, #070716 48%, #05050f 100%);
       color: var(--text-light);
       font-family: 'Raleway', sans-serif;
-      overflow-x: hidden;
-      min-height: 100vh;
     }
 
     nav {
@@ -56,9 +58,9 @@
       justify-content: space-between;
       align-items: center;
       padding: 10px 48px;
-      background: rgba(5,5,15,0.88);
+      background: rgba(5, 5, 15, 0.88);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0,240,255,0.15);
+      border-bottom: 1px solid rgba(0, 240, 255, 0.15);
     }
 
     .nav-logo {
@@ -72,9 +74,9 @@
       height: 52px;
       width: auto;
       filter:
-        drop-shadow(0 0 6px rgba(0,240,255,0.8))
-        drop-shadow(0 0 14px rgba(0,240,255,0.5))
-        drop-shadow(0 0 4px rgba(255,45,120,0.4));
+        drop-shadow(0 0 6px rgba(0, 240, 255, 0.8))
+        drop-shadow(0 0 14px rgba(0, 240, 255, 0.5))
+        drop-shadow(0 0 4px rgba(255, 45, 120, 0.4));
     }
 
     .nav-links {
@@ -122,7 +124,7 @@
     .nav-link-with-dropdown::after {
       content: '▾';
       font-size: 0.58rem;
-      color: rgba(0,240,255,0.7);
+      color: rgba(0, 240, 255, 0.7);
       transform: translateY(-1px);
     }
 
@@ -133,10 +135,10 @@
       transform: translateX(-50%) translateY(8px);
       width: 260px;
       padding: 12px;
-      background: rgba(8,8,20,0.98);
-      border: 1px solid rgba(0,240,255,0.16);
+      background: rgba(8, 8, 20, 0.98);
+      border: 1px solid rgba(0, 240, 255, 0.16);
       border-radius: 14px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.45), 0 0 24px rgba(0,240,255,0.08);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), 0 0 24px rgba(0, 240, 255, 0.08);
       backdrop-filter: blur(14px);
       opacity: 0;
       pointer-events: none;
@@ -163,16 +165,16 @@
       display: block;
       padding: 11px 12px;
       border-radius: 8px;
-      color: rgba(232,232,240,0.72);
+      color: rgba(232, 232, 240, 0.72);
       font-size: 0.68rem;
       letter-spacing: 1.8px;
       line-height: 1.25;
     }
 
     .nav-dropdown a:hover {
-      background: rgba(0,240,255,0.07);
+      background: rgba(0, 240, 255, 0.07);
       color: var(--neon-blue);
-      text-shadow: 0 0 8px rgba(0,240,255,0.45);
+      text-shadow: 0 0 8px rgba(0, 240, 255, 0.45);
     }
 
     .nav-cta {
@@ -192,8 +194,8 @@
     }
 
     .nav-cta:hover {
-      background: rgba(255,45,120,0.15) !important;
-      box-shadow: 0 0 18px rgba(255,45,120,0.4) !important;
+      background: rgba(255, 45, 120, 0.15) !important;
+      box-shadow: 0 0 18px rgba(255, 45, 120, 0.4) !important;
     }
 
     .mobile-menu-btn {
@@ -201,7 +203,7 @@
       width: 46px;
       height: 46px;
       background: transparent;
-      border: 1px solid rgba(0,240,255,0.18);
+      border: 1px solid rgba(0, 240, 255, 0.18);
       border-radius: 8px;
       cursor: pointer;
       padding: 10px 9px;
@@ -244,11 +246,11 @@
       flex-direction: column;
       gap: 2px;
       padding: 14px;
-      background: rgba(8,8,20,0.98);
-      border: 1px solid rgba(0,240,255,0.14);
+      background: rgba(8, 8, 20, 0.98);
+      border: 1px solid rgba(0, 240, 255, 0.14);
       border-radius: 14px;
       backdrop-filter: blur(14px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
       opacity: 0;
       pointer-events: none;
       transform: translateY(-10px);
@@ -275,7 +277,7 @@
 
     .mobile-nav a:hover,
     .mobile-nav a.active {
-      background: rgba(0,240,255,0.06);
+      background: rgba(0, 240, 255, 0.06);
       color: var(--neon-blue);
       text-shadow: 0 0 8px var(--neon-blue);
     }
@@ -283,13 +285,13 @@
     .mobile-nav-sub {
       margin: -4px 0 8px;
       padding: 4px 0 8px 14px;
-      border-left: 1px solid rgba(0,240,255,0.14);
+      border-left: 1px solid rgba(0, 240, 255, 0.14);
     }
 
     .mobile-nav-sub a {
       font-size: 0.68rem;
       padding: 10px 12px;
-      color: rgba(232,232,240,0.58);
+      color: rgba(232, 232, 240, 0.58);
     }
 
     .mobile-nav-book {
@@ -303,68 +305,98 @@
       overflow: hidden;
     }
 
-    .page-hero {
-      padding: 160px 48px 78px;
-      text-align: center;
+    .gallery-hero {
+      min-height: 92vh;
+      padding: 136px 48px 74px;
       position: relative;
       overflow: hidden;
+      display: grid;
+      align-items: center;
     }
 
-    .page-hero::before {
+    .gallery-hero::before {
       content: '';
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse at 50% 0%, rgba(0,240,255,0.07) 0%, transparent 60%),
-        radial-gradient(ellipse at 20% 100%, rgba(255,45,120,0.06) 0%, transparent 50%);
+        linear-gradient(90deg, rgba(5, 5, 15, 0.94) 0%, rgba(5, 5, 15, 0.68) 43%, rgba(5, 5, 15, 0.18) 100%),
+        radial-gradient(ellipse at 16% 25%, rgba(0, 240, 255, 0.12), transparent 36%),
+        radial-gradient(ellipse at 70% 20%, rgba(255, 45, 120, 0.10), transparent 36%);
+      z-index: 1;
       pointer-events: none;
     }
 
-    .page-hero-eyebrow {
+    .gallery-hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.42;
+      filter: saturate(0.9) contrast(1.05);
+      transform: scale(1.02);
+    }
+
+    .hero-inner {
+      width: min(1420px, 100%);
+      margin: 0 auto;
       position: relative;
-      z-index: 1;
-      font-size: 0.68rem;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 44px;
+      align-items: end;
+    }
+
+    .hero-copy {
+      padding-bottom: 18px;
+    }
+
+    .hero-eyebrow,
+    .section-label,
+    .image-kicker,
+    .portfolio-tagline {
+      font-size: 0.66rem;
       letter-spacing: 5px;
       text-transform: uppercase;
-      color: rgba(0,240,255,0.6);
-      margin-bottom: 16px;
-      font-weight: 400;
+      color: rgba(0, 240, 255, 0.72);
+      font-weight: 600;
     }
 
-    .page-hero h1 {
-      position: relative;
-      z-index: 1;
-      font-size: clamp(2.3rem, 5vw, 4rem);
+    .hero-eyebrow {
+      margin-bottom: 18px;
+    }
+
+    .gallery-hero h1 {
+      font-size: clamp(3rem, 8vw, 7.2rem);
+      line-height: 0.92;
+      letter-spacing: -4px;
+      color: #fff;
       font-weight: 300;
       font-style: italic;
-      color: #fff;
-      line-height: 1.12;
-      margin-bottom: 16px;
+      margin-bottom: 28px;
     }
 
-    .page-hero h1 strong {
-      font-weight: 700;
+    .gallery-hero h1 strong {
+      display: block;
       font-style: normal;
+      font-weight: 700;
       color: var(--neon-pink);
+      text-shadow: 0 0 30px rgba(255, 45, 120, 0.18);
     }
 
-    .page-hero p {
-      position: relative;
-      z-index: 1;
-      max-width: 860px;
-      margin: 0 auto;
-      font-size: 0.98rem;
-      line-height: 1.9;
-      color: var(--muted-white);
-      font-weight: 400;
+    .hero-copy p {
+      max-width: 560px;
+      color: rgba(232, 232, 240, 0.72);
+      font-size: 1rem;
+      line-height: 1.95;
+      font-weight: 300;
     }
 
     .hero-actions {
-      position: relative;
-      z-index: 1;
       margin-top: 30px;
       display: flex;
-      justify-content: center;
       gap: 16px;
       flex-wrap: wrap;
     }
@@ -390,8 +422,8 @@
     }
 
     .btn-outline-blue:hover {
-      background: rgba(0,240,255,0.08);
-      box-shadow: 0 0 26px rgba(0,240,255,0.3);
+      background: rgba(0, 240, 255, 0.08);
+      box-shadow: 0 0 26px rgba(0, 240, 255, 0.3);
       transform: translateY(-2px);
     }
 
@@ -401,391 +433,343 @@
     }
 
     .btn-outline-pink:hover {
-      background: rgba(255,45,120,0.08);
-      box-shadow: 0 0 26px rgba(255,45,120,0.3);
+      background: rgba(255, 45, 120, 0.08);
+      box-shadow: 0 0 26px rgba(255, 45, 120, 0.3);
       transform: translateY(-2px);
+    }
+
+    .hero-feature {
+      position: relative;
+      min-height: 610px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 240, 255, 0.14);
+      background:
+        radial-gradient(circle at 20% 18%, rgba(0, 240, 255, 0.16), transparent 36%),
+        radial-gradient(circle at 85% 20%, rgba(255, 45, 120, 0.16), transparent 34%),
+        linear-gradient(135deg, rgba(10, 10, 26, 0.98), rgba(5, 5, 15, 0.98));
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.52), 0 0 34px rgba(0, 240, 255, 0.08);
+    }
+
+    .hero-feature img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0.94;
+    }
+
+    .hero-feature::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(5, 5, 15, 0.04) 0%, rgba(5, 5, 15, 0.12) 42%, rgba(5, 5, 15, 0.78) 100%),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.08), transparent 30%, transparent 70%, rgba(255, 45, 120, 0.08));
+      pointer-events: none;
+    }
+
+    .hero-feature-caption {
+      position: absolute;
+      left: 26px;
+      right: 26px;
+      bottom: 24px;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: flex-end;
+    }
+
+    .hero-feature-caption h2 {
+      max-width: 420px;
+      color: #fff;
+      font-size: clamp(1.55rem, 3vw, 2.8rem);
+      line-height: 1.05;
+      letter-spacing: -1px;
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .hero-feature-caption span {
+      color: rgba(0, 240, 255, 0.78);
+      font-size: 0.58rem;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      font-weight: 700;
     }
 
     .neon-divider {
       width: 100%;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(0,240,255,0.25), rgba(255,45,120,0.25), transparent);
+      background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.25), rgba(255, 45, 120, 0.25), transparent);
     }
 
-    .gallery-wrap {
-      max-width: 1500px;
+    .portfolio-wrap {
+      width: min(1480px, 100%);
       margin: 0 auto;
-      padding: 80px 48px 100px;
+      padding: 90px 48px 110px;
     }
 
-    .proof-strip {
+    .portfolio-intro {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
-      margin-bottom: 76px;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 30px;
+      align-items: end;
+      margin-bottom: 86px;
+      border-bottom: 1px solid rgba(0, 240, 255, 0.10);
+      padding-bottom: 38px;
     }
 
-    .proof-card {
-      border: 1px solid rgba(0,240,255,0.1);
-      border-radius: 16px;
-      padding: 22px 20px;
-      background:
-        radial-gradient(ellipse at 50% 0%, rgba(0,240,255,0.055), transparent 65%),
-        linear-gradient(180deg, rgba(10,10,26,0.96), rgba(8,8,22,0.98));
-      box-shadow: 0 14px 38px rgba(0,0,0,0.18);
-    }
-
-    .proof-kicker {
-      font-size: 0.55rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: rgba(0,240,255,0.72);
-      margin-bottom: 8px;
-      font-weight: 700;
-    }
-
-    .proof-title {
+    .portfolio-intro h2 {
       color: #fff;
-      font-size: 1.02rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-      line-height: 1.35;
-    }
-
-    .proof-copy {
-      font-size: 0.82rem;
-      color: rgba(232,232,240,0.66);
-      line-height: 1.7;
-    }
-
-    .section-label {
-      font-size: 0.68rem;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: var(--neon-blue);
-      margin-bottom: 12px;
-      font-weight: 400;
-    }
-
-    .section-title {
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-size: clamp(1.8rem, 3.8vw, 3.3rem);
+      line-height: 1.08;
       font-weight: 300;
       font-style: italic;
-      color: #fff;
-      margin-bottom: 14px;
-      line-height: 1.2;
+      letter-spacing: -1.4px;
     }
 
-    .section-title strong {
-      font-weight: 700;
-      font-style: normal;
+    .portfolio-intro h2 strong {
       color: var(--neon-pink);
+      font-style: normal;
+      font-weight: 700;
     }
 
-    .section-sub {
-      font-size: 0.92rem;
-      color: var(--muted-white);
-      font-weight: 400;
-      line-height: 1.85;
-      max-width: 920px;
+    .portfolio-intro p {
+      color: rgba(232, 232, 240, 0.64);
+      line-height: 1.9;
+      font-size: 0.98rem;
+      font-weight: 300;
+      max-width: 720px;
+      justify-self: end;
+    }
+
+    .portfolio-section {
+      margin-bottom: 108px;
+    }
+
+    .section-top {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.65fr) minmax(0, 1.35fr);
+      gap: 36px;
+      align-items: end;
       margin-bottom: 30px;
     }
 
-    .gallery-note-panel {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 18px;
-      align-items: center;
-      margin: 30px 0 34px;
-      padding: 20px 22px;
-      border: 1px solid rgba(0,240,255,0.1);
-      border-radius: 16px;
-      background:
-        radial-gradient(ellipse at 0% 0%, rgba(0,240,255,0.06), transparent 62%),
-        linear-gradient(180deg, rgba(10,10,26,0.94), rgba(8,8,22,0.98));
-      box-shadow: 0 14px 38px rgba(0,0,0,0.18);
+    .section-number {
+      color: rgba(232, 232, 240, 0.12);
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(3rem, 8vw, 6.8rem);
+      line-height: 0.8;
+      letter-spacing: -4px;
     }
 
-    .gallery-note-kicker {
-      font-size: 0.58rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: rgba(255,45,120,0.84);
-      font-weight: 700;
-      margin-bottom: 7px;
-    }
-
-    .gallery-note-title {
+    .section-title {
       color: #fff;
-      font-size: 1.08rem;
+      font-size: clamp(1.9rem, 4.5vw, 4.5rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 0.98;
+      letter-spacing: -2px;
+      margin: 10px 0 14px;
+    }
+
+    .section-title strong {
+      color: var(--neon-pink);
+      font-style: normal;
       font-weight: 700;
-      margin-bottom: 6px;
     }
 
-    .gallery-note-copy {
-      color: rgba(232,232,240,0.64);
-      font-size: 0.86rem;
-      line-height: 1.7;
-      max-width: 760px;
+    .section-copy {
+      max-width: 740px;
+      color: rgba(232, 232, 240, 0.62);
+      line-height: 1.85;
+      font-size: 0.95rem;
+      font-weight: 300;
     }
 
-    .gallery-focus-tags {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 8px;
-    }
-
-    .gallery-focus-tag {
-      border: 1px solid rgba(0,240,255,0.14);
-      border-radius: 999px;
-      padding: 9px 12px;
-      color: rgba(0,240,255,0.82);
-      background: rgba(0,240,255,0.04);
-      font-size: 0.58rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .gallery-next-panel {
-      margin-top: 20px;
-      padding: 20px 22px;
-      border: 1px solid rgba(255,45,120,0.12);
-      border-radius: 16px;
-      background:
-        radial-gradient(ellipse at 100% 0%, rgba(255,45,120,0.06), transparent 62%),
-        linear-gradient(180deg, rgba(10,10,26,0.94), rgba(8,8,22,0.98));
-      color: rgba(232,232,240,0.68);
-      font-size: 0.88rem;
-      line-height: 1.75;
-    }
-
-    .gallery-next-panel strong {
-      color: #fff;
-    }
-
-    .filter-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin: 32px 0 34px;
-    }
-
-    .filter-btn {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(0,240,255,0.14);
-      color: rgba(232,232,240,0.72);
-      border-radius: 999px;
-      padding: 11px 16px;
-      font-size: 0.64rem;
-      letter-spacing: 2.3px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-family: 'Raleway', sans-serif;
-    }
-
-    .filter-btn:hover,
-    .filter-btn.active {
-      color: var(--neon-blue);
-      border-color: rgba(0,240,255,0.38);
-      background: rgba(0,240,255,0.06);
-      box-shadow: 0 0 18px rgba(0,240,255,0.12);
-    }
-
-    .gallery-grid {
+    .editorial-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.85fr);
-      grid-auto-rows: 190px;
+      grid-template-columns: 1.15fr 0.85fr 0.75fr;
+      grid-template-rows: 360px 360px;
+      grid-template-areas:
+        "large tall smallOne"
+        "large tall smallTwo";
       gap: 18px;
-      align-items: stretch;
     }
 
-    .gallery-card {
+    .editorial-grid.reverse {
+      grid-template-columns: 0.75fr 0.85fr 1.15fr;
+      grid-template-areas:
+        "smallOne tall large"
+        "smallTwo tall large";
+    }
+
+    .image-frame {
       position: relative;
-      min-height: 190px;
-      border-radius: 16px;
       overflow: hidden;
-      border: 1px solid rgba(0,240,255,0.1);
-      background: linear-gradient(180deg, rgba(10,10,26,0.98), rgba(8,8,22,0.98));
-      cursor: pointer;
-      box-shadow: 0 14px 38px rgba(0,0,0,0.18);
-      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      border-radius: 22px;
+      border: 1px solid rgba(0, 240, 255, 0.10);
+      background:
+        radial-gradient(circle at 26% 18%, rgba(0, 240, 255, 0.12), transparent 36%),
+        radial-gradient(circle at 78% 72%, rgba(255, 45, 120, 0.12), transparent 38%),
+        linear-gradient(180deg, rgba(10, 10, 26, 0.96), rgba(8, 8, 22, 0.98));
+      box-shadow: 0 22px 70px rgba(0, 0, 0, 0.24);
+      min-height: 240px;
+      isolation: isolate;
     }
 
-    .gallery-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.45), 0 0 24px rgba(0,240,255,0.08);
-      border-color: rgba(0,240,255,0.25);
+    .image-frame.large {
+      grid-area: large;
     }
 
-    .gallery-card.featured {
-      grid-column: 1;
-      grid-row: span 3;
-      min-height: 606px;
+    .image-frame.tall {
+      grid-area: tall;
     }
 
-    .gallery-card:not(.featured) {
-      grid-column: 2;
+    .image-frame.small-one {
+      grid-area: smallOne;
     }
 
-    .gallery-img {
+    .image-frame.small-two {
+      grid-area: smallTwo;
+    }
+
+    .image-frame img {
       width: 100%;
       height: 100%;
-      min-height: inherit;
       object-fit: cover;
       display: block;
-      opacity: 0.84;
-      transition: transform 0.5s ease, opacity 0.3s ease;
+      opacity: 0.94;
+      transition: transform 0.75s ease, opacity 0.35s ease, filter 0.35s ease;
     }
 
-    .gallery-card:hover .gallery-img {
-      transform: scale(1.05);
+    .image-frame:hover img {
+      transform: scale(1.035);
       opacity: 1;
+      filter: saturate(1.04) contrast(1.04);
     }
 
-    .gallery-placeholder {
-      width: 100%;
-      height: 100%;
-      min-height: inherit;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 24px;
-      background:
-        radial-gradient(circle at 50% 18%, rgba(0,240,255,0.12), transparent 38%),
-        radial-gradient(circle at 80% 85%, rgba(255,45,120,0.12), transparent 38%),
-        linear-gradient(180deg, rgba(10,10,26,0.98), rgba(5,5,15,1));
-      color: rgba(232,232,240,0.58);
-      font-size: 0.78rem;
-      line-height: 1.7;
-      letter-spacing: 1.6px;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-
-    .gallery-overlay {
+    .image-frame::after {
+      content: '';
       position: absolute;
       inset: 0;
+      background: linear-gradient(180deg, rgba(5, 5, 15, 0.02) 0%, rgba(5, 5, 15, 0.12) 48%, rgba(5, 5, 15, 0.82) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .image-caption {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 20px;
+      z-index: 2;
+    }
+
+    .image-kicker {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.54rem;
+      letter-spacing: 3.2px;
+      color: rgba(0, 240, 255, 0.82);
+    }
+
+    .image-caption h3 {
+      color: #fff;
+      font-size: 1.04rem;
+      line-height: 1.3;
+      font-weight: 700;
+      text-shadow: 0 10px 24px rgba(0, 0, 0, 0.65);
+    }
+
+    .image-frame.large .image-caption h3,
+    .image-frame.tall .image-caption h3 {
+      font-size: clamp(1.2rem, 2vw, 1.65rem);
+    }
+
+    .image-placeholder {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      padding: 20px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 28px;
+      text-align: center;
       background:
-        linear-gradient(180deg, rgba(5,5,15,0.05) 0%, rgba(5,5,15,0.45) 55%, rgba(5,5,15,0.92) 100%);
-    }
-
-    .gallery-category {
-      font-size: 0.58rem;
-      letter-spacing: 3px;
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.035) 0, rgba(255, 255, 255, 0.035) 1px, transparent 1px, transparent 11px),
+        radial-gradient(circle at 50% 18%, rgba(0, 240, 255, 0.12), transparent 38%),
+        radial-gradient(circle at 82% 82%, rgba(255, 45, 120, 0.11), transparent 38%),
+        linear-gradient(180deg, rgba(10, 10, 26, 0.98), rgba(5, 5, 15, 1));
+      color: rgba(232, 232, 240, 0.56);
+      font-size: 0.68rem;
+      line-height: 1.65;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--neon-blue);
-      font-weight: 600;
-      margin-bottom: 7px;
-      text-shadow: 0 0 10px rgba(0,240,255,0.4);
-    }
-
-    .gallery-title {
-      font-size: 1rem;
-      color: #fff;
       font-weight: 700;
-      line-height: 1.35;
-      margin-bottom: 6px;
     }
 
-    .gallery-card.featured .gallery-title {
-      font-size: 1.35rem;
-    }
-
-    .gallery-copy {
-      font-size: 0.78rem;
-      color: rgba(232,232,240,0.68);
-      line-height: 1.55;
+    .image-placeholder small {
+      display: block;
+      max-width: 100%;
+      color: rgba(0, 240, 255, 0.66);
+      font-size: 0.62rem;
+      letter-spacing: 1px;
+      text-transform: none;
+      word-break: break-word;
       font-weight: 400;
     }
 
-    .trust-section {
-      margin-top: 80px;
+    .gallery-note {
+      margin-top: -32px;
+      margin-bottom: 92px;
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 22px;
-      align-items: stretch;
+      grid-template-columns: 0.7fr 1.3fr;
+      gap: 26px;
+      align-items: start;
+      padding: 28px 0 0;
+      border-top: 1px solid rgba(255, 45, 120, 0.12);
     }
 
-    .trust-panel {
-      border: 1px solid rgba(0,240,255,0.12);
-      border-radius: 18px;
-      padding: 34px 30px;
-      background:
-        radial-gradient(ellipse at 30% 0%, rgba(0,240,255,0.06), transparent 60%),
-        linear-gradient(180deg, rgba(10,10,26,0.96), rgba(8,8,22,0.98));
-      box-shadow: 0 18px 50px rgba(0,0,0,0.22);
-    }
-
-    .trust-panel h3 {
+    .gallery-note strong {
       color: #fff;
-      font-size: 1.35rem;
+      font-size: 1.15rem;
       line-height: 1.35;
-      margin-bottom: 12px;
-    }
-
-    .trust-panel h3 strong {
-      color: var(--neon-pink);
-    }
-
-    .trust-panel p {
-      color: rgba(232,232,240,0.68);
-      line-height: 1.85;
-      font-size: 0.92rem;
-    }
-
-    .trust-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .trust-list-item {
-      border: 1px solid rgba(0,240,255,0.09);
-      border-radius: 14px;
-      padding: 17px 18px;
-      background: rgba(255,255,255,0.025);
-    }
-
-    .trust-list-title {
-      color: #fff;
       font-weight: 700;
-      margin-bottom: 5px;
-      font-size: 0.92rem;
     }
 
-    .trust-list-copy {
-      color: rgba(232,232,240,0.64);
-      line-height: 1.65;
-      font-size: 0.82rem;
+    .gallery-note p {
+      color: rgba(232, 232, 240, 0.56);
+      line-height: 1.85;
+      font-size: 0.9rem;
+      font-weight: 300;
     }
 
     .cta-section {
-      margin-top: 88px;
       text-align: center;
-      border: 1px solid rgba(0,240,255,0.12);
-      border-radius: 18px;
+      border: 1px solid rgba(0, 240, 255, 0.12);
+      border-radius: 24px;
       padding: 64px 40px;
       background:
-        radial-gradient(ellipse at 50% 0%, rgba(0,240,255,0.06), transparent 60%),
-        linear-gradient(180deg, rgba(10,10,26,0.96), rgba(8,8,22,0.98));
-      box-shadow: 0 18px 50px rgba(0,0,0,0.24);
+        radial-gradient(ellipse at 50% 0%, rgba(0, 240, 255, 0.07), transparent 60%),
+        radial-gradient(ellipse at 20% 100%, rgba(255, 45, 120, 0.06), transparent 50%),
+        linear-gradient(180deg, rgba(10, 10, 26, 0.96), rgba(8, 8, 22, 0.98));
+      box-shadow: 0 22px 70px rgba(0, 0, 0, 0.26);
     }
 
     .cta-section h2 {
-      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+      color: #fff;
+      font-size: clamp(1.8rem, 4vw, 3.4rem);
       font-weight: 300;
       font-style: italic;
-      color: #fff;
-      margin-bottom: 16px;
-      line-height: 1.25;
+      line-height: 1.1;
+      margin-bottom: 18px;
+      letter-spacing: -1px;
     }
 
     .cta-section h2 strong {
@@ -795,115 +779,18 @@
     }
 
     .cta-section p {
-      max-width: 740px;
+      max-width: 720px;
       margin: 0 auto 30px;
-      color: rgba(232,232,240,0.62);
+      color: rgba(232, 232, 240, 0.62);
       line-height: 1.85;
-      font-size: 0.92rem;
-      font-weight: 400;
-    }
-
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 3000;
-      background: rgba(0,0,0,0.9);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 28px;
-    }
-
-    .lightbox.open {
-      display: flex;
-    }
-
-    .lightbox-inner {
-      position: relative;
-      width: min(1100px, 100%);
-      max-height: 90vh;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid rgba(0,240,255,0.18);
-      background: #05050f;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.7);
-    }
-
-    .lightbox-img {
-      width: 100%;
-      max-height: 78vh;
-      object-fit: contain;
-      display: block;
-      background: #03030a;
-    }
-
-    .lightbox-placeholder {
-      display: none;
-      min-height: 420px;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 38px;
-      background:
-        radial-gradient(circle at 50% 18%, rgba(0,240,255,0.12), transparent 38%),
-        radial-gradient(circle at 80% 85%, rgba(255,45,120,0.12), transparent 38%),
-        linear-gradient(180deg, rgba(10,10,26,0.98), rgba(5,5,15,1));
-      color: rgba(232,232,240,0.64);
-      line-height: 1.8;
-    }
-
-    .lightbox-info {
-      padding: 18px 20px 20px;
-      background: linear-gradient(180deg, rgba(10,10,26,0.98), rgba(5,5,15,0.98));
-    }
-
-    .lightbox-category {
-      font-size: 0.58rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--neon-blue);
-      font-weight: 600;
-      margin-bottom: 7px;
-    }
-
-    .lightbox-title {
-      font-size: 1.2rem;
-      color: #fff;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .lightbox-copy {
-      font-size: 0.82rem;
-      color: rgba(232,232,240,0.62);
-      line-height: 1.6;
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      width: 42px;
-      height: 42px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,45,120,0.42);
-      background: rgba(5,5,15,0.8);
-      color: var(--neon-pink);
-      font-size: 1.35rem;
-      cursor: pointer;
-      z-index: 5;
-      transition: background 0.25s, box-shadow 0.25s;
-    }
-
-    .lightbox-close:hover {
-      background: rgba(255,45,120,0.12);
-      box-shadow: 0 0 22px rgba(255,45,120,0.3);
+      font-size: 0.94rem;
+      font-weight: 300;
     }
 
     footer {
       text-align: center;
       padding: 60px 48px 100px;
-      border-top: 1px solid rgba(0,240,255,0.08);
+      border-top: 1px solid rgba(0, 240, 255, 0.08);
     }
 
     .footer-logo img {
@@ -911,14 +798,14 @@
       width: auto;
       margin-bottom: 6px;
       filter:
-        drop-shadow(0 0 5px rgba(0,240,255,0.6))
-        drop-shadow(0 0 12px rgba(255,45,120,0.3));
+        drop-shadow(0 0 5px rgba(0, 240, 255, 0.6))
+        drop-shadow(0 0 12px rgba(255, 45, 120, 0.3));
     }
 
     .footer-productions-text {
       font-size: 0.55rem;
       letter-spacing: 6px;
-      color: rgba(232,232,240,0.2);
+      color: rgba(232, 232, 240, 0.2);
       text-transform: uppercase;
       display: block;
       margin-bottom: 6px;
@@ -933,7 +820,7 @@
     }
 
     .footer-contact a {
-      color: rgba(232,232,240,0.4);
+      color: rgba(232, 232, 240, 0.4);
       text-decoration: none;
       font-size: 0.8rem;
       letter-spacing: 1px;
@@ -947,30 +834,40 @@
 
     .footer-copy {
       font-size: 0.68rem;
-      color: rgba(232,232,240,0.18);
+      color: rgba(232, 232, 240, 0.18);
       letter-spacing: 2.5px;
       text-transform: uppercase;
       margin-top: 32px;
     }
 
     @media (max-width: 1200px) {
-      .gallery-grid {
+      .hero-inner,
+      .portfolio-intro,
+      .section-top,
+      .gallery-note {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        padding-bottom: 0;
+      }
+
+      .hero-feature {
+        min-height: 460px;
+      }
+
+      .portfolio-intro p {
+        justify-self: start;
+      }
+
+      .editorial-grid,
+      .editorial-grid.reverse {
         grid-template-columns: 1fr 1fr;
-        grid-auto-rows: 240px;
-      }
-
-      .gallery-card.featured {
-        grid-column: span 2;
-        grid-row: span 1;
-        min-height: 380px;
-      }
-
-      .gallery-card:not(.featured) {
-        grid-column: auto;
-      }
-
-      .proof-strip {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: 420px 320px 320px;
+        grid-template-areas:
+          "large large"
+          "tall smallOne"
+          "tall smallTwo";
       }
     }
 
@@ -988,54 +885,85 @@
         display: flex;
       }
 
-      .page-hero {
-        padding: 145px 24px 64px;
+      .gallery-hero {
+        min-height: auto;
+        padding: 132px 24px 66px;
       }
 
-      .gallery-wrap {
-        padding: 60px 24px 90px;
+      .gallery-hero::before {
+        background:
+          linear-gradient(180deg, rgba(5, 5, 15, 0.88) 0%, rgba(5, 5, 15, 0.58) 54%, rgba(5, 5, 15, 0.9) 100%),
+          radial-gradient(ellipse at 16% 25%, rgba(0, 240, 255, 0.12), transparent 36%),
+          radial-gradient(ellipse at 70% 20%, rgba(255, 45, 120, 0.10), transparent 36%);
       }
 
-      .proof-strip {
+      .hero-inner {
+        gap: 32px;
+      }
+
+      .gallery-hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero-feature {
+        min-height: 390px;
+        border-radius: 18px;
+      }
+
+      .hero-feature-caption {
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+        display: block;
+      }
+
+      .hero-feature-caption span {
+        display: block;
+        margin-top: 12px;
+      }
+
+      .portfolio-wrap {
+        padding: 66px 24px 90px;
+      }
+
+      .portfolio-intro {
+        margin-bottom: 66px;
+      }
+
+      .portfolio-section {
+        margin-bottom: 82px;
+      }
+
+      .editorial-grid,
+      .editorial-grid.reverse {
         grid-template-columns: 1fr;
-        margin-bottom: 54px;
+        grid-template-rows: auto;
+        grid-template-areas:
+          "large"
+          "tall"
+          "smallOne"
+          "smallTwo";
       }
 
-      .gallery-grid {
-        grid-template-columns: 1fr;
-        grid-auto-rows: auto;
+      .image-frame,
+      .image-frame.large,
+      .image-frame.tall {
+        min-height: 350px;
       }
 
-      .gallery-card,
-      .gallery-card.featured,
-      .gallery-card:not(.featured) {
-        grid-column: auto;
-        grid-row: auto;
-        min-height: 320px;
+      .section-number {
+        font-size: 3.5rem;
+        letter-spacing: -2px;
       }
 
-      .gallery-note-panel {
-        grid-template-columns: 1fr;
-      }
-
-      .gallery-focus-tags {
-        justify-content: flex-start;
-      }
-
-      .filter-btn {
-        width: 100%;
-      }
-
-      .trust-section {
-        grid-template-columns: 1fr;
-      }
-
-      .trust-panel {
-        padding: 28px 24px;
+      .gallery-note {
+        margin-top: -20px;
+        margin-bottom: 66px;
       }
 
       .cta-section {
-        padding: 46px 26px;
+        padding: 48px 26px;
+        border-radius: 18px;
       }
 
       footer {
@@ -1106,132 +1034,152 @@
     <a href="packages.html" class="mobile-nav-book">Book Now</a>
   </div>
 
-  <section class="page-hero">
-    <p class="page-hero-eyebrow">Real Setups · Growing Gallery · South Florida</p>
-    <h1>See the Setup<br><strong>Before You Book</strong></h1>
-    <p>
-      A focused look at our current real setup photos, lighting details, DJ builds, and behind-the-scenes production work. This gallery is intentionally curated while the portfolio grows with new South Florida events.
-    </p>
+  <header class="gallery-hero">
+    <img class="gallery-hero-bg" src="gallery/hero-gallery.jpg" alt="Heat District event gallery hero" data-path="gallery/hero-gallery.jpg" onerror="hideBrokenImage(this)">
 
-    <div class="hero-actions">
-      <a href="packages.html" class="btn-outline-blue">View Packages</a>
-      <a href="services.html" class="btn-outline-pink">Build A Custom Setup</a>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="hero-eyebrow">Gallery · South Florida Events</p>
+        <h1>Real Events.<br><strong>Clean Looks.</strong></h1>
+        <p>
+          A simple look at the setups we build and the moments we capture.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#event-setups" class="btn-outline-blue">View Setups</a>
+          <a href="#event-photography" class="btn-outline-pink">View Photography</a>
+        </div>
+      </div>
+
+      <div class="hero-feature">
+        <img src="gallery/hero-feature.jpg" alt="Featured Heat District event moment" data-path="gallery/hero-feature.jpg" onerror="showImagePlaceholder(this)">
+        <div class="hero-feature-caption">
+          <h2>Setups, lighting, and real moments.</h2>
+          <span>Featured</span>
+        </div>
+      </div>
     </div>
-  </section>
+  </header>
 
   <div class="neon-divider"></div>
 
-  <main class="gallery-wrap">
+  <main class="portfolio-wrap">
+    <section class="portfolio-intro">
+      <div>
+        <p class="portfolio-tagline">Selected Work</p>
+        <h2>Let the <strong>photos speak.</strong></h2>
+      </div>
+      <p>
+        Finished setups and event photography from Heat District Productions. Clean, direct, and built around the visuals.
+      </p>
+    </section>
 
-    <section class="proof-strip">
-      <div class="proof-card">
-        <div class="proof-kicker">Setups</div>
-        <div class="proof-title">Finished event looks</div>
-        <div class="proof-copy">See how our sound, lighting, trussing, DJ setups, and event equipment come together inside real spaces.</div>
+    <section class="portfolio-section" id="event-setups">
+      <div class="section-top">
+        <div class="section-number">01</div>
+        <div>
+          <p class="section-label">Event Setups</p>
+          <h2 class="section-title">Built <strong>For the Room</strong></h2>
+          <p class="section-copy">
+            Sound, lighting, DJ booths, trussing, and details arranged for a clean finished look.
+          </p>
+        </div>
       </div>
 
-      <div class="proof-card">
-        <div class="proof-kicker">Production</div>
-        <div class="proof-title">Clean, organized builds</div>
-        <div class="proof-copy">From load-in to final setup, our goal is to create polished event spaces that look intentional and professional.</div>
-      </div>
+      <div class="editorial-grid">
+        <figure class="image-frame large">
+          <img src="gallery/setups/setup-1.jpg" alt="Full Heat District event setup" data-path="gallery/setups/setup-1.jpg" onerror="showImagePlaceholder(this)">
+          <figcaption class="image-caption">
+            <span class="image-kicker">Full Setup</span>
+            <h3>Complete room look</h3>
+          </figcaption>
+        </figure>
 
-      <div class="proof-card">
-        <div class="proof-kicker">Experience</div>
-        <div class="proof-title">Guest-facing moments</div>
-        <div class="proof-copy">Lighting, photo booth, DJ setups, and media coverage help create moments guests remember and interact with.</div>
-      </div>
+        <figure class="image-frame tall">
+          <img src="gallery/setups/setup-2.jpg" alt="Heat District lighting and trussing setup" data-path="gallery/setups/setup-2.jpg" onerror="showImagePlaceholder(this)">
+          <figcaption class="image-caption">
+            <span class="image-kicker">Lighting</span>
+            <h3>Color and atmosphere</h3>
+          </figcaption>
+        </figure>
 
-      <div class="proof-card">
-        <div class="proof-kicker">Booking</div>
-        <div class="proof-title">Packages or custom builds</div>
-        <div class="proof-copy">Choose a ready-made package or build a custom setup with the rentals and services that fit your event.</div>
+        <figure class="image-frame small-one">
+          <img src="gallery/setups/setup-3.jpg" alt="Heat District DJ booth setup" data-path="gallery/setups/setup-3.jpg" onerror="showImagePlaceholder(this)">
+          <figcaption class="image-caption">
+            <span class="image-kicker">DJ Booth</span>
+            <h3>Clean front-facing setup</h3>
+          </figcaption>
+        </figure>
+
+        <figure class="image-frame small-two">
+          <img src="gallery/setups/setup-4.jpg" alt="Heat District event detail setup" data-path="gallery/setups/setup-4.jpg" onerror="showImagePlaceholder(this)">
+          <figcaption class="image-caption">
+            <span class="image-kicker">Details</span>
+            <h3>Production details</h3>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
-    <p class="section-label">Gallery</p>
-    <h2 class="section-title">Recent Work & <strong>Production Proof</strong></h2>
-    <p class="section-sub">
-      This page starts with a tight selection of real setup photos instead of spreading a small gallery thin. More finished setups, detail shots, and event moments will be added as new events are completed.
-    </p>
-
-    <div class="gallery-note-panel">
-      <div>
-        <div class="gallery-note-kicker">Curated, Not Empty</div>
-        <div class="gallery-note-title">A focused gallery built around your current real photos</div>
-        <div class="gallery-note-copy">Instead of showing a large empty grid, this page highlights four strong setup angles: the full event look, lighting detail, DJ setup, and behind-the-scenes production. Replace the four image files below with your real photos as you collect more content.</div>
+    <section class="portfolio-section" id="event-photography">
+      <div class="section-top">
+        <div class="section-number">02</div>
+        <div>
+          <p class="section-label">Event Photography</p>
+          <h2 class="section-title">Moments <strong>That Stay</strong></h2>
+          <p class="section-copy">
+            People, energy, details, and real moments from the event.
+          </p>
+        </div>
       </div>
 
-      <div class="gallery-focus-tags" aria-label="Current gallery focus areas">
-        <span class="gallery-focus-tag">Setups</span>
-        <span class="gallery-focus-tag">Lighting</span>
-        <span class="gallery-focus-tag">DJ Booth</span>
-        <span class="gallery-focus-tag">BTS</span>
-      </div>
-    </div>
+      <div class="editorial-grid reverse">
+        <figure class="image-frame large">
+          <img src="gallery/event-photography/event-photo-1.jpg" alt="Heat District event photography featured moment" data-path="gallery/event-photography/event-photo-1.jpg" onerror="showImagePlaceholder(this)">
+          <figcaption class="image-caption">
+            <span class="image-kicker">Featured Moment</span>
+            <h3>Real event energy</h3>
+          </figcaption>
+        </figure>
 
-    <div class="gallery-grid" id="galleryGrid"></div>
+        <figure class="image-frame tall">
+          <img src="gallery/event-photography/event-photo-2.jpg" alt="Heat District dance floor photography" data-path="gallery/event-photography/event-photo-2.jpg" onerror="showImagePlaceholder(this)">
+          <figcaption class="image-caption">
+            <span class="image-kicker">Dance Floor</span>
+            <h3>Movement and atmosphere</h3>
+          </figcaption>
+        </figure>
 
-    <div class="gallery-next-panel">
-      <strong>More real setups are being added.</strong> This gallery is designed to launch cleanly with a small portfolio now, then expand naturally as new events, detail shots, photo booth moments, lighting looks, and package builds are completed.
-    </div>
+        <figure class="image-frame small-one">
+          <img src="gallery/event-photography/event-photo-3.jpg" alt="Heat District event detail photography" data-path="gallery/event-photography/event-photo-3.jpg" onerror="showImagePlaceholder(this)">
+          <figcaption class="image-caption">
+            <span class="image-kicker">Details</span>
+            <h3>Details and atmosphere</h3>
+          </figcaption>
+        </figure>
 
-    <section class="trust-section">
-      <div class="trust-panel">
-        <h3>Built for events that need <strong>more than basic rentals</strong></h3>
-        <p>
-          Heat District Productions focuses on creating complete event environments, not just dropping off equipment. From sound and lighting to DJ setups, trussing, media, photo booth, and effects, every build is planned around the space, guest experience, and overall look of the event.
-        </p>
-      </div>
-
-      <div class="trust-list">
-        <div class="trust-list-item">
-          <div class="trust-list-title">Focused setup visibility</div>
-          <div class="trust-list-copy">A smaller curated gallery helps visitors understand the setup style without making the page feel unfinished.</div>
-        </div>
-
-        <div class="trust-list-item">
-          <div class="trust-list-title">Real equipment details</div>
-          <div class="trust-list-copy">As more events are completed, close-up shots of speakers, truss, lights, DJ gear, and guest moments can be added without changing the page structure.</div>
-        </div>
-
-        <div class="trust-list-item">
-          <div class="trust-list-title">Designed around the event</div>
-          <div class="trust-list-copy">Lighting, sound, staging, and guest-facing add-ons are selected based on the venue, event type, and desired atmosphere.</div>
-        </div>
-
-        <div class="trust-list-item">
-          <div class="trust-list-title">Simple next step</div>
-          <div class="trust-list-copy">Start with a package if you want a ready-made setup, or use Rentals & Builds if you already know what equipment or services you need.</div>
-        </div>
+        <figure class="image-frame small-two">
+          <img src="gallery/event-photography/event-photo-4.jpg" alt="Heat District guest photography" data-path="gallery/event-photography/event-photo-4.jpg" onerror="showImagePlaceholder(this)">
+          <figcaption class="image-caption">
+            <span class="image-kicker">Guests</span>
+            <h3>People and moments</h3>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
     <section class="cta-section">
-      <h2>Ready to Build<br><strong>Your Event Setup?</strong></h2>
+      <h2>Ready to Build<br><strong>Your Event Look?</strong></h2>
       <p>
-        Choose a package for the easiest booking path, or build your own setup with individual rentals and services. Once submitted, your checkout creates a 50% deposit invoice and sends your event details to our booking system.
+        Choose a package or request a custom setup for your event.
       </p>
 
-      <div class="hero-actions">
-        <a href="packages.html" class="btn-outline-blue">Start With Packages</a>
-        <a href="services.html" class="btn-outline-pink">Browse Rentals & Builds</a>
+      <div class="hero-actions" style="justify-content:center;">
+        <a href="packages.html" class="btn-outline-blue">View Packages</a>
+        <a href="contact.html" class="btn-outline-pink">Request A Quote</a>
       </div>
     </section>
   </main>
-
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <div class="lightbox-inner">
-      <button class="lightbox-close" type="button" onclick="closeLightbox()" aria-label="Close gallery image">×</button>
-      <img class="lightbox-img" id="lightboxImg" src="" alt="">
-      <div class="lightbox-placeholder" id="lightboxPlaceholder"></div>
-      <div class="lightbox-info">
-        <div class="lightbox-category" id="lightboxCategory"></div>
-        <div class="lightbox-title" id="lightboxTitle"></div>
-        <div class="lightbox-copy" id="lightboxCopy"></div>
-      </div>
-    </div>
-  </div>
 
   <footer>
     <div class="footer-logo">
@@ -1250,46 +1198,17 @@
   </footer>
 
   <script>
-    const galleryItems = [
-      {
-        title: 'Recent Event Setup',
-        category: 'setups',
-        categoryLabel: 'Event Setup',
-        image: 'gallery/event-setup-1.jpg',
-        description: 'Main setup photo showing the finished event look, layout, lighting presence, and overall production style.',
-        featured: true
-      },
-      {
-        title: 'Lighting Detail',
-        category: 'lighting',
-        categoryLabel: 'Lighting',
-        image: 'gallery/lighting-package-1.jpg',
-        description: 'Lighting-focused image showing room color, atmosphere, fixture placement, or dance floor energy.'
-      },
-      {
-        title: 'DJ Booth Setup',
-        category: 'dj',
-        categoryLabel: 'DJ Setup',
-        image: 'gallery/dj-setup-1.jpg',
-        description: 'DJ setup image showing the booth area, equipment layout, and clean event presentation.'
-      },
-      {
-        title: 'Behind the Scenes Setup',
-        category: 'behind',
-        categoryLabel: 'Behind the Scenes',
-        image: 'gallery/behind-scenes-1.jpg',
-        description: 'Setup or prep photo showing the production process before the event starts.'
-      }
-    ];
+    function hideBrokenImage(img) {
+      img.style.display = 'none';
+    }
 
-    const galleryGrid = document.getElementById('galleryGrid');
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const lightboxPlaceholder = document.getElementById('lightboxPlaceholder');
-    const lightboxCategory = document.getElementById('lightboxCategory');
-    const lightboxTitle = document.getElementById('lightboxTitle');
-    const lightboxCopy = document.getElementById('lightboxCopy');
+    function showImagePlaceholder(img) {
+      const path = img.getAttribute('data-path') || img.getAttribute('src') || '';
+      const placeholder = document.createElement('div');
+      placeholder.className = 'image-placeholder';
+      placeholder.innerHTML = 'Add Photo Here<small>' + escapeHtml(path) + '</small>';
+      img.replaceWith(placeholder);
+    }
 
     function escapeHtml(value) {
       return String(value || '')
@@ -1299,100 +1218,6 @@
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#039;');
     }
-
-    function renderGallery(filter) {
-      const activeFilter = filter || 'all';
-
-      const filteredItems = galleryItems.filter(function(item) {
-        return activeFilter === 'all' || item.category === activeFilter;
-      });
-
-      galleryGrid.innerHTML = filteredItems.map(function(item) {
-        const itemIndex = galleryItems.indexOf(item);
-        const featuredClass = item.featured && activeFilter === 'all' ? ' featured' : '';
-
-        return '' +
-          '<article class="gallery-card' + featuredClass + '" onclick="openLightbox(' + itemIndex + ')">' +
-            '<img class="gallery-img" src="' + escapeHtml(item.image) + '" alt="' + escapeHtml(item.title) + '" onerror="showGalleryPlaceholder(this)">' +
-            '<div class="gallery-overlay">' +
-              '<div class="gallery-category">' + escapeHtml(item.categoryLabel) + '</div>' +
-              '<div class="gallery-title">' + escapeHtml(item.title) + '</div>' +
-              '<div class="gallery-copy">' + escapeHtml(item.description) + '</div>' +
-            '</div>' +
-          '</article>';
-      }).join('');
-    }
-
-    function showGalleryPlaceholder(img) {
-      const card = img.closest('.gallery-card');
-
-      if (!card) return;
-
-      const placeholder = document.createElement('div');
-      placeholder.className = 'gallery-placeholder';
-      placeholder.textContent = 'Recent Setup Photo Coming Soon';
-
-      img.replaceWith(placeholder);
-    }
-
-    function openLightbox(index) {
-      const item = galleryItems[index];
-
-      if (!item) return;
-
-      lightboxImg.style.display = 'block';
-      lightboxPlaceholder.style.display = 'none';
-      lightboxPlaceholder.innerHTML = '';
-
-      lightboxImg.src = item.image;
-      lightboxImg.alt = item.title;
-
-      lightboxImg.onerror = function() {
-        lightboxImg.style.display = 'none';
-        lightboxPlaceholder.style.display = 'flex';
-        lightboxPlaceholder.textContent = 'Recent setup photo coming soon.';
-      };
-
-      lightboxCategory.textContent = item.categoryLabel;
-      lightboxTitle.textContent = item.title;
-      lightboxCopy.textContent = item.description;
-      lightbox.classList.add('open');
-      lightbox.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox() {
-      lightbox.classList.remove('open');
-      lightbox.setAttribute('aria-hidden', 'true');
-      lightboxImg.src = '';
-      lightboxImg.onerror = null;
-      lightboxPlaceholder.style.display = 'none';
-      lightboxPlaceholder.innerHTML = '';
-      document.body.style.overflow = '';
-    }
-
-    filterButtons.forEach(function(button) {
-      button.addEventListener('click', function() {
-        filterButtons.forEach(function(btn) {
-          btn.classList.remove('active');
-        });
-
-        button.classList.add('active');
-        renderGallery(button.dataset.filter);
-      });
-    });
-
-    lightbox.addEventListener('click', function(event) {
-      if (event.target === lightbox) {
-        closeLightbox();
-      }
-    });
-
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape' && lightbox.classList.contains('open')) {
-        closeLightbox();
-      }
-    });
 
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileNav = document.getElementById('mobileNav');
@@ -1443,8 +1268,6 @@
         }
       });
     }
-
-    renderGallery('all');
   </script>
 
   <script src="js/global-cart.js"></script>

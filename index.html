@@ -817,6 +817,109 @@
       margin-top: auto;
     }
 
+
+    .spread-photo-section {
+      max-width: 1280px;
+      padding: 78px 48px;
+    }
+
+    .spread-photo-section-tight {
+      padding-top: 26px;
+      padding-bottom: 90px;
+    }
+
+    .spread-photo-frame {
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid rgba(0,240,255,0.12);
+      background:
+        radial-gradient(ellipse at 15% 18%, rgba(0,240,255,0.11), transparent 62%),
+        radial-gradient(ellipse at 85% 82%, rgba(255,45,120,0.12), transparent 60%),
+        linear-gradient(135deg, rgba(10,10,26,0.95), rgba(5,5,15,0.98));
+      box-shadow: 0 24px 70px rgba(0,0,0,0.34);
+      min-height: 360px;
+      isolation: isolate;
+    }
+
+    .spread-photo-frame::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(5,5,15,0.04), rgba(5,5,15,0.28)),
+        linear-gradient(90deg, rgba(0,240,255,0.10), transparent 42%, rgba(255,45,120,0.08));
+    }
+
+    .spread-photo-frame img {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .spread-photo-frame:hover img {
+      transform: scale(1.025);
+    }
+
+    .spread-photo-large {
+      min-height: clamp(420px, 52vw, 640px);
+    }
+
+    .spread-photo-wide {
+      min-height: clamp(340px, 38vw, 520px);
+      max-width: 1060px;
+      margin-left: auto;
+    }
+
+    .spread-photo-pair {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 34px;
+      align-items: start;
+    }
+
+    .spread-photo-pair .spread-photo-frame:first-child {
+      min-height: 540px;
+      margin-top: 48px;
+    }
+
+    .spread-photo-pair .spread-photo-frame:nth-child(2) {
+      min-height: 440px;
+    }
+
+    .spread-photo-frame.image-missing img {
+      display: none;
+    }
+
+    .spread-photo-placeholder {
+      position: absolute;
+      inset: 18px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px dashed rgba(0,240,255,0.18);
+      border-radius: 12px;
+      text-align: center;
+      color: rgba(232,232,240,0.44);
+      font-size: 0.66rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      line-height: 1.85;
+      padding: 24px;
+    }
+
+    .spread-photo-frame:not(.image-missing) .spread-photo-placeholder {
+      display: none;
+    }
+
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -907,18 +1010,23 @@
     }
 
     .package-card {
-      background: var(--card-bg);
+      background:
+        radial-gradient(ellipse at 20% 0%, rgba(0,240,255,0.045), transparent 58%),
+        linear-gradient(180deg, rgba(10,10,26,0.98), rgba(7,7,20,0.98));
       border: 1px solid rgba(0,240,255,0.1);
-      border-radius: 10px;
-      padding: 36px 22px 24px;
+      border-radius: 14px;
+      padding: 14px 14px 18px;
       position: relative;
       transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
       overflow: visible;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
     }
 
     .package-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(0,240,255,0.07);
+      transform: translateY(-7px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.48), 0 0 30px rgba(0,240,255,0.07);
     }
 
     .package-card.featured {
@@ -933,7 +1041,7 @@
 
     .package-badge {
       position: absolute;
-      top: -12px;
+      top: -13px;
       left: 50%;
       transform: translateX(-50%);
       color: #fff;
@@ -952,27 +1060,93 @@
     }
 
     .package-badge.value {
-      background: linear-gradient(135deg, rgba(0,240,255,0.96), rgba(0,165,255,0.92));
-      color: #051017;
+      background: linear-gradient(135deg, rgba(0,240,255,0.98), rgba(0,165,255,0.92));
+      color: #041015;
+    }
+
+    .package-visual {
+      position: relative;
+      min-height: 150px;
+      margin-bottom: 18px;
+      border-radius: 11px;
+      overflow: hidden;
+      border: 1px solid rgba(0,240,255,0.1);
+      background:
+        var(--package-image, none),
+        radial-gradient(circle at 20% 18%, rgba(0,240,255,0.14), transparent 35%),
+        radial-gradient(circle at 82% 22%, rgba(255,45,120,0.12), transparent 38%),
+        linear-gradient(135deg, rgba(13,13,32,0.98), rgba(5,5,15,0.98));
+      background-size: contain, cover, cover, cover;
+      background-position: center, center, center, center;
+      background-repeat: no-repeat;
+      box-shadow: inset 0 -40px 70px rgba(5,5,15,0.34);
+    }
+
+    .package-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(5,5,15,0.02), rgba(5,5,15,0.26)),
+        linear-gradient(90deg, rgba(0,240,255,0.05), transparent 50%, rgba(255,45,120,0.05));
+      pointer-events: none;
     }
 
     .package-name {
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 4px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 3.2px;
       text-transform: uppercase;
       color: var(--neon-blue);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+
+    .featured .package-name {
+      color: var(--neon-pink);
+    }
+
+    .package-best-for {
+      border-left: 1px solid rgba(0,240,255,0.28);
+      padding: 2px 0 2px 12px;
+      margin-bottom: 16px;
+      color: rgba(232,232,240,0.58);
+      font-size: 0.78rem;
+      line-height: 1.65;
+      font-weight: 300;
+      min-height: 78px;
+    }
+
+    .package-best-for span {
+      display: block;
+      color: rgba(0,240,255,0.72);
+      font-size: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .featured .package-best-for {
+      border-left-color: rgba(255,45,120,0.38);
+    }
+
+    .featured .package-best-for span {
+      color: rgba(255,45,120,0.86);
     }
 
     .package-price {
       display: flex;
-      align-items: flex-end;
-      gap: 4px;
-      margin-bottom: 2px;
+      align-items: baseline;
+      gap: 6px;
+      margin: auto 0 4px;
       color: #fff;
       line-height: 1;
       flex-wrap: nowrap;
+      white-space: nowrap;
+      font-family: 'Raleway', sans-serif;
+      font-variant-numeric: lining-nums tabular-nums;
+      font-feature-settings: "lnum" 1, "tnum" 1, "kern" 1;
     }
 
     .package-price-symbol {
@@ -980,15 +1154,23 @@
       font-weight: 300;
       color: #fff;
       line-height: 1;
-      margin-bottom: 4px;
+      margin: 0;
+      transform: translateY(-0.02em);
+      font-variant-numeric: lining-nums tabular-nums;
+      font-feature-settings: "lnum" 1, "tnum" 1, "kern" 1;
     }
 
     .package-price-value {
+      display: inline-block;
       font-size: 2.35rem;
       font-weight: 300;
       color: #fff;
-      letter-spacing: -1px;
-      line-height: 0.95;
+      letter-spacing: -0.045em;
+      line-height: 1;
+      margin: 0;
+      font-variant-numeric: lining-nums tabular-nums;
+      font-feature-settings: "lnum" 1, "tnum" 1, "kern" 1;
+      font-synthesis: none;
     }
 
     .package-price-unit {
@@ -996,100 +1178,22 @@
       color: rgba(232,232,240,0.52);
       font-weight: 300;
       letter-spacing: 1px;
-      margin-left: 4px;
-      margin-bottom: 4px;
+      line-height: 1;
+      margin: 0 0 0 3px;
       white-space: nowrap;
-    }
-
-    .package-duration {
-      font-size: 0.68rem;
-      color: rgba(232,232,240,0.35);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
-
-    .package-controls {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 18px;
-      padding: 10px 12px;
-      border: 1px solid rgba(0,240,255,0.08);
-      border-radius: 10px;
-      background: rgba(255,255,255,0.02);
-    }
-
-    .package-controls label {
-      font-size: 0.6rem;
-      letter-spacing: 2.8px;
-      text-transform: uppercase;
-      color: rgba(232,232,240,0.42);
-      font-weight: 600;
-    }
-
-    .package-hours-select {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(0,240,255,0.14);
-      color: #fff;
-      border-radius: 6px;
-      padding: 8px 10px;
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.78rem;
-      outline: none;
-    }
-
-    .package-hours-select option {
-      background: #0a0a1a;
-      color: #e8e8f0;
-    }
-
-    .package-hours-note {
-      font-size: 0.62rem;
-      color: var(--success);
-      letter-spacing: 1.4px;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-      line-height: 1.45;
-      min-height: 16px;
-    }
-
-    .package-includes {
-      list-style: none;
-      margin-bottom: 28px;
-    }
-
-    .package-includes li {
-      font-size: 0.8rem;
-      color: rgba(232,232,240,0.6);
-      padding: 7px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 300;
-      line-height: 1.45;
-    }
-
-    .package-includes li::before {
-      content: '';
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--neon-blue);
-      flex-shrink: 0;
+      font-variant-numeric: lining-nums tabular-nums;
+      font-feature-settings: "lnum" 1, "tnum" 1, "kern" 1;
     }
 
     .package-savings {
-      font-size: 0.66rem;
-      color: rgba(77,255,145,0.8);
-      letter-spacing: 1.5px;
-      margin-bottom: 20px;
-      font-weight: 400;
+      font-size: 0.58rem;
+      color: rgba(77,255,145,0.78);
+      letter-spacing: 1.4px;
+      margin: 8px 0 16px;
+      font-weight: 600;
       text-transform: uppercase;
-      line-height: 1.45;
-      min-height: 30px;
+      line-height: 1.4;
+      min-height: 16px;
     }
 
     .cta-section {
@@ -1392,6 +1496,32 @@
         padding: 28px 24px;
       }
 
+
+      .spread-photo-section {
+        padding: 58px 24px;
+      }
+
+      .spread-photo-section-tight {
+        padding-top: 8px;
+        padding-bottom: 64px;
+      }
+
+      .spread-photo-large,
+      .spread-photo-wide {
+        min-height: 360px;
+      }
+
+      .spread-photo-pair {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .spread-photo-pair .spread-photo-frame:first-child,
+      .spread-photo-pair .spread-photo-frame:nth-child(2) {
+        min-height: 320px;
+        margin-top: 0;
+      }
+
       .path-grid {
         grid-template-columns: 1fr;
       }
@@ -1618,37 +1748,6 @@
 
   <div class="neon-divider"></div>
 
-  <section class="brand-intro-section" aria-labelledby="south-florida-event-production">
-    <div class="brand-intro-card">
-      <div class="brand-intro-main">
-        <p class="section-label">South Florida Event Production</p>
-        <h2 id="south-florida-event-production">Heat District Productions serves <strong>Miami, Broward & South Florida.</strong></h2>
-        <p>
-          Heat District Productions is a South Florida event production company providing DJ services, sound systems, event lighting, photo booths, photography, videography, trussing, special effects, LED wall production by custom quote, and custom event rentals for weddings, graduations, birthdays, quinces, corporate events, private parties, and nightlife-style celebrations.
-        </p>
-      </div>
-
-      <div class="brand-intro-points" aria-label="Heat District Productions service highlights">
-        <div class="brand-intro-point">
-          <div class="brand-intro-point-title">Service Area</div>
-          <div class="brand-intro-point-copy">Miami, Broward, and surrounding South Florida event locations.</div>
-        </div>
-
-        <div class="brand-intro-point">
-          <div class="brand-intro-point-title">Production Style</div>
-          <div class="brand-intro-point-copy">Clean setups, intentional lighting, strong sound, and stress-free booking from setup to breakdown.</div>
-        </div>
-
-        <div class="brand-intro-point">
-          <div class="brand-intro-point-title">Event Types</div>
-          <div class="brand-intro-point-copy">Private events, graduations, weddings, birthdays, quinces, corporate events, and club-style parties.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="neon-divider"></div>
-
   <section>
     <p class="section-label">Start Here</p>
     <h2 class="section-title">Choose the Path<br><strong>That Fits Your Event.</strong></h2>
@@ -1710,6 +1809,15 @@
         <a href="contact.html" class="btn-outline-blue">Request Quote</a>
       </div>
 
+    </div>
+  </section>
+
+  <div class="neon-divider"></div>
+
+  <section class="spread-photo-section spread-photo-section-tight" aria-label="Heat District event production photo">
+    <div class="spread-photo-frame spread-photo-large image-missing">
+      <img src="images/home-production-1.jpg" alt="Heat District event production setup" onload="this.closest('.spread-photo-frame').classList.remove('image-missing')" onerror="this.closest('.spread-photo-frame').classList.add('image-missing')">
+      <div class="spread-photo-placeholder">Add Photo<br>images/home-production-1.jpg</div>
     </div>
   </section>
 
@@ -1825,12 +1933,28 @@
 
   <div class="neon-divider"></div>
 
+  <section class="spread-photo-section" aria-label="Heat District event photo pair">
+    <div class="spread-photo-pair">
+      <div class="spread-photo-frame image-missing">
+        <img src="images/home-production-2.jpg" alt="Heat District event lighting and production" onload="this.closest('.spread-photo-frame').classList.remove('image-missing')" onerror="this.closest('.spread-photo-frame').classList.add('image-missing')">
+        <div class="spread-photo-placeholder">Add Photo<br>images/home-production-2.jpg</div>
+      </div>
+
+      <div class="spread-photo-frame image-missing">
+        <img src="images/home-production-3.jpg" alt="Heat District DJ setup and event atmosphere" onload="this.closest('.spread-photo-frame').classList.remove('image-missing')" onerror="this.closest('.spread-photo-frame').classList.add('image-missing')">
+        <div class="spread-photo-placeholder">Add Photo<br>images/home-production-3.jpg</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="neon-divider"></div>
+
   <div class="packages-section">
     <div class="packages-header">
       <p class="section-label">Packages</p>
       <h2 class="section-title">Clear Packages.<br><strong>No Guesswork.</strong></h2>
       <p class="section-sub">
-        Start with one of our core event packages, adjust the hours, then add individual rentals or media services as needed. Each package shows what is included upfront so you can choose the level of production that fits your event.
+        A quick look at the core Heat District packages. See the photo, starting price, and best-fit event type — then open the full packages page for the complete details and add-ons.
       </p>
     </div>
 
@@ -1838,75 +1962,35 @@
       <div class="packages-grid">
 
         <div class="package-card" data-package-name="Essential Package" data-base-price="1295">
+          <div class="package-visual" style="--package-image: url('images/packages/essential-package.jpg');">
+          </div>
+
           <p class="package-name">Essential Package</p>
+          <p class="package-best-for"><span>Best For</span>Smaller private events, house parties, birthdays, simple weddings, and clean DJ + sound support with light atmosphere.</p>
+
           <div class="package-price">
             <span class="package-price-symbol">$</span>
             <span class="package-price-value">1,295</span>
             <span class="package-price-unit">/ 5hrs</span>
           </div>
-          <p class="package-duration">Essential Sound + DJ</p>
 
-          <div class="package-controls">
-            <label>Hours</label>
-            <select class="package-hours-select">
-              <option value="2">2 hrs</option>
-              <option value="3">3 hrs</option>
-              <option value="4">4 hrs</option>
-              <option value="5" selected>5 hrs</option>
-              <option value="6">6 hrs</option>
-              <option value="7">7 hrs</option>
-              <option value="8">8 hrs</option>
-            </select>
-          </div>
-
-          <p class="package-hours-note">Flexible 2–8hr pricing</p>
-
-          <ul class="package-includes">
-            <li>Sound System — 2 Subs + 2 Tops</li>
-            <li>Professional DJ + Deck Setup</li>
-            <li>Microphone</li>
-            <li>Setup & Breakdown</li>
-          </ul>
-
-          <p class="package-savings">Best for smaller private events</p>
+          <p class="package-savings">DJ + sound + 5 uplights + light bar</p>
           <button class="btn-outline-blue" onclick="goToPackagesWithPreview(this)">View Package</button>
         </div>
 
         <div class="package-card featured" data-package-name="Signature Package" data-base-price="2195">
           <div class="package-badge popular">Most Popular</div>
+          <div class="package-visual" style="--package-image: url('images/packages/signature-package.jpg');">
+          </div>
 
           <p class="package-name">Signature Package</p>
+          <p class="package-best-for"><span>Best For</span>Weddings, quinces, birthdays, private parties, and events that need a fuller party feel with lighting, booth, and atmosphere.</p>
+
           <div class="package-price">
             <span class="package-price-symbol">$</span>
             <span class="package-price-value">2,195</span>
             <span class="package-price-unit">/ 5hrs</span>
           </div>
-          <p class="package-duration">DJ + Lighting + Booth</p>
-
-          <div class="package-controls">
-            <label>Hours</label>
-            <select class="package-hours-select">
-              <option value="2">2 hrs</option>
-              <option value="3">3 hrs</option>
-              <option value="4">4 hrs</option>
-              <option value="5" selected>5 hrs</option>
-              <option value="6">6 hrs</option>
-              <option value="7">7 hrs</option>
-              <option value="8">8 hrs</option>
-            </select>
-          </div>
-
-          <p class="package-hours-note">Flexible 2–8hr pricing</p>
-
-          <ul class="package-includes">
-            <li>Sound System</li>
-            <li>Professional DJ + Full Deck Setup</li>
-            <li>10 Uplights + LED Light Bar</li>
-            <li>2 Moving Heads</li>
-            <li>Photo Booth</li>
-            <li>2 Fog Machines</li>
-            <li>2 Totems</li>
-          </ul>
 
           <p class="package-savings">Our strongest all-around option</p>
           <button class="btn-outline-pink" onclick="goToPackagesWithPreview(this)">View Package</button>
@@ -1914,77 +1998,34 @@
 
         <div class="package-card best-value" data-package-name="Premier Package" data-base-price="2995">
           <div class="package-badge value">Best Value</div>
+          <div class="package-visual" style="--package-image: url('images/packages/premier-package.jpg');">
+          </div>
 
           <p class="package-name">Premier Package</p>
+          <p class="package-best-for"><span>Best For</span>Larger parties, quinces, weddings, school events, and clients who want a more premium, high-energy room presence.</p>
+
           <div class="package-price">
             <span class="package-price-symbol">$</span>
             <span class="package-price-value">2,995</span>
             <span class="package-price-unit">/ 5hrs</span>
           </div>
-          <p class="package-duration">Premium Event Production</p>
-
-          <div class="package-controls">
-            <label>Hours</label>
-            <select class="package-hours-select">
-              <option value="2">2 hrs</option>
-              <option value="3">3 hrs</option>
-              <option value="4">4 hrs</option>
-              <option value="5" selected>5 hrs</option>
-              <option value="6">6 hrs</option>
-              <option value="7">7 hrs</option>
-              <option value="8">8 hrs</option>
-            </select>
-          </div>
-
-          <p class="package-hours-note">Flexible 2–8hr pricing</p>
-
-          <ul class="package-includes">
-            <li>15 Uplights + LED Light Bar</li>
-            <li>4 Moving Heads</li>
-            <li>Photo Booth</li>
-            <li>Photography</li>
-            <li>2 Cold Spark Machines</li>
-            <li>2 Fog Machines</li>
-            <li>Goal Post + 2 Totems or 4 Totems</li>
-          </ul>
 
           <p class="package-savings">Best upgrade for bigger impact</p>
           <button class="btn-outline-blue" onclick="goToPackagesWithPreview(this)">View Package</button>
         </div>
 
         <div class="package-card" data-package-name="Elite Production Package" data-base-price="4995">
+          <div class="package-visual" style="--package-image: url('images/packages/elite-production-package.jpg');">
+          </div>
+
           <p class="package-name">Elite Production Package</p>
+          <p class="package-best-for"><span>Best For</span>Luxury events, brand activations, large private events, high-impact entrances, and clients who want the biggest visual statement.</p>
+
           <div class="package-price">
             <span class="package-price-symbol">$</span>
             <span class="package-price-value">4,995</span>
             <span class="package-price-unit">/ 5hrs</span>
           </div>
-          <p class="package-duration">Full Statement Setup</p>
-
-          <div class="package-controls">
-            <label>Hours</label>
-            <select class="package-hours-select">
-              <option value="2">2 hrs</option>
-              <option value="3">3 hrs</option>
-              <option value="4">4 hrs</option>
-              <option value="5" selected>5 hrs</option>
-              <option value="6">6 hrs</option>
-              <option value="7">7 hrs</option>
-              <option value="8">8 hrs</option>
-            </select>
-          </div>
-
-          <p class="package-hours-note">Flexible 2–8hr pricing</p>
-
-          <ul class="package-includes">
-            <li>15 Uplights + LED Light Bar</li>
-            <li>4 Moving Heads</li>
-            <li>LED Screen / Wall Panel</li>
-            <li>Photo Booth</li>
-            <li>Photography</li>
-            <li>4 Cold Spark Machines</li>
-            <li>Goal Post + 2 Totems or 4 Totems</li>
-          </ul>
 
           <p class="package-savings">Built for high-impact events</p>
           <button class="btn-outline-blue" onclick="goToPackagesWithPreview(this)">View Package</button>
@@ -1993,6 +2034,15 @@
       </div>
     </div>
   </div>
+
+  <div class="neon-divider"></div>
+
+  <section class="spread-photo-section" aria-label="Heat District event room photo">
+    <div class="spread-photo-frame spread-photo-wide image-missing">
+      <img src="images/home-production-4.jpg" alt="Heat District event room transformation" onload="this.closest('.spread-photo-frame').classList.remove('image-missing')" onerror="this.closest('.spread-photo-frame').classList.add('image-missing')">
+      <div class="spread-photo-placeholder">Add Photo<br>images/home-production-4.jpg</div>
+    </div>
+  </section>
 
   <div class="neon-divider"></div>
 

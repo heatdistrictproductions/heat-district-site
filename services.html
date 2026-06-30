@@ -745,10 +745,49 @@
       align-items: center;
       justify-content: center;
       color: #fff;
+      font-family: 'Raleway', sans-serif;
       font-size: 0.72rem;
       font-weight: 700;
+      line-height: 1;
       letter-spacing: 1.2px;
+      text-align: center;
+      font-variant-numeric: tabular-nums lining-nums;
+      font-feature-settings: "tnum" 1, "lnum" 1;
       flex-shrink: 0;
+    }
+
+    .product-icon.has-number,
+    .product-icon.has-long-icon {
+      font-size: 0.68rem;
+      letter-spacing: 0.9px;
+    }
+
+    .product-icon.has-long-icon {
+      font-size: 0.62rem;
+      letter-spacing: 0.6px;
+    }
+
+    .product-rate,
+    .product-total,
+    .cart-item-meta,
+    .cart-item-total,
+    .cart-row,
+    .cart-total-row,
+    .mobile-cart-toggle-count,
+    .mobile-cart-toggle-total,
+    .duration-select,
+    .setup-select,
+    .quantity-select {
+      font-family: 'Raleway', sans-serif;
+      font-variant-numeric: tabular-nums lining-nums;
+      font-feature-settings: "tnum" 1, "lnum" 1;
+    }
+
+    .product-rate,
+    .product-total,
+    .cart-item-total,
+    .mobile-cart-toggle-total {
+      line-height: 1.35;
     }
 
     .product-type {
@@ -2062,16 +2101,16 @@
         note: 'Floor-supported LED wall · setup included'
       },
       'led-wall-2-totems': {
-        name: 'LED Wall with 2 Totems',
-        title: 'LED Wall with 2 Totems',
+        name: 'LED Screen Totems — Pair',
+        title: 'LED Screen Totems — Pair',
         icon: 'LED',
         type: 'event',
-        rate: 2600,
-        extraHourRate: 300,
+        rate: 1495,
+        extraHourRate: 150,
         image: 'images/products/led-wall-2-totems.png',
         mediaClass: 'product-media-wide',
-        desc: 'LED wall setup mounted between two Global Truss F34 truss totems for a clean visual display without a full overhead goal post. Great for DJ visuals, logos, slideshows, branding, and event backdrops. Includes standard setup, processor, cabling, and breakdown.',
-        note: 'LED wall + 2 truss totems · setup included'
+        desc: 'Two Global Truss F34 totems, each fitted with its own slim vertical 1 ft x 8 ft LED screen mounted directly to the truss. One LED screen per totem for DJ visuals, logos, branding, slideshows, and clean event backdrops. Includes standard setup, processor, cabling, and breakdown.',
+        note: 'Pair of 1x8 LED screen totems · setup included'
       },
       'trussing-2-totems': {
         name: 'Global Truss F34 — 2 Totems 8ft',
@@ -2261,7 +2300,7 @@
           </div>
 
           <div class="product-top">
-            <div class="product-icon">${escapeHtml(product.icon)}</div>
+            <div class="product-icon ${/\d/.test(String(product.icon)) ? 'has-number' : ''} ${String(product.icon).length > 3 ? 'has-long-icon' : ''}">${escapeHtml(product.icon)}</div>
             <div class="product-type">${getProductTypeLabel(product.type)}</div>
           </div>
 

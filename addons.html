@@ -257,8 +257,52 @@
 }
 
     .addon-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 16px; margin-top: auto; display: grid; grid-template-columns: 1fr; gap: 13px; align-items: stretch; }
-    .addon-price { color: #fff; font-size: 1.25rem; font-weight: 300; white-space: nowrap; }
-    .addon-price span { color: rgba(232,232,240,0.38); font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase; margin-left: 3px; }
+    .addon-price {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      color: #fff;
+      line-height: 1;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      font-family: 'Raleway', sans-serif;
+      font-variant-numeric: lining-nums tabular-nums;
+      font-feature-settings: "lnum" 1, "tnum" 1, "kern" 1;
+    }
+    .addon-price-symbol {
+      font-size: 1.45rem;
+      font-weight: 300;
+      color: #fff;
+      line-height: 1;
+      margin: 0;
+      transform: translateY(-0.02em);
+      font-variant-numeric: lining-nums tabular-nums;
+      font-feature-settings: "lnum" 1, "tnum" 1, "kern" 1;
+    }
+    .addon-price-value {
+      display: inline-block;
+      font-size: 2.35rem;
+      font-weight: 300;
+      color: #fff;
+      letter-spacing: -0.045em;
+      line-height: 1;
+      margin: 0;
+      font-variant-numeric: lining-nums tabular-nums;
+      font-feature-settings: "lnum" 1, "tnum" 1, "kern" 1;
+      font-synthesis: none;
+    }
+    .addon-price-unit {
+      font-size: 0.8rem;
+      color: rgba(232,232,240,0.52);
+      font-weight: 300;
+      letter-spacing: 1px;
+      line-height: 1;
+      margin: 0 0 0 3px;
+      white-space: nowrap;
+      text-transform: none;
+      font-variant-numeric: lining-nums tabular-nums;
+      font-feature-settings: "lnum" 1, "tnum" 1, "kern" 1;
+    }
     .addon-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; flex-shrink: 0; }
     .qty-control { display: flex; align-items: center; border: 1px solid rgba(0,240,255,0.16); border-radius: 999px; overflow: hidden; background: rgba(255,255,255,0.02); }
     .qty-btn { width: 32px; height: 32px; background: transparent; border: 0; color: var(--neon-blue); font-size: 1rem; cursor: pointer; transition: background 0.25s; }
@@ -876,7 +920,7 @@
       return '<article class="addon-card" data-addon-card="' + escapeHtml(addon.id) + '" data-card-id="' + escapeHtml(cardId) + '">' +
         '<div class="addon-media ' + escapeHtml(mediaClass) + '"><img class="addon-img" src="' + escapeHtml(imagePath) + '" alt="' + escapeHtml(addon.title) + '" loading="lazy" decoding="async" onerror="this.closest(\'.addon-media\').classList.add(\'image-missing\'); this.remove();"/><div class="addon-image-fallback">Add Product Image<span>' + escapeHtml(imagePath) + '</span></div></div>' +
         '<p class="addon-category">' + escapeHtml(addon.label) + '</p><h3 class="addon-name">' + escapeHtml(addon.title) + '</h3><p class="addon-copy">' + escapeHtml(addon.copy) + '</p>' + optionsHtml +
-        '<div class="addon-bottom"><div class="addon-price" id="price-' + escapeHtml(cardId) + '">' + formatCurrency(firstOption.price) + ' <span>/ ' + escapeHtml(firstOption.displayUnit) + '</span></div>' +
+        '<div class="addon-bottom"><div class="addon-price" id="price-' + escapeHtml(cardId) + '"><span class="addon-price-symbol">$</span><span class="addon-price-value">' + Number(firstOption.price).toLocaleString() + '</span><span class="addon-price-unit">/ ' + escapeHtml(firstOption.displayUnit) + '</span></div>' +
         '<div class="addon-actions"><div class="qty-control"><button class="qty-btn" type="button" onclick="changeAddonQty(\'' + addon.id + '\', \'' + cardId + '\', -1)">−</button><div class="qty-value" id="qty-' + escapeHtml(cardId) + '">0</div><button class="qty-btn" type="button" onclick="changeAddonQty(\'' + addon.id + '\', \'' + cardId + '\', 1)">+</button></div><button class="add-btn" type="button" onclick="addOneAddon(\'' + addon.id + '\', \'' + cardId + '\')">Add</button></div></div></article>';
     }
     function buildAddonGroups() {
@@ -892,7 +936,7 @@
       const priceEl = document.getElementById('price-' + cardId);
       const qtyEl = document.getElementById('qty-' + cardId);
       const card = document.querySelector('[data-card-id="' + cardId + '"]');
-      if (option && priceEl) priceEl.innerHTML = formatCurrency(option.price) + ' <span>/ ' + escapeHtml(option.displayUnit) + '</span>';
+      if (option && priceEl) priceEl.innerHTML = '<span class="addon-price-symbol">$</span><span class="addon-price-value">' + Number(option.price).toLocaleString() + '</span><span class="addon-price-unit">/ ' + escapeHtml(option.displayUnit) + '</span>';
       if (option && qtyEl) qtyEl.textContent = getQtyForOption(option.id);
       if (option && card) card.classList.toggle('selected', getQtyForOption(option.id) > 0);
     }

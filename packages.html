@@ -427,6 +427,41 @@
   z-index: 1;
 }
 
+.bottom-contact-box {
+  max-width: 1120px;
+  margin: 0 auto 58px;
+  padding: 30px 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 34px;
+  text-align: left;
+}
+
+.bottom-contact-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.bottom-contact-box .hero-contact-kicker {
+  margin-bottom: 8px;
+}
+
+.bottom-contact-box .hero-contact-title {
+  margin-bottom: 10px;
+}
+
+.bottom-contact-box .hero-contact-copy {
+  max-width: 720px;
+  margin: 0;
+}
+
+.bottom-contact-box .hero-contact-btn {
+  flex-shrink: 0;
+  min-width: 270px;
+  text-align: center;
+}
+
 .hero-contact-kicker {
   font-size: 0.62rem;
   letter-spacing: 4px;
@@ -481,7 +516,7 @@
     .packages-wrap {
       max-width: 1400px;
       margin: 0 auto;
-      padding: 80px 48px 100px;
+      padding: 42px 48px 100px;
     }
 
     .comparison-label,
@@ -644,20 +679,19 @@
       width: 100%;
       cursor: pointer;
       text-align: left;
-      min-height: 172px;
+      min-height: 190px;
       margin: -2px 0 20px;
       border-radius: 13px;
       overflow: hidden;
       border: 1px solid rgba(0,240,255,0.12);
       background:
-        linear-gradient(180deg, rgba(5,5,15,0.10), rgba(5,5,15,0.78)),
-        radial-gradient(circle at 24% 24%, rgba(0,240,255,0.20), transparent 32%),
-        radial-gradient(circle at 82% 18%, rgba(255,45,120,0.18), transparent 30%),
-        radial-gradient(circle at 52% 86%, rgba(191,0,255,0.20), transparent 38%),
         var(--pkg-image, none),
+        radial-gradient(circle at 22% 18%, rgba(0,240,255,0.10), transparent 32%),
+        radial-gradient(circle at 84% 24%, rgba(255,45,120,0.08), transparent 34%),
         linear-gradient(135deg, rgba(13,13,32,0.98), rgba(5,5,15,0.98));
-      background-size: cover;
-      background-position: center;
+      background-size: contain, cover, cover, cover;
+      background-position: center, center, center, center;
+      background-repeat: no-repeat;
       box-shadow:
         inset 0 0 0 1px rgba(255,255,255,0.025),
         0 16px 32px rgba(0,0,0,0.22);
@@ -681,9 +715,11 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(0,240,255,0.08), transparent 26%, transparent 74%, rgba(255,45,120,0.08)),
-        repeating-linear-gradient(0deg, rgba(255,255,255,0.035) 0, rgba(255,255,255,0.035) 1px, transparent 1px, transparent 9px);
-      opacity: 0.55;
+        linear-gradient(180deg,
+          rgba(5,5,15,0.06) 0%,
+          rgba(5,5,15,0.00) 34%,
+          rgba(5,5,15,0.18) 58%,
+          rgba(5,5,15,0.78) 100%);
       pointer-events: none;
       z-index: 1;
     }
@@ -693,58 +729,58 @@
       position: absolute;
       top: 12px;
       right: 12px;
-      z-index: 2;
-      padding: 5px 9px;
-      border: 1px solid rgba(0,240,255,0.18);
+      z-index: 3;
+      padding: 6px 10px;
+      border: 1px solid rgba(0,240,255,0.26);
       border-radius: 999px;
-      background: rgba(5,5,15,0.62);
-      color: rgba(232,232,240,0.54);
-      font-size: 0.52rem;
+      background: rgba(5,5,15,0.74);
+      color: rgba(232,232,240,0.72);
+      font-size: 0.5rem;
       font-weight: 700;
-      letter-spacing: 2px;
+      letter-spacing: 1.8px;
       text-transform: uppercase;
       backdrop-filter: blur(10px);
     }
 
     .pkg-visual:hover::after,
     .pkg-visual:focus-visible::after {
-      border-color: rgba(255,45,120,0.34);
-      color: rgba(255,255,255,0.86);
-      background: rgba(255,45,120,0.16);
+      border-color: rgba(255,45,120,0.42);
+      color: #fff;
+      background: rgba(255,45,120,0.18);
     }
 
     .pkg-visual-content {
       position: absolute;
-      left: 14px;
-      right: 14px;
-      bottom: 14px;
+      left: 0;
+      right: 0;
+      bottom: 0;
       z-index: 2;
+      padding: 16px 16px 14px;
+      background: linear-gradient(180deg, transparent, rgba(5,5,15,0.68));
     }
 
     .pkg-visual-label {
       display: inline-block;
-      margin-bottom: 7px;
+      margin-bottom: 5px;
       color: rgba(0,240,255,0.78);
-      font-size: 0.54rem;
+      font-size: 0.5rem;
       font-weight: 700;
-      letter-spacing: 2.6px;
+      letter-spacing: 2.2px;
       text-transform: uppercase;
-      text-shadow: 0 0 10px rgba(0,240,255,0.38);
+      text-shadow: 0 0 10px rgba(0,240,255,0.30);
     }
 
     .pkg-visual-title {
       color: #fff;
-      font-size: 0.94rem;
+      font-size: 0.98rem;
       font-weight: 700;
       line-height: 1.25;
-      margin-bottom: 10px;
-      text-shadow: 0 8px 22px rgba(0,0,0,0.78);
+      margin-bottom: 0;
+      text-shadow: 0 8px 22px rgba(0,0,0,0.82);
     }
 
     .pkg-visual-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
+      display: none;
     }
 
     .pkg-visual-chip {
@@ -786,38 +822,52 @@
 
     .pkg-price-wrap {
       display: flex;
-      align-items: flex-end;
-      gap: 4px;
-      margin-bottom: 2px;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 6px;
       color: #fff;
       line-height: 1;
       flex-wrap: nowrap;
+      white-space: nowrap;
+      font-family: 'Raleway', sans-serif;
+      font-variant-numeric: lining-nums tabular-nums;
+      font-feature-settings: "lnum" 1, "tnum" 1, "kern" 1;
     }
 
     .pkg-price-symbol {
-      font-size: 1.35rem;
+      font-size: 1.55rem;
       font-weight: 300;
       color: #fff;
       line-height: 1;
-      margin-bottom: 5px;
+      margin: 0;
+      transform: translateY(-0.02em);
+      font-variant-numeric: lining-nums tabular-nums;
+      font-feature-settings: "lnum" 1, "tnum" 1, "kern" 1;
     }
 
     .pkg-price-value {
-      font-size: 2.45rem;
+      display: inline-block;
+      font-size: 2.65rem;
       font-weight: 300;
       color: #fff;
-      letter-spacing: -1px;
-      line-height: 0.95;
+      letter-spacing: -0.045em;
+      line-height: 1;
+      margin: 0;
+      font-variant-numeric: lining-nums tabular-nums;
+      font-feature-settings: "lnum" 1, "tnum" 1, "kern" 1;
+      font-synthesis: none;
     }
 
     .pkg-price-unit {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       color: rgba(232,232,240,0.5);
       font-weight: 300;
       letter-spacing: 1px;
-      margin-left: 4px;
-      margin-bottom: 5px;
+      line-height: 1;
+      margin: 0 0 0 3px;
       white-space: nowrap;
+      font-variant-numeric: lining-nums tabular-nums;
+      font-feature-settings: "lnum" 1, "tnum" 1, "kern" 1;
     }
 
     .pkg-duration {
@@ -973,11 +1023,12 @@
     }
 
     .comparison-wrap {
-      margin-bottom: 90px;
+      max-width: 1120px;
+      margin: 0 auto 80px;
     }
 
     .comparison-table-wrap {
-      margin-top: 32px;
+      margin-top: 24px;
       border: 1px solid rgba(0,240,255,0.08);
       border-radius: 14px;
       overflow-x: auto;
@@ -988,17 +1039,17 @@
 
     .comparison-table {
       width: 100%;
-      min-width: 980px;
+      min-width: 840px;
       border-collapse: collapse;
-      font-size: 0.84rem;
+      font-size: 0.76rem;
     }
 
     .comparison-table th {
-      padding: 16px 16px;
+      padding: 12px 10px;
       text-align: center;
-      font-size: 0.68rem;
+      font-size: 0.58rem;
       font-weight: 600;
-      letter-spacing: 3px;
+      letter-spacing: 2.2px;
       text-transform: uppercase;
       color: var(--neon-blue);
       border-bottom: 1px solid rgba(0,240,255,0.15);
@@ -1009,8 +1060,8 @@
     .comparison-table th:first-child {
       text-align: left;
       color: rgba(232,232,240,0.4);
-      width: 220px;
-      padding-left: 14px;
+      width: 180px;
+      padding-left: 12px;
     }
 
     .comparison-table th.featured-col {
@@ -1027,13 +1078,13 @@
     .comparison-table .th-price {
       display: block;
       color: #fff;
-      font-size: 0.76rem;
+      font-size: 0.68rem;
       font-weight: 600;
       letter-spacing: 1px;
     }
 
     .comparison-table td {
-      padding: 14px 16px;
+      padding: 10px 10px;
       text-align: center;
       border-bottom: 1px solid rgba(255,255,255,0.04);
       color: rgba(232,232,240,0.55);
@@ -1045,7 +1096,7 @@
       text-align: left;
       color: rgba(232,232,240,0.76);
       font-weight: 500;
-      padding-left: 14px;
+      padding-left: 12px;
       white-space: nowrap;
     }
 
@@ -1063,30 +1114,30 @@
 
     .check {
       color: var(--neon-blue);
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 700;
     }
 
     .check-pink {
       color: var(--neon-pink);
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 700;
     }
 
     .dash {
       color: rgba(232,232,240,0.15);
-      font-size: 0.95rem;
+      font-size: 0.85rem;
     }
 
     .qty {
       color: rgba(232,232,240,0.76);
-      font-size: 0.82rem;
+      font-size: 0.74rem;
       font-weight: 500;
     }
 
     .qty-new {
       color: var(--neon-pink);
-      font-size: 0.82rem;
+      font-size: 0.74rem;
       font-weight: 700;
     }
 
@@ -1134,6 +1185,56 @@
       color: rgba(232,232,240,0.52);
       line-height: 1.7;
       font-weight: 300;
+    }
+
+    .funnel-section.top-funnel-section {
+      padding: 24px 28px;
+      margin-bottom: 52px;
+      border-radius: 14px;
+    }
+
+    .top-funnel-section .funnel-label {
+      font-size: 0.56rem;
+      letter-spacing: 4px;
+      margin-bottom: 8px;
+    }
+
+    .top-funnel-section .funnel-title {
+      font-size: clamp(1.2rem, 2.4vw, 1.85rem);
+      margin-bottom: 8px;
+      line-height: 1.16;
+    }
+
+    .top-funnel-section .funnel-sub {
+      font-size: 0.78rem;
+      line-height: 1.55;
+      max-width: 720px;
+    }
+
+    .top-funnel-section .funnel-steps {
+      margin-top: 16px;
+      gap: 12px;
+    }
+
+    .top-funnel-section .funnel-step {
+      padding: 13px 15px;
+      border-radius: 10px;
+    }
+
+    .top-funnel-section .funnel-step-number {
+      font-size: 0.5rem;
+      letter-spacing: 2.5px;
+      margin-bottom: 6px;
+    }
+
+    .top-funnel-section .funnel-step-title {
+      font-size: 0.88rem;
+      margin-bottom: 6px;
+    }
+
+    .top-funnel-section .funnel-step-copy {
+      font-size: 0.72rem;
+      line-height: 1.5;
     }
 
     .custom-build-section {
@@ -1594,7 +1695,38 @@
 }
 
       .packages-wrap {
-        padding: 60px 24px 90px;
+        padding: 30px 24px 90px;
+      }
+
+      .bottom-contact-box {
+        margin-top: 38px;
+      }
+
+      .funnel-section.top-funnel-section {
+        padding: 22px 18px;
+        margin-bottom: 38px;
+      }
+
+      .top-funnel-section .funnel-title {
+        font-size: clamp(1.15rem, 7vw, 1.55rem);
+      }
+
+      .bottom-contact-box {
+        margin: 0 auto 42px;
+        padding: 26px 20px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+        text-align: center;
+      }
+
+      .bottom-contact-box .hero-contact-copy {
+        margin: 0 auto;
+      }
+
+      .bottom-contact-box .hero-contact-btn {
+        width: 100%;
+        min-width: 0;
       }
 
       .packages-grid {
@@ -1603,7 +1735,7 @@
       }
 
       .comparison-table {
-        min-width: 900px;
+        min-width: 760px;
       }
 
       .custom-build-card {
@@ -1663,6 +1795,60 @@
         padding: 60px 24px 100px;
       }
     }
+
+
+    /* =========================================================
+       PACKAGE IMAGE FIT FIX
+       This keeps package photos inside their boxes without ugly cropping.
+       Replace image files normally — these rules handle the sizing.
+    ========================================================= */
+    .pkg-visual {
+      aspect-ratio: 16 / 10;
+      min-height: 190px;
+      height: auto;
+      background-size: contain, cover, cover, cover;
+      background-position: center, center, center, center;
+      background-repeat: no-repeat;
+    }
+
+    .package-gallery-stage {
+      background-color: #05050f;
+    }
+
+    .package-gallery-image {
+      width: 100%;
+      height: 520px;
+      object-fit: contain;
+      object-position: center;
+      background: #05050f;
+    }
+
+    .package-gallery-thumb img {
+      width: 100%;
+      height: 84px;
+      object-fit: contain;
+      object-position: center;
+      background: #05050f;
+    }
+
+    .page-hero-image {
+      object-fit: cover;
+      object-position: center;
+    }
+
+    @media (max-width: 900px) {
+      .pkg-visual {
+        aspect-ratio: 16 / 10;
+        min-height: 190px;
+        height: auto;
+      }
+
+      .package-gallery-image {
+        height: 340px;
+        object-fit: contain;
+      }
+    }
+
   </style>
 </head>
 
@@ -1740,20 +1926,39 @@
     you can continue to add upgrades, rentals, media coverage, or custom production elements.
   </p>
 
-  <div class="hero-contact-box">
-    <div class="hero-contact-kicker">Not Sure Which Package Fits?</div>
-    <div class="hero-contact-title">Send Us Your Date, Venue, Guest Count, and Vision</div>
-    <div class="hero-contact-copy">
-      If you are between packages, need a custom setup, or want help choosing the right production level,
-      reach out and we’ll point you toward the best option before you book.
-    </div>
-    <a href="contact.html" class="hero-contact-btn">Get Recommendation</a>
-  </div>
 </div>
 
   <div class="neon-divider"></div>
 
   <div class="packages-wrap">
+
+    <div class="funnel-section top-funnel-section">
+      <p class="funnel-label">Simple Booking Flow</p>
+      <h2 class="funnel-title">Package First — <strong>Upgrades Second</strong></h2>
+      <p class="funnel-sub">
+        Choose the main package first, then add upgrades and submit the event details.
+      </p>
+
+      <div class="funnel-steps">
+        <div class="funnel-step">
+          <div class="funnel-step-number">Step 01</div>
+          <div class="funnel-step-title">Choose a Package</div>
+          <div class="funnel-step-copy">Start with the level that fits the size, style, and energy of the event.</div>
+        </div>
+
+        <div class="funnel-step">
+          <div class="funnel-step-number">Step 02</div>
+          <div class="funnel-step-title">Add Upgrades</div>
+          <div class="funnel-step-copy">Continue to the add-ons page to add lighting, media, effects, rentals, or extra services.</div>
+        </div>
+
+        <div class="funnel-step">
+          <div class="funnel-step-number">Step 03</div>
+          <div class="funnel-step-title">Review & Submit</div>
+          <div class="funnel-step-copy">Review the order summary, event details, deposit, and final confirmation steps.</div>
+        </div>
+      </div>
+    </div>
 
     <div class="packages-section">
       <p class="packages-label">Choose Your Package</p>
@@ -1769,7 +1974,7 @@
           <div class="pkg-card" data-package-name="Essential Package" data-base-price="1295" style="--pkg-image: url('images/packages/essential-package.jpg');">
             <p class="pkg-tier">Level One</p>
             <h3 class="pkg-name">Essential Package</h3>
-            <p class="pkg-tagline">Clean sound, professional DJ, and the essentials for a polished smaller-scale event.</p>
+            <p class="pkg-tagline">Clean sound, professional DJ, 5 uplights, and an LED Light Bar for a polished smaller-scale event.</p>
 
             <div class="pkg-visual" role="button" tabindex="0" data-gallery-key="essential" aria-label="Open mini gallery for the Essential Package">
               <div class="pkg-visual-content">
@@ -1778,7 +1983,7 @@
                 <div class="pkg-visual-chips">
                   <span class="pkg-visual-chip">2 Tops / 2 Subs</span>
                   <span class="pkg-visual-chip">DJ Decks</span>
-                  <span class="pkg-visual-chip">Mic</span>
+                  <span class="pkg-visual-chip">5 Uplights</span>
                 </div>
               </div>
             </div>
@@ -1794,7 +1999,7 @@
               <span class="pkg-price-unit">/ 5hrs</span>
             </div>
 
-            <p class="pkg-duration">Essential Sound + DJ</p>
+            <p class="pkg-duration">Essential Sound + DJ + Lighting</p>
 
             <div class="pkg-controls">
               <label>Hours</label>
@@ -1816,6 +2021,8 @@
               <li>Sound System — 2 Subs, 2 Tops</li>
               <li>Professional DJ + Full Deck Setup</li>
               <li>Microphone</li>
+              <li class="highlight">5 Uplights</li>
+              <li class="highlight">LED Light Bar</li>
               <li>Professional Setup & Breakdown</li>
             </ul>
 
@@ -2087,7 +2294,7 @@
 
             <tr>
               <td>Uplights</td>
-              <td><span class="dash">—</span></td>
+              <td><span class="qty">5 units</span></td>
               <td class="featured-col"><span class="qty-new">10 units</span></td>
               <td><span class="qty-new">15 units</span></td>
               <td><span class="qty">15 units</span></td>
@@ -2095,8 +2302,8 @@
 
             <tr>
               <td>LED Light Bar</td>
-              <td><span class="dash">—</span></td>
-              <td class="featured-col"><span class="check-pink">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td class="featured-col"><span class="check">✓</span></td>
               <td><span class="check">✓</span></td>
               <td><span class="check">✓</span></td>
             </tr>
@@ -2209,32 +2416,18 @@
       </div>
     </div>
 
-    <div class="funnel-section">
-      <p class="funnel-label">Simple Booking Flow</p>
-      <h2 class="funnel-title">Package First — <strong>Upgrades Second</strong></h2>
-      <p class="funnel-sub">
-        This keeps the decision simple. Choose the main package here, then continue to add-ons only after the package is selected.
-      </p>
 
-      <div class="funnel-steps">
-        <div class="funnel-step">
-          <div class="funnel-step-number">Step 01</div>
-          <div class="funnel-step-title">Choose a Package</div>
-          <div class="funnel-step-copy">Start with the level that fits the size, style, and energy of the event.</div>
-        </div>
 
-        <div class="funnel-step">
-          <div class="funnel-step-number">Step 02</div>
-          <div class="funnel-step-title">Add Upgrades</div>
-          <div class="funnel-step-copy">Continue to the add-ons page to add lighting, media, effects, rentals, or extra services.</div>
-        </div>
-
-        <div class="funnel-step">
-          <div class="funnel-step-number">Step 03</div>
-          <div class="funnel-step-title">Review & Submit</div>
-          <div class="funnel-step-copy">Review the order summary, event details, deposit, and final confirmation steps.</div>
+    <div class="hero-contact-box bottom-contact-box">
+      <div class="bottom-contact-content">
+        <div class="hero-contact-kicker">Not Sure Which Package Fits?</div>
+        <div class="hero-contact-title">Send Us Your Date, Venue, Guest Count, and Vision</div>
+        <div class="hero-contact-copy">
+          If you are between packages, need a custom setup, or want help choosing the right production level,
+          reach out and we’ll point you toward the best option before you book.
         </div>
       </div>
+      <a href="contact.html" class="hero-contact-btn">Get Recommendation</a>
     </div>
 
     <div class="custom-build-section">
@@ -2308,12 +2501,12 @@
     const PACKAGE_GALLERIES = {
       essential: {
         title: 'Essential <strong>Package</strong>',
-        intro: 'A clean foundation package focused on DJ, sound, microphone support, setup, and breakdown.',
+        intro: 'A clean foundation package focused on DJ, sound, microphone support, 5 uplights, LED Light Bar, setup, and breakdown.',
         photos: [
           {
             src: 'images/packages/essential-package.jpg',
             title: 'DJ + Sound Foundation',
-            caption: 'Main preview image for the Essential Package setup.'
+            caption: 'Main preview image for the Essential Package setup with sound, DJ, and clean lighting.'
           },
           {
             src: 'images/packages/essential-package-sound.jpg',

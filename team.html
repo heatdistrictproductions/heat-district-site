@@ -850,6 +850,268 @@
       margin-top: 32px;
     }
 
+
+    /* Responsive safety: prevents text, buttons, cards, and footer links from spilling on resized windows */
+    img,
+    svg {
+      max-width: 100%;
+    }
+
+    a,
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .page-hero,
+    .team-wrap,
+    .about-panel,
+    .process-card,
+    .cta-section,
+    .team-card,
+    .value-card,
+    .standard-card,
+    .process-step {
+      min-width: 0;
+    }
+
+    .page-hero-eyebrow,
+    .section-label,
+    .section-title,
+    .section-sub,
+    .about-heading,
+    .about-copy,
+    .team-role,
+    .team-name,
+    .team-copy,
+    .value-title,
+    .value-copy,
+    .standard-title,
+    .standard-copy,
+    .process-step-title,
+    .process-step-copy,
+    .footer-contact a,
+    .footer-copy {
+      overflow-wrap: anywhere;
+      word-break: normal;
+    }
+
+    .mobile-nav {
+      max-height: calc(100dvh - 92px);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .team-card,
+    .value-card,
+    .standard-card,
+    .process-step {
+      height: 100%;
+    }
+
+    .team-photo-img {
+      max-width: none;
+    }
+
+    .footer-contact {
+      row-gap: 14px;
+    }
+
+    .footer-contact a {
+      max-width: 100%;
+    }
+
+    @media (max-width: 1120px) {
+      nav {
+        padding: 10px 22px;
+      }
+
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .team-photo {
+        height: clamp(270px, 42vw, 360px);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .page-hero {
+        padding: 138px 22px 58px;
+      }
+
+      .page-hero-eyebrow,
+      .section-label {
+        letter-spacing: 3.2px;
+        line-height: 1.65;
+      }
+
+      .page-hero p,
+      .section-sub,
+      .about-copy,
+      .team-copy,
+      .value-copy,
+      .standard-copy,
+      .process-step-copy,
+      .cta-section p {
+        font-size: 0.9rem;
+        line-height: 1.8;
+      }
+
+      .hero-actions {
+        width: 100%;
+        max-width: 360px;
+        margin-left: auto;
+        margin-right: auto;
+        gap: 12px;
+      }
+
+      .hero-actions a {
+        width: 100%;
+        text-align: center;
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .team-wrap {
+        padding: 54px 22px 84px;
+      }
+
+      .section-block + .section-block {
+        margin-top: 68px;
+      }
+
+      .about-panel,
+      .process-card {
+        border-radius: 16px;
+        padding: 22px;
+      }
+
+      .team-content {
+        padding: 24px 22px 26px;
+      }
+
+      .team-photo {
+        height: clamp(245px, 68vw, 330px);
+      }
+
+      .values-grid,
+      .standards-grid,
+      .process-grid {
+        gap: 14px;
+      }
+
+      .value-card,
+      .standard-card,
+      .process-step {
+        padding: 22px 20px;
+      }
+
+      .cta-section {
+        margin-top: 68px;
+        padding: 42px 22px;
+      }
+
+      footer {
+        padding: 54px 22px 92px;
+      }
+
+      .footer-contact {
+        gap: 12px;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-copy {
+        line-height: 1.8;
+      }
+    }
+
+    @media (max-width: 430px) {
+      nav {
+        padding: 9px 16px;
+      }
+
+      .nav-logo img {
+        height: 46px;
+      }
+
+      .mobile-menu-btn {
+        width: 44px;
+        height: 44px;
+      }
+
+      .mobile-nav {
+        top: 66px;
+        left: 12px;
+        right: 12px;
+        padding: 12px;
+      }
+
+      .mobile-nav a {
+        font-size: 0.76rem;
+        letter-spacing: 1.7px;
+        padding: 13px 10px;
+      }
+
+      .mobile-nav-sub {
+        padding-left: 10px;
+      }
+
+      .mobile-nav-sub a {
+        font-size: 0.64rem;
+      }
+
+      .page-hero {
+        padding: 128px 18px 54px;
+      }
+
+      .team-wrap {
+        padding: 50px 18px 78px;
+      }
+
+      .about-panel,
+      .process-card,
+      .cta-section {
+        padding: 20px 18px;
+      }
+
+      .team-photo {
+        height: 245px;
+      }
+
+      .team-content {
+        padding: 22px 18px 24px;
+      }
+
+      .team-tags {
+        gap: 7px;
+      }
+
+      .team-tag {
+        letter-spacing: 1.5px;
+      }
+
+      .footer-logo img {
+        height: 58px;
+      }
+
+      .footer-productions-text {
+        letter-spacing: 4.5px;
+      }
+    }
+
     @media (max-width: 1200px) {
       .values-grid,
       .process-grid {
@@ -1031,7 +1293,7 @@
         <article class="team-card">
           <div class="team-photo">
             <img
-              src="images/team/ozzy-melendez.jpg"
+              src="images/ozzy-melendez.jpg"
               alt="Ozzy Melendez"
               class="team-photo-img"
               loading="lazy"
@@ -1061,7 +1323,7 @@
         <article class="team-card">
           <div class="team-photo">
             <img
-              src="images/team/julian-mendez.jpg"
+              src="images/julian-mendez.jpg"
               alt="Julian Mendez"
               class="team-photo-img"
               loading="lazy"
@@ -1278,7 +1540,7 @@
       });
 
       window.addEventListener('resize', function() {
-        if (window.innerWidth > 900) {
+        if (window.innerWidth > 1120) {
           closeMobileMenu();
         }
       });

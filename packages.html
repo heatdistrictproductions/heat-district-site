@@ -366,8 +366,8 @@
   height: 100%;
   object-fit: cover;
   object-position: center 28%;
-  filter: blur(12px) saturate(0.92);
-  transform: scale(1.12);
+  filter: blur(1.5px) saturate(0.92);
+  transform: scale(1.05);
   transform-origin: center 28%;
   display: block;
   opacity: 0.78;
@@ -427,41 +427,6 @@
   z-index: 1;
 }
 
-.bottom-contact-box {
-  max-width: 1120px;
-  margin: 0 auto 58px;
-  padding: 30px 34px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 34px;
-  text-align: left;
-}
-
-.bottom-contact-content {
-  flex: 1;
-  min-width: 0;
-}
-
-.bottom-contact-box .hero-contact-kicker {
-  margin-bottom: 8px;
-}
-
-.bottom-contact-box .hero-contact-title {
-  margin-bottom: 10px;
-}
-
-.bottom-contact-box .hero-contact-copy {
-  max-width: 720px;
-  margin: 0;
-}
-
-.bottom-contact-box .hero-contact-btn {
-  flex-shrink: 0;
-  min-width: 270px;
-  text-align: center;
-}
-
 .hero-contact-kicker {
   font-size: 0.62rem;
   letter-spacing: 4px;
@@ -516,7 +481,7 @@
     .packages-wrap {
       max-width: 1400px;
       margin: 0 auto;
-      padding: 42px 48px 100px;
+      padding: 80px 48px 100px;
     }
 
     .comparison-label,
@@ -1187,56 +1152,6 @@
       font-weight: 300;
     }
 
-    .funnel-section.top-funnel-section {
-      padding: 24px 28px;
-      margin-bottom: 52px;
-      border-radius: 14px;
-    }
-
-    .top-funnel-section .funnel-label {
-      font-size: 0.56rem;
-      letter-spacing: 4px;
-      margin-bottom: 8px;
-    }
-
-    .top-funnel-section .funnel-title {
-      font-size: clamp(1.2rem, 2.4vw, 1.85rem);
-      margin-bottom: 8px;
-      line-height: 1.16;
-    }
-
-    .top-funnel-section .funnel-sub {
-      font-size: 0.78rem;
-      line-height: 1.55;
-      max-width: 720px;
-    }
-
-    .top-funnel-section .funnel-steps {
-      margin-top: 16px;
-      gap: 12px;
-    }
-
-    .top-funnel-section .funnel-step {
-      padding: 13px 15px;
-      border-radius: 10px;
-    }
-
-    .top-funnel-section .funnel-step-number {
-      font-size: 0.5rem;
-      letter-spacing: 2.5px;
-      margin-bottom: 6px;
-    }
-
-    .top-funnel-section .funnel-step-title {
-      font-size: 0.88rem;
-      margin-bottom: 6px;
-    }
-
-    .top-funnel-section .funnel-step-copy {
-      font-size: 0.72rem;
-      line-height: 1.5;
-    }
-
     .custom-build-section {
       text-align: center;
       max-width: 920px;
@@ -1689,44 +1604,13 @@
 .page-hero-image {
   object-fit: cover;
   object-position: center 28%;
-  filter: blur(12px) saturate(0.9);
-  transform: scale(1.12);
+  filter: blur(1.5px) saturate(0.9);
+  transform: scale(1.05);
   transform-origin: center 28%;
 }
 
       .packages-wrap {
-        padding: 30px 24px 90px;
-      }
-
-      .bottom-contact-box {
-        margin-top: 38px;
-      }
-
-      .funnel-section.top-funnel-section {
-        padding: 22px 18px;
-        margin-bottom: 38px;
-      }
-
-      .top-funnel-section .funnel-title {
-        font-size: clamp(1.15rem, 7vw, 1.55rem);
-      }
-
-      .bottom-contact-box {
-        margin: 0 auto 42px;
-        padding: 26px 20px;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 20px;
-        text-align: center;
-      }
-
-      .bottom-contact-box .hero-contact-copy {
-        margin: 0 auto;
-      }
-
-      .bottom-contact-box .hero-contact-btn {
-        width: 100%;
-        min-width: 0;
+        padding: 60px 24px 90px;
       }
 
       .packages-grid {
@@ -1849,6 +1733,511 @@
       }
     }
 
+    /* =========================================================
+       RESPONSIVE SAFETY PASS — Packages Page
+       Keeps the existing design, copy, pricing, colors, and logic.
+       Prevents overlap/spill on resized desktop windows, tablets,
+       iPhone screens, short mobile screens, and modal views.
+    ========================================================= */
+
+    img {
+      max-width: 100%;
+    }
+
+    nav,
+    .nav-links,
+    .nav-links a,
+    .nav-cta,
+    .mobile-nav,
+    .page-hero,
+    .packages-wrap,
+    .pkg-card,
+    .comparison-table-wrap,
+    .funnel-section,
+    .custom-build-card,
+    .package-gallery-dialog,
+    footer {
+      min-width: 0;
+    }
+
+    .nav-links {
+      gap: 18px;
+    }
+
+    .nav-links a,
+    .nav-cta,
+    .btn-full-blue,
+    .btn-full-pink,
+    .btn-outline-blue-large,
+    .hero-contact-btn,
+    .mobile-nav a,
+    .footer-contact a {
+      overflow-wrap: anywhere;
+    }
+
+    .mobile-nav {
+      max-height: calc(100dvh - 92px);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .page-hero-eyebrow,
+    .comparison-label,
+    .packages-label,
+    .funnel-label,
+    .pkg-tier,
+    .pkg-controls label,
+    .pkg-includes-label,
+    .pkg-note,
+    .pkg-footer-note,
+    .hero-contact-kicker,
+    .package-gallery-kicker,
+    .package-gallery-count,
+    .footer-copy,
+    .footer-productions-text {
+      overflow-wrap: anywhere;
+    }
+
+    .hero-contact-box,
+    .funnel-section,
+    .custom-build-card,
+    .package-gallery-dialog {
+      width: 100%;
+    }
+
+    .packages-grid {
+      min-width: 0;
+    }
+
+    .pkg-card {
+      min-width: 0;
+      overflow-wrap: break-word;
+    }
+
+    .pkg-name,
+    .pkg-tagline,
+    .pkg-fit-copy,
+    .pkg-includes li,
+    .funnel-step-title,
+    .funnel-step-copy,
+    .custom-build-card p,
+    .package-gallery-top p,
+    .package-gallery-photo-title,
+    #packageGalleryPhotoCaption {
+      overflow-wrap: break-word;
+      hyphens: auto;
+    }
+
+    .pkg-price-wrap {
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    .pkg-controls {
+      min-width: 0;
+    }
+
+    .pkg-hours-select {
+      max-width: 100%;
+      min-width: 96px;
+    }
+
+    .packages-grid-scroll,
+    .comparison-table-wrap {
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-x: contain;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      overflow-wrap: normal;
+    }
+
+    .custom-build-card,
+    .funnel-section,
+    .hero-contact-box,
+    .pkg-card {
+      isolation: isolate;
+    }
+
+    .package-gallery-modal {
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .package-gallery-dialog {
+      overflow-x: hidden;
+    }
+
+    .package-gallery-stage {
+      width: 100%;
+    }
+
+    .package-gallery-image {
+      max-width: 100%;
+    }
+
+    .footer-contact {
+      row-gap: 16px;
+    }
+
+    .footer-contact a {
+      max-width: 100%;
+    }
+
+    @media (max-width: 1180px) {
+      .packages-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        min-width: 0;
+      }
+
+      .packages-grid-scroll {
+        overflow-x: visible;
+      }
+
+      .pkg-card {
+        padding: 38px 22px 24px;
+      }
+    }
+
+    @media (max-width: 1120px) {
+      nav {
+        padding: 10px 18px;
+      }
+
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .page-hero {
+        padding: 142px 24px 54px;
+      }
+
+      .page-hero h1 {
+        font-size: clamp(2.05rem, 9vw, 3.25rem);
+      }
+
+      .page-hero p {
+        font-size: 0.92rem;
+      }
+
+      .hero-contact-box {
+        margin-top: 28px;
+        padding: 22px 20px;
+      }
+
+      .packages-wrap {
+        padding: 60px 24px 90px;
+      }
+
+      .packages-section {
+        margin-bottom: 72px;
+      }
+
+      .packages-grid-scroll {
+        overflow-x: visible;
+      }
+
+      .packages-grid {
+        grid-template-columns: 1fr;
+        min-width: 0;
+        gap: 20px;
+      }
+
+      .pkg-card {
+        padding: 38px 20px 22px;
+      }
+
+      .pkg-visual {
+        min-height: 185px;
+      }
+
+      .pkg-price-value {
+        font-size: clamp(2.1rem, 12vw, 2.65rem);
+      }
+
+      .pkg-price-symbol {
+        font-size: clamp(1.25rem, 7vw, 1.55rem);
+      }
+
+      .pkg-price-unit {
+        font-size: 0.78rem;
+      }
+
+      .pkg-controls {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .pkg-hours-select {
+        width: 100%;
+      }
+
+      .comparison-wrap {
+        margin-bottom: 66px;
+      }
+
+      .comparison-table-wrap {
+        border-radius: 12px;
+      }
+
+      .comparison-table {
+        min-width: 720px;
+      }
+
+      .funnel-section {
+        margin-bottom: 66px;
+        padding: 34px 24px;
+      }
+
+      .funnel-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .custom-build-card {
+        padding: 46px 24px;
+      }
+
+      .btn-outline-blue-large,
+      .hero-contact-btn,
+      .btn-full-blue,
+      .btn-full-pink {
+        max-width: 100%;
+        text-align: center;
+      }
+
+      .package-gallery-dialog {
+        width: 100%;
+        max-height: calc(100dvh - 28px);
+      }
+
+      .package-gallery-stage {
+        min-height: clamp(280px, 58vh, 420px);
+      }
+
+      .package-gallery-image {
+        height: clamp(280px, 58vh, 420px);
+      }
+
+      .package-gallery-thumbs {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      footer {
+        padding: 60px 24px 100px;
+      }
+
+      .footer-contact {
+        gap: 16px 24px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page-hero {
+        padding: 132px 18px 46px;
+      }
+
+      .page-hero-eyebrow {
+        font-size: 0.6rem;
+        letter-spacing: 3px;
+        line-height: 1.65;
+      }
+
+      .page-hero h1 {
+        font-size: clamp(1.95rem, 10.5vw, 2.85rem);
+        line-height: 1.08;
+      }
+
+      .page-hero p {
+        line-height: 1.75;
+      }
+
+      .hero-contact-box {
+        padding: 20px 16px;
+      }
+
+      .hero-contact-title {
+        font-size: 1.08rem;
+      }
+
+      .hero-contact-btn,
+      .btn-outline-blue-large,
+      .btn-full-blue,
+      .btn-full-pink {
+        width: 100%;
+        padding-left: 14px;
+        padding-right: 14px;
+        letter-spacing: 2.1px;
+      }
+
+      .packages-wrap {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .packages-grid-scroll {
+        padding-top: 20px;
+      }
+
+      .pkg-card {
+        padding: 36px 16px 18px;
+        border-radius: 13px;
+      }
+
+      .pkg-badge {
+        max-width: calc(100% - 30px);
+        text-align: center;
+        padding-left: 14px;
+        padding-right: 14px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .pkg-name {
+        font-size: 1.18rem;
+      }
+
+      .pkg-tagline {
+        min-height: 0;
+      }
+
+      .pkg-fit-box {
+        padding: 13px;
+      }
+
+      .pkg-includes li {
+        font-size: 0.78rem;
+      }
+
+      .pkg-price-wrap {
+        gap: 5px;
+      }
+
+      .comparison-table {
+        min-width: 680px;
+      }
+
+      .funnel-section {
+        padding: 30px 18px;
+      }
+
+      .custom-build-card {
+        padding: 40px 18px;
+      }
+
+      .package-gallery-modal {
+        padding: 10px;
+      }
+
+      .package-gallery-dialog {
+        padding: 14px;
+        border-radius: 14px;
+        max-height: calc(100dvh - 20px);
+      }
+
+      .package-gallery-top {
+        padding: 4px 46px 12px 0;
+      }
+
+      .package-gallery-close {
+        width: 38px;
+        height: 38px;
+      }
+
+      .package-gallery-stage {
+        min-height: clamp(240px, 50vh, 340px);
+        border-radius: 13px;
+      }
+
+      .package-gallery-image {
+        height: clamp(240px, 50vh, 340px);
+      }
+
+      .package-gallery-nav {
+        width: 36px;
+        height: 48px;
+        font-size: 1.75rem;
+      }
+
+      .package-gallery-prev {
+        left: 8px;
+      }
+
+      .package-gallery-next {
+        right: 8px;
+      }
+
+      .package-gallery-thumbs {
+        gap: 8px;
+      }
+
+      .package-gallery-thumb,
+      .package-gallery-thumb img {
+        min-height: 74px;
+        height: 74px;
+      }
+
+      .footer-productions-text {
+        letter-spacing: 4px;
+      }
+
+      .footer-copy {
+        line-height: 1.8;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .page-hero {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .packages-wrap {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .pkg-price-value {
+        font-size: 1.95rem;
+      }
+
+      .pkg-price-symbol {
+        font-size: 1.12rem;
+      }
+
+      .pkg-price-unit {
+        font-size: 0.72rem;
+      }
+
+      .package-gallery-thumbs {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-height: 700px) and (max-width: 900px) {
+      .mobile-nav {
+        max-height: calc(100dvh - 88px);
+      }
+
+      .package-gallery-stage {
+        min-height: 240px;
+      }
+
+      .package-gallery-image {
+        height: 240px;
+      }
+    }
+
   </style>
 </head>
 
@@ -1915,7 +2304,6 @@
 
   <div class="page-hero">
   <div class="page-hero-image-wrap" aria-hidden="true">
-    <!-- Hero background image layer only. Name your image packages-hero-bg.jpg and place it in /images/ -->
     <img src="images/packages-hero-bg.jpg" alt="" class="page-hero-image">
   </div>
 
@@ -1926,39 +2314,20 @@
     you can continue to add upgrades, rentals, media coverage, or custom production elements.
   </p>
 
+  <div class="hero-contact-box">
+    <div class="hero-contact-kicker">Not Sure Which Package Fits?</div>
+    <div class="hero-contact-title">Send Us Your Date, Venue, Guest Count, and Vision</div>
+    <div class="hero-contact-copy">
+      If you are between packages, need a custom setup, or want help choosing the right production level,
+      reach out and we’ll point you toward the best option before you book.
+    </div>
+    <a href="contact.html" class="hero-contact-btn">Get Recommendation</a>
+  </div>
 </div>
 
   <div class="neon-divider"></div>
 
   <div class="packages-wrap">
-
-    <div class="funnel-section top-funnel-section">
-      <p class="funnel-label">Simple Booking Flow</p>
-      <h2 class="funnel-title">Package First — <strong>Upgrades Second</strong></h2>
-      <p class="funnel-sub">
-        Choose the main package first, then add upgrades and submit the event details.
-      </p>
-
-      <div class="funnel-steps">
-        <div class="funnel-step">
-          <div class="funnel-step-number">Step 01</div>
-          <div class="funnel-step-title">Choose a Package</div>
-          <div class="funnel-step-copy">Start with the level that fits the size, style, and energy of the event.</div>
-        </div>
-
-        <div class="funnel-step">
-          <div class="funnel-step-number">Step 02</div>
-          <div class="funnel-step-title">Add Upgrades</div>
-          <div class="funnel-step-copy">Continue to the add-ons page to add lighting, media, effects, rentals, or extra services.</div>
-        </div>
-
-        <div class="funnel-step">
-          <div class="funnel-step-number">Step 03</div>
-          <div class="funnel-step-title">Review & Submit</div>
-          <div class="funnel-step-copy">Review the order summary, event details, deposit, and final confirmation steps.</div>
-        </div>
-      </div>
-    </div>
 
     <div class="packages-section">
       <p class="packages-label">Choose Your Package</p>
@@ -2416,18 +2785,32 @@
       </div>
     </div>
 
+    <div class="funnel-section">
+      <p class="funnel-label">Simple Booking Flow</p>
+      <h2 class="funnel-title">Package First — <strong>Upgrades Second</strong></h2>
+      <p class="funnel-sub">
+        This keeps the decision simple. Choose the main package here, then continue to add-ons only after the package is selected.
+      </p>
 
+      <div class="funnel-steps">
+        <div class="funnel-step">
+          <div class="funnel-step-number">Step 01</div>
+          <div class="funnel-step-title">Choose a Package</div>
+          <div class="funnel-step-copy">Start with the level that fits the size, style, and energy of the event.</div>
+        </div>
 
-    <div class="hero-contact-box bottom-contact-box">
-      <div class="bottom-contact-content">
-        <div class="hero-contact-kicker">Not Sure Which Package Fits?</div>
-        <div class="hero-contact-title">Send Us Your Date, Venue, Guest Count, and Vision</div>
-        <div class="hero-contact-copy">
-          If you are between packages, need a custom setup, or want help choosing the right production level,
-          reach out and we’ll point you toward the best option before you book.
+        <div class="funnel-step">
+          <div class="funnel-step-number">Step 02</div>
+          <div class="funnel-step-title">Add Upgrades</div>
+          <div class="funnel-step-copy">Continue to the add-ons page to add lighting, media, effects, rentals, or extra services.</div>
+        </div>
+
+        <div class="funnel-step">
+          <div class="funnel-step-number">Step 03</div>
+          <div class="funnel-step-title">Review & Submit</div>
+          <div class="funnel-step-copy">Review the order summary, event details, deposit, and final confirmation steps.</div>
         </div>
       </div>
-      <a href="contact.html" class="hero-contact-btn">Get Recommendation</a>
     </div>
 
     <div class="custom-build-section">
@@ -2940,7 +3323,7 @@
       });
 
       window.addEventListener('resize', function() {
-        if (window.innerWidth > 900) {
+        if (window.innerWidth > 1120) {
           closeMobileMenu();
         }
       });

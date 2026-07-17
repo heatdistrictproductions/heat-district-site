@@ -1006,105 +1006,8 @@
     <p class="footer-copy">© 2025 Heat District Productions · Miami & Broward County · All Rights Reserved</p>
   </footer>
 
+  <script src="js/global-cart.js"></script>
   <script>
-    const PACKAGE_NAMES_WITH_LIGHTING = ['The Blaze', 'The Inferno', 'The District'];
-    const LIGHTING_RELATED_CATEGORIES = ['Lighting Packages', 'Lighting', 'Effects', 'Video / Visuals', 'Staging & Trussing'];
-
-    const PACKAGE_DUPLICATE_WARNINGS = {
-      'The Spark': {
-        'pa-speaker-single': 'The Spark already includes a sound system.',
-        'additional-speaker-single': 'The Spark already includes a sound system.',
-        'additional-subwoofer-single': 'The Spark already includes subs.',
-        'microphone-single': 'The Spark already includes a microphone.'
-      },
-      'The Blaze': {
-        'pa-speaker-single': 'The Blaze already includes a sound system.',
-        'additional-speaker-single': 'The Blaze already includes a sound system.',
-        'additional-subwoofer-single': 'The Blaze already includes subs.',
-        'microphone-single': 'The Blaze already includes a microphone.',
-        'glow-lighting-package': 'The Blaze already includes 10 uplights and a Chauvet GigBAR 2.',
-        'pulse-lighting-package': 'The Blaze already includes 10 uplights, a Chauvet GigBAR 2, 2 moving heads, and 2 totems.',
-        'uplights-5-pack': 'The Blaze already includes 10 uplights.',
-        'uplights-10-pack': 'The Blaze already includes 10 uplights.',
-        'light-bar-single': 'The Blaze already includes a Chauvet GigBAR 2.',
-        'moving-heads-2-heads-2-totems': 'The Blaze already includes 2 moving heads and 2 totems.',
-        'photo-booth-digital-only': 'The Blaze already includes Premium Photo Booth.',
-        'photo-booth-digital-print': 'The Blaze already includes Premium Photo Booth.',
-        'photo-booth-360': 'The Blaze already includes Premium Photo Booth. Only add this if you want the 360 booth experience instead of or in addition to the included booth.',
-        'red-carpet-10ft': 'The Blaze already includes a 10ft red carpet with stanchions and velvet ropes.',
-        'fog-machines-2-units': 'The Blaze already includes 2 fog machines.',
-        'trussing-2-totems': 'The Blaze already includes 2 totems.'
-      },
-      'The Inferno': {
-        'pa-speaker-single': 'The Inferno already includes a sound system.',
-        'additional-speaker-single': 'The Inferno already includes a sound system.',
-        'additional-subwoofer-single': 'The Inferno already includes subs.',
-        'microphone-single': 'The Inferno already includes a microphone.',
-        'glow-lighting-package': 'The Inferno already includes uplighting and a Chauvet GigBAR 2.',
-        'pulse-lighting-package': 'The Inferno already includes uplighting, a Chauvet GigBAR 2, moving heads, fog machines, and trussing.',
-        'district-lighting-package': 'The Inferno already includes 15 uplights, a Chauvet GigBAR 2, 4 moving heads, 2 fog machines, and trussing.',
-        'uplights-5-pack': 'The Inferno already includes 15 uplights.',
-        'uplights-10-pack': 'The Inferno already includes 15 uplights.',
-        'uplights-15-pack': 'The Inferno already includes 15 uplights.',
-        'light-bar-single': 'The Inferno already includes a Chauvet GigBAR 2.',
-        'moving-heads-2-heads-2-totems': 'The Inferno already includes 4 moving heads.',
-        'moving-heads-2-heads-goal-post': 'The Inferno already includes 4 moving heads and trussing.',
-        'moving-heads-4-heads-4-totems': 'The Inferno already includes 4 moving heads and trussing.',
-        'moving-heads-4-heads-2-totems-goal-post': 'The Inferno already includes 4 moving heads and trussing.',
-        'photo-booth-digital-only': 'The Inferno already includes Premium Photo Booth.',
-        'photo-booth-digital-print': 'The Inferno already includes Premium Photo Booth.',
-        'photo-booth-360': 'The Inferno already includes Premium Photo Booth. Only add this if you want the 360 booth experience instead of or in addition to the included booth.',
-        'red-carpet-10ft': 'The Inferno already includes a 10ft red carpet with stanchions and velvet ropes.',
-        'led-glow-cocktail-table': 'The Inferno already includes LED glow cocktail tables.',
-        'foam-glow-sticks-pack-25': 'The Inferno already includes foam glow sticks.',
-        'cold-sparks-2-units': 'The Inferno already includes 2 cold spark machines.',
-        'co2-led-gun-1-unit': 'The Inferno already includes the CO2 LED gun.',
-        'fog-machines-2-units': 'The Inferno already includes 2 fog machines.',
-        'trussing-2-totems': 'The Inferno already includes trussing.',
-        'trussing-4-totems': 'The Inferno already includes a trussing option.',
-        'trussing-goal-post-8x10': 'The Inferno already includes a trussing option.',
-        'trussing-goal-post-8x16': 'The Inferno already includes a trussing option.'
-      },
-      'The District': {
-        'pa-speaker-single': 'The District already includes a sound system.',
-        'additional-speaker-single': 'The District already includes a sound system.',
-        'additional-subwoofer-single': 'The District already includes subs.',
-        'microphone-single': 'The District already includes a microphone.',
-        'glow-lighting-package': 'The District already includes uplighting and a Chauvet GigBAR 2.',
-        'pulse-lighting-package': 'The District already includes uplighting, a Chauvet GigBAR 2, moving heads, fog machines, and trussing.',
-        'district-lighting-package': 'The District already includes 15 uplights, a Chauvet GigBAR 2, 4 moving heads, 2 fog machines, and trussing.',
-        'uplights-5-pack': 'The District already includes 15 uplights.',
-        'uplights-10-pack': 'The District already includes 15 uplights.',
-        'uplights-15-pack': 'The District already includes 15 uplights.',
-        'light-bar-single': 'The District already includes a Chauvet GigBAR 2.',
-        'moving-heads-2-heads-2-totems': 'The District already includes 4 moving heads.',
-        'moving-heads-2-heads-goal-post': 'The District already includes 4 moving heads and trussing.',
-        'moving-heads-4-heads-4-totems': 'The District already includes 4 moving heads and trussing.',
-        'moving-heads-4-heads-2-totems-goal-post': 'The District already includes 4 moving heads and trussing.',
-        'led-screen-wall': 'The District already includes an LED screen / wall.',
-        'photo-booth-digital-only': 'The District already includes Premium Photo Booth.',
-        'photo-booth-digital-print': 'The District already includes Premium Photo Booth.',
-        'photo-booth-360': 'The District already includes Premium Photo Booth. Only add this if you want the 360 booth experience instead of or in addition to the included booth.',
-        'red-carpet-10ft': 'The District already includes red carpet with stanchions and velvet ropes.',
-        'red-carpet-20ft': 'The District already includes a 20ft red carpet with stanchions and velvet ropes.',
-        'led-glow-cocktail-table': 'The District already includes LED glow cocktail tables.',
-        'foam-glow-sticks-pack-25': 'The District already includes foam glow sticks.',
-        'photography-50': 'The District already includes photography.',
-        'photography-100': 'The District already includes photography.',
-        'photography-150': 'The District already includes photography.',
-        'photography-250': 'The District already includes photography.',
-        'cold-sparks-2-units': 'The District already includes cold spark machines.',
-        'cold-sparks-4-units': 'The District already includes 4 cold spark machines.',
-        'co2-led-gun-1-unit': 'The District already includes the CO2 LED gun.',
-        'co2-cannons-2-units': 'The District already includes 2 CO2 cannons.',
-        'fog-machines-2-units': 'The District already includes 2 fog machines.',
-        'trussing-2-totems': 'The District already includes trussing.',
-        'trussing-4-totems': 'The District already includes a trussing option.',
-        'trussing-goal-post-8x10': 'The District already includes a trussing option.',
-        'trussing-goal-post-8x16': 'The District already includes a trussing option.'
-      }
-    };
-
     const ADDONS = {
       'pa-speaker': { id: 'pa-speaker', label: 'Sound', title: 'QSC K12 Top Speaker', image: 'images/products/qsc-top-speaker.png', mediaClass: 'addon-media-gear', copy: 'Add 1 QSC K12 top speaker for extra audio coverage beyond the main package setup.', options: [{ id: 'pa-speaker-single', label: '1 QSC K12 Top Speaker', name: 'QSC K12 Top Speaker', category: 'Sound', price: 75, unit: 'speaker', displayUnit: 'speaker' }] },
       'additional-speaker': { id: 'additional-speaker', label: 'Sound', title: 'Additional QSC K12 Speaker', image: 'images/products/qsc-top-speaker.png', mediaClass: 'addon-media-gear', copy: 'Add an extra QSC K12 top speaker for larger rooms, side areas, cocktail spaces, ceremonies, outdoor sections, or overflow areas.', options: [{ id: 'additional-speaker-single', label: '1 Additional QSC K12 Speaker', name: 'Additional QSC K12 Speaker', category: 'Sound', price: 75, unit: 'speaker', displayUnit: 'speaker' }] },
@@ -1320,153 +1223,563 @@
 
     let estimate = null;
 
-    function formatCurrency(value) { return '$' + Number(value || 0).toLocaleString(); }
-    function safeJsonParse(value) { try { return value ? JSON.parse(value) : null; } catch (error) { return null; } }
-    function escapeHtml(value) { return String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;'); }
-    function getAddon(addonId) { return ADDONS[addonId] || null; }
-    function getSelectedPackageName() {
-      if (estimate && estimate.package) return estimate.package;
+    function formatCurrency(value) {
+      return '$' + Number(value || 0).toLocaleString();
+    }
+
+    function safeJsonParse(value) {
+      try {
+        return value ? JSON.parse(value) : null;
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function escapeHtml(value) {
+      return String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function getConflictEngine() {
+      return window.HeatDistrictConflictEngine || null;
+    }
+
+    function getAddon(addonId) {
+      return ADDONS[addonId] || null;
+    }
+
+    function getParentAddonIdForOption(optionId) {
+      const addonIds = Object.keys(ADDONS);
+
+      for (let index = 0; index < addonIds.length; index += 1) {
+        const addon = ADDONS[addonIds[index]];
+        const hasOption = Array.isArray(addon.options) && addon.options.some(function(option) {
+          return option.id === optionId;
+        });
+
+        if (hasOption) {
+          return addon.id;
+        }
+      }
+
+      return '';
+    }
+
+    function normalizePackageData(targetEstimate) {
+      const engine = getConflictEngine();
       const selectedPackage = safeJsonParse(sessionStorage.getItem('heatDistrictSelectedPackage'));
-      return selectedPackage && selectedPackage.name ? selectedPackage.name : '';
+      const currentName = targetEstimate.package || (selectedPackage && selectedPackage.name) || '';
+      const normalizedName = engine
+        ? engine.normalizePackageName(currentName)
+        : currentName;
+      const packageDefinition = engine
+        ? engine.getPackageDefinition(normalizedName)
+        : null;
+
+      targetEstimate.package = normalizedName || 'No Package Selected';
+      targetEstimate.packageCoverage = engine
+        ? engine.getPackageCoverage(
+            normalizedName,
+            targetEstimate.packageCoverage ||
+              (selectedPackage && (selectedPackage.coverage || selectedPackage.includedFeatures))
+          )
+        : (targetEstimate.packageCoverage || {});
+
+      if (!Array.isArray(targetEstimate.packageIncludes) || !targetEstimate.packageIncludes.length) {
+        targetEstimate.packageIncludes = packageDefinition && Array.isArray(packageDefinition.includes)
+          ? packageDefinition.includes
+          : ((selectedPackage && selectedPackage.includes) || []);
+      }
+
+      targetEstimate.includedItems = targetEstimate.packageIncludes;
+      targetEstimate.type = targetEstimate.type || 'package';
+      targetEstimate.cartMode = targetEstimate.cartMode || 'package';
+
+      return targetEstimate;
     }
-    function getDuplicateWarning(option) {
-      if (!option || !option.id) return '';
-      const packageWarnings = PACKAGE_DUPLICATE_WARNINGS[getSelectedPackageName()];
-      return packageWarnings ? (packageWarnings[option.id] || '') : '';
+
+    function enrichStoredAddons(targetEstimate) {
+      const engine = getConflictEngine();
+
+      if (!Array.isArray(targetEstimate.addons)) {
+        targetEstimate.addons = [];
+      }
+
+      targetEstimate.addons = targetEstimate.addons.map(function(item) {
+        const parentAddonId = item.parentAddonId || getParentAddonIdForOption(item.id);
+        const features = engine
+          ? engine.getOptionFeatures(item.id, item.features)
+          : (item.features || {});
+
+        return Object.assign({}, item, {
+          parentAddonId: parentAddonId,
+          features: features
+        });
+      });
+
+      return targetEstimate;
     }
-    function showDuplicateWarningModal(message) {
+
+    function getSelectedPackageName() {
+      if (estimate && estimate.package) {
+        const engine = getConflictEngine();
+        return engine
+          ? engine.normalizePackageName(estimate.package)
+          : estimate.package;
+      }
+
+      const selectedPackage = safeJsonParse(sessionStorage.getItem('heatDistrictSelectedPackage'));
+      const selectedName = selectedPackage && selectedPackage.name ? selectedPackage.name : '';
+      const engine = getConflictEngine();
+
+      return engine
+        ? engine.normalizePackageName(selectedName)
+        : selectedName;
+    }
+
+    function showDuplicateWarningModal(settings) {
+      const options = typeof settings === 'string'
+        ? { message: settings }
+        : (settings || {});
+
       return new Promise(function(resolve) {
         const backdrop = document.getElementById('duplicateModalBackdrop');
+        const kicker = document.querySelector('.duplicate-modal-kicker');
+        const title = document.getElementById('duplicateModalTitle');
         const copy = document.getElementById('duplicateModalCopy');
         const cancelBtn = document.getElementById('duplicateModalCancel');
         const confirmBtn = document.getElementById('duplicateModalConfirm');
-        if (!backdrop || !copy || !cancelBtn || !confirmBtn) { resolve(true); return; }
-        copy.innerHTML = '<strong>Heads up —</strong> ' + escapeHtml(message) + '<br><br>Only add this if you want extra coverage or another one.';
+
+        if (!backdrop || !copy || !cancelBtn || !confirmBtn) {
+          resolve(true);
+          return;
+        }
+
+        const previousOverflow = document.body.style.overflow;
+
+        if (kicker) kicker.textContent = options.kicker || 'Possible Duplicate';
+        if (title) title.textContent = options.title || 'Double-check this add-on';
+
+        copy.innerHTML = escapeHtml(options.message || 'This selection may overlap with something already included.')
+          .replace(/\n/g, '<br>');
+
+        cancelBtn.textContent = options.cancelLabel || 'Cancel';
+        confirmBtn.textContent = options.confirmLabel || 'Add Anyway';
+
         function closeModal(result) {
           backdrop.classList.remove('open');
-          document.body.style.overflow = '';
+          document.body.style.overflow = previousOverflow;
           cancelBtn.removeEventListener('click', onCancel);
           confirmBtn.removeEventListener('click', onConfirm);
           backdrop.removeEventListener('click', onBackdropClick);
           document.removeEventListener('keydown', onKeydown);
           resolve(result);
         }
-        function onCancel() { closeModal(false); }
-        function onConfirm() { closeModal(true); }
-        function onBackdropClick(event) { if (event.target === backdrop) closeModal(false); }
-        function onKeydown(event) { if (event.key === 'Escape') closeModal(false); }
+
+        function onCancel() {
+          closeModal(false);
+        }
+
+        function onConfirm() {
+          closeModal(true);
+        }
+
+        function onBackdropClick(event) {
+          if (event.target === backdrop) {
+            closeModal(false);
+          }
+        }
+
+        function onKeydown(event) {
+          if (event.key === 'Escape') {
+            closeModal(false);
+          }
+        }
+
         cancelBtn.addEventListener('click', onCancel);
         confirmBtn.addEventListener('click', onConfirm);
         backdrop.addEventListener('click', onBackdropClick);
         document.addEventListener('keydown', onKeydown);
+
         backdrop.classList.add('open');
         document.body.style.overflow = 'hidden';
+
+        window.setTimeout(function() {
+          cancelBtn.focus();
+        }, 0);
       });
     }
+
+    function buildOverlapCheck(option) {
+      const engine = getConflictEngine();
+
+      if (!engine || !option) {
+        return {
+          hasConflict: false,
+          packageConflict: null,
+          addonConflicts: [],
+          messages: []
+        };
+      }
+
+      const parentAddonId = option.parentAddonId || getParentAddonIdForOption(option.id);
+      const optionFeatures = engine.getOptionFeatures(option.id, option.features);
+      const packageConflict = engine.getPackageConflicts(
+        getSelectedPackageName(),
+        option.id,
+        estimate && estimate.packageCoverage,
+        optionFeatures
+      );
+      const addonConflicts = engine.getAddonConflicts(
+        option.id,
+        estimate && estimate.addons,
+        optionFeatures,
+        parentAddonId
+      );
+      const messages = [];
+
+      const packageMessage = engine.buildPackageConflictMessage(packageConflict);
+      const addonMessage = engine.buildAddonConflictMessage(addonConflicts);
+
+      if (packageMessage) messages.push(packageMessage);
+      if (addonMessage) messages.push(addonMessage);
+
+      return {
+        hasConflict: messages.length > 0,
+        packageConflict: packageConflict,
+        addonConflicts: addonConflicts,
+        messages: messages
+      };
+    }
+
     function getSelectedOption(addonId, cardId) {
       const addon = getAddon(addonId);
-      if (!addon || !addon.options || !addon.options.length) return null;
+
+      if (!addon || !addon.options || !addon.options.length) {
+        return null;
+      }
+
       const select = document.getElementById('option-' + cardId);
-      if (!select) return Object.assign({}, addon.options[0]);
-      const selectedId = select.value;
-      const option = addon.options.find(function(item) { return item.id === selectedId; }) || addon.options[0];
-      return Object.assign({}, option);
+      const selectedId = select ? select.value : addon.options[0].id;
+      const option = addon.options.find(function(item) {
+        return item.id === selectedId;
+      }) || addon.options[0];
+      const engine = getConflictEngine();
+
+      return Object.assign({}, option, {
+        parentAddonId: addon.id,
+        features: engine ? engine.getOptionFeatures(option.id) : {}
+      });
     }
+
     function getQtyForOption(optionId) {
-      if (!estimate || !Array.isArray(estimate.addons)) return 0;
-      const existing = estimate.addons.find(function(item) { return item.id === optionId; });
+      if (!estimate || !Array.isArray(estimate.addons)) {
+        return 0;
+      }
+
+      const existing = estimate.addons.find(function(item) {
+        return item.id === optionId;
+      });
+
       return existing ? Number(existing.qty || 0) : 0;
     }
+
     function buildAddonCard(addonId, groupId) {
       const addon = getAddon(addonId);
       if (!addon) return '';
+
       const cardId = groupId + '-' + addon.id;
       const firstOption = addon.options[0];
       const hasMultipleOptions = addon.options.length > 1;
       const imagePath = addon.image || 'images/products/' + addon.id + '.png';
       const mediaClass = addon.mediaClass || 'addon-media-gear';
-      const optionsHtml = hasMultipleOptions ? '<div class="option-control"><label>Choose Option</label><select class="option-select" id="option-' + cardId + '" onchange="handleOptionChange(\'' + addon.id + '\', \'' + cardId + '\')">' + addon.options.map(function(option) { return '<option value="' + escapeHtml(option.id) + '">' + escapeHtml(option.label) + '</option>'; }).join('') + '</select></div>' : '';
+
+      const optionsHtml = hasMultipleOptions
+        ? '<div class="option-control"><label>Choose Option</label><select class="option-select" id="option-' + cardId + '" onchange="handleOptionChange(\'' + addon.id + '\', \'' + cardId + '\')">' + addon.options.map(function(option) {
+            return '<option value="' + escapeHtml(option.id) + '">' + escapeHtml(option.label) + '</option>';
+          }).join('') + '</select></div>'
+        : '';
+
       return '<article class="addon-card" data-addon-card="' + escapeHtml(addon.id) + '" data-card-id="' + escapeHtml(cardId) + '">' +
         '<div class="addon-media ' + escapeHtml(mediaClass) + '"><img class="addon-img" src="' + escapeHtml(imagePath) + '" alt="' + escapeHtml(addon.title) + '" loading="lazy" decoding="async" onerror="this.closest(\'.addon-media\').classList.add(\'image-missing\'); this.remove();"/><div class="addon-image-fallback">Add Product Image<span>' + escapeHtml(imagePath) + '</span></div></div>' +
         '<p class="addon-category">' + escapeHtml(addon.label) + '</p><h3 class="addon-name">' + escapeHtml(addon.title) + '</h3><p class="addon-copy">' + escapeHtml(addon.copy) + '</p>' + optionsHtml +
         '<div class="addon-bottom"><div class="addon-price" id="price-' + escapeHtml(cardId) + '"><span class="addon-price-symbol">$</span><span class="addon-price-value">' + Number(firstOption.price).toLocaleString() + '</span><span class="addon-price-unit">/ ' + escapeHtml(firstOption.displayUnit) + '</span></div>' +
         '<div class="addon-actions"><div class="qty-control"><button class="qty-btn" type="button" onclick="changeAddonQty(\'' + addon.id + '\', \'' + cardId + '\', -1)">−</button><div class="qty-value" id="qty-' + escapeHtml(cardId) + '">0</div><button class="qty-btn" type="button" onclick="changeAddonQty(\'' + addon.id + '\', \'' + cardId + '\', 1)">+</button></div><button class="add-btn" type="button" onclick="addOneAddon(\'' + addon.id + '\', \'' + cardId + '\')">Add</button></div></div></article>';
     }
+
     function buildAddonGroups() {
       const groupsEl = document.getElementById('addonGroups');
       if (!groupsEl) return;
+
       groupsEl.innerHTML = GROUPS.map(function(group) {
-        return '<div class="group-block" id="' + escapeHtml(group.id) + '" data-group="' + escapeHtml(group.id) + '"><div class="group-shell"><div class="group-header"><div class="group-title">' + escapeHtml(group.title) + '</div><div class="group-line"></div></div><p class="group-copy">' + escapeHtml(group.copy) + '</p><div class="group-meta">' + group.pills.map(function(pill) { return '<div class="group-pill">' + escapeHtml(pill) + '</div>'; }).join('') + '</div><div class="addons-grid">' + group.addonIds.map(function(addonId) { return buildAddonCard(addonId, group.id); }).join('') + '</div></div></div>';
+        return '<div class="group-block" id="' + escapeHtml(group.id) + '" data-group="' + escapeHtml(group.id) + '"><div class="group-shell"><div class="group-header"><div class="group-title">' + escapeHtml(group.title) + '</div><div class="group-line"></div></div><p class="group-copy">' + escapeHtml(group.copy) + '</p><div class="group-meta">' + group.pills.map(function(pill) {
+          return '<div class="group-pill">' + escapeHtml(pill) + '</div>';
+        }).join('') + '</div><div class="addons-grid">' + group.addonIds.map(function(addonId) {
+          return buildAddonCard(addonId, group.id);
+        }).join('') + '</div></div></div>';
       }).join('');
     }
-    function handleOptionChange(addonId, cardId) { updateCardDisplay(addonId, cardId); renderEstimate(); }
+
+    function handleOptionChange(addonId, cardId) {
+      updateCardDisplay(addonId, cardId);
+      renderEstimate();
+    }
+
     function updateCardDisplay(addonId, cardId) {
       const option = getSelectedOption(addonId, cardId);
       const priceEl = document.getElementById('price-' + cardId);
       const qtyEl = document.getElementById('qty-' + cardId);
       const card = document.querySelector('[data-card-id="' + cardId + '"]');
-      if (option && priceEl) priceEl.innerHTML = '<span class="addon-price-symbol">$</span><span class="addon-price-value">' + Number(option.price).toLocaleString() + '</span><span class="addon-price-unit">/ ' + escapeHtml(option.displayUnit) + '</span>';
-      if (option && qtyEl) qtyEl.textContent = getQtyForOption(option.id);
-      if (option && card) card.classList.toggle('selected', getQtyForOption(option.id) > 0);
+
+      if (option && priceEl) {
+        priceEl.innerHTML = '<span class="addon-price-symbol">$</span><span class="addon-price-value">' + Number(option.price).toLocaleString() + '</span><span class="addon-price-unit">/ ' + escapeHtml(option.displayUnit) + '</span>';
+      }
+
+      if (option && qtyEl) {
+        qtyEl.textContent = getQtyForOption(option.id);
+      }
+
+      if (option && card) {
+        card.classList.toggle('selected', getQtyForOption(option.id) > 0);
+      }
     }
+
     function loadEstimate() {
       const storedEstimate = safeJsonParse(sessionStorage.getItem('heatDistrictEstimate'));
+
       if (storedEstimate && storedEstimate.package) {
-        if (!Array.isArray(storedEstimate.addons)) storedEstimate.addons = [];
         storedEstimate.packagePrice = Number(storedEstimate.packagePrice || 0);
         storedEstimate.packageHours = Number(storedEstimate.packageHours || 0);
+        normalizePackageData(storedEstimate);
+        enrichStoredAddons(storedEstimate);
+
+        if (storedEstimate.package !== 'No Package Selected' && storedEstimate.packagePrice > 0) {
+          sessionStorage.removeItem('heatDistrictBuildCart');
+          sessionStorage.removeItem('heatDistrictProductOrder');
+        }
+
         return storedEstimate;
       }
+
       const selectedPackage = safeJsonParse(sessionStorage.getItem('heatDistrictSelectedPackage'));
+
       if (selectedPackage) {
         const total = Number(selectedPackage.total) || 0;
-        const newEstimate = { package: selectedPackage.name || 'Selected Package', packagePrice: total, packageHours: Number(selectedPackage.hours) || 5, basePrice: Number(selectedPackage.basePrice) || total, addons: [], addonsTotal: 0, total: total, depositDue: total * 0.5, remainingBalance: total * 0.5 };
+        const newEstimate = {
+          type: 'package',
+          cartMode: 'package',
+          package: selectedPackage.name || 'Selected Package',
+          packagePrice: total,
+          packageHours: Number(selectedPackage.hours) || 5,
+          basePrice: Number(selectedPackage.basePrice) || total,
+          packageIncludes: Array.isArray(selectedPackage.includes) ? selectedPackage.includes : [],
+          packageCoverage: selectedPackage.coverage || selectedPackage.includedFeatures || {},
+          addons: [],
+          addonsTotal: 0,
+          total: total,
+          depositDue: total * 0.5,
+          remainingBalance: total * 0.5
+        };
+
+        normalizePackageData(newEstimate);
+        sessionStorage.removeItem('heatDistrictBuildCart');
+        sessionStorage.removeItem('heatDistrictProductOrder');
         sessionStorage.setItem('heatDistrictEstimate', JSON.stringify(newEstimate));
         return newEstimate;
       }
-      const emptyEstimate = { package: 'No Package Selected', packagePrice: 0, packageHours: 0, addons: [], addonsTotal: 0, total: 0, depositDue: 0, remainingBalance: 0 };
+
+      const emptyEstimate = {
+        type: 'package',
+        cartMode: 'package',
+        package: 'No Package Selected',
+        packagePrice: 0,
+        packageHours: 0,
+        packageIncludes: [],
+        packageCoverage: {},
+        addons: [],
+        addonsTotal: 0,
+        total: 0,
+        depositDue: 0,
+        remainingBalance: 0
+      };
+
       sessionStorage.setItem('heatDistrictEstimate', JSON.stringify(emptyEstimate));
       return emptyEstimate;
     }
+
     function saveEstimate() {
-      const addonsTotal = estimate.addons.reduce(function(sum, item) { return sum + (Number(item.price) * Number(item.qty)); }, 0);
+      const addonsTotal = estimate.addons.reduce(function(sum, item) {
+        return sum + (Number(item.price) * Number(item.qty));
+      }, 0);
       const packagePrice = Number(estimate.packagePrice || 0);
       const total = packagePrice + addonsTotal;
+
+      normalizePackageData(estimate);
+      enrichStoredAddons(estimate);
+
       estimate.addonsTotal = addonsTotal;
       estimate.total = total;
       estimate.depositDue = total * 0.5;
       estimate.remainingBalance = total - estimate.depositDue;
+
       sessionStorage.setItem('heatDistrictEstimate', JSON.stringify(estimate));
+
+      if (window.HeatDistrictCart && typeof window.HeatDistrictCart.render === 'function') {
+        window.HeatDistrictCart.render();
+      }
     }
-    async function setAddonQty(addonId, cardId, qty) {
+
+    async function setAddonQty(addonId, cardId, qty, settings) {
+      const options = settings || {};
       const option = getSelectedOption(addonId, cardId);
       if (!option) return;
+
       const safeQty = Math.max(0, Number(qty) || 0);
       const currentQty = getQtyForOption(option.id);
+      let overlapAcknowledged = false;
+      let overlapNotes = [];
+
       if (safeQty > currentQty && currentQty === 0) {
-        const duplicateWarning = getDuplicateWarning(option);
-        if (duplicateWarning) {
-          const shouldContinue = await showDuplicateWarningModal(duplicateWarning);
-          if (!shouldContinue) return;
+        const overlapCheck = buildOverlapCheck(option);
+
+        if (overlapCheck.hasConflict) {
+          const message = overlapCheck.messages.join('\n\n') +
+            '\n\nThis may be intentional if you want more coverage, more fixtures, a different option, or a second setup.';
+
+          const shouldContinue = await showDuplicateWarningModal({
+            kicker: 'Already Included / Selected',
+            title: 'Possible duplicate selection',
+            message: message,
+            cancelLabel: 'Do Not Add',
+            confirmLabel: 'Add Anyway'
+          });
+
+          if (!shouldContinue) {
+            return;
+          }
+
+          overlapAcknowledged = true;
+          overlapNotes = overlapCheck.messages;
         }
       }
-      const existingIndex = estimate.addons.findIndex(function(item) { return item.id === option.id; });
+
+      const existingIndex = estimate.addons.findIndex(function(item) {
+        return item.id === option.id;
+      });
+
       if (safeQty === 0) {
-        if (existingIndex !== -1) estimate.addons.splice(existingIndex, 1);
+        if (existingIndex !== -1) {
+          estimate.addons.splice(existingIndex, 1);
+        }
       } else {
-        const addonData = { id: option.id, name: option.name, category: option.category, price: Number(option.price), unit: option.unit, qty: safeQty };
-        if (existingIndex !== -1) estimate.addons[existingIndex] = addonData;
-        else estimate.addons.push(addonData);
+        const existingItem = existingIndex !== -1 ? estimate.addons[existingIndex] : null;
+        const addonData = {
+          id: option.id,
+          parentAddonId: option.parentAddonId || addonId,
+          name: option.name,
+          category: option.category,
+          price: Number(option.price),
+          unit: option.unit,
+          qty: safeQty,
+          features: option.features || {},
+          overlapAcknowledged: overlapAcknowledged || Boolean(existingItem && existingItem.overlapAcknowledged),
+          overlapNotes: overlapNotes.length
+            ? overlapNotes
+            : ((existingItem && existingItem.overlapNotes) || [])
+        };
+
+        if (existingIndex !== -1) {
+          estimate.addons[existingIndex] = addonData;
+        } else {
+          estimate.addons.push(addonData);
+        }
       }
+
       saveEstimate();
       renderEstimate();
     }
-    function changeAddonQty(addonId, cardId, change) { const option = getSelectedOption(addonId, cardId); if (!option) return; setAddonQty(addonId, cardId, getQtyForOption(option.id) + change); }
-    function addOneAddon(addonId, cardId) { const option = getSelectedOption(addonId, cardId); if (!option) return; setAddonQty(addonId, cardId, getQtyForOption(option.id) + 1); }
-    function clearAddons() { estimate.addons = []; saveEstimate(); renderEstimate(); }
-    function packageAlreadyHasLighting() { return estimate && estimate.package && PACKAGE_NAMES_WITH_LIGHTING.includes(estimate.package); }
-    function selectedLightingRelatedAddons() { return estimate && Array.isArray(estimate.addons) && estimate.addons.some(function(item) { return LIGHTING_RELATED_CATEGORIES.includes(item.category); }); }
-    function updateLightingWarning() { const lightingWarning = document.getElementById('lightingWarning'); if (!lightingWarning) return; lightingWarning.style.display = packageAlreadyHasLighting() && selectedLightingRelatedAddons() ? 'block' : 'none'; }
+
+    async function changeAddonQty(addonId, cardId, change) {
+      const option = getSelectedOption(addonId, cardId);
+      if (!option) return;
+
+      const currentQty = getQtyForOption(option.id);
+      await setAddonQty(addonId, cardId, currentQty + change, {
+        source: 'quantity-control'
+      });
+    }
+
+    async function addOneAddon(addonId, cardId) {
+      const option = getSelectedOption(addonId, cardId);
+      if (!option) return;
+
+      const currentQty = getQtyForOption(option.id);
+
+      if (currentQty > 0) {
+        const shouldAddAnother = await showDuplicateWarningModal({
+          kicker: 'Already in Your Cart',
+          title: 'This exact item is already selected',
+          message: option.name + ' is already in your cart with a quantity of ' + currentQty + '.\n\nUse Add Another only if you intentionally want one more.',
+          cancelLabel: 'Keep Current Qty',
+          confirmLabel: 'Add Another'
+        });
+
+        if (!shouldAddAnother) {
+          return;
+        }
+      }
+
+      await setAddonQty(addonId, cardId, currentQty + 1, {
+        source: 'add-button',
+        sameItemConfirmed: currentQty > 0
+      });
+    }
+
+    function clearAddons() {
+      estimate.addons = [];
+      saveEstimate();
+      renderEstimate();
+    }
+
+    function updateOverlapSummary() {
+      const warningBox = document.getElementById('lightingWarning');
+      const engine = getConflictEngine();
+
+      if (!warningBox || !engine) return;
+
+      const conflicts = engine.auditEstimate(estimate);
+
+      if (!conflicts.length) {
+        warningBox.style.display = 'none';
+        warningBox.innerHTML = '';
+        return;
+      }
+
+      const uniqueMessages = [];
+
+      conflicts.forEach(function(conflict) {
+        if (conflict.message && !uniqueMessages.includes(conflict.message)) {
+          uniqueMessages.push(conflict.message);
+        }
+      });
+
+      const shownMessages = uniqueMessages.slice(0, 3);
+      const remaining = Math.max(0, uniqueMessages.length - shownMessages.length);
+
+      warningBox.style.display = 'block';
+      warningBox.innerHTML =
+        '<strong>Duplicate check:</strong> ' +
+        shownMessages.map(function(message) {
+          return escapeHtml(message);
+        }).join(' ') +
+        (remaining ? ' Plus ' + remaining + ' more possible overlap' + (remaining === 1 ? '' : 's') + '.' : '') +
+        ' These selections are allowed because you may intentionally want extra coverage.';
+    }
+
     function renderEstimate() {
       const packageNameEl = document.getElementById('summaryPackageName');
       const packagePriceEl = document.getElementById('summaryPackagePrice');
@@ -1475,14 +1788,26 @@
       const summaryTotalEl = document.getElementById('summaryTotal');
       const summaryDepositEl = document.getElementById('summaryDeposit');
       const summaryRemainingEl = document.getElementById('summaryRemaining');
-      if (!packageNameEl || !packagePriceEl || !packageHoursEl || !estimateItemsEl || !summaryTotalEl) return;
+
+      if (!packageNameEl || !packagePriceEl || !packageHoursEl || !estimateItemsEl || !summaryTotalEl) {
+        return;
+      }
+
       saveEstimate();
+
       packageNameEl.textContent = estimate.package || 'No Package Selected';
       packagePriceEl.textContent = formatCurrency(estimate.packagePrice || 0);
       packageHoursEl.textContent = estimate.packageHours ? estimate.packageHours + ' hrs' : '0 hrs';
       summaryTotalEl.textContent = formatCurrency(estimate.total || 0);
-      if (summaryDepositEl) summaryDepositEl.textContent = formatCurrency(estimate.depositDue || 0);
-      if (summaryRemainingEl) summaryRemainingEl.textContent = formatCurrency(estimate.remainingBalance || 0);
+
+      if (summaryDepositEl) {
+        summaryDepositEl.textContent = formatCurrency(estimate.depositDue || 0);
+      }
+
+      if (summaryRemainingEl) {
+        summaryRemainingEl.textContent = formatCurrency(estimate.remainingBalance || 0);
+      }
+
       if (!estimate.addons.length) {
         estimateItemsEl.innerHTML = '<div class="estimate-empty">No add-ons selected yet.</div>';
       } else {
@@ -1491,33 +1816,95 @@
           return '<div class="estimate-addon"><div class="estimate-addon-name">' + escapeHtml(item.name) + '<small>Qty ' + Number(item.qty) + ' · ' + escapeHtml(item.unit) + '</small></div><div class="estimate-addon-price">' + formatCurrency(lineTotal) + '</div></div>';
         }).join('');
       }
-      document.querySelectorAll('.addon-card').forEach(function(card) { updateCardDisplay(card.dataset.addonCard, card.dataset.cardId); });
-      updateLightingWarning();
+
+      document.querySelectorAll('.addon-card').forEach(function(card) {
+        updateCardDisplay(card.dataset.addonCard, card.dataset.cardId);
+      });
+
+      updateOverlapSummary();
     }
-    function continueToCheckout() { saveEstimate(); window.location.href = 'checkout.html'; }
+
+    function continueToCheckout() {
+      saveEstimate();
+      window.location.href = 'checkout.html';
+    }
+
     function filterGroups(groupName, clickedButton) {
-      document.querySelectorAll('.filter-btn').forEach(function(button) { button.classList.remove('active'); });
-      if (clickedButton) clickedButton.classList.add('active');
+      document.querySelectorAll('.filter-btn').forEach(function(button) {
+        button.classList.remove('active');
+      });
+
+      if (clickedButton) {
+        clickedButton.classList.add('active');
+      }
+
       document.querySelectorAll('.group-block').forEach(function(group) {
         const matches = group.dataset.group === groupName;
-        if (groupName === 'all' || matches) group.classList.remove('is-hidden'); else group.classList.add('is-hidden');
+
+        if (groupName === 'all' || matches) {
+          group.classList.remove('is-hidden');
+        } else {
+          group.classList.add('is-hidden');
+        }
       });
+
       const firstVisibleGroup = document.querySelector('.group-block:not(.is-hidden)');
-      if (firstVisibleGroup) firstVisibleGroup.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      if (firstVisibleGroup) {
+        firstVisibleGroup.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
     }
 
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileNav = document.getElementById('mobileNav');
-    function closeMobileMenu() { if (!mobileMenuBtn || !mobileNav) return; mobileNav.classList.remove('open'); mobileMenuBtn.classList.remove('active'); mobileMenuBtn.setAttribute('aria-expanded', 'false'); document.body.classList.remove('mobile-menu-open'); }
-    function toggleMobileMenu() { if (!mobileMenuBtn || !mobileNav) return; const isOpen = mobileNav.classList.contains('open'); if (isOpen) closeMobileMenu(); else { mobileNav.classList.add('open'); mobileMenuBtn.classList.add('active'); mobileMenuBtn.setAttribute('aria-expanded', 'true'); document.body.classList.add('mobile-menu-open'); } }
+
+    function closeMobileMenu() {
+      if (!mobileMenuBtn || !mobileNav) return;
+
+      mobileNav.classList.remove('open');
+      mobileMenuBtn.classList.remove('active');
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('mobile-menu-open');
+    }
+
+    function toggleMobileMenu() {
+      if (!mobileMenuBtn || !mobileNav) return;
+
+      const isOpen = mobileNav.classList.contains('open');
+
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        mobileNav.classList.add('open');
+        mobileMenuBtn.classList.add('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('mobile-menu-open');
+      }
+    }
+
     if (mobileMenuBtn && mobileNav) {
       mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-      mobileNav.querySelectorAll('a').forEach(function(link) { link.addEventListener('click', closeMobileMenu); });
-      window.addEventListener('resize', function() { if (window.innerWidth > 900) closeMobileMenu(); });
+
+      mobileNav.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', closeMobileMenu);
+      });
+
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 900) {
+          closeMobileMenu();
+        }
+      });
+
       document.addEventListener('click', function(event) {
         const clickedInsideNav = mobileNav.contains(event.target);
         const clickedButton = mobileMenuBtn.contains(event.target);
-        if (!clickedInsideNav && !clickedButton && mobileNav.classList.contains('open')) closeMobileMenu();
+
+        if (!clickedInsideNav && !clickedButton && mobileNav.classList.contains('open')) {
+          closeMobileMenu();
+        }
       });
     }
 
@@ -1525,6 +1912,6 @@
     estimate = loadEstimate();
     renderEstimate();
   </script>
-  <script src="js/global-cart.js"></script>
+  <script src="js/global-cart.js?v=20260716-4"></script>
 </body>
 </html>

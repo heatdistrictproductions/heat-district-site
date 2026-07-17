@@ -2892,6 +2892,7 @@
     <p class="footer-copy">© 2025 Heat District Productions · Miami & Broward County · All Rights Reserved</p>
   </footer>
 
+  <script src="js/global-cart.js"></script>
   <script>
 
 
@@ -3229,37 +3230,69 @@
         return;
       }
 
-      const packageName = card.dataset.packageName || 'Selected Package';
+      const rawPackageName = card.dataset.packageName || 'Selected Package';
+      const conflictEngine = window.HeatDistrictConflictEngine;
+      const packageName = conflictEngine
+        ? conflictEngine.normalizePackageName(rawPackageName)
+        : rawPackageName;
       const basePrice = Number(card.dataset.basePrice || 0);
       const hoursSelect = card.querySelector('.pkg-hours-select');
       const hours = hoursSelect ? Number(hoursSelect.value || 5) : 5;
       const packagePrice = calculatePackagePrice(basePrice, hours);
-      const packageIncludes = Array.from(card.querySelectorAll('.pkg-includes li')).map(function(item) {
+
+      const cardIncludes = Array.from(card.querySelectorAll('.pkg-includes li')).map(function(item) {
         return item.textContent.trim();
       }).filter(Boolean);
+
+      const packageDefinition = conflictEngine
+        ? conflictEngine.getPackageDefinition(packageName)
+        : null;
+
+      const packageIncludes = packageDefinition && Array.isArray(packageDefinition.includes)
+        ? packageDefinition.includes
+        : cardIncludes;
+
+      const packageCoverage = packageDefinition && packageDefinition.coverage
+        ? packageDefinition.coverage
+        : {};
 
       const selectedPackage = {
         name: packageName,
         basePrice: basePrice,
         hours: hours,
         total: packagePrice,
-        includes: packageIncludes
+        includes: packageIncludes,
+        coverage: packageCoverage,
+        includedFeatures: packageCoverage
       };
 
       const estimate = {
+        type: 'package',
+        cartMode: 'package',
         package: packageName,
         packagePrice: packagePrice,
         packageHours: hours,
         basePrice: basePrice,
         packageIncludes: packageIncludes,
         includedItems: packageIncludes,
+        packageCoverage: packageCoverage,
         addons: [],
         addonsTotal: 0,
-        total: packagePrice
+        total: packagePrice,
+        depositDue: packagePrice * 0.5,
+        remainingBalance: packagePrice * 0.5
       };
 
+      // A package build and a standalone product build are two different carts.
+      // Selecting a package intentionally switches the customer into package mode.
+      sessionStorage.removeItem('heatDistrictBuildCart');
+      sessionStorage.removeItem('heatDistrictProductOrder');
       sessionStorage.setItem('heatDistrictSelectedPackage', JSON.stringify(selectedPackage));
       sessionStorage.setItem('heatDistrictEstimate', JSON.stringify(estimate));
+
+      if (window.HeatDistrictCart && typeof window.HeatDistrictCart.render === 'function') {
+        window.HeatDistrictCart.render();
+      }
 
       window.location.href = 'addons.html';
     }
@@ -3356,6 +3389,6 @@
     initPackageGallery();
     applyIndexPreviewIfPresent();
   </script>
-  <script src="js/global-cart.js"></script>
+  <script src="js/global-cart.js?v=20260716-4"></script>
 </body>
 </html>

@@ -15,18 +15,80 @@
   </script>
 
   <meta charset="UTF-8">
-  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Event Packages — Heat District Productions</title>
-  <meta name="description" content="Compare Heat District Productions event packages for weddings, quinces, private parties, corporate events, and nightlife-style events in South Florida." />
+  <title>South Florida DJ & Event Production Packages | Heat District</title>
+  <meta name="description" content="Compare all-inclusive DJ and event production packages for weddings, quinces, private parties, corporate events, and nightlife across Miami-Dade, Broward, Palm Beach, and Monroe counties." />
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://heatdistrictproductions.com/packages.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Heat District Productions">
+  <meta property="og:title" content="South Florida DJ & Event Production Packages | Heat District">
+  <meta property="og:description" content="Clear, customizable DJ, sound, lighting, photo booth, trussing, LED wall, and effects packages for South Florida events.">
+  <meta property="og:url" content="https://heatdistrictproductions.com/packages.html">
+  <meta property="og:image" content="https://heatdistrictproductions.com/images/packages/signature-package.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="South Florida DJ & Event Production Packages | Heat District">
+  <meta name="twitter:description" content="Compare clear event production packages with DJ planning, MC support, sound, lighting, photo booth options, trussing, LED visuals, and effects.">
+  <meta name="twitter:image" content="https://heatdistrictproductions.com/images/packages/signature-package.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/global.css">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="css/global.css">
 
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="shortcut icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "South Florida DJ and Event Production Packages",
+    "url": "https://heatdistrictproductions.com/packages.html",
+    "description": "All-inclusive DJ and event production packages for events across Miami-Dade, Broward, Palm Beach, and Monroe counties.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Heat District Productions",
+      "url": "https://heatdistrictproductions.com/"
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "name": "Heat District Event Production Packages",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "position": 1,
+          "name": "Essential Package",
+          "price": "1300",
+          "priceCurrency": "USD",
+          "url": "https://heatdistrictproductions.com/packages.html"
+        },
+        {
+          "@type": "Offer",
+          "position": 2,
+          "name": "Signature Package",
+          "price": "2200",
+          "priceCurrency": "USD",
+          "url": "https://heatdistrictproductions.com/packages.html"
+        },
+        {
+          "@type": "Offer",
+          "position": 3,
+          "name": "Premier Package",
+          "price": "3000",
+          "priceCurrency": "USD",
+          "url": "https://heatdistrictproductions.com/packages.html"
+        },
+        {
+          "@type": "Offer",
+          "position": 4,
+          "name": "Elite Production Package",
+          "price": "5000",
+          "priceCurrency": "USD",
+          "url": "https://heatdistrictproductions.com/packages.html"
+        }
+      ]
+    }
+  }
+  </script>
 
   <style>
     :root {
@@ -662,17 +724,20 @@
       margin: -2px 0 20px;
       border-radius: 13px;
       overflow: hidden;
+      clip-path: inset(0 round 13px);
       border: 1px solid rgba(0,240,255,0.12);
+      background-color: #070714;
       background:
         var(--pkg-image, none),
         radial-gradient(circle at 22% 18%, rgba(0,240,255,0.10), transparent 32%),
         radial-gradient(circle at 84% 24%, rgba(255,45,120,0.08), transparent 34%),
         linear-gradient(135deg, rgba(13,13,32,0.98), rgba(5,5,15,0.98));
-      background-size: contain, cover, cover, cover;
+      background-color: #070714;
+      background-size: 103% 103%, cover, cover, cover;
       background-position: center, center, center, center;
       background-repeat: no-repeat;
       box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,0.025),
+        inset 0 0 0 2px rgba(5,5,15,0.92),
         0 16px 32px rgba(0,0,0,0.22);
       isolation: isolate;
       transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
@@ -683,7 +748,7 @@
       transform: translateY(-3px);
       border-color: rgba(255,45,120,0.34);
       box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,0.035),
+        inset 0 0 0 2px rgba(5,5,15,0.92),
         0 18px 38px rgba(0,0,0,0.28),
         0 0 28px rgba(255,45,120,0.10);
       outline: none;
@@ -2252,7 +2317,63 @@
       }
     }
 
-  </style>
+    /* =========================================================
+       PACKAGE CARD ALIGNMENT + UNDISTORTED IMAGE FRAMES
+       The frame crops with "cover"; the source image is never stretched.
+    ========================================================= */
+    .pkg-name {
+      min-height: 3.25em;
+      line-height: 1.18;
+    }
+
+    .pkg-tagline {
+      min-height: 6.6em;
+    }
+
+    .pkg-visual {
+      width: 100%;
+      min-height: 0;
+      height: auto;
+      aspect-ratio: 4 / 3;
+      border-radius: 13px;
+      overflow: hidden;
+      clip-path: inset(0 round 13px);
+      background-color: #05050f;
+      background-size: cover, cover, cover, cover;
+      background-position: center center, center, center, center;
+      background-repeat: no-repeat;
+      background-clip: padding-box;
+      box-shadow:
+        inset 0 0 0 3px rgba(5,5,15,0.96),
+        0 16px 32px rgba(0,0,0,0.22);
+    }
+
+    .pkg-visual:hover,
+    .pkg-visual:focus-visible {
+      box-shadow:
+        inset 0 0 0 3px rgba(5,5,15,0.96),
+        0 18px 38px rgba(0,0,0,0.28),
+        0 0 28px rgba(255,45,120,0.10);
+    }
+
+    .pkg-fit-box {
+      min-height: 138px;
+    }
+
+    @media (max-width: 900px) {
+      .pkg-name,
+      .pkg-tagline,
+      .pkg-fit-box {
+        min-height: 0;
+      }
+
+      .pkg-visual {
+        min-height: 0;
+        aspect-ratio: 4 / 3;
+      }
+    }
+
+</style>
 </head>
 
 <body>
@@ -2348,13 +2469,16 @@
       <h2 class="packages-title">Pick the Foundation, Then <strong>Customize the Rest</strong></h2>
       <p class="packages-sub">
         Packages are listed first so you can choose the main experience before comparing every detail.
-        Each option includes setup and breakdown. Final recommendations may depend on venue size, power access, layout, and event type.
+        Every listed package price includes DJ planning and MC support, delivery, required staffing, standard setup and breakdown,
+        and applicable taxes within Miami-Dade, Broward, Palm Beach, and Monroe counties. Travel outside those counties is quoted separately.
+        Cold sparks, fog, CO2, and other special effects are subject to venue approval. Final recommendations may depend on venue size,
+        power access, layout, event type, and venue restrictions.
       </p>
 
       <div class="packages-grid-scroll">
         <div class="packages-grid">
 
-          <div class="pkg-card" data-package-name="Essential Package" data-base-price="1295" style="--pkg-image: url('images/packages/essential-package.jpg');">
+          <div class="pkg-card" data-package-name="Essential Package" data-base-price="1300" style="--pkg-image: url('images/packages/essential-package.jpg');">
             <p class="pkg-tier">Level One</p>
             <h3 class="pkg-name">Essential Package</h3>
             <p class="pkg-tagline">Clean sound, professional DJ, 5 uplights, and an LED Light Bar for a polished smaller-scale event.</p>
@@ -2378,8 +2502,8 @@
 
             <div class="pkg-price-wrap">
               <span class="pkg-price-symbol">$</span>
-              <span class="pkg-price-value">1,295</span>
-              <span class="pkg-price-unit">/ 5hrs</span>
+              <span class="pkg-price-value">1,300</span>
+              <span class="pkg-price-unit">/ 4hrs</span>
             </div>
 
             <p class="pkg-duration">Essential Sound + DJ + Lighting</p>
@@ -2389,20 +2513,21 @@
               <select class="pkg-hours-select">
                 <option value="2">2 hrs</option>
                 <option value="3">3 hrs</option>
-                <option value="4">4 hrs</option>
-                <option value="5" selected>5 hrs</option>
+                <option value="4" selected>4 hrs</option>
+                <option value="5">5 hrs</option>
                 <option value="6">6 hrs</option>
                 <option value="7">7 hrs</option>
                 <option value="8">8 hrs</option>
               </select>
             </div>
 
-            <p class="pkg-note">Flexible 2–8hr pricing</p>
+            <p class="pkg-note">2–3 hrs: 15% off · 4hr base · +10%/hr through 6 · +15%/hr after 6</p>
 
             <p class="pkg-includes-label">What's Included</p>
             <ul class="pkg-includes">
               <li>Sound System — 2 Subs, 2 Tops</li>
               <li>Professional DJ + Full Deck Setup</li>
+              <li>DJ Planning + MC Support</li>
               <li>Microphone</li>
               <li class="highlight">5 Uplights</li>
               <li class="highlight">LED Light Bar</li>
@@ -2413,8 +2538,8 @@
             <button class="btn-full-blue" type="button" onclick="choosePackage(event, this)">Continue to Add-Ons</button>
           </div>
 
-          <div class="pkg-card featured" data-package-name="Signature Package" data-base-price="2195" style="--pkg-image: url('images/packages/signature-package.jpg');">
-            <div class="pkg-badge popular">Most Popular</div>
+          <div class="pkg-card featured" data-package-name="Signature Package" data-base-price="2200" style="--pkg-image: url('images/packages/signature-package.jpg');">
+            <div class="pkg-badge popular">Complete Party Experience</div>
             <p class="pkg-tier">Level Two</p>
             <h3 class="pkg-name">Signature Package</h3>
             <p class="pkg-tagline">The strongest all-around package for clients who want energy, lighting, and guest interaction.</p>
@@ -2438,8 +2563,8 @@
 
             <div class="pkg-price-wrap">
               <span class="pkg-price-symbol">$</span>
-              <span class="pkg-price-value">2,195</span>
-              <span class="pkg-price-unit">/ 5hrs</span>
+              <span class="pkg-price-value">2,200</span>
+              <span class="pkg-price-unit">/ 4hrs</span>
             </div>
 
             <p class="pkg-duration">DJ + Lighting + Booth</p>
@@ -2449,36 +2574,37 @@
               <select class="pkg-hours-select">
                 <option value="2">2 hrs</option>
                 <option value="3">3 hrs</option>
-                <option value="4">4 hrs</option>
-                <option value="5" selected>5 hrs</option>
+                <option value="4" selected>4 hrs</option>
+                <option value="5">5 hrs</option>
                 <option value="6">6 hrs</option>
                 <option value="7">7 hrs</option>
                 <option value="8">8 hrs</option>
               </select>
             </div>
 
-            <p class="pkg-note">Flexible 2–8hr pricing</p>
+            <p class="pkg-note">2–3 hrs: 15% off · 4hr base · +10%/hr through 6 · +15%/hr after 6</p>
 
             <p class="pkg-includes-label">What's Included</p>
             <ul class="pkg-includes">
               <li>Sound System</li>
               <li>Professional DJ + Full Deck Setup</li>
+              <li>DJ Planning + MC Support</li>
               <li>Microphone</li>
               <li class="highlight">10 Uplights</li>
               <li class="highlight">LED Light Bar</li>
               <li class="highlight">2 Moving Head Lights</li>
-              <li class="highlight">Premium Photo Booth</li>
+              <li class="highlight">Premium Photo Booth — Background + Premium Props</li>
               <li class="highlight">10ft Red Carpet with Stanchions & Velvet Ropes</li>
               <li class="highlight">2x Fog Machines</li>
-              <li class="highlight">2 Totems</li>
+              <li class="highlight">2 Global Truss Totems — 8ft Each</li>
             </ul>
 
             <p class="pkg-footer-note">Our best all-around choice for most events</p>
             <button class="btn-full-pink" type="button" onclick="choosePackage(event, this)">Continue to Add-Ons</button>
           </div>
 
-          <div class="pkg-card value" data-package-name="Premier Package" data-base-price="2995" style="--pkg-image: url('images/packages/premier-package.jpg');">
-            <div class="pkg-badge best">Best Value</div>
+          <div class="pkg-card value" data-package-name="Premier Package" data-base-price="3000" style="--pkg-image: url('images/packages/premier-package.jpg');">
+            <div class="pkg-badge best">Built for Bigger Impact</div>
             <p class="pkg-tier">Level Three</p>
             <h3 class="pkg-name">Premier Package</h3>
             <p class="pkg-tagline">Premium production with stronger lighting, cold sparks, a CO2 LED gun, guest upgrades, and a larger room presence.</p>
@@ -2502,8 +2628,8 @@
 
             <div class="pkg-price-wrap">
               <span class="pkg-price-symbol">$</span>
-              <span class="pkg-price-value">2,995</span>
-              <span class="pkg-price-unit">/ 5hrs</span>
+              <span class="pkg-price-value">3,000</span>
+              <span class="pkg-price-unit">/ 4hrs</span>
             </div>
 
             <p class="pkg-duration">Premium Event Production</p>
@@ -2513,39 +2639,40 @@
               <select class="pkg-hours-select">
                 <option value="2">2 hrs</option>
                 <option value="3">3 hrs</option>
-                <option value="4">4 hrs</option>
-                <option value="5" selected>5 hrs</option>
+                <option value="4" selected>4 hrs</option>
+                <option value="5">5 hrs</option>
                 <option value="6">6 hrs</option>
                 <option value="7">7 hrs</option>
                 <option value="8">8 hrs</option>
               </select>
             </div>
 
-            <p class="pkg-note">Flexible 2–8hr pricing</p>
+            <p class="pkg-note">2–3 hrs: 15% off · 4hr base · +10%/hr through 6 · +15%/hr after 6</p>
 
             <p class="pkg-includes-label">What's Included</p>
             <ul class="pkg-includes">
               <li>Sound System</li>
               <li>Professional DJ + Full Deck Setup</li>
+              <li>DJ Planning + MC Support</li>
               <li>Microphone</li>
               <li class="highlight">15 Uplights</li>
               <li>LED Light Bar</li>
               <li class="highlight">4 Moving Head Lights</li>
-              <li>Premium Photo Booth</li>
+              <li>Premium Photo Booth — Background + Premium Props</li>
               <li>10ft Red Carpet with Stanchions & Velvet Ropes</li>
               <li class="highlight">LED Glow Cocktail Tables</li>
               <li class="highlight">Foam Glow Sticks</li>
               <li class="highlight">2x Cold Spark Machines</li>
               <li class="highlight">CO2 LED Gun</li>
               <li>2x Fog Machines</li>
-              <li class="highlight">Choice of Goal Post + 2 Totems or 4 Totems</li>
+              <li class="highlight">Choice of 10ft × 14ft Goal Post + 2 Totems or 4 Totems</li>
             </ul>
 
             <p class="pkg-footer-note">The smartest step-up before luxury pricing</p>
             <button class="btn-full-blue" type="button" onclick="choosePackage(event, this)">Continue to Add-Ons</button>
           </div>
 
-          <div class="pkg-card" data-package-name="Elite Production Package" data-base-price="4995" style="--pkg-image: url('images/packages/elite-production-package.jpg');">
+          <div class="pkg-card" data-package-name="Elite Production Package" data-base-price="5000" style="--pkg-image: url('images/packages/elite-production-package.jpg');">
             <p class="pkg-tier">Level Four</p>
             <h3 class="pkg-name">Elite Production Package</h3>
             <p class="pkg-tagline">The full statement package with LED wall presence, maximum staging, CO2 effects, and high-impact visual production.</p>
@@ -2569,8 +2696,8 @@
 
             <div class="pkg-price-wrap">
               <span class="pkg-price-symbol">$</span>
-              <span class="pkg-price-value">4,995</span>
-              <span class="pkg-price-unit">/ 5hrs</span>
+              <span class="pkg-price-value">5,000</span>
+              <span class="pkg-price-unit">/ 4hrs</span>
             </div>
 
             <p class="pkg-duration">Full Statement Setup</p>
@@ -2580,26 +2707,27 @@
               <select class="pkg-hours-select">
                 <option value="2">2 hrs</option>
                 <option value="3">3 hrs</option>
-                <option value="4">4 hrs</option>
-                <option value="5" selected>5 hrs</option>
+                <option value="4" selected>4 hrs</option>
+                <option value="5">5 hrs</option>
                 <option value="6">6 hrs</option>
                 <option value="7">7 hrs</option>
                 <option value="8">8 hrs</option>
               </select>
             </div>
 
-            <p class="pkg-note">Flexible 2–8hr pricing</p>
+            <p class="pkg-note">2–3 hrs: 15% off · 4hr base · +10%/hr through 6 · +15%/hr after 6</p>
 
             <p class="pkg-includes-label">What's Included</p>
             <ul class="pkg-includes">
               <li>Sound System</li>
               <li>Professional DJ + Full Deck Setup</li>
+              <li>DJ Planning + MC Support</li>
               <li>Microphone</li>
               <li>15 Uplights</li>
               <li>LED Light Bar</li>
               <li>4 Moving Head Lights</li>
-              <li class="highlight">LED Screen / Wall Panel</li>
-              <li>Premium Photo Booth</li>
+              <li class="highlight">5ft High × 8ft Wide LED Wall</li>
+              <li>Premium Photo Booth — Background + Premium Props</li>
               <li class="highlight">20ft Red Carpet with Stanchions & Velvet Ropes</li>
               <li>LED Glow Cocktail Tables</li>
               <li>Foam Glow Sticks</li>
@@ -2608,7 +2736,7 @@
               <li class="highlight">CO2 LED Gun</li>
               <li class="highlight">2x CO2 Cannons</li>
               <li>2x Fog Machines</li>
-              <li>Choice of Goal Post + 2 Totems or 4 Totems</li>
+              <li>Choice of 10ft × 14ft Goal Post + 2 Totems or 4 Totems</li>
             </ul>
 
             <p class="pkg-footer-note">For clients who want the biggest visual statement</p>
@@ -2633,19 +2761,19 @@
               <th>Feature</th>
               <th>
                 <span class="th-name">Essential Package</span>
-                <span class="th-price">$1,295</span>
+                <span class="th-price">$1,300</span>
               </th>
               <th class="featured-col">
                 <span class="th-name">Signature Package</span>
-                <span class="th-price">$2,195</span>
+                <span class="th-price">$2,200</span>
               </th>
               <th>
                 <span class="th-name">Premier Package</span>
-                <span class="th-price">$2,995</span>
+                <span class="th-price">$3,000</span>
               </th>
               <th>
                 <span class="th-name">Elite Production Package</span>
-                <span class="th-price">$4,995</span>
+                <span class="th-price">$5,000</span>
               </th>
             </tr>
           </thead>
@@ -2661,6 +2789,14 @@
 
             <tr>
               <td>Professional DJ</td>
+              <td><span class="check">✓</span></td>
+              <td class="featured-col"><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+
+            <tr>
+              <td>DJ Planning + MC Support</td>
               <td><span class="check">✓</span></td>
               <td class="featured-col"><span class="check">✓</span></td>
               <td><span class="check">✓</span></td>
@@ -2702,9 +2838,9 @@
             <tr>
               <td>Photo Booth</td>
               <td><span class="dash">—</span></td>
-              <td class="featured-col"><span class="check-pink">✓</span></td>
-              <td><span class="check">✓</span></td>
-              <td><span class="check">✓</span></td>
+              <td class="featured-col"><span class="qty-new">Background + premium props</span></td>
+              <td><span class="qty">Background + premium props</span></td>
+              <td><span class="qty">Background + premium props</span></td>
             </tr>
 
             <tr>
@@ -2774,9 +2910,9 @@
             <tr>
               <td>Trussing</td>
               <td><span class="dash">—</span></td>
-              <td class="featured-col"><span class="qty-new">2 Totems</span></td>
-              <td><span class="qty-new">Goal Post + 2 Totems or 4 Totems</span></td>
-              <td><span class="qty">Goal Post + 2 Totems or 4 Totems</span></td>
+              <td class="featured-col"><span class="qty-new">2 × 8ft Totems</span></td>
+              <td><span class="qty-new">10ft × 14ft Goal Post + 2 Totems or 4 Totems</span></td>
+              <td><span class="qty">10ft × 14ft Goal Post + 2 Totems or 4 Totems</span></td>
             </tr>
 
             <tr>
@@ -2784,15 +2920,15 @@
               <td><span class="dash">—</span></td>
               <td class="featured-col"><span class="dash">—</span></td>
               <td><span class="dash">—</span></td>
-              <td><span class="check-pink">✓</span></td>
+              <td><span class="qty-new">5ft high × 8ft wide</span></td>
             </tr>
 
             <tr>
               <td>Base Coverage</td>
-              <td><span class="qty">5 hours</span></td>
-              <td class="featured-col"><span class="qty">5 hours</span></td>
-              <td><span class="qty">5 hours</span></td>
-              <td><span class="qty">5 hours</span></td>
+              <td><span class="qty">4 hours</span></td>
+              <td class="featured-col"><span class="qty">4 hours</span></td>
+              <td><span class="qty">4 hours</span></td>
+              <td><span class="qty">4 hours</span></td>
             </tr>
           </tbody>
         </table>
@@ -2851,15 +2987,15 @@
       <div class="package-gallery-top">
         <p class="package-gallery-kicker">Package Mini Gallery</p>
         <h2 id="packageGalleryTitle">Package <strong>Preview</strong></h2>
-        <p id="packageGalleryIntro">Click through the photos to see the type of setup included in this package.</p>
+        <p id="packageGalleryIntro">View the confirmed setup image for this package.</p>
       </div>
 
       <div class="package-gallery-stage">
         <button class="package-gallery-nav package-gallery-prev" type="button" aria-label="Previous package photo" id="packageGalleryPrev">&#8249;</button>
         <img src="" alt="" class="package-gallery-image" id="packageGalleryImage">
         <div class="package-gallery-placeholder" id="packageGalleryPlaceholder">
-          <div class="package-gallery-placeholder-title">Photo Slot Ready</div>
-          <div class="package-gallery-placeholder-copy">Add this package photo to your images folder and it will show here automatically.</div>
+          <div class="package-gallery-placeholder-title">Package Preview</div>
+          <div class="package-gallery-placeholder-copy">View the package details below or contact us for additional setup photos.</div>
         </div>
         <button class="package-gallery-nav package-gallery-next" type="button" aria-label="Next package photo" id="packageGalleryNext">&#8250;</button>
       </div>
@@ -2869,7 +3005,7 @@
           <div class="package-gallery-photo-title" id="packageGalleryPhotoTitle">Setup Photo</div>
           <div id="packageGalleryPhotoCaption">Package setup preview.</div>
         </div>
-        <div class="package-gallery-count" id="packageGalleryCount">1 / 4</div>
+        <div class="package-gallery-count" id="packageGalleryCount">1 / 1</div>
       </div>
 
       <div class="package-gallery-thumbs" id="packageGalleryThumbs"></div>
@@ -2889,7 +3025,7 @@
       <a href="https://www.heatdistrictproductions.com">heatdistrictproductions.com</a>
     </div>
 
-    <p class="footer-copy">© 2025 Heat District Productions · Miami & Broward County · All Rights Reserved</p>
+    <p class="footer-copy">© 2026 Heat District Productions · Miami-Dade · Broward · Palm Beach · Monroe · All Rights Reserved</p>
   </footer>
 
   <script src="js/global-cart.js"></script>
@@ -2899,105 +3035,45 @@
     const PACKAGE_GALLERIES = {
       essential: {
         title: 'Essential <strong>Package</strong>',
-        intro: 'A clean foundation package focused on DJ, sound, microphone support, 5 uplights, LED Light Bar, setup, and breakdown.',
+        intro: 'A clean foundation package with DJ planning, MC support, sound, microphone support, 5 uplights, an LED Light Bar, setup, and breakdown.',
         photos: [
           {
             src: 'images/packages/essential-package.jpg',
             title: 'DJ + Sound Foundation',
             caption: 'Main preview image for the Essential Package setup with sound, DJ, and clean lighting.'
-          },
-          {
-            src: 'images/packages/essential-package-sound.jpg',
-            title: '2 Tops / 2 Subs',
-            caption: 'Show the main speaker and subwoofer setup included with the package.'
-          },
-          {
-            src: 'images/packages/essential-package-dj.jpg',
-            title: 'DJ Deck Setup',
-            caption: 'Show the DJ table, controller/decks, and clean cable setup.'
-          },
-          {
-            src: 'images/packages/essential-package-mic.jpg',
-            title: 'Microphone Support',
-            caption: 'Use this slot for speeches, announcements, ceremony audio, or host microphone examples.'
           }
         ]
       },
       signature: {
         title: 'Signature <strong>Package</strong>',
-        intro: 'A full party package with DJ, sound, lighting, booth, fog, red carpet, and truss/totem presence.',
+        intro: 'A full party package with DJ planning, MC support, sound, lighting, a premium photo booth with background and props, fog, red carpet, and two 8ft truss totems.',
         photos: [
           {
             src: 'images/packages/signature-package.jpg',
             title: 'Full Party Setup',
             caption: 'Main preview image for the Signature Package look.'
-          },
-          {
-            src: 'images/packages/signature-package-lighting.jpg',
-            title: 'Lighting + Uplights',
-            caption: 'Show the uplights, moving heads, and light bar atmosphere.'
-          },
-          {
-            src: 'images/packages/signature-package-booth.jpg',
-            title: 'Premium Photo Booth',
-            caption: 'Use this slot to show the photo booth area guests will interact with.'
-          },
-          {
-            src: 'images/packages/signature-package-carpet.jpg',
-            title: 'Red Carpet Entrance',
-            caption: 'Show the 10ft red carpet, stanchions, velvet ropes, fog, or entrance detail.'
           }
         ]
       },
       premier: {
         title: 'Premier <strong>Package</strong>',
-        intro: 'A bigger production look with stronger lighting, cold sparks, CO2 LED gun effects, glow tables, trussing options, and premium guest upgrades.',
+        intro: 'A bigger production look with stronger lighting, venue-approved cold sparks and CO2 effects, glow tables, 8ft totems or a 10ft × 14ft goal post, and premium guest upgrades.',
         photos: [
           {
             src: 'images/packages/premier-package.jpg',
             title: 'Premium Production Look',
             caption: 'Main preview image for the Premier Package setup.'
-          },
-          {
-            src: 'images/packages/premier-package-moving-heads.jpg',
-            title: '4 Moving Heads',
-            caption: 'Show the upgraded moving head lighting layout.'
-          },
-          {
-            src: 'images/packages/premier-package-sparks.jpg',
-            title: 'Cold Spark + CO2 Moment',
-            caption: 'Use this slot for entrance, first dance, birthday entrance, CO2 gun, or drop moment examples.'
-          },
-          {
-            src: 'images/packages/premier-package-trussing.jpg',
-            title: 'Goal Post / Totems',
-            caption: 'Show the available trussing look: goal post with totems or four-totem setup.'
           }
         ]
       },
       elite: {
         title: 'Elite Production <strong>Package</strong>',
-        intro: 'The largest visual package with LED wall support, photography, expanded carpet, sparks, CO2 gun/cannon effects, trussing, and high-impact room presence.',
+        intro: 'The largest visual package with a 5ft × 8ft LED wall, photography, expanded carpet, venue-approved effects, 8ft totems or a 10ft × 14ft goal post, and high-impact room presence.',
         photos: [
           {
             src: 'images/packages/elite-production-package.jpg',
             title: 'Statement Visual Build',
             caption: 'Main preview image for the Elite Production Package setup.'
-          },
-          {
-            src: 'images/packages/elite-production-package-led-wall.jpg',
-            title: 'LED Wall / Screen',
-            caption: 'Show the LED wall or screen-supported visual setup.'
-          },
-          {
-            src: 'images/packages/elite-production-package-sparks.jpg',
-            title: '4 Cold Sparks + CO2 Effects',
-            caption: 'Use this slot for the high-impact spark, CO2 gun, and cannon moments included in this package.'
-          },
-          {
-            src: 'images/packages/elite-production-package-photography.jpg',
-            title: 'Photography + Entrance Detail',
-            caption: 'Show the event photography look, 20ft carpet, or full room production angle.'
           }
         ]
       }
@@ -3029,8 +3105,8 @@
 
       if (isMissing) {
         packageGalleryPlaceholder.innerHTML =
-          '<div class="package-gallery-placeholder-title">Photo Slot Ready</div>' +
-          '<div class="package-gallery-placeholder-copy">Add this image file and it will show automatically:<br><strong>' + src + '</strong></div>';
+          '<div class="package-gallery-placeholder-title">Package Preview</div>' +
+          '<div class="package-gallery-placeholder-copy">Contact Heat District Productions for additional photos of this setup.</div>';
       }
     }
 
@@ -3161,24 +3237,26 @@
       });
     }
 
-    const PACKAGE_REDUCTION_MULTIPLIERS = {
-      2: 0.85,
-      3: 0.90,
-      4: 0.95,
-      5: 1.00
-    };
-
-    function roundToFive(value) {
-      return Math.round(value / 5) * 5;
+    function roundToNearestFifty(value) {
+      return Math.round(value / 50) * 50;
     }
 
     function calculatePackagePrice(basePrice, hours) {
-      if (hours <= 5) {
-        const multiplier = PACKAGE_REDUCTION_MULTIPLIERS[hours] || 1;
-        return roundToFive(basePrice * multiplier);
+      if (hours <= 3) {
+        return roundToNearestFifty(basePrice * 0.85);
       }
 
-      return basePrice + ((hours - 5) * 150);
+      if (hours === 4) {
+        return basePrice;
+      }
+
+      if (hours <= 6) {
+        return roundToNearestFifty(basePrice * (1 + ((hours - 4) * 0.10)));
+      }
+
+      return roundToNearestFifty(
+        basePrice * (1.20 + ((hours - 6) * 0.15))
+      );
     }
 
     function formatCurrency(value) {
@@ -3195,7 +3273,7 @@
 
       if (!hoursSelect || !priceValue || !priceUnit) return;
 
-      const hours = Number(hoursSelect.value || 5);
+      const hours = Number(hoursSelect.value || 4);
       const price = calculatePackagePrice(basePrice, hours);
 
       priceValue.textContent = formatCurrency(price);
@@ -3237,7 +3315,7 @@
         : rawPackageName;
       const basePrice = Number(card.dataset.basePrice || 0);
       const hoursSelect = card.querySelector('.pkg-hours-select');
-      const hours = hoursSelect ? Number(hoursSelect.value || 5) : 5;
+      const hours = hoursSelect ? Number(hoursSelect.value || 4) : 4;
       const packagePrice = calculatePackagePrice(basePrice, hours);
 
       const cardIncludes = Array.from(card.querySelectorAll('.pkg-includes li')).map(function(item) {

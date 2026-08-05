@@ -2187,7 +2187,7 @@
         image: 'images/products/sound-system.png',
         mediaClass: 'product-media-wide',
         desc: 'Professional QSC sound system with 2 QSC K12 top speakers and 2 QSC K18 subwoofers for a clean, strong event foundation. Includes standard setup and breakdown.',
-        note: 'Event base up to 5 hrs · setup + breakdown included'
+        note: 'Event base up to 4 hrs · setup + breakdown included'
       },
 
       'led-cocktail-tables': {
@@ -2200,7 +2200,7 @@
         image: 'images/products/led-cocktail-tables.png',
         mediaClass: 'product-media-gear',
         desc: 'Light-up standing cocktail tables for lounges, VIP areas, cocktail hours, and party spaces. Includes delivery placement, setup, and breakdown.',
-        note: 'Per table · event base up to 5 hrs'
+        note: 'Per table · event base up to 4 hrs'
       },
 
       'white-acrylic-chair': {
@@ -2318,7 +2318,7 @@
         image: 'images/products/photo-booth-digital.png',
         mediaClass: 'product-media-tall',
         desc: 'Digital photo booth experience with one event background and premium props included. Includes delivery, setup, breakdown, and digital sharing.',
-        note: 'Event base up to 5 hrs · background + premium props included'
+        note: 'Event base up to 4 hrs · background + premium props included'
       },
 
       'photo-booth-print': {
@@ -2331,7 +2331,7 @@
         image: 'images/products/photo-booth-print.png',
         mediaClass: 'product-media-tall',
         desc: 'Photo booth experience with digital sharing, printouts, one event background, and premium props. Includes delivery, setup, and breakdown.',
-        note: 'Event base up to 5 hrs · digital + print · background + premium props'
+        note: 'Event base up to 4 hrs · digital + print · background + premium props'
       },
 
       'photo-booth-360': {
@@ -2344,7 +2344,7 @@
         image: 'images/products/360-photo-booth.png',
         mediaClass: 'product-media-tall',
         desc: 'Interactive 360 photo booth experience with rotating platform, ring light arm, and shareable video content for weddings, birthdays, quinces, private parties, and branded events. Includes setup and breakdown.',
-        note: 'Event base up to 5 hrs · setup + breakdown included'
+        note: 'Event base up to 4 hrs · setup + breakdown included'
       },
 
       'red-carpet': {
@@ -2416,7 +2416,7 @@
         image: 'images/products/glow-lighting-package.png',
         mediaClass: 'product-media-wide',
         desc: 'Uplights and Chauvet GigBAR 2 package for a clean entry-level lighting look. Includes setup, programming, cabling, and breakdown.',
-        note: 'Event base up to 5 hrs · setup + breakdown included'
+        note: 'Event base up to 4 hrs · setup + breakdown included'
       },
 
       'pulse-lighting-package': {
@@ -2429,7 +2429,7 @@
         image: 'images/products/pulse-lighting-package.png',
         mediaClass: 'product-media-wide',
         desc: '2 Chauvet Intimidator Spot 355 IRC moving heads plus the Glow-level lighting foundation for a stronger event atmosphere. Includes setup, programming, cabling, and breakdown.',
-        note: 'Event base up to 5 hrs · setup + breakdown included'
+        note: 'Event base up to 4 hrs · setup + breakdown included'
       },
 
       'district-lighting-package': {
@@ -2442,7 +2442,7 @@
         image: 'images/products/district-lighting-package.png',
         mediaClass: 'product-media-wide',
         desc: '4 Chauvet Intimidator Spot 355 IRC moving heads, wash lights, and the full lower-level lighting build for the biggest lighting package here. Includes setup, programming, cabling, and breakdown.',
-        note: 'Event base up to 5 hrs · setup + breakdown included'
+        note: 'Event base up to 4 hrs · setup + breakdown included'
       },
 
       'qsc-top-speaker': {
@@ -2808,7 +2808,7 @@
 
       if (type === 'event') {
         if (cleanExtraRate > 0) {
-          return formatMoney(cleanRate) + ' event base · +' + formatMoney(cleanExtraRate) + '/hr after 5 hrs';
+          return formatMoney(cleanRate) + ' event base · +' + formatMoney(cleanExtraRate) + '/hr after 4 hrs';
         }
 
         return formatMoney(cleanRate) + ' event base';
@@ -2834,8 +2834,8 @@
       return `
         <option value="2">2 hrs</option>
         <option value="3">3 hrs</option>
-        <option value="4">4 hrs</option>
-        <option value="5" selected>5 hrs</option>
+        <option value="4" selected>4 hrs</option>
+        <option value="5">5 hrs</option>
         <option value="6">6 hrs</option>
         <option value="7">7 hrs</option>
         <option value="8">8 hrs</option>
@@ -3051,7 +3051,7 @@
       const cleanExtraRate = Number(extraHourRate || 0);
 
       if (type === 'event') {
-        const extraHours = Math.max(0, cleanDuration - 5);
+        const extraHours = Math.max(0, cleanDuration - 4);
 
         return cleanRate + (extraHours * cleanExtraRate);
       }

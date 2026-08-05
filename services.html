@@ -2843,38 +2843,10 @@
       `;
     }
 
-    const PRODUCT_DETAIL_PAGES = {
-      'infinity-mirror-dance-floor': 'rentals/infinity-mirror-dance-floor-rental-miami.html',
-      'led-wall': 'rentals/led-wall-rental-miami.html',
-      'led-wall-floor': 'rentals/led-wall-rental-miami.html',
-      'led-wall-2-totems': 'rentals/led-wall-rental-miami.html',
-      'cold-spark': 'rentals/cold-spark-rental-miami.html',
-      'photo-booth-digital': 'rentals/photo-booth-rental-miami.html',
-      'photo-booth-print': 'rentals/photo-booth-rental-miami.html',
-      'photo-booth-360': 'rentals/360-photo-booth-rental-miami.html',
-      'glow-lighting-package': 'rentals/event-lighting-rental-miami.html',
-      'pulse-lighting-package': 'rentals/event-lighting-rental-miami.html',
-      'district-lighting-package': 'rentals/event-lighting-rental-miami.html',
-      'sound-system': 'rentals/sound-system-rental-miami.html',
-      'cdj-djm-package': 'rentals/dj-equipment-rental-miami.html',
-      'cdj-3000': 'rentals/dj-equipment-rental-miami.html',
-      'djm-900nxs2': 'rentals/dj-equipment-rental-miami.html',
-      'xdj-xz': 'rentals/dj-equipment-rental-miami.html',
-      'rmx-1000': 'rentals/dj-equipment-rental-miami.html',
-      'co2-cannons': 'rentals/co2-effects-rental-miami.html',
-      'co2-led-gun': 'rentals/co2-effects-rental-miami.html',
-      'led-cocktail-tables': 'rentals/led-cocktail-table-rental-miami.html'
-    };
-
     function renderProductCard(productId) {
       const product = PRODUCTS[productId];
 
       if (!product) return '';
-
-      const detailPage = PRODUCT_DETAIL_PAGES[productId] || '';
-      const detailLink = detailPage
-        ? `<a class="product-detail-link" href="${escapeHtml(detailPage)}">View Details</a>`
-        : '';
 
       const optionsHtml =
         Array.isArray(product.options) && product.options.length
@@ -2974,7 +2946,6 @@
             Add to Cart
           </button>
 
-          ${detailLink}
         </div>
       `;
     }

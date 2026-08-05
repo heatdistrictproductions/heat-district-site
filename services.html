@@ -2149,10 +2149,14 @@
       {
         id: 'party-furniture',
         filter: 'party-furniture',
-        title: 'Party Furniture',
-        copy: 'Furniture and guest-area upgrades that help make lounges, cocktail areas, and event spaces feel more polished.',
-        pills: ['Cocktail Areas', 'Glow Furniture', 'Guest Upgrade'],
+        title: 'Tables & Chairs',
+        copy: 'Practical seating, banquet tables, and illuminated furniture for weddings, parties, ceremonies, and event spaces across South Florida.',
+        pills: ['24-Hour Rentals', 'Choose Your Quantity', 'Event Essentials'],
         products: [
+          'white-acrylic-chair',
+          'white-folding-chair',
+          'white-table-4ft',
+          'white-table-6ft',
           'led-cocktail-tables'
         ]
       },
@@ -2195,6 +2199,78 @@
         mediaClass: 'product-media-gear',
         desc: 'Light-up standing cocktail tables for lounges, VIP areas, cocktail hours, and party spaces. Includes delivery placement, setup, and breakdown.',
         note: 'Per table · event base up to 5 hrs'
+      },
+
+      'white-acrylic-chair': {
+        name: 'White Resin Folding Chair',
+        title: 'White Resin Folding Chair',
+        icon: 'CHR',
+        type: 'daily',
+        rate: 4,
+        image: 'images/products/white-acrylic-ghost-chair.png',
+        mediaClass: 'product-media-gear',
+        desc: 'Premium white resin folding chair with a white padded seat for weddings, ceremonies, quinces, receptions, and polished event seating.',
+        note: 'Price per chair · 24-hour rental · delivery and setup quoted separately',
+        noDuration: true,
+        durationLabel: '24-hour rental',
+        quantityLabel: 'Number of chairs',
+        quantityMin: 1,
+        quantityMax: 200,
+        quantityDefault: 25
+      },
+
+      'white-folding-chair': {
+        name: 'White Plastic Folding Chair',
+        title: 'White Plastic Folding Chair',
+        icon: 'CHR',
+        type: 'daily',
+        rate: 2,
+        image: 'images/products/white-plastic-folding-chair.png',
+        mediaClass: 'product-media-gear',
+        desc: 'Clean white molded-plastic folding chair with a sturdy metal frame for parties, ceremonies, graduations, corporate events, and extra guest seating.',
+        note: 'Price per chair · 24-hour rental · delivery and setup quoted separately',
+        noDuration: true,
+        durationLabel: '24-hour rental',
+        quantityLabel: 'Number of chairs',
+        quantityMin: 1,
+        quantityMax: 300,
+        quantityDefault: 25
+      },
+
+      'white-table-4ft': {
+        name: '4-Foot White Plastic Folding Table',
+        title: '4-Foot White Plastic Folding Table',
+        icon: '4FT',
+        type: 'daily',
+        rate: 10,
+        image: 'images/products/white-plastic-table-4ft.png',
+        mediaClass: 'product-media-wide',
+        desc: 'Compact 4-foot rectangular white plastic folding table for food service, gifts, displays, check-in areas, cake tables, and smaller guest arrangements.',
+        note: 'Price per table · 24-hour rental · linens, delivery and setup quoted separately',
+        noDuration: true,
+        durationLabel: '24-hour rental',
+        quantityLabel: 'Number of tables',
+        quantityMin: 1,
+        quantityMax: 50,
+        quantityDefault: 1
+      },
+
+      'white-table-6ft': {
+        name: '6-Foot White Plastic Folding Table',
+        title: '6-Foot White Plastic Folding Table',
+        icon: '6FT',
+        type: 'daily',
+        rate: 12,
+        image: 'images/products/white-plastic-table-6ft.png',
+        mediaClass: 'product-media-wide',
+        desc: 'Versatile 6-foot rectangular white plastic banquet table for guest seating, buffets, catering, gifts, vendors, and event displays. Typically seats 6 to 8 guests.',
+        note: 'Price per table · 24-hour rental · linens, delivery and setup quoted separately',
+        noDuration: true,
+        durationLabel: '24-hour rental',
+        quantityLabel: 'Number of tables',
+        quantityMin: 1,
+        quantityMax: 50,
+        quantityDefault: 1
       },
 
       'dj-service': {
@@ -2784,7 +2860,11 @@
       'rmx-1000': 'rentals/dj-equipment-rental-miami.html',
       'co2-cannons': 'rentals/co2-effects-rental-miami.html',
       'co2-led-gun': 'rentals/co2-effects-rental-miami.html',
-      'led-cocktail-tables': 'rentals/led-cocktail-table-rental-miami.html'
+      'led-cocktail-tables': 'rentals/led-cocktail-table-rental-miami.html',
+      'white-acrylic-chair': 'tables&chairsmiami/',
+      'white-folding-chair': 'tables&chairsmiami/',
+      'white-table-4ft': 'tables&chairsmiami/',
+      'white-table-6ft': 'tables&chairsmiami/'
     };
 
     function renderProductCard(productId) {
@@ -2842,6 +2922,10 @@
           data-rate="${escapeHtml(product.rate)}"
           data-extra-rate="${escapeHtml(product.extraHourRate || 0)}"
           data-duration-label="${escapeHtml(product.durationLabel || '')}"
+          data-quantity-label="${escapeHtml(product.quantityLabel || 'Amount')}"
+          data-quantity-min="${escapeHtml(product.quantityMin || 1)}"
+          data-quantity-max="${escapeHtml(product.quantityMax || 10)}"
+          data-quantity-default="${escapeHtml(product.quantityDefault || 1)}"
           ${product.noQuantity ? 'data-no-quantity="true"' : ''}
         >
 
@@ -2948,9 +3032,19 @@
 
       const quantitySelect = card.querySelector('.quantity-select');
 
-      return quantitySelect
-        ? Number(quantitySelect.value || 1)
-        : 1;
+      if (!quantitySelect) return 1;
+
+      const minimum = Number(quantitySelect.min || 1);
+      const maximum = Number(quantitySelect.max || 9999);
+      const requested = Number(quantitySelect.value || minimum);
+      const quantity = Math.min(
+        maximum,
+        Math.max(minimum, Math.round(requested))
+      );
+
+      quantitySelect.value = quantity;
+
+      return quantity;
     }
 
     function calculateUnitPrice(rate, type, duration, extraHourRate) {
@@ -3086,20 +3180,18 @@
         'product-controls';
 
       quantityControl.innerHTML = `
-        <label>Amount</label>
+        <label>${escapeHtml(card.dataset.quantityLabel || 'Amount')}</label>
 
-        <select class="quantity-select">
-          <option value="1" selected>1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-        </select>
+        <input
+          class="quantity-select"
+          type="number"
+          inputmode="numeric"
+          min="${escapeHtml(card.dataset.quantityMin || 1)}"
+          max="${escapeHtml(card.dataset.quantityMax || 10)}"
+          step="1"
+          value="${escapeHtml(card.dataset.quantityDefault || 1)}"
+          aria-label="${escapeHtml(card.dataset.quantityLabel || 'Amount')}"
+        >
       `;
 
       const totalEl =

@@ -1162,6 +1162,29 @@
       transform: translateY(-2px);
     }
 
+    .product-detail-link {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+      padding: 11px 14px;
+      border: 1px solid rgba(255,45,120,0.58);
+      border-radius: 4px;
+      color: var(--neon-pink);
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.62rem;
+      font-weight: 700;
+      transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+    }
+
+    .product-detail-link:hover {
+      background: rgba(255,45,120,0.08);
+      box-shadow: 0 0 20px rgba(255,45,120,0.16);
+      transform: translateY(-1px);
+    }
+
     .cart-panel {
       position: sticky;
       top: 98px;
@@ -2037,25 +2060,26 @@
         ]
       },
       {
-        id: 'lighting',
-        filter: 'lighting-effects',
-        title: 'Lighting & Effects',
-        copy: 'Lighting packages, individual fixtures, and atmosphere effects are grouped together so clients can compare full bundles and single upgrades in one place.',
-        pills: ['Lighting Packages', 'Individual Fixtures', 'Atmosphere Effects'],
-        products: [
-          'glow-lighting-package',
-          'pulse-lighting-package',
-          'district-lighting-package',
-          'uplights',
-          'light-bar',
-          'moving-heads',
-          'wash-lights',
-          'fog-machines',
-          'co2-cannons',
-          'co2-led-gun',
-          'cold-spark'
-        ]
-      },
+  id: 'lighting',
+  filter: 'lighting-effects',
+  title: 'Lighting & Effects',
+  copy: 'Lighting packages, individual fixtures, atmosphere effects, and illuminated dance floors are grouped together so clients can compare full bundles and individual upgrades in one place.',
+  pills: ['Lighting Packages', 'Individual Fixtures', 'Atmosphere Effects'],
+  products: [
+    'infinity-mirror-dance-floor',
+    'glow-lighting-package',
+    'pulse-lighting-package',
+    'district-lighting-package',
+    'uplights',
+    'light-bar',
+    'moving-heads',
+    'wash-lights',
+    'fog-machines',
+    'co2-cannons',
+    'co2-led-gun',
+    'cold-spark'
+  ]
+},
       {
         id: 'photo-booth',
         filter: 'guest-media',
@@ -2111,17 +2135,17 @@
         ]
       },
       {
-        id: 'led-walls',
-        filter: 'led-walls',
-        title: 'LED Walls & Visuals',
-        copy: 'LED screen and wall options for visuals, branding, DJ content, slideshows, presentations, and high-impact event backdrops.',
-        pills: ['Visual Impact', 'Branding', 'Custom Content'],
-        products: [
-          'led-wall',
-          'led-wall-floor',
-          'led-wall-2-totems'
-        ]
-      },
+  id: 'led-walls',
+  filter: 'led-walls',
+  title: 'LED Walls & Visuals',
+  copy: 'LED screen and wall options for visuals, branding, DJ content, slideshows, presentations, and high-impact event backdrops.',
+  pills: ['Visual Impact', 'Branding', 'Custom Content'],
+  products: [
+    'led-wall',
+    'led-wall-floor',
+    'led-wall-2-totems'
+  ]
+},
       {
         id: 'party-furniture',
         filter: 'party-furniture',
@@ -2546,6 +2570,31 @@
         note: 'Daily rental item'
       },
 
+      'infinity-mirror-dance-floor': {
+        name: 'Infinity Mirror Dance Floor — 10×10',
+        title: 'Infinity Mirror Dance Floor',
+        icon: 'LED',
+        type: 'event',
+        rate: 1200,
+        extraHourRate: 0,
+        image: 'images/products/infinity-mirror-dance-floor.png',
+        mediaClass: 'product-media-wide',
+        desc: 'Infinity mirror LED dance floor with a deep illuminated tunnel effect for weddings, quinceañeras, birthdays, private parties, and high-impact event builds. Choose the floor size that fits your guest count and venue layout.',
+        note: '10×10 dance floor · delivery, setup + breakdown included',
+        noQuantity: true,
+        noDuration: true,
+        durationLabel: 'Event rental',
+        optionsLabel: 'Dance Floor Size',
+        options: [
+          { value: '10x10', label: '10×10 — $1,200', name: 'Infinity Mirror Dance Floor — 10×10', rate: 1200, note: '10×10 dance floor · delivery, setup + breakdown included' },
+          { value: '12x12', label: '12×12 — $1,500', name: 'Infinity Mirror Dance Floor — 12×12', rate: 1500, note: '12×12 dance floor · delivery, setup + breakdown included' },
+          { value: '14x14', label: '14×14 — $1,850', name: 'Infinity Mirror Dance Floor — 14×14', rate: 1850, note: '14×14 dance floor · delivery, setup + breakdown included' },
+          { value: '16x16', label: '16×16 — $2,200', name: 'Infinity Mirror Dance Floor — 16×16', rate: 2200, note: '16×16 dance floor · delivery, setup + breakdown included' },
+          { value: '18x18', label: '18×18 — $2,600', name: 'Infinity Mirror Dance Floor — 18×18', rate: 2600, note: '18×18 dance floor · delivery, setup + breakdown included' },
+          { value: '20x20', label: '20×20 — $3,000', name: 'Infinity Mirror Dance Floor — 20×20', rate: 3000, note: '20×20 dance floor · delivery, setup + breakdown included' }
+        ]
+      },
+
       'led-wall': {
         name: 'LED Wall with Goal Post Trussing',
         title: 'LED Wall with Goal Post Trussing',
@@ -2715,10 +2764,38 @@
       `;
     }
 
+    const PRODUCT_DETAIL_PAGES = {
+      'infinity-mirror-dance-floor': 'rentals/infinity-mirror-dance-floor-rental-miami.html',
+      'led-wall': 'rentals/led-wall-rental-miami.html',
+      'led-wall-floor': 'rentals/led-wall-rental-miami.html',
+      'led-wall-2-totems': 'rentals/led-wall-rental-miami.html',
+      'cold-spark': 'rentals/cold-spark-rental-miami.html',
+      'photo-booth-digital': 'rentals/photo-booth-rental-miami.html',
+      'photo-booth-print': 'rentals/photo-booth-rental-miami.html',
+      'photo-booth-360': 'rentals/360-photo-booth-rental-miami.html',
+      'glow-lighting-package': 'rentals/event-lighting-rental-miami.html',
+      'pulse-lighting-package': 'rentals/event-lighting-rental-miami.html',
+      'district-lighting-package': 'rentals/event-lighting-rental-miami.html',
+      'sound-system': 'rentals/sound-system-rental-miami.html',
+      'cdj-djm-package': 'rentals/dj-equipment-rental-miami.html',
+      'cdj-3000': 'rentals/dj-equipment-rental-miami.html',
+      'djm-900nxs2': 'rentals/dj-equipment-rental-miami.html',
+      'xdj-xz': 'rentals/dj-equipment-rental-miami.html',
+      'rmx-1000': 'rentals/dj-equipment-rental-miami.html',
+      'co2-cannons': 'rentals/co2-effects-rental-miami.html',
+      'co2-led-gun': 'rentals/co2-effects-rental-miami.html',
+      'led-cocktail-tables': 'rentals/led-cocktail-table-rental-miami.html'
+    };
+
     function renderProductCard(productId) {
       const product = PRODUCTS[productId];
 
       if (!product) return '';
+
+      const detailPage = PRODUCT_DETAIL_PAGES[productId] || '';
+      const detailLink = detailPage
+        ? `<a class="product-detail-link" href="${escapeHtml(detailPage)}">View Details</a>`
+        : '';
 
       const optionsHtml =
         Array.isArray(product.options) && product.options.length
@@ -2743,6 +2820,19 @@
         `
           : '';
 
+      const durationHtml =
+        product.noDuration
+          ? ''
+          : `
+          <div class="product-controls">
+            <label>${product.type === 'daily' ? 'Days' : 'Hours'}</label>
+
+            <select class="duration-select">
+              ${renderDurationOptions(product.type)}
+            </select>
+          </div>
+        `;
+
       return `
         <div
           class="product-card"
@@ -2751,6 +2841,7 @@
           data-type="${escapeHtml(product.type)}"
           data-rate="${escapeHtml(product.rate)}"
           data-extra-rate="${escapeHtml(product.extraHourRate || 0)}"
+          data-duration-label="${escapeHtml(product.durationLabel || '')}"
           ${product.noQuantity ? 'data-no-quantity="true"' : ''}
         >
 
@@ -2790,13 +2881,7 @@
 
           ${optionsHtml}
 
-          <div class="product-controls">
-            <label>${product.type === 'daily' ? 'Days' : 'Hours'}</label>
-
-            <select class="duration-select">
-              ${renderDurationOptions(product.type)}
-            </select>
-          </div>
+          ${durationHtml}
 
           <div class="product-total">$0 total</div>
 
@@ -2805,6 +2890,8 @@
           <button class="product-btn" onclick="addProductFromCard(this)">
             Add to Cart
           </button>
+
+          ${detailLink}
         </div>
       `;
     }
@@ -3099,6 +3186,10 @@
       const quantityToAdd =
         getCardQuantity(card);
 
+      const customDurationLabel =
+        card.dataset.durationLabel ||
+        '';
+
       const unitPrice =
         getCardUnitPrice(card);
 
@@ -3129,6 +3220,7 @@
           extraHourRate: extraHourRate,
           duration: duration,
           durationLabel:
+            customDurationLabel ||
             getDurationLabel(type, duration),
           unitPrice: unitPrice,
           quantity: quantityToAdd

@@ -2279,8 +2279,13 @@
       );
     }
 
+    const checkoutPath =
+      (window.location.pathname || '').includes('/rentals/')
+        ? '../checkout.html'
+        : 'checkout.html';
+
     window.location.href =
-      'checkout.html';
+      checkoutPath;
   }
 
   function addProductItem(item) {
@@ -2289,6 +2294,10 @@
     );
 
     const cart = getProductCart();
+
+    const productId =
+      item.productId ||
+      '';
 
     const name =
       item.name ||
@@ -2343,9 +2352,11 @@
     } else {
       cart.push({
         key: key,
+        productId: productId,
         name: name,
         type: type,
         rate: rate,
+        extraHourRate: Number(item.extraHourRate || 0),
         duration: duration,
         durationLabel:
           durationLabel,

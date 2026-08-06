@@ -343,6 +343,27 @@ footer {
 
 .footer-contact a:hover { color: var(--neon-blue); }
 
+.footer-page-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  margin: 22px auto 0;
+}
+
+.footer-page-links a {
+  color: rgba(232,232,240,0.72);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+.footer-page-links a:hover,
+.footer-page-links a:focus-visible {
+  color: var(--neon-blue);
+}
+
 .footer-copy {
   font-size: 0.68rem;
   color: rgba(232,232,240,0.62);

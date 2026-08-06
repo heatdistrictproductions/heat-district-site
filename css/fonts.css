@@ -1,0 +1,55 @@
+@font-face {
+  font-family: "Orbitron";
+  src: url("../fonts/orbitron-400.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Orbitron";
+  src: url("../fonts/orbitron-700.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Orbitron";
+  src: url("../fonts/orbitron-900.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("../fonts/raleway-300.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("../fonts/raleway-400.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("../fonts/raleway-600.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("../fonts/raleway-700.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}

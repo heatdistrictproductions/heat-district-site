@@ -70,7 +70,7 @@
     mount.innerHTML = `
       <nav>
         <a href="index.html" class="nav-logo">
-          <img src="logo.png" alt="Heat District Productions" />
+          <img src="images/optimized/logo-nav.png" alt="Heat District Productions" />
         </a>
 
         <ul class="nav-links">

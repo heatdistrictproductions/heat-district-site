@@ -19,8 +19,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gallery — Heat District Productions</title>
   <meta name="description" content="A clean visual gallery of Heat District Productions event setups and event photography in South Florida." />
-
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" href="fonts/raleway-400.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/global.css" />
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="shortcut icon" type="image/png" href="favicon.png" />
@@ -1281,7 +1281,7 @@
 
   <nav>
     <a href="index.html" class="nav-logo">
-      <img src="logo.png" alt="Heat District Productions" />
+      <img src="images/optimized/logo-nav.png" alt="Heat District Productions" />
     </a>
 
     <ul class="nav-links">
@@ -1396,7 +1396,7 @@
 
       <div class="editorial-grid">
         <figure class="image-frame large">
-          <img src="gallery/setups/setup-1.jpg" alt="Full Heat District event setup" data-path="gallery/setups/setup-1.jpg" onerror="showImagePlaceholder(this)">
+          <img loading="lazy" decoding="async" src="gallery/optimized/setup-1.jpg" alt="Full Heat District event setup" data-path="gallery/optimized/setup-1.jpg" onerror="showImagePlaceholder(this)">
           <figcaption class="image-caption">
             <span class="image-kicker">Full Setup</span>
             <h3>Complete room look</h3>
@@ -1404,7 +1404,7 @@
         </figure>
 
         <figure class="image-frame tall">
-          <img src="gallery/setups/setup-2.jpg" alt="Heat District lighting and trussing setup" data-path="gallery/setups/setup-2.jpg" onerror="showImagePlaceholder(this)">
+          <img loading="lazy" decoding="async" src="gallery/optimized/setup-2.jpg" alt="Heat District lighting and trussing setup" data-path="gallery/optimized/setup-2.jpg" onerror="showImagePlaceholder(this)">
           <figcaption class="image-caption">
             <span class="image-kicker">Lighting</span>
             <h3>Color and atmosphere</h3>
@@ -1412,7 +1412,7 @@
         </figure>
 
         <figure class="image-frame small-one">
-          <img src="gallery/setups/setup-3.jpg" alt="Heat District DJ booth setup" data-path="gallery/setups/setup-3.jpg" onerror="showImagePlaceholder(this)">
+          <img loading="lazy" decoding="async" src="gallery/optimized/setup-3.jpg" alt="Heat District DJ booth setup" data-path="gallery/optimized/setup-3.jpg" onerror="showImagePlaceholder(this)">
           <figcaption class="image-caption">
             <span class="image-kicker">DJ Booth</span>
             <h3>Clean front-facing setup</h3>
@@ -1420,7 +1420,7 @@
         </figure>
 
         <figure class="image-frame small-two">
-          <img src="gallery/setups/setup-4.jpg" alt="Heat District event detail setup" data-path="gallery/setups/setup-4.jpg" onerror="showImagePlaceholder(this)">
+          <img loading="lazy" decoding="async" src="gallery/optimized/setup-4.jpg" alt="Heat District event detail setup" data-path="gallery/optimized/setup-4.jpg" onerror="showImagePlaceholder(this)">
           <figcaption class="image-caption">
             <span class="image-kicker">Details</span>
             <h3>Production details</h3>
@@ -1443,7 +1443,7 @@
 
       <div class="editorial-grid reverse">
         <figure class="image-frame large">
-          <img src="gallery/event-photography/event-photo-1.jpg" alt="Heat District event photography featured moment" data-path="gallery/event-photography/event-photo-1.jpg" onerror="showImagePlaceholder(this)">
+          <img loading="lazy" decoding="async" src="gallery/optimized/event-photo-1.jpg" alt="Heat District event photography featured moment" data-path="gallery/optimized/event-photo-1.jpg" onerror="showImagePlaceholder(this)">
           <figcaption class="image-caption">
             <span class="image-kicker">Featured Moment</span>
             <h3>Real event energy</h3>
@@ -1451,7 +1451,7 @@
         </figure>
 
         <figure class="image-frame tall">
-          <img src="gallery/event-photography/event-photo-2.jpg" alt="Heat District dance floor photography" data-path="gallery/event-photography/event-photo-2.jpg" onerror="showImagePlaceholder(this)">
+          <img loading="lazy" decoding="async" src="gallery/optimized/event-photo-2.jpg" alt="Heat District dance floor photography" data-path="gallery/optimized/event-photo-2.jpg" onerror="showImagePlaceholder(this)">
           <figcaption class="image-caption">
             <span class="image-kicker">Dance Floor</span>
             <h3>Movement and atmosphere</h3>
@@ -1459,7 +1459,7 @@
         </figure>
 
         <figure class="image-frame small-one">
-          <img src="gallery/event-photography/event-photo-3.jpg" alt="Heat District event detail photography" data-path="gallery/event-photography/event-photo-3.jpg" onerror="showImagePlaceholder(this)">
+          <img loading="lazy" decoding="async" src="gallery/optimized/event-photo-3.jpg" alt="Heat District event detail photography" data-path="gallery/optimized/event-photo-3.jpg" onerror="showImagePlaceholder(this)">
           <figcaption class="image-caption">
             <span class="image-kicker">Details</span>
             <h3>Details and atmosphere</h3>
@@ -1467,7 +1467,7 @@
         </figure>
 
         <figure class="image-frame small-two">
-          <img src="gallery/event-photography/event-photo-4.jpg" alt="Heat District guest photography" data-path="gallery/event-photography/event-photo-4.jpg" onerror="showImagePlaceholder(this)">
+          <img loading="lazy" decoding="async" src="gallery/optimized/event-photo-4.jpg" alt="Heat District guest photography" data-path="gallery/optimized/event-photo-4.jpg" onerror="showImagePlaceholder(this)">
           <figcaption class="image-caption">
             <span class="image-kicker">Guests</span>
             <h3>People and moments</h3>
@@ -1491,7 +1491,7 @@
 
   <footer>
     <div class="footer-logo">
-      <img src="logo.png" alt="Heat District Productions" />
+      <img src="images/optimized/logo-nav.png" alt="Heat District Productions" />
       <span class="footer-productions-text">Productions</span>
     </div>
 

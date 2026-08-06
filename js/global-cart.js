@@ -25,6 +25,52 @@
 
   const DISABLED_GLOBAL_CART_PAGES = ['services.html'];
 
+  const RENTAL_CATEGORY_PAGES = [
+    'sound-system-rentals.html',
+    'event-lighting-rentals.html',
+    'dj-equipment-rentals.html',
+    'photo-booth-rentals.html',
+    'event-photography-videography.html',
+    'special-effects-rentals.html',
+    'led-wall-rentals.html',
+    'table-chair-rentals.html',
+    'staging-trussing-rentals.html'
+  ];
+
+  // Some pages attach their own close-menu click handlers. Handle category
+  // navigation first so a normal tap always reaches the dedicated page.
+  document.addEventListener('click', function (event) {
+    if (
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return;
+    }
+
+    const link = event.target.closest(
+      '.nav-dropdown a, .mobile-nav-sub a'
+    );
+
+    if (!link) {
+      return;
+    }
+
+    const destination = new URL(link.href, window.location.href);
+    const destinationPage = destination.pathname.split('/').pop();
+
+    if (RENTAL_CATEGORY_PAGES.indexOf(destinationPage) === -1) {
+      return;
+    }
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    window.location.assign(destination.href);
+  }, true);
+
   const PACKAGE_ALIASES = {
     'The Spark': 'Essential Package',
     'The Blaze': 'Signature Package',

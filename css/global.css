@@ -318,7 +318,7 @@ footer {
 .footer-productions-text {
   font-size: 0.55rem;
   letter-spacing: 6px;
-  color: rgba(232,232,240,0.2);
+  color: rgba(232,232,240,0.62);
   text-transform: uppercase;
   display: block;
   margin-bottom: 6px;
@@ -333,7 +333,7 @@ footer {
 }
 
 .footer-contact a {
-  color: rgba(232,232,240,0.4);
+  color: rgba(232,232,240,0.72);
   text-decoration: none;
   font-size: 0.8rem;
   letter-spacing: 1px;
@@ -345,7 +345,7 @@ footer {
 
 .footer-copy {
   font-size: 0.68rem;
-  color: rgba(232,232,240,0.18);
+  color: rgba(232,232,240,0.62);
   letter-spacing: 2.5px;
   text-transform: uppercase;
   margin-top: 32px;

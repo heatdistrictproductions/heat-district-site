@@ -138,12 +138,12 @@ body {
   width: min(1520px, 100%);
   margin: 0 auto;
   padding: 22px 48px 0;
-  color: rgba(232,232,240,0.45);
+  color: rgba(232,232,240,0.72);
   font-size: 0.76rem;
   letter-spacing: 0.4px;
 }
 
-.breadcrumbs a { color: rgba(0,240,255,0.7); text-decoration: none; }
+.breadcrumbs a { color: rgba(0,240,255,0.9); text-decoration: none; }
 
 .content {
   width: min(1520px, 100%);

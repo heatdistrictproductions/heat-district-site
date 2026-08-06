@@ -24,6 +24,7 @@
     { label: 'Packages', href: 'packages.html', match: 'packages.html' },
     { label: 'Gallery', href: 'gallery.html', match: 'gallery.html' },
     { label: 'Our Team', href: 'team.html', match: 'team.html' },
+    { label: 'FAQ', href: 'faq.html', match: 'faq.html' },
     { label: 'Contact', href: 'contact.html', match: 'contact.html' }
   ];
 
@@ -70,7 +71,7 @@
     mount.innerHTML = `
       <nav>
         <a href="index.html" class="nav-logo">
-          <img src="images/optimized/logo-nav.png" alt="Heat District Productions" />
+          <img src="images/optimized/logo-nav.webp" alt="Heat District Productions" width="280" height="207" />
         </a>
 
         <ul class="nav-links">

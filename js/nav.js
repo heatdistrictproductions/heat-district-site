@@ -8,14 +8,15 @@
 
 (function () {
   const productCategories = [
-    { label: 'Sound Systems', href: 'services.html#sound' },
-    { label: 'Lighting', href: 'services.html#lighting' },
-    { label: 'DJ Equipment', href: 'services.html#dj-equipment' },
-    { label: 'Photo Booth', href: 'services.html#photo-booth' },
-    { label: 'Photography & Video', href: 'services.html#photo-video' },
-    { label: 'Special Effects', href: 'services.html#effects' },
-    { label: 'LED Walls', href: 'services.html#led-walls' },
-    { label: 'Staging & Trussing', href: 'services.html#staging-trussing' }
+    { label: 'Sound Systems', href: 'sound-system-rentals.html' },
+    { label: 'Lighting', href: 'event-lighting-rentals.html' },
+    { label: 'DJ Equipment', href: 'dj-equipment-rentals.html' },
+    { label: 'Photo Booth', href: 'photo-booth-rentals.html' },
+    { label: 'Photography & Video', href: 'event-photography-videography.html' },
+    { label: 'Special Effects', href: 'special-effects-rentals.html' },
+    { label: 'LED Walls', href: 'led-wall-rentals.html' },
+    { label: 'Tables & Chairs', href: 'table-chair-rentals.html' },
+    { label: 'Staging & Trussing', href: 'staging-trussing-rentals.html' }
   ];
 
   const mainLinks = [
@@ -35,7 +36,9 @@
   }
 
   function isProductsActive() {
-    return getCurrentPage() === 'services.html' ? 'active' : '';
+    return ['services.html'].concat(productCategories.map(function (item) {
+      return item.href;
+    })).indexOf(getCurrentPage()) !== -1 ? 'active' : '';
   }
 
   function buildDropdownLinks() {
@@ -71,7 +74,7 @@
 
         <ul class="nav-links">
           <li class="nav-item-dropdown">
-            <a href="services.html" class="nav-link-with-dropdown ${isProductsActive()}">Products</a>
+            <a href="services.html" class="nav-link-with-dropdown ${isProductsActive()}">Rentals &amp; Builds</a>
 
             <div class="nav-dropdown">
               ${buildDropdownLinks()}
@@ -91,7 +94,7 @@
       </nav>
 
       <div class="mobile-nav" id="mobileNav">
-        <a href="services.html" class="${isProductsActive()}">Products</a>
+        <a href="services.html" class="${isProductsActive()}">Rentals &amp; Builds</a>
 
         <div class="mobile-nav-sub">
           ${buildDropdownLinks()}

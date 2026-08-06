@@ -28,6 +28,7 @@
   const RENTAL_CATEGORY_PAGES = [
     'sound-system-rentals.html',
     'event-lighting-rentals.html',
+    'dj-services.html',
     'dj-equipment-rentals.html',
     'photo-booth-rentals.html',
     'event-photography-videography.html',

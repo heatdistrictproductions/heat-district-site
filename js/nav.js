@@ -10,6 +10,7 @@
   const productCategories = [
     { label: 'Sound Systems', href: 'sound-system-rentals.html' },
     { label: 'Lighting', href: 'event-lighting-rentals.html' },
+    { label: 'DJ Services', href: 'dj-services.html' },
     { label: 'DJ Equipment', href: 'dj-equipment-rentals.html' },
     { label: 'Photo Booth', href: 'photo-booth-rentals.html' },
     { label: 'Photography & Video', href: 'event-photography-videography.html' },

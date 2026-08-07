@@ -1810,7 +1810,7 @@
 
     <section class="work-directory" id="event-setups" aria-label="Featured event production work">
       <div class="service-gallery-grid">
-        <button class="service-gallery-card" type="button" data-gallery="floors"><span class="service-gallery-card-media"><img loading="lazy" decoding="async" src="gallery/optimized/led-dance-floors/led-floor-outdoor-green.webp" alt="Green infinity mirror LED dance floor" width="1600" height="1200"></span><span class="service-gallery-card-copy"><small>3 photos</small><strong>LED Dance Floors</strong><span>Press to see more</span></span></button>
+        <button class="service-gallery-card" type="button" data-gallery="floors"><span class="service-gallery-card-media"><img loading="lazy" decoding="async" src="gallery/optimized/led-dance-floors/led-floor-green.webp" alt="Green infinity mirror LED dance floor" width="1800" height="1350"></span><span class="service-gallery-card-copy"><small>2 Photos · 1 Video</small><strong>LED Dance Floors</strong><span>Press to see more</span></span></button>
         <button class="service-gallery-card" type="button" data-gallery="packages"><span class="service-gallery-card-media"><img class="package-card-image" loading="lazy" decoding="async" src="gallery/optimized/setup-3-card.webp" alt="Complete event production package installed at a South Florida venue" width="1400" height="1026"></span><span class="service-gallery-card-copy"><small>4 photos</small><strong>Complete Packages</strong><span>Press to see more</span></span></button>
         <button class="service-gallery-card" type="button" data-gallery="lighting"><span class="service-gallery-card-media"><img loading="lazy" decoding="async" src="gallery/optimized/lighting-1.webp" alt="Colorful event lighting setup" width="1800" height="1200"></span><span class="service-gallery-card-copy"><small>4 photos</small><strong>Event Lighting</strong><span>Press to see more</span></span></button>
         <button class="service-gallery-card" type="button" data-gallery="effects"><span class="service-gallery-card-media"><img loading="lazy" decoding="async" src="gallery/optimized/color-and-atmosphere.webp" alt="Cold spark effects at an event" width="887" height="665"></span><span class="service-gallery-card-copy"><small>4 photos</small><strong>Special Effects</strong><span>Press to see more</span></span></button>
@@ -1897,9 +1897,9 @@
   <script>
     const serviceGalleries = {
       floors:{title:'LED Dance Floors',items:[
-        {src:'gallery/optimized/led-dance-floors/led-floor-outdoor-green.webp',alt:'Green infinity mirror LED dance floor at an outdoor event'},
-        {src:'gallery/optimized/led-dance-floors/led-floor-indoor-pink.webp',alt:'Pink infinity mirror LED dance floor inside an event venue'},
-        {src:'gallery/optimized/led-dance-floors/led-floor-blue.webp',alt:'Blue infinity mirror LED dance floor at an evening celebration'}]},
+        {src:'gallery/optimized/led-dance-floors/led-floor-green.webp',alt:'Green infinity mirror LED dance floor at an outdoor event'},
+        {type:'video',src:'gallery/optimized/led-dance-floors/led-floor-event.mp4',poster:'gallery/optimized/led-dance-floors/led-floor-blue.webp',alt:'Infinity mirror LED dance floor video'},
+        {src:'gallery/optimized/led-dance-floors/led-floor-blue.webp',alt:'Blue infinity mirror LED dance floor at an outdoor evening celebration'}]},
       packages:{title:'Complete Packages',items:[
         {src:'gallery/optimized/setup-3.webp',alt:'Complete event production package installed at a South Florida venue'},
         {src:'images/optimized/packages/signature-package-card.webp',alt:'Signature event production package'},
@@ -1935,9 +1935,9 @@
       galleryViewerStage.replaceChildren();
       if(item.type==='video'){
         const video=document.createElement('video');
-        video.src=item.src;video.poster=item.poster||'';video.controls=true;video.muted=true;video.defaultMuted=true;video.playsInline=true;video.preload='metadata';
+        video.src=item.src;video.poster=item.poster||'';video.controls=true;video.muted=true;video.defaultMuted=true;video.playsInline=true;video.autoplay=true;video.loop=true;video.preload='metadata';
         video.setAttribute('playsinline','');video.setAttribute('webkit-playsinline','');
-        galleryViewerStage.appendChild(video);
+        galleryViewerStage.appendChild(video);video.play().catch(function(){});
       }else{
         const image=document.createElement('img');image.src=item.src;image.alt=item.alt||'';image.decoding='async';galleryViewerStage.appendChild(image);
       }

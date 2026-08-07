@@ -1280,426 +1280,6 @@
       }
     }
 
-    /* FEATURED WORK DIRECTORY */
-    .featured-work-intro,
-    .party-directory-header {
-      display: grid;
-      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-      gap: 60px;
-      align-items: end;
-      margin-bottom: 46px;
-    }
-
-    .featured-work-intro h2,
-    .party-directory-header h2 {
-      margin-top: 10px;
-      color: #fff;
-      font-size: clamp(2.25rem, 5vw, 4rem);
-      font-weight: 300;
-      font-style: italic;
-      line-height: 1.04;
-    }
-
-    .featured-work-intro h2 strong,
-    .party-directory-header h2 strong {
-      color: var(--neon-pink);
-      font-style: normal;
-      font-weight: 700;
-    }
-
-    .featured-work-intro > p,
-    .party-directory-header > p {
-      color: rgba(232,232,240,0.72);
-      font-size: 0.96rem;
-      line-height: 1.9;
-    }
-
-    .work-directory {
-      display: grid;
-      gap: 24px;
-      margin-bottom: 116px;
-      scroll-margin-top: 100px;
-    }
-
-    .work-category {
-      display: grid;
-      grid-template-columns: minmax(260px, 0.32fr) minmax(0, 0.68fr);
-      min-height: 440px;
-      overflow: hidden;
-      border: 1px solid rgba(0,240,255,0.13);
-      border-radius: 22px;
-      background: linear-gradient(145deg, rgba(10,10,26,0.98), rgba(5,5,15,0.98));
-    }
-
-    .work-category:nth-child(even) {
-      grid-template-columns: minmax(0, 0.68fr) minmax(260px, 0.32fr);
-    }
-
-    .work-category:nth-child(even) .work-category-copy {
-      order: 2;
-    }
-
-    .work-category-copy {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 42px;
-    }
-
-    .work-category-index {
-      margin-bottom: 20px;
-      color: var(--neon-blue);
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.58rem;
-      font-weight: 700;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-    }
-
-    .work-category h3 {
-      margin-bottom: 16px;
-      color: #fff;
-      font-size: clamp(1.8rem, 3.5vw, 3rem);
-      font-weight: 300;
-      font-style: italic;
-      line-height: 1.06;
-    }
-
-    .work-category h3 strong {
-      color: var(--neon-pink);
-      font-style: normal;
-      font-weight: 700;
-    }
-
-    .work-category-copy > p {
-      color: rgba(232,232,240,0.68);
-      font-size: 0.9rem;
-      line-height: 1.8;
-    }
-
-    .work-category-link {
-      align-self: flex-start;
-      margin-top: 24px;
-      color: var(--neon-blue);
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 2.2px;
-      text-decoration: none;
-      text-transform: uppercase;
-    }
-
-    .work-category-link:hover,
-    .work-category-link:focus-visible {
-      color: #fff;
-    }
-
-    .work-category-media {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      grid-template-rows: repeat(2, minmax(0, 1fr));
-      gap: 3px;
-      min-height: 440px;
-      background: rgba(0,240,255,0.08);
-    }
-
-    .work-category-media.single {
-      display: block;
-    }
-
-    .work-category-media.three img:first-child {
-      grid-row: 1 / -1;
-    }
-
-    .work-category-media img {
-      width: 100%;
-      height: 100%;
-      min-height: 0;
-      object-fit: contain;
-      background: #05050f;
-      display: block;
-    }
-
-    .party-directory {
-      margin-bottom: 96px;
-      padding-top: 88px;
-      border-top: 1px solid rgba(255,45,120,0.14);
-      scroll-margin-top: 90px;
-    }
-
-    .party-album-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 24px;
-    }
-
-    .party-album {
-      position: relative;
-      display: block;
-      min-height: 520px;
-      overflow: hidden;
-      border: 1px solid rgba(0,240,255,0.15);
-      border-radius: 22px;
-      background: #090914;
-      text-decoration: none;
-    }
-
-    .party-album img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      background: #05050f;
-      display: block;
-      transition: transform 0.55s ease, filter 0.55s ease;
-    }
-
-    .party-album::after {
-      content: '';
-      position: absolute;
-      inset: 32% 0 0;
-      background: linear-gradient(to top, rgba(5,5,15,0.96), rgba(5,5,15,0));
-    }
-
-    .party-album:hover img,
-    .party-album:focus-visible img {
-      transform: none;
-      filter: saturate(1.08);
-    }
-
-    .party-album-copy {
-      position: absolute;
-      z-index: 1;
-      left: 30px;
-      right: 30px;
-      bottom: 28px;
-    }
-
-    .party-album-copy span {
-      display: block;
-      margin-bottom: 9px;
-      color: var(--neon-blue);
-      font-size: 0.58rem;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-
-    .party-album-copy h3 {
-      margin-bottom: 10px;
-      color: #fff;
-      font-size: clamp(1.55rem, 3vw, 2.45rem);
-      font-weight: 600;
-      line-height: 1.1;
-    }
-
-    .party-album-copy p {
-      color: rgba(232,232,240,0.7);
-      font-size: 0.84rem;
-      line-height: 1.6;
-    }
-
-    .party-album-arrow {
-      display: inline-block;
-      margin-top: 16px;
-      color: var(--neon-pink);
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .party-album-placeholder {
-      display: flex;
-      min-height: 520px;
-      align-items: center;
-      justify-content: center;
-      padding: 36px;
-      border: 1px dashed rgba(0,240,255,0.22);
-      border-radius: 22px;
-      background: rgba(0,240,255,0.025);
-      text-align: center;
-    }
-
-    .party-album-placeholder strong {
-      display: block;
-      margin-bottom: 10px;
-      color: #fff;
-      font-size: 1.2rem;
-    }
-
-    .party-album-placeholder p {
-      max-width: 360px;
-      color: rgba(232,232,240,0.58);
-      font-size: 0.84rem;
-      line-height: 1.7;
-    }
-
-    @media (max-width: 900px) {
-      .featured-work-intro,
-      .party-directory-header,
-      .work-category,
-      .work-category:nth-child(even) {
-        grid-template-columns: 1fr;
-      }
-
-      .work-category:nth-child(even) .work-category-copy {
-        order: 0;
-      }
-
-      .party-album-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 620px) {
-      .featured-work-intro,
-      .party-directory-header {
-        gap: 24px;
-      }
-
-      .work-directory {
-        margin-bottom: 78px;
-      }
-
-      .work-category-copy {
-        padding: 30px 22px;
-      }
-
-      .work-category-media {
-        min-height: 390px;
-      }
-
-      .party-directory {
-        padding-top: 64px;
-      }
-
-      .party-album,
-      .party-album-placeholder {
-        min-height: 430px;
-      }
-
-      .party-album-copy {
-        left: 22px;
-        right: 22px;
-        bottom: 22px;
-      }
-    }
-
-    .service-gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-bottom:88px}.service-gallery-card{position:relative;min-width:0;padding:0;overflow:hidden;border:1px solid rgba(0,240,255,.14);border-radius:18px;background:#090914;color:#fff;text-align:left;cursor:pointer}.service-gallery-card-media{display:grid;place-items:center;height:220px;background:#05050f}.service-gallery-card img{width:100%;height:100%;object-fit:contain;object-position:center;display:block;transition:filter .3s ease}.service-gallery-card img.package-card-image{object-fit:cover;object-position:center 76%}.service-gallery-card:hover img,.service-gallery-card:focus-visible img{filter:brightness(1.12) saturate(1.08)}.service-gallery-card-copy{display:block;padding:18px;background:#090914}.service-gallery-card-copy small{display:block;margin-bottom:7px;color:var(--neon-blue);font-size:.59rem;font-weight:700;letter-spacing:2px;text-transform:uppercase}.service-gallery-card-copy strong{display:block;color:#fff;font-size:1rem;line-height:1.3}.service-gallery-card-copy span{display:block;margin-top:8px;color:rgba(232,232,240,.58);font-size:.72rem}.gallery-viewer{position:fixed;z-index:10000;inset:0;display:none;align-items:center;justify-content:center;padding:28px;background:rgba(2,2,10,.94);backdrop-filter:blur(10px)}.gallery-viewer.open{display:flex}.gallery-viewer-panel{position:relative;width:min(1080px,100%);max-height:94vh;overflow:auto;padding:24px;border:1px solid rgba(0,240,255,.2);border-radius:22px;background:#080812}.gallery-viewer-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:18px}.gallery-viewer-head small{color:var(--neon-blue);font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase}.gallery-viewer-head h3{margin:7px 0 0;color:#fff;font-size:clamp(1.5rem,4vw,2.5rem);font-weight:500}.gallery-viewer-close{width:42px;height:42px;flex:none;border:1px solid rgba(255,255,255,.2);border-radius:50%;background:#05050f;color:#fff;font-size:1.5rem;cursor:pointer}.gallery-viewer-stage{display:grid;place-items:center;min-height:480px;border-radius:16px;background:#030309;overflow:hidden}.gallery-viewer-stage img,.gallery-viewer-stage video{width:100%;max-height:68vh;object-fit:contain;background:#030309}.gallery-viewer-stage video{display:block}.gallery-viewer-controls{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:15px}.gallery-viewer-controls button{padding:10px 16px;border:1px solid rgba(0,240,255,.25);border-radius:999px;background:#080812;color:#fff;cursor:pointer}.gallery-viewer-count{color:rgba(232,232,240,.58);font-size:.7rem;letter-spacing:1px}@media(max-width:900px){.service-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:760px){.service-gallery-grid{gap:12px}.service-gallery-card-media{height:170px}.gallery-viewer{padding:10px}.gallery-viewer-panel{padding:15px}.gallery-viewer-stage{min-height:55vh}}@media(max-width:430px){.service-gallery-grid{grid-template-columns:1fr 1fr}.service-gallery-card-media{height:140px}.service-gallery-card-copy{padding:13px}.service-gallery-card-copy strong{font-size:.86rem}}
-    /* Compact service cards: fixed media frame plus a separate readable footer. */
-    .service-gallery-card {
-      display: grid;
-      grid-template-rows: 220px minmax(92px, auto);
-      appearance: none;
-      -webkit-appearance: none;
-    }
-
-    .service-gallery-card-media {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      height: 220px;
-      overflow: hidden;
-    }
-
-    .service-gallery-card .service-gallery-card-media img,
-    .service-gallery-card .service-gallery-card-media img.package-card-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .service-gallery-card .service-gallery-card-media img.package-card-image {
-      object-position: center 76%;
-    }
-
-    .service-gallery-card-copy {
-      position: relative;
-      z-index: 3;
-      min-height: 92px;
-      padding: 15px 18px;
-      background: #090914 !important;
-      color: #fff;
-    }
-
-    @media (max-width: 760px) {
-      .service-gallery-card {
-        grid-template-rows: 170px minmax(88px, auto);
-      }
-
-      .service-gallery-card-media {
-        height: 170px;
-      }
-    }
-
-    @media (max-width: 430px) {
-      .service-gallery-card {
-        grid-template-rows: 140px minmax(84px, auto);
-      }
-
-      .service-gallery-card-media {
-        height: 140px;
-      }
-    }
-
-    /* Final framing: artwork fills each complete card and labels remain readable. */
-    .service-gallery-card {
-      display: block;
-      height: 315px;
-    }
-
-    .service-gallery-card-media {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .service-gallery-card .service-gallery-card-media img,
-    .service-gallery-card .service-gallery-card-media img.package-card-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .service-gallery-card .service-gallery-card-media img.package-card-image {
-      object-position: center bottom;
-    }
-
-    .service-gallery-card-copy {
-      position: absolute;
-      z-index: 3;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      min-height: 112px;
-      padding: 50px 18px 16px;
-      background: linear-gradient(to top, rgba(5,5,15,.98) 0%, rgba(5,5,15,.9) 55%, rgba(5,5,15,0) 100%) !important;
-    }
-
-    @media (max-width: 760px) {
-      .service-gallery-card {
-        height: 270px;
-      }
-
-      .service-gallery-card-media {
-        height: 100%;
-      }
-    }
-
-    @media (max-width: 430px) {
-      .service-gallery-card {
-        height: 235px;
-      }
-
-      .service-gallery-card-media {
-        height: 100%;
-      }
-
-      .service-gallery-card-copy {
-        padding: 44px 13px 13px;
-      }
-    }
   </style>
 </head>
 
@@ -1798,60 +1378,107 @@
   <div class="neon-divider"></div>
 
   <main class="portfolio-wrap">
-    <section class="featured-work-intro">
+    <section class="portfolio-intro">
       <div>
-        <p class="portfolio-tagline">Featured Work</p>
-        <h2>See the pieces that<br><strong>change the room.</strong></h2>
+        <p class="portfolio-tagline">Selected Work</p>
+        <h2>Let the <strong>photos speak.</strong></h2>
       </div>
       <p>
-        Explore the production features clients ask for most. Each section has room for additional photos as new LED floors, package builds, lighting designs, and effects setups are completed.
+        Finished setups and event photography from Heat District Productions. Clean, direct, and built around the visuals.
       </p>
     </section>
 
-    <section class="work-directory" id="event-setups" aria-label="Featured event production work">
-      <div class="service-gallery-grid">
-        <button class="service-gallery-card" type="button" data-gallery="floors"><span class="service-gallery-card-media"><img loading="lazy" decoding="async" src="gallery/optimized/led-dance-floors/led-floor-outdoor-green.webp" alt="Green infinity mirror LED dance floor" width="1600" height="1200"></span><span class="service-gallery-card-copy"><small>3 photos</small><strong>LED Dance Floors</strong><span>Press to see more</span></span></button>
-        <button class="service-gallery-card" type="button" data-gallery="packages"><span class="service-gallery-card-media"><img class="package-card-image" loading="lazy" decoding="async" src="gallery/optimized/setup-3-card.webp" alt="Complete event production package installed at a South Florida venue" width="1400" height="1026"></span><span class="service-gallery-card-copy"><small>4 photos</small><strong>Complete Packages</strong><span>Press to see more</span></span></button>
-        <button class="service-gallery-card" type="button" data-gallery="lighting"><span class="service-gallery-card-media"><img loading="lazy" decoding="async" src="gallery/optimized/lighting-1.webp" alt="Colorful event lighting setup" width="1800" height="1200"></span><span class="service-gallery-card-copy"><small>4 photos</small><strong>Event Lighting</strong><span>Press to see more</span></span></button>
-        <button class="service-gallery-card" type="button" data-gallery="effects"><span class="service-gallery-card-media"><img loading="lazy" decoding="async" src="gallery/optimized/color-and-atmosphere.webp" alt="Cold spark effects at an event" width="887" height="665"></span><span class="service-gallery-card-copy"><small>4 photos</small><strong>Special Effects</strong><span>Press to see more</span></span></button>
-        <button class="service-gallery-card" type="button" data-gallery="booths"><span class="service-gallery-card-media"><img loading="lazy" decoding="async" src="gallery/optimized/photo-booth-1.webp" alt="Photo booth at a South Florida event" width="1800" height="1200"></span><span class="service-gallery-card-copy"><small>3 photos</small><strong>Photo Booths</strong><span>Press to see more</span></span></button>
-        <button class="service-gallery-card" type="button" data-gallery="dj"><span class="service-gallery-card-media"><img loading="lazy" decoding="async" src="gallery/optimized/setup-4-medium.webp" alt="Professional DJ equipment setup at a South Florida event" width="1000" height="667"></span><span class="service-gallery-card-copy"><small>4 photos</small><strong>DJ Equipment</strong><span>Press to see more</span></span></button>
+    <section class="portfolio-section" id="event-setups">
+      <div class="section-top">
+        <div class="section-number">01</div>
+        <div>
+          <p class="section-label">Event Setups</p>
+          <h2 class="section-title">Built <strong>For the Room</strong></h2>
+          <p class="section-copy">
+            Sound, lighting, DJ booths, trussing, and details arranged for a clean finished look.
+          </p>
+        </div>
+      </div>
+
+      <div class="editorial-grid">
+        <figure class="image-frame large">
+          <img loading="lazy" decoding="async" src="gallery/optimized/setup-1.webp" alt="Full Heat District event setup" data-path="gallery/optimized/setup-1.webp" onerror="showImagePlaceholder(this)" width="2000" height="2667">
+          <figcaption class="image-caption">
+            <span class="image-kicker">Full Setup</span>
+            <h3>Complete room look</h3>
+          </figcaption>
+        </figure>
+
+        <figure class="image-frame tall">
+          <img loading="lazy" decoding="async" src="gallery/optimized/color-and-atmosphere.webp" alt="Cold sparks and blue event lighting over a white dance floor" data-path="gallery/optimized/color-and-atmosphere.webp" onerror="showImagePlaceholder(this)" width="887" height="665">
+          <figcaption class="image-caption">
+            <span class="image-kicker">Lighting</span>
+            <h3>Color and atmosphere</h3>
+          </figcaption>
+        </figure>
+
+        <figure class="image-frame small-one">
+          <img loading="lazy" decoding="async" src="gallery/optimized/setup-3.webp" alt="Heat District DJ booth setup" data-path="gallery/optimized/setup-3.webp" onerror="showImagePlaceholder(this)" width="2000" height="2667">
+          <figcaption class="image-caption">
+            <span class="image-kicker">DJ Booth</span>
+            <h3>Clean front-facing setup</h3>
+          </figcaption>
+        </figure>
+
+        <figure class="image-frame small-two">
+          <img loading="lazy" decoding="async" src="gallery/optimized/setup-4.webp" alt="Heat District event detail setup" data-path="gallery/optimized/setup-4.webp" onerror="showImagePlaceholder(this)" width="1600" height="1066">
+          <figcaption class="image-caption">
+            <span class="image-kicker">Details</span>
+            <h3>Production details</h3>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
-    <div class="gallery-viewer" id="galleryViewer" role="dialog" aria-modal="true" aria-labelledby="galleryViewerTitle" hidden>
-      <div class="gallery-viewer-panel"><div class="gallery-viewer-head"><div><small>Featured Work</small><h3 id="galleryViewerTitle"></h3></div><button class="gallery-viewer-close" type="button" aria-label="Close gallery">×</button></div><div class="gallery-viewer-stage" id="galleryViewerStage"></div><div class="gallery-viewer-controls"><button type="button" data-viewer-prev>← Previous</button><span class="gallery-viewer-count" id="galleryViewerCount"></span><button type="button" data-viewer-next>Next →</button></div></div>
-    </div>
-
-    <section class="party-directory" id="event-photography">
-      <div class="party-directory-header">
+    <section class="portfolio-section" id="event-photography">
+      <div class="section-top">
+        <div class="section-number">02</div>
         <div>
-          <p class="portfolio-tagline">Complete Party Galleries</p>
-          <h2>Every party gets<br><strong>its own album.</strong></h2>
+          <p class="section-label">Event Photography</p>
+          <h2 class="section-title">Moments <strong>That Stay</strong></h2>
+          <p class="section-copy">
+            People, energy, details, and real moments from the event.
+          </p>
         </div>
-        <p>
-          Open a party to see its complete collection of room details, portraits, entrances, dance-floor moments, and production photos. Future events can be added here as separate clickable albums with the party name and venue.
-        </p>
       </div>
 
-      <div class="party-album-grid">
-        <a class="party-album" href="party-gallery-featured-quince.html">
-          <img loading="lazy" decoding="async" src="gallery/optimized/event-photo-1-medium.webp" srcset="gallery/optimized/event-photo-1-medium.webp 1000w, gallery/optimized/event-photo-1.webp 2000w" sizes="(max-width: 900px) 100vw, 50vw" alt="Featured quince celebration party gallery" width="1000" height="667">
-          <span class="party-album-copy">
-            <span>Quince Gallery · 5 Photos</span>
-            <h3>Featured Quince Celebration</h3>
-            <p>South Florida · Photography and event moments</p>
-            <span class="party-album-arrow">Open complete party gallery →</span>
-          </span>
-        </a>
+      <div class="editorial-grid reverse">
+        <figure class="image-frame large">
+          <img loading="lazy" decoding="async" src="gallery/optimized/event-photo-1.webp" alt="Heat District event photography featured moment" data-path="gallery/optimized/event-photo-1.webp" onerror="showImagePlaceholder(this)" width="1600" height="1066">
+          <figcaption class="image-caption">
+            <span class="image-kicker">Featured Moment</span>
+            <h3>Real event energy</h3>
+          </figcaption>
+        </figure>
 
-        <!-- Duplicate the party-album link above when a new complete party is added. -->
-        <div class="party-album-placeholder">
-          <div>
-            <strong>Room for the next party</strong>
-            <p>New quinceañeras, weddings, birthdays, and corporate events can each be added as their own named, clickable gallery.</p>
-          </div>
-        </div>
+        <figure class="image-frame tall">
+          <img loading="lazy" decoding="async" src="gallery/optimized/event-photo-2.webp" alt="Heat District dance floor photography" data-path="gallery/optimized/event-photo-2.webp" onerror="showImagePlaceholder(this)" width="1600" height="1066">
+          <figcaption class="image-caption">
+            <span class="image-kicker">Dance Floor</span>
+            <h3>Movement and atmosphere</h3>
+          </figcaption>
+        </figure>
+
+        <figure class="image-frame small-one">
+          <img loading="lazy" decoding="async" src="gallery/optimized/event-photo-3.webp" alt="Heat District event detail photography" data-path="gallery/optimized/event-photo-3.webp" onerror="showImagePlaceholder(this)" width="1600" height="1066">
+          <figcaption class="image-caption">
+            <span class="image-kicker">Details</span>
+            <h3>Details and atmosphere</h3>
+          </figcaption>
+        </figure>
+
+        <figure class="image-frame small-two">
+          <img loading="lazy" decoding="async" src="gallery/optimized/event-photo-4.webp" alt="Heat District guest photography" data-path="gallery/optimized/event-photo-4.webp" onerror="showImagePlaceholder(this)" width="1600" height="1066">
+          <figcaption class="image-caption">
+            <span class="image-kicker">Guests</span>
+            <h3>People and moments</h3>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
@@ -1895,67 +1522,6 @@
   </footer>
 
   <script>
-    const serviceGalleries = {
-      floors:{title:'LED Dance Floors',items:[
-        {src:'gallery/optimized/led-dance-floors/led-floor-outdoor-green.webp',alt:'Green infinity mirror LED dance floor at an outdoor event'},
-        {src:'gallery/optimized/led-dance-floors/led-floor-indoor-pink.webp',alt:'Pink infinity mirror LED dance floor inside an event venue'},
-        {src:'gallery/optimized/led-dance-floors/led-floor-blue.webp',alt:'Blue infinity mirror LED dance floor at an evening celebration'}]},
-      packages:{title:'Complete Packages',items:[
-        {src:'gallery/optimized/setup-3.webp',alt:'Complete event production package installed at a South Florida venue'},
-        {src:'images/optimized/packages/signature-package-card.webp',alt:'Signature event production package'},
-        {src:'images/optimized/packages/premier-package-card.webp',alt:'Premier event production package'},
-        {src:'images/optimized/packages/elite-production-package-card.webp',alt:'Elite event production package'}]},
-      lighting:{title:'Event Lighting',items:[
-        {src:'gallery/optimized/lighting-1.webp',alt:'Colorful room lighting at an event'},
-        {src:'images/optimized/products/pulse-lighting-package.webp',alt:'Pulse event lighting package'},
-        {src:'images/optimized/products/district-lighting-package.webp',alt:'District event lighting package'},
-        {src:'images/optimized/products/glow-lighting-package.webp',alt:'Glow event lighting package'}]},
-      effects:{title:'Special Effects',items:[
-        {src:'gallery/optimized/color-and-atmosphere.webp',alt:'Cold spark effects and blue event lighting'},
-        {src:'images/optimized/packages/premier-package-cold-sparks-co2.webp',alt:'Two cold sparks and a CO2 effects gun'},
-        {src:'images/optimized/packages/elite-package-cold-sparks-co2.webp',alt:'Four cold sparks and a CO2 effects gun'},
-        {src:'images/optimized/products/cold-spark.webp',alt:'Professional cold spark machine'}]},
-      booths:{title:'Photo Booths',items:[
-        {src:'gallery/optimized/photo-booth-1.webp',alt:'Photo booth at a South Florida event'},
-        {src:'images/optimized/products/photo-booth-digital.webp',alt:'Digital photo booth'},
-        {src:'images/optimized/products/photo-booth-print.webp',alt:'Print photo booth'}]},
-      dj:{title:'DJ Equipment',items:[
-        {src:'gallery/optimized/setup-4.webp',alt:'Professional DJ equipment setup at a South Florida event'},
-        {src:'images/optimized/products/cdj-3000.webp',alt:'Pioneer CDJ-3000 player'},
-        {src:'images/optimized/products/djm-900nxs2.webp',alt:'Pioneer DJM-900NXS2 mixer'},
-        {src:'images/optimized/products/xdj-xz.webp',alt:'Pioneer XDJ-XZ DJ system'}]}
-    };
-    const galleryViewer=document.getElementById('galleryViewer');
-    const galleryViewerStage=document.getElementById('galleryViewerStage');
-    const galleryViewerTitle=document.getElementById('galleryViewerTitle');
-    const galleryViewerCount=document.getElementById('galleryViewerCount');
-    let activeGallery=null,activeGalleryIndex=0,lastGalleryTrigger=null;
-    function renderGalleryItem(){
-      const item=activeGallery.items[activeGalleryIndex];
-      galleryViewerStage.replaceChildren();
-      if(item.type==='video'){
-        const video=document.createElement('video');
-        video.src=item.src;video.poster=item.poster||'';video.controls=true;video.muted=true;video.defaultMuted=true;video.playsInline=true;video.preload='metadata';
-        video.setAttribute('playsinline','');video.setAttribute('webkit-playsinline','');
-        galleryViewerStage.appendChild(video);
-      }else{
-        const image=document.createElement('img');image.src=item.src;image.alt=item.alt||'';image.decoding='async';galleryViewerStage.appendChild(image);
-      }
-      galleryViewerCount.textContent=(activeGalleryIndex+1)+' / '+activeGallery.items.length;
-    }
-    function openServiceGallery(key,trigger){
-      activeGallery=serviceGalleries[key];activeGalleryIndex=0;lastGalleryTrigger=trigger;
-      galleryViewerTitle.textContent=activeGallery.title;galleryViewer.hidden=false;galleryViewer.classList.add('open');document.body.style.overflow='hidden';renderGalleryItem();galleryViewer.querySelector('.gallery-viewer-close').focus();
-    }
-    function closeServiceGallery(){galleryViewer.classList.remove('open');galleryViewer.hidden=true;document.body.style.overflow='';if(lastGalleryTrigger)lastGalleryTrigger.focus()}
-    function moveServiceGallery(amount){activeGalleryIndex=(activeGalleryIndex+amount+activeGallery.items.length)%activeGallery.items.length;renderGalleryItem()}
-    document.querySelectorAll('[data-gallery]').forEach(function(card){card.addEventListener('click',function(){openServiceGallery(card.dataset.gallery,card)})});
-    galleryViewer.querySelector('.gallery-viewer-close').addEventListener('click',closeServiceGallery);
-    galleryViewer.querySelector('[data-viewer-prev]').addEventListener('click',function(){moveServiceGallery(-1)});
-    galleryViewer.querySelector('[data-viewer-next]').addEventListener('click',function(){moveServiceGallery(1)});
-    galleryViewer.addEventListener('click',function(event){if(event.target===galleryViewer)closeServiceGallery()});
-    document.addEventListener('keydown',function(event){if(!galleryViewer.classList.contains('open'))return;if(event.key==='Escape')closeServiceGallery();if(event.key==='ArrowLeft')moveServiceGallery(-1);if(event.key==='ArrowRight')moveServiceGallery(1)});
-
     function hideBrokenImage(img) {
       img.style.display = 'none';
     }

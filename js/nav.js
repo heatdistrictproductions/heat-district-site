@@ -34,6 +34,9 @@
   }
 
   function isActive(match) {
+    if (match === 'gallery.html' && getCurrentPage().indexOf('party-gallery-') === 0) {
+      return 'active';
+    }
     return getCurrentPage() === match ? 'active' : '';
   }
 

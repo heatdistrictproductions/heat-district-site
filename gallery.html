@@ -1902,8 +1902,8 @@
         {src:'gallery/optimized/led-dance-floors/led-floor-blue.webp',alt:'Blue infinity mirror LED dance floor at an outdoor evening celebration'}]},
       packages:{title:'Complete Packages',items:[
         {src:'gallery/optimized/setup-3.webp',alt:'Complete event production package installed at a South Florida venue'},
-        {type:'video',src:'gallery/optimized/complete-packages/complete-package-event.mp4',poster:'gallery/optimized/setup-3-card.webp',alt:'Complete event production package video'},
-        {type:'video',src:'gallery/optimized/complete-packages/complete-package-event-2.mp4',poster:'gallery/optimized/setup-3-card.webp',alt:'Complete event production setup video'},
+        {type:'video',src:'gallery/optimized/complete-packages/complete-package-event.mp4',alt:'Complete event production package video'},
+        {type:'video',src:'gallery/optimized/complete-packages/complete-package-event-2.mp4',alt:'Complete event production setup video'},
         {src:'images/optimized/packages/elite-production-package-card.webp',alt:'Elite event production package'}]},
       lighting:{title:'Event Lighting',items:[
         {src:'gallery/optimized/lighting-1.webp',alt:'Colorful room lighting at an event'},
@@ -1928,25 +1928,33 @@
     const galleryViewerStage=document.getElementById('galleryViewerStage');
     const galleryViewerTitle=document.getElementById('galleryViewerTitle');
     const galleryViewerCount=document.getElementById('galleryViewerCount');
-    let activeGallery=null,activeGalleryIndex=0,lastGalleryTrigger=null;
+    let activeGallery=null,activeGalleryIndex=0,lastGalleryTrigger=null,galleryRenderToken=0;
     function renderGalleryItem(){
       const item=activeGallery.items[activeGalleryIndex];
-      galleryViewerStage.replaceChildren();
+      const itemNumber=activeGalleryIndex+1;
+      const totalItems=activeGallery.items.length;
+      const renderToken=++galleryRenderToken;
+      function showReadyMedia(media){
+        if(renderToken!==galleryRenderToken)return;
+        galleryViewerStage.replaceChildren(media);
+        galleryViewerCount.textContent=itemNumber+' / '+totalItems;
+        if(media.tagName==='VIDEO')media.play().catch(function(){});
+      }
       if(item.type==='video'){
         const video=document.createElement('video');
-        video.src=item.src;video.poster=item.poster||'';video.controls=true;video.muted=true;video.defaultMuted=true;video.playsInline=true;video.autoplay=true;video.loop=true;video.preload='metadata';
+        video.src=item.src;if(item.poster)video.poster=item.poster;video.controls=true;video.muted=true;video.defaultMuted=true;video.playsInline=true;video.autoplay=true;video.loop=true;video.preload='auto';
         video.setAttribute('playsinline','');video.setAttribute('webkit-playsinline','');video.setAttribute('aria-label',item.alt||'Event video');
-        galleryViewerStage.appendChild(video);video.play().catch(function(){});
+        video.addEventListener('loadeddata',function(){showReadyMedia(video)},{once:true});
+        video.load();
       }else{
-        const image=document.createElement('img');image.src=item.src;image.alt=item.alt||'';image.decoding='async';galleryViewerStage.appendChild(image);
+        const image=document.createElement('img');image.alt=item.alt||'';image.decoding='async';image.addEventListener('load',function(){showReadyMedia(image)},{once:true});image.src=item.src;
       }
-      galleryViewerCount.textContent=(activeGalleryIndex+1)+' / '+activeGallery.items.length;
     }
     function openServiceGallery(key,trigger){
       activeGallery=serviceGalleries[key];activeGalleryIndex=0;lastGalleryTrigger=trigger;
       galleryViewerTitle.textContent=activeGallery.title;galleryViewer.hidden=false;galleryViewer.classList.add('open');document.body.style.overflow='hidden';renderGalleryItem();galleryViewer.querySelector('.gallery-viewer-close').focus();
     }
-    function closeServiceGallery(){galleryViewer.classList.remove('open');galleryViewer.hidden=true;document.body.style.overflow='';if(lastGalleryTrigger)lastGalleryTrigger.focus()}
+    function closeServiceGallery(){galleryRenderToken++;galleryViewerStage.querySelectorAll('video').forEach(function(video){video.pause()});galleryViewerStage.replaceChildren();galleryViewer.classList.remove('open');galleryViewer.hidden=true;document.body.style.overflow='';if(lastGalleryTrigger)lastGalleryTrigger.focus()}
     function moveServiceGallery(amount){activeGalleryIndex=(activeGalleryIndex+amount+activeGallery.items.length)%activeGallery.items.length;renderGalleryItem()}
     document.querySelectorAll('[data-gallery]').forEach(function(card){card.addEventListener('click',function(){openServiceGallery(card.dataset.gallery,card)})});
     galleryViewer.querySelector('.gallery-viewer-close').addEventListener('click',closeServiceGallery);

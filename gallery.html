@@ -1965,7 +1965,7 @@
         <button class="service-gallery-card" type="button" data-gallery="packages"><span class="service-gallery-card-media"><img class="package-card-image" loading="lazy" decoding="async" src="gallery/optimized/setup-3-card.webp" alt="Complete event production package installed at a South Florida venue" width="1400" height="1026"></span><span class="service-gallery-card-copy"><small>1 Photo · 2 Videos</small><strong>Complete Packages</strong><span>Press to see more</span></span></button>
         <button class="service-gallery-card" type="button" data-gallery="lighting"><span class="service-gallery-card-media"><img loading="lazy" decoding="async" src="gallery/optimized/lighting-1.webp" alt="Colorful event lighting setup" width="1800" height="1200"></span><span class="service-gallery-card-copy"><small>2 Photos · 1 Video</small><strong>Event Lighting</strong><span>Press to see more</span></span></button>
         <button class="service-gallery-card" type="button" data-gallery="effects"><span class="service-gallery-card-media"><img loading="lazy" decoding="async" src="gallery/optimized/color-and-atmosphere.webp" alt="Cold spark effects at an event" width="887" height="665"></span><span class="service-gallery-card-copy"><small>3 photos</small><strong>Special Effects</strong><span>Press to see more</span></span></button>
-        <button class="service-gallery-card" type="button" data-gallery="booths"><span class="service-gallery-card-media"><img loading="lazy" decoding="async" src="gallery/optimized/photo-booth-1.webp" alt="Photo booth at a South Florida event" width="1800" height="1200"></span><span class="service-gallery-card-copy"><small>3 photos</small><strong>Photo Booths</strong><span>Press to see more</span></span></button>
+        <button class="service-gallery-card" type="button" data-gallery="booths"><span class="service-gallery-card-media"><img loading="lazy" decoding="async" src="gallery/optimized/photo-booth-1.webp" alt="Photo booth at a South Florida event" width="1800" height="1200"></span><span class="service-gallery-card-copy"><small>4 photos</small><strong>Photo Booths</strong><span>Press to see more</span></span></button>
         <button class="service-gallery-card" type="button" data-gallery="dj"><span class="service-gallery-card-media"><img loading="lazy" decoding="async" src="gallery/optimized/setup-4-medium.webp" alt="Professional DJ equipment setup at a South Florida event" width="1000" height="667"></span><span class="service-gallery-card-copy"><small>1 Photo · 2 Videos</small><strong>DJ Equipment</strong><span>Press to see more</span></span></button>
       </div>
     </section>
@@ -1985,7 +1985,7 @@
         </p>
       </div>
 
-      <div class="party-album-grid">
+      <div class="party-album-grid" id="partyAlbumGrid">
         <a class="party-album" href="party-gallery-featured-quince.html">
           <img loading="lazy" decoding="async" src="gallery/optimized/event-photo-1-medium.webp" srcset="gallery/optimized/event-photo-1-medium.webp 1000w, gallery/optimized/event-photo-1.webp 2000w" sizes="(max-width: 900px) 100vw, 50vw" alt="Featured quince celebration party gallery" width="1000" height="667">
           <span class="party-album-copy">
@@ -1997,7 +1997,7 @@
         </a>
 
         <!-- Duplicate the party-album link above when a new complete party is added. -->
-        <div class="party-album-placeholder">
+        <div class="party-album-placeholder" id="partyAlbumPlaceholder">
           <div>
             <strong>Room for the next party</strong>
             <p>New quinceañeras, weddings, birthdays, and corporate events can each be added as their own named, clickable gallery.</p>
@@ -2066,7 +2066,8 @@
       booths:{title:'Photo Booths',items:[
         {src:'gallery/optimized/photo-booth-1.webp',alt:'Photo booth at a South Florida event'},
         {src:'gallery/optimized/photo-booths/digital-photo-booth-event.webp',alt:'Digital photo booth with lighting at a wedding reception'},
-        {src:'gallery/optimized/photo-booths/360-photo-booth-event.webp',alt:'360 photo booth setup with infinity platform and ring light'}]},
+        {src:'gallery/optimized/photo-booths/360-photo-booth-event.webp',alt:'360 photo booth setup with infinity platform and ring light'},
+        {src:'gallery/optimized/event-photo-4.webp',alt:'Guests posing together at a Heat District photo booth'}]},
       dj:{title:'DJ Equipment',items:[
         {src:'gallery/optimized/setup-4.webp',alt:'Professional DJ equipment setup at a South Florida event'},
         {type:'video',src:'gallery/optimized/dj-equipment/dj-equipment-event-1.mp4',poster:'gallery/optimized/setup-4-medium.webp',alt:'Professional DJ equipment in use at an event'},
@@ -2123,6 +2124,63 @@
     galleryViewer.querySelector('[data-viewer-next]').addEventListener('click',function(){moveServiceGallery(1)});
     galleryViewer.addEventListener('click',function(event){if(event.target===galleryViewer)closeServiceGallery()});
     document.addEventListener('keydown',function(event){if(!galleryViewer.classList.contains('open'))return;if(event.key==='Escape')closeServiceGallery();if(event.key==='ArrowLeft')moveServiceGallery(-1);if(event.key==='ArrowRight')moveServiceGallery(1)});
+
+    function partyMediaCount(party) {
+      const parts = [];
+      if (party.photoCount) parts.push(party.photoCount + ' Photo' + (party.photoCount === 1 ? '' : 's'));
+      if (party.videoCount) parts.push(party.videoCount + ' Video' + (party.videoCount === 1 ? '' : 's'));
+      return parts.join(' · ');
+    }
+
+    function createPartyAlbumCard(party) {
+      const card = document.createElement('a');
+      card.className = 'party-album party-album-auto';
+      card.href = party.url;
+
+      const image = document.createElement('img');
+      image.loading = 'lazy';
+      image.decoding = 'async';
+      image.src = party.cover;
+      image.alt = party.title + ' complete party gallery';
+
+      const copy = document.createElement('span');
+      copy.className = 'party-album-copy';
+      const count = document.createElement('span');
+      count.textContent = 'Party Gallery · ' + partyMediaCount(party);
+      const title = document.createElement('h3');
+      title.textContent = party.title;
+      const location = document.createElement('p');
+      location.textContent = 'South Florida · Complete event gallery';
+      const arrow = document.createElement('span');
+      arrow.className = 'party-album-arrow';
+      arrow.textContent = 'Open complete party gallery →';
+      copy.append(count, title, location, arrow);
+      card.append(image, copy);
+      return card;
+    }
+
+    function loadAutomaticPartyGalleries() {
+      const grid = document.getElementById('partyAlbumGrid');
+      if (!grid) return;
+      fetch('gallery/party-galleries/party-galleries.json', { cache: 'no-store' })
+        .then(function(response) {
+          if (!response.ok) throw new Error('Party gallery list unavailable');
+          return response.json();
+        })
+        .then(function(data) {
+          const parties = Array.isArray(data.parties) ? data.parties : [];
+          const placeholder = document.getElementById('partyAlbumPlaceholder');
+          parties.forEach(function(party) {
+            grid.insertBefore(createPartyAlbumCard(party), placeholder);
+          });
+          if (parties.length && placeholder) placeholder.hidden = true;
+        })
+        .catch(function() {
+          /* Keep the existing gallery and placeholder visible if the list cannot load. */
+        });
+    }
+
+    loadAutomaticPartyGalleries();
 
     function hideBrokenImage(img) {
       img.style.display = 'none';

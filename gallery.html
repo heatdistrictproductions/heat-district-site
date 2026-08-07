@@ -1725,13 +1725,37 @@
     }
 
     .gallery-viewer-caption {
-      margin: 14px 0 0;
-      padding: 14px 16px;
-      border-left: 2px solid var(--neon-blue);
-      background: rgba(0,240,255,.045);
-      color: rgba(232,232,240,.78);
-      font-size: .84rem;
-      line-height: 1.7;
+      width: min(760px, 100%);
+      margin: 16px auto 0;
+      padding: 16px 18px;
+      border: 1px solid rgba(255,45,120,.2);
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(255,45,120,.055), rgba(0,240,255,.025));
+      text-align: center;
+    }
+
+    .gallery-viewer-caption > span {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--neon-blue);
+      font-size: .55rem;
+      font-weight: 700;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+    }
+
+    .gallery-viewer-caption strong {
+      display: block;
+      color: #fff;
+      font-size: .92rem;
+      line-height: 1.4;
+    }
+
+    .gallery-viewer-caption p {
+      margin: 5px 0 0;
+      color: rgba(232,232,240,.68);
+      font-size: .78rem;
+      line-height: 1.65;
     }
   </style>
 </head>
@@ -1853,7 +1877,7 @@
     </section>
 
     <div class="gallery-viewer" id="galleryViewer" role="dialog" aria-modal="true" aria-labelledby="galleryViewerTitle" hidden>
-      <div class="gallery-viewer-panel"><div class="gallery-viewer-head"><div><small>Featured Work</small><h3 id="galleryViewerTitle"></h3></div><button class="gallery-viewer-close" type="button" aria-label="Close gallery">×</button></div><div class="gallery-viewer-stage" id="galleryViewerStage"></div><p class="gallery-viewer-caption" id="galleryViewerCaption" hidden></p><div class="gallery-viewer-controls"><button type="button" data-viewer-prev>← Previous</button><span class="gallery-viewer-count" id="galleryViewerCount"></span><button type="button" data-viewer-next>Next →</button></div></div>
+      <div class="gallery-viewer-panel"><div class="gallery-viewer-head"><div><small>Featured Work</small><h3 id="galleryViewerTitle"></h3></div><button class="gallery-viewer-close" type="button" aria-label="Close gallery">×</button></div><div class="gallery-viewer-stage" id="galleryViewerStage"></div><div class="gallery-viewer-caption" id="galleryViewerCaption" hidden><span>Client Setup</span><strong id="galleryViewerCaptionTitle"></strong><p id="galleryViewerCaptionText"></p></div><div class="gallery-viewer-controls"><button type="button" data-viewer-prev>← Previous</button><span class="gallery-viewer-count" id="galleryViewerCount"></span><button type="button" data-viewer-next>Next →</button></div></div>
     </div>
 
     <section class="party-directory" id="event-photography">
@@ -1934,9 +1958,9 @@
         {type:'video',src:'gallery/optimized/led-dance-floors/led-floor-event.mp4',poster:'gallery/optimized/led-dance-floors/led-floor-blue.webp',alt:'Infinity mirror LED dance floor video'},
         {src:'gallery/optimized/led-dance-floors/led-floor-blue.webp',alt:'Blue infinity mirror LED dance floor at an outdoor evening celebration'}]},
       packages:{title:'Complete Packages',items:[
-        {src:'gallery/optimized/setup-3.webp',alt:'Complete event production package installed at a South Florida venue',caption:'This client selected our Lite Package and customized the visual setup to create a more personalized look for their event.'},
-        {type:'video',src:'gallery/optimized/complete-packages/complete-package-event.mp4',alt:'Complete event production package video',caption:'This school selected our Essential Package and upgraded the production with smoke machines for a more energetic event atmosphere.'},
-        {type:'video',src:'gallery/optimized/complete-packages/complete-package-event-2.mp4',alt:'Complete event production setup video',caption:'This graduation celebration included our Essential Package along with tables and chairs for a complete party setup.'}]},
+        {src:'gallery/optimized/setup-3.webp',alt:'Complete event production package installed at a South Florida venue',captionTitle:'Elite Package + Second LED Wall',caption:'This client selected our Elite Package and added an upgraded second LED wall across the front of the DJ booth for a larger, more immersive visual setup.'},
+        {type:'video',src:'gallery/optimized/complete-packages/complete-package-event.mp4',alt:'Complete event production package video',captionTitle:'School Event Upgrade',caption:'This school selected our Essential Package and upgraded the production with smoke machines for a more energetic event atmosphere.'},
+        {type:'video',src:'gallery/optimized/complete-packages/complete-package-event-2.mp4',alt:'Complete event production setup video',captionTitle:'Graduation Party Setup',caption:'This graduation celebration included our Essential Package along with tables and chairs for a complete party setup.'}]},
       lighting:{title:'Event Lighting',items:[
         {src:'gallery/optimized/lighting-1.webp',alt:'Colorful room lighting at an event'},
         {src:'gallery/optimized/event-lighting/ballroom-lighting-dj-view.webp',alt:'Ballroom event lighting and DJ setup during a celebration'}]},
@@ -1957,6 +1981,8 @@
     const galleryViewerStage=document.getElementById('galleryViewerStage');
     const galleryViewerTitle=document.getElementById('galleryViewerTitle');
     const galleryViewerCaption=document.getElementById('galleryViewerCaption');
+    const galleryViewerCaptionTitle=document.getElementById('galleryViewerCaptionTitle');
+    const galleryViewerCaptionText=document.getElementById('galleryViewerCaptionText');
     const galleryViewerCount=document.getElementById('galleryViewerCount');
     let activeGallery=null,activeGalleryIndex=0,lastGalleryTrigger=null,galleryRenderToken=0,galleryVideoPreloads=[];
     function preloadGalleryVideos(items){
@@ -1974,7 +2000,8 @@
       function showReadyMedia(media){
         if(renderToken!==galleryRenderToken)return;
         galleryViewerStage.replaceChildren(media);
-        galleryViewerCaption.textContent=item.caption||'';
+        galleryViewerCaptionTitle.textContent=item.captionTitle||'';
+        galleryViewerCaptionText.textContent=item.caption||'';
         galleryViewerCaption.hidden=!item.caption;
         galleryViewerCount.textContent=itemNumber+' / '+totalItems;
         if(media.tagName==='VIDEO')media.play().catch(function(){});

@@ -1314,6 +1314,24 @@
       line-height: 1.9;
     }
 
+    .party-directory-header {
+      grid-template-columns: minmax(0, 1fr) minmax(420px, 0.9fr);
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+
+    .party-directory-header h2 {
+      max-width: 760px;
+      font-size: clamp(2.2rem, 3.8vw, 3.5rem);
+      line-height: 1.02;
+    }
+
+    .party-directory-header > p {
+      max-width: 720px;
+      line-height: 1.7;
+    }
+
     .work-directory {
       display: grid;
       gap: 24px;
@@ -1426,16 +1444,15 @@
       scroll-margin-top: 90px;
     }
 
-    .party-album-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 24px;
-    }
+    .party-slider { position:relative; overflow:hidden; }
+    .party-slider-track { display:flex; width:200%; transition:transform .45s cubic-bezier(.22,.61,.36,1); }
+    .party-slider[data-page="2"] .party-slider-track { transform:translateX(-50%); }
+    .party-album-grid { width:50%; flex:0 0 50%; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; align-content:start; padding:0 2px; }
 
     .party-album {
       position: relative;
       display: block;
-      min-height: 520px;
+      min-height: 360px;
       overflow: hidden;
       border: 1px solid rgba(0,240,255,0.15);
       border-radius: 22px;
@@ -1446,7 +1463,7 @@
     .party-album img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       background: #05050f;
       display: block;
       transition: transform 0.55s ease, filter 0.55s ease;
@@ -1468,9 +1485,9 @@
     .party-album-copy {
       position: absolute;
       z-index: 1;
-      left: 30px;
-      right: 30px;
-      bottom: 28px;
+      left: 18px;
+      right: 18px;
+      bottom: 17px;
     }
 
     .party-album-copy span {
@@ -1486,7 +1503,7 @@
     .party-album-copy h3 {
       margin-bottom: 10px;
       color: #fff;
-      font-size: clamp(1.55rem, 3vw, 2.45rem);
+      font-size: clamp(1.05rem, 1.6vw, 1.45rem);
       font-weight: 600;
       line-height: 1.1;
     }
@@ -1507,31 +1524,18 @@
       text-transform: uppercase;
     }
 
-    .party-album-placeholder {
-      display: flex;
-      min-height: 520px;
-      align-items: center;
-      justify-content: center;
-      padding: 36px;
-      border: 1px dashed rgba(0,240,255,0.22);
-      border-radius: 22px;
-      background: rgba(0,240,255,0.025);
-      text-align: center;
-    }
-
-    .party-album-placeholder strong {
-      display: block;
-      margin-bottom: 10px;
-      color: #fff;
-      font-size: 1.2rem;
-    }
-
-    .party-album-placeholder p {
-      max-width: 360px;
-      color: rgba(232,232,240,0.58);
-      font-size: 0.84rem;
-      line-height: 1.7;
-    }
+    .party-album-copy p { font-size:.72rem; }
+    .party-album-arrow { margin-top:12px; font-size:.58rem; letter-spacing:1.4px; }
+    .party-all-card { display:flex; align-items:center; justify-content:center; padding:28px; border-color:rgba(0,240,255,.4); background:radial-gradient(circle at 50% 25%,rgba(0,240,255,.11),transparent 46%),linear-gradient(145deg,#090914,#05050f); text-align:center; }
+    .party-all-card::after { display:none; }
+    .party-all-card-copy small { display:block; margin-bottom:14px; color:var(--neon-blue); font-size:.58rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; }
+    .party-all-card-copy strong { display:block; color:#fff; font-size:clamp(1.45rem,2.6vw,2.2rem); line-height:1.08; }
+    .party-all-card-copy span { display:inline-block; margin-top:20px; color:var(--neon-blue); font-size:.64rem; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; }
+    .party-slider-controls { display:flex; align-items:center; justify-content:center; gap:14px; margin-top:24px; }
+    .party-slider-button { display:grid; place-items:center; width:50px; height:50px; border:1px solid rgba(0,240,255,.35); border-radius:50%; background:#080812; color:#fff; font-size:1.3rem; cursor:pointer; transition:.25s ease; }
+    .party-slider-button:hover,.party-slider-button:focus-visible { border-color:var(--neon-blue); color:var(--neon-blue); }
+    .party-slider-button:disabled { opacity:.25; cursor:default; }
+    .party-slider-status { min-width:48px; color:rgba(232,232,240,.5); font-size:.62rem; font-weight:700; letter-spacing:2px; text-align:center; }
 
     @media (max-width: 900px) {
       .featured-work-intro,
@@ -1545,9 +1549,7 @@
         order: 0;
       }
 
-      .party-album-grid {
-        grid-template-columns: 1fr;
-      }
+      .party-album-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
     }
 
     @media (max-width: 620px) {
@@ -1572,16 +1574,27 @@
         padding-top: 64px;
       }
 
-      .party-album,
-      .party-album-placeholder {
-        min-height: 430px;
-      }
+      .party-album { min-height:330px; }
 
       .party-album-copy {
         left: 22px;
         right: 22px;
         bottom: 22px;
       }
+    }
+
+    @media (max-width: 480px) {
+      .party-album-grid { gap:9px; }
+      .party-album { min-height:285px; border-radius:15px; }
+      .party-album-copy { left:13px; right:13px; bottom:13px; }
+      .party-album-copy span { margin-bottom:6px; font-size:.47rem; letter-spacing:1.4px; }
+      .party-album-copy h3 { margin-bottom:5px; font-size:.92rem; }
+      .party-album-copy p { display:none; }
+      .party-album-arrow { display:none !important; }
+      .party-all-card { padding:16px; }
+      .party-all-card-copy small { font-size:.47rem; letter-spacing:1.7px; }
+      .party-all-card-copy strong { font-size:1.12rem; }
+      .party-all-card-copy span { margin-top:14px; font-size:.5rem; letter-spacing:1px; }
     }
 
     .service-gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-bottom:88px}.service-gallery-card{position:relative;min-width:0;padding:0;overflow:hidden;border:1px solid rgba(0,240,255,.14);border-radius:18px;background:#090914;color:#fff;text-align:left;cursor:pointer}.service-gallery-card-media{display:grid;place-items:center;height:220px;background:#05050f}.service-gallery-card img{width:100%;height:100%;object-fit:contain;object-position:center;display:block;transition:filter .3s ease}.service-gallery-card img.package-card-image{object-fit:cover;object-position:center 76%}.service-gallery-card:hover img,.service-gallery-card:focus-visible img{filter:brightness(1.12) saturate(1.08)}.service-gallery-card-copy{display:block;padding:18px;background:#090914}.service-gallery-card-copy small{display:block;margin-bottom:7px;color:var(--neon-blue);font-size:.59rem;font-weight:700;letter-spacing:2px;text-transform:uppercase}.service-gallery-card-copy strong{display:block;color:#fff;font-size:1rem;line-height:1.3}.service-gallery-card-copy span{display:block;margin-top:8px;color:rgba(232,232,240,.58);font-size:.72rem}.gallery-viewer{position:fixed;z-index:10000;inset:0;display:none;align-items:center;justify-content:center;padding:28px;background:rgba(2,2,10,.94);backdrop-filter:blur(10px)}.gallery-viewer.open{display:flex}.gallery-viewer-panel{position:relative;width:min(1080px,100%);max-height:94vh;overflow:auto;padding:24px;border:1px solid rgba(0,240,255,.2);border-radius:22px;background:#080812}.gallery-viewer-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:18px}.gallery-viewer-head small{color:var(--neon-blue);font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase}.gallery-viewer-head h3{margin:7px 0 0;color:#fff;font-size:clamp(1.5rem,4vw,2.5rem);font-weight:500}.gallery-viewer-close{width:42px;height:42px;flex:none;border:1px solid rgba(255,255,255,.2);border-radius:50%;background:#05050f;color:#fff;font-size:1.5rem;cursor:pointer}.gallery-viewer-stage{display:grid;place-items:center;min-height:480px;border-radius:16px;background:#030309;overflow:hidden}.gallery-viewer-stage img,.gallery-viewer-stage video{width:100%;max-height:68vh;object-fit:contain;background:#030309}.gallery-viewer-stage video{display:block}.gallery-viewer-controls{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:15px}.gallery-viewer-controls button{padding:10px 16px;border:1px solid rgba(0,240,255,.25);border-radius:999px;background:#080812;color:#fff;cursor:pointer}.gallery-viewer-count{color:rgba(232,232,240,.58);font-size:.7rem;letter-spacing:1px}@media(max-width:900px){.service-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:760px){.service-gallery-grid{gap:12px}.service-gallery-card-media{height:170px}.gallery-viewer{padding:10px}.gallery-viewer-panel{padding:15px}.gallery-viewer-stage{min-height:55vh}}@media(max-width:430px){.service-gallery-grid{grid-template-columns:1fr 1fr}.service-gallery-card-media{height:140px}.service-gallery-card-copy{padding:13px}.service-gallery-card-copy strong{font-size:.86rem}}
@@ -1978,31 +1991,23 @@
       <div class="party-directory-header">
         <div>
           <p class="portfolio-tagline">Complete Party Galleries</p>
-          <h2>Every party gets<br><strong>its own album.</strong></h2>
+          <h2>Every party gets <strong>its own album.</strong></h2>
         </div>
         <p>
-          Open a party to see its complete collection of room details, portraits, entrances, dance-floor moments, and production photos. Future events can be added here as separate clickable albums with the party name and venue.
+          Explore complete celebrations through room details, portraits, entrances, dance-floor moments, and the production touches that brought each event together.
         </p>
       </div>
 
-      <div class="party-album-grid" id="partyAlbumGrid">
-        <a class="party-album" href="party-gallery-featured-quince.html">
-          <img loading="lazy" decoding="async" src="gallery/optimized/event-photo-1-medium.webp" srcset="gallery/optimized/event-photo-1-medium.webp 1000w, gallery/optimized/event-photo-1.webp 2000w" sizes="(max-width: 900px) 100vw, 50vw" alt="Featured quince celebration party gallery" width="1000" height="667">
-          <span class="party-album-copy">
-            <span>Quince Gallery · 5 Photos</span>
-            <h3>Featured Quince Celebration</h3>
-            <p>South Florida · Photography and event moments</p>
-            <span class="party-album-arrow">Open complete party gallery →</span>
-          </span>
-        </a>
-
-        <!-- Duplicate the party-album link above when a new complete party is added. -->
-        <div class="party-album-placeholder" id="partyAlbumPlaceholder">
-          <div>
-            <strong>Room for the next party</strong>
-            <p>New quinceañeras, weddings, birthdays, and corporate events can each be added as their own named, clickable gallery.</p>
-          </div>
-        </div>
+      <div class="party-slider" id="partySlider" data-page="1">
+      <div class="party-slider-track">
+      <div class="party-album-grid" id="partySlideOne" aria-label="Featured party galleries, page one"></div>
+      <div class="party-album-grid" id="partySlideTwo" aria-label="Featured party galleries, page two"></div>
+      </div>
+      <div class="party-slider-controls" aria-label="Party gallery pages">
+        <button class="party-slider-button" id="partySliderPrevious" type="button" aria-label="Show first four party galleries">←</button>
+        <span class="party-slider-status" id="partySliderStatus" aria-live="polite">1 / 2</span>
+        <button class="party-slider-button" id="partySliderNext" type="button" aria-label="Show more party galleries">→</button>
+      </div>
       </div>
     </section>
 
@@ -2060,9 +2065,9 @@
         {src:'gallery/optimized/event-lighting/ballroom-lighting-dj-view.webp',alt:'Ballroom event lighting and DJ setup during a celebration'},
         {type:'video',src:'gallery/optimized/event-lighting/fourth-of-july-restaurant-entrance.mp4',alt:'Fourth of July restaurant entrance lighting with truss towers',captionTitle:'Fourth of July Restaurant Entrance',caption:'This restaurant’s Fourth of July setup included two truss towers with American flag covers and two moving-head lights to illuminate the entrance walkway.'}]},
       effects:{title:'Special Effects',items:[
-        {src:'gallery/optimized/color-and-atmosphere.webp',alt:'Cold spark effects and blue event lighting'},
-        {src:'gallery/optimized/special-effects/co2-guns-celebration.webp',alt:'Guests using illuminated CO2 effects guns during a wedding celebration'},
-        {src:'gallery/optimized/special-effects/celebration-fog-effect.webp',alt:'Guests celebrating in a dramatic indoor fog effect'}]},
+        {src:'gallery/optimized/color-and-atmosphere.webp',alt:'Six cold spark machines creating a dramatic event moment',captionTitle:'Six Cold Spark Machines',caption:'This client selected six cold spark machines to create a high-impact celebration moment across the dance floor.'},
+        {src:'gallery/optimized/special-effects/co2-guns-celebration.webp',alt:'Guests using two illuminated CO2 effects guns during a wedding Hora Loca',captionTitle:'Wedding Hora Loca CO2 Effects',caption:'This couple added two handheld CO2 guns to bring extra energy and an interactive special-effects moment to their wedding Hora Loca.'},
+        {src:'gallery/optimized/special-effects/celebration-fog-effect.webp',alt:'Fog machines creating an atmospheric effect behind custom marquee letters',captionTitle:'Fog Behind Marquee Letters',caption:'This client placed our fog machines behind their custom marquee letters, creating a dramatic reveal and a memorable photo backdrop for the celebration.'}]},
       booths:{title:'Photo Booths',items:[
         {src:'gallery/optimized/photo-booth-1.webp',alt:'Photo booth at a South Florida event'},
         {src:'gallery/optimized/photo-booths/digital-photo-booth-event.webp',alt:'Digital photo booth with lighting at a wedding reception'},
@@ -2125,13 +2130,6 @@
     galleryViewer.addEventListener('click',function(event){if(event.target===galleryViewer)closeServiceGallery()});
     document.addEventListener('keydown',function(event){if(!galleryViewer.classList.contains('open'))return;if(event.key==='Escape')closeServiceGallery();if(event.key==='ArrowLeft')moveServiceGallery(-1);if(event.key==='ArrowRight')moveServiceGallery(1)});
 
-    function partyMediaCount(party) {
-      const parts = [];
-      if (party.photoCount) parts.push(party.photoCount + ' Photo' + (party.photoCount === 1 ? '' : 's'));
-      if (party.videoCount) parts.push(party.videoCount + ' Video' + (party.videoCount === 1 ? '' : 's'));
-      return parts.join(' · ');
-    }
-
     function createPartyAlbumCard(party) {
       const card = document.createElement('a');
       card.className = 'party-album party-album-auto';
@@ -2145,23 +2143,38 @@
 
       const copy = document.createElement('span');
       copy.className = 'party-album-copy';
-      const count = document.createElement('span');
-      count.textContent = 'Party Gallery · ' + partyMediaCount(party);
       const title = document.createElement('h3');
       title.textContent = party.title;
-      const location = document.createElement('p');
-      location.textContent = 'South Florida · Complete event gallery';
       const arrow = document.createElement('span');
       arrow.className = 'party-album-arrow';
       arrow.textContent = 'Open complete party gallery →';
-      copy.append(count, title, location, arrow);
+      copy.append(title, arrow);
       card.append(image, copy);
       return card;
     }
 
+    function createAllGalleriesCard() {
+      const card = document.createElement('a');
+      card.className = 'party-album party-all-card';
+      card.href = 'party-galleries.html';
+      card.setAttribute('aria-label', 'View every complete party gallery');
+      const copy = document.createElement('span');
+      copy.className = 'party-all-card-copy';
+      const small = document.createElement('small');
+      small.textContent = 'Gallery Directory';
+      const title = document.createElement('strong');
+      title.textContent = 'See All Party Galleries';
+      const action = document.createElement('span');
+      action.textContent = 'Open the full collection →';
+      copy.append(small, title, action);
+      card.appendChild(copy);
+      return card;
+    }
+
     function loadAutomaticPartyGalleries() {
-      const grid = document.getElementById('partyAlbumGrid');
-      if (!grid) return;
+      const firstSlide = document.getElementById('partySlideOne');
+      const secondSlide = document.getElementById('partySlideTwo');
+      if (!firstSlide || !secondSlide) return;
       fetch('gallery/party-galleries/party-galleries.json', { cache: 'no-store' })
         .then(function(response) {
           if (!response.ok) throw new Error('Party gallery list unavailable');
@@ -2169,11 +2182,9 @@
         })
         .then(function(data) {
           const parties = Array.isArray(data.parties) ? data.parties : [];
-          const placeholder = document.getElementById('partyAlbumPlaceholder');
-          parties.forEach(function(party) {
-            grid.insertBefore(createPartyAlbumCard(party), placeholder);
-          });
-          if (parties.length && placeholder) placeholder.hidden = true;
+          parties.slice(0, 4).forEach(function(party) { firstSlide.appendChild(createPartyAlbumCard(party)); });
+          parties.slice(4, 7).forEach(function(party) { secondSlide.appendChild(createPartyAlbumCard(party)); });
+          secondSlide.appendChild(createAllGalleriesCard());
         })
         .catch(function() {
           /* Keep the existing gallery and placeholder visible if the list cannot load. */
@@ -2181,6 +2192,24 @@
     }
 
     loadAutomaticPartyGalleries();
+
+    const partySlider = document.getElementById('partySlider');
+    const partySliderPrevious = document.getElementById('partySliderPrevious');
+    const partySliderNext = document.getElementById('partySliderNext');
+    const partySliderStatus = document.getElementById('partySliderStatus');
+    let partySliderPage = 1;
+    function showPartySliderPage(page) {
+      partySliderPage = page === 2 ? 2 : 1;
+      partySlider.dataset.page = String(partySliderPage);
+      partySliderPrevious.disabled = partySliderPage === 1;
+      partySliderNext.disabled = partySliderPage === 2;
+      partySliderStatus.textContent = partySliderPage + ' / 2';
+    }
+    if (partySlider && partySliderPrevious && partySliderNext && partySliderStatus) {
+      partySliderPrevious.addEventListener('click', function() { showPartySliderPage(1); });
+      partySliderNext.addEventListener('click', function() { showPartySliderPage(2); });
+      showPartySliderPage(1);
+    }
 
     function hideBrokenImage(img) {
       img.style.display = 'none';

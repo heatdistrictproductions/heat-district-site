@@ -15,3 +15,5 @@ Helpful details:
 - JPG, PNG, WebP, MP4, M4V, WebM, and MOV files are supported.
 - MP4 is the safest video format for phones and browsers.
 - Rename the folder and push again whenever you want to change the party title.
+- Chosen card thumbnails are stored in thumbnail-config.json. The folder name
+  is the first value and the selected image filename is the second value.

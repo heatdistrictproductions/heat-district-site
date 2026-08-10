@@ -2,9 +2,11 @@
 
 const fs = require('fs');
 const path = require('path');
+const { execFileSync } = require('child_process');
 
 const siteRoot = path.resolve(__dirname, '..');
 const galleriesRoot = path.join(siteRoot, 'gallery', 'party-galleries');
+const thumbnailsRoot = path.join(siteRoot, 'gallery', 'party-gallery-thumbnails');
 const manifestPath = path.join(galleriesRoot, 'party-galleries.json');
 const thumbnailConfigPath = path.join(galleriesRoot, 'thumbnail-config.json');
 const imageExtensions = new Set(['.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif']);
@@ -28,12 +30,35 @@ function mediaUrl(folderName, fileName) {
   return `gallery/party-galleries/${encodeURIComponent(folderName)}/${encodeURIComponent(fileName)}`;
 }
 
+function thumbnailUrl(folderName, fileName) {
+  return `gallery/party-gallery-thumbnails/${encodeURIComponent(folderName)}/${encodeURIComponent(fileName)}.jpg`;
+}
+
+function ensureThumbnail(folderName, fileName) {
+  const sourcePath = path.join(galleriesRoot, folderName, fileName);
+  const thumbnailFolder = path.join(thumbnailsRoot, folderName);
+  const thumbnailPath = path.join(thumbnailFolder, `${fileName}.jpg`);
+  const sourceModified = fs.statSync(sourcePath).mtimeMs;
+  const thumbnailIsCurrent = fs.existsSync(thumbnailPath) && fs.statSync(thumbnailPath).mtimeMs >= sourceModified;
+  if (!thumbnailIsCurrent) {
+    fs.mkdirSync(thumbnailFolder, { recursive: true });
+    try {
+      execFileSync('/usr/bin/sips', ['-Z', '900', '-s', 'format', 'jpeg', '-s', 'formatOptions', '76', sourcePath, '--out', thumbnailPath], { stdio: 'ignore' });
+    } catch (error) {
+      if (fs.existsSync(thumbnailPath)) fs.unlinkSync(thumbnailPath);
+      return mediaUrl(folderName, fileName);
+    }
+  }
+  return thumbnailUrl(folderName, fileName);
+}
+
 function makePartyPage(party) {
   const mediaMarkup = party.media.map((item, index) => {
     if (item.type === 'video') {
       return `<article class="album-item"><video controls muted playsinline preload="metadata" aria-label="Event video"><source src="${item.src}"></video></article>`;
     }
-    return `<a class="album-item" href="${item.src}" target="_blank" rel="noopener"><img ${index === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" src="${item.src}" alt="Event gallery photo"></a>`;
+    const loading = index < 12 ? `loading="eager"${index === 0 ? ' fetchpriority="high"' : ''}` : 'loading="lazy" fetchpriority="low"';
+    return `<a class="album-item" href="${item.src}" target="_blank" rel="noopener"><img ${loading} decoding="async" src="${item.thumb}" alt="Event gallery photo"></a>`;
   }).join('\n        ');
 
   const countLabel = [party.photoCount ? `${party.photoCount} Photo${party.photoCount === 1 ? '' : 's'}` : '', party.videoCount ? `${party.videoCount} Video${party.videoCount === 1 ? '' : 's'}` : ''].filter(Boolean).join(' · ');
@@ -66,12 +91,16 @@ const parties = fs.readdirSync(galleriesRoot, { withFileTypes: true }).filter(en
   const files = fs.readdirSync(path.join(galleriesRoot, entry.name), { withFileTypes: true }).filter(file => file.isFile()).map(file => file.name).filter(file => imageExtensions.has(path.extname(file).toLowerCase()) || videoExtensions.has(path.extname(file).toLowerCase())).sort(naturalCompare);
   if (!files.length) return null;
   let slug = slugify(entry.name); let suffix = 2; while (usedSlugs.has(slug)) slug = `${slugify(entry.name)}-${suffix++}`; usedSlugs.add(slug);
-  const media = files.map(file => ({ file, src: mediaUrl(entry.name, file), type: videoExtensions.has(path.extname(file).toLowerCase()) ? 'video' : 'image' }));
+  const media = files.map(file => {
+    const type = videoExtensions.has(path.extname(file).toLowerCase()) ? 'video' : 'image';
+    return { file, src: mediaUrl(entry.name, file), thumb: type === 'image' ? ensureThumbnail(entry.name, file) : null, type };
+  });
   const images = media.filter(item => item.type === 'image');
   const selectedThumbnail = thumbnailConfig[entry.name];
   const selectedImage = selectedThumbnail ? images.find(item => item.file === selectedThumbnail) : null;
   if (selectedThumbnail && !selectedImage) console.warn(`Thumbnail not found for ${entry.name}: ${selectedThumbnail}`);
-  return { title: entry.name, slug, url: `party-${slug}.html`, cover: selectedImage ? selectedImage.src : (images.length ? images[0].src : 'images/optimized/logo-nav.webp'), photoCount: images.length, videoCount: media.length - images.length, media };
+  const coverImage = selectedImage || images[0];
+  return { title: entry.name, slug, url: `party-${slug}.html`, cover: coverImage ? coverImage.src : 'images/optimized/logo-nav.webp', coverThumb: coverImage ? coverImage.thumb : 'images/optimized/logo-nav.webp', photoCount: images.length, videoCount: media.length - images.length, media };
 }).filter(Boolean);
 
 const generatedMarker = '<!-- AUTO-GENERATED PARTY GALLERY.';

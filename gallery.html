@@ -2130,15 +2130,16 @@
     galleryViewer.addEventListener('click',function(event){if(event.target===galleryViewer)closeServiceGallery()});
     document.addEventListener('keydown',function(event){if(!galleryViewer.classList.contains('open'))return;if(event.key==='Escape')closeServiceGallery();if(event.key==='ArrowLeft')moveServiceGallery(-1);if(event.key==='ArrowRight')moveServiceGallery(1)});
 
-    function createPartyAlbumCard(party) {
+    function createPartyAlbumCard(party, priority) {
       const card = document.createElement('a');
       card.className = 'party-album party-album-auto';
       card.href = party.url;
 
       const image = document.createElement('img');
-      image.loading = 'lazy';
+      image.loading = priority ? 'eager' : 'lazy';
+      image.fetchPriority = priority ? 'high' : 'low';
       image.decoding = 'async';
-      image.src = party.cover;
+      image.src = party.coverThumb || party.cover;
       image.alt = party.title + ' complete party gallery';
 
       const copy = document.createElement('span');
@@ -2182,8 +2183,8 @@
         })
         .then(function(data) {
           const parties = Array.isArray(data.parties) ? data.parties : [];
-          parties.slice(0, 4).forEach(function(party) { firstSlide.appendChild(createPartyAlbumCard(party)); });
-          parties.slice(4, 7).forEach(function(party) { secondSlide.appendChild(createPartyAlbumCard(party)); });
+          parties.slice(0, 4).forEach(function(party) { firstSlide.appendChild(createPartyAlbumCard(party, true)); });
+          parties.slice(4, 7).forEach(function(party) { secondSlide.appendChild(createPartyAlbumCard(party, false)); });
           secondSlide.appendChild(createAllGalleriesCard());
         })
         .catch(function() {

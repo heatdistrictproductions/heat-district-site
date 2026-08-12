@@ -71,6 +71,96 @@
       return;
     }
 
+    if (!document.getElementById('global-mobile-nav-fix')) {
+      const mobileStyle = document.createElement('style');
+      mobileStyle.id = 'global-mobile-nav-fix';
+      mobileStyle.textContent = `
+        @media (max-width: 900px) {
+          #siteNav nav {
+            min-height: 86px;
+            padding: 10px 16px !important;
+          }
+
+          #siteNav .nav-links,
+          #siteNav .nav-cta {
+            display: none !important;
+          }
+
+          #siteNav .mobile-menu-btn {
+            display: flex !important;
+          }
+
+          #siteNav > #mobileNav.mobile-nav {
+            top: 90px !important;
+            left: 12px !important;
+            right: 12px !important;
+            width: auto !important;
+            max-width: none !important;
+            max-height: calc(100dvh - 106px) !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: stretch !important;
+            justify-content: flex-start !important;
+            gap: 2px !important;
+            padding: 12px !important;
+            overflow-x: hidden !important;
+            overflow-y: auto !important;
+            border-radius: 14px !important;
+          }
+
+          #siteNav > #mobileNav.mobile-nav > a {
+            display: block !important;
+            width: 100% !important;
+            padding: 13px 12px !important;
+            text-align: left !important;
+            white-space: normal !important;
+            line-height: 1.25 !important;
+          }
+
+          #siteNav > #mobileNav.mobile-nav > .mobile-nav-sub {
+            display: grid !important;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+            width: 100% !important;
+            margin: -2px 0 8px !important;
+            padding: 4px 0 8px 12px !important;
+            border-left: 1px solid rgba(0,240,255,0.14) !important;
+          }
+
+          #siteNav > #mobileNav.mobile-nav > .mobile-nav-sub a {
+            display: block !important;
+            min-width: 0 !important;
+            padding: 9px 10px !important;
+            font-size: 0.64rem !important;
+            letter-spacing: 1.35px !important;
+            line-height: 1.3 !important;
+            white-space: normal !important;
+            overflow-wrap: anywhere !important;
+          }
+
+          #siteNav > #mobileNav.mobile-nav > .mobile-nav-book {
+            margin-top: 8px !important;
+            text-align: center !important;
+          }
+        }
+
+        @media (max-width: 430px) {
+          #siteNav .nav-logo img {
+            height: 58px !important;
+          }
+
+          #siteNav > #mobileNav.mobile-nav {
+            top: 82px !important;
+            max-height: calc(100dvh - 96px) !important;
+          }
+
+          body > #mobileNav.mobile-nav > .mobile-nav-sub {
+            grid-template-columns: minmax(0, 1fr) !important;
+          }
+        }
+      `;
+      document.head.appendChild(mobileStyle);
+    }
+
     mount.innerHTML = `
       <nav>
         <a href="index.html" class="nav-logo">

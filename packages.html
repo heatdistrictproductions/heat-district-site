@@ -2474,7 +2474,7 @@
       <h2 class="packages-title">Pick the Foundation, Then <strong>Customize the Rest</strong></h2>
       <p class="packages-sub">
         Packages are listed first so you can choose the main experience before comparing every detail.
-        Every listed package price includes DJ planning and MC support, delivery, required staffing, standard setup and breakdown,
+        Every listed package price includes a personalized timeline and music consultation, professional DJ and MC support, delivery, required staffing, standard setup and breakdown,
         and applicable taxes within Miami-Dade, Broward, Palm Beach, and Monroe counties. Travel outside those counties is quoted separately.
         Cold sparks, fog, CO2, and other special effects are subject to venue approval. Final recommendations may depend on venue size,
         power access, layout, event type, and venue restrictions.
@@ -2531,8 +2531,8 @@
             <p class="pkg-includes-label">What's Included</p>
             <ul class="pkg-includes">
               <li>Sound System — 2 Subs, 2 Tops</li>
-              <li>Professional DJ + Full Deck Setup</li>
-              <li>DJ Planning + MC Support</li>
+              <li>Professional DJ + Full Deck Setup — includes MC support</li>
+              <li>Personalized Timeline &amp; Music Consultation</li>
               <li>Microphone</li>
               <li class="highlight">5 Uplights</li>
               <li class="highlight">LED Light Bar</li>
@@ -2592,8 +2592,8 @@
             <p class="pkg-includes-label">What's Included</p>
             <ul class="pkg-includes">
               <li>Sound System</li>
-              <li>Professional DJ + Full Deck Setup</li>
-              <li>DJ Planning + MC Support</li>
+              <li>Professional DJ + Full Deck Setup — includes MC support</li>
+              <li>Personalized Timeline &amp; Music Consultation</li>
               <li>Microphone</li>
               <li class="highlight">10 Uplights</li>
               <li class="highlight">LED Light Bar</li>
@@ -2657,8 +2657,8 @@
             <p class="pkg-includes-label">What's Included</p>
             <ul class="pkg-includes">
               <li>Sound System</li>
-              <li>Professional DJ + Full Deck Setup</li>
-              <li>DJ Planning + MC Support</li>
+              <li>Professional DJ + Full Deck Setup — includes MC support</li>
+              <li>Personalized Timeline &amp; Music Consultation</li>
               <li>Microphone</li>
               <li class="highlight">15 Uplights</li>
               <li>LED Light Bar</li>
@@ -2725,8 +2725,8 @@
             <p class="pkg-includes-label">What's Included</p>
             <ul class="pkg-includes">
               <li>Sound System</li>
-              <li>Professional DJ + Full Deck Setup</li>
-              <li>DJ Planning + MC Support</li>
+              <li>Professional DJ + Full Deck Setup — includes MC support</li>
+              <li>Personalized Timeline &amp; Music Consultation</li>
               <li>Microphone</li>
               <li>15 Uplights</li>
               <li>LED Light Bar</li>
@@ -2793,7 +2793,7 @@
             </tr>
 
             <tr>
-              <td>Professional DJ</td>
+              <td>Professional DJ + MC Support</td>
               <td><span class="check">✓</span></td>
               <td class="featured-col"><span class="check">✓</span></td>
               <td><span class="check">✓</span></td>
@@ -2801,7 +2801,7 @@
             </tr>
 
             <tr>
-              <td>DJ Planning + MC Support</td>
+              <td>Personalized Timeline &amp; Music Consultation</td>
               <td><span class="check">✓</span></td>
               <td class="featured-col"><span class="check">✓</span></td>
               <td><span class="check">✓</span></td>
@@ -3050,7 +3050,7 @@
     const PACKAGE_GALLERIES = {
       essential: {
         title: 'Essential <strong>Package</strong>',
-        intro: 'A clean foundation package with DJ planning, MC support, sound, microphone support, 5 uplights, an LED Light Bar, setup, and breakdown.',
+        intro: 'A clean foundation package with a personalized timeline and music consultation, professional DJ and MC support, sound, microphone support, 5 uplights, an LED Light Bar, setup, and breakdown.',
         photos: [
           {
             src: 'images/optimized/packages/essential-package.webp',
@@ -3076,7 +3076,7 @@
       },
       signature: {
         title: 'Signature <strong>Package</strong>',
-        intro: 'A full party package with DJ planning, MC support, sound, lighting, a premium photo booth with background and props, fog, red carpet, and two 8ft truss totems.',
+        intro: 'A full party package with a personalized timeline and music consultation, professional DJ and MC support, sound, lighting, a premium photo booth with background and props, fog, red carpet, and two 8ft truss totems.',
         photos: [
           {
             src: 'images/optimized/packages/signature-package.webp',
@@ -3442,6 +3442,14 @@
       sessionStorage.removeItem('heatDistrictProductOrder');
       sessionStorage.setItem('heatDistrictSelectedPackage', JSON.stringify(selectedPackage));
       sessionStorage.setItem('heatDistrictEstimate', JSON.stringify(estimate));
+
+      if (window.HeatDistrictAnalytics) {
+        window.HeatDistrictAnalytics.send('select_item', {
+          currency: 'USD',
+          value: packagePrice,
+          items: [{ item_id: packageName.toLowerCase().replace(/[^a-z0-9]+/g, '_'), item_name: packageName, item_category: 'Event Package', price: packagePrice, quantity: 1 }]
+        });
+      }
 
       if (window.HeatDistrictCart && typeof window.HeatDistrictCart.render === 'function') {
         window.HeatDistrictCart.render();

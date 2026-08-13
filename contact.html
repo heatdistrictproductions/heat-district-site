@@ -17,7 +17,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact Heat District Productions | Miami Event Quotes</title>
-  <meta name="description" content="Contact Heat District Productions for event production, DJ services, lighting, sound systems, photo booth, photography, videography, trussing, and custom event rental quotes in South Florida." />
+  <meta name="description" content="Request a clear quote for DJ services, sound, lighting, photo booths, visuals and event production in Miami and across South Florida." />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <link rel="canonical" href="https://heatdistrictproductions.com/contact.html" />
   <meta property="og:type" content="website" />
@@ -1571,6 +1571,7 @@
         });
 
         if (response.ok) {
+          if (window.HeatDistrictAnalytics) window.HeatDistrictAnalytics.send('generate_lead', { lead_source: 'quote_form' });
           form.reset();
           overlay.classList.add('show');
         } else {

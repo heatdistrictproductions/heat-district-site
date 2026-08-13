@@ -26,6 +26,13 @@ function escapeHtml(value) {
     .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
 }
 
+function cleanPartyTitle(value) {
+  return String(value)
+    .trim()
+    .replace(/\bhaloween\b/gi, 'Halloween')
+    .replace(/\s+/g, ' ');
+}
+
 function mediaUrl(folderName, fileName) {
   return `gallery/party-galleries/${encodeURIComponent(folderName)}/${encodeURIComponent(fileName)}`;
 }
@@ -100,7 +107,7 @@ const parties = fs.readdirSync(galleriesRoot, { withFileTypes: true }).filter(en
   const selectedImage = selectedThumbnail ? images.find(item => item.file === selectedThumbnail) : null;
   if (selectedThumbnail && !selectedImage) console.warn(`Thumbnail not found for ${entry.name}: ${selectedThumbnail}`);
   const coverImage = selectedImage || images[0];
-  return { title: entry.name, slug, url: `party-${slug}.html`, cover: coverImage ? coverImage.src : 'images/optimized/logo-nav.webp', coverThumb: coverImage ? coverImage.thumb : 'images/optimized/logo-nav.webp', photoCount: images.length, videoCount: media.length - images.length, media };
+  return { title: cleanPartyTitle(entry.name), slug, url: `party-${slug}.html`, cover: coverImage ? coverImage.src : 'images/optimized/logo-nav.webp', coverThumb: coverImage ? coverImage.thumb : 'images/optimized/logo-nav.webp', photoCount: images.length, videoCount: media.length - images.length, media };
 }).filter(Boolean);
 
 const generatedMarker = '<!-- AUTO-GENERATED PARTY GALLERY.';

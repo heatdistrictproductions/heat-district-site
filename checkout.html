@@ -19,6 +19,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Checkout — Heat District Productions</title>
   <meta name="description" content="Review your Heat District Productions event package, add-ons, event details, 50% deposit, and booking request before receiving your QuickBooks deposit invoice." />
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://heatdistrictproductions.com/checkout.html">
   <link rel="preload" href="fonts/raleway-400.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/global.css">
@@ -2613,6 +2615,14 @@
       return;
     }
 
+    if (window.HeatDistrictAnalytics) {
+      window.HeatDistrictAnalytics.send('begin_checkout', {
+        currency: 'USD',
+        value: total,
+        package_name: estimate.package || 'Custom Product Build'
+      });
+    }
+
     const selectedItems = [];
 
     if (
@@ -2862,6 +2872,15 @@
         'heatDistrictQuickBooksInvoice',
         JSON.stringify(data)
       );
+
+      if (window.HeatDistrictAnalytics) {
+        window.HeatDistrictAnalytics.send('generate_lead', {
+          currency: 'USD',
+          value: total,
+          lead_source: 'deposit_invoice_created',
+          package_name: estimate.package || 'Custom Product Build'
+        });
+      }
 
       checkoutButton.textContent =
         data.emailSent

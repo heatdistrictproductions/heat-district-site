@@ -12,7 +12,7 @@ body {
   min-height: 100vh;
   background: var(--dark-bg);
   color: var(--text-light);
-  font-family: 'Raleway', sans-serif;
+  font-family: var(--font-body);
   overflow-x: hidden;
 }
 

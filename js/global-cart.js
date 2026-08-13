@@ -13,6 +13,22 @@
    ========================================================= */
 
 (function () {
+  function track(name, params) {
+    if (typeof window.gtag !== 'function') return;
+    window.gtag('event', name, Object.assign({ page_path: window.location.pathname }, params || {}));
+  }
+
+  document.addEventListener('click', function (event) {
+    const link = event.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href') || '';
+    if (href.startsWith('tel:')) track('phone_click', { link_url: href });
+    if (href.startsWith('mailto:')) track('email_click', { link_url: href });
+    if (/contact\.html(?:$|[?#])/.test(href)) track('quote_cta_click', { link_text: link.textContent.trim(), link_url: href });
+    if (/packages\.html(?:$|[?#])/.test(href)) track('packages_click', { link_text: link.textContent.trim(), link_url: href });
+  });
+
+  window.HeatDistrictAnalytics = window.HeatDistrictAnalytics || { send: track };
   'use strict';
 
   const GLOBAL_CART_VERSION = '2026-07-16-4';

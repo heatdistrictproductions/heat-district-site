@@ -47,12 +47,13 @@
     const menu = document.getElementById('mobileNav');
     if (!button || !menu) return;
     const close = () => {
-      menu.classList.remove('open');button.classList.remove('active');button.setAttribute('aria-expanded','false');button.setAttribute('aria-label','Open menu');menu.setAttribute('aria-hidden','true');document.body.classList.remove('mobile-menu-open');
+      menu.classList.remove('open');button.classList.remove('active');button.setAttribute('aria-expanded','false');button.setAttribute('aria-label','Open menu');menu.setAttribute('aria-hidden','true');menu.setAttribute('inert','');document.body.classList.remove('mobile-menu-open');
     };
     const open = () => {
-      menu.classList.add('open');button.classList.add('active');button.setAttribute('aria-expanded','true');button.setAttribute('aria-label','Close menu');menu.setAttribute('aria-hidden','false');document.body.classList.add('mobile-menu-open');
+      menu.classList.add('open');button.classList.add('active');button.setAttribute('aria-expanded','true');button.setAttribute('aria-label','Close menu');menu.setAttribute('aria-hidden','false');menu.removeAttribute('inert');document.body.classList.add('mobile-menu-open');
       const first = menu.querySelector('summary');if(first) first.focus();
     };
+    menu.setAttribute('inert','');
     button.addEventListener('click',() => menu.classList.contains('open') ? close() : open());
     menu.querySelectorAll('a').forEach(link => link.addEventListener('click',close));
     document.addEventListener('keydown',event => { if(event.key === 'Escape' && menu.classList.contains('open')) { close();button.focus(); } });

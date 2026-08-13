@@ -53,3 +53,137 @@
   font-weight: 700;
   font-display: swap;
 }
+
+/* Universal Heat District typography system.
+   The homepage is the source of truth for every current and future page. */
+:root {
+  --font-body: "Raleway", sans-serif;
+  --font-display: "Raleway", sans-serif;
+  --font-technical: "Raleway", sans-serif;
+}
+
+:where(html, body, button, input, select, textarea) {
+  font-family: var(--font-body);
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--font-display) !important;
+  font-style: normal !important;
+}
+
+/* Universal major-heading treatment, matched to the homepage
+   “What are we celebrating?” heading. */
+:where(
+  h1,
+  h2,
+  .display,
+  .category-hero h1,
+  .section-title,
+  .packages-title,
+  .services-title,
+  .all-hero h1,
+  .album-hero h1
+) {
+  font-family: var(--font-display) !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.035em !important;
+  line-height: 0.94 !important;
+}
+
+/* Apply the same family to every normal text element sitewide. */
+:where(
+  body,
+  nav,
+  header,
+  main,
+  section,
+  article,
+  aside,
+  footer,
+  p,
+  a,
+  span,
+  strong,
+  em,
+  small,
+  label,
+  legend,
+  blockquote,
+  cite,
+  li,
+  dt,
+  dd,
+  th,
+  td,
+  button,
+  input,
+  select,
+  textarea,
+  option
+) {
+  font-family: var(--font-body);
+}
+
+:where(
+  .proof-item strong,
+  .event-number,
+  .event-copy h3,
+  .package h3,
+  .package-price,
+  .section-number,
+  .work-category-index
+) {
+  font-family: var(--font-technical);
+}
+
+/* Role-based typography is enforced so legacy page styles cannot create
+   mismatched fonts. Add future prices, counters, or steps to these roles. */
+:where(
+  .proof-item strong,
+  .event-number,
+  .event-copy h3,
+  .package h3,
+  .package-price,
+  .pkg-name,
+  .pkg-price-wrap,
+  .pkg-price-symbol,
+  .pkg-price-value,
+  .th-price,
+  .addon-price,
+  .addon-price-symbol,
+  .addon-price-value,
+  .price,
+  .total,
+  .totalItems,
+  .estimate-addon-price,
+  .estimate-total-value,
+  .summary-addon-price,
+  .cart-item-total,
+  .cart-total-row,
+  .mobile-cart-toggle-count,
+  .mobile-cart-toggle-total,
+  .product-total,
+  .funnel-step-number,
+  .process-step-number,
+  .value-number,
+  .has-number,
+  .section-number,
+  .work-category-index,
+  .gallery-viewer-count,
+  .party-slider-status,
+  .package-gallery-count
+) {
+  font-family: var(--font-technical) !important;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "lnum" 1, "tnum" 1;
+}
+
+:where(
+  .package-price small,
+  .pkg-price-unit,
+  .addon-price-unit,
+  .estimate-total-label
+) {
+  font-family: var(--font-body) !important;
+}

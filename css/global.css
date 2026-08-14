@@ -3,6 +3,8 @@
    File path: css/global.css
    ========================================================= */
 
+@import url('section-intros.css?v=20260814-1');
+
 :root {
   --neon-blue: #00f0ff;
   --neon-pink: #ff2d78;
@@ -416,7 +418,7 @@ footer {
 
 #siteNav .mobile-products { display: none; }
 
-@media (max-width: 900px) {
+@media (max-width: 1120px) {
   body { padding-bottom: 94px; }
   #siteNav .site-nav {
     min-height: 74px;
@@ -527,7 +529,7 @@ footer {
 }
 
 /* Fallback for legacy pages that still render their navigation inline. */
-@media (max-width: 900px) {
+@media (max-width: 1120px) {
   body > nav {
     min-height: 74px !important;
     padding: 8px 16px !important;
@@ -971,7 +973,7 @@ nav {
   top: 98px !important;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1120px) {
   nav {
     padding-top: 10px !important;
     padding-bottom: 10px !important;
@@ -984,6 +986,30 @@ nav {
   .mobile-nav {
     top: 90px !important;
   }
+}
+
+/* One navigation contract for shared and legacy page headers. */
+@media (min-width: 1121px) {
+  #siteNav .nav-links,
+  body > nav .nav-links {
+    display: flex !important;
+  }
+
+  #siteNav .nav-cta,
+  body > nav .nav-cta {
+    display: inline-flex !important;
+  }
+
+  #siteNav .mobile-menu-btn,
+  body > nav .mobile-menu-btn,
+  #siteNav .mobile-nav,
+  body > .mobile-nav {
+    display: none !important;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1120px) {
+  body { padding-bottom: 0; }
 }
 
 /* =========================================================

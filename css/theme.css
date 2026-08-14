@@ -1,0 +1,352 @@
+/* Heat District global theme — loaded last on every live page.
+   One typeface, four approved roles. Page-level CSS may control size and color,
+   but it may not introduce another font family or numeric treatment. */
+:root {
+  --theme-font-family: "Raleway", sans-serif;
+  --theme-display-weight: 600;
+  --theme-body-weight: 400;
+  --theme-label-weight: 700;
+  --theme-number-weight: 300;
+}
+
+:where(
+  html, body, nav, header, main, section, article, aside, footer,
+  h1, h2, h3, h4, h5, h6, p, a, span, strong, em, small,
+  label, legend, blockquote, cite, li, dt, dd, th, td,
+  button, input, select, textarea, option, summary
+) {
+  font-family: var(--theme-font-family) !important;
+}
+
+:where(h1, h2, h3, h4, h5, h6, .display) {
+  font-weight: var(--theme-display-weight);
+}
+
+:where(body, p, li, input, select, textarea, option) {
+  font-weight: var(--theme-body-weight);
+}
+
+:where(
+  button, .button, .btn, .eyebrow, .section-label, .product-kicker,
+  .price-label, .package-kicker, .pkg-controls label
+) {
+  font-weight: var(--theme-label-weight);
+}
+
+/* Exact approved number style: the thin Raleway treatment used by the
+   package prices. This list covers every current price/count/total role. */
+:where(
+  .price-value,
+  .package-price,
+  .pkg-price-wrap,
+  .pkg-price-symbol,
+  .pkg-price-value,
+  .pkg-price-unit,
+  .th-price,
+  .price,
+  .addon-price,
+  .addon-price-symbol,
+  .addon-price-value,
+  .addon-price-unit,
+  .product-total,
+  .total,
+  .totalItems,
+  .estimate-addon-price,
+  .estimate-total-value,
+  .summary-addon-price,
+  .cart-item-total,
+  .cart-total-row,
+  .cart-count,
+  .cart-total,
+  .global-cart-button-count,
+  .global-cart-button-total,
+  .mobile-cart-toggle-count,
+  .mobile-cart-toggle-total,
+  .event-number,
+  .funnel-step-number,
+  .process-step-number,
+  .value-number,
+  .has-number,
+  .section-number,
+  .work-category-index,
+  .gallery-viewer-count,
+  .party-slider-status,
+  .package-gallery-count,
+  .quantity-value,
+  .duration-value
+) {
+  font-family: var(--theme-font-family) !important;
+  font-weight: var(--theme-number-weight) !important;
+  font-style: normal !important;
+  font-synthesis: none;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "lnum" 1, "tnum" 1, "kern" 1;
+  letter-spacing: -0.045em;
+}
+
+/* Global themed select component. The native select remains in the form as
+   the source of truth while theme.js supplies the visible accessible UI. */
+.theme-select-native {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.theme-select {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-width: 0;
+  font-family: var(--theme-font-family);
+}
+
+.theme-select.is-open { z-index: 10001; }
+
+/* A high z-index on the menu alone cannot escape a sibling card's stacking
+   context. theme.js marks the whole owning card while its menu is open. */
+.theme-dropdown-active {
+  position: relative !important;
+  z-index: 9999 !important;
+  overflow: visible !important;
+}
+
+.product-card.theme-dropdown-active,
+.addon-card.theme-dropdown-active,
+.pkg-card.theme-dropdown-active {
+  transform: none !important;
+}
+
+.theme-select-button {
+  width: 100%;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 16px;
+  border: 1px solid rgba(0, 240, 255, .28);
+  border-radius: 10px;
+  background: linear-gradient(145deg, rgba(13, 13, 34, .98), rgba(7, 7, 22, .98));
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .035);
+  cursor: pointer;
+  font-size: .88rem;
+  font-weight: 400;
+  letter-spacing: .02em;
+  text-align: left;
+  text-transform: none;
+  transition: border-color .2s, box-shadow .2s, background .2s;
+}
+
+.theme-select-button::after {
+  content: "";
+  width: 9px;
+  height: 9px;
+  flex: 0 0 9px;
+  border-right: 1.5px solid var(--neon-blue, #00f0ff);
+  border-bottom: 1.5px solid var(--neon-blue, #00f0ff);
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform .2s, border-color .2s;
+}
+
+.theme-select-value {
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: .28em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.theme-select-value-number,
+.theme-select-value-text {
+  display: inline-flex;
+  align-items: center;
+  height: 1em;
+  line-height: 1;
+}
+
+.theme-select-value-number {
+  font-family: var(--theme-font-family) !important;
+  font-weight: var(--theme-number-weight) !important;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "lnum" 1, "tnum" 1, "kern" 1;
+  letter-spacing: -0.025em;
+}
+
+.theme-select-value-text {
+  font-family: var(--theme-font-family) !important;
+  font-weight: var(--theme-body-weight) !important;
+  letter-spacing: 0;
+}
+
+.theme-select.is-open .theme-select-button,
+.theme-select-button:focus-visible {
+  outline: none;
+  border-color: var(--neon-pink, #ff2d78);
+  box-shadow: 0 0 0 3px rgba(255, 45, 120, .11), 0 0 24px rgba(255, 45, 120, .13);
+}
+
+.theme-select.is-open .theme-select-button::after {
+  border-color: var(--neon-pink, #ff2d78);
+  transform: rotate(225deg) translate(-2px, -2px);
+}
+
+.theme-select-list {
+  position: absolute;
+  z-index: 10000;
+  top: calc(100% + 7px);
+  right: 0;
+  left: 0;
+  max-height: min(320px, 45vh);
+  margin: 0;
+  padding: 7px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid rgba(255, 45, 120, .42);
+  border-radius: 13px;
+  background: rgba(7, 7, 22, .985);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, .58), 0 0 30px rgba(255, 45, 120, .1);
+  backdrop-filter: blur(18px);
+  list-style: none;
+}
+
+.theme-select-list[hidden] { display: none; }
+
+.theme-select-option {
+  min-height: 43px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: rgba(232, 232, 240, .82);
+  cursor: pointer;
+  font-size: .84rem;
+  font-weight: 400;
+  line-height: 1.35;
+  transition: color .16s, border-color .16s, background .16s;
+}
+
+.theme-select-option:hover,
+.theme-select-option.is-focused {
+  border-color: rgba(0, 240, 255, .2);
+  background: rgba(0, 240, 255, .075);
+  color: #fff;
+}
+
+.theme-select-option[aria-selected="true"] {
+  border-color: rgba(255, 45, 120, .26);
+  background: linear-gradient(90deg, rgba(255, 45, 120, .16), rgba(191, 0, 255, .06));
+  color: #fff;
+}
+
+.theme-select-option[aria-selected="true"]::before {
+  content: "✓";
+  color: var(--neon-pink, #ff2d78);
+  font-weight: 700;
+}
+
+.theme-select-option.is-disabled {
+  opacity: .42;
+  cursor: not-allowed;
+}
+
+@media (max-width: 620px) {
+  .theme-select-button { min-height: 50px; font-size: 1rem; }
+  .theme-select-option { min-height: 46px; font-size: .94rem; }
+}
+
+/* Global themed quantity/number control */
+.theme-number {
+  width: 100%;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 46px minmax(54px, 1fr) 46px;
+  align-items: stretch;
+  overflow: hidden;
+  border: 1px solid rgba(0, 240, 255, .28);
+  border-radius: 10px;
+  background: linear-gradient(145deg, rgba(13, 13, 34, .98), rgba(7, 7, 22, .98));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .035);
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.theme-number:focus-within {
+  border-color: var(--neon-pink, #ff2d78);
+  box-shadow: 0 0 0 3px rgba(255, 45, 120, .11), 0 0 24px rgba(255, 45, 120, .13);
+}
+
+.theme-number input[type="number"] {
+  width: 100% !important;
+  min-width: 0;
+  min-height: 48px;
+  margin: 0 !important;
+  padding: 10px 6px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  color: #fff !important;
+  box-shadow: none !important;
+  appearance: textfield;
+  -moz-appearance: textfield;
+  font-family: var(--theme-font-family) !important;
+  font-size: .95rem;
+  font-weight: var(--theme-number-weight) !important;
+  font-variant-numeric: lining-nums tabular-nums;
+  text-align: center;
+}
+
+.theme-number input[type="number"]::-webkit-inner-spin-button,
+.theme-number input[type="number"]::-webkit-outer-spin-button {
+  margin: 0;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.theme-number-button {
+  min-width: 46px;
+  min-height: 48px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: rgba(255, 255, 255, .018);
+  color: var(--neon-blue, #00f0ff);
+  cursor: pointer;
+  font-family: var(--theme-font-family) !important;
+  font-size: 1.25rem;
+  font-weight: 300;
+  line-height: 1;
+  transition: color .18s, background .18s, box-shadow .18s;
+}
+
+.theme-number-button:first-child { border-right: 1px solid rgba(0, 240, 255, .12); }
+.theme-number-button:last-child { border-left: 1px solid rgba(0, 240, 255, .12); }
+
+.theme-number-button:hover,
+.theme-number-button:focus-visible {
+  outline: none;
+  background: rgba(255, 45, 120, .1);
+  color: var(--neon-pink, #ff2d78);
+  box-shadow: inset 0 0 18px rgba(255, 45, 120, .08);
+}
+
+.theme-number-button:disabled {
+  opacity: .3;
+  cursor: not-allowed;
+}
+
+@media (max-width: 620px) {
+  .theme-number { grid-template-columns: 50px minmax(58px, 1fr) 50px; }
+  .theme-number input[type="number"], .theme-number-button { min-height: 50px; }
+}

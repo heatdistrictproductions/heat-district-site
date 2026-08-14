@@ -61,4 +61,10 @@
     window.addEventListener('resize',() => { if(window.innerWidth > 900) close(); });
   }
   document.addEventListener('DOMContentLoaded',() => { render();init(); });
+  if (!document.querySelector('script[src="js/section-intros.js"]')) {
+    const sectionIntroScript = document.createElement('script');
+    sectionIntroScript.src = 'js/section-intros.js';
+    sectionIntroScript.defer = true;
+    document.head.appendChild(sectionIntroScript);
+  }
 })();

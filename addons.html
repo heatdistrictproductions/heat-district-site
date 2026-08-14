@@ -862,7 +862,7 @@
     }
 
   </style>
-</head>
+<link rel="stylesheet" href="css/theme.css?v=20260813-5"></head>
 
 <body>
   <nav>
@@ -1026,9 +1026,9 @@
   <script>
     const ADDONS = {
       'sound-system': { id: 'sound-system', label: 'Sound', title: 'Complete QSC Sound System', image: 'images/optimized/products/sound-system.webp', mediaClass: 'addon-media-wide', copy: 'Package-only upgrade with 2 QSC K12 top speakers and 2 QSC K18 subwoofers. Includes standard setup and breakdown.', options: [{ id: 'sound-system-complete', label: '2 QSC K12 Tops + 2 QSC K18 Subs', name: 'Complete QSC Sound System — 2 Tops + 2 Subs', category: 'Sound', price: 445.5, unit: 'event', displayUnit: 'event' }] },
-      'pa-speaker': { id: 'pa-speaker', label: 'Sound', title: 'QSC K12 Top Speaker', image: 'images/optimized/products/qsc-top-speaker.webp', mediaClass: 'addon-media-gear', copy: 'Add 1 QSC K12 top speaker for extra audio coverage beyond the main package setup.', options: [{ id: 'pa-speaker-single', label: '1 QSC K12 Top Speaker', name: 'QSC K12 Top Speaker', category: 'Sound', price: 85.5, unit: 'speaker', displayUnit: 'speaker' }] },
-      'additional-speaker': { id: 'additional-speaker', label: 'Sound', title: 'Additional QSC K12 Speaker', image: 'images/optimized/products/qsc-top-speaker.webp', mediaClass: 'addon-media-gear', copy: 'Add an extra QSC K12 top speaker for larger rooms, side areas, cocktail spaces, ceremonies, outdoor sections, or overflow areas.', options: [{ id: 'additional-speaker-single', label: '1 Additional QSC K12 Speaker', name: 'Additional QSC K12 Speaker', category: 'Sound', price: 85.5, unit: 'speaker', displayUnit: 'speaker' }] },
-      'additional-subwoofer': { id: 'additional-subwoofer', label: 'Sound', title: 'QSC K18 Subwoofer', image: 'images/optimized/products/qsc-subwoofer.webp', mediaClass: 'addon-media-gear', copy: 'Add 1 QSC K18 subwoofer for stronger bass and more low-end impact.', options: [{ id: 'additional-subwoofer-single', label: '1 QSC K18 Subwoofer', name: 'QSC K18 Subwoofer', category: 'Sound', price: 112.5, unit: 'subwoofer', displayUnit: 'subwoofer' }] },
+      'pa-speaker': { id: 'pa-speaker', label: 'Sound', title: 'QSC K12 Top Speaker', image: 'images/optimized/products/qsc-top-speaker.webp', mediaClass: 'addon-media-gear', copy: 'Add 1 QSC K12 top speaker for extra audio coverage beyond the main package setup.', options: [{ id: 'pa-speaker-single', label: '1 QSC K12 Top Speaker', name: 'QSC K12 Top Speaker', category: 'Sound', price: 103.5, unit: 'speaker', displayUnit: 'speaker' }] },
+      'additional-speaker': { id: 'additional-speaker', label: 'Sound', title: 'Additional QSC K12 Speaker', image: 'images/optimized/products/qsc-top-speaker.webp', mediaClass: 'addon-media-gear', copy: 'Add an extra QSC K12 top speaker for larger rooms, side areas, cocktail spaces, ceremonies, outdoor sections, or overflow areas.', options: [{ id: 'additional-speaker-single', label: '1 Additional QSC K12 Speaker', name: 'Additional QSC K12 Speaker', category: 'Sound', price: 103.5, unit: 'speaker', displayUnit: 'speaker' }] },
+      'additional-subwoofer': { id: 'additional-subwoofer', label: 'Sound', title: 'QSC K18 Subwoofer', image: 'images/optimized/products/qsc-subwoofer.webp', mediaClass: 'addon-media-gear', copy: 'Add 1 QSC K18 subwoofer for stronger bass and more low-end impact.', options: [{ id: 'additional-subwoofer-single', label: '1 QSC K18 Subwoofer', name: 'QSC K18 Subwoofer', category: 'Sound', price: 148.5, unit: 'subwoofer', displayUnit: 'subwoofer' }] },
       'microphone': { id: 'microphone', label: 'Sound', title: 'Shure Wireless Microphone + Receiver', image: 'images/optimized/products/wireless-mic.webp', mediaClass: 'addon-media-gear', copy: 'Add 1 Shure wireless microphone with receiver for speeches, announcements, ceremony use, hosting, or introductions.', options: [{ id: 'microphone-single', label: '1 Shure Wireless Microphone + Receiver', name: 'Shure Wireless Microphone + Receiver', category: 'Sound', price: 40.5, unit: 'mic', displayUnit: 'mic' }] },
 
       'photography': { id: 'photography', label: 'Media Coverage', title: 'Photography', image: 'images/optimized/products/photography.webp', mediaClass: 'addon-media-wide', copy: 'Add professional event photography coverage focused on guests, moments, details, energy, and the overall look of the event.', options: [
@@ -1256,8 +1256,16 @@
 
     let estimate = null;
 
+    function formatPriceValue(value) {
+      const amount = Number(value || 0);
+      return amount.toLocaleString(undefined, {
+        minimumFractionDigits: amount % 1 === 0 ? 0 : 2,
+        maximumFractionDigits: 2
+      });
+    }
+
     function formatCurrency(value) {
-      return '$' + Number(value || 0).toLocaleString();
+      return '$' + formatPriceValue(value);
     }
 
     function safeJsonParse(value) {
@@ -1540,7 +1548,7 @@
       return '<article class="addon-card" data-addon-card="' + escapeHtml(addon.id) + '" data-card-id="' + escapeHtml(cardId) + '">' +
         '<div class="addon-media ' + escapeHtml(mediaClass) + '"><img class="addon-img" src="' + escapeHtml(imagePath) + '" alt="' + escapeHtml(addon.title) + '" loading="lazy" decoding="async" onerror="this.closest(\'.addon-media\').classList.add(\'image-missing\'); this.remove();"/><div class="addon-image-fallback">Add Product Image<span>' + escapeHtml(imagePath) + '</span></div></div>' +
         '<p class="addon-category">' + escapeHtml(addon.label) + '</p><h3 class="addon-name">' + escapeHtml(addon.title) + '</h3><p class="addon-copy">' + escapeHtml(addon.copy) + '</p>' + optionsHtml +
-        '<div class="addon-bottom"><div class="addon-price" id="price-' + escapeHtml(cardId) + '"><span class="addon-price-symbol">$</span><span class="addon-price-value">' + Number(firstOption.price).toLocaleString() + '</span><span class="addon-price-unit">/ ' + escapeHtml(firstOption.displayUnit) + '</span></div>' +
+        '<div class="addon-bottom"><div class="addon-price" id="price-' + escapeHtml(cardId) + '"><span class="addon-price-symbol">$</span><span class="addon-price-value">' + formatPriceValue(firstOption.price) + '</span><span class="addon-price-unit">/ ' + escapeHtml(firstOption.displayUnit) + '</span></div>' +
         '<div class="addon-actions"><div class="qty-control"><button class="qty-btn" type="button" onclick="changeAddonQty(\'' + addon.id + '\', \'' + cardId + '\', -1)">−</button><div class="qty-value" id="qty-' + escapeHtml(cardId) + '">0</div><button class="qty-btn" type="button" onclick="changeAddonQty(\'' + addon.id + '\', \'' + cardId + '\', 1)">+</button></div><button class="add-btn" type="button" onclick="addOneAddon(\'' + addon.id + '\', \'' + cardId + '\')">Add</button></div></div></article>';
     }
 
@@ -1569,7 +1577,7 @@
       const card = document.querySelector('[data-card-id="' + cardId + '"]');
 
       if (option && priceEl) {
-        priceEl.innerHTML = '<span class="addon-price-symbol">$</span><span class="addon-price-value">' + Number(option.price).toLocaleString() + '</span><span class="addon-price-unit">/ ' + escapeHtml(option.displayUnit) + '</span>';
+        priceEl.innerHTML = '<span class="addon-price-symbol">$</span><span class="addon-price-value">' + formatPriceValue(option.price) + '</span><span class="addon-price-unit">/ ' + escapeHtml(option.displayUnit) + '</span>';
       }
 
       if (option && qtyEl) {
@@ -1946,5 +1954,6 @@
     renderEstimate();
   </script>
   <script src="js/global-cart.js?v=20260716-4"></script>
-</body>
+  <script src="js/section-intros.js"></script>
+<script src="js/theme.js?v=20260813-5"></script></body>
 </html>

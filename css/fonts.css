@@ -1,28 +1,4 @@
 @font-face {
-  font-family: "Orbitron";
-  src: url("../fonts/orbitron-400.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Orbitron";
-  src: url("../fonts/orbitron-700.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Orbitron";
-  src: url("../fonts/orbitron-900.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 900;
-  font-display: swap;
-}
-
-@font-face {
   font-family: "Raleway";
   src: url("../fonts/raleway-300.ttf") format("truetype");
   font-style: normal;
@@ -59,7 +35,6 @@
 :root {
   --font-body: "Raleway", sans-serif;
   --font-display: "Raleway", sans-serif;
-  --font-technical: "Raleway", sans-serif;
 }
 
 :where(html, body, button, input, select, textarea) {
@@ -134,7 +109,7 @@
   .section-number,
   .work-category-index
 ) {
-  font-family: var(--font-technical);
+  font-family: var(--font-body);
 }
 
 /* Role-based typography is enforced so legacy page styles cannot create
@@ -174,9 +149,27 @@
   .party-slider-status,
   .package-gallery-count
 ) {
-  font-family: var(--font-technical) !important;
+  font-family: var(--font-body) !important;
+  font-weight: 300;
   font-variant-numeric: lining-nums tabular-nums;
   font-feature-settings: "lnum" 1, "tnum" 1;
+}
+
+/* Every customer-facing price, total and count uses the same thin Raleway
+   numerals as the package pricing cards. */
+:where(
+  .price-value,
+  .global-cart-button-count,
+  .global-cart-button-total,
+  .cart-count,
+  .cart-total,
+  .quantity-value,
+  .duration-value
+) {
+  font-family: var(--font-body) !important;
+  font-weight: 300 !important;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "lnum" 1, "tnum" 1, "kern" 1;
 }
 
 :where(

@@ -936,11 +936,24 @@
     }
 
     .pkg-controls label {
+      flex: 0 0 auto;
       font-size: 0.58rem;
       letter-spacing: 2.8px;
       text-transform: uppercase;
       color: rgba(232,232,240,0.42);
       font-weight: 600;
+      white-space: nowrap;
+      overflow-wrap: normal;
+      hyphens: none;
+    }
+
+    .pkg-controls .theme-select {
+      flex: 1 1 auto;
+      width: auto;
+    }
+
+    .pkg-card.theme-dropdown-active {
+      z-index: 900 !important;
     }
 
     .pkg-hours-select {
@@ -2473,11 +2486,9 @@
       <p class="packages-label">Choose Your Package</p>
       <h2 class="packages-title">Pick the Foundation, Then <strong>Customize the Rest</strong></h2>
       <p class="packages-sub">
-        Packages are listed first so you can choose the main experience before comparing every detail.
-        Every listed package price includes a personalized timeline and music consultation, professional DJ and MC support, delivery, required staffing, standard setup and breakdown,
-        and applicable taxes within Miami-Dade, Broward, Palm Beach, and Monroe counties. Travel outside those counties is quoted separately.
-        Cold sparks, fog, CO2, and other special effects are subject to venue approval. Final recommendations may depend on venue size,
-        power access, layout, event type, and venue restrictions.
+        Start with a package, then customize it around your event.
+        Listed prices include the stated timeline and music consultation, professional DJ and MC support, delivery, required staffing, standard setup and breakdown, and applicable taxes in Miami-Dade, Broward, Palm Beach, and Monroe counties.
+        Special effects require venue approval; travel beyond those counties may be quoted separately.
       </p>
 
       <div class="packages-grid-scroll">
@@ -2526,7 +2537,7 @@
               </select>
             </div>
 
-            <p class="pkg-note">2–3 hrs: 15% off · 4hr base · +10%/hr through 6 · +15%/hr after 6</p>
+            <p class="pkg-note">2 hrs: $850 · 3 hrs: $1,100 · 4hr base · +10%/hr through 6 · +15%/hr after 6</p>
 
             <p class="pkg-includes-label">What's Included</p>
             <ul class="pkg-includes">
@@ -3316,7 +3327,12 @@
       return Math.round(value / 50) * 50;
     }
 
-    function calculatePackagePrice(basePrice, hours) {
+    function calculatePackagePrice(basePrice, hours, packageName) {
+      if (packageName === 'Essential Package') {
+        if (hours === 2) return 850;
+        if (hours === 3) return 1100;
+      }
+
       if (hours <= 3) {
         return roundToNearestFifty(basePrice * 0.85);
       }
@@ -3349,7 +3365,7 @@
       if (!hoursSelect || !priceValue || !priceUnit) return;
 
       const hours = Number(hoursSelect.value || 4);
-      const price = calculatePackagePrice(basePrice, hours);
+      const price = calculatePackagePrice(basePrice, hours, card.dataset.packageName);
 
       priceValue.textContent = formatCurrency(price);
       priceUnit.textContent = '/ ' + hours + 'hrs';
@@ -3391,7 +3407,7 @@
       const basePrice = Number(card.dataset.basePrice || 0);
       const hoursSelect = card.querySelector('.pkg-hours-select');
       const hours = hoursSelect ? Number(hoursSelect.value || 4) : 4;
-      const packagePrice = calculatePackagePrice(basePrice, hours);
+      const packagePrice = calculatePackagePrice(basePrice, hours, packageName);
 
       const cardIncludes = Array.from(card.querySelectorAll('.pkg-includes li')).map(function(item) {
         return item.textContent.trim();

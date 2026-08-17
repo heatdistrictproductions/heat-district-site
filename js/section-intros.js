@@ -95,16 +95,9 @@
     if (page === 'gallery.html') {
       document.querySelector('.featured-work-intro')?.setAttribute('data-hd-pattern', 'A');
       document.querySelector('.party-directory-header')?.setAttribute('data-hd-pattern', 'B');
-      var galleryCta = document.querySelector('.cta-section');
-      if (galleryCta) {
-        var galleryEyebrow = document.createElement('span');
-        galleryCta.insertBefore(galleryEyebrow, galleryCta.querySelector(':scope > h2'));
-        decorate(galleryCta, galleryEyebrow, galleryCta.querySelector(':scope > h2'), galleryCta.querySelector(':scope > p'), 'c', true);
-      }
     }
 
     if (page === 'faq.html') {
-      decorateExisting(document.querySelector('.faq-intro .intro-card:first-child'), 'b', { eyebrow: '.intro-kicker', title: '.intro-title', copy: '.intro-copy' });
       applySequence(document.querySelectorAll('.faq-section'), ['c', 'a', 'c', 'b', 'c', 'a'], function (node, pattern) {
         var head = node.querySelector(':scope > .section-head');
         if (!head) return;

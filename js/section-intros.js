@@ -117,7 +117,9 @@
     }
 
     if (document.querySelector('.category-hero')) {
-      decorateExisting(document.querySelector('.intro-grid > div:first-child'), 'a', { eyebrow: '.section-label', title: 'h2', copy: ':scope > p' });
+      /* The intro-grid already owns the page's two-column composition. Do not
+         turn its first card into another two-column intro pattern; that nested
+         grid squeezed headings and copy at tablet/intermediate widths. */
       wrapLeading(document.querySelector('.options-section'), 'b', { eyebrow: '.section-label', title: 'h2', copy: 'p' });
       wrapLeading(document.querySelector('.seo-detail'), 'c', { eyebrow: '.section-label', title: 'h2', copy: 'p' });
       wrapLeading(document.querySelector('.faq'), 'a', { eyebrow: '.section-label', title: 'h2', copy: 'p' });

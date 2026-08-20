@@ -260,6 +260,144 @@
     sync();
   }
 
+  function enhanceHomeEventFinder() {
+    const tabList = document.querySelector('.event-tabs');
+    const panel = document.getElementById('eventPanel');
+    const image = document.getElementById('eventImage');
+    const number = document.getElementById('eventNumber');
+    const eyebrow = document.getElementById('eventEyebrow');
+    const heading = document.getElementById('eventHeading');
+    const description = document.getElementById('eventDescription');
+    const link = document.getElementById('eventLink');
+
+    if (!tabList || !panel || !image || !number || !eyebrow || !heading || !description || !link) return;
+    if (tabList.dataset.themeEventFinderReady === 'true') return;
+    tabList.dataset.themeEventFinderReady = 'true';
+
+    const events = {
+      wedding: {
+        n: '01',
+        label: 'Weddings',
+        eyebrow: 'Elegant, never expected',
+        heading: 'A reception with a pulse.',
+        description: 'Clean ceremony sound, a confident MC, intentional lighting and a dance floor that feels alive from the first entrance to the last song.',
+        image: 'gallery/optimized/hero-feature.webp',
+        alt: 'Elegant South Florida wedding celebration produced by Heat District',
+        link: 'Explore wedding-ready packages'
+      },
+      quince: {
+        n: '02',
+        label: 'Quinces',
+        eyebrow: 'A milestone in full color',
+        heading: 'Her entrance. Her energy.',
+        description: 'A polished production that moves from spotlight moments to a packed dance floor, with lighting and music shaped around the celebration.',
+        image: 'gallery/optimized/event-photo-2.webp',
+        alt: 'Colorful South Florida quince celebration produced by Heat District',
+        link: 'Explore quince-ready packages'
+      },
+      party: {
+        n: '03',
+        label: 'Birthdays + Private Events',
+        eyebrow: 'Your idea, fully produced',
+        heading: 'A private celebration with presence.',
+        description: 'From milestone birthdays to private parties, we build the sound, lighting and production around the venue, guest list and energy you want.',
+        image: 'gallery/optimized/event-photo-4.webp',
+        alt: 'Birthday and private event atmosphere with professional Heat District production',
+        link: 'Explore party-ready packages'
+      },
+      school: {
+        n: '04',
+        label: 'Schools',
+        eyebrow: 'School events, fully produced',
+        heading: 'Make the school event feel bigger.',
+        description: 'Graduations, proms, dances and school celebrations with professional sound, DJ, lighting, effects and production scaled to the venue and crowd.',
+        image: 'gallery/party-galleries/2026%20Highschool%20Graduation/DSC02655.jpg',
+        alt: '2026 South Florida high school graduation produced by Heat District Productions',
+        link: 'Explore school-ready packages'
+      }
+    };
+
+    const keys = ['wedding', 'quince', 'party', 'school'];
+    const buttons = keys.map(function (key, index) {
+      const button = document.createElement('button');
+      button.className = 'event-tab';
+      button.type = 'button';
+      button.setAttribute('role', 'tab');
+      button.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
+      button.dataset.event = key;
+      button.textContent = events[key].label;
+      return button;
+    });
+
+    tabList.replaceChildren.apply(tabList, buttons);
+
+    function activate(button) {
+      const item = events[button.dataset.event];
+      if (!item) return;
+      buttons.forEach(function (tab) { tab.setAttribute('aria-selected', 'false'); });
+      button.setAttribute('aria-selected', 'true');
+      image.src = item.image;
+      image.alt = item.alt;
+      number.textContent = item.n;
+      eyebrow.textContent = item.eyebrow;
+      heading.textContent = item.heading;
+      description.textContent = item.description;
+      link.textContent = item.link;
+    }
+
+    buttons.forEach(function (button, index) {
+      button.addEventListener('click', function () { activate(button); });
+      button.addEventListener('keydown', function (event) {
+        if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+        event.preventDefault();
+        const direction = event.key === 'ArrowRight' ? 1 : -1;
+        const next = (index + direction + buttons.length) % buttons.length;
+        buttons[next].focus();
+        activate(buttons[next]);
+      });
+    });
+
+    activate(buttons[0]);
+  }
+
+  function enhanceGalleryViewerNavigation() {
+    const viewer = document.getElementById('galleryViewer');
+    if (!viewer || viewer.dataset.themeSideNavReady === 'true') return;
+
+    const panel = viewer.querySelector('.gallery-viewer-panel');
+    const controls = viewer.querySelector('.gallery-viewer-controls');
+    const previous = viewer.querySelector('[data-viewer-prev]');
+    const next = viewer.querySelector('[data-viewer-next]');
+    if (!panel || !controls || !previous || !next) return;
+
+    viewer.dataset.themeSideNavReady = 'true';
+    controls.classList.add('gallery-viewer-count-only');
+
+    previous.className = 'gallery-viewer-side-arrow gallery-viewer-side-arrow-prev';
+    next.className = 'gallery-viewer-side-arrow gallery-viewer-side-arrow-next';
+    previous.textContent = '‹';
+    next.textContent = '›';
+    previous.setAttribute('aria-label', 'Previous gallery item');
+    next.setAttribute('aria-label', 'Next gallery item');
+
+    panel.appendChild(previous);
+    panel.appendChild(next);
+
+    if (!document.getElementById('theme-gallery-side-nav-style')) {
+      const style = document.createElement('style');
+      style.id = 'theme-gallery-side-nav-style';
+      style.textContent = [
+        '.gallery-viewer-controls.gallery-viewer-count-only{justify-content:center;min-height:32px}',
+        '.gallery-viewer-side-arrow{position:absolute;z-index:8;top:50%;display:grid;place-items:center;width:52px;height:72px;padding:0;border:1px solid rgba(0,240,255,.34);border-radius:999px;background:rgba(5,5,15,.82);backdrop-filter:blur(10px);color:#fff;font-size:2.35rem;font-weight:300;line-height:1;cursor:pointer;transform:translateY(-50%);transition:border-color .2s ease,color .2s ease,background .2s ease,box-shadow .2s ease}',
+        '.gallery-viewer-side-arrow:hover,.gallery-viewer-side-arrow:focus-visible{border-color:#00f0ff;color:#00f0ff;background:rgba(5,5,15,.94);box-shadow:0 0 22px rgba(0,240,255,.16);outline:none}',
+        '.gallery-viewer-side-arrow-prev{left:10px}',
+        '.gallery-viewer-side-arrow-next{right:10px}',
+        '@media(max-width:760px){.gallery-viewer-side-arrow{width:42px;height:58px;font-size:1.9rem}.gallery-viewer-side-arrow-prev{left:5px}.gallery-viewer-side-arrow-next{right:5px}}'
+      ].join('');
+      document.head.appendChild(style);
+    }
+  }
+
   document.addEventListener('click', function (event) {
     if (!event.target.closest('.theme-select')) closeAll();
   });
@@ -270,6 +408,8 @@
 
   function start() {
     enhanceAll(document);
+    enhanceHomeEventFinder();
+    enhanceGalleryViewerNavigation();
     new MutationObserver(function (records) {
       records.forEach(function (record) {
         record.addedNodes.forEach(function (node) {

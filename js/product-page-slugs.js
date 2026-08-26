@@ -23,6 +23,7 @@
   'wireless-mic':'miami-wireless-microphone-rental',
   'cold-spark':'miami-cold-spark-machine-rental',
   'fog-machines':'miami-fog-machine-rental',
+  'disco-ball-20in':'miami-20-inch-disco-ball-rental',
   'co2-cannons':'miami-co2-cannon-rental',
   'co2-led-gun':'miami-co2-gun-rental',
   'uplights':'miami-uplighting-rental',

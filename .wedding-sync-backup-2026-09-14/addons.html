@@ -862,9 +862,7 @@
     }
 
   </style>
-  <style>.estimate-line:has(#summaryPackageHours[data-wedding]), .summary-line:has(#summaryPackageHours[data-wedding]) {display:block} #summaryPackageHours[data-wedding] {margin-top:8px} #summaryPackageHours[data-wedding] {display:block; max-width:100%; white-space:normal; line-height:1.6; overflow-wrap:anywhere; text-align:left}</style>
-  <link rel="stylesheet" href="css/theme.css?v=20260813-5">
-</head>
+<link rel="stylesheet" href="css/theme.css?v=20260813-5"></head>
 
 <body>
   <nav>
@@ -1461,11 +1459,11 @@
       const engine = getConflictEngine();
 
       if (!engine || !option) {
-        const warning = option && window.HeatDistrictWedding
-          ? window.HeatDistrictWedding.warning(getSelectedPackageName(), option.id) : '';
         return {
-          hasConflict: Boolean(warning), packageConflict: null, addonConflicts: [],
-          messages: warning ? [warning] : []
+          hasConflict: false,
+          packageConflict: null,
+          addonConflicts: [],
+          messages: []
         };
       }
 
@@ -1619,8 +1617,6 @@
           packagePrice: total,
           packageHours: Number(selectedPackage.hours) || 5,
           basePrice: Number(selectedPackage.basePrice) || total,
-          setupFinish: selectedPackage.setupFinish,
-          coverageLabel: selectedPackage.coverageLabel,
           packageIncludes: Array.isArray(selectedPackage.includes) ? selectedPackage.includes : [],
           packageCoverage: selectedPackage.coverage || selectedPackage.includedFeatures || {},
           addons: [],
@@ -1842,8 +1838,7 @@
 
       packageNameEl.textContent = estimate.package || 'No Package Selected';
       packagePriceEl.textContent = formatCurrency(estimate.packagePrice || 0);
-      packageHoursEl.toggleAttribute('data-wedding', estimate.package === 'Wedding Experience');
-      packageHoursEl.textContent = window.HeatDistrictWedding.summary(estimate) || (estimate.packageHours ? estimate.packageHours + ' hrs' : '0 hrs');
+      packageHoursEl.textContent = estimate.packageHours ? estimate.packageHours + ' hrs' : '0 hrs';
       summaryTotalEl.textContent = formatCurrency(estimate.total || 0);
 
       if (summaryDepositEl) {

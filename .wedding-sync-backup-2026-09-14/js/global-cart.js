@@ -435,79 +435,6 @@
     }
   };
 
-
-  const weddingDefinition = {
-    name: 'Wedding Experience', basePrice: 5500, hours: 5,
-    coverageLabel: '1-Hour Cocktail Hour + 4-Hour Reception',
-    coverage: { dj: 1, mc: 1, sound: 1, microphone: 1, uplights: 20,
-      'dance-floor': 1, danceFloorSize: '20x20', danceFloorFinish: 'Black', danceFloorPanelRows: 12, danceFloorPanelColumns: 12, danceFloorPanelCount: 144, 'cold-sparks': 4,
-      'co2-gun': 2, fog: 2, totems: 2, 'moving-heads': 2, cocktailHours: 1, receptionHours: 4 },
-    includes: [
-      'Professional DJ + MC support',
-      'Personalized wedding timeline and music consultation',
-      '1-hour cocktail-hour audio coverage + 4-hour reception sound system',
-      'Wireless microphone', '20 uplights',
-      '20 ft × 20 ft LED / Infinity Mirror Dance Floor — 12 × 12 panels (144 total), black frame and panels',
-      '2 Global Truss Totems', '2 Intimidator Spot 355 IRC Moving Heads', '4 Cold Spark Machines', '2 LED CO2 Guns',
-      '2 Vertical LED Fog Machines', 'DJ booth / facade',
-      'Choice of Full White or Full Black setup',
-      'Professional setup and breakdown',
-      'Delivery, required staffing and applicable taxes within Miami-Dade, Broward, Palm Beach and Monroe counties'
-    ]
-  };
-  const weddingWarnings = {};
-  function weddingOverlap(ids, included) {
-    ids.forEach(function(id) {
-      weddingWarnings[id] = 'Wedding Experience already includes ' + included + '.';
-    });
-  }
-  weddingOverlap(['sound-system-complete', 'pa-speaker-single', 'additional-speaker-single', 'additional-subwoofer-single'], 'cocktail-hour audio and a reception sound system');
-  weddingOverlap(['microphone-single'], 'a wireless microphone');
-  weddingOverlap(['dj-service-4hr'], 'a professional DJ, MC support and wedding timeline consultation');
-  weddingOverlap(['uplights-5-pack', 'uplights-10-pack', 'uplights-15-pack', 'glow-lighting-package', 'pulse-lighting-package', 'district-lighting-package'], '20 uplights');
-  weddingOverlap(['cold-sparks-2-units', 'cold-sparks-4-units'], '4 cold spark machines');
-  weddingOverlap(['co2-led-gun-1-unit'], '2 LED CO2 guns');
-  weddingOverlap(['fog-machines-2-units'], '2 fog machines');
-  weddingOverlap(['trussing-2-totems', 'trussing-4-totems', 'moving-heads-2-heads-2-totems', 'moving-heads-4-heads-4-totems', 'moving-heads-4-heads-2-totems-goal-post', 'beam-140sr-2-heads-2-totems', 'beam-140sr-4-heads-4-totems', 'beam-140sr-4-heads-2-totems-goal-post', 'led-wall-2-totems'], '2 Global Truss totems');
-  weddingOverlap(['dance-floor-10x10', 'dance-floor-12x12', 'dance-floor-14x14', 'dance-floor-16x16', 'dance-floor-18x18', 'dance-floor-20x20'], 'a 20 ft × 20 ft LED / Infinity Mirror Dance Floor');
-  weddingOverlap(['moving-heads-solo', 'moving-heads-2-heads-goal-post', 'moving-heads-4-heads-goal-post'], '2 Intimidator Spot 355 IRC moving heads');
-  PACKAGE_DUPLICATE_MAP['Wedding Experience'] = weddingWarnings;
-  window.HeatDistrictWedding = {
-    definition: weddingDefinition,
-    summary: function(estimate) {
-      if (!estimate) return '';
-      if (estimate.package !== weddingDefinition.name) {
-        if (!estimate.setupFinish) return '';
-        const packageHours = Number(estimate.packageHours || 0);
-        const packageFinish = estimate.setupFinish === 'Full White' ? 'Full White' : 'Full Black';
-        return (packageHours ? packageHours + ' hrs · ' : '') + 'Setup: ' + packageFinish;
-      }
-      const finish = estimate.setupFinish === 'Full Black' ? 'Full Black' : 'Full White';
-      return weddingDefinition.coverageLabel + ' · Setup: ' + finish +
-        ' · 20 ft × 20 ft LED / Infinity Mirror Dance Floor (12 × 12 panels) · 20 uplights · 2 moving heads';
-    },
-    warning: function(packageName, optionId) {
-      return packageName === weddingDefinition.name ? weddingWarnings[optionId] || '' : '';
-    }
-  };
-
-  [ESTIMATE_KEY, SELECTED_PACKAGE_KEY].forEach(function(key) {
-    try {
-      const item = safeJsonParse(sessionStorage.getItem(key));
-      if (!item || (item.package || item.name) !== weddingDefinition.name) return;
-      if (key === ESTIMATE_KEY) {
-        item.packageIncludes = weddingDefinition.includes;
-        item.includedItems = weddingDefinition.includes;
-        item.packageCoverage = weddingDefinition.coverage;
-      } else {
-        item.includes = weddingDefinition.includes;
-        item.coverage = weddingDefinition.coverage;
-        item.includedFeatures = weddingDefinition.coverage;
-      }
-      sessionStorage.setItem(key, JSON.stringify(item));
-    } catch (_) { /* The selection UI handles unavailable browser storage. */ }
-  });
-
   const ADDON_FEATURES = {
     'pa-speaker-single': ['sound', 'top-speaker'],
     'additional-speaker-single': ['sound', 'top-speaker'],
@@ -1599,9 +1526,10 @@
           key: '__package__',
           name: packageName,
 
-          meta: window.HeatDistrictWedding.summary(normalizedEstimate) || (packageHours
-            ? packageHours + ' hrs · Base package'
-            : 'Base package'),
+          meta: packageHours
+            ? packageHours +
+              ' hrs · Base package'
+            : 'Base package',
 
           total: packagePrice,
           removable: false

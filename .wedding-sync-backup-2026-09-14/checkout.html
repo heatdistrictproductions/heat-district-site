@@ -1401,9 +1401,7 @@
     }
 
   </style>
-  <style>.estimate-line:has(#summaryPackageHours[data-wedding]), .summary-line:has(#summaryPackageHours[data-wedding]) {display:block} #summaryPackageHours[data-wedding] {margin-top:8px} #summaryPackageHours[data-wedding] {display:block; max-width:100%; white-space:normal; line-height:1.6; overflow-wrap:anywhere; text-align:left}</style>
-  <link rel="stylesheet" href="css/theme.css?v=20260813-5">
-</head>
+<link rel="stylesheet" href="css/theme.css?v=20260813-5"></head>
 
 <body>
 
@@ -2033,8 +2031,10 @@
     }
 
     if (packageHoursEl) {
-      packageHoursEl.toggleAttribute('data-wedding', estimate.package === 'Wedding Experience');
-      packageHoursEl.textContent = window.HeatDistrictWedding.summary(estimate) || (packageHours ? packageHours + ' hrs' : '0 hrs');
+      packageHoursEl.textContent =
+        packageHours
+          ? packageHours + ' hrs'
+          : '0 hrs';
     }
 
     if (summaryTotalEl) {
@@ -2629,8 +2629,9 @@
       Number(estimate.packagePrice || 0) > 0
     ) {
       selectedItems.push({
-        name: (estimate.package || 'Selected Package') +
-          (window.HeatDistrictWedding.summary(estimate) ? ' — ' + window.HeatDistrictWedding.summary(estimate) : ''),
+        name:
+          estimate.package ||
+          'Selected Package',
 
         qty: 1,
 
@@ -2662,7 +2663,6 @@
     ].filter(Boolean);
 
     const notesParts = [
-      ...(window.HeatDistrictWedding.summary(estimate) ? [window.HeatDistrictWedding.summary(estimate), 'Included: ' + (estimate.packageIncludes || []).join('; '), ''] : []),
       'Event Date: ' +
       (checkoutDetails.eventDate || 'Not provided'),
 
@@ -2802,10 +2802,6 @@
 
       packageHours:
         Number(estimate.packageHours || 0),
-
-      setupFinish: estimate.setupFinish || '',
-      coverageLabel: estimate.coverageLabel || '',
-      packageIncludes: estimate.packageIncludes || [],
 
       total:
         total,

@@ -107,13 +107,13 @@
   font-family: var(--theme-font-family);
 }
 
-.theme-select.is-open { z-index: 10001; }
+.theme-select.is-open { z-index: 3; }
 
-/* A high z-index on the menu alone cannot escape a sibling card's stacking
-   context. theme.js marks the whole owning card while its menu is open. */
+/* Lift the open dropdown above neighboring cards, but keep its owning card
+   below the site navigation, cart, and modal layers (999 and above). */
 .theme-dropdown-active {
   position: relative !important;
-  z-index: 9999 !important;
+  z-index: 3 !important;
   overflow: visible !important;
 }
 
@@ -201,7 +201,7 @@
 
 .theme-select-list {
   position: absolute;
-  z-index: 10000;
+  z-index: 4;
   top: calc(100% + 7px);
   right: 0;
   left: 0;

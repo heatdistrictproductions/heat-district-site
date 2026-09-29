@@ -1,4 +1,6 @@
 (function(root,factory){const value=factory();if(typeof module==='object'&&module.exports)module.exports=value;else root.HeatDistrictProductPageSlugs=value;})(typeof globalThis!=='undefined'?globalThis:this,function(){return {
+  'walking-on-clouds':'rental-walking-on-clouds',
+  'custom-projector-monogram':'rental-custom-projector-monogram',
   'sound-system':'miami-sound-system-rental',
   'led-cocktail-tables':'miami-led-cocktail-table-rental',
   'white-acrylic-chair':'miami-white-resin-chair-rental',

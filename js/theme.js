@@ -279,8 +279,8 @@
         n: '01',
         label: 'Weddings',
         eyebrow: 'Elegant, never expected',
-        heading: 'A reception with a pulse.',
-        description: 'Clean ceremony sound, a confident MC, intentional lighting and a dance floor that feels alive from the first entrance to the last song.',
+        heading: 'A reception built to move.',
+        description: 'Clean sound, confident hosting, intentional lighting and a dance floor built to stay alive from the first entrance to the last song.',
         image: 'gallery/optimized/hero-feature.webp',
         alt: 'Elegant South Florida wedding celebration produced by Heat District',
         link: 'Explore wedding-ready packages'
@@ -289,8 +289,8 @@
         n: '02',
         label: 'Quinces',
         eyebrow: 'A milestone in full color',
-        heading: 'Her entrance. Her energy.',
-        description: 'A polished production that moves from spotlight moments to a packed dance floor, with lighting and music shaped around the celebration.',
+        heading: 'Her entrance. Her moment.',
+        description: 'A polished production that carries every spotlight moment into a packed dance floor shaped around her celebration.',
         image: 'gallery/optimized/event-photo-2.webp',
         alt: 'Colorful South Florida quince celebration produced by Heat District',
         link: 'Explore quince-ready packages'
@@ -299,8 +299,8 @@
         n: '03',
         label: 'Birthdays + Private Events',
         eyebrow: 'Your idea, fully produced',
-        heading: 'A private celebration with presence.',
-        description: 'From milestone birthdays to private parties, we build the sound, lighting and production around the venue, guest list and energy you want.',
+        heading: 'A private party with presence.',
+        description: 'Sound, lighting and production shaped around your venue, guest list and the energy you want.',
         image: 'gallery/optimized/event-photo-4.webp',
         alt: 'Birthday and private event atmosphere with professional Heat District production',
         link: 'Explore party-ready packages'
@@ -309,8 +309,8 @@
         n: '04',
         label: 'Schools',
         eyebrow: 'School events, fully produced',
-        heading: 'Make the school event feel bigger.',
-        description: 'Graduations, proms, dances and school celebrations with professional sound, DJ, lighting, effects and production scaled to the venue and crowd.',
+        heading: 'Make every school event bigger.',
+        description: 'Professional sound, DJ, lighting and effects scaled for graduations, proms, dances and school celebrations.',
         image: 'gallery/party-galleries/2026%20Highschool%20Graduation/DSC02655.jpg',
         alt: '2026 South Florida high school graduation produced by Heat District Productions',
         link: 'Explore school-ready packages'

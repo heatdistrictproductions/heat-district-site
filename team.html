@@ -1199,6 +1199,34 @@
         padding: 60px 24px 100px;
       }
     }
+
+    /* Keep both portraits readable instead of forcing them into a shallow crop. */
+    .team-photo {
+      height: 420px;
+    }
+
+    .team-photo-img {
+      object-position: center;
+      transform: none;
+    }
+
+    @media (max-width: 1080px) {
+      .team-photo {
+        height: clamp(340px, 52vw, 500px);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .team-photo {
+        height: clamp(300px, 90vw, 390px);
+      }
+    }
+
+    @media (max-width: 430px) {
+      .team-photo {
+        height: 340px;
+      }
+    }
   </style>
 <link rel="stylesheet" href="css/theme.css?v=20260813-5"></head>
 

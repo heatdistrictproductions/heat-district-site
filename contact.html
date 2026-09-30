@@ -503,6 +503,9 @@
       color: #fff;
       margin-bottom: 12px;
       line-height: 1.2;
+      overflow-wrap: normal;
+      word-break: normal;
+      hyphens: none;
     }
 
     .panel-title strong {
@@ -517,6 +520,50 @@
       color: var(--muted-white);
       margin-bottom: 24px;
       font-weight: 400;
+    }
+
+    /* Contact cards are already columns in the page grid. If the shared intro
+       enhancer is present from an older cached script, force its nested intro
+       back to the intended stacked card layout. */
+    .contact-panel > .hd-section-intro,
+    .form-panel > .hd-section-intro,
+    .path-panel > .hd-section-intro {
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    .contact-panel > .hd-section-intro::before,
+    .contact-panel > .hd-section-intro::after,
+    .form-panel > .hd-section-intro::before,
+    .form-panel > .hd-section-intro::after,
+    .path-panel > .hd-section-intro::before,
+    .path-panel > .hd-section-intro::after {
+      content: none;
+    }
+
+    .contact-panel .hd-intro-title,
+    .form-panel .hd-intro-title,
+    .path-panel .hd-intro-title {
+      max-width: none;
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      line-height: 1.2;
+      letter-spacing: normal;
+      overflow-wrap: normal;
+      word-break: normal;
+    }
+
+    .contact-panel .hd-intro-copy,
+    .form-panel .hd-intro-copy,
+    .path-panel .hd-intro-copy {
+      max-width: none;
+      margin: 0 0 24px;
+      padding: 0;
+      border: 0;
+      background: none;
+      box-shadow: none;
     }
 
     .contact-list {
@@ -1592,6 +1639,6 @@
   </script>
 
   <script src="js/global-cart.js"></script>
-  <script src="js/section-intros.js"></script>
+    <script src="js/section-intros.js?v=20260929-1"></script>
 <script src="js/theme.js?v=20260813-5"></script></body>
 </html>

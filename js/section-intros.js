@@ -107,12 +107,11 @@
     }
 
     if (page === 'contact.html') {
-      [
-        ['.contact-panel', 'a'],
-        ['.path-panel', 'c'],
-        ['.form-panel', 'b']
-      ].forEach(function (item) {
-        wrapLeading(document.querySelector(item[0]), item[1], { eyebrow: '.panel-kicker', title: '.panel-title', copy: '.panel-copy' });
+      /* Contact cards already sit inside a responsive two-column page grid.
+         Keep their introductions stacked so the shared split-intro patterns do
+         not create a second, narrow grid that breaks headings into letters. */
+      document.querySelectorAll('.contact-panel, .path-panel, .form-panel').forEach(function (panel) {
+        panel.dataset.hdIntroReady = 'true';
       });
     }
 

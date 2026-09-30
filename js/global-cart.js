@@ -96,6 +96,38 @@
   };
 
   const PACKAGE_DUPLICATE_MAP = {
+    'Backyard Party Package': {
+      'pa-speaker-single':
+        'The Backyard Party Package already includes two QSC top speakers.',
+
+      'additional-speaker-single':
+        'The Backyard Party Package already includes two QSC top speakers.',
+
+      'microphone-single':
+        'The Backyard Party Package already includes a microphone.',
+
+      'glow-lighting-package':
+        'The Backyard Party Package already includes 5 uplights and an LED light bar.',
+
+      'pulse-lighting-package':
+        'The Backyard Party Package already includes uplights and an LED light bar. This package would add more lighting and moving heads.',
+
+      'district-lighting-package':
+        'The Backyard Party Package already includes uplights and an LED light bar. This package would add more lighting and effects.',
+
+      'uplights-5-pack':
+        'The Backyard Party Package already includes 5 uplights.',
+
+      'uplights-10-pack':
+        'The Backyard Party Package already includes 5 uplights.',
+
+      'uplights-15-pack':
+        'The Backyard Party Package already includes 5 uplights.',
+
+      'light-bar-single':
+        'The Backyard Party Package already includes an LED light bar.'
+    },
+
     'Essential Package': {
       'pa-speaker-single':
         'The Essential Package already includes a sound system with top speakers.',
@@ -939,6 +971,7 @@
         'undefined'
       ) {
         [
+          'Backyard Party Package',
           'Essential Package',
           'Signature Package',
           'Premier Package',

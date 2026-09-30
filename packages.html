@@ -57,6 +57,14 @@
         {
           "@type": "Offer",
           "position": 1,
+          "name": "Backyard Party Package",
+          "price": "1000",
+          "priceCurrency": "USD",
+          "url": "https://heatdistrictproductions.com/packages.html"
+        },
+        {
+          "@type": "Offer",
+          "position": 2,
           "name": "Essential Package",
           "price": "1300",
           "priceCurrency": "USD",
@@ -64,7 +72,7 @@
         },
         {
           "@type": "Offer",
-          "position": 2,
+          "position": 3,
           "name": "Signature Package",
           "price": "2200",
           "priceCurrency": "USD",
@@ -72,7 +80,7 @@
         },
         {
           "@type": "Offer",
-          "position": 3,
+          "position": 4,
           "name": "Premier Package",
           "price": "3000",
           "priceCurrency": "USD",
@@ -80,7 +88,7 @@
         },
         {
           "@type": "Offer",
-          "position": 4,
+          "position": 5,
           "name": "Elite Production Package",
           "price": "5000",
           "priceCurrency": "USD",
@@ -630,9 +638,9 @@
 
     .packages-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(250px, 1fr));
+      grid-template-columns: repeat(5, minmax(240px, 1fr));
       gap: 18px;
-      min-width: 1080px;
+      min-width: 1272px;
       align-items: stretch;
     }
 
@@ -1223,7 +1231,7 @@
 
     .comparison-path {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 12px;
       margin-top: 16px;
     }
@@ -1418,7 +1426,7 @@
 
     .comparison-table {
       width: 100%;
-      min-width: 840px;
+      min-width: 1020px;
       border-collapse: collapse;
       font-size: 0.76rem;
     }
@@ -2080,7 +2088,7 @@
       }
 
       .comparison-table {
-        min-width: 760px;
+        min-width: 960px;
       }
 
       .custom-build-card {
@@ -2467,7 +2475,7 @@
       }
 
       .comparison-table {
-        min-width: 720px;
+        min-width: 960px;
       }
 
       .funnel-section {
@@ -2599,7 +2607,7 @@
       }
 
       .comparison-table {
-        min-width: 680px;
+        min-width: 960px;
       }
 
       .comparison-baseline {
@@ -2906,6 +2914,68 @@
 
       <div class="packages-grid-scroll">
         <div class="packages-grid">
+
+          <div class="pkg-card" data-package-name="Backyard Party Package" data-base-price="1000" data-black-image="images/optimized/packages/backyard-party-package-black-20260929.jpg" data-white-image="images/optimized/packages/backyard-party-package-white-20260929.jpg" data-black-note="Black QSC speakers, stands, facade, uplights, light bar, and DJ equipment" data-white-note="White facade and white uplights; black QSC speakers, stands, light bar, and DJ equipment" style="--pkg-image: url('images/optimized/packages/backyard-party-package-black-20260929.jpg');">
+            <p class="pkg-tier">Backyard Ready</p>
+            <h3 class="pkg-name">Backyard Party Package</h3>
+            <p class="pkg-tagline">Best for private-home celebrations with up to 50 guests that need a professional DJ, clear sound, microphone support, and clean party lighting without subwoofers.</p>
+
+            <div class="pkg-visual" role="button" tabindex="0" data-gallery-key="backyard" aria-label="Open mini gallery for the Backyard Party Package">
+              <div class="pkg-visual-content">
+                <span class="pkg-visual-label">Setup Preview</span>
+                <div class="pkg-visual-title">Backyard DJ Setup</div>
+                <div class="pkg-visual-chips">
+                  <span class="pkg-visual-chip">2 QSC Tops</span>
+                  <span class="pkg-visual-chip">No Subs</span>
+                  <span class="pkg-visual-chip">5 Uplights</span>
+                </div>
+              </div>
+            </div>
+
+            <fieldset class="pkg-finish-picker">
+              <legend>Setup Finish</legend>
+              <div class="pkg-finish-switch">
+                <label><input class="pkg-finish-option" type="radio" name="backyard-finish" value="Full Black" checked><span>Black</span></label>
+                <label><input class="pkg-finish-option" type="radio" name="backyard-finish" value="Full White"><span>White</span></label>
+              </div>
+              <p class="pkg-finish-note" aria-live="polite">Black QSC speakers, stands, facade, uplights, light bar, and DJ equipment</p>
+            </fieldset>
+
+            <div class="pkg-price-wrap">
+              <span class="pkg-price-symbol">$</span>
+              <span class="pkg-price-value">1,000</span>
+              <span class="pkg-price-unit">/ 4hrs</span>
+            </div>
+
+            <p class="pkg-duration">Backyard DJ + Sound + Lighting</p>
+
+            <div class="pkg-controls">
+              <label>Hours</label>
+              <select class="pkg-hours-select">
+                <option value="2">2 hrs</option>
+                <option value="3">3 hrs</option>
+                <option value="4" selected>4 hrs</option>
+                <option value="5">5 hrs</option>
+                <option value="6">6 hrs</option>
+                <option value="7">7 hrs</option>
+                <option value="8">8 hrs</option>
+              </select>
+            </div>
+
+            <p class="pkg-includes-label">What's Included</p>
+            <ul class="pkg-includes">
+              <li>Sound System — 2 QSC Tops, No Subwoofers</li>
+              <li>Professional DJ + Full Deck Setup — includes MC support</li>
+              <li>Personalized Timeline &amp; Music Consultation</li>
+              <li>Microphone</li>
+              <li class="highlight">5 Uplights</li>
+              <li class="highlight">LED Light Bar</li>
+              <li>Professional Setup &amp; Breakdown</li>
+            </ul>
+
+            <p class="pkg-footer-note">Private residences · up to 50 guests · simple ground-floor load-in</p>
+            <button class="btn-full-blue" type="button" onclick="choosePackage(event, this)">Continue to Add-Ons</button>
+          </div>
 
           <div class="pkg-card" data-package-name="Essential Package" data-base-price="1300" data-black-image="images/optimized/packages/essential-package-card.webp" data-white-image="images/optimized/packages/essential-package-white.png?v=20260928-2" style="--pkg-image: url('images/optimized/packages/essential-package-card.webp');">
             <p class="pkg-tier">Level One</p>
@@ -3260,15 +3330,30 @@
 
       <div class="comparison-path" aria-label="Package levels at a glance">
         <article class="comparison-step">
-          <div class="comparison-step-number">Level 01</div>
-          <p class="comparison-step-kicker">Simple + polished</p>
-          <h3>Essential</h3>
-          <p class="comparison-step-price">From $1,300</p>
-          <p class="comparison-step-fit">Best for smaller events that need great music, clear sound, and clean lighting.</p>
-          <p class="comparison-step-upgrade">Your setup adds</p>
+          <div class="comparison-step-number">Entry Option</div>
+          <p class="comparison-step-kicker">Backyard ready</p>
+          <h3>Backyard Party</h3>
+          <p class="comparison-step-price">From $1,000</p>
+          <p class="comparison-step-fit">Best for private-home celebrations with up to 50 guests and a straightforward load-in.</p>
+          <p class="comparison-step-upgrade">Your setup includes</p>
           <ul>
+            <li>2 QSC top speakers · no subs</li>
             <li>5 uplights</li>
             <li>LED light bar</li>
+          </ul>
+        </article>
+
+        <article class="comparison-step">
+          <div class="comparison-step-number">Level 01</div>
+          <p class="comparison-step-kicker">Fuller sound</p>
+          <h3>Essential</h3>
+          <p class="comparison-step-price">From $1,300</p>
+          <p class="comparison-step-fit">Best for events that need stronger dance-floor bass without the Backyard package limits.</p>
+          <p class="comparison-step-upgrade">Backyard setup, upgraded with</p>
+          <ul>
+            <li>2 QSC subwoofers</li>
+            <li>Fuller dance-floor sound</li>
+            <li>More flexible event setting</li>
           </ul>
         </article>
 
@@ -3326,6 +3411,10 @@
             <tr>
               <th>Feature</th>
               <th>
+                <span class="th-name">Backyard Party Package</span>
+                <span class="th-price">$1,000</span>
+              </th>
+              <th>
                 <span class="th-name">Essential Package</span>
                 <span class="th-price">$1,300</span>
               </th>
@@ -3347,6 +3436,7 @@
           <tbody>
             <tr>
               <td>Sound System</td>
+              <td><span class="qty">2 tops · no subs</span></td>
               <td><span class="check">✓</span></td>
               <td class="featured-col"><span class="check">✓</span></td>
               <td><span class="check">✓</span></td>
@@ -3356,6 +3446,7 @@
             <tr>
               <td>Professional DJ + MC Support</td>
               <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
               <td class="featured-col"><span class="check">✓</span></td>
               <td><span class="check">✓</span></td>
               <td><span class="check">✓</span></td>
@@ -3363,6 +3454,7 @@
 
             <tr>
               <td>Personalized Timeline &amp; Music Consultation</td>
+              <td><span class="check">✓</span></td>
               <td><span class="check">✓</span></td>
               <td class="featured-col"><span class="check">✓</span></td>
               <td><span class="check">✓</span></td>
@@ -3372,6 +3464,7 @@
             <tr>
               <td>Microphone</td>
               <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
               <td class="featured-col"><span class="check">✓</span></td>
               <td><span class="check">✓</span></td>
               <td><span class="check">✓</span></td>
@@ -3379,6 +3472,7 @@
 
             <tr>
               <td>Uplights</td>
+              <td><span class="qty">5 units</span></td>
               <td><span class="qty">5 units</span></td>
               <td class="featured-col"><span class="qty-new">10 units</span></td>
               <td><span class="qty-new">15 units</span></td>
@@ -3388,6 +3482,7 @@
             <tr>
               <td>LED Light Bar</td>
               <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
               <td class="featured-col"><span class="check">✓</span></td>
               <td><span class="check">✓</span></td>
               <td><span class="check">✓</span></td>
@@ -3395,6 +3490,7 @@
 
             <tr>
               <td>Moving Head Lights</td>
+              <td><span class="dash">—</span></td>
               <td><span class="dash">—</span></td>
               <td class="featured-col"><span class="qty-new">2 units</span></td>
               <td><span class="qty-new">4 units</span></td>
@@ -3404,6 +3500,7 @@
             <tr>
               <td>Photo Booth</td>
               <td><span class="dash">—</span></td>
+              <td><span class="dash">—</span></td>
               <td class="featured-col"><span class="qty-new">Background + premium props</span></td>
               <td><span class="qty">Background + premium props</span></td>
               <td><span class="qty">Background + premium props</span></td>
@@ -3411,6 +3508,7 @@
 
             <tr>
               <td>Red Carpet + Stanchions / Velvet Ropes</td>
+              <td><span class="dash">—</span></td>
               <td><span class="dash">—</span></td>
               <td class="featured-col"><span class="qty-new">10 ft</span></td>
               <td><span class="qty">10 ft</span></td>
@@ -3420,6 +3518,7 @@
             <tr>
               <td>LED Glow Cocktail Tables</td>
               <td><span class="dash">—</span></td>
+              <td><span class="dash">—</span></td>
               <td class="featured-col"><span class="dash">—</span></td>
               <td><span class="check-pink">✓</span></td>
               <td><span class="check">✓</span></td>
@@ -3427,6 +3526,7 @@
 
             <tr>
               <td>Foam Glow Sticks</td>
+              <td><span class="dash">—</span></td>
               <td><span class="dash">—</span></td>
               <td class="featured-col"><span class="dash">—</span></td>
               <td><span class="check-pink">✓</span></td>
@@ -3436,6 +3536,7 @@
             <tr>
               <td>Photography</td>
               <td><span class="dash">—</span></td>
+              <td><span class="dash">—</span></td>
               <td class="featured-col"><span class="dash">—</span></td>
               <td><span class="dash">—</span></td>
               <td><span class="check-pink">✓</span></td>
@@ -3443,6 +3544,7 @@
 
             <tr>
               <td>Fog Machines</td>
+              <td><span class="dash">—</span></td>
               <td><span class="dash">—</span></td>
               <td class="featured-col"><span class="qty-new">2 units</span></td>
               <td><span class="qty">2 units</span></td>
@@ -3452,6 +3554,7 @@
             <tr>
               <td>Cold Spark Machines</td>
               <td><span class="dash">—</span></td>
+              <td><span class="dash">—</span></td>
               <td class="featured-col"><span class="dash">—</span></td>
               <td><span class="qty-new">2 units</span></td>
               <td><span class="qty-new">4 units</span></td>
@@ -3459,6 +3562,7 @@
 
             <tr>
               <td>CO2 LED Gun</td>
+              <td><span class="dash">—</span></td>
               <td><span class="dash">—</span></td>
               <td class="featured-col"><span class="dash">—</span></td>
               <td><span class="qty-new">1 unit</span></td>
@@ -3468,6 +3572,7 @@
             <tr>
               <td>CO2 Cannons</td>
               <td><span class="dash">—</span></td>
+              <td><span class="dash">—</span></td>
               <td class="featured-col"><span class="dash">—</span></td>
               <td><span class="dash">—</span></td>
               <td><span class="qty-new">2 units</span></td>
@@ -3475,6 +3580,7 @@
 
             <tr>
               <td>Trussing</td>
+              <td><span class="dash">—</span></td>
               <td><span class="dash">—</span></td>
               <td class="featured-col"><span class="qty-new">2 × 8ft Totems</span></td>
               <td><span class="qty-new">10ft × 14ft Goal Post + 2 Totems or 4 Totems</span></td>
@@ -3484,6 +3590,7 @@
             <tr>
               <td>LED Screen / Wall</td>
               <td><span class="dash">—</span></td>
+              <td><span class="dash">—</span></td>
               <td class="featured-col"><span class="dash">—</span></td>
               <td><span class="dash">—</span></td>
               <td><span class="qty-new">5ft high × 8ft wide</span></td>
@@ -3491,6 +3598,7 @@
 
             <tr>
               <td>Base Coverage</td>
+              <td><span class="qty">4 hours</span></td>
               <td><span class="qty">4 hours</span></td>
               <td class="featured-col"><span class="qty">4 hours</span></td>
               <td><span class="qty">4 hours</span></td>
@@ -3610,6 +3718,22 @@
 
 
     const PACKAGE_GALLERIES = {
+      backyard: {
+        title: 'Backyard Party <strong>Package</strong>',
+        intro: 'A streamlined private-home package for up to 50 guests with professional DJ and MC support, two QSC top speakers, microphone support, 5 uplights, an LED Light Bar, setup, and breakdown. Subwoofers are not included.',
+        photos: [
+          {
+            src: 'images/optimized/packages/backyard-party-package-black-20260929.jpg',
+            title: 'Black Setup',
+            caption: 'Black QSC speakers, stands, facade, uplights, light bar, and DJ equipment.'
+          },
+          {
+            src: 'images/optimized/packages/backyard-party-package-white-20260929.jpg',
+            title: 'White Setup',
+            caption: 'White facade and white uplights with black QSC speakers, black stands, black light bar, and black DJ equipment.'
+          }
+        ]
+      },
       essential: {
         title: 'Essential <strong>Package</strong>',
         intro: 'A clean foundation package with a personalized timeline and music consultation, professional DJ and MC support, sound, microphone support, 5 uplights, an LED Light Bar, setup, and breakdown.',
@@ -3903,6 +4027,11 @@
     }
 
     function calculatePackagePrice(basePrice, hours, packageName) {
+      if (packageName === 'Backyard Party Package') {
+        if (hours === 2) return 700;
+        if (hours === 3) return 850;
+      }
+
       if (packageName === 'Essential Package') {
         if (hours === 2) return 850;
         if (hours === 3) return 1100;

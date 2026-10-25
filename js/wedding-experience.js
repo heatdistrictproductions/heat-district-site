@@ -18,8 +18,8 @@
         alt: 'Full White Wedding Experience setup with white RCF speakers, four moving heads, four cold sparks, fog machines and a center disco ball'
       },
       {
-        src: 'images/optimized/packages/wedding-experience-white-goalpost-disco-20260928.jpg',
-        alt: 'Full White Wedding Experience goal-post setup with white RCF speakers, four moving heads, CO2 cannons, four cold sparks, fog machines and a hanging disco ball'
+        src: 'images/optimized/packages/wedding-experience-white-goalpost-square-co2-20260929.jpg',
+        alt: 'Full White Wedding Experience goal-post setup with white RCF speakers, four moving heads, two square forward-facing LED CO2 cannons, four cold sparks, fog machines and a hanging disco ball'
       },
       {
         src: 'images/optimized/packages/wedding-experience-white-3-20260928.jpg',
@@ -32,8 +32,8 @@
         alt: 'Full Black Wedding Experience setup with black QSC speakers, four moving heads, four cold sparks, fog machines, two logo screens and a center disco ball'
       },
       {
-        src: 'images/optimized/packages/wedding-experience-black-qsc-goalpost-disco-20260928.jpg',
-        alt: 'Full Black Wedding Experience goal-post setup with black QSC speakers, moving heads, CO2 cannons, four cold sparks, fog machines and a hanging disco ball'
+        src: 'images/optimized/packages/wedding-experience-black-qsc-goalpost-square-co2-20260929.jpg',
+        alt: 'Full Black Wedding Experience goal-post setup with black QSC speakers, moving heads, two square forward-facing LED CO2 cannons, four cold sparks, fog machines and a hanging disco ball'
       },
       {
         src: 'images/optimized/packages/wedding-experience-black-qsc-3-20260928.jpg',

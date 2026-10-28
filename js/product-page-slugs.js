@@ -29,6 +29,7 @@
   'co2-cannons':'miami-co2-cannon-rental',
   'co2-led-gun':'miami-co2-gun-rental',
   'uplights':'miami-uplighting-rental',
+  'both-lighting-360-tubes':'miami-both-lighting-360-tube-rental',
   'light-bar':'miami-chauvet-gigbar-rental',
   'moving-heads':'miami-moving-head-light-rental',
   'wash-lights':'miami-led-wash-light-rental',

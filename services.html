@@ -2173,6 +2173,7 @@
     'pulse-lighting-package',
     'district-lighting-package',
     'uplights',
+    'both-lighting-360-tubes',
     'light-bar',
     'moving-heads',
     'wash-lights',
@@ -2770,6 +2771,22 @@
         note: '5 units · setup + programming included'
       },
 
+      'both-lighting-360-tubes': {
+        name: 'Both Lighting 360 Tubes — 4 Units',
+        title: 'Both Lighting 360 Tubes — Set of 4',
+        icon: '360',
+        type: 'event',
+        rate: 300,
+        noDuration: true,
+        noQuantity: true,
+        noLearnMore: true,
+        durationLabel: 'Event rental · set of 4',
+        image: 'images/optimized/products/both-lighting-360-tubes-black-four-20261028.jpg',
+        mediaClass: 'product-media-gear',
+        desc: 'Four black Both Lighting 360 LED tubes add colorful vertical lighting to dance floors, stages, entrances, and event spaces.',
+        note: 'Set of 4 black tubes · $300 per set'
+      },
+
       'light-bar': {
         name: 'Chauvet GigBAR 2',
         title: 'Chauvet GigBAR 2',
@@ -3167,9 +3184,9 @@
             Add to Cart
           </button>
 
-          <a class="product-learn-more" href="${escapeHtml((window.HeatDistrictProductPageSlugs && window.HeatDistrictProductPageSlugs[productId]) || ('rental-' + productId))}.html">
+          ${product.noLearnMore ? '' : `<a class="product-learn-more" href="${escapeHtml((window.HeatDistrictProductPageSlugs && window.HeatDistrictProductPageSlugs[productId]) || ('rental-' + productId))}.html">
             Learn More
-          </a>
+          </a>`}
 
         </div>
       `;

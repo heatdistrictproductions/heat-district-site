@@ -1768,6 +1768,11 @@
   let invoiceInProgress = false;
   let acknowledgedConflictSignature = '';
 
+  // Wake the invoice service while the customer completes the checkout form.
+  // This is a read-only request; never retry the invoice-creation POST automatically.
+  fetch('https://heat-district-qb-backend.onrender.com/health', { method: 'GET' })
+    .catch(function() { /* The invoice request still reports any connection error. */ });
+
   function safeJsonParse(value) {
     try {
       return value ? JSON.parse(value) : null;

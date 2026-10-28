@@ -1059,6 +1059,8 @@
       overflow-wrap: anywhere;
     }
 
+    .product-includes { padding-left: 1.2em; margin: 0 0 12px; color: rgba(232,232,240,.74); font-size: .82rem; line-height: 1.55; }
+
     .product-rate {
       font-size: 0.76rem;
       letter-spacing: 2px;
@@ -2527,11 +2529,12 @@
         title: 'Glow Lighting Package',
         icon: 'GLW',
         type: 'event',
-        rate: 300,
+        rate: 450,
         extraHourRate: 50,
-        image: 'images/optimized/products/glow-lighting-package.webp',
+        image: 'images/optimized/products/glow-ir4-tubes-20261028.jpg',
         mediaClass: 'product-media-wide',
-        desc: 'Uplights and Chauvet GigBAR 2 package for a clean entry-level lighting look. Includes setup, programming, cabling, and breakdown.',
+        desc: 'Includes 5 black Both Lighting IR-4 uplights, 4 Both Lighting 360 tubes and 1 Chauvet GigBAR 2. Setup, programming, cabling and breakdown included.',
+        includes: ['5 black Both Lighting IR-4 uplights', '4 Both Lighting 360 tubes', '1 Chauvet GigBAR 2'],
         note: 'Event base up to 4 hrs · setup + breakdown included'
       },
 
@@ -2540,11 +2543,12 @@
         title: 'Pulse Lighting Package',
         icon: 'PLS',
         type: 'event',
-        rate: 600,
+        rate: 750,
         extraHourRate: 85,
-        image: 'images/optimized/products/pulse-lighting-package.webp',
+        image: 'images/optimized/products/pulse-ir4-tubes-20261028.jpg',
         mediaClass: 'product-media-wide',
-        desc: '2 Chauvet Intimidator Spot 355 IRC moving heads plus the Glow-level lighting foundation for a stronger event atmosphere. Includes setup, programming, cabling, and breakdown.',
+        desc: 'Includes 10 black Both Lighting IR-4 uplights, 4 Both Lighting 360 tubes, 1 Chauvet GigBAR 2, 2 Chauvet Intimidator Spot 355 IRC moving heads and 2 truss totems. Setup, programming, cabling and breakdown included.',
+        includes: ['10 black Both Lighting IR-4 uplights', '4 Both Lighting 360 tubes', '1 Chauvet GigBAR 2', '2 Chauvet Intimidator Spot 355 IRC moving heads', '2 truss totems'],
         note: 'Event base up to 4 hrs · setup + breakdown included'
       },
 
@@ -2553,11 +2557,12 @@
         title: 'District Lighting Package',
         icon: 'DST',
         type: 'event',
-        rate: 995,
+        rate: 1145,
         extraHourRate: 125,
-        image: 'images/optimized/products/district-lighting-package.webp',
+        image: 'images/optimized/products/district-ir4-tubes-20261028.jpg',
         mediaClass: 'product-media-wide',
-        desc: '4 Chauvet Intimidator Spot 355 IRC moving heads, wash lights, and the full lower-level lighting build for the biggest lighting package here. Includes setup, programming, cabling, and breakdown.',
+        desc: 'Includes 15 black Both Lighting IR-4 uplights, 4 Both Lighting 360 tubes, 1 Chauvet GigBAR 2, 4 Chauvet Intimidator Spot 355 IRC moving heads, trussing, wash lights and fog/haze machines. Setup, programming, cabling and breakdown included; effects require venue approval.',
+        includes: ['15 black Both Lighting IR-4 uplights', '4 Both Lighting 360 tubes', '1 Chauvet GigBAR 2', '4 Chauvet Intimidator Spot 355 IRC moving heads', 'Trussing', '2 Chauvet Wash FX 2 lights', '2 fog/haze machines — venue approval required'],
         note: 'Event base up to 4 hrs · setup + breakdown included'
       },
 
@@ -2765,9 +2770,9 @@
         type: 'event',
         rate: 100,
         extraHourRate: 15,
-        image: 'images/optimized/products/uplight.webp',
+        image: 'images/optimized/products/uplight-ir4-black-20261028.jpg',
         mediaClass: 'product-media-gear',
-        desc: '5 unit uplighting bundle for room color, walls, entrances, and atmosphere. Includes setup, programming, and breakdown.',
+        desc: '5 black Both Lighting IR-4 uplights for room color, walls, entrances, and atmosphere. Includes setup, programming, and breakdown.',
         note: '5 units · setup + programming included'
       },
 
@@ -3166,7 +3171,7 @@
 
           <div class="product-name">${escapeHtml(product.title)}</div>
 
-          <div class="product-desc">${escapeHtml(product.desc)}</div>
+          ${product.includes ? `<ul class="product-includes">${product.includes.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>` : `<div class="product-desc">${escapeHtml(product.desc)}</div>`}
 
           <div class="product-rate">
             ${formatRateLabel(product.rate, product.type, product.extraHourRate, product.includedHours)}

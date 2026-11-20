@@ -16,8 +16,16 @@
   const mobileLinks = links.map(item => `<a href="${item[1]}" class="${active(item[1])}">${item[0]}</a>`).join('');
 
   function render() {
-    const mount = document.getElementById('siteNav');
-    if (!mount) return;
+    let mount = document.getElementById('siteNav');
+    if (!mount) {
+      const oldNav = document.querySelector('body > nav');
+      const oldMenu = document.getElementById('mobileNav');
+      if (!oldNav || !oldMenu) return;
+      mount = document.createElement('header');
+      mount.id = 'siteNav';
+      oldNav.replaceWith(mount);
+      oldMenu.remove();
+    }
     mount.innerHTML = `
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="index.html" class="nav-logo" aria-label="Heat District Productions home">
@@ -29,16 +37,16 @@
             <div class="nav-dropdown">${productLinks}</div>
           </li>${mainLinks}
         </ul>
-        <a href="contact.html" class="nav-cta">Request Quote</a>
+        <a href="packages.html" class="nav-cta">Book Now</a>
         <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav" type="button"><span></span><span></span><span></span></button>
       </nav>
       <div class="mobile-nav" id="mobileNav" aria-hidden="true">
-        <details class="mobile-products"${productActive ? ' open' : ''}>
-          <summary>Rentals &amp; Builds</summary>
+        <div class="mobile-products">
+          <a href="services.html" class="mobile-products-link${productActive ? ' active' : ''}">Rentals &amp; Builds</a>
           <div class="mobile-nav-sub">${productLinks}</div>
-        </details>
+        </div>
         <div class="mobile-nav-main">${mobileLinks}</div>
-        <div class="mobile-nav-actions"><a href="packages.html">View Packages</a><a href="contact.html" class="mobile-nav-book">Request Quote</a></div>
+        <div class="mobile-nav-actions"><a href="packages.html" class="mobile-nav-book">Book Now</a></div>
       </div>`;
   }
 
@@ -51,14 +59,14 @@
     };
     const open = () => {
       menu.classList.add('open');button.classList.add('active');button.setAttribute('aria-expanded','true');button.setAttribute('aria-label','Close menu');menu.setAttribute('aria-hidden','false');menu.removeAttribute('inert');document.body.classList.add('mobile-menu-open');
-      const first = menu.querySelector('summary');if(first) first.focus();
+      const first = menu.querySelector('a');if(first) first.focus();
     };
     menu.setAttribute('inert','');
     button.addEventListener('click',() => menu.classList.contains('open') ? close() : open());
     menu.querySelectorAll('a').forEach(link => link.addEventListener('click',close));
     document.addEventListener('keydown',event => { if(event.key === 'Escape' && menu.classList.contains('open')) { close();button.focus(); } });
     document.addEventListener('click',event => { if(menu.classList.contains('open') && !menu.contains(event.target) && !button.contains(event.target)) close(); });
-    window.addEventListener('resize',() => { if(window.innerWidth > 900) close(); });
+    window.addEventListener('resize',() => { if(window.innerWidth > 1120) close(); });
   }
   document.addEventListener('DOMContentLoaded',() => { render();init(); });
   if (!document.querySelector('script[src="js/section-intros.js"]')) {

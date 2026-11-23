@@ -343,6 +343,7 @@
       heading.textContent = item.heading;
       description.textContent = item.description;
       link.textContent = item.link;
+      link.href = button.dataset.event === 'school' ? 'packages.html#school-packages' : button.dataset.event === 'wedding' ? 'packages.html#wedding-experience' : 'packages.html';
     }
 
     buttons.forEach(function (button, index) {

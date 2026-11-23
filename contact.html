@@ -1574,6 +1574,14 @@
       });
     }
 
+    const schoolOptions = { spirit: 'School setup with two TVs', prom: 'School formal dance setup', led: 'School setup with LED wall' };
+    const schoolChoice = schoolOptions[new URLSearchParams(window.location.search).get('school')];
+    if (schoolChoice) {
+      document.getElementById('event-type').value = 'School Event';
+      document.getElementById('services').value = 'Full Event Package';
+      document.getElementById('message').value = 'I would like a custom quote for the ' + schoolChoice + ' option.\n\nEvent details: ';
+    }
+
     const form = document.getElementById('quote-form');
     const submitBtn = document.getElementById('submitBtn');
     const overlay = document.getElementById('successOverlay');

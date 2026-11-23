@@ -3034,7 +3034,7 @@
             <button class="btn-full-blue" type="button" onclick="choosePackage(event, this)">Continue to Add-Ons</button>
           </div>
 
-          <div class="pkg-card featured" data-package-name="Signature Package" data-pole-black-image="images/optimized/packages/signature-poles-black.jpg" data-pole-white-image="images/optimized/packages/signature-poles-white.jpg" data-base-price="2200" data-black-image="images/optimized/packages/signature-package-card.webp?v=20261005-opaque-sleeves" data-white-image="images/optimized/packages/signature-package-white-black-moving-heads-20261025.png" data-white-note="White setup — white speakers, booth, and totem sleeves; moving heads remain black" style="--pkg-image: url('images/optimized/packages/signature-package-card.webp?v=20261005-opaque-sleeves');">
+          <div class="pkg-card featured" data-package-name="Signature Package" data-pole-black-image="images/optimized/packages/signature-poles-black.jpg" data-pole-white-image="images/optimized/packages/signature-white-poles-v2.jpg" data-base-price="2200" data-black-image="images/optimized/packages/signature-package-card.webp?v=20261005-opaque-sleeves" data-white-image="images/optimized/packages/signature-package-white-black-moving-heads-20261025.png" data-white-note="White setup — white speakers, booth, and totem sleeves; moving heads remain black" style="--pkg-image: url('images/optimized/packages/signature-package-card.webp?v=20261005-opaque-sleeves');">
             <div class="pkg-badge popular">Complete Party Experience</div>
             <p class="pkg-tier">Level Two</p>
             <h3 class="pkg-name">Signature Package</h3>
@@ -3102,7 +3102,7 @@
             <button class="btn-full-pink" type="button" onclick="choosePackage(event, this)">Continue to Add-Ons</button>
           </div>
 
-          <div class="pkg-card value" data-package-name="Premier Package" data-pole-black-image="images/optimized/packages/premier-poles-black.jpg" data-pole-white-image="images/optimized/packages/premier-poles-white.jpg" data-base-price="3000" data-black-image="images/optimized/packages/premier-package-black-opaque-scrim-v4-20261007.jpg" data-white-image="images/optimized/packages/premier-package-white-opaque-scrim-black-heads-v5-20261025.jpg" data-white-note="White setup — white speakers, booth, and totem sleeves; moving heads remain black" style="--pkg-image: url('images/optimized/packages/premier-package-black-opaque-scrim-v4-20261007.jpg');">
+          <div class="pkg-card value" data-package-name="Premier Package" data-pole-black-image="images/optimized/packages/premier-poles-black.jpg" data-pole-white-image="images/optimized/packages/premier-white-poles-v2.jpg" data-base-price="3000" data-black-image="images/optimized/packages/premier-package-black-opaque-scrim-v4-20261007.jpg" data-white-image="images/optimized/packages/premier-package-white-opaque-scrim-black-heads-v5-20261025.jpg" data-white-note="White setup — white speakers, booth, and totem sleeves; moving heads remain black" style="--pkg-image: url('images/optimized/packages/premier-package-black-opaque-scrim-v4-20261007.jpg');">
             <div class="pkg-badge best">Built for Bigger Impact</div>
             <p class="pkg-tier">Level Three</p>
             <h3 class="pkg-name">Premier Package</h3>
@@ -3884,7 +3884,7 @@
       if (!original || getPackageSupport(card) !== 'Poles') return original;
       return { title: original.title, intro: 'A preview of the pole lighting setup.', photos: [
         {src: card.dataset.poleBlackImage, title: 'Black setup with poles', caption: 'Black finish with flat-base lighting poles.'},
-        {src: card.dataset.poleWhiteImage, title: 'White setup with poles', caption: 'White finish with black flat-base lighting poles.'}
+        {src: card.dataset.poleWhiteImage, title: 'White setup with poles', caption: 'White finish with white flat-base lighting poles.'}
       ]};
     }
 
@@ -4117,7 +4117,7 @@
       }
 
       if (note) {
-        note.textContent = poles ? finish + ' setup with black lighting poles' : (finish === 'Full White'
+        note.textContent = poles ? finish + ' setup with ' + (finish === 'Full White' ? 'white' : 'black') + ' lighting poles' : (finish === 'Full White'
           ? (card.dataset.whiteNote || 'White speakers + white equipment setup')
           : (card.dataset.blackNote || 'Black speakers + black equipment setup'));
       }

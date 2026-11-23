@@ -2824,6 +2824,9 @@
   .finder-result { margin-top:22px; padding:20px; border:1px solid #00e7ef; border-radius:9px; color:#eee; line-height:1.6; }
   .finder-result h3 { color:#00e7ef; margin:0 0 8px; }
   .finder-result a { color:#00e7ef; }
+  .finder-result img { display:block; width:min(100%, 480px); height:auto; aspect-ratio:4/3; object-fit:cover; margin:16px 0; border-radius:10px; background:#eee; }
+  .finder-result-actions { display:flex; flex-wrap:wrap; gap:14px; align-items:center; margin:16px 0; }
+  .finder-cart { padding:13px 20px; border:1px solid #ff2d78; border-radius:5px; background:#ff2d78; color:#fff; font-weight:700; cursor:pointer; }
   .package-finder .comparison-details { margin-top:28px; }
   @media(max-width:700px) { .finder-questions,.finder-contact { grid-template-columns:1fr; } .finder-contact p { grid-column:auto; } .package-finder { margin-bottom:52px; } }
   </style>
@@ -4317,9 +4320,33 @@
   d.append('Recommended package',name); d.append('_subject','New package finder recommendation');
   result.replaceChildren();
   const title=document.createElement('h3'); title.textContent='We recommend: '+name; result.append(title);
+  const card=document.querySelector(link);
+  const photo=document.createElement('img'); photo.alt=name+' setup';
+  if (card && card.classList.contains('pkg-card')) {
+    const imageValue=card.style.getPropertyValue('--pkg-image');
+    const match=imageValue.match(/url\(["']?(.+?)["']?\)/);
+    photo.src=match ? match[1] : card.dataset.blackImage;
+    const currentPrice=card.querySelector('.pkg-price-value').textContent.trim();
+    const hours=card.querySelector('.pkg-hours-select').value;
+    const finish=card.querySelector('.pkg-finish-option:checked').value;
+    const support=card.querySelector('.pkg-support-option:checked');
+    price='$'+currentPrice+' / '+hours+' hours · '+finish+(support ? ' · '+support.value : '');
+  } else if (link==='#wedding-experience') photo.src=document.getElementById('wedding-preview-image').src;
+  else photo.src=document.getElementById('school-main-image').src;
+  result.append(photo);
   const desc=document.createElement('p'); desc.textContent=price+' · '+why+' This is a starting point; availability, final pricing and any upgrades will be confirmed with you.'; result.append(desc);
   const budgetNote=document.createElement('p'); budgetNote.textContent='Your budget: '+budget+'. If the starting price is outside your range, contact us to discuss options.'; result.append(budgetNote);
-  const target=document.createElement('a'); target.href=link; target.textContent='Explore this package →'; result.append(target);
+  const actions=document.createElement('div'); actions.className='finder-result-actions';
+  if (card && card.classList.contains('pkg-card')) {
+    const add=document.createElement('button'); add.type='button'; add.className='finder-cart'; add.textContent='Add to Cart';
+    add.addEventListener('click',function(){ card.querySelector('button[onclick*="choosePackage"]').click(); }); actions.append(add);
+  } else if (link==='#wedding-experience') {
+    const add=document.createElement('button'); add.type='button'; add.className='finder-cart'; add.textContent='Add to Cart';
+    add.addEventListener('click',function(){ document.getElementById('choose-wedding').click(); }); actions.append(add);
+  } else {
+    const quote=document.createElement('a'); quote.className='finder-cart'; quote.href=document.getElementById('school-quote').href; quote.textContent='Request a Quote'; actions.append(quote);
+  }
+  const target=document.createElement('a'); target.href=link; target.textContent='Explore and customize →'; actions.append(target); result.append(actions);
   const status=document.createElement('p'); result.append(status); result.hidden=false;
   try { const response=await fetch('https://formspree.io/f/mkokqpnz',{method:'POST',body:d,headers:{Accept:'application/json'}}); if(!response.ok) throw new Error('Request failed'); status.textContent='Your answers were sent to our team. We’ll be in touch.'; btn.textContent='Send Again'; }
   catch(err){ status.textContent='We could not send your answers. Please try again or contact us at (954) 551-9330.'; btn.textContent='Try Sending Again'; }

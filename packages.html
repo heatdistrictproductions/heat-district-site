@@ -2827,6 +2827,33 @@
   .finder-result img { display:block; width:min(100%, 480px); height:auto; aspect-ratio:4/3; object-fit:cover; margin:16px 0; border-radius:10px; background:#eee; }
   .finder-result-actions { display:flex; flex-wrap:wrap; gap:14px; align-items:center; margin:16px 0; }
   .finder-cart { padding:13px 20px; border:1px solid #ff2d78; border-radius:5px; background:#ff2d78; color:#fff; font-weight:700; cursor:pointer; }
+
+  .finder-progress { display:flex; justify-content:space-between; gap:12px; color:#90ecf0; font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+  .finder-progress-track { height:5px; margin:12px 0 30px; background:#253141; border-radius:10px; overflow:hidden; }
+  #finder-progress-bar { width:14.285%; height:100%; background:linear-gradient(90deg,#00e7ef,#ff2d78); transition:width .28s ease; }
+  .finder-questions { display:block; }
+  .finder-step { border:0; padding:0; margin:0; min-width:0; }
+  .finder-step[hidden],.finder-contact[hidden],.finder-back[hidden],.finder-result[hidden] { display:none !important; }
+  .finder-step legend,.finder-contact h3 { color:#fff; font-size:clamp(1.4rem,2.6vw,2.1rem); font-weight:700; line-height:1.2; padding:0; margin:0; }
+  .finder-hint { color:#a7a9bb; font-size:.9rem; margin:10px 0 22px; }
+  .finder-options { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+  .finder-form label.finder-option { position:relative; cursor:pointer; }
+  .finder-option input { position:absolute; width:1px; height:1px; min-height:0; padding:0; opacity:0; }
+  .finder-option-card { display:flex; align-items:center; gap:15px; min-height:78px; padding:17px 20px; border:1px solid #334052; border-radius:12px; background:rgba(10,14,31,.85); color:#fff; transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease; }
+  .finder-option:hover .finder-option-card { transform:translateY(-3px); border-color:#00e7ef; box-shadow:0 8px 24px rgba(0,231,239,.12); }
+  .finder-option input:focus-visible + .finder-option-card { outline:2px solid #00e7ef; outline-offset:3px; }
+  .finder-option input:checked + .finder-option-card { border-color:#ff2d78; background:rgba(255,45,120,.14); box-shadow:0 0 25px rgba(255,45,120,.2); transform:scale(.99); }
+  .finder-option-number { color:#00d9e4; font-size:.72rem; letter-spacing:.1em; }
+  .finder-option-arrow { margin-left:auto; color:#00d9e4; font-size:1.25rem; }
+  .finder-contact { margin-top:0; padding-top:0; border-top:0; }
+  .finder-contact h3,.finder-contact > p,.finder-contact .finder-submit { grid-column:1/-1; }
+  .finder-contact > p { color:#b9b9c7; font-weight:400; }
+  .finder-contact .finder-submit { justify-self:start; }
+  .finder-navigation { margin-top:20px; }
+  .finder-back { border:0; padding:9px 0; background:transparent; color:#c4c7d5; font:inherit; font-weight:600; cursor:pointer; }
+  .finder-back:hover { color:#00e7ef; }
+  @media(max-width:700px) { .finder-options { grid-template-columns:1fr; } .finder-option-card { min-height:64px; } .finder-contact h3,.finder-contact > p,.finder-contact .finder-submit { grid-column:auto; } }
+  @media(prefers-reduced-motion:reduce) { .finder-option-card,#finder-progress-bar { transition:none; } }
   .package-finder .comparison-details { margin-top:28px; }
   @media(max-width:700px) { .finder-questions,.finder-contact { grid-template-columns:1fr; } .finder-contact p { grid-column:auto; } .package-finder { margin-bottom:52px; } }
   </style>
@@ -2923,17 +2950,53 @@
     <section class="package-finder" id="package-comparison" aria-labelledby="finder-title">
       <div class="finder-heading"><p class="packages-label">Let’s plan your event</p><h2 id="finder-title">Find Your <strong>Package</strong></h2><p>Tell us a little about your event and we’ll suggest a starting point. Your answers will also be sent to our team so we can help you plan.</p></div>
       <form id="package-finder-form" class="finder-form">
+        <div class="finder-progress" aria-live="polite"><span id="finder-step-label">Question 1 of 7</span><span id="finder-step-percent">14% complete</span></div>
+        <div class="finder-progress-track" aria-hidden="true"><div id="finder-progress-bar"></div></div>
         <div class="finder-questions">
-          <label>1. What are you celebrating?<select name="Event type" required><option value="">Choose an event</option><option>Birthday or private party</option><option>Wedding</option><option>School dance or prom</option><option>Corporate or other event</option></select></label>
-          <label>2. About how many guests?<select name="Guest count" required><option value="">Choose a guest count</option><option>Up to 50</option><option>51–100</option><option>101–200</option><option>More than 200</option></select></label>
-          <label>3. Where is the event?<select name="Venue" required><option value="">Choose a venue</option><option>Private home or backyard</option><option>Banquet hall or event venue</option><option>School</option><option>Other or not sure yet</option></select></label>
-          <label>4. What budget are you considering?<select name="Budget" required><option value="">Choose a range</option><option>Under $1,300</option><option>$1,300–$1,999</option><option>$2,000–$2,699</option><option>$2,700–$4,999</option><option>$5,000 or more</option><option>Not sure yet</option></select></label>
-          <label>5. What kind of sound do you want?<select name="Sound" required><option value="">Choose a sound level</option><option>Simple sound for a small gathering</option><option>Full dance-floor sound with bass</option><option>Large, high-energy sound</option></select></label>
-          <label>6. What kind of visual setup do you want?<select name="Visuals" required><option value="">Choose a setup</option><option>Simple party lighting</option><option>Moving lights and an elevated look</option><option>Big lighting and special effects</option><option>LED wall and full production</option></select></label>
-          <label>7. What guest experience matters most?<select name="Guest experience" required><option value="">Choose an option</option><option>Music and dancing</option><option>Photo booth and memorable moments</option><option>Special effects and a big entrance</option><option>Not sure yet</option></select></label>
+          <fieldset class="finder-step" data-step="0"><legend tabindex="-1">What are you celebrating?</legend><p class="finder-hint">Choose one to continue</p><div class="finder-options">
+            <label class="finder-option"><input type="radio" name="Event type" value="Birthday or private party" required><span class="finder-option-card"><span class="finder-option-number">01</span><span>Birthday or private party</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+            <label class="finder-option"><input type="radio" name="Event type" value="Wedding" required><span class="finder-option-card"><span class="finder-option-number">02</span><span>Wedding</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+            <label class="finder-option"><input type="radio" name="Event type" value="School dance or prom" required><span class="finder-option-card"><span class="finder-option-number">03</span><span>School dance or prom</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+            <label class="finder-option"><input type="radio" name="Event type" value="Corporate or other event" required><span class="finder-option-card"><span class="finder-option-number">04</span><span>Corporate or other event</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+          </div></fieldset>
+          <fieldset class="finder-step" data-step="1" hidden><legend tabindex="-1">How many guests are you expecting?</legend><p class="finder-hint">Choose one to continue</p><div class="finder-options">
+            <label class="finder-option"><input type="radio" name="Guest count" value="Up to 50" required><span class="finder-option-card"><span class="finder-option-number">01</span><span>Up to 50</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+            <label class="finder-option"><input type="radio" name="Guest count" value="51–100" required><span class="finder-option-card"><span class="finder-option-number">02</span><span>51–100</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+            <label class="finder-option"><input type="radio" name="Guest count" value="101–200" required><span class="finder-option-card"><span class="finder-option-number">03</span><span>101–200</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+            <label class="finder-option"><input type="radio" name="Guest count" value="More than 200" required><span class="finder-option-card"><span class="finder-option-number">04</span><span>More than 200</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+          </div></fieldset>
+          <fieldset class="finder-step" data-step="2" hidden><legend tabindex="-1">Where is your event?</legend><p class="finder-hint">Choose one to continue</p><div class="finder-options">
+            <label class="finder-option"><input type="radio" name="Venue" value="Private home or backyard" required><span class="finder-option-card"><span class="finder-option-number">01</span><span>Private home or backyard</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+            <label class="finder-option"><input type="radio" name="Venue" value="Banquet hall or event venue" required><span class="finder-option-card"><span class="finder-option-number">02</span><span>Banquet hall or event venue</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+            <label class="finder-option"><input type="radio" name="Venue" value="School" required><span class="finder-option-card"><span class="finder-option-number">03</span><span>School</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+            <label class="finder-option"><input type="radio" name="Venue" value="Other or not sure yet" required><span class="finder-option-card"><span class="finder-option-number">04</span><span>Other or not sure yet</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+          </div></fieldset>
+          <fieldset class="finder-step" data-step="3" hidden><legend tabindex="-1">What budget are you considering?</legend><p class="finder-hint">Choose one to continue</p><div class="finder-options">
+            <label class="finder-option"><input type="radio" name="Budget" value="Under $2,000" required><span class="finder-option-card"><span class="finder-option-number">01</span><span>Under $2,000</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+            <label class="finder-option"><input type="radio" name="Budget" value="$2,000–$4,999" required><span class="finder-option-card"><span class="finder-option-number">02</span><span>$2,000–$4,999</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+            <label class="finder-option"><input type="radio" name="Budget" value="$5,000 or more" required><span class="finder-option-card"><span class="finder-option-number">03</span><span>$5,000 or more</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+            <label class="finder-option"><input type="radio" name="Budget" value="Not sure yet" required><span class="finder-option-card"><span class="finder-option-number">04</span><span>Not sure yet</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+          </div></fieldset>
+          <fieldset class="finder-step" data-step="4" hidden><legend tabindex="-1">What kind of sound do you want?</legend><p class="finder-hint">Choose one to continue</p><div class="finder-options">
+            <label class="finder-option"><input type="radio" name="Sound" value="Simple sound for a small gathering" required><span class="finder-option-card"><span class="finder-option-number">01</span><span>Simple sound for a small gathering</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+            <label class="finder-option"><input type="radio" name="Sound" value="Full dance-floor sound with bass" required><span class="finder-option-card"><span class="finder-option-number">02</span><span>Full dance-floor sound with bass</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+            <label class="finder-option"><input type="radio" name="Sound" value="Large, high-energy sound" required><span class="finder-option-card"><span class="finder-option-number">03</span><span>Large, high-energy sound</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+          </div></fieldset>
+          <fieldset class="finder-step" data-step="5" hidden><legend tabindex="-1">What kind of visual setup do you want?</legend><p class="finder-hint">Choose one to continue</p><div class="finder-options">
+            <label class="finder-option"><input type="radio" name="Visuals" value="Simple party lighting" required><span class="finder-option-card"><span class="finder-option-number">01</span><span>Simple party lighting</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+            <label class="finder-option"><input type="radio" name="Visuals" value="Moving lights and an elevated look" required><span class="finder-option-card"><span class="finder-option-number">02</span><span>Moving lights and an elevated look</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+            <label class="finder-option"><input type="radio" name="Visuals" value="Big lighting and special effects" required><span class="finder-option-card"><span class="finder-option-number">03</span><span>Big lighting and special effects</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+            <label class="finder-option"><input type="radio" name="Visuals" value="LED wall and full production" required><span class="finder-option-card"><span class="finder-option-number">04</span><span>LED wall and full production</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+          </div></fieldset>
+          <fieldset class="finder-step" data-step="6" hidden><legend tabindex="-1">What matters most for your guests?</legend><p class="finder-hint">Choose one to continue</p><div class="finder-options">
+            <label class="finder-option"><input type="radio" name="Guest experience" value="Music and dancing" required><span class="finder-option-card"><span class="finder-option-number">01</span><span>Music and dancing</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+            <label class="finder-option"><input type="radio" name="Guest experience" value="Photo booth and memorable moments" required><span class="finder-option-card"><span class="finder-option-number">02</span><span>Photo booth and memorable moments</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+            <label class="finder-option"><input type="radio" name="Guest experience" value="Special effects and a big entrance" required><span class="finder-option-card"><span class="finder-option-number">03</span><span>Special effects and a big entrance</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+            <label class="finder-option"><input type="radio" name="Guest experience" value="Not sure yet" required><span class="finder-option-card"><span class="finder-option-number">04</span><span>Not sure yet</span><span class="finder-option-arrow" aria-hidden="true">→</span></span></label>
+          </div></fieldset>
         </div>
-        <div class="finder-contact"><p>Where can we reach you about your recommendation?</p><label>Your name<input name="name" autocomplete="name" required></label><label>Email address<input type="email" name="email" autocomplete="email" required></label><label>Phone number <span>(optional)</span><input type="tel" name="phone" autocomplete="tel"></label></div>
-        <button type="submit" class="finder-submit">Get My Recommendation</button><p class="finder-privacy">By submitting, you’re sharing your answers and contact details with Heat District Productions.</p>
+        <div class="finder-contact" id="finder-contact" hidden><h3 tabindex="-1">Where can we reach you?</h3><p>We’ll send your answers to our team so we can help with your event.</p><label>Your name<input name="name" autocomplete="name" required></label><label>Email address<input type="email" name="email" autocomplete="email" required></label><label>Phone number <span>(optional)</span><input type="tel" name="phone" autocomplete="tel"></label><button type="submit" class="finder-submit">See My Recommendation</button><p class="finder-privacy">By submitting, you’re sharing your answers and contact details with Heat District Productions.</p></div>
+        <div class="finder-navigation"><button type="button" id="finder-back" class="finder-back" hidden>← Back</button></div>
         <div class="finder-result" id="finder-result" role="status" aria-live="polite" hidden></div>
       </form>
             <details class="comparison-details">
@@ -4294,6 +4357,18 @@
 (function () {
  const form=document.getElementById('package-finder-form'), result=document.getElementById('finder-result');
  const text=(d,k)=>String(d.get(k)||'');
+ const steps=Array.from(form.querySelectorAll('.finder-step')), contact=document.getElementById('finder-contact'), back=document.getElementById('finder-back'), stepLabel=document.getElementById('finder-step-label'), stepPercent=document.getElementById('finder-step-percent'), progress=document.getElementById('finder-progress-bar');
+ let current=0, advanceTimer;
+ function showStep(index,focus) {
+  current=index; steps.forEach((step,i)=>{step.hidden=i!==index;}); contact.hidden=index!==steps.length;
+  back.hidden=index===0; const percent=Math.round(Math.min(index+1,steps.length)/steps.length*100);
+  stepLabel.textContent=index===steps.length?'Your details':'Question '+(index+1)+' of '+steps.length;
+  stepPercent.textContent=percent+'% complete'; progress.style.width=percent+'%';
+  if(focus) { const target=index===steps.length?contact.querySelector('h3'):steps[index].querySelector('legend'); target.focus({preventScroll:true}); }
+ }
+ steps.forEach((step,index)=>{ function advance(e){ if(e.target.matches('input[type=radio]') && e.target.checked) { clearTimeout(advanceTimer); advanceTimer=setTimeout(()=>showStep(index+1,true),180); } } step.addEventListener('change',advance); step.addEventListener('click',advance); });
+ back.addEventListener('click',function(){clearTimeout(advanceTimer); if(current>0) showStep(current-1,true);});
+
  form.addEventListener('submit',async function(e){
   e.preventDefault(); if(!form.reportValidity()) return;
   const d=new FormData(form), event=text(d,'Event type'), guests=text(d,'Guest count'), venue=text(d,'Venue'), budget=text(d,'Budget'), sound=text(d,'Sound'), visuals=text(d,'Visuals'), experience=text(d,'Guest experience');

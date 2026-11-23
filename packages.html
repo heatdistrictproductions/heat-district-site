@@ -2805,6 +2805,30 @@
   <link rel="stylesheet" href="css/theme.css?v=20260813-5">
   <link rel="stylesheet" href="css/school-packages.css?v=20261122-2">
   <style>
+  .package-finder { margin: 0 0 72px; }
+  .finder-heading { max-width: 850px; margin-bottom: 26px; }
+  .finder-heading h2 { font-size: clamp(2rem,4vw,3.3rem); line-height: 1.08; color: #fff; margin: 0 0 14px; }
+  .finder-heading h2 strong { color: #ff2d78; }
+  .finder-heading > p:last-child,.finder-privacy { color: #b9b9c7; line-height: 1.6; }
+  .finder-form { padding: clamp(20px,3vw,36px); border: 1px solid rgba(0,240,255,.2); border-radius: 18px; background: linear-gradient(120deg,#0a1421,#0d091b); }
+  .finder-questions,.finder-contact { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+  .finder-form label { display:flex; flex-direction:column; gap:8px; color:#f3f3f8; font-size:.9rem; font-weight:600; }
+  .finder-form select,.finder-form input { width:100%; min-width:0; min-height:48px; padding:10px 13px; border:1px solid #304557; border-radius:7px; background:#101322; color:#fff; font:inherit; }
+  .finder-form select:focus,.finder-form input:focus { outline:2px solid #00e7ef; outline-offset:2px; }
+  .finder-contact { margin-top:28px; padding-top:24px; border-top:1px solid #30404e; }
+  .finder-contact p { grid-column:1/-1; margin:0; color:#fff; font-weight:700; }
+  .finder-contact span { font-weight:400; color:#aaa; }
+  .finder-submit { margin-top:26px; padding:15px 23px; border:1px solid #ff2d78; border-radius:5px; background:#ff2d78; color:white; font-weight:700; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; }
+  .finder-submit:disabled { opacity:.6; cursor:wait; }
+  .finder-privacy { font-size:.8rem; margin:12px 0 0; }
+  .finder-result { margin-top:22px; padding:20px; border:1px solid #00e7ef; border-radius:9px; color:#eee; line-height:1.6; }
+  .finder-result h3 { color:#00e7ef; margin:0 0 8px; }
+  .finder-result a { color:#00e7ef; }
+  .package-finder .comparison-details { margin-top:28px; }
+  @media(max-width:700px) { .finder-questions,.finder-contact { grid-template-columns:1fr; } .finder-contact p { grid-column:auto; } .package-finder { margin-bottom:52px; } }
+  </style>
+
+  <style>
     /* Keep the intro heading together beside its description. */
     .packages-section .package-intro-heading { align-self: center; }
     .packages-section .hd-intro-eyebrow { margin-bottom: 14px; }
@@ -2896,7 +2920,7 @@
       If you are between packages, need a custom setup, or want help choosing the right production level,
       reach out and we’ll point you toward the best option before you book.
     </div>
-    <a href="contact.html" class="hero-contact-btn">Get Recommendation</a>
+    <a href="#package-comparison" class="hero-contact-btn">Find My Package</a>
   </div>
 </div>
 
@@ -2904,517 +2928,23 @@
 
   <div class="packages-wrap">
 
-    <div class="packages-section" data-hd-intro-ready="true">
-      <div class="hd-section-intro hd-pattern-b">
-        <div class="package-intro-heading">
-          <p class="packages-label hd-intro-eyebrow">Choose Your Package</p>
-          <h2 class="packages-title hd-intro-title">Pick the Foundation, Then <strong>Customize the Rest</strong></h2>
+    <section class="package-finder" id="package-comparison" aria-labelledby="finder-title">
+      <div class="finder-heading"><p class="packages-label">Let’s plan your event</p><h2 id="finder-title">Find Your <strong>Package</strong></h2><p>Tell us a little about your event and we’ll suggest a starting point. Your answers will also be sent to our team so we can help you plan.</p></div>
+      <form id="package-finder-form" class="finder-form">
+        <div class="finder-questions">
+          <label>1. What are you celebrating?<select name="Event type" required><option value="">Choose an event</option><option>Birthday or private party</option><option>Wedding</option><option>School dance or prom</option><option>Corporate or other event</option></select></label>
+          <label>2. About how many guests?<select name="Guest count" required><option value="">Choose a guest count</option><option>Up to 50</option><option>51–100</option><option>101–200</option><option>More than 200</option></select></label>
+          <label>3. Where is the event?<select name="Venue" required><option value="">Choose a venue</option><option>Private home or backyard</option><option>Banquet hall or event venue</option><option>School</option><option>Other or not sure yet</option></select></label>
+          <label>4. What budget are you considering?<select name="Budget" required><option value="">Choose a range</option><option>Under $1,300</option><option>$1,300–$1,999</option><option>$2,000–$2,699</option><option>$2,700–$4,999</option><option>$5,000 or more</option><option>Not sure yet</option></select></label>
+          <label>5. What kind of sound do you want?<select name="Sound" required><option value="">Choose a sound level</option><option>Simple sound for a small gathering</option><option>Full dance-floor sound with bass</option><option>Large, high-energy sound</option></select></label>
+          <label>6. What kind of visual setup do you want?<select name="Visuals" required><option value="">Choose a setup</option><option>Simple party lighting</option><option>Moving lights and an elevated look</option><option>Big lighting and special effects</option><option>LED wall and full production</option></select></label>
+          <label>7. What guest experience matters most?<select name="Guest experience" required><option value="">Choose an option</option><option>Music and dancing</option><option>Photo booth and memorable moments</option><option>Special effects and a big entrance</option><option>Not sure yet</option></select></label>
         </div>
-      <p class="packages-sub hd-intro-copy">
-        Start with a package and customize it for your event. Prices include planning, DJ and MC support, delivery, staffing, setup, breakdown, and applicable taxes in Miami-Dade, Broward, Palm Beach, and Monroe counties. Special effects require venue approval; travel outside these counties may be quoted separately.
-      </p>
-      </div>
-
-      <div class="packages-grid-scroll">
-        <div class="packages-grid">
-
-          <div class="pkg-card" data-package-name="Backyard Party Package" data-base-price="1000" data-black-image="images/optimized/packages/backyard-black-scrims-20261122.jpg" data-white-image="images/optimized/packages/backyard-white-black-scrims-20261122.jpg" data-black-note="Black QSC speakers and stand covers, black facade, uplights, light bar, and DJ equipment" data-white-note="White facade and white uplights; black QSC speakers, stand covers, light bar, and DJ equipment" style="--pkg-image: url('images/optimized/packages/backyard-black-scrims-20261122.jpg');">
-            <p class="pkg-tier">Backyard Ready</p>
-            <h3 class="pkg-name">Backyard Party Package</h3>
-            <p class="pkg-tagline">Best for private-home celebrations with up to 50 guests that need a professional DJ, clear sound, microphone support, and clean party lighting without subwoofers.</p>
-
-            <div class="pkg-visual" role="button" tabindex="0" data-gallery-key="backyard" aria-label="Open mini gallery for the Backyard Party Package">
-              <div class="pkg-visual-content">
-                <span class="pkg-visual-label">Setup Preview</span>
-                <div class="pkg-visual-title">Backyard DJ Setup</div>
-                <div class="pkg-visual-chips">
-                  <span class="pkg-visual-chip">2 QSC Tops</span>
-                  <span class="pkg-visual-chip">No Subs</span>
-                  <span class="pkg-visual-chip">5 Uplights</span>
-                </div>
-              </div>
-            </div>
-
-            <fieldset class="pkg-finish-picker">
-              <legend>Setup Finish</legend>
-              <div class="pkg-finish-switch">
-                <label><input class="pkg-finish-option" type="radio" name="backyard-finish" value="Full Black" checked><span>Black</span></label>
-                <label><input class="pkg-finish-option" type="radio" name="backyard-finish" value="Full White"><span>White</span></label>
-              </div>
-              <p class="pkg-finish-note" aria-live="polite">Black QSC speakers and stand covers, black facade, uplights, light bar, and DJ equipment</p>
-            </fieldset>
-
-            <div class="pkg-price-wrap">
-              <span class="pkg-price-symbol">$</span>
-              <span class="pkg-price-value">1,000</span>
-              <span class="pkg-price-unit">/ 4hrs</span>
-            </div>
-
-            <p class="pkg-duration">Backyard DJ + Sound + Lighting · $200 per additional hour after 4 hours</p>
-
-            <div class="pkg-controls">
-              <label>Hours</label>
-              <select class="pkg-hours-select">
-                <option value="2">2 hrs</option>
-                <option value="3">3 hrs</option>
-                <option value="4" selected>4 hrs</option>
-                <option value="5">5 hrs</option>
-                <option value="6">6 hrs</option>
-                <option value="7">7 hrs</option>
-                <option value="8">8 hrs</option>
-              </select>
-            </div>
-
-            <p class="pkg-includes-label">What's Included</p>
-            <ul class="pkg-includes">
-              <li>Sound System — 2 QSC Tops, No Subwoofers</li>
-              <li>Professional DJ + Full Deck Setup — includes MC support</li>
-              <li>Personalized Timeline &amp; Music Consultation</li>
-              <li>Microphone</li>
-              <li class="highlight">5 Uplights</li>
-              <li class="highlight">LED Light Bar</li>
-              <li>Professional Setup &amp; Breakdown</li>
-            </ul>
-
-            <p class="pkg-footer-note">Private residences · up to 50 guests · simple ground-floor load-in</p>
-            <button class="btn-full-blue" type="button" onclick="choosePackage(event, this)">Continue to Add-Ons</button>
-          </div>
-
-          <div class="pkg-card" data-package-name="Essential Package" data-base-price="1300" data-black-image="images/optimized/packages/essential-package-card.webp" data-white-image="images/optimized/packages/essential-package-white.png?v=20260928-2" style="--pkg-image: url('images/optimized/packages/essential-package-card.webp');">
-            <p class="pkg-tier">Level One</p>
-            <h3 class="pkg-name">Essential Package</h3>
-            <p class="pkg-tagline">Best for smaller private events, house parties, birthdays, and simple weddings that need clean DJ, sound, microphone, 5 uplights, and an LED Light Bar.</p>
-
-            <div class="pkg-visual" role="button" tabindex="0" data-gallery-key="essential" aria-label="Open mini gallery for the Essential Package">
-              <div class="pkg-visual-content">
-                <span class="pkg-visual-label">Setup Preview</span>
-                <div class="pkg-visual-title">DJ + Sound Foundation</div>
-                <div class="pkg-visual-chips">
-                  <span class="pkg-visual-chip">2 Tops / 2 Subs</span>
-                  <span class="pkg-visual-chip">DJ Decks</span>
-                  <span class="pkg-visual-chip">5 Uplights</span>
-                </div>
-              </div>
-            </div>
-
-            <fieldset class="pkg-finish-picker">
-              <legend>Setup Finish</legend>
-              <div class="pkg-finish-switch">
-                <label><input class="pkg-finish-option" type="radio" name="essential-finish" value="Full Black" checked><span>Black</span></label>
-                <label><input class="pkg-finish-option" type="radio" name="essential-finish" value="Full White"><span>White</span></label>
-              </div>
-              <p class="pkg-finish-note" aria-live="polite">Black equipment setup</p>
-            </fieldset>
-
-            <div class="pkg-price-wrap">
-              <span class="pkg-price-symbol">$</span>
-              <span class="pkg-price-value">1,300</span>
-              <span class="pkg-price-unit">/ 4hrs</span>
-            </div>
-
-            <p class="pkg-duration">Essential Sound + DJ + Lighting</p>
-
-            <div class="pkg-controls">
-              <label>Hours</label>
-              <select class="pkg-hours-select">
-                <option value="2">2 hrs</option>
-                <option value="3">3 hrs</option>
-                <option value="4" selected>4 hrs</option>
-                <option value="5">5 hrs</option>
-                <option value="6">6 hrs</option>
-                <option value="7">7 hrs</option>
-                <option value="8">8 hrs</option>
-              </select>
-            </div>
-
-            <p class="pkg-includes-label">What's Included</p>
-            <ul class="pkg-includes">
-              <li>Sound System — 2 Subs, 2 Tops</li>
-              <li>Professional DJ + Full Deck Setup — includes MC support</li>
-              <li>Personalized Timeline &amp; Music Consultation</li>
-              <li>Microphone</li>
-              <li class="highlight">5 Uplights</li>
-              <li class="highlight">LED Light Bar</li>
-              <li>Professional Setup & Breakdown</li>
-            </ul>
-
-            <p class="pkg-footer-note">Best for clean essentials without extra production</p>
-            <button class="btn-full-blue" type="button" onclick="choosePackage(event, this)">Continue to Add-Ons</button>
-          </div>
-
-          <div class="pkg-card featured" data-package-name="Signature Package" data-pole-black-image="images/optimized/packages/signature-poles-black.jpg" data-pole-white-image="images/optimized/packages/signature-white-poles-v2.jpg" data-base-price="2200" data-black-image="images/optimized/packages/signature-package-card.webp?v=20261005-opaque-sleeves" data-white-image="images/optimized/packages/signature-package-white-black-moving-heads-20261025.png" data-white-note="White setup — white speakers, booth, and totem sleeves; moving heads remain black" style="--pkg-image: url('images/optimized/packages/signature-package-card.webp?v=20261005-opaque-sleeves');">
-            <div class="pkg-badge popular">Complete Party Experience</div>
-            <p class="pkg-tier">Level Two</p>
-            <h3 class="pkg-name">Signature Package</h3>
-            <p class="pkg-tagline">Best for weddings, quinces, birthdays, and private parties that need the strongest all-around mix of DJ, lighting, photo booth, and atmosphere.</p>
-
-            <div class="pkg-visual" role="button" tabindex="0" data-gallery-key="signature" aria-label="Open mini gallery for the Signature Package">
-              <div class="pkg-visual-content">
-                <span class="pkg-visual-label">Setup Preview</span>
-                <div class="pkg-visual-title">Full Party Setup</div>
-                <div class="pkg-visual-chips">
-                  <span class="pkg-visual-chip">10 Uplights</span>
-                  <span class="pkg-visual-chip">Photo Booth</span>
-                  <span class="pkg-visual-chip">Fog + Totems</span>
-                </div>
-              </div>
-            </div>
-
-            <fieldset class="pkg-finish-picker">
-              <legend>Setup Finish</legend>
-              <div class="pkg-finish-switch">
-                <label><input class="pkg-finish-option" type="radio" name="signature-finish" value="Full Black" checked><span>Black</span></label>
-                <label><input class="pkg-finish-option" type="radio" name="signature-finish" value="Full White"><span>White</span></label>
-              </div>
-              <p class="pkg-finish-note" aria-live="polite">Black equipment setup</p>
-            </fieldset>
-
-            <fieldset class="pkg-finish-picker pkg-support-picker"><legend>Lighting setup</legend><div class="pkg-finish-switch"><label><input class="pkg-support-option" type="radio" name="signature-support" value="Truss" checked><span>Truss</span></label><label><input class="pkg-support-option" type="radio" name="signature-support" value="Poles"><span>Poles</span></label></div><p class="pkg-finish-note">Poles save approximately 10%.</p></fieldset>
-            <div class="pkg-price-wrap">
-              <span class="pkg-price-symbol">$</span>
-              <span class="pkg-price-value">2,200</span>
-              <span class="pkg-price-unit">/ 4hrs</span>
-            </div>
-
-            <p class="pkg-duration">DJ + Lighting + Booth</p>
-
-            <div class="pkg-controls">
-              <label>Hours</label>
-              <select class="pkg-hours-select">
-                <option value="2">2 hrs</option>
-                <option value="3">3 hrs</option>
-                <option value="4" selected>4 hrs</option>
-                <option value="5">5 hrs</option>
-                <option value="6">6 hrs</option>
-                <option value="7">7 hrs</option>
-                <option value="8">8 hrs</option>
-              </select>
-            </div>
-
-            <p class="pkg-includes-label">What's Included</p>
-            <ul class="pkg-includes">
-              <li>Sound System</li>
-              <li>Professional DJ + Full Deck Setup — includes MC support</li>
-              <li>Personalized Timeline &amp; Music Consultation</li>
-              <li>Microphone</li>
-              <li class="highlight">10 Uplights</li>
-              <li class="highlight">LED Light Bar</li>
-              <li class="highlight">2 Moving Head Lights</li>
-              <li class="highlight">Premium Photo Booth — Background + Premium Props</li>
-              <li class="highlight">10ft Red Carpet with Stanchions & Velvet Ropes</li>
-              <li class="highlight">2x Fog Machines</li>
-              <li class="highlight">2 Global Truss Totems — 8ft Each</li>
-            </ul>
-
-            <p class="pkg-footer-note">Our best all-around choice for most events</p>
-            <button class="btn-full-pink" type="button" onclick="choosePackage(event, this)">Continue to Add-Ons</button>
-          </div>
-
-          <div class="pkg-card value" data-package-name="Premier Package" data-pole-black-image="images/optimized/packages/premier-poles-black.jpg" data-pole-white-image="images/optimized/packages/premier-white-poles-v2.jpg" data-base-price="3000" data-black-image="images/optimized/packages/premier-package-black-opaque-scrim-v4-20261007.jpg" data-white-image="images/optimized/packages/premier-package-white-opaque-scrim-black-heads-v5-20261025.jpg" data-white-note="White setup — white speakers, booth, and totem sleeves; moving heads remain black" style="--pkg-image: url('images/optimized/packages/premier-package-black-opaque-scrim-v4-20261007.jpg');">
-            <div class="pkg-badge best">Built for Bigger Impact</div>
-            <p class="pkg-tier">Level Three</p>
-            <h3 class="pkg-name">Premier Package</h3>
-            <p class="pkg-tagline">Best for larger parties, quinces, weddings, and school events that need stronger lighting, cold sparks, CO2 effects, and a more premium room presence.</p>
-
-            <div class="pkg-visual" role="button" tabindex="0" data-gallery-key="premier" aria-label="Open mini gallery for the Premier Package">
-              <div class="pkg-visual-content">
-                <span class="pkg-visual-label">Setup Preview</span>
-                <div class="pkg-visual-title">Premium Production Look</div>
-                <div class="pkg-visual-chips">
-                  <span class="pkg-visual-chip">4 Moving Heads</span>
-                  <span class="pkg-visual-chip">Cold Sparks</span>
-                  <span class="pkg-visual-chip">CO2 LED Gun</span>
-                </div>
-              </div>
-            </div>
-
-            <fieldset class="pkg-finish-picker">
-              <legend>Setup Finish</legend>
-              <div class="pkg-finish-switch">
-                <label><input class="pkg-finish-option" type="radio" name="premier-finish" value="Full Black" checked><span>Black</span></label>
-                <label><input class="pkg-finish-option" type="radio" name="premier-finish" value="Full White"><span>White</span></label>
-              </div>
-              <p class="pkg-finish-note" aria-live="polite">Black equipment setup</p>
-            </fieldset>
-
-            <fieldset class="pkg-finish-picker pkg-support-picker"><legend>Lighting setup</legend><div class="pkg-finish-switch"><label><input class="pkg-support-option" type="radio" name="premier-support" value="Truss" checked><span>Truss</span></label><label><input class="pkg-support-option" type="radio" name="premier-support" value="Poles"><span>Poles</span></label></div><p class="pkg-finish-note">Poles save approximately 10%.</p></fieldset>
-            <div class="pkg-price-wrap">
-              <span class="pkg-price-symbol">$</span>
-              <span class="pkg-price-value">3,000</span>
-              <span class="pkg-price-unit">/ 4hrs</span>
-            </div>
-
-            <p class="pkg-duration">Premium Event Production</p>
-
-            <div class="pkg-controls">
-              <label>Hours</label>
-              <select class="pkg-hours-select">
-                <option value="2">2 hrs</option>
-                <option value="3">3 hrs</option>
-                <option value="4" selected>4 hrs</option>
-                <option value="5">5 hrs</option>
-                <option value="6">6 hrs</option>
-                <option value="7">7 hrs</option>
-                <option value="8">8 hrs</option>
-              </select>
-            </div>
-
-            <p class="pkg-includes-label">What's Included</p>
-            <ul class="pkg-includes">
-              <li>Sound System</li>
-              <li>Professional DJ + Full Deck Setup — includes MC support</li>
-              <li>Personalized Timeline &amp; Music Consultation</li>
-              <li>Microphone</li>
-              <li class="highlight">15 Uplights</li>
-              <li>LED Light Bar</li>
-              <li class="highlight">4 Moving Head Lights</li>
-              <li>Premium Photo Booth — Background + Premium Props</li>
-              <li>10ft Red Carpet with Stanchions & Velvet Ropes</li>
-              <li class="highlight">LED Glow Cocktail Tables</li>
-              <li class="highlight">Foam Glow Sticks</li>
-              <li class="highlight">2x Cold Spark Machines</li>
-              <li class="highlight">CO2 LED Gun</li>
-              <li>2x Fog Machines</li>
-              <li class="highlight">Choice of 10ft × 14ft Goal Post + 2 Totems or 4 Totems</li>
-            </ul>
-
-            <p class="pkg-footer-note">The smartest step-up before luxury pricing</p>
-            <button class="btn-full-blue" type="button" onclick="choosePackage(event, this)">Continue to Add-Ons</button>
-          </div>
-
-          <div class="pkg-card" data-package-name="Elite Production Package" data-base-price="5000" data-black-image="images/optimized/packages/elite-production-package-black-20260928.jpg" data-white-image="images/optimized/packages/elite-production-package-white-black-heads-20260929.jpg" data-white-note="White setup — white RCF speakers; moving heads, CO2 cannons, Wash FX 2 lights, and fog machines remain black" style="--pkg-image: url('images/optimized/packages/elite-production-package-black-20260928.jpg');">
-            <p class="pkg-tier">Level Four</p>
-            <h3 class="pkg-name">Elite Production Package</h3>
-            <p class="pkg-tagline">Best for luxury events, brand activations, and large private events that want maximum staging, LED wall presence, CO2 effects, and the biggest visual statement.</p>
-
-            <div class="pkg-visual" role="button" tabindex="0" data-gallery-key="elite" aria-label="Open mini gallery for the Elite Production Package">
-              <div class="pkg-visual-content">
-                <span class="pkg-visual-label">Setup Preview</span>
-                <div class="pkg-visual-title">Statement Visual Build</div>
-                <div class="pkg-visual-chips">
-                  <span class="pkg-visual-chip">LED Wall</span>
-                  <span class="pkg-visual-chip">CO2 Effects</span>
-                  <span class="pkg-visual-chip">Photography</span>
-                </div>
-              </div>
-            </div>
-
-            <fieldset class="pkg-finish-picker">
-              <legend>Setup Finish</legend>
-              <div class="pkg-finish-switch">
-                <label><input class="pkg-finish-option" type="radio" name="elite-finish" value="Full Black" checked><span>Black</span></label>
-                <label><input class="pkg-finish-option" type="radio" name="elite-finish" value="Full White"><span>White</span></label>
-              </div>
-              <p class="pkg-finish-note" aria-live="polite">Black equipment setup</p>
-            </fieldset>
-
-            <div class="pkg-price-wrap">
-              <span class="pkg-price-symbol">$</span>
-              <span class="pkg-price-value">5,000</span>
-              <span class="pkg-price-unit">/ 4hrs</span>
-            </div>
-
-            <p class="pkg-duration">Full Statement Setup</p>
-
-            <div class="pkg-controls">
-              <label>Hours</label>
-              <select class="pkg-hours-select">
-                <option value="2">2 hrs</option>
-                <option value="3">3 hrs</option>
-                <option value="4" selected>4 hrs</option>
-                <option value="5">5 hrs</option>
-                <option value="6">6 hrs</option>
-                <option value="7">7 hrs</option>
-                <option value="8">8 hrs</option>
-              </select>
-            </div>
-
-            <p class="pkg-includes-label">What's Included</p>
-            <ul class="pkg-includes">
-              <li>Sound System</li>
-              <li>Professional DJ + Full Deck Setup — includes MC support</li>
-              <li>Personalized Timeline &amp; Music Consultation</li>
-              <li>Microphone</li>
-              <li>15 Uplights</li>
-              <li>LED Light Bar</li>
-              <li>4 Moving Head Lights</li>
-              <li class="highlight">5ft High × 8ft Wide LED Wall</li>
-              <li>Premium Photo Booth — Background + Premium Props</li>
-              <li class="highlight">20ft Red Carpet with Stanchions & Velvet Ropes</li>
-              <li>LED Glow Cocktail Tables</li>
-              <li>Foam Glow Sticks</li>
-              <li class="highlight">Photography</li>
-              <li class="highlight">4x Cold Spark Machines</li>
-              <li class="highlight">CO2 LED Gun</li>
-              <li class="highlight">2x CO2 Cannons</li>
-              <li>2x Fog Machines</li>
-              <li>Choice of 10ft × 14ft Goal Post + 2 Totems or 4 Totems</li>
-            </ul>
-
-            <p class="pkg-footer-note">For clients who want the biggest visual statement</p>
-            <button class="btn-full-blue" type="button" onclick="choosePackage(event, this)">Continue to Add-Ons</button>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-
-    <section class="wedding-experience" id="wedding-experience" aria-labelledby="wedding-title">
-      <div class="wedding-heading">
-        <p class="wedding-eyebrow">Specialized for weddings</p>
-        <h2 id="wedding-title">Wedding <strong>Experience</strong></h2>
-        <p>Your cocktail hour. Your reception. One unforgettable celebration.</p>
-      </div>
-      <div class="wedding-layout">
-        <div class="wedding-preview">
-          <figure>
-            <div class="wedding-image-stack">
-              <img id="wedding-preview-image" src="images/optimized/packages/wedding-experience-white-1-side-space-20260928.jpg" width="1448" height="1086" loading="lazy" alt="Full White Wedding Experience setup with white RCF speakers, four moving heads, four cold sparks, fog machines and a center disco ball">
-            </div>
-            <div class="wedding-photo-picker" aria-label="Choose a Full White Wedding Experience photo">
-              <button type="button" class="is-active" data-wedding-photo="0" aria-label="Show Full White setup photo 1" aria-pressed="true"><img src="images/optimized/packages/wedding-experience-white-1-side-space-20260928.jpg" width="1448" height="1086" loading="lazy" alt=""></button>
-              <button type="button" data-wedding-photo="1" aria-label="Show Full White setup photo 2" aria-pressed="false"><img src="images/optimized/packages/wedding-experience-white-goalpost-square-co2-20260929.jpg" width="1448" height="1086" loading="lazy" alt=""></button>
-              <button type="button" data-wedding-photo="2" aria-label="Show Full White setup photo 3" aria-pressed="false"><img src="images/optimized/packages/wedding-experience-white-3-20260928.jpg" width="1448" height="1086" loading="lazy" alt=""></button>
-            </div>
-            <figcaption>Wedding Experience setup preview · Equipment placement is tailored to your venue.</figcaption>
-          </figure>
-          <fieldset class="wedding-finish">
-            <legend>Choose your setup finish <span>Both included at the same price</span></legend>
-            <div class="wedding-switch"><label><input type="radio" name="wedding-finish" value="Full White" checked> <span>Full White</span></label>
-            <label><input type="radio" name="wedding-finish" value="Full Black"> <span>Full Black</span></label></div>
-          </fieldset>
-          <p class="wedding-finish-note" id="wedding-finish-note" aria-live="polite">White RCF speakers, white booth, white trussing and totem finishes, and white cold-spark housings. Moving heads, fog machines and CO₂ equipment remain black.</p>
-        </div>
-        <div class="wedding-details">
-          <p class="wedding-price">$5,500 <span>5 hours total</span></p>
-          <div class="wedding-timeline" aria-label="Included wedding coverage">
-            <div><strong>1 hour</strong><span>Cocktail hour</span></div><span aria-hidden="true">+</span><div><strong>4 hours</strong><span>Reception / party</span></div>
-          </div>
-          <p class="wedding-intro">A complete five-hour wedding production built around the three setups shown: dual TV truss towers, a full goal-post truss with a hanging disco ball, or four truss totems. Each option includes professional DJ and MC support, cocktail-hour and reception sound, four moving heads, four cold sparks, two fog machines, a disco ball, and a coordinated Full White or Full Black finish. Two CO₂ guns and the 20 ft × 20 ft LED / Infinity Mirror Dance Floor are also included but are not pictured.</p>
-          <h3>Everything for your celebration</h3>
-          <ul class="wedding-includes">
-            <li>Professional DJ + MC support</li><li>Personalized wedding timeline &amp; music consultation</li>
-            <li>Cocktail-hour audio + reception sound system — White RCF or Black QSC</li><li>Wireless microphone</li>
-            <li><strong>20 uplights</strong></li><li><strong>20 ft × 20 ft LED / Infinity Mirror Dance Floor</strong> — 12 × 12 panels (144 total)</li>
-            <li><strong>Choice of production layout</strong> — dual TV truss towers, full goal-post truss or 4 truss totems</li><li>4 Moving Head Lights</li><li>Disco ball</li><li>4 Cold Spark Machines</li><li>2 CO₂ Guns — not pictured</li><li>2 Fog Machines</li>
-            <li>DJ booth / facade</li><li>Full White or Full Black setup</li><li>Professional setup &amp; breakdown</li>
-          </ul>
-          <button class="btn-full-blue" id="choose-wedding" type="button">Choose Wedding Experience</button>
-          <p id="wedding-selection-status" role="status"></p>
-          <p class="wedding-policy">Includes delivery, required staffing, standard setup and breakdown, and applicable taxes in Miami-Dade, Broward, Palm Beach and Monroe counties. Travel beyond these counties may be quoted separately. Special effects require venue approval.</p>
-        </div>
-      </div>
-      <dl class="wedding-specs" aria-label="Wedding Experience at a glance">
-        <div><dt>Coverage</dt><dd>1 cocktail hour + 4 reception hours</dd></div>
-        <div><dt>Dance floor</dt><dd>20 ft × 20 ft LED / Infinity Mirror · 12 × 12 panels (144 total)</dd></div>
-        <div><dt>Room lighting</dt><dd>20 uplights · 4 moving heads · disco ball</dd></div>
-        <div><dt>Production layout</dt><dd>Dual TV towers · full goal-post truss · or 4 truss totems</dd></div>
-        <div><dt>Special effects</dt><dd>4 cold sparks · 2 CO₂ guns · 2 fog machines</dd></div>
-        <div><dt>Your aesthetic</dt><dd>Full White or Full Black · $5,500</dd></div>
-      </dl>
-      <p class="wedding-links">Explore our <a href="dj-services.html">DJ services</a>, <a href="event-lighting-rentals.html">event lighting</a> and <a href="special-effects-rentals.html">special effects</a>, or <a href="contact.html">talk through your wedding plans</a>.</p>
-    </section>
-
-    <section class="school-packages" id="school-packages" aria-labelledby="school-title">
-      <div class="school-heading"><p class="school-eyebrow">Made for schools</p><h2 id="school-title">School Dance &amp; <strong>Prom Experiences</strong></h2><p>Choose a setup for your school dance, homecoming or prom. Select a picture to see its details.</p></div>
-      <div class="school-layout"><div class="school-preview"><figure><img id="school-main-image" src="school-images/school-poles-v2.jpg" width="1448" height="1086" alt="School dance setup with DJ, stage, lighting and moving heads on poles"><div class="school-photo-picker" role="group" aria-label="Choose a school dance setup"><button type="button" data-school-option="tv" class="is-active" aria-pressed="true" aria-label="Show school dance setup with moving heads on poles"><img src="school-images/school-poles-v2.jpg" width="1448" height="1086" alt=""></button><button type="button" data-school-option="prom" aria-pressed="false" aria-label="Show formal dance setup"><img src="school-images/school-tvs-covered-v2.jpg" width="1448" height="1086" alt=""></button><button type="button" data-school-option="led" aria-pressed="false" aria-label="Show large LED wall school dance"><img src="school-images/school-led-large-four-totems-4x3.jpg" width="1448" height="1086" alt=""></button></div><figcaption>Setup concepts are illustrative. Colors, equipment and layout are confirmed in your quote.</figcaption></figure></div>
-      <div class="school-details" aria-live="polite"><p class="school-detail-kicker" id="school-kicker">School dances &amp; homecoming</p><p class="school-price" id="school-price">From $2,500</p><p id="school-description">A school dance setup with DJ, sound and lighting, featuring moving heads on flat-base pole stands.</p><h4>Explore this setup</h4><ul class="school-features" id="school-features"><li>DJ and sound options</li><li>360 photo booth included</li><li>Two moving heads on flat-base pole stands</li><li>Both Lighting IR-4 uplighting</li><li>IntelliStage staging options</li></ul><a class="school-quote" id="school-quote" href="contact.html?school=spirit#quote-form">Request a Quote</a><p class="school-note">Starting prices are estimates; your quote is based on venue, date, guest count, equipment and staffing. Stage concept: 16 ft × 12 ft, approximately 16 in high; size and availability are confirmed in your quote.</p></div></div>
-    </section>
-
-    <div class="comparison-wrap" id="package-comparison">
-      <p class="comparison-label">Choose Your Level</p>
-      <h2 class="comparison-title">Find Your Package <strong>in 30 Seconds</strong></h2>
-      <p class="comparison-sub">
-        Every level covers the essentials. Choose based on how much lighting, guest experience, and visual impact you want to add.
-      </p>
-
-      <div class="comparison-baseline">
-        <p class="comparison-baseline-title"><span>Included in every package</span>Your event essentials are already covered.</p>
-        <ul class="comparison-baseline-list">
-          <li>Professional DJ + MC</li>
-          <li>Sound + microphone</li>
-          <li>Planning consultation</li>
-          <li>4 hours of coverage</li>
-        </ul>
-      </div>
-
-      <div class="comparison-path" aria-label="Package levels at a glance">
-        <article class="comparison-step">
-          <div class="comparison-step-number">Entry Option</div>
-          <p class="comparison-step-kicker">Backyard ready</p>
-          <h3>Backyard Party</h3>
-          <p class="comparison-step-price">From $1,000</p>
-          <p class="comparison-step-fit">Best for private-home celebrations with up to 50 guests and a straightforward load-in.</p>
-          <p class="comparison-step-upgrade">Your setup includes</p>
-          <ul>
-            <li>2 QSC top speakers · no subs</li>
-            <li>5 uplights</li>
-            <li>LED light bar</li>
-          </ul>
-        </article>
-
-        <article class="comparison-step">
-          <div class="comparison-step-number">Level 01</div>
-          <p class="comparison-step-kicker">Fuller sound</p>
-          <h3>Essential</h3>
-          <p class="comparison-step-price">From $1,300</p>
-          <p class="comparison-step-fit">Best for events that need stronger dance-floor bass without the Backyard package limits.</p>
-          <p class="comparison-step-upgrade">Backyard setup, upgraded with</p>
-          <ul>
-            <li>2 QSC subwoofers</li>
-            <li>Fuller dance-floor sound</li>
-            <li>More flexible event setting</li>
-          </ul>
-        </article>
-
-        <article class="comparison-step is-featured">
-          <div class="comparison-step-number">Level 02</div>
-          <p class="comparison-step-kicker">Most popular</p>
-          <h3>Signature</h3>
-          <p class="comparison-step-price">From $2,000</p>
-          <p class="comparison-step-fit">Best for a complete party feel with more lighting and built-in guest entertainment.</p>
-          <p class="comparison-step-upgrade">Everything above, plus</p>
-          <ul>
-            <li>10 uplights + 2 moving heads</li>
-            <li>Premium photo booth</li>
-            <li>10 ft red carpet entrance</li>
-            <li>2 fog machines + 2 truss totems</li>
-          </ul>
-        </article>
-
-        <article class="comparison-step">
-          <div class="comparison-step-number">Level 03</div>
-          <p class="comparison-step-kicker">Bigger impact</p>
-          <h3>Premier</h3>
-          <p class="comparison-step-price">From $2,700</p>
-          <p class="comparison-step-fit">Best for larger, high-energy events that need stronger lighting and effects.</p>
-          <p class="comparison-step-upgrade">Everything above, upgraded with</p>
-          <ul>
-            <li>15 uplights + 4 moving heads</li>
-            <li>2 cold sparks + CO₂ LED gun</li>
-            <li>Glow tables + foam glow sticks</li>
-            <li>Larger truss options</li>
-          </ul>
-        </article>
-
-        <article class="comparison-step">
-          <div class="comparison-step-number">Level 04</div>
-          <p class="comparison-step-kicker">Full production</p>
-          <h3>Elite Production</h3>
-          <p class="comparison-step-price">From $5,000</p>
-          <p class="comparison-step-fit">Best for statement events that want the biggest visuals and a complete production build.</p>
-          <p class="comparison-step-upgrade">Everything above, plus</p>
-          <ul>
-            <li>5 ft × 8 ft LED wall</li>
-            <li>Photography</li>
-            <li>4 cold sparks + 2 CO₂ cannons</li>
-            <li>20 ft red carpet entrance</li>
-          </ul>
-        </article>
-      </div>
-
-      <details class="comparison-details">
+        <div class="finder-contact"><p>Where can we reach you about your recommendation?</p><label>Your name<input name="name" autocomplete="name" required></label><label>Email address<input type="email" name="email" autocomplete="email" required></label><label>Phone number <span>(optional)</span><input type="tel" name="phone" autocomplete="tel"></label></div>
+        <button type="submit" class="finder-submit">Get My Recommendation</button><p class="finder-privacy">By submitting, you’re sharing your answers and contact details with Heat District Productions.</p>
+        <div class="finder-result" id="finder-result" role="status" aria-live="polite" hidden></div>
+      </form>
+            <details class="comparison-details">
         <summary>View full item-by-item comparison <span>All 19 details</span></summary>
         <div class="comparison-table-wrap">
         <table class="comparison-table">
@@ -3619,7 +3149,425 @@
         </table>
         </div>
       </details>
+    </section>
+
+    <div class="packages-section" data-hd-intro-ready="true">
+      <div class="hd-section-intro hd-pattern-b">
+        <div class="package-intro-heading">
+          <p class="packages-label hd-intro-eyebrow">Choose Your Package</p>
+          <h2 class="packages-title hd-intro-title">Pick the Foundation, Then <strong>Customize the Rest</strong></h2>
+        </div>
+      <p class="packages-sub hd-intro-copy">
+        Start with a package and customize it for your event. Prices include planning, DJ and MC support, delivery, staffing, setup, breakdown, and applicable taxes in Miami-Dade, Broward, Palm Beach, and Monroe counties. Special effects require venue approval; travel outside these counties may be quoted separately.
+      </p>
+      </div>
+
+      <div class="packages-grid-scroll">
+        <div class="packages-grid">
+
+          <div class="pkg-card" id="package-backyard" data-package-name="Backyard Party Package" data-base-price="1000" data-black-image="images/optimized/packages/backyard-black-scrims-20261122.jpg" data-white-image="images/optimized/packages/backyard-white-black-scrims-20261122.jpg" data-black-note="Black QSC speakers and stand covers, black facade, uplights, light bar, and DJ equipment" data-white-note="White facade and white uplights; black QSC speakers, stand covers, light bar, and DJ equipment" style="--pkg-image: url('images/optimized/packages/backyard-black-scrims-20261122.jpg');">
+            <p class="pkg-tier">Backyard Ready</p>
+            <h3 class="pkg-name">Backyard Party Package</h3>
+            <p class="pkg-tagline">Best for private-home celebrations with up to 50 guests that need a professional DJ, clear sound, microphone support, and clean party lighting without subwoofers.</p>
+
+            <div class="pkg-visual" role="button" tabindex="0" data-gallery-key="backyard" aria-label="Open mini gallery for the Backyard Party Package">
+              <div class="pkg-visual-content">
+                <span class="pkg-visual-label">Setup Preview</span>
+                <div class="pkg-visual-title">Backyard DJ Setup</div>
+                <div class="pkg-visual-chips">
+                  <span class="pkg-visual-chip">2 QSC Tops</span>
+                  <span class="pkg-visual-chip">No Subs</span>
+                  <span class="pkg-visual-chip">5 Uplights</span>
+                </div>
+              </div>
+            </div>
+
+            <fieldset class="pkg-finish-picker">
+              <legend>Setup Finish</legend>
+              <div class="pkg-finish-switch">
+                <label><input class="pkg-finish-option" type="radio" name="backyard-finish" value="Full Black" checked><span>Black</span></label>
+                <label><input class="pkg-finish-option" type="radio" name="backyard-finish" value="Full White"><span>White</span></label>
+              </div>
+              <p class="pkg-finish-note" aria-live="polite">Black QSC speakers and stand covers, black facade, uplights, light bar, and DJ equipment</p>
+            </fieldset>
+
+            <div class="pkg-price-wrap">
+              <span class="pkg-price-symbol">$</span>
+              <span class="pkg-price-value">1,000</span>
+              <span class="pkg-price-unit">/ 4hrs</span>
+            </div>
+
+            <p class="pkg-duration">Backyard DJ + Sound + Lighting · $200 per additional hour after 4 hours</p>
+
+            <div class="pkg-controls">
+              <label>Hours</label>
+              <select class="pkg-hours-select">
+                <option value="2">2 hrs</option>
+                <option value="3">3 hrs</option>
+                <option value="4" selected>4 hrs</option>
+                <option value="5">5 hrs</option>
+                <option value="6">6 hrs</option>
+                <option value="7">7 hrs</option>
+                <option value="8">8 hrs</option>
+              </select>
+            </div>
+
+            <p class="pkg-includes-label">What's Included</p>
+            <ul class="pkg-includes">
+              <li>Sound System — 2 QSC Tops, No Subwoofers</li>
+              <li>Professional DJ + Full Deck Setup — includes MC support</li>
+              <li>Personalized Timeline &amp; Music Consultation</li>
+              <li>Microphone</li>
+              <li class="highlight">5 Uplights</li>
+              <li class="highlight">LED Light Bar</li>
+              <li>Professional Setup &amp; Breakdown</li>
+            </ul>
+
+            <p class="pkg-footer-note">Private residences · up to 50 guests · simple ground-floor load-in</p>
+            <button class="btn-full-blue" type="button" onclick="choosePackage(event, this)">Continue to Add-Ons</button>
+          </div>
+
+          <div class="pkg-card" id="package-essential" data-package-name="Essential Package" data-base-price="1300" data-black-image="images/optimized/packages/essential-package-card.webp" data-white-image="images/optimized/packages/essential-package-white.png?v=20260928-2" style="--pkg-image: url('images/optimized/packages/essential-package-card.webp');">
+            <p class="pkg-tier">Level One</p>
+            <h3 class="pkg-name">Essential Package</h3>
+            <p class="pkg-tagline">Best for smaller private events, house parties, birthdays, and simple weddings that need clean DJ, sound, microphone, 5 uplights, and an LED Light Bar.</p>
+
+            <div class="pkg-visual" role="button" tabindex="0" data-gallery-key="essential" aria-label="Open mini gallery for the Essential Package">
+              <div class="pkg-visual-content">
+                <span class="pkg-visual-label">Setup Preview</span>
+                <div class="pkg-visual-title">DJ + Sound Foundation</div>
+                <div class="pkg-visual-chips">
+                  <span class="pkg-visual-chip">2 Tops / 2 Subs</span>
+                  <span class="pkg-visual-chip">DJ Decks</span>
+                  <span class="pkg-visual-chip">5 Uplights</span>
+                </div>
+              </div>
+            </div>
+
+            <fieldset class="pkg-finish-picker">
+              <legend>Setup Finish</legend>
+              <div class="pkg-finish-switch">
+                <label><input class="pkg-finish-option" type="radio" name="essential-finish" value="Full Black" checked><span>Black</span></label>
+                <label><input class="pkg-finish-option" type="radio" name="essential-finish" value="Full White"><span>White</span></label>
+              </div>
+              <p class="pkg-finish-note" aria-live="polite">Black equipment setup</p>
+            </fieldset>
+
+            <div class="pkg-price-wrap">
+              <span class="pkg-price-symbol">$</span>
+              <span class="pkg-price-value">1,300</span>
+              <span class="pkg-price-unit">/ 4hrs</span>
+            </div>
+
+            <p class="pkg-duration">Essential Sound + DJ + Lighting</p>
+
+            <div class="pkg-controls">
+              <label>Hours</label>
+              <select class="pkg-hours-select">
+                <option value="2">2 hrs</option>
+                <option value="3">3 hrs</option>
+                <option value="4" selected>4 hrs</option>
+                <option value="5">5 hrs</option>
+                <option value="6">6 hrs</option>
+                <option value="7">7 hrs</option>
+                <option value="8">8 hrs</option>
+              </select>
+            </div>
+
+            <p class="pkg-includes-label">What's Included</p>
+            <ul class="pkg-includes">
+              <li>Sound System — 2 Subs, 2 Tops</li>
+              <li>Professional DJ + Full Deck Setup — includes MC support</li>
+              <li>Personalized Timeline &amp; Music Consultation</li>
+              <li>Microphone</li>
+              <li class="highlight">5 Uplights</li>
+              <li class="highlight">LED Light Bar</li>
+              <li>Professional Setup & Breakdown</li>
+            </ul>
+
+            <p class="pkg-footer-note">Best for clean essentials without extra production</p>
+            <button class="btn-full-blue" type="button" onclick="choosePackage(event, this)">Continue to Add-Ons</button>
+          </div>
+
+          <div class="pkg-card featured" id="package-signature" data-package-name="Signature Package" data-pole-black-image="images/optimized/packages/signature-poles-black.jpg" data-pole-white-image="images/optimized/packages/signature-white-poles-v2.jpg" data-base-price="2200" data-black-image="images/optimized/packages/signature-package-card.webp?v=20261005-opaque-sleeves" data-white-image="images/optimized/packages/signature-package-white-black-moving-heads-20261025.png" data-white-note="White setup — white speakers, booth, and totem sleeves; moving heads remain black" style="--pkg-image: url('images/optimized/packages/signature-package-card.webp?v=20261005-opaque-sleeves');">
+            <div class="pkg-badge popular">Complete Party Experience</div>
+            <p class="pkg-tier">Level Two</p>
+            <h3 class="pkg-name">Signature Package</h3>
+            <p class="pkg-tagline">Best for weddings, quinces, birthdays, and private parties that need the strongest all-around mix of DJ, lighting, photo booth, and atmosphere.</p>
+
+            <div class="pkg-visual" role="button" tabindex="0" data-gallery-key="signature" aria-label="Open mini gallery for the Signature Package">
+              <div class="pkg-visual-content">
+                <span class="pkg-visual-label">Setup Preview</span>
+                <div class="pkg-visual-title">Full Party Setup</div>
+                <div class="pkg-visual-chips">
+                  <span class="pkg-visual-chip">10 Uplights</span>
+                  <span class="pkg-visual-chip">Photo Booth</span>
+                  <span class="pkg-visual-chip">Fog + Totems</span>
+                </div>
+              </div>
+            </div>
+
+            <fieldset class="pkg-finish-picker">
+              <legend>Setup Finish</legend>
+              <div class="pkg-finish-switch">
+                <label><input class="pkg-finish-option" type="radio" name="signature-finish" value="Full Black" checked><span>Black</span></label>
+                <label><input class="pkg-finish-option" type="radio" name="signature-finish" value="Full White"><span>White</span></label>
+              </div>
+              <p class="pkg-finish-note" aria-live="polite">Black equipment setup</p>
+            </fieldset>
+
+            <fieldset class="pkg-finish-picker pkg-support-picker"><legend>Lighting setup</legend><div class="pkg-finish-switch"><label><input class="pkg-support-option" type="radio" name="signature-support" value="Truss" checked><span>Truss</span></label><label><input class="pkg-support-option" type="radio" name="signature-support" value="Poles"><span>Poles</span></label></div><p class="pkg-finish-note">Poles save approximately 10%.</p></fieldset>
+            <div class="pkg-price-wrap">
+              <span class="pkg-price-symbol">$</span>
+              <span class="pkg-price-value">2,200</span>
+              <span class="pkg-price-unit">/ 4hrs</span>
+            </div>
+
+            <p class="pkg-duration">DJ + Lighting + Booth</p>
+
+            <div class="pkg-controls">
+              <label>Hours</label>
+              <select class="pkg-hours-select">
+                <option value="2">2 hrs</option>
+                <option value="3">3 hrs</option>
+                <option value="4" selected>4 hrs</option>
+                <option value="5">5 hrs</option>
+                <option value="6">6 hrs</option>
+                <option value="7">7 hrs</option>
+                <option value="8">8 hrs</option>
+              </select>
+            </div>
+
+            <p class="pkg-includes-label">What's Included</p>
+            <ul class="pkg-includes">
+              <li>Sound System</li>
+              <li>Professional DJ + Full Deck Setup — includes MC support</li>
+              <li>Personalized Timeline &amp; Music Consultation</li>
+              <li>Microphone</li>
+              <li class="highlight">10 Uplights</li>
+              <li class="highlight">LED Light Bar</li>
+              <li class="highlight">2 Moving Head Lights</li>
+              <li class="highlight">Premium Photo Booth — Background + Premium Props</li>
+              <li class="highlight">10ft Red Carpet with Stanchions & Velvet Ropes</li>
+              <li class="highlight">2x Fog Machines</li>
+              <li class="highlight">2 Global Truss Totems — 8ft Each</li>
+            </ul>
+
+            <p class="pkg-footer-note">Our best all-around choice for most events</p>
+            <button class="btn-full-pink" type="button" onclick="choosePackage(event, this)">Continue to Add-Ons</button>
+          </div>
+
+          <div class="pkg-card value" id="package-premier" data-package-name="Premier Package" data-pole-black-image="images/optimized/packages/premier-poles-black.jpg" data-pole-white-image="images/optimized/packages/premier-white-poles-v2.jpg" data-base-price="3000" data-black-image="images/optimized/packages/premier-package-black-opaque-scrim-v4-20261007.jpg" data-white-image="images/optimized/packages/premier-package-white-opaque-scrim-black-heads-v5-20261025.jpg" data-white-note="White setup — white speakers, booth, and totem sleeves; moving heads remain black" style="--pkg-image: url('images/optimized/packages/premier-package-black-opaque-scrim-v4-20261007.jpg');">
+            <div class="pkg-badge best">Built for Bigger Impact</div>
+            <p class="pkg-tier">Level Three</p>
+            <h3 class="pkg-name">Premier Package</h3>
+            <p class="pkg-tagline">Best for larger parties, quinces, weddings, and school events that need stronger lighting, cold sparks, CO2 effects, and a more premium room presence.</p>
+
+            <div class="pkg-visual" role="button" tabindex="0" data-gallery-key="premier" aria-label="Open mini gallery for the Premier Package">
+              <div class="pkg-visual-content">
+                <span class="pkg-visual-label">Setup Preview</span>
+                <div class="pkg-visual-title">Premium Production Look</div>
+                <div class="pkg-visual-chips">
+                  <span class="pkg-visual-chip">4 Moving Heads</span>
+                  <span class="pkg-visual-chip">Cold Sparks</span>
+                  <span class="pkg-visual-chip">CO2 LED Gun</span>
+                </div>
+              </div>
+            </div>
+
+            <fieldset class="pkg-finish-picker">
+              <legend>Setup Finish</legend>
+              <div class="pkg-finish-switch">
+                <label><input class="pkg-finish-option" type="radio" name="premier-finish" value="Full Black" checked><span>Black</span></label>
+                <label><input class="pkg-finish-option" type="radio" name="premier-finish" value="Full White"><span>White</span></label>
+              </div>
+              <p class="pkg-finish-note" aria-live="polite">Black equipment setup</p>
+            </fieldset>
+
+            <fieldset class="pkg-finish-picker pkg-support-picker"><legend>Lighting setup</legend><div class="pkg-finish-switch"><label><input class="pkg-support-option" type="radio" name="premier-support" value="Truss" checked><span>Truss</span></label><label><input class="pkg-support-option" type="radio" name="premier-support" value="Poles"><span>Poles</span></label></div><p class="pkg-finish-note">Poles save approximately 10%.</p></fieldset>
+            <div class="pkg-price-wrap">
+              <span class="pkg-price-symbol">$</span>
+              <span class="pkg-price-value">3,000</span>
+              <span class="pkg-price-unit">/ 4hrs</span>
+            </div>
+
+            <p class="pkg-duration">Premium Event Production</p>
+
+            <div class="pkg-controls">
+              <label>Hours</label>
+              <select class="pkg-hours-select">
+                <option value="2">2 hrs</option>
+                <option value="3">3 hrs</option>
+                <option value="4" selected>4 hrs</option>
+                <option value="5">5 hrs</option>
+                <option value="6">6 hrs</option>
+                <option value="7">7 hrs</option>
+                <option value="8">8 hrs</option>
+              </select>
+            </div>
+
+            <p class="pkg-includes-label">What's Included</p>
+            <ul class="pkg-includes">
+              <li>Sound System</li>
+              <li>Professional DJ + Full Deck Setup — includes MC support</li>
+              <li>Personalized Timeline &amp; Music Consultation</li>
+              <li>Microphone</li>
+              <li class="highlight">15 Uplights</li>
+              <li>LED Light Bar</li>
+              <li class="highlight">4 Moving Head Lights</li>
+              <li>Premium Photo Booth — Background + Premium Props</li>
+              <li>10ft Red Carpet with Stanchions & Velvet Ropes</li>
+              <li class="highlight">LED Glow Cocktail Tables</li>
+              <li class="highlight">Foam Glow Sticks</li>
+              <li class="highlight">2x Cold Spark Machines</li>
+              <li class="highlight">CO2 LED Gun</li>
+              <li>2x Fog Machines</li>
+              <li class="highlight">Choice of 10ft × 14ft Goal Post + 2 Totems or 4 Totems</li>
+            </ul>
+
+            <p class="pkg-footer-note">The smartest step-up before luxury pricing</p>
+            <button class="btn-full-blue" type="button" onclick="choosePackage(event, this)">Continue to Add-Ons</button>
+          </div>
+
+          <div class="pkg-card" id="package-elite" data-package-name="Elite Production Package" data-base-price="5000" data-black-image="images/optimized/packages/elite-production-package-black-20260928.jpg" data-white-image="images/optimized/packages/elite-production-package-white-black-heads-20260929.jpg" data-white-note="White setup — white RCF speakers; moving heads, CO2 cannons, Wash FX 2 lights, and fog machines remain black" style="--pkg-image: url('images/optimized/packages/elite-production-package-black-20260928.jpg');">
+            <p class="pkg-tier">Level Four</p>
+            <h3 class="pkg-name">Elite Production Package</h3>
+            <p class="pkg-tagline">Best for luxury events, brand activations, and large private events that want maximum staging, LED wall presence, CO2 effects, and the biggest visual statement.</p>
+
+            <div class="pkg-visual" role="button" tabindex="0" data-gallery-key="elite" aria-label="Open mini gallery for the Elite Production Package">
+              <div class="pkg-visual-content">
+                <span class="pkg-visual-label">Setup Preview</span>
+                <div class="pkg-visual-title">Statement Visual Build</div>
+                <div class="pkg-visual-chips">
+                  <span class="pkg-visual-chip">LED Wall</span>
+                  <span class="pkg-visual-chip">CO2 Effects</span>
+                  <span class="pkg-visual-chip">Photography</span>
+                </div>
+              </div>
+            </div>
+
+            <fieldset class="pkg-finish-picker">
+              <legend>Setup Finish</legend>
+              <div class="pkg-finish-switch">
+                <label><input class="pkg-finish-option" type="radio" name="elite-finish" value="Full Black" checked><span>Black</span></label>
+                <label><input class="pkg-finish-option" type="radio" name="elite-finish" value="Full White"><span>White</span></label>
+              </div>
+              <p class="pkg-finish-note" aria-live="polite">Black equipment setup</p>
+            </fieldset>
+
+            <div class="pkg-price-wrap">
+              <span class="pkg-price-symbol">$</span>
+              <span class="pkg-price-value">5,000</span>
+              <span class="pkg-price-unit">/ 4hrs</span>
+            </div>
+
+            <p class="pkg-duration">Full Statement Setup</p>
+
+            <div class="pkg-controls">
+              <label>Hours</label>
+              <select class="pkg-hours-select">
+                <option value="2">2 hrs</option>
+                <option value="3">3 hrs</option>
+                <option value="4" selected>4 hrs</option>
+                <option value="5">5 hrs</option>
+                <option value="6">6 hrs</option>
+                <option value="7">7 hrs</option>
+                <option value="8">8 hrs</option>
+              </select>
+            </div>
+
+            <p class="pkg-includes-label">What's Included</p>
+            <ul class="pkg-includes">
+              <li>Sound System</li>
+              <li>Professional DJ + Full Deck Setup — includes MC support</li>
+              <li>Personalized Timeline &amp; Music Consultation</li>
+              <li>Microphone</li>
+              <li>15 Uplights</li>
+              <li>LED Light Bar</li>
+              <li>4 Moving Head Lights</li>
+              <li class="highlight">5ft High × 8ft Wide LED Wall</li>
+              <li>Premium Photo Booth — Background + Premium Props</li>
+              <li class="highlight">20ft Red Carpet with Stanchions & Velvet Ropes</li>
+              <li>LED Glow Cocktail Tables</li>
+              <li>Foam Glow Sticks</li>
+              <li class="highlight">Photography</li>
+              <li class="highlight">4x Cold Spark Machines</li>
+              <li class="highlight">CO2 LED Gun</li>
+              <li class="highlight">2x CO2 Cannons</li>
+              <li>2x Fog Machines</li>
+              <li>Choice of 10ft × 14ft Goal Post + 2 Totems or 4 Totems</li>
+            </ul>
+
+            <p class="pkg-footer-note">For clients who want the biggest visual statement</p>
+            <button class="btn-full-blue" type="button" onclick="choosePackage(event, this)">Continue to Add-Ons</button>
+          </div>
+
+        </div>
+      </div>
     </div>
+
+
+    <section class="wedding-experience" id="wedding-experience" aria-labelledby="wedding-title">
+      <div class="wedding-heading">
+        <p class="wedding-eyebrow">Specialized for weddings</p>
+        <h2 id="wedding-title">Wedding <strong>Experience</strong></h2>
+        <p>Your cocktail hour. Your reception. One unforgettable celebration.</p>
+      </div>
+      <div class="wedding-layout">
+        <div class="wedding-preview">
+          <figure>
+            <div class="wedding-image-stack">
+              <img id="wedding-preview-image" src="images/optimized/packages/wedding-experience-white-1-side-space-20260928.jpg" width="1448" height="1086" loading="lazy" alt="Full White Wedding Experience setup with white RCF speakers, four moving heads, four cold sparks, fog machines and a center disco ball">
+            </div>
+            <div class="wedding-photo-picker" aria-label="Choose a Full White Wedding Experience photo">
+              <button type="button" class="is-active" data-wedding-photo="0" aria-label="Show Full White setup photo 1" aria-pressed="true"><img src="images/optimized/packages/wedding-experience-white-1-side-space-20260928.jpg" width="1448" height="1086" loading="lazy" alt=""></button>
+              <button type="button" data-wedding-photo="1" aria-label="Show Full White setup photo 2" aria-pressed="false"><img src="images/optimized/packages/wedding-experience-white-goalpost-square-co2-20260929.jpg" width="1448" height="1086" loading="lazy" alt=""></button>
+              <button type="button" data-wedding-photo="2" aria-label="Show Full White setup photo 3" aria-pressed="false"><img src="images/optimized/packages/wedding-experience-white-3-20260928.jpg" width="1448" height="1086" loading="lazy" alt=""></button>
+            </div>
+            <figcaption>Wedding Experience setup preview · Equipment placement is tailored to your venue.</figcaption>
+          </figure>
+          <fieldset class="wedding-finish">
+            <legend>Choose your setup finish <span>Both included at the same price</span></legend>
+            <div class="wedding-switch"><label><input type="radio" name="wedding-finish" value="Full White" checked> <span>Full White</span></label>
+            <label><input type="radio" name="wedding-finish" value="Full Black"> <span>Full Black</span></label></div>
+          </fieldset>
+          <p class="wedding-finish-note" id="wedding-finish-note" aria-live="polite">White RCF speakers, white booth, white trussing and totem finishes, and white cold-spark housings. Moving heads, fog machines and CO₂ equipment remain black.</p>
+        </div>
+        <div class="wedding-details">
+          <p class="wedding-price">$5,500 <span>5 hours total</span></p>
+          <div class="wedding-timeline" aria-label="Included wedding coverage">
+            <div><strong>1 hour</strong><span>Cocktail hour</span></div><span aria-hidden="true">+</span><div><strong>4 hours</strong><span>Reception / party</span></div>
+          </div>
+          <p class="wedding-intro">A complete five-hour wedding production built around the three setups shown: dual TV truss towers, a full goal-post truss with a hanging disco ball, or four truss totems. Each option includes professional DJ and MC support, cocktail-hour and reception sound, four moving heads, four cold sparks, two fog machines, a disco ball, and a coordinated Full White or Full Black finish. Two CO₂ guns and the 20 ft × 20 ft LED / Infinity Mirror Dance Floor are also included but are not pictured.</p>
+          <h3>Everything for your celebration</h3>
+          <ul class="wedding-includes">
+            <li>Professional DJ + MC support</li><li>Personalized wedding timeline &amp; music consultation</li>
+            <li>Cocktail-hour audio + reception sound system — White RCF or Black QSC</li><li>Wireless microphone</li>
+            <li><strong>20 uplights</strong></li><li><strong>20 ft × 20 ft LED / Infinity Mirror Dance Floor</strong> — 12 × 12 panels (144 total)</li>
+            <li><strong>Choice of production layout</strong> — dual TV truss towers, full goal-post truss or 4 truss totems</li><li>4 Moving Head Lights</li><li>Disco ball</li><li>4 Cold Spark Machines</li><li>2 CO₂ Guns — not pictured</li><li>2 Fog Machines</li>
+            <li>DJ booth / facade</li><li>Full White or Full Black setup</li><li>Professional setup &amp; breakdown</li>
+          </ul>
+          <button class="btn-full-blue" id="choose-wedding" type="button">Choose Wedding Experience</button>
+          <p id="wedding-selection-status" role="status"></p>
+          <p class="wedding-policy">Includes delivery, required staffing, standard setup and breakdown, and applicable taxes in Miami-Dade, Broward, Palm Beach and Monroe counties. Travel beyond these counties may be quoted separately. Special effects require venue approval.</p>
+        </div>
+      </div>
+      <dl class="wedding-specs" aria-label="Wedding Experience at a glance">
+        <div><dt>Coverage</dt><dd>1 cocktail hour + 4 reception hours</dd></div>
+        <div><dt>Dance floor</dt><dd>20 ft × 20 ft LED / Infinity Mirror · 12 × 12 panels (144 total)</dd></div>
+        <div><dt>Room lighting</dt><dd>20 uplights · 4 moving heads · disco ball</dd></div>
+        <div><dt>Production layout</dt><dd>Dual TV towers · full goal-post truss · or 4 truss totems</dd></div>
+        <div><dt>Special effects</dt><dd>4 cold sparks · 2 CO₂ guns · 2 fog machines</dd></div>
+        <div><dt>Your aesthetic</dt><dd>Full White or Full Black · $5,500</dd></div>
+      </dl>
+      <p class="wedding-links">Explore our <a href="dj-services.html">DJ services</a>, <a href="event-lighting-rentals.html">event lighting</a> and <a href="special-effects-rentals.html">special effects</a>, or <a href="contact.html">talk through your wedding plans</a>.</p>
+    </section>
+
+    <section class="school-packages" id="school-packages" aria-labelledby="school-title">
+      <div class="school-heading"><p class="school-eyebrow">Made for schools</p><h2 id="school-title">School Dance &amp; <strong>Prom Experiences</strong></h2><p>Choose a setup for your school dance, homecoming or prom. Select a picture to see its details.</p></div>
+      <div class="school-layout"><div class="school-preview"><figure><img id="school-main-image" src="school-images/school-poles-v2.jpg" width="1448" height="1086" alt="School dance setup with DJ, stage, lighting and moving heads on poles"><div class="school-photo-picker" role="group" aria-label="Choose a school dance setup"><button type="button" data-school-option="tv" class="is-active" aria-pressed="true" aria-label="Show school dance setup with moving heads on poles"><img src="school-images/school-poles-v2.jpg" width="1448" height="1086" alt=""></button><button type="button" data-school-option="prom" aria-pressed="false" aria-label="Show formal dance setup"><img src="school-images/school-tvs-covered-v2.jpg" width="1448" height="1086" alt=""></button><button type="button" data-school-option="led" aria-pressed="false" aria-label="Show large LED wall school dance"><img src="school-images/school-led-large-four-totems-4x3.jpg" width="1448" height="1086" alt=""></button></div><figcaption>Setup concepts are illustrative. Colors, equipment and layout are confirmed in your quote.</figcaption></figure></div>
+      <div class="school-details" aria-live="polite"><p class="school-detail-kicker" id="school-kicker">School dances &amp; homecoming</p><p class="school-price" id="school-price">From $2,500</p><p id="school-description">A school dance setup with DJ, sound and lighting, featuring moving heads on flat-base pole stands.</p><h4>Explore this setup</h4><ul class="school-features" id="school-features"><li>DJ and sound options</li><li>360 photo booth included</li><li>Two moving heads on flat-base pole stands</li><li>Both Lighting IR-4 uplighting</li><li>IntelliStage staging options</li></ul><a class="school-quote" id="school-quote" href="contact.html?school=spirit#quote-form">Request a Quote</a><p class="school-note">Starting prices are estimates; your quote is based on venue, date, guest count, equipment and staffing. Stage concept: 16 ft × 12 ft, approximately 16 in high; size and availability are confirmed in your quote.</p></div></div>
+    </section>
 
     <div class="funnel-section">
       <p class="funnel-label">Simple Booking Flow</p>
@@ -4349,5 +4297,35 @@
   <script src="js/theme.js?v=20260813-5"></script>
   <script src="js/nav.js?v=20261119-1"></script>
   <script src="js/school-packages.js?v=20261122-6"></script>
+
+<script>
+(function () {
+ const form=document.getElementById('package-finder-form'), result=document.getElementById('finder-result');
+ const text=(d,k)=>String(d.get(k)||'');
+ form.addEventListener('submit',async function(e){
+  e.preventDefault(); if(!form.reportValidity()) return;
+  const d=new FormData(form), event=text(d,'Event type'), guests=text(d,'Guest count'), venue=text(d,'Venue'), budget=text(d,'Budget'), sound=text(d,'Sound'), visuals=text(d,'Visuals'), experience=text(d,'Guest experience');
+  let name, price, link, why;
+  if(event==='School dance or prom'){ name='School Dance & Prom Experiences'; price='From $2,500'; link='#school-packages'; why='These setups are designed for school dances and proms and include a 360 photo booth.'; }
+  else if(event==='Wedding'){ name='Wedding Experience'; price='$5,500 for 5 hours'; link='#wedding-experience'; why='This setup includes dedicated cocktail-hour and reception coverage.'; }
+  else if(visuals==='LED wall and full production'){ name='Elite Production Package'; price='From $5,000'; link='#package-elite'; why='It includes an LED wall and a full production setup.'; }
+  else if(visuals==='Big lighting and special effects'||experience==='Special effects and a big entrance'||sound==='Large, high-energy sound'||guests==='More than 200'){ name='Premier Package'; price='From $2,700'; link='#package-premier'; why='It adds moving lights and special effects for a bigger event.'; }
+  else if(visuals==='Moving lights and an elevated look'||experience==='Photo booth and memorable moments'){ name='Signature Package'; price='From $2,000'; link='#package-signature'; why='It combines DJ, moving lights and a premium photo booth.'; }
+  else if(venue==='Private home or backyard'&&guests==='Up to 50'&&sound==='Simple sound for a small gathering'){ name='Backyard Party Package'; price='From $1,000'; link='#package-backyard'; why='It is designed for private-home celebrations with up to 50 guests.'; }
+  else { name='Essential Package'; price='From $1,300'; link='#package-essential'; why='It offers DJ, sound, microphone and foundational lighting.'; }
+  const btn=form.querySelector('button[type=submit]'); btn.disabled=true; btn.textContent='Sending…';
+  d.append('Recommended package',name); d.append('_subject','New package finder recommendation');
+  result.replaceChildren();
+  const title=document.createElement('h3'); title.textContent='We recommend: '+name; result.append(title);
+  const desc=document.createElement('p'); desc.textContent=price+' · '+why+' This is a starting point; availability, final pricing and any upgrades will be confirmed with you.'; result.append(desc);
+  const budgetNote=document.createElement('p'); budgetNote.textContent='Your budget: '+budget+'. If the starting price is outside your range, contact us to discuss options.'; result.append(budgetNote);
+  const target=document.createElement('a'); target.href=link; target.textContent='Explore this package →'; result.append(target);
+  const status=document.createElement('p'); result.append(status); result.hidden=false;
+  try { const response=await fetch('https://formspree.io/f/mkokqpnz',{method:'POST',body:d,headers:{Accept:'application/json'}}); if(!response.ok) throw new Error('Request failed'); status.textContent='Your answers were sent to our team. We’ll be in touch.'; btn.textContent='Send Again'; }
+  catch(err){ status.textContent='We could not send your answers. Please try again or contact us at (954) 551-9330.'; btn.textContent='Try Sending Again'; }
+  btn.disabled=false; result.scrollIntoView({behavior:'smooth',block:'nearest'});
+ });
+})();
+</script>
 </body>
 </html>

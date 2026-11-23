@@ -512,7 +512,7 @@
         if (!estimate.setupFinish) return '';
         const packageHours = Number(estimate.packageHours || 0);
         const packageFinish = estimate.setupFinish === 'Full White' ? 'Full White' : 'Full Black';
-        return (packageHours ? packageHours + ' hrs · ' : '') + 'Setup: ' + packageFinish;
+        return (packageHours ? packageHours + ' hrs · ' : '') + 'Setup: ' + packageFinish + (estimate.packageSupport ? ' · Lighting: ' + estimate.packageSupport : '');
       }
       const finish = estimate.setupFinish === 'Full Black' ? 'Full Black' : 'Full White';
       return weddingDefinition.coverageLabel + ' · Setup: ' + finish +
@@ -819,6 +819,8 @@
   function getPackageWarning(optionId) {
     const packageName = getSelectedPackageName();
     const warnings = PACKAGE_DUPLICATE_MAP[packageName];
+    const estimate = getEstimate();
+    if (estimate && estimate.packageSupport === 'Poles' && /^trussing-/.test(optionId)) return '';
 
     return warnings
       ? warnings[optionId] || ''
@@ -1633,7 +1635,7 @@
           name: packageName,
 
           meta: window.HeatDistrictWedding.summary(normalizedEstimate) || (packageHours
-            ? packageHours + ' hrs · Base package'
+            ? packageHours + ' hrs · ' + (normalizedEstimate.packageSupport ? normalizedEstimate.packageSupport + ' · ' : '') + 'Base package'
             : 'Base package'),
 
           total: packagePrice,

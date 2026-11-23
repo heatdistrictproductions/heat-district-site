@@ -2830,7 +2830,7 @@
 
   .finder-progress { display:flex; justify-content:space-between; gap:12px; color:#90ecf0; font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
   .finder-progress-track { height:5px; margin:12px 0 30px; background:#253141; border-radius:10px; overflow:hidden; }
-  #finder-progress-bar { width:14.285%; height:100%; background:linear-gradient(90deg,#00e7ef,#ff2d78); transition:width .28s ease; }
+  #finder-progress-bar { width:0%; height:100%; background:linear-gradient(90deg,#00e7ef,#ff2d78); transition:width .28s ease; }
   .finder-questions { display:block; }
   .finder-step { border:0; padding:0; margin:0; min-width:0; }
   .finder-step[hidden],.finder-contact[hidden],.finder-back[hidden],.finder-result[hidden] { display:none !important; }
@@ -2950,7 +2950,7 @@
     <section class="package-finder" id="package-comparison" aria-labelledby="finder-title">
       <div class="finder-heading"><p class="packages-label">Let’s plan your event</p><h2 id="finder-title">Find Your <strong>Package</strong></h2><p>Tell us a little about your event and we’ll suggest a starting point. Your answers will also be sent to our team so we can help you plan.</p></div>
       <form id="package-finder-form" class="finder-form">
-        <div class="finder-progress" aria-live="polite"><span id="finder-step-label">Question 1 of 7</span><span id="finder-step-percent">14% complete</span></div>
+        <div class="finder-progress" aria-live="polite"><span id="finder-step-label">Question 1 of 7</span><span id="finder-step-percent">0% complete</span></div>
         <div class="finder-progress-track" aria-hidden="true"><div id="finder-progress-bar"></div></div>
         <div class="finder-questions">
           <fieldset class="finder-step" data-step="0"><legend tabindex="-1">What are you celebrating?</legend><p class="finder-hint">Choose one to continue</p><div class="finder-options">
@@ -4362,7 +4362,7 @@
  let current=0, advanceTimer;
  function showStep(index,focus) {
   current=index; steps.forEach((step,i)=>{step.hidden=i!==index;}); contact.hidden=index!==steps.length;
-  back.hidden=index===0; const percent=Math.round(Math.min(index+1,steps.length)/steps.length*100);
+  back.hidden=index===0; const percent=Math.round(Math.min(index,steps.length)/steps.length*100);
   stepLabel.textContent=index===steps.length?'Your details':'Question '+(index+1)+' of '+steps.length;
   stepPercent.textContent=percent+'% complete'; progress.style.width=percent+'%';
   if(focus) { const target=index===steps.length?contact.querySelector('h3'):steps[index].querySelector('legend'); target.focus({preventScroll:true}); }

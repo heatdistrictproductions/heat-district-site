@@ -469,17 +469,16 @@
 
 
   const weddingDefinition = {
-    name: 'Wedding Experience', basePrice: 5500, hours: 5,
+    name: 'Wedding Experience', basePrice: 2800, hours: 5,
     coverageLabel: '1-Hour Cocktail Hour + 4-Hour Reception',
     coverage: { dj: 1, mc: 1, sound: 1, microphone: 1, uplights: 20,
-      'dance-floor': 1, danceFloorSize: '20x20', danceFloorFinish: 'Black', danceFloorPanelRows: 12, danceFloorPanelColumns: 12, danceFloorPanelCount: 144, 'cold-sparks': 4,
+      'cold-sparks': 4,
       'co2-gun': 2, fog: 2, totems: 2, 'moving-heads': 2, cocktailHours: 1, receptionHours: 4 },
     includes: [
       'Professional DJ + MC support',
       'Personalized wedding timeline and music consultation',
       '1-hour cocktail-hour audio coverage + 4-hour reception sound system',
       'Wireless microphone', '20 uplights',
-      '20 ft × 20 ft LED / Infinity Mirror Dance Floor — 12 × 12 panels (144 total), black frame and panels',
       '2 Global Truss Totems', '2 Intimidator Spot 355 IRC Moving Heads', '4 Cold Spark Machines', '2 LED CO2 Guns',
       '2 Vertical LED Fog Machines', 'DJ booth / facade',
       'Choice of Full White or Full Black setup',
@@ -501,7 +500,6 @@
   weddingOverlap(['co2-led-gun-1-unit'], '2 LED CO2 guns');
   weddingOverlap(['fog-machines-2-units'], '2 fog machines');
   weddingOverlap(['trussing-2-totems', 'trussing-4-totems', 'moving-heads-2-heads-2-totems', 'moving-heads-4-heads-4-totems', 'moving-heads-4-heads-2-totems-goal-post', 'beam-140sr-2-heads-2-totems', 'beam-140sr-4-heads-4-totems', 'beam-140sr-4-heads-2-totems-goal-post', 'led-wall-2-totems'], '2 Global Truss totems');
-  weddingOverlap(['dance-floor-10x10', 'dance-floor-12x12', 'dance-floor-14x14', 'dance-floor-16x16', 'dance-floor-18x18', 'dance-floor-20x20'], 'a 20 ft × 20 ft LED / Infinity Mirror Dance Floor');
   weddingOverlap(['moving-heads-solo', 'moving-heads-2-heads-goal-post', 'moving-heads-4-heads-goal-post'], '2 Intimidator Spot 355 IRC moving heads');
   PACKAGE_DUPLICATE_MAP['Wedding Experience'] = weddingWarnings;
   window.HeatDistrictWedding = {
@@ -516,7 +514,7 @@
       }
       const finish = estimate.setupFinish === 'Full Black' ? 'Full Black' : 'Full White';
       return weddingDefinition.coverageLabel + ' · Setup: ' + finish +
-        ' · 20 ft × 20 ft LED / Infinity Mirror Dance Floor (12 × 12 panels) · 20 uplights · 2 moving heads';
+        ' · 20 uplights · 2 moving heads';
     },
     warning: function(packageName, optionId) {
       return packageName === weddingDefinition.name ? weddingWarnings[optionId] || '' : '';

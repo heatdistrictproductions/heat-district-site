@@ -469,7 +469,7 @@
 
 
   const weddingDefinition = {
-    name: 'Wedding Experience', basePrice: 2800, hours: 5,
+    name: 'Wedding Experience', basePrice: 3000, hours: 5,
     coverageLabel: '1-Hour Cocktail Hour + 4-Hour Reception',
     coverage: { dj: 1, mc: 1, sound: 1, microphone: 1, uplights: 20,
       'cold-sparks': 4,

@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>South Florida Event Production, DJ & Party Packages | Heat District</title>
-  <meta name="description" content="DJ and event production for weddings, quinces, birthdays and private celebrations across South Florida. Packages from $1,300; white or black Wedding Experience at $2,800.">
+  <meta name="description" content="DJ and event production for weddings, quinces, birthdays and private celebrations across South Florida. Packages from $1,300; white or black Wedding Experience at $3,000.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://heatdistrictproductions.com/">
   <meta property="og:type" content="website">
@@ -143,6 +143,6 @@
     const reviewViewport=document.getElementById('reviewViewport');const reviewTrack=document.getElementById('reviewTrack');const reviewCards=reviewTrack?[...reviewTrack.querySelectorAll('.review')]:[];const reviewPrev=document.getElementById('reviewPrev');const reviewNext=document.getElementById('reviewNext');const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');let reviewIndex=0;let reviewTimer=null;function reviewsPerView(){if(window.innerWidth<=700)return 1;if(window.innerWidth<=1100)return 2;return 3}function showReview(index){if(!reviewTrack||!reviewCards.length)return;const maxIndex=Math.max(0,reviewCards.length-reviewsPerView());reviewIndex=index<0?maxIndex:index>maxIndex?0:index;reviewTrack.style.transform=`translateX(-${reviewCards[reviewIndex].offsetLeft}px)`}function stopReviews(){if(reviewTimer){window.clearInterval(reviewTimer);reviewTimer=null}}function startReviews(){stopReviews();if(reduceMotion.matches||reviewCards.length<=reviewsPerView())return;reviewTimer=window.setInterval(()=>showReview(reviewIndex+1),6000)}if(reviewPrev&&reviewNext&&reviewViewport){reviewPrev.addEventListener('click',()=>{showReview(reviewIndex-1);startReviews()});reviewNext.addEventListener('click',()=>{showReview(reviewIndex+1);startReviews()});reviewViewport.addEventListener('mouseenter',stopReviews);reviewViewport.addEventListener('mouseleave',startReviews);reviewViewport.addEventListener('focusin',stopReviews);reviewViewport.addEventListener('focusout',startReviews);window.addEventListener('resize',()=>{showReview(Math.min(reviewIndex,Math.max(0,reviewCards.length-reviewsPerView())));startReviews()});showReview(0);startReviews()}
     if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el))}else{document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'))}
   </script>
-  <script src="js/global-cart.js?v=20261124-wedding"></script>
+  <script src="js/global-cart.js?v=20261124-wedding-3000"></script>
 <script src="js/theme.js?v=20260928-1"></script></body>
 </html>
